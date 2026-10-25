@@ -1,0 +1,66 @@
+name: BBMA scanner
+
+on:
+  schedule:
+    - cron: "1,16,31,46 * * * 0-5"   # every 15 minutes (UTC), Sunday to Friday
+  workflow_dispatch:                  # "Run workflow" button for a manual run
+  push:                               # first run right after the files are uploaded
+    branches: [main]
+    paths: ["bbma_scanner.py", ".github/workflows/scan.yml"]
+
+permissions:
+  contents: write                     # only for the keep-alive commit below
+
+concurrency:
+  group: bbma-scanner
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Restore state (last candle checked, last alert)
+        uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: state-${{ github.run_id }}
+          restore-keys: state-
+
+      - name: Scan
+        env:
+          TWELVEDATA_KEY: ${{ secrets.TWELVEDATA_KEY }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          OANDA_TOKEN: ${{ secrets.OANDA_TOKEN }}
+          PROVIDER: ${{ vars.PROVIDER }}
+          SYMBOLS: ${{ vars.SYMBOLS }}
+        run: python bbma_scanner.py
+
+      - name: Save state
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: state
+          key: state-${{ github.run_id }}
+
+      - name: Keep the schedule alive
+        # GitHub pauses scheduled workflows after 60 days without a commit: push an empty one every 45 days
+        run: |
+          last=$(git log -1 --format=%ct); now=$(date +%s)
+          if [ $((now - last)) -gt $((45 * 86400)) ]; then
+            git config user.name "fizy-bot"
+            git config user.email "fizy-bot@users.noreply.github.com"
+            git commit --allow-empty -m "keep the scanner schedule alive"
+            git push
+          fi
