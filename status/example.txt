@@ -1,31 +1,31 @@
-no setup found in the last 1500 candles
-XAUUSD: 769 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-AUDUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-NZDUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-USDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-USDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-USDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURGBP: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURAUD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-EURNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPAUD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-GBPNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-AUDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-AUDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-AUDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-AUDNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-NZDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-NZDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-NZDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-CADJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-CADCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-CHFJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
-candidates 3917, checked 3917
+example NZDCAD 2026-10-24 00:00:00 sent=True
+XAUUSD: 4488 candles 2026-08-17..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+EURUSD: 5591 candles 2026-08-04..2026-10-24 00:15  now: H4 EMA 50 is below Mid BB, sell skipped
+GBPUSD: 5592 candles 2026-08-04..2026-10-24 00:15  now: waiting for EMA 50 rejection on H1 / M30
+AUDUSD: 5596 candles 2026-08-04..2026-10-24 00:15  now: H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+NZDUSD: 5597 candles 2026-08-04..2026-10-24 00:15  now: H1 EMA 50 5-candle rejection, no H4 momentum in the 20 candles before it
+USDJPY: 5573 candles 2026-08-04..2026-10-23 23:45  now: M30 EMA 50 rejection + H4 momentum, waiting for CSAK
+USDCHF: 5571 candles 2026-08-04..2026-10-24 00:00  now: waiting for EMA 50 rejection on H1 / M30
+USDCAD: 5586 candles 2026-08-04..2026-10-24 00:15  now: M30 EMA 50 rejection + H4 momentum, waiting for CSAK
+EURGBP: 5598 candles 2026-08-04..2026-10-24 00:15  now: H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+EURJPY: 5592 candles 2026-08-04..2026-10-24 00:15  now: M30 EMA 50 rejection + H4 momentum, waiting for CSAK
+EURCHF: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+EURAUD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+EURCAD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+EURNZD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+GBPJPY: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+GBPCHF: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+GBPAUD: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+GBPCAD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+GBPNZD: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+AUDJPY: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+AUDCHF: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+AUDCAD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+AUDNZD: 5000 candles 2026-08-11..2026-10-23 23:45  now: waiting for EMA 50 rejection on H1 / M30
+NZDJPY: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+NZDCHF: 5000 candles 2026-08-11..2026-10-23 23:45  now: H1 / H4 trend not aligned
+NZDCAD: 5594 candles 2026-08-04..2026-10-24 00:15  now: H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+CADJPY: 5593 candles 2026-08-04..2026-10-24 00:15  now: H1 / H4 trend not aligned
+CADCHF: 5601 candles 2026-08-04..2026-10-24 00:45  now: H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+CHFJPY: 5590 candles 2026-08-04..2026-10-24 00:15  now: H1 / H4 trend not aligned
+candidates 7759, checked 5
