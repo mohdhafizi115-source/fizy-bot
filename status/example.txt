@@ -1,1 +1,31 @@
 no setup found in the last 1500 candles
+XAUUSD: 769 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+AUDUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+NZDUSD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+USDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+USDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+USDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURGBP: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURAUD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+EURNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPAUD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+GBPNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+AUDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+AUDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+AUDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+AUDNZD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+NZDJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+NZDCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+NZDCAD: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+CADJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+CADCHF: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+CHFJPY: 797 candles 2026-10-13..2026-10-23 23:45  now: not enough history
+candidates 3917, checked 3917
