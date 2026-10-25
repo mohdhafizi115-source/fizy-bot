@@ -771,31 +771,52 @@ def run_live():
     save_state(state)
 
 
-def run_example(max_steps=1500, max_seconds=900):
+def _csak_candidates(m15, tf, last_n):
+    """Opens T right after a candle (of tf) whose body crosses Mid BB: cheap pre-filter for CSAK."""
+    if tf == "15min":
+        d = m15
+    else:
+        d = m15.resample(tf, label="left", closed="left", origin="start_day").agg(
+            {"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+    mid = d["close"].rolling(20).mean()
+    cross = ((d["open"] < mid) & (d["close"] > mid)) | ((d["open"] > mid) & (d["close"] < mid))
+    ends = d.index[cross.values] + pd.Timedelta(minutes=TF_MIN[tf])
+    ends = ends[ends >= m15.index[-last_n]]
+    return set(t for t in ends if t in m15.index)
+
+
+def run_example(max_steps=1500, max_seconds=1100):
     """Find the most recent past setup on any symbol and send it to Telegram as an example."""
-    data = {}
+    data, diag = {}, []
     for name in symbol_list():
         try:
             set_symbol(name)
             data[name] = fetch_m15(name)
         except Exception as e:
-            print(f"{name}: {e}")
+            diag.append(f"{name}: data error {e}")
+    for name, m15 in data.items():
+        set_symbol(name)
+        _, st = evaluate(m15, m15.index[-1], {})
+        diag.append(f"{name}: {len(m15)} candles {m15.index[0]:%Y-%m-%d}..{m15.index[-1]:%Y-%m-%d %H:%M}  now: {st}")
     t0 = time.time()
-    times = sorted({t for d in data.values() for t in d.index[-max_steps:]}, reverse=True)
-    found = None
-    for T in times:
+    cand = []
+    for name, m15 in data.items():
+        n = min(max_steps, len(m15) - 1)
+        ts = _csak_candidates(m15, CFG["ENTRY_TF"], n) | _csak_candidates(m15, CFG["ENTRY_TF2"], n)
+        cand += [(t, name) for t in ts]
+    cand.sort(reverse=True)
+    found, checked = None, 0
+    for T, name in cand:
         if time.time() - t0 > max_seconds:
+            diag.append("stopped: time limit")
             break
-        for name, m15 in data.items():
-            if T not in m15.index or m15.index.get_loc(T) < 100:
-                continue
-            set_symbol(name)
-            sig, _ = evaluate(m15, T, {})
-            if sig:
-                found = (name, sig)
-                break
-        if found:
+        set_symbol(name)
+        sig, _ = evaluate(data[name], T, {})
+        checked += 1
+        if sig:
+            found = (name, sig)
             break
+    diag.append(f"candidates {len(cand)}, checked {checked}")
     out = os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "example.txt")
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     with open(out, "w") as f:
@@ -806,6 +827,7 @@ def run_example(max_steps=1500, max_seconds=900):
             f.write(f"example {name} {sig['time']} sent={ok}\n")
         else:
             f.write(f"no setup found in the last {max_steps} candles\n")
+        f.write("\n".join(diag) + "\n")
     print(open(out).read())
 
 
