@@ -1,4 +1,4 @@
-run (UTC): 2026-10-25 07:43  broker time: 2026-10-25 10:42
+run (UTC): 2026-10-25 11:33  broker time: 2026-10-25 14:33
 XAUUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
 EURUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
 GBPUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
@@ -22,10 +22,10 @@ AUDJPY   deriv       5000  market closed (last candle 2026-10-23 23:45)
 AUDCHF   deriv       5000  market closed (last candle 2026-10-23 23:45)
 AUDCAD   deriv       5000  market closed (last candle 2026-10-23 23:45)
 AUDNZD   deriv       4215  market closed (last candle 2026-10-23 23:45)
-NZDJPY   yahoo       5594  market closed (last candle 2026-10-24 00:15)
-NZDCHF   yahoo       5593  market closed (last candle 2026-10-24 00:15)
-NZDCAD   yahoo       5594  market closed (last candle 2026-10-24 00:15)
-CADJPY   yahoo       5593  market closed (last candle 2026-10-24 00:15)
-CADCHF   yahoo       5601  market closed (last candle 2026-10-24 00:45)
-CHFJPY   yahoo       5590  market closed (last candle 2026-10-24 00:15)
+NZDJPY   deriv       5000  market closed (last candle 2026-10-23 23:45)
+NZDCHF   deriv       5000  market closed (last candle 2026-10-23 23:45)
+NZDCAD   deriv       5000  market closed (last candle 2026-10-23 23:45)
+CADJPY   deriv       4215  market closed (last candle 2026-10-23 23:45)
+CADCHF   deriv       5000  market closed (last candle 2026-10-23 23:45)
+CHFJPY   deriv       4215  market closed (last candle 2026-10-23 23:45)
 welcome telegram ok: True  example: None
