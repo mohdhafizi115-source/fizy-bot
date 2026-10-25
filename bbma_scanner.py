@@ -75,6 +75,9 @@ CFG = {
     "ENTRY_TF2":      "30min",
     "ENTRY_TF":       "15min",
     "SKIP_MOM_CSAK":  True,          # skip a CSAK candle that already closes outside the BB
+    "SLOPE_FILTER":   True,          # BB must slope with the trade (Mid + Top BB up for buy, Mid + Low BB down for sell)
+    "SLOPE_TF":       "4h",
+    "SLOPE_BARS":     3,
     "SWING_LEN":      2,
     "SL_MODE":        "rejection",   # "rejection" (pips beyond the EMA 50 rejection low/high) or "band"
     "SL_REJ_PIPS":    3,
@@ -245,6 +248,17 @@ def find_momentum_before(dm, dr, rej_t, lookback):
     return j, ""
 
 
+def bb_slope(d, bars):
+    a, b = 1, 1 + bars
+    if not d.valid(b):
+        return 0
+    if d.mid[a] > d.mid[b] and d.top[a] > d.top[b]:
+        return 1
+    if d.mid[a] < d.mid[b] and d.bot[a] < d.bot[b]:
+        return -1
+    return 0
+
+
 def is_csak(d, dr):
     if not d.valid(1) or d.ema[1] <= 0:
         return False
@@ -311,7 +325,7 @@ def ma510_line(d, buy):
 #==================================================================
 def evaluate(m15, T, state):
     C = CFG; B = C["BARS"]
-    tfs = {C["TREND_TF1"], C["TREND_TF2"], C["MOM_TF"], C["REJ_TF1"], C["REJ_TF2"], C["ENTRY_TF"], C["ENTRY_TF2"], C["BE_TF"]}
+    tfs = {C["TREND_TF1"], C["TREND_TF2"], C["MOM_TF"], C["REJ_TF1"], C["REJ_TF2"], C["ENTRY_TF"], C["ENTRY_TF2"], C["BE_TF"], C["SLOPE_TF"]}
     D = {tf: BB(series_as_of(m15, T, tf, B), tf) for tf in tfs}
     if any(D[tf].n < 120 for tf in tfs):
         return None, "not enough history"
@@ -325,6 +339,8 @@ def evaluate(m15, T, state):
     if t1 != t2:
         return None, f"{TF_NAME[C['TREND_TF1']]} / {TF_NAME[C['TREND_TF2']]} trend not aligned"
     dr = t1
+    if C["SLOPE_FILTER"] and bb_slope(D[C["SLOPE_TF"]], C["SLOPE_BARS"]) != dr:
+        return None, f"{TF_NAME[C['SLOPE_TF']]} BB not sloping {'up' if dr == 1 else 'down'}, {'buy' if dr == 1 else 'sell'} skipped"
 
     r1, ext1, k1 = find_ema_rejection(dR1, dr, C["REJ_LOOKBACK"], C["REJ_MAX_BARS"])
     r2, ext2, k2 = find_ema_rejection(dR2, dr, C["REJ_LOOKBACK"], C["REJ_MAX_BARS"])
