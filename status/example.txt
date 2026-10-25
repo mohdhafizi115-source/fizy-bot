@@ -1,0 +1,1 @@
+no setup found in the last 1500 candles
