@@ -76,7 +76,11 @@ CFG = {
     "ENTRY_TF":       "15min",
     "SKIP_MOM_CSAK":  True,          # skip a CSAK candle that already closes outside the BB
     "SWING_LEN":      2,
+    "SL_MODE":        "rejection",   # "rejection" (pips beyond the EMA 50 rejection low/high) or "band"
+    "SL_REJ_PIPS":    3,
     "SL_BAND_PIPS":   10,
+    "TP_MODE":        "last_high",   # "last_high" (CSAK TF high/low since the momentum candle) or "fibo"
+    "TP_BUFFER_PIPS": 0,
     "FIBO_LEVEL":     2.618,
     "BE_TF":          "4h",
     "BE_FIBO":        1.618,         # fallback BE level shown in the alert
@@ -370,25 +374,41 @@ def evaluate(m15, T, state):
     entry = op + sp if dr == 1 else op
     rejRef = min(rejExt, dC.lowest(1, 1)) if dr == 1 else max(rejExt, dC.highest(1, 1))
     swRef = last_swing(dC, dr, entry, C["SWING_LEN"], 60)
-    band = dC.bot[1] if dr == 1 else dC.top[1]
-    sl = band - C["SL_BAND_PIPS"] * CUR["pip"] if dr == 1 else band + C["SL_BAND_PIPS"] * CUR["pip"] + sp
+    pip = CUR["pip"]
+    if C["SL_MODE"] == "band":
+        band = dC.bot[1] if dr == 1 else dC.top[1]
+        sl = band - C["SL_BAND_PIPS"] * pip if dr == 1 else band + C["SL_BAND_PIPS"] * pip + sp
+        sl_name = f"{C['SL_BAND_PIPS']} pips beyond {TF_NAME[cTF]} {'Low' if dr == 1 else 'Top'} BB"
+    else:
+        sl = rejRef - C["SL_REJ_PIPS"] * pip if dr == 1 else rejRef + C["SL_REJ_PIPS"] * pip + sp
+        sl_name = f"{C['SL_REJ_PIPS']} pips beyond the {rejTF} EMA 50 rejection {'low' if dr == 1 else 'high'}"
     risk = entry - sl if dr == 1 else sl - entry
     if risk <= 0:
         return None, "SL on the wrong side"
     base = swRef if swRef > 0 else rejRef
     body_end = max(dC.o[1], dC.c[1]) if dr == 1 else min(dC.o[1], dC.c[1])
     rng = body_end - base if dr == 1 else base - body_end
-    if rng <= 0:
-        return None, "cannot draw fibo (swing is not beyond the CSAK body)"
-    tp = base + dr * C["FIBO_LEVEL"] * rng
-    be_fibo = base + dr * C["BE_FIBO"] * rng
+    be_fibo = base + dr * C["BE_FIBO"] * rng if rng > 0 else 0.0
+    if C["TP_MODE"] == "fibo":
+        if rng <= 0:
+            return None, "cannot draw fibo (swing is not beyond the CSAK body)"
+        tp = base + dr * C["FIBO_LEVEL"] * rng
+        tp_name = f"Fibo {C['FIBO_LEVEL'] * 100:.1f}%"
+    else:
+        # the high (buy) / low (sell) the pullback started from: CSAK TF candles since the momentum candle
+        mom_t = dM.t[j]
+        k = max([i for i in range(1, dC.n) if dC.t[i] >= mom_t] or [60])
+        ext = dC.highest(1, k) if dr == 1 else dC.lowest(1, k)
+        tp = ext - C["TP_BUFFER_PIPS"] * pip if dr == 1 else ext + C["TP_BUFFER_PIPS"] * pip + sp
+        tp_name = f"last {TF_NAME[cTF]} {'high' if dr == 1 else 'low'} since the H4 momentum"
     dist = (tp - entry) * dr
     if dist <= 0:
-        return None, "fibo target is behind the entry"
+        return None, "target is behind the entry"
     rr = dist / risk
     be_line = ma510_line(D[C["BE_TF"]], dr == 1)
 
     sig = dict(dir=dr, time=T, entry=entry, sl=sl, tp=tp, rr=rr, be_line=be_line, be_fibo=be_fibo,
+               sl_name=sl_name, tp_name=tp_name,
                rej_tf=rejTF, rej_kind=rejKind, rej_t=rejT, mom_t=dM.t[j], csak_tf=cTF,
                swing=base, csak_t=dC.t[1], data=dC)
     state["last_rej"] = str(rejT)
@@ -412,16 +432,14 @@ def message(sig):
     fut = CUR["name"].startswith("XAU") and CUR.get("source") == "yahoo"
     note = "\nNote: gold prices are COMEX futures (GC=F); JustMarkets XAUUSD differs by a few dollars" if fut else ""
     return (f"FIZY BOT | {CUR['name']} {side} (alert only)\n"
-            f"Entry: {px(sig['entry'])}\nSL: {px(sig['sl'])}  ({CFG['SL_BAND_PIPS']} pips beyond "
-            f"{TF_NAME[sig['csak_tf']]} {'Low' if sig['dir'] == 1 else 'Top'} BB)\n"
-            f"TP: {px(sig['tp'])}  (RR 1:{sig['rr']:.1f}, Fibo {CFG['FIBO_LEVEL'] * 100:.1f}%)\n"
+            f"Entry: {px(sig['entry'])}\nSL: {px(sig['sl'])}  ({sig['sl_name']})\n"
+            f"TP: {px(sig['tp'])}  (RR 1:{sig['rr']:.1f}, {sig['tp_name']})\n"
             f"Setup: BBMA EMA 50 rejection + CSAK\n"
             f"Trend: H1 + H4 {'bullish' if sig['dir'] == 1 else 'bearish'} (EMA 50 vs EMA 90)\n"
             f"EMA 50 {sig['rej_kind']}: {sig['rej_tf']} at {sig['rej_t']:%Y-%m-%d %H:%M}\n"
             f"H4 momentum: {sig['mom_t']:%Y-%m-%d %H:%M}\n"
             f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50\n"
-            f"Breakeven: price passes H4 MA5/10 {'High' if sig['dir'] == 1 else 'Low'} (now {px(sig['be_line'])}), "
-            f"fallback Fibo {CFG['BE_FIBO'] * 100:.1f}%: {px(sig['be_fibo'])}\n"
+            f"Breakeven: price passes H4 MA5/10 {'High' if sig['dir'] == 1 else 'Low'} (now {px(sig['be_line'])})\n"
             f"Broker time: {myt:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}" + note)
 
 
