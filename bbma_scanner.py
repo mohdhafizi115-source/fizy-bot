@@ -576,18 +576,36 @@ def _deriv_call(req):
     raise RuntimeError(f"Deriv: {last}")
 
 
-def fetch_deriv(name):
-    """Deriv public market data: 15-minute candles, no account needed."""
-    js = _deriv_call({"ticks_history": "frx" + name, "style": "candles", "granularity": 900,
-                      "count": 5000, "end": "latest", "adjust_start_time": 1})
-    if js.get("error"):
-        raise RuntimeError(f"Deriv frx{name}: {js['error'].get('message', js['error'])}")
-    rows = js.get("candles") or []
-    if len(rows) < 500:
-        raise RuntimeError(f"Deriv frx{name}: only {len(rows)} candles")
-    df = pd.DataFrame(rows)
+def fetch_deriv(name, need=5000):
+    """Deriv public market data: 15-minute candles, no account needed. Deriv returns about 800
+    candles per request, so older candles are fetched page by page (end = oldest candle - 1)."""
+    got = {}
+    end = "latest"
+    for page in range(12):
+        req = {"ticks_history": "frx" + name, "style": "candles", "granularity": 900,
+               "count": 5000, "end": end, "adjust_start_time": 1}
+        if page == 0:
+            req["start"] = int(time.time()) - 80 * 86400
+        js = _deriv_call(req)
+        if js.get("error"):
+            if got:
+                break
+            raise RuntimeError(f"Deriv frx{name}: {js['error'].get('message', js['error'])}")
+        rows = js.get("candles") or []
+        new = 0
+        for r in rows:
+            e = int(r["epoch"])
+            if e not in got:
+                got[e] = r
+                new += 1
+        if len(got) >= need or not rows or new == 0:
+            break
+        end = min(int(r["epoch"]) for r in rows) - 1
+    if len(got) < 500:
+        raise RuntimeError(f"Deriv frx{name}: only {len(got)} candles")
+    df = pd.DataFrame([got[e] for e in sorted(got)])
     df.index = pd.to_datetime(df["epoch"].astype(int), unit="s", utc=True)
-    return df[["open", "high", "low", "close"]].astype(float)
+    return df[["open", "high", "low", "close"]].astype(float).iloc[-need:]
 
 
 def _fetch_one(prov, name):
