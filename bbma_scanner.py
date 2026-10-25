@@ -617,7 +617,7 @@ def fetch_deriv(name, need=5000, max_pages=12):
     end = "latest"
     for page in range(max_pages):
         req = {"ticks_history": "frx" + name, "style": "candles", "granularity": 900,
-               "count": 5000, "end": end, "adjust_start_time": 1}
+               "count": min(5000, need + 100), "end": end, "adjust_start_time": 1}
         if page == 0:
             req["start"] = int(time.time()) - max(80, need // 80) * 86400
         if page:
