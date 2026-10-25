@@ -1,4 +1,4 @@
-run (UTC): 2026-10-25 11:33  broker time: 2026-10-25 14:33
+run (UTC): 2026-10-25 11:43  broker time: 2026-10-25 14:43
 XAUUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
 EURUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
 GBPUSD   deriv       5000  market closed (last candle 2026-10-23 23:45)
