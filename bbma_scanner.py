@@ -719,6 +719,26 @@ def run_live():
         except Exception as e:
             print(f"{name} error: {e}")
             errors.append(f"{name}: {e}")
+    # one-time welcome: confirms Telegram works and shows a chart of the latest past XAUUSD setup
+    if not state.get("welcome_sent"):
+        ok = tg_send("FIZY BOT cloud scanner is set up.\nScanning " + str(len(symbol_list())) +
+                     " symbols every 15 minutes (Sunday-Friday). Alerts only, no trades.\n"
+                     "Daily 'alive' message at 8:00 am Malaysia time.")
+        state["welcome_telegram_ok"] = ok
+        try:
+            set_symbol("XAUUSD")
+            m15 = fetch_m15("XAUUSD")
+            tmp, last = {}, None
+            for T in list(m15.index)[-600:]:
+                sig, _ = evaluate(m15, T, tmp)
+                if sig:
+                    last = sig
+            if last:
+                tg_send("EXAMPLE ONLY (a past setup, not a new signal)\n\n" + message(last), chart_png(last))
+                state["welcome_example"] = str(last["time"])
+        except Exception as e:
+            print("welcome example error:", e)
+        state["welcome_sent"] = True
     if _deriv_ws[0] is not None:
         try:
             _deriv_ws[0].close()
@@ -739,6 +759,7 @@ def run_live():
                 f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('last_status', '-')}\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
+            f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
     except OSError:
         pass
     # daily heartbeat
