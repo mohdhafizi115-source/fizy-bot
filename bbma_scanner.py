@@ -651,12 +651,31 @@ def _fetch_one(prov, name):
     raise RuntimeError(f"unknown provider {prov}")
 
 
+def _cache_path(name, prov):
+    return os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "candles", f"{name}_{prov}.csv")
+
+
+def _load_cache(name, prov):
+    try:
+        c = pd.read_csv(_cache_path(name, prov), index_col=0, parse_dates=True)
+        return c[["open", "high", "low", "close"]].astype(float)
+    except (OSError, ValueError, KeyError):
+        return None
+
+
 def fetch_m15(name):
-    """M15 candles (broker time index) for one symbol: providers in PROVIDER order, first that works."""
+    """M15 candles (broker time index) for one symbol: providers in PROVIDER order, first that works.
+    Candles are cached between runs (per provider), so a normal run downloads only the newest ones."""
     errs = []
+    broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
     for prov in [p.strip().lower() for p in CFG["PROVIDER"].split(",") if p.strip()]:
+        cache = _load_cache(name, prov)
+        cache_ok = cache is not None and len(cache) >= 3000 and (broker_now - cache.index[-1]) < pd.Timedelta(days=6)
         try:
-            df = _fetch_one(prov, name)
+            if prov == "deriv":
+                df = fetch_deriv(name, need=700 if cache_ok else 5000)
+            else:
+                df = _fetch_one(prov, name)
         except Exception as e:
             errs.append(str(e))
             print(f"{name}: {prov} failed: {e}")
@@ -664,7 +683,14 @@ def fetch_m15(name):
         CUR["source"] = prov
         df.index = pd.DatetimeIndex([utc_to_broker(pd.Timestamp(x).tz_localize("UTC") if pd.Timestamp(x).tzinfo is None
                                                    else pd.Timestamp(x)) for x in df.index])
-        df = df[~df.index.duplicated(keep="last")].sort_index()
+        if cache_ok:
+            df = pd.concat([cache, df])
+        df = df[~df.index.duplicated(keep="last")].sort_index().iloc[-6000:]
+        try:
+            os.makedirs(os.path.dirname(_cache_path(name, prov)), exist_ok=True)
+            df.to_csv(_cache_path(name, prov), float_format="%.6f")
+        except OSError:
+            pass
         return df
     raise RuntimeError(" | ".join(errs) or "no provider")
 
@@ -698,6 +724,7 @@ def scan_symbol(name, st, broker_now):
     set_symbol(name)
     m15 = fetch_m15(name)
     st["source"] = CUR.get("source", "-")
+    st["candles"] = len(m15)
     latest = m15.index[-1]
     if (broker_now - latest) > pd.Timedelta(minutes=45):
         st["last_status"] = f"market closed (last candle {latest:%Y-%m-%d %H:%M})"
@@ -774,7 +801,7 @@ def run_live():
             f.write(f"run (UTC): {datetime.now(timezone.utc):%Y-%m-%d %H:%M}  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
             for n in symbol_list():
                 st = syms.get(n, {})
-                f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('last_status', '-')}\n")
+                f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
@@ -805,17 +832,19 @@ def _csak_candidates(m15, tf, last_n):
 
 def run_example(max_steps=1500, max_seconds=1100):
     """Find the most recent past setup on any symbol and send it to Telegram as an example."""
-    data, diag = {}, []
+    data, diag, sources = {}, [], {}
     for name in symbol_list():
         try:
             set_symbol(name)
             data[name] = fetch_m15(name)
+            sources[name] = CUR.get("source")
         except Exception as e:
             diag.append(f"{name}: data error {e}")
     for name, m15 in data.items():
         set_symbol(name)
         _, st = evaluate(m15, m15.index[-1], {})
         diag.append(f"{name}: {len(m15)} candles {m15.index[0]:%Y-%m-%d}..{m15.index[-1]:%Y-%m-%d %H:%M}  now: {st}")
+    diag.insert(0, "sources: " + ", ".join(f"{n}={src}" for n, src in sources.items()))
     t0 = time.time()
     cand = []
     for name, m15 in data.items():
