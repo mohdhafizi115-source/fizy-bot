@@ -1,34 +1,35 @@
-Market structure strategy on Deriv M15 data (spread 1 pip forex / 2 pips gold, swap ignored)
-ALL H4/H1 TP 2R: trades 31, win 42%, total +7.9R, PF 1.44, max DD 5.0R, first half +3.1R / second half +4.8R, pairs positive 50%
-ALL H4/H1 TP swing: trades 22, win 41%, total +7.1R, PF 1.55, max DD 3.0R, first half +2.1R / second half +5.0R, pairs positive 50%
-ALL H4/M15 TP 2R: trades 46, win 35%, total +1.7R, PF 1.06, max DD 9.2R, first half +0.9R / second half +0.8R, pairs positive 50%
+Market structure strategy on Yahoo H1 data, 2 years (spread 1 pip forex / 2 pips gold, swap ignored)
+ALL H4/H1 TP 2R: trades 1627, win 34%, total -11.5R, PF 0.99, max DD 81.3R, first half +40.8R / second half -52.3R, pairs positive 45%
+ALL H4/H1 TP swing: trades 1210, win 36%, total +5.4R, PF 1.01, max DD 46.7R, first half +18.6R / second half -13.2R, pairs positive 52%
+ALL H4/H1 TP 2R swing5: trades 1261, win 33%, total -27.0R, PF 0.97, max DD 79.3R, first half -4.8R / second half -22.2R, pairs positive 45%
+ALL D1/H4 TP 2R: trades 527, win 31%, total -15.0R, PF 0.96, max DD 54.8R, first half +6.5R / second half -21.5R, pairs positive 48%
 
-XAUUSD  16000 candles 2026-02-17..2026-10-23 | H4/H1 TP 2R: n=22 R=+11.0 PF=2.00 | H4/H1 TP swing: n=15 R=+7.9 PF=1.99 | H4/M15 TP 2R: n=33 R=+8.9 PF=1.47 |
-EURUSD  11240 candles 2026-05-11..2026-10-23 | H4/H1 TP 2R: n=9 R=-3.2 PF=0.55 | H4/H1 TP swing: n=7 R=-0.8 PF=0.84 | H4/M15 TP 2R: n=13 R=-7.2 PF=0.35 |
-GBPUSD: data error Deriv frxGBPUSD: You have reached the rate limit for ticks_history_expensive.
-AUDUSD: data error Deriv frxAUDUSD: You have reached the rate limit for ticks_history_expensive.
-NZDUSD: data error Deriv frxNZDUSD: You have reached the rate limit for ticks_history_expensive.
-USDJPY: data error Deriv frxUSDJPY: You have reached the rate limit for ticks_history_expensive.
-USDCHF: data error Deriv frxUSDCHF: You have reached the rate limit for ticks_history_expensive.
-USDCAD: data error Deriv frxUSDCAD: You have reached the rate limit for ticks_history_expensive.
-EURGBP: data error Deriv frxEURGBP: You have reached the rate limit for ticks_history_expensive.
-EURJPY: data error Deriv frxEURJPY: You have reached the rate limit for ticks_history_expensive.
-EURCHF: data error Deriv frxEURCHF: You have reached the rate limit for ticks_history_expensive.
-EURAUD: data error Deriv frxEURAUD: You have reached the rate limit for ticks_history_expensive.
-EURCAD: data error Deriv frxEURCAD: You have reached the rate limit for ticks_history_expensive.
-EURNZD: data error Deriv frxEURNZD: You have reached the rate limit for ticks_history_expensive.
-GBPJPY: data error Deriv frxGBPJPY: You have reached the rate limit for ticks_history_expensive.
-GBPCHF: data error Deriv frxGBPCHF: You have reached the rate limit for ticks_history_expensive.
-GBPAUD: data error Deriv frxGBPAUD: You have reached the rate limit for ticks_history_expensive.
-GBPCAD: data error Deriv frxGBPCAD: You have reached the rate limit for ticks_history_expensive.
-GBPNZD: data error Deriv frxGBPNZD: You have reached the rate limit for ticks_history_expensive.
-AUDJPY: data error Deriv frxAUDJPY: You have reached the rate limit for ticks_history_expensive.
-AUDCHF: data error Deriv frxAUDCHF: You have reached the rate limit for ticks_history_expensive.
-AUDCAD: data error Deriv frxAUDCAD: You have reached the rate limit for ticks_history_expensive.
-AUDNZD: data error Deriv frxAUDNZD: You have reached the rate limit for ticks_history_expensive.
-NZDJPY: data error Deriv frxNZDJPY: You have reached the rate limit for ticks_history_expensive.
-NZDCHF: data error Deriv frxNZDCHF: You have reached the rate limit for ticks_history_expensive.
-NZDCAD: data error Deriv frxNZDCAD: You have reached the rate limit for ticks_history_expensive.
-CADJPY: data error Deriv frxCADJPY: You have reached the rate limit for ticks_history_expensive.
-CADCHF: data error Deriv frxCADCHF: You have reached the rate limit for ticks_history_expensive.
-CHFJPY: data error Deriv frxCHFJPY: You have reached the rate limit for ticks_history_expensive.
+XAUUSD  13737 H1 candles 2024-06-03..2026-10-23 | H4/H1 TP 2R: n=80 R=+18.6 PF=1.40 | H4/H1 TP swing: n=59 R=+12.6 PF=1.37 | H4/H1 TP 2R swing5: n=61 R=+20.1 PF=1.59 | D1/H4 TP 2R: n=13 R=+33.3 PF=6.54 |
+EURUSD  17265 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=43 R=+13.8 PF=1.57 | H4/H1 TP swing: n=38 R=+10.8 PF=1.54 | H4/H1 TP 2R swing5: n=32 R=+2.5 PF=1.12 | D1/H4 TP 2R: n=17 R=+3.8 PF=1.38 |
+GBPUSD  17268 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=45 R=+12.7 PF=1.49 | H4/H1 TP swing: n=37 R=-2.3 PF=0.92 | H4/H1 TP 2R swing5: n=39 R=+5.2 PF=1.22 | D1/H4 TP 2R: n=16 R=-4.0 PF=0.67 |
+AUDUSD  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=34 R=-11.7 PF=0.55 | H4/H1 TP swing: n=28 R=-11.4 PF=0.46 | H4/H1 TP 2R swing5: n=27 R=+2.1 PF=1.13 | D1/H4 TP 2R: n=17 R=-2.5 PF=0.79 |
+NZDUSD  17333 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=24 R=-1.4 PF=0.92 | H4/H1 TP swing: n=21 R=+8.8 PF=1.68 | H4/H1 TP 2R swing5: n=22 R=+4.5 PF=1.35 | D1/H4 TP 2R: n=11 R=+1.1 PF=1.16 |
+USDJPY  17169 H1 candles 2024-01-08..2026-10-23 | H4/H1 TP 2R: n=100 R=-8.0 PF=0.88 | H4/H1 TP swing: n=71 R=+16.9 PF=1.42 | H4/H1 TP 2R swing5: n=55 R=-1.4 PF=0.96 | D1/H4 TP 2R: n=22 R=+1.8 PF=1.13 |
+USDCHF  17201 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=44 R=-3.8 PF=0.87 | H4/H1 TP swing: n=38 R=+1.7 PF=1.07 | H4/H1 TP 2R swing5: n=33 R=+15.9 PF=1.99 | D1/H4 TP 2R: n=16 R=+5.1 PF=1.56 |
+USDCAD  17335 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=36 R=-0.7 PF=0.97 | H4/H1 TP swing: n=31 R=-1.5 PF=0.93 | H4/H1 TP 2R swing5: n=28 R=+5.1 PF=1.30 | D1/H4 TP 2R: n=15 R=+3.1 PF=1.34 |
+EURGBP  17288 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=23 R=-11.0 PF=0.42 | H4/H1 TP swing: n=20 R=-8.3 PF=0.48 | H4/H1 TP 2R swing5: n=22 R=-10.1 PF=0.44 | D1/H4 TP 2R: n=13 R=-7.1 PF=0.36 |
+EURJPY  17274 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=102 R=-4.6 PF=0.93 | H4/H1 TP swing: n=59 R=+11.3 PF=1.35 | H4/H1 TP 2R swing5: n=58 R=-10.8 PF=0.74 | D1/H4 TP 2R: n=17 R=+3.8 PF=1.38 |
+EURCHF  17274 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=28 R=+15.7 PF=2.20 | H4/H1 TP swing: n=21 R=+6.0 PF=1.50 | H4/H1 TP 2R swing5: n=24 R=-3.8 PF=0.77 | D1/H4 TP 2R: n=9 R=+8.9 PF=3.97 |
+EURAUD  17282 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=48 R=-6.5 PF=0.81 | H4/H1 TP swing: n=40 R=+3.8 PF=1.16 | H4/H1 TP 2R swing5: n=40 R=-1.6 PF=0.94 | D1/H4 TP 2R: n=19 R=-7.1 PF=0.53 |
+EURCAD  17285 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=43 R=-4.5 PF=0.85 | H4/H1 TP swing: n=41 R=-5.6 PF=0.81 | H4/H1 TP 2R swing5: n=38 R=-14.5 PF=0.52 | D1/H4 TP 2R: n=12 R=+2.5 PF=1.35 |
+EURNZD  17284 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=73 R=+3.0 PF=1.06 | H4/H1 TP swing: n=58 R=+0.6 PF=1.02 | H4/H1 TP 2R swing5: n=60 R=-17.1 PF=0.64 | D1/H4 TP 2R: n=22 R=-13.3 PF=0.30 |
+GBPJPY  17270 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=99 R=+7.7 PF=1.12 | H4/H1 TP swing: n=59 R=+6.3 PF=1.18 | H4/H1 TP 2R swing5: n=75 R=+16.5 PF=1.37 | D1/H4 TP 2R: n=28 R=-7.1 PF=0.66 |
+GBPCHF  17273 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=42 R=+5.1 PF=1.20 | H4/H1 TP swing: n=37 R=+9.6 PF=1.48 | H4/H1 TP 2R swing5: n=34 R=-2.0 PF=0.91 | D1/H4 TP 2R: n=18 R=-6.1 PF=0.56 |
+GBPAUD  17323 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=49 R=-4.5 PF=0.87 | H4/H1 TP swing: n=40 R=-5.0 PF=0.82 | H4/H1 TP 2R swing5: n=51 R=-6.3 PF=0.83 | D1/H4 TP 2R: n=24 R=-12.2 PF=0.39 |
+GBPCAD  17325 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=52 R=+3.3 PF=1.10 | H4/H1 TP swing: n=46 R=+9.0 PF=1.33 | H4/H1 TP 2R swing5: n=43 R=-2.1 PF=0.93 | D1/H4 TP 2R: n=18 R=-3.1 PF=0.76 |
+GBPNZD  17322 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=67 R=+1.9 PF=1.04 | H4/H1 TP swing: n=49 R=+12.9 PF=1.44 | H4/H1 TP 2R swing5: n=47 R=+13.7 PF=1.51 | D1/H4 TP 2R: n=18 R=-12.0 PF=0.25 |
+AUDJPY  17276 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=107 R=-17.0 PF=0.78 | H4/H1 TP swing: n=68 R=-15.6 PF=0.67 | H4/H1 TP 2R swing5: n=68 R=-3.7 PF=0.92 | D1/H4 TP 2R: n=31 R=+10.3 PF=1.60 |
+AUDCHF  17319 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=28 R=-19.4 PF=0.23 | H4/H1 TP swing: n=21 R=-12.4 PF=0.27 | H4/H1 TP 2R swing5: n=25 R=-10.3 PF=0.49 | D1/H4 TP 2R: n=16 R=-1.3 PF=0.89 |
+AUDCAD  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=32 R=+12.2 PF=1.72 | H4/H1 TP swing: n=27 R=+3.9 PF=1.26 | H4/H1 TP 2R swing5: n=32 R=+3.3 PF=1.17 | D1/H4 TP 2R: n=22 R=-0.9 PF=0.94 |
+AUDNZD  17330 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=39 R=+0.3 PF=1.01 | H4/H1 TP swing: n=33 R=-15.8 PF=0.39 | H4/H1 TP 2R swing5: n=35 R=-14.0 PF=0.50 | D1/H4 TP 2R: n=20 R=+0.9 PF=1.07 |
+NZDJPY  17275 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=101 R=-7.0 PF=0.90 | H4/H1 TP swing: n=65 R=-10.1 PF=0.78 | H4/H1 TP 2R swing5: n=79 R=-7.8 PF=0.86 | D1/H4 TP 2R: n=25 R=+1.2 PF=1.08 |
+NZDCHF  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=37 R=+7.0 PF=1.32 | H4/H1 TP swing: n=29 R=+3.8 PF=1.20 | H4/H1 TP 2R swing5: n=35 R=+6.4 PF=1.30 | D1/H4 TP 2R: n=21 R=-15.5 PF=0.18 |
+NZDCAD  17329 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=23 R=-5.4 PF=0.68 | H4/H1 TP swing: n=19 R=-0.4 PF=0.97 | H4/H1 TP 2R swing5: n=20 R=-8.4 PF=0.47 | D1/H4 TP 2R: n=15 R=-3.1 PF=0.72 |
+CADJPY  17276 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=97 R=-9.1 PF=0.86 | H4/H1 TP swing: n=57 R=-13.6 PF=0.67 | H4/H1 TP 2R swing5: n=67 R=+9.5 PF=1.23 | D1/H4 TP 2R: n=16 R=+5.0 PF=1.55 |
+CADCHF  17284 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=30 R=-0.1 PF=0.99 | H4/H1 TP swing: n=31 R=-5.7 PF=0.72 | H4/H1 TP 2R swing5: n=33 R=-18.3 PF=0.35 | D1/H4 TP 2R: n=15 R=-3.3 PF=0.70 |
+CHFJPY  17267 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=101 R=+1.9 PF=1.03 | H4/H1 TP swing: n=67 R=-5.0 PF=0.89 | H4/H1 TP 2R swing5: n=78 R=+0.3 PF=1.01 | D1/H4 TP 2R: n=21 R=+2.9 PF=1.22 |
