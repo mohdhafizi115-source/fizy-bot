@@ -6,7 +6,7 @@ on:
   workflow_dispatch:                  # "Run workflow" button for a manual run
   push:                               # first run right after the files are uploaded
     branches: [main]
-    paths: ["bbma_scanner.py", ".github/workflows/scan.yml"]
+    paths: ["bbma_scanner.py", ".github/workflows/scan.yml", "send_example.txt"]
 
 permissions:
   contents: write                     # only for the keep-alive commit below
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -46,6 +46,23 @@ jobs:
           PROVIDER: ${{ vars.PROVIDER }}
           SYMBOLS: ${{ vars.SYMBOLS }}
         run: python bbma_scanner.py
+
+      - name: Example chart (when send_example.txt exists)
+        if: github.event_name != 'schedule' && hashFiles('send_example.txt') != ''
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          PROVIDER: ${{ vars.PROVIDER }}
+          SYMBOLS: ${{ vars.SYMBOLS }}
+        run: |
+          python bbma_scanner.py --example
+          mkdir -p status && cp state/example.txt status/example.txt || true
+          git rm -q send_example.txt
+          git config user.name "fizy-bot"
+          git config user.email "fizy-bot@users.noreply.github.com"
+          git add status/example.txt || true
+          git commit -m "example sent" || true
+          git push || true
 
       - name: Save state
         if: always()

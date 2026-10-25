@@ -771,6 +771,44 @@ def run_live():
     save_state(state)
 
 
+def run_example(max_steps=1500, max_seconds=900):
+    """Find the most recent past setup on any symbol and send it to Telegram as an example."""
+    data = {}
+    for name in symbol_list():
+        try:
+            set_symbol(name)
+            data[name] = fetch_m15(name)
+        except Exception as e:
+            print(f"{name}: {e}")
+    t0 = time.time()
+    times = sorted({t for d in data.values() for t in d.index[-max_steps:]}, reverse=True)
+    found = None
+    for T in times:
+        if time.time() - t0 > max_seconds:
+            break
+        for name, m15 in data.items():
+            if T not in m15.index or m15.index.get_loc(T) < 100:
+                continue
+            set_symbol(name)
+            sig, _ = evaluate(m15, T, {})
+            if sig:
+                found = (name, sig)
+                break
+        if found:
+            break
+    out = os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "example.txt")
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    with open(out, "w") as f:
+        if found:
+            name, sig = found
+            set_symbol(name)
+            ok = tg_send("EXAMPLE ONLY (a past setup, not a new signal)\n\n" + message(sig), chart_png(sig))
+            f.write(f"example {name} {sig['time']} sent={ok}\n")
+        else:
+            f.write(f"no setup found in the last {max_steps} candles\n")
+    print(open(out).read())
+
+
 def run_csv(path, chart_out=None, start=None, name="XAUUSD"):
     set_symbol(name)
     m15 = load_csv(path)
@@ -799,8 +837,11 @@ if __name__ == "__main__":
     ap.add_argument("--csv"); ap.add_argument("--chart"); ap.add_argument("--start")
     ap.add_argument("--name", default="XAUUSD", help="symbol of the CSV file (for pips / digits)")
     ap.add_argument("--test", action="store_true")
+    ap.add_argument("--example", action="store_true", help="send the most recent past setup as an example")
     a = ap.parse_args()
-    if a.test:
+    if a.example:
+        run_example()
+    elif a.test:
         print("ok" if tg_send("FIZY BOT: test message from the cloud scanner") else "failed")
     elif a.csv:
         run_csv(a.csv, a.chart, a.start, a.name)
