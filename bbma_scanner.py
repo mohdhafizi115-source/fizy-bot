@@ -586,6 +586,8 @@ def fetch_deriv(name, need=5000):
                "count": 5000, "end": end, "adjust_start_time": 1}
         if page == 0:
             req["start"] = int(time.time()) - 80 * 86400
+        if page:
+            time.sleep(0.5)               # stay under Deriv's request rate limit when paging back
         js = _deriv_call(req)
         if js.get("error"):
             if got:
