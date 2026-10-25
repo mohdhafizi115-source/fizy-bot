@@ -610,16 +610,16 @@ def _deriv_call(req):
     raise RuntimeError(f"Deriv: {last}")
 
 
-def fetch_deriv(name, need=5000):
+def fetch_deriv(name, need=5000, max_pages=12):
     """Deriv public market data: 15-minute candles, no account needed. Deriv returns about 800
     candles per request, so older candles are fetched page by page (end = oldest candle - 1)."""
     got = {}
     end = "latest"
-    for page in range(12):
+    for page in range(max_pages):
         req = {"ticks_history": "frx" + name, "style": "candles", "granularity": 900,
                "count": 5000, "end": end, "adjust_start_time": 1}
         if page == 0:
-            req["start"] = int(time.time()) - 80 * 86400
+            req["start"] = int(time.time()) - max(80, need // 80) * 86400
         if page:
             time.sleep(0.5)               # stay under Deriv's request rate limit when paging back
         js = _deriv_call(req)
