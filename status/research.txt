@@ -1,0 +1,34 @@
+Market structure strategy on Deriv M15 data (spread 1 pip forex / 2 pips gold, swap ignored)
+ALL H4/H1 TP 2R: trades 31, win 42%, total +7.9R, PF 1.44, max DD 5.0R, first half +3.1R / second half +4.8R, pairs positive 50%
+ALL H4/H1 TP swing: trades 22, win 41%, total +7.1R, PF 1.55, max DD 3.0R, first half +2.1R / second half +5.0R, pairs positive 50%
+ALL H4/M15 TP 2R: trades 46, win 35%, total +1.7R, PF 1.06, max DD 9.2R, first half +0.9R / second half +0.8R, pairs positive 50%
+
+XAUUSD  16000 candles 2026-02-17..2026-10-23 | H4/H1 TP 2R: n=22 R=+11.0 PF=2.00 | H4/H1 TP swing: n=15 R=+7.9 PF=1.99 | H4/M15 TP 2R: n=33 R=+8.9 PF=1.47 |
+EURUSD  11240 candles 2026-05-11..2026-10-23 | H4/H1 TP 2R: n=9 R=-3.2 PF=0.55 | H4/H1 TP swing: n=7 R=-0.8 PF=0.84 | H4/M15 TP 2R: n=13 R=-7.2 PF=0.35 |
+GBPUSD: data error Deriv frxGBPUSD: You have reached the rate limit for ticks_history_expensive.
+AUDUSD: data error Deriv frxAUDUSD: You have reached the rate limit for ticks_history_expensive.
+NZDUSD: data error Deriv frxNZDUSD: You have reached the rate limit for ticks_history_expensive.
+USDJPY: data error Deriv frxUSDJPY: You have reached the rate limit for ticks_history_expensive.
+USDCHF: data error Deriv frxUSDCHF: You have reached the rate limit for ticks_history_expensive.
+USDCAD: data error Deriv frxUSDCAD: You have reached the rate limit for ticks_history_expensive.
+EURGBP: data error Deriv frxEURGBP: You have reached the rate limit for ticks_history_expensive.
+EURJPY: data error Deriv frxEURJPY: You have reached the rate limit for ticks_history_expensive.
+EURCHF: data error Deriv frxEURCHF: You have reached the rate limit for ticks_history_expensive.
+EURAUD: data error Deriv frxEURAUD: You have reached the rate limit for ticks_history_expensive.
+EURCAD: data error Deriv frxEURCAD: You have reached the rate limit for ticks_history_expensive.
+EURNZD: data error Deriv frxEURNZD: You have reached the rate limit for ticks_history_expensive.
+GBPJPY: data error Deriv frxGBPJPY: You have reached the rate limit for ticks_history_expensive.
+GBPCHF: data error Deriv frxGBPCHF: You have reached the rate limit for ticks_history_expensive.
+GBPAUD: data error Deriv frxGBPAUD: You have reached the rate limit for ticks_history_expensive.
+GBPCAD: data error Deriv frxGBPCAD: You have reached the rate limit for ticks_history_expensive.
+GBPNZD: data error Deriv frxGBPNZD: You have reached the rate limit for ticks_history_expensive.
+AUDJPY: data error Deriv frxAUDJPY: You have reached the rate limit for ticks_history_expensive.
+AUDCHF: data error Deriv frxAUDCHF: You have reached the rate limit for ticks_history_expensive.
+AUDCAD: data error Deriv frxAUDCAD: You have reached the rate limit for ticks_history_expensive.
+AUDNZD: data error Deriv frxAUDNZD: You have reached the rate limit for ticks_history_expensive.
+NZDJPY: data error Deriv frxNZDJPY: You have reached the rate limit for ticks_history_expensive.
+NZDCHF: data error Deriv frxNZDCHF: You have reached the rate limit for ticks_history_expensive.
+NZDCAD: data error Deriv frxNZDCAD: You have reached the rate limit for ticks_history_expensive.
+CADJPY: data error Deriv frxCADJPY: You have reached the rate limit for ticks_history_expensive.
+CADCHF: data error Deriv frxCADCHF: You have reached the rate limit for ticks_history_expensive.
+CHFJPY: data error Deriv frxCHFJPY: You have reached the rate limit for ticks_history_expensive.
