@@ -54,6 +54,17 @@ jobs:
           path: state
           key: state-${{ github.run_id }}
 
+      - name: Publish the run summary (manual and push runs only)
+        if: github.event_name != 'schedule'
+        run: |
+          mkdir -p status
+          cp state/last_run.txt status/last_run.txt 2>/dev/null || echo "no summary" > status/last_run.txt
+          git config user.name "fizy-bot"
+          git config user.email "fizy-bot@users.noreply.github.com"
+          git add status/last_run.txt
+          git commit -m "run summary" || true
+          git push || true
+
       - name: Keep the schedule alive
         # GitHub pauses scheduled workflows after 60 days without a commit: push an empty one every 45 days
         run: |

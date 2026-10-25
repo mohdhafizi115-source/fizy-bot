@@ -679,6 +679,7 @@ def scan_symbol(name, st, broker_now):
     """One symbol: download, evaluate the M15 candles not checked yet, send alerts. Updates st."""
     set_symbol(name)
     m15 = fetch_m15(name)
+    st["source"] = CUR.get("source", "-")
     latest = m15.index[-1]
     if (broker_now - latest) > pd.Timedelta(minutes=45):
         st["last_status"] = f"market closed (last candle {latest:%Y-%m-%d %H:%M})"
@@ -728,6 +729,18 @@ def run_live():
         if not last or (datetime.now(timezone.utc) - datetime.fromisoformat(last)).total_seconds() > 6 * 3600:
             tg_send("FIZY BOT: data problem, will keep retrying every 15 minutes\n" + "\n".join(errors[:10]))
             state["last_error_msg"] = datetime.now(timezone.utc).isoformat()
+    # plain-text summary of this run (the workflow publishes it after manual / push runs)
+    try:
+        os.makedirs(os.path.dirname(CFG["STATE_FILE"]) or ".", exist_ok=True)
+        with open(os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "last_run.txt"), "w") as f:
+            f.write(f"run (UTC): {datetime.now(timezone.utc):%Y-%m-%d %H:%M}  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
+            for n in symbol_list():
+                st = syms.get(n, {})
+                f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('last_status', '-')}\n")
+            for e in errors:
+                f.write(f"ERROR {e}\n")
+    except OSError:
+        pass
     # daily heartbeat
     hb = CFG["HEARTBEAT_HOUR"]
     if hb >= 0 and now_myt.hour == hb and state.get("heartbeat_day") != now_myt.date().isoformat():
