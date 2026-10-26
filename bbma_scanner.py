@@ -9,8 +9,8 @@ same BBMA rules as the EA and sends a chart of the setup to Telegram.
 BBMA rules (buy shown, sell mirrored), checked in this order:
   1. EMA 50 rejection on H1 (wick, or up to 6 candles chopping through EMA 50, then a candle closes
      back on the trend side) and on M30, same concept
-  2. Then H4: a momentum candle (close outside the BB in the trade direction) within the 20 H4
-     candles before the rejection; H4 EMA 50 below Mid BB for a buy, above for a sell
+  2. Then H4: a momentum candle (close outside the BB in the trade direction) within the last 8
+     closed H4 candles; H4 EMA 50 below Mid BB for a buy, above for a sell
   3. CSAK: ONE candle breaks Mid BB + EMA 50 together, not one that already closes outside the BB.
      H1 rejection -> CSAK on M30 or M15 (M30 first); M30 rejection -> CSAK on M15
   4. Trend: EMA 50 above EMA 90 for a buy (below for a sell) on H1 and H4
@@ -68,7 +68,7 @@ CFG = {
     "REJ_LOOKBACK":   12,
     "REJ_MAX_BARS":   6,
     "MOM_TF":         "4h",
-    "MOM_LOOKBACK":   8,             # momentum TF candles before the rejection
+    "MOM_LOOKBACK":   8,             # last N closed momentum TF candles to look for momentum
     "TRADES_PER_MOM": 1,             # alerts per momentum candle (0 = unlimited)
     "REQUIRE_RETRACE": False,        # also require a retrace to MA5/10 on the momentum TF
     "MOM_EMA_VS_MID": True,          # momentum TF: EMA 50 below Mid BB for buy, above for sell
@@ -231,17 +231,16 @@ def find_ema_rejection(d, dr, lookback, max_bars):
 
 
 def find_momentum_before(dm, dr, rej_t, lookback):
-    rI = next((i for i in range(dm.n) if dm.t[i] <= rej_t), -1)
-    if rI < 0:
-        return -1, f"no {TF_NAME[dm.tf]} data at the rejection"
-    frm = max(rI, 1); j = -1
-    for i in range(frm, frm + lookback):
+    """H4 momentum within the last `lookback` closed H4 candles (counted back from now, checked after
+    the rejection is found). Momentum the other way after it cancels the idea."""
+    j = -1
+    for i in range(1, 1 + lookback):
         if not dm.valid(i):
             break
         if (dm.c[i] > dm.top[i]) if dr == 1 else (dm.c[i] < dm.bot[i]):
             j = i; break
     if j < 0:
-        return -1, f"no {TF_NAME[dm.tf]} momentum in the {lookback} candles before it"
+        return -1, f"no {TF_NAME[dm.tf]} momentum in the last {lookback} candles"
     for i in range(1, j):
         if (dm.c[i] < dm.bot[i]) if dr == 1 else (dm.c[i] > dm.top[i]):
             return -1, f"{TF_NAME[dm.tf]} momentum against the trend since then"
