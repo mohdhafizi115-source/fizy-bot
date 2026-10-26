@@ -90,7 +90,7 @@ CFG = {
     # run
     "BARS":           300,           # bars per timeframe for the indicators (same as the EA)
     "CATCHUP_BARS":   4,             # re-check up to N missed M15 candles when a run was late
-    "HEARTBEAT_HOUR": 8,             # daily "still alive" message at this Malaysia hour (-1 = off)
+    "HEARTBEAT_HOURS": [0, 4, 8, 12, 16, 20],  # "still alive" message at these Malaysia hours ([] = off)
     "STATE_FILE":     "state/state.json",
 }
 for k in list(CFG):
@@ -801,7 +801,7 @@ def run_live():
     if not state.get("welcome_sent"):
         ok = tg_send("FIZY BOT cloud scanner is set up.\nScanning " + str(len(symbol_list())) +
                      " symbols every 15 minutes (Sunday-Friday). Alerts only, no trades.\n"
-                     "Daily 'alive' message at 8:00 am Malaysia time.")
+                     "'Alive' message every 4 hours (8 am, 12 pm, 4 pm, 8 pm, 12 am, 4 am Malaysia time).")
         state["welcome_telegram_ok"] = ok
         try:
             set_symbol("XAUUSD")
@@ -841,11 +841,12 @@ def run_live():
     except OSError:
         pass
     # daily heartbeat
-    hb = CFG["HEARTBEAT_HOUR"]
-    if hb >= 0 and now_myt.hour == hb and state.get("heartbeat_day") != now_myt.date().isoformat():
+    # heartbeat every 4 hours (8 am, 12 pm, 4 pm, 8 pm, 12 am, 4 am Malaysia time)
+    hb_key = f"{now_myt:%Y-%m-%d} {now_myt.hour:02d}"
+    if now_myt.hour in CFG["HEARTBEAT_HOURS"] and state.get("heartbeat_slot") != hb_key:
         lines = [f"{n}: {syms.get(n, {}).get('last_status', '-')}" for n in symbol_list()]
-        tg_send("FIZY BOT is alive (cloud scanner)\n" + "\n".join(lines)[:3500])
-        state["heartbeat_day"] = now_myt.date().isoformat()
+        tg_send(f"FIZY BOT is alive (cloud scanner)  |  {now_myt:%H:%M} Malaysia\n" + "\n".join(lines)[:3500])
+        state["heartbeat_slot"] = hb_key
     save_state(state)
 
 
