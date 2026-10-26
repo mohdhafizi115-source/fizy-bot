@@ -68,7 +68,7 @@ CFG = {
     "REJ_LOOKBACK":   12,
     "REJ_MAX_BARS":   6,
     "MOM_TF":         "4h",
-    "MOM_LOOKBACK":   20,            # momentum TF candles before the rejection
+    "MOM_LOOKBACK":   8,             # momentum TF candles before the rejection
     "TRADES_PER_MOM": 1,             # alerts per momentum candle (0 = unlimited)
     "REQUIRE_RETRACE": False,        # also require a retrace to MA5/10 on the momentum TF
     "MOM_EMA_VS_MID": True,          # momentum TF: EMA 50 below Mid BB for buy, above for sell
