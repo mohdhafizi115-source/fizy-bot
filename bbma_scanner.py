@@ -785,6 +785,8 @@ def scan_symbol(name, st, broker_now):
 
 
 def run_live():
+    global RUN_START
+    RUN_START = datetime.now(timezone.utc)
     state = load_state()
     syms = state.setdefault("symbols", {})
     now_myt = datetime.now(MYT)
@@ -831,7 +833,8 @@ def run_live():
     try:
         os.makedirs(os.path.dirname(CFG["STATE_FILE"]) or ".", exist_ok=True)
         with open(os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "last_run.txt"), "w") as f:
-            f.write(f"run (UTC): {datetime.now(timezone.utc):%Y-%m-%d %H:%M}  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
+            f.write(f"run (UTC): started {RUN_START:%Y-%m-%d %H:%M:%S}  finished {datetime.now(timezone.utc):%H:%M:%S}"
+                    f"  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
             for n in symbol_list():
                 st = syms.get(n, {})
                 f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}\n")

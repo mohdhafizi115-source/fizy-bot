@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write                     # only for the keep-alive commit below
 
-# Scheduled / manual runs stay alive ~5.5 h and scan right after every M15 candle close
+# Scheduled / manual runs stay alive ~5.5 h and scan 1 s after every M15 candle close (scan_delay.txt)
 # (GitHub's own 15-minute schedule is often 30-60 minutes late). While one loop runs, the next
 # scheduled run waits in the queue and takes over when it ends. Push runs only do the example /
 # research jobs, in their own group, so they never wait behind the loop.
@@ -59,12 +59,13 @@ jobs:
             git pull -q --rebase origin main || true          # pick up code / setting changes
             python bbma_scanner.py || echo "scan failed, retry next candle"
             n=$((n + 1))
-            if [ $((n % 4)) -eq 0 ]; then                      # hourly run summary in status/
+            if [ $n -le 3 ] || [ $((n % 4)) -eq 0 ]; then      # run summary in status/ (first 3, then hourly)
               mkdir -p status && cp state/last_run.txt status/last_run.txt 2>/dev/null || true
               git add status/last_run.txt 2>/dev/null && git commit -q -m "run summary" && git push -q || true
             fi
             now=$(date +%s)
-            next=$(( (now / 900 + 1) * 900 + 20 ))             # 20 s after the next M15 close
+            delay=$(cat scan_delay.txt 2>/dev/null | tr -dc 0-9); delay=${delay:-1}
+            next=$(( (now / 900 + 1) * 900 + delay ))          # right after the next M15 close
             [ $next -ge $end ] && break
             sleep $(( next - now ))
           done
