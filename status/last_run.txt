@@ -1,31 +1,31 @@
-run (UTC): started 2026-10-26 22:00:02  finished 22:00:40  broker time: 2026-10-27 01:00
-XAUUSD   deriv       5131  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-EURUSD   deriv       5142  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   deriv       5142  H4 BB not sloping up, buy skipped
-AUDUSD   deriv       5142  H4 BB not sloping up, buy skipped
-NZDUSD   deriv       5142  H4 BB not sloping up, buy skipped
-USDJPY   deriv       5142  H4 BB not sloping down, sell skipped
-USDCHF   deriv       5142  H1 / H4 trend not aligned
-USDCAD   deriv       5142  H4 BB not sloping down, sell skipped
-EURGBP   deriv       5142  H4 BB not sloping down, sell skipped
-EURJPY   deriv       5142  H4 BB not sloping down, sell skipped
-EURCHF   deriv       5142  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5142  waiting for EMA 50 rejection on H1 / M30
-EURCAD   deriv       5142  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-EURNZD   deriv       5142  waiting for EMA 50 rejection on H1 / M30
-GBPJPY   deriv       4357  H1 / H4 trend not aligned
-GBPCHF   deriv       5142  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5142  H1 / H4 trend not aligned
-GBPCAD   deriv       5142  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-GBPNZD   deriv       5142  H1 / H4 trend not aligned
-AUDJPY   deriv       5142  H4 BB not sloping down, sell skipped
-AUDCHF   deriv       5142  H1 / H4 trend not aligned
-AUDCAD   deriv       5142  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4357  H1 / H4 trend not aligned
-NZDJPY   deriv       5142  H1 / H4 trend not aligned
-NZDCHF   deriv       5142  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-NZDCAD   deriv       5142  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-CADJPY   deriv       4357  H4 BB not sloping up, buy skipped
-CADCHF   deriv       5142  waiting for EMA 50 rejection on H1 / M30
-CHFJPY   deriv       4357  H1 / H4 trend not aligned
+run (UTC): started 2026-10-26 22:15:02  finished 22:15:40  broker time: 2026-10-27 01:15
+XAUUSD   deriv       5133  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+EURUSD   deriv       5144  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5144  H4 BB not sloping up, buy skipped
+AUDUSD   deriv       5144  H4 BB not sloping up, buy skipped
+NZDUSD   deriv       5144  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5144  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5144  H1 / H4 trend not aligned
+USDCAD   deriv       5144  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5144  H4 BB not sloping down, sell skipped
+EURJPY   deriv       5144  H4 BB not sloping down, sell skipped
+EURCHF   deriv       5144  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5144  waiting for EMA 50 rejection on H1 / M30
+EURCAD   deriv       5144  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+EURNZD   deriv       5144  waiting for EMA 50 rejection on H1 / M30
+GBPJPY   deriv       4359  H1 / H4 trend not aligned
+GBPCHF   deriv       5144  H4 BB not sloping up, buy skipped
+GBPAUD   deriv       5144  H1 / H4 trend not aligned
+GBPCAD   deriv       5144  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+GBPNZD   deriv       5144  H1 / H4 trend not aligned
+AUDJPY   deriv       5144  H4 BB not sloping down, sell skipped
+AUDCHF   deriv       5144  H1 / H4 trend not aligned
+AUDCAD   deriv       5144  H4 BB not sloping down, sell skipped
+AUDNZD   deriv       4359  H1 / H4 trend not aligned
+NZDJPY   deriv       5144  H1 / H4 trend not aligned
+NZDCHF   deriv       5144  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+NZDCAD   deriv       5144  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+CADJPY   deriv       4359  H4 BB not sloping up, buy skipped
+CADCHF   deriv       5144  waiting for EMA 50 rejection on H1 / M30
+CHFJPY   deriv       4359  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
