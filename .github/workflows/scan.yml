@@ -6,7 +6,7 @@ on:
   workflow_dispatch:                  # "Run workflow" button for a manual run
   push:                               # first run right after the files are uploaded
     branches: [main]
-    paths: ["bbma_scanner.py", ".github/workflows/scan.yml", "send_example.txt", "run_research.txt"]
+    paths: ["bbma_scanner.py", ".github/workflows/scan.yml", "send_example.txt", "run_research.txt", "run_audit.txt"]
 
 permissions:
   contents: write                     # only for the keep-alive commit below
@@ -96,6 +96,22 @@ jobs:
           git config user.email "fizy-bot@users.noreply.github.com"
           git add status/research.txt || true
           git commit -m "research results" || true
+          git push || true
+
+      - name: Audit all pairs (when run_audit.txt exists)
+        if: github.event_name == 'push' && hashFiles('run_audit.txt') != ''
+        env:
+          PROVIDER: ${{ vars.PROVIDER }}
+          SYMBOLS: ${{ vars.SYMBOLS }}
+        run: |
+          python bbma_scanner.py --audit "$(head -1 run_audit.txt)"
+          mkdir -p status && cp state/audit.txt status/audit.txt || true
+          git rm -q run_audit.txt
+          git config user.name "fizy-bot"
+          git config user.email "fizy-bot@users.noreply.github.com"
+          git add status/audit.txt || true
+          git commit -m "audit results" || true
+          git pull -q --rebase origin main || true
           git push || true
 
       - name: Save state

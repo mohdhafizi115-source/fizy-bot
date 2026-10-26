@@ -844,7 +844,9 @@ def run_live():
                     f"  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
             for n in symbol_list():
                 st = syms.get(n, {})
-                f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}\n")
+                la = st.get("last_alert_t")
+                f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}"
+                        + (f"  [last alert {la}]" if la else "") + "\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
@@ -922,6 +924,38 @@ def run_example(max_steps=1500, max_seconds=1100):
     print(open(out).read())
 
 
+def run_audit(since="2026-10-23 00:00"):
+    """Replay every pair from `since` (broker time) with the current rules, no Telegram: lists each
+    setup that should have alerted and the status now (to compare with the live scanner)."""
+    out = os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "audit.txt")
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    t_since = pd.Timestamp(since)
+    lines = [f"audit from {since} (broker time), rules: MOM_LOOKBACK={CFG['MOM_LOOKBACK']}, run {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC"]
+    for name in symbol_list():
+        try:
+            set_symbol(name)
+            m15 = fetch_m15(name)
+            n = int((m15.index >= t_since).sum()) + 1
+            ts = sorted(t for t in (_csak_candidates(m15, CFG["ENTRY_TF"], n) | _csak_candidates(m15, CFG["ENTRY_TF2"], n))
+                        if t >= t_since)
+            st, sigs = {}, []
+            for T in ts:
+                sig, _ = evaluate(m15, T, st)
+                if sig:
+                    sigs.append(sig)
+            _, now_status = evaluate(m15, m15.index[-1], st)
+            lines.append(f"{name:8s} {len(sigs)} setup(s) | now: {now_status}")
+            for g in sigs:
+                lines.append(f"    {'BUY ' if g['dir'] == 1 else 'SELL'} CSAK {TF_NAME[g['csak_tf']]} {g['csak_t']:%m-%d %H:%M}"
+                             f"  alert at {g['time']:%m-%d %H:%M}  rej {g['rej_tf']} {g['rej_t']:%m-%d %H:%M}"
+                             f"  H4 mom {g['mom_t']:%m-%d %H:%M}")
+        except Exception as e:
+            lines.append(f"{name:8s} error: {e}")
+        print(lines[-1])
+    with open(out, "w") as f:
+        f.write("\n".join(lines) + "\n")
+
+
 def run_csv(path, chart_out=None, start=None, name="XAUUSD"):
     set_symbol(name)
     m15 = load_csv(path)
@@ -950,9 +984,12 @@ if __name__ == "__main__":
     ap.add_argument("--csv"); ap.add_argument("--chart"); ap.add_argument("--start")
     ap.add_argument("--name", default="XAUUSD", help="symbol of the CSV file (for pips / digits)")
     ap.add_argument("--test", action="store_true")
+    ap.add_argument("--audit", help="replay all pairs from this broker time, no Telegram")
     ap.add_argument("--example", action="store_true", help="send the most recent past setup as an example")
     a = ap.parse_args()
-    if a.example:
+    if a.audit:
+        run_audit(a.audit)
+    elif a.example:
         run_example()
     elif a.test:
         print("ok" if tg_send("FIZY BOT: test message from the cloud scanner") else "failed")
