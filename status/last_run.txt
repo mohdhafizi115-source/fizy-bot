@@ -1,31 +1,31 @@
-run (UTC): started 2026-10-26 16:45:02  finished 16:45:41  broker time: 2026-10-26 19:45
-XAUUSD   deriv       5097  waiting for EMA 50 rejection on H1 / M30
-EURUSD   deriv       5099  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   deriv       5099  H4 BB not sloping up, buy skipped
-AUDUSD   deriv       5099  waiting for EMA 50 rejection on H1 / M30
-NZDUSD   deriv       5099  H4 BB not sloping up, buy skipped
-USDJPY   deriv       5099  H4 BB not sloping down, sell skipped
-USDCHF   deriv       5099  H1 / H4 trend not aligned
-USDCAD   deriv       5099  H4 BB not sloping down, sell skipped
-EURGBP   deriv       5099  H4 BB not sloping down, sell skipped
-EURJPY   deriv       5099  waiting for EMA 50 rejection on H1 / M30
-EURCHF   deriv       5099  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5099  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-EURCAD   deriv       5099  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-EURNZD   deriv       5099  H4 BB not sloping down, sell skipped
-GBPJPY   deriv       4314  H1 / H4 trend not aligned
-GBPCHF   deriv       5099  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5099  H1 / H4 trend not aligned
-GBPCAD   deriv       5099  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-GBPNZD   deriv       5099  H1 / H4 trend not aligned
-AUDJPY   deriv       5099  waiting for EMA 50 rejection on H1 / M30
-AUDCHF   deriv       5099  H1 / H4 trend not aligned
-AUDCAD   deriv       5099  waiting for EMA 50 rejection on H1 / M30
-AUDNZD   deriv       4314  H1 / H4 trend not aligned
-NZDJPY   deriv       5099  H1 / H4 trend not aligned
-NZDCHF   deriv       5099  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-NZDCAD   deriv       5099  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-CADJPY   deriv       4314  H4 BB not sloping up, buy skipped
-CADCHF   deriv       5099  alert already sent for this setup, waiting for a new rejection
-CHFJPY   deriv       4314  H1 / H4 trend not aligned
+run (UTC): started 2026-10-26 17:45:02  finished 17:45:41  broker time: 2026-10-26 20:45
+XAUUSD   deriv       5105  waiting for EMA 50 rejection on H1 / M30
+EURUSD   deriv       5107  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5107  H4 BB not sloping up, buy skipped
+AUDUSD   deriv       5107  waiting for EMA 50 rejection on H1 / M30
+NZDUSD   deriv       5107  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5107  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5107  H1 / H4 trend not aligned
+USDCAD   deriv       5107  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5107  H4 BB not sloping down, sell skipped
+EURJPY   deriv       5107  H4 BB not sloping down, sell skipped
+EURCHF   deriv       5107  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5107  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+EURCAD   deriv       5107  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+EURNZD   deriv       5107  H4 BB not sloping down, sell skipped
+GBPJPY   deriv       4322  H1 / H4 trend not aligned
+GBPCHF   deriv       5107  H4 BB not sloping up, buy skipped
+GBPAUD   deriv       5107  H1 / H4 trend not aligned
+GBPCAD   deriv       5107  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+GBPNZD   deriv       5107  H1 / H4 trend not aligned
+AUDJPY   deriv       5107  H4 BB not sloping down, sell skipped
+AUDCHF   deriv       5107  H1 / H4 trend not aligned
+AUDCAD   deriv       5107  M30 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+AUDNZD   deriv       4322  H1 / H4 trend not aligned
+NZDJPY   deriv       5107  H1 / H4 trend not aligned
+NZDCHF   deriv       5107  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+NZDCAD   deriv       5107  H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+CADJPY   deriv       4322  H4 BB not sloping up, buy skipped
+CADCHF   deriv       5107  M30 EMA 50 3-candle rejection, no H4 momentum in the last 5 candles
+CHFJPY   deriv       4322  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
