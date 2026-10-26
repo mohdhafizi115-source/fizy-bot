@@ -1,31 +1,31 @@
-run (UTC): 2026-10-26 11:14  broker time: 2026-10-26 14:13
-XAUUSD   deriv       5063  waiting for EMA 50 rejection on H1 / M30
-EURUSD   deriv       5065  H4 EMA 50 is below Mid BB, sell skipped
-GBPUSD   deriv       5065  H4 BB not sloping up, buy skipped
-AUDUSD   deriv       5065  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-NZDUSD   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-USDJPY   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-USDCHF   deriv       5065  H4 BB not sloping down, sell skipped
-USDCAD   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-EURGBP   deriv       5065  H4 BB not sloping down, sell skipped
-EURJPY   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-EURCHF   deriv       5065  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5065  H4 BB not sloping down, sell skipped
-EURCAD   deriv       5065  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-EURNZD   deriv       5065  H1 EMA 50 rejection + H4 momentum, waiting for CSAK
-GBPJPY   deriv       4280  H1 / H4 trend not aligned
-GBPCHF   deriv       5065  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5065  H1 / H4 trend not aligned
-GBPCAD   deriv       5065  M30 EMA 50 4-candle rejection, no H4 momentum in the last 5 candles
-GBPNZD   deriv       5065  H1 / H4 trend not aligned
-AUDJPY   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-AUDCHF   deriv       5065  H1 / H4 trend not aligned
-AUDCAD   deriv       5065  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4280  H1 / H4 trend not aligned
-NZDJPY   deriv       5065  H1 / H4 trend not aligned
-NZDCHF   deriv       5065  M30 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-NZDCAD   deriv       5065  waiting for EMA 50 rejection on H1 / M30
-CADJPY   deriv       4280  H1 / H4 trend not aligned
-CADCHF   deriv       5065  M30 EMA 50 rejection + H4 momentum, waiting for CSAK
-CHFJPY   deriv       4280  H1 / H4 trend not aligned
+run (UTC): 2026-10-26 14:26  broker time: 2026-10-26 17:25
+XAUUSD   deriv       5079  waiting for EMA 50 rejection on H1 / M30
+EURUSD   deriv       5081  M30 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+GBPUSD   deriv       5081  H4 BB not sloping up, buy skipped
+AUDUSD   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+NZDUSD   deriv       5081  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5081  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+USDCAD   deriv       5081  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5081  H4 BB not sloping down, sell skipped
+EURJPY   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+EURCHF   deriv       5081  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5081  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+EURCAD   deriv       5081  H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
+EURNZD   deriv       5081  H4 BB not sloping down, sell skipped
+GBPJPY   deriv       4296  H1 / H4 trend not aligned
+GBPCHF   deriv       5081  H4 BB not sloping up, buy skipped
+GBPAUD   deriv       5081  H1 / H4 trend not aligned
+GBPCAD   deriv       5081  M30 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+GBPNZD   deriv       5081  H1 / H4 trend not aligned
+AUDJPY   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+AUDCHF   deriv       5081  H1 / H4 trend not aligned
+AUDCAD   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+AUDNZD   deriv       4296  H1 / H4 trend not aligned
+NZDJPY   deriv       5081  H1 / H4 trend not aligned
+NZDCHF   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+NZDCAD   deriv       5081  waiting for EMA 50 rejection on H1 / M30
+CADJPY   deriv       4296  H1 / H4 trend not aligned
+CADCHF   deriv       5081  M30 EMA 50 rejection + H4 momentum, waiting for CSAK
+CHFJPY   deriv       4296  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
