@@ -9,7 +9,7 @@ same BBMA rules as the EA and sends a chart of the setup to Telegram.
 BBMA rules (buy shown, sell mirrored), checked in this order:
   1. EMA 50 rejection on H1 (wick, or up to 6 candles chopping through EMA 50, then a candle closes
      back on the trend side) and on M30, same concept
-  2. Then H4: a momentum candle (close outside the BB in the trade direction) within the last 8
+  2. Then H4: a momentum candle (close outside the BB in the trade direction) within the last 5
      closed H4 candles; H4 EMA 50 below Mid BB for a buy, above for a sell
   3. CSAK: ONE candle breaks Mid BB + EMA 50 together, not one that already closes outside the BB.
      H1 rejection -> CSAK on M30 or M15 (M30 first); M30 rejection -> CSAK on M15
@@ -68,7 +68,7 @@ CFG = {
     "REJ_LOOKBACK":   12,
     "REJ_MAX_BARS":   6,
     "MOM_TF":         "4h",
-    "MOM_LOOKBACK":   8,             # last N closed momentum TF candles to look for momentum
+    "MOM_LOOKBACK":   5,             # last N closed momentum TF candles to look for momentum
     "TRADES_PER_MOM": 1,             # alerts per momentum candle (0 = unlimited)
     "REQUIRE_RETRACE": False,        # also require a retrace to MA5/10 on the momentum TF
     "MOM_EMA_VS_MID": True,          # momentum TF: EMA 50 below Mid BB for buy, above for sell
