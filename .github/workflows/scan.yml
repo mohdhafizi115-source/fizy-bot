@@ -2,7 +2,7 @@ name: BBMA scanner
 
 on:
   schedule:
-    - cron: "1,16,31,46 * * * 0-5"   # every 15 minutes (UTC), Sunday to Friday
+    - cron: "1,31 * * * 0-5"   # backup starter (UTC, Sunday to Friday); the scan itself loops, see below
   workflow_dispatch:                  # "Run workflow" button for a manual run
   push:                               # first run right after the files are uploaded
     branches: [main]
@@ -11,14 +11,18 @@ on:
 permissions:
   contents: write                     # only for the keep-alive commit below
 
+# Scheduled / manual runs stay alive ~5.5 h and scan right after every M15 candle close
+# (GitHub's own 15-minute schedule is often 30-60 minutes late). While one loop runs, the next
+# scheduled run waits in the queue and takes over when it ends. Push runs only do the example /
+# research jobs, in their own group, so they never wait behind the loop.
 concurrency:
-  group: bbma-scanner
+  group: bbma-${{ github.event_name == 'push' && 'push' || 'scanner' }}
   cancel-in-progress: false
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
@@ -45,7 +49,25 @@ jobs:
           OANDA_TOKEN: ${{ secrets.OANDA_TOKEN }}
           PROVIDER: ${{ vars.PROVIDER }}
           SYMBOLS: ${{ vars.SYMBOLS }}
-        run: python bbma_scanner.py
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then exit 0; fi
+          git config user.name "fizy-bot"
+          git config user.email "fizy-bot@users.noreply.github.com"
+          end=$(( $(date +%s) + 330 * 60 ))
+          n=0
+          while :; do
+            git pull -q --rebase origin main || true          # pick up code / setting changes
+            python bbma_scanner.py || echo "scan failed, retry next candle"
+            n=$((n + 1))
+            if [ $((n % 4)) -eq 0 ]; then                      # hourly run summary in status/
+              mkdir -p status && cp state/last_run.txt status/last_run.txt 2>/dev/null || true
+              git add status/last_run.txt 2>/dev/null && git commit -q -m "run summary" && git push -q || true
+            fi
+            now=$(date +%s)
+            next=$(( (now / 900 + 1) * 900 + 20 ))             # 20 s after the next M15 close
+            [ $next -ge $end ] && break
+            sleep $(( next - now ))
+          done
 
       - name: Example chart (when send_example.txt exists)
         if: github.event_name != 'schedule' && hashFiles('send_example.txt') != ''
@@ -76,14 +98,14 @@ jobs:
           git push || true
 
       - name: Save state
-        if: always()
+        if: always() && github.event_name != 'push'
         uses: actions/cache/save@v4
         with:
           path: state
           key: state-${{ github.run_id }}
 
-      - name: Publish the run summary (manual and push runs only)
-        if: github.event_name != 'schedule'
+      - name: Publish the run summary (manual runs only)
+        if: github.event_name == 'workflow_dispatch'
         run: |
           mkdir -p status
           cp state/last_run.txt status/last_run.txt 2>/dev/null || echo "no summary" > status/last_run.txt
