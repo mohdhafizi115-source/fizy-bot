@@ -1,31 +1,31 @@
-run (UTC): 2026-10-26 06:04  broker time: 2026-10-26 09:03
-XAUUSD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-EURUSD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   deriv       5035  H4 BB not sloping up, buy skipped
-AUDUSD   deriv       5035  M30 EMA 50 wick rejection, no H4 momentum in the 8 candles before it
-NZDUSD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-USDJPY   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-USDCHF   deriv       5035  H4 BB not sloping down, sell skipped
-USDCAD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-EURGBP   deriv       5035  H4 BB not sloping down, sell skipped
-EURJPY   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-EURCHF   deriv       5035  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5035  H1 EMA 50 rejection + H4 momentum, waiting for CSAK
-EURCAD   deriv       5035  H1 EMA 50 rejection + H4 momentum, waiting for CSAK
-EURNZD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-GBPJPY   deriv       4250  H1 / H4 trend not aligned
-GBPCHF   deriv       5035  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5035  H1 / H4 trend not aligned
-GBPCAD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-GBPNZD   deriv       5035  H1 / H4 trend not aligned
-AUDJPY   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-AUDCHF   deriv       5035  H1 / H4 trend not aligned
-AUDCAD   deriv       5035  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4250  H4 BB not sloping down, sell skipped
-NZDJPY   deriv       5035  H1 / H4 trend not aligned
-NZDCHF   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-NZDCAD   deriv       5035  waiting for EMA 50 rejection on H1 / M30
-CADJPY   deriv       4250  H1 / H4 trend not aligned
-CADCHF   deriv       5035  M30 EMA 50 rejection + H4 momentum, waiting for CSAK
-CHFJPY   deriv       4250  H1 / H4 trend not aligned
+run (UTC): 2026-10-26 06:06  broker time: 2026-10-26 09:06
+XAUUSD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+EURUSD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5036  H4 BB not sloping up, buy skipped
+AUDUSD   deriv       5036  M30 EMA 50 wick rejection, no H4 momentum in the 8 candles before it
+NZDUSD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+USDJPY   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+USDCHF   deriv       5036  H4 BB not sloping down, sell skipped
+USDCAD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+EURGBP   deriv       5036  H4 BB not sloping down, sell skipped
+EURJPY   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+EURCHF   deriv       5036  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5036  H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+EURCAD   deriv       5036  H1 EMA 50 rejection + H4 momentum, waiting for CSAK
+EURNZD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+GBPJPY   deriv       4251  H1 / H4 trend not aligned
+GBPCHF   deriv       5036  H4 BB not sloping up, buy skipped
+GBPAUD   deriv       5036  H1 / H4 trend not aligned
+GBPCAD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+GBPNZD   deriv       5036  H1 / H4 trend not aligned
+AUDJPY   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+AUDCHF   deriv       5036  H1 / H4 trend not aligned
+AUDCAD   deriv       5036  H4 BB not sloping down, sell skipped
+AUDNZD   deriv       4251  H4 BB not sloping down, sell skipped
+NZDJPY   deriv       5036  H1 / H4 trend not aligned
+NZDCHF   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+NZDCAD   deriv       5036  waiting for EMA 50 rejection on H1 / M30
+CADJPY   deriv       4251  H1 / H4 trend not aligned
+CADCHF   deriv       5036  M30 EMA 50 rejection + H4 momentum, waiting for CSAK
+CHFJPY   deriv       4251  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
