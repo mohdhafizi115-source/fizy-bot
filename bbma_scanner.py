@@ -446,15 +446,13 @@ def message(sig):
     myt = sig["time"]  # broker time
     fut = CUR["name"].startswith("XAU") and CUR.get("source") == "yahoo"
     note = "\nNote: gold prices are COMEX futures (GC=F); JustMarkets XAUUSD differs by a few dollars" if fut else ""
-    return (f"FIZY BOT | {CUR['name']} {side} (alert only)\n"
-            f"Entry: {px(sig['entry'])}\nSL: {px(sig['sl'])}  ({sig['sl_name']})\n"
-            f"TP: {px(sig['tp'])}  (RR 1:{sig['rr']:.1f}, {sig['tp_name']})\n"
+    sep = "=============================\n"
+    return (f"FIZY BOT | {CUR['name']} {side} (alert only)\n" + sep +
             f"Setup: BBMA EMA 50 rejection + CSAK\n"
             f"Trend: H1 + H4 {'bullish' if sig['dir'] == 1 else 'bearish'} (EMA 50 vs EMA 90)\n"
             f"EMA 50 {sig['rej_kind']}: {sig['rej_tf']} at {sig['rej_t']:%Y-%m-%d %H:%M}\n"
             f"H4 momentum: {sig['mom_t']:%Y-%m-%d %H:%M}\n"
-            f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50\n"
-            f"Breakeven: price passes H4 MA5/10 {'High' if sig['dir'] == 1 else 'Low'} (now {px(sig['be_line'])})\n"
+            f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50\n" + sep +
             f"Broker time: {myt:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}" + note)
 
 
