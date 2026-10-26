@@ -368,8 +368,14 @@ def evaluate(m15, T, state):
     e1R1 = okR1 and dE.t[1] >= rT1
     e1R2 = okR2 and dE.t[1] >= rT2
     csakE1 = (e1R1 or e1R2) and is_csak(dE, dr)
+    # a rejection that already gave an alert does not count as "waiting" any more
+    done1 = okR1 and str(rT1) == state.get("last_rej")
+    done2 = okR2 and str(rT2) == state.get("last_rej")
+    if (okR1 or okR2) and (not okR1 or done1) and (not okR2 or done2):
+        at = state.get("last_alert_t", "")
+        return None, "alert already sent for this setup" + (f" ({at})" if at else "") + ", waiting for a new rejection"
     if not csakE2 and not csakE1:
-        return None, ("H1" if okR1 else "M30") + " EMA 50 rejection + H4 momentum, waiting for CSAK"
+        return None, ("H1" if okR1 and not done1 else "M30") + " EMA 50 rejection + H4 momentum, waiting for CSAK"
 
     useR1 = csakE2 or e1R1
     j = j1 if useR1 else j2
@@ -427,6 +433,7 @@ def evaluate(m15, T, state):
                rej_tf=rejTF, rej_kind=rejKind, rej_t=rejT, mom_t=dM.t[j], csak_tf=cTF,
                swing=base, csak_t=dC.t[1], data=dC)
     state["last_rej"] = str(rejT)
+    state["last_alert_t"] = f"{dC.t[1]:%Y-%m-%d %H:%M}"
     if momT == state.get("last_mom"):
         state["mom_trades"] = state.get("mom_trades", 0) + 1
     else:
