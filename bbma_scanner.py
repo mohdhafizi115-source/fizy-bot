@@ -1,21 +1,18 @@
 """
-FIZY BOT - BBMA scanner (cloud version of FizyIsm2026.mq5 v6.01, alert only).
+FIZY BOT - BBMA scanner (cloud, alert only).
 
-Runs every 15 minutes (GitHub Actions). Downloads M15 candles (Twelve Data or OANDA) for every
-symbol in SYMBOLS (forex pairs and XAUUSD), builds the
-M30 / H1 / H4 candles on broker time (JustMarkets server time = New York time + 7 hours), runs the
-same BBMA rules as the EA and sends a chart of the setup to Telegram.
+Runs on GitHub Actions and scans 1 s after every M15 close. Downloads M15 candles (Deriv, with
+Yahoo / Twelve Data as fallback) for every symbol in SYMBOLS (forex pairs and XAUUSD), builds the
+M30 / H4 candles on broker time (JustMarkets server time = New York time + 7 hours) and sends a
+chart of each setup to Telegram.
 
-BBMA rules (buy shown, sell mirrored), checked in this order:
-  1. EMA 50 rejection on H1 (wick, or up to 6 candles chopping through EMA 50, then a candle closes
-     back on the trend side) and on M30, same concept
-  2. Then H4: a momentum candle (close outside the BB in the trade direction) within the last 5
-     closed H4 candles; H4 EMA 50 below Mid BB for a buy, above for a sell
-  3. CSAK: ONE candle breaks Mid BB + EMA 50 together, not one that already closes outside the BB.
-     H1 rejection -> CSAK on M30 or M15 (M30 first); M30 rejection -> CSAK on M15
-  4. Trend: EMA 50 above EMA 90 for a buy (below for a sell) on H1 and H4
-  5. SL 10 pips beyond the Low BB (buy) / Top BB (sell) of the CSAK TF; TP fibo 261.8% from the
-     CSAK TF swing to the CSAK candle body; breakeven when price passes the H4 MA5/10 High / Low
+Active setup: H4 momentum + retrace to H4 MA5/10 + CSAK (buy shown, sell mirrored):
+  1. H4 trend only: EMA 90 below EMA 50, and EMA 50 below Mid BB (no H1, no BB slope check)
+  2. H4 momentum: a candle closed above Top BB within the last 5 closed H4 candles
+  3. Price then comes back to the H4 MA5/10 Low zone (any number of touches; the first starts the watch)
+  4. The first CSAK on M30 or M15 after that (ONE candle breaks Mid BB + EMA 50, not one that already
+     closes outside the BB) -> Telegram alert with the M15 chart. One alert per H4 momentum candle.
+The old EMA 50 rejection setup is off (REJECTION_SETUP = False).
 
 Usage:
   python bbma_scanner.py                 live run (what GitHub Actions calls)
@@ -78,6 +75,7 @@ CFG = {
     # Setup 2 "retrace": H4 trend + H4 momentum, price back to H4 MA5/10, then M30 / M15 CSAK
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
+    "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
     "RT_MOM_LOOKBACK": 5,            # last N closed H4 candles to look for the momentum candle
     "SLOPE_FILTER":   True,          # BB must slope with the trade (Mid + Top BB up for buy, Mid + Low BB down for sell)
     "SLOPE_TF":       "4h",
@@ -476,8 +474,10 @@ def px(v):
 #   1. H4 trend: EMA 90 below EMA 50, and EMA 50 below Mid BB
 #   2. H4 momentum: a candle closed above Top BB within the last RT_MOM_LOOKBACK closed H4 candles
 #      (momentum the other way after it cancels)
-#   3. After that candle, price comes back to the H4 MA5/10 Low (low <= the higher of MA5 / MA10 Low)
-#   4. Then CSAK on M30 or M15 (same CSAK rule), at or after the retrace -> alert with the M15 chart
+#   3. After that candle, price comes back to the H4 MA5/10 Low (low <= the higher of MA5 / MA10 Low);
+#      how many times it touches does not matter, the first touch starts the watch
+#   4. Then the first CSAK on M30 or M15 (whichever comes first, same CSAK rule) at or after the
+#      first touch -> alert with the M15 chart. One alert per H4 momentum candle.
 #==================================================================
 def evaluate_retrace(m15, T, state):
     C = CFG; B = C["BARS"]
@@ -539,7 +539,10 @@ def evaluate_retrace(m15, T, state):
 
 
 def evaluate_all(m15, T, state):
-    """Setup 1 (EMA 50 rejection) first; setup 2 (retrace) when setup 1 has no alert on this candle."""
+    """Active setup: H4 momentum + retrace to H4 MA5/10 + first M30 / M15 CSAK after the retrace.
+    Setup 1 (EMA 50 rejection) runs only when REJECTION_SETUP is turned back on."""
+    if not CFG["REJECTION_SETUP"]:
+        return evaluate_retrace(m15, T, state)
     sig, st1 = evaluate(m15, T, state)
     if sig or not CFG["RETRACE_SETUP"]:
         return sig, st1
