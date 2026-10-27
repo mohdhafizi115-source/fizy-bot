@@ -1,31 +1,31 @@
-run (UTC): started 2026-10-27 03:01:08  finished 03:01:41  broker time: 2026-10-27 06:01
-XAUUSD   deriv       5172  H4 BB not sloping down, sell skipped
-EURUSD   deriv       5183  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   deriv       5183  H1 / H4 trend not aligned
-AUDUSD   deriv       5183  H4 BB not sloping up, buy skipped
-NZDUSD   deriv       5183  H4 BB not sloping up, buy skipped
-USDJPY   deriv       5183  H4 BB not sloping down, sell skipped
-USDCHF   deriv       5183  H1 / H4 trend not aligned
-USDCAD   deriv       5183  H4 BB not sloping down, sell skipped
-EURGBP   deriv       5183  H1 EMA 50 wick rejection (01:00 MYT, 10h 00m ago), no H4 momentum in the last 5 candles
-EURJPY   deriv       5183  H4 BB not sloping down, sell skipped
-EURCHF   deriv       5183  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5183  M30 EMA 50 wick rejection (07:00 MYT, 4h 00m ago), no H4 momentum in the last 5 candles
-EURCAD   deriv       5183  H1 EMA 50 2-candle rejection (26/10 23:00 MYT, 12h 00m ago), no H4 momentum in the last 5 candles
-EURNZD   deriv       5183  M30 EMA 50 2-candle rejection (06:00 MYT, 5h 00m ago), no H4 momentum in the last 5 candles
-GBPJPY   deriv       4398  H1 / H4 trend not aligned
-GBPCHF   deriv       5183  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5183  H1 / H4 trend not aligned
-GBPCAD   deriv       5183  H1 EMA 50 2-candle rejection (26/10 23:00 MYT, 12h 00m ago), no H4 momentum in the last 5 candles
-GBPNZD   deriv       5183  H1 EMA 50 2-candle rejection (06:00 MYT, 5h 00m ago), no H4 momentum in the last 5 candles
-AUDJPY   deriv       5183  H1 / H4 trend not aligned
-AUDCHF   deriv       5183  H1 / H4 trend not aligned
-AUDCAD   deriv       5183  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4398  H1 / H4 trend not aligned
-NZDJPY   deriv       5183  H4 BB not sloping up, buy skipped
-NZDCHF   deriv       5183  M30 EMA 50 wick rejection (06:00 MYT, 5h 00m ago), no H4 momentum in the last 5 candles
-NZDCAD   deriv       5183  H4 BB not sloping down, sell skipped
-CADJPY   deriv       4398  H4 BB not sloping up, buy skipped
-CADCHF   deriv       5183  waiting for EMA 50 rejection on H1 / M30
-CHFJPY   deriv       4398  H1 / H4 trend not aligned
+run (UTC): started 2026-10-27 03:15:01  finished 03:15:36  broker time: 2026-10-27 06:15
+XAUUSD   deriv       5174  H4 BB not sloping down, sell skipped
+EURUSD   deriv       5185  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5185  H1 / H4 trend not aligned
+AUDUSD   deriv       5185  H4 BB not sloping up, buy skipped
+NZDUSD   deriv       5185  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5185  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5185  H1 / H4 trend not aligned
+USDCAD   deriv       5185  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5185  H1 EMA 50 wick rejection (01:00 MYT, 10h 15m ago), no H4 momentum in the last 5 candles
+EURJPY   deriv       5185  H4 BB not sloping down, sell skipped
+EURCHF   deriv       5185  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5185  M30 EMA 50 wick rejection (07:00 MYT, 4h 15m ago), no H4 momentum in the last 5 candles
+EURCAD   deriv       5185  H1 EMA 50 2-candle rejection (26/10 23:00 MYT, 12h 15m ago), no H4 momentum in the last 5 candles
+EURNZD   deriv       5185  M30 EMA 50 2-candle rejection (06:00 MYT, 5h 15m ago), no H4 momentum in the last 5 candles
+GBPJPY   deriv       4400  H1 / H4 trend not aligned
+GBPCHF   deriv       5185  H4 BB not sloping up, buy skipped
+GBPAUD   deriv       5185  H1 / H4 trend not aligned
+GBPCAD   deriv       5185  H1 EMA 50 2-candle rejection (26/10 23:00 MYT, 12h 15m ago), no H4 momentum in the last 5 candles
+GBPNZD   deriv       5185  H1 EMA 50 2-candle rejection (06:00 MYT, 5h 15m ago), no H4 momentum in the last 5 candles
+AUDJPY   deriv       5185  H1 / H4 trend not aligned
+AUDCHF   deriv       5185  H1 / H4 trend not aligned
+AUDCAD   deriv       5185  H4 BB not sloping down, sell skipped
+AUDNZD   deriv       4400  H1 / H4 trend not aligned
+NZDJPY   deriv       5185  H4 BB not sloping up, buy skipped
+NZDCHF   deriv       5185  M30 EMA 50 wick rejection (06:00 MYT, 5h 15m ago), no H4 momentum in the last 5 candles
+NZDCAD   deriv       5185  H4 BB not sloping down, sell skipped
+CADJPY   deriv       4400  H4 BB not sloping up, buy skipped
+CADCHF   deriv       5185  waiting for EMA 50 rejection on H1 / M30
+CHFJPY   deriv       4400  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
