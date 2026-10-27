@@ -76,6 +76,8 @@ CFG = {
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
+    "ZONE_ALERT_MAX_AGE": 60,        # minutes; an older first touch is not alerted (e.g. after a restart)
     "RT_MOM_LOOKBACK": 10,           # last N closed H4 candles to look for the momentum candle
     "SLOPE_FILTER":   True,          # BB must slope with the trade (Mid + Top BB up for buy, Mid + Low BB down for sell)
     "SLOPE_TF":       "4h",
@@ -520,6 +522,11 @@ def evaluate_retrace(m15, T, state):
             break
     if touchT is None:
         return None, f"H4 {side} momentum ({when(momT, T)}), waiting for retrace to H4 MA5/10 {'Low' if dr == 1 else 'High'}"
+    if C["ZONE_ALERT"] and state.get("rt_zone_mom") != str(momT) and str(momT) != state.get("rt_last_mom"):
+        state["rt_zone_mom"] = str(momT)
+        if (T - touchT) <= pd.Timedelta(minutes=C["ZONE_ALERT_MAX_AGE"]):
+            state["_zone_sig"] = dict(setup="zone", dir=dr, time=T, entry=float(dE.o[0]), mom_t=momT,
+                                      touch_t=touchT, data=dM, chart_tf=C["MOM_TF"], csak_tf=C["MOM_TF"])
     if str(momT) == state.get("rt_last_mom"):
         return None, f"retrace alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)})"
     csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr)
@@ -552,10 +559,23 @@ def evaluate_all(m15, T, state):
     return None, f"{st1}  ||  retrace: {st2}"
 
 
+def message_zone(sig):
+    side = "BUY" if sig["dir"] == 1 else "SELL"
+    sep = "=============================\n"
+    return (f"FIZY BOT | {CUR['name']} {side} - price in H4 MA5/10 zone (alert 1/2)\n" + sep +
+            f"Setup: BBMA H4 momentum + retrace MA5/10\n"
+            f"Trend: H4 {'bullish' if sig['dir'] == 1 else 'bearish'} (EMA 90 {'below' if sig['dir'] == 1 else 'above'} EMA 50, "
+            f"EMA 50 {'below' if sig['dir'] == 1 else 'above'} Mid BB)\n"
+            f"H4 momentum: {sig['mom_t']:%Y-%m-%d %H:%M}\n"
+            f"Price entered H4 MA5/10 {'Low' if sig['dir'] == 1 else 'High'}: {sig['touch_t']:%Y-%m-%d %H:%M} (M15 candle)\n"
+            f"Next: waiting for CSAK on M30 / M15 (alert 2/2)\n" + sep +
+            f"Broker time: {sig['time']:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}")
+
+
 def message_retrace(sig):
     side = "BUY" if sig["dir"] == 1 else "SELL"
     sep = "=============================\n"
-    return (f"FIZY BOT | {CUR['name']} {side} (alert only)\n" + sep +
+    return (f"FIZY BOT | {CUR['name']} {side} - CSAK (alert 2/2)\n" + sep +
             f"Setup: BBMA H4 momentum + retrace MA5/10 + CSAK\n"
             f"Trend: H4 {'bullish' if sig['dir'] == 1 else 'bearish'} (EMA 90 {'below' if sig['dir'] == 1 else 'above'} EMA 50, "
             f"EMA 50 {'below' if sig['dir'] == 1 else 'above'} Mid BB)\n"
@@ -605,11 +625,21 @@ def chart_png(sig, bars=110):
     for name, arr, col, w, st in lines:
         y = np.array([arr[i] if arr[i] > 0 else np.nan for i in idx])
         ax.plot(x, y, color=col, linewidth=w, linestyle=st, label=name)
-    ax.axhline(sig["entry"], color="#ffffff", linewidth=1.2, linestyle="--")
-    ax.text(len(x) + 0.5, sig["entry"], f" Entry {px(sig['entry'])}", color="#ffffff", va="center", fontsize=9)
-    # CSAK candle marker
-    ax.annotate("CSAK", (x[-2], d.h[1] if sig["dir"] == 1 else d.l[1]), color="#ffd700", fontsize=9, ha="center",
-                xytext=(0, 12 if sig["dir"] == 1 else -16), textcoords="offset points")
+    if sig.get("setup") == "zone":
+        ax.axhline(sig["entry"], color="#ffffff", linewidth=1.0, linestyle="--")
+        ax.text(len(x) + 0.5, sig["entry"], f" Price {px(sig['entry'])}", color="#ffffff", va="center", fontsize=9)
+        pos = {t: xi for xi, t in zip(x, [d.t[i] for i in idx])}
+        for label, t, top in (("MOM", sig["mom_t"], sig["dir"] == 1), ("ZONE", sig["touch_t"].floor("4h"), sig["dir"] != 1)):
+            if t in pos:
+                i = d.t.index(t)
+                ax.annotate(label, (pos[t], d.h[i] if top else d.l[i]), color="#ffd700", fontsize=9, ha="center",
+                            xytext=(0, 12 if top else -16), textcoords="offset points")
+    else:
+        ax.axhline(sig["entry"], color="#ffffff", linewidth=1.2, linestyle="--")
+        ax.text(len(x) + 0.5, sig["entry"], f" Entry {px(sig['entry'])}", color="#ffffff", va="center", fontsize=9)
+        # CSAK candle marker
+        ax.annotate("CSAK", (x[-2], d.h[1] if sig["dir"] == 1 else d.l[1]), color="#ffd700", fontsize=9, ha="center",
+                    xytext=(0, 12 if sig["dir"] == 1 else -16), textcoords="offset points")
     lo = np.nanmin([min(d.l[i], d.bot[i] or d.l[i]) for i in idx])
     hi = np.nanmax([max(d.h[i], d.top[i] or d.h[i]) for i in idx])
     pad = (hi - lo) * 0.04
@@ -622,7 +652,7 @@ def chart_png(sig, bars=110):
     ax.grid(color="#1c1f26", linewidth=0.6)
     side = "BUY" if sig["dir"] == 1 else "SELL"
     ax.set_title(f"FIZY BOT  {CUR['name']} {TF_NAME[sig.get('chart_tf', sig['csak_tf'])]}  BBMA "
-                 f"{'retrace ' if sig.get('setup') == 'retrace' else ''}{side}",
+                 f"{ {'retrace': 'retrace ', 'zone': 'H4 zone '}.get(sig.get('setup'), '') }{side}",
                  color="#ffd700", fontsize=12, loc="left")
     leg = ax.legend(loc="upper left", fontsize=7, ncol=5, facecolor=bg, edgecolor="#2a2e36", labelcolor="#c8c8c8")
     buf = io.BytesIO()
@@ -902,6 +932,10 @@ def scan_symbol(name, st, broker_now):
     for T in todo:
         sig, status = evaluate_all(m15, T, st)
         print(f"{name}  {T}  {status}")
+        zs = st.pop("_zone_sig", None)
+        if zs:
+            ok = tg_send(message_zone(zs), chart_png(zs, bars=80))
+            print("  zone alert sent" if ok else "  zone alert FAILED")
         if sig:
             text = message_retrace(sig) if sig.get("setup") == "retrace" else message(sig)
             ok = tg_send(text, chart_png(sig))
@@ -1073,9 +1107,11 @@ def run_audit(since="2026-10-23 00:00"):
             st, sigs = {}, []
             for T in ts:
                 sig, _ = evaluate_all(m15, T, st)
+                st.pop("_zone_sig", None)
                 if sig:
                     sigs.append(sig)
             _, now_status = evaluate_all(m15, m15.index[-1], st)
+            st.pop("_zone_sig", None)
             lines.append(f"{name:8s} {len(sigs)} setup(s) | now: {now_status}")
             for g in sigs:
                 extra = (f"retrace {g['touch_t']:%m-%d %H:%M}" if g.get("setup") == "retrace"
