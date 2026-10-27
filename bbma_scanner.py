@@ -76,6 +76,7 @@ CFG = {
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "FETCH_WORKERS":  6,             # parallel Deriv downloads per scan (1 = one by one)
     "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
     "ZONE_ALERT_MAX_AGE": 60,        # minutes; an older first touch is not alerted (e.g. after a restart)
     "RT_MOM_LOOKBACK": 10,           # last N closed H4 candles to look for the momentum candle
@@ -730,7 +731,21 @@ def fetch_yahoo(name):
     raise RuntimeError(err or f"Yahoo {ysym}: no data")
 
 
-_deriv_ws = [None]
+import threading
+_deriv_tls = threading.local()       # one Deriv websocket per thread (data is downloaded in parallel)
+
+
+class _WsSlot:
+    """Per-thread websocket holder, used like the old one-element list (_deriv_ws[0])."""
+    def __getitem__(self, i):
+        return getattr(_deriv_tls, "ws", None)
+
+    def __setitem__(self, i, v):
+        _deriv_tls.ws = v
+
+
+_deriv_ws = _WsSlot()
+_prefetch = {}                       # name -> future with the newest Deriv candles (filled by run_live)
 DERIV_URLS = ("wss://api.derivws.com/trading/v1/options/ws/public?app_id={app}",
               "wss://ws.derivws.com/websockets/v3?app_id={app}",
               "wss://ws.binaryws.com/websockets/v3?app_id={app}")
@@ -861,7 +876,15 @@ def fetch_m15(name):
         cache_ok = cache is not None and len(cache) >= 3000 and (broker_now - cache.index[-1]) < pd.Timedelta(days=6)
         try:
             if prov == "deriv":
-                df = fetch_deriv(name, need=700 if cache_ok else 5000)
+                fut = _prefetch.pop(name, None)
+                df = None
+                if fut is not None:
+                    try:
+                        df = fut.result(timeout=60)
+                    except Exception as e:      # retry below on this thread's own connection
+                        print(f"{name}: parallel download failed ({e}), retrying")
+                if df is None or (not cache_ok and len(df) < 3000):
+                    df = fetch_deriv(name, need=700 if cache_ok else 5000)
             else:
                 df = _fetch_one(prov, name)
         except Exception as e:
@@ -952,6 +975,17 @@ def run_live():
     now_myt = datetime.now(MYT)
     broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
     errors = []
+    # download every symbol in parallel (several Deriv connections); each symbol is evaluated and
+    # alerted as soon as its own data is in, in list order (XAUUSD first)
+    from concurrent.futures import ThreadPoolExecutor
+    pool = None
+    provs = [p.strip().lower() for p in CFG["PROVIDER"].split(",") if p.strip()]
+    if provs and provs[0] == "deriv" and CFG["FETCH_WORKERS"] > 1:
+        pool = ThreadPoolExecutor(max_workers=CFG["FETCH_WORKERS"])
+        for name in symbol_list():
+            c = _load_cache(name, "deriv")
+            ok = c is not None and len(c) >= 3000 and (broker_now - c.index[-1]) < pd.Timedelta(days=6)
+            _prefetch[name] = pool.submit(fetch_deriv, name, 700 if ok else 5000)
     for name in symbol_list():
         st = syms.setdefault(name, {})
         try:
@@ -959,6 +993,9 @@ def run_live():
         except Exception as e:
             print(f"{name} error: {e}")
             errors.append(f"{name}: {e}")
+    if pool is not None:
+        pool.shutdown(wait=False, cancel_futures=True)
+        _prefetch.clear()
     # one-time welcome: confirms Telegram works and shows a chart of the latest past XAUUSD setup
     if not state.get("welcome_sent"):
         ok = tg_send("FIZY BOT cloud scanner is set up.\nScanning " + str(len(symbol_list())) +
