@@ -1,32 +1,30 @@
-audit from 2026-10-23 00:00 (broker time), rules: MOM_LOOKBACK=5, run 2026-10-26 16:48 UTC
-XAUUSD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+audit from 2026-10-26 19:00 (broker time), rules: MOM_LOOKBACK=5, run 2026-10-27 04:03 UTC
+XAUUSD   0 setup(s) | now: H4 BB not sloping down, sell skipped
 EURUSD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
-GBPUSD   0 setup(s) | now: H4 BB not sloping up, buy skipped
-AUDUSD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+GBPUSD   0 setup(s) | now: H1 / H4 trend not aligned
+AUDUSD   0 setup(s) | now: H4 BB not sloping up, buy skipped
 NZDUSD   0 setup(s) | now: H4 BB not sloping up, buy skipped
-USDJPY   1 setup(s) | now: H4 BB not sloping down, sell skipped
-    SELL CSAK M15 10-23 18:00  alert at 10-23 18:15  rej M30 10-23 17:30  H4 mom 10-23 00:00
+USDJPY   0 setup(s) | now: H4 BB not sloping down, sell skipped
 USDCHF   0 setup(s) | now: H1 / H4 trend not aligned
 USDCAD   0 setup(s) | now: H4 BB not sloping down, sell skipped
-EURGBP   0 setup(s) | now: H4 BB not sloping down, sell skipped
-EURJPY   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+EURGBP   0 setup(s) | now: H1 EMA 50 wick rejection (01:00 MYT, 11h 00m ago), no H4 momentum in the last 5 candles
+EURJPY   0 setup(s) | now: H4 BB not sloping down, sell skipped
 EURCHF   0 setup(s) | now: H4 BB not sloping down, sell skipped
-EURAUD   0 setup(s) | now: H1 EMA 50 wick rejection, no H4 momentum in the last 5 candles
-EURCAD   0 setup(s) | now: H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-EURNZD   0 setup(s) | now: H4 BB not sloping down, sell skipped
+EURAUD   0 setup(s) | now: M30 EMA 50 wick rejection (07:00 MYT, 5h 00m ago), no H4 momentum in the last 5 candles
+EURCAD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+EURNZD   0 setup(s) | now: M30 EMA 50 2-candle rejection (06:00 MYT, 6h 00m ago), no H4 momentum in the last 5 candles
 GBPJPY   0 setup(s) | now: H1 / H4 trend not aligned
 GBPCHF   0 setup(s) | now: H4 BB not sloping up, buy skipped
 GBPAUD   0 setup(s) | now: H1 / H4 trend not aligned
-GBPCAD   0 setup(s) | now: H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-GBPNZD   0 setup(s) | now: H1 / H4 trend not aligned
-AUDJPY   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+GBPCAD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+GBPNZD   0 setup(s) | now: H1 EMA 50 2-candle rejection (06:00 MYT, 6h 00m ago), no H4 momentum in the last 5 candles
+AUDJPY   0 setup(s) | now: H1 / H4 trend not aligned
 AUDCHF   0 setup(s) | now: H1 / H4 trend not aligned
-AUDCAD   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
+AUDCAD   0 setup(s) | now: H4 BB not sloping down, sell skipped
 AUDNZD   0 setup(s) | now: H1 / H4 trend not aligned
-NZDJPY   0 setup(s) | now: H1 / H4 trend not aligned
-NZDCHF   0 setup(s) | now: H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
-NZDCAD   0 setup(s) | now: H1 EMA 50 2-candle rejection, no H4 momentum in the last 5 candles
+NZDJPY   0 setup(s) | now: H4 BB not sloping up, buy skipped
+NZDCHF   0 setup(s) | now: M30 EMA 50 wick rejection (06:00 MYT, 6h 00m ago), no H4 momentum in the last 5 candles
+NZDCAD   0 setup(s) | now: H4 BB not sloping down, sell skipped
 CADJPY   0 setup(s) | now: H4 BB not sloping up, buy skipped
-CADCHF   1 setup(s) | now: alert already sent for this setup (2026-10-26 17:45), waiting for a new rejection
-    BUY  CSAK M15 10-26 17:45  alert at 10-26 18:00  rej M30 10-26 17:30  H4 mom 10-23 20:00
+CADCHF   0 setup(s) | now: waiting for EMA 50 rejection on H1 / M30
 CHFJPY   0 setup(s) | now: H1 / H4 trend not aligned
