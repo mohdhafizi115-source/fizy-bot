@@ -133,12 +133,12 @@ def broker_to_myt(t):
 
 
 def when(t, now):
-    """'14:00 MYT, 3h 15m ago' for a broker-time candle open `t`, seen at broker time `now`."""
-    m = broker_to_myt(t)
-    mins = max(0, int((pd.Timestamp(now) - pd.Timestamp(t)).total_seconds() // 60))
+    """'14:00 chart time, 3h 15m ago' for a broker-time (MT5 chart) candle open `t`, seen at broker time `now`."""
+    m, n = pd.Timestamp(t), pd.Timestamp(now)
+    mins = max(0, int((n - m).total_seconds() // 60))
     ago = f"{mins // 60}h {mins % 60:02d}m ago" if mins >= 60 else f"{mins}m ago"
-    day = "" if m.date() == broker_to_myt(now).date() else f"{m:%d/%m} "
-    return f"{day}{m:%H:%M} MYT, {ago}"
+    day = "" if m.date() == n.date() else f"{m:%d/%m} "
+    return f"{day}{m:%H:%M} chart time, {ago}"
 
 
 #==================================================================
@@ -881,9 +881,9 @@ def run_live():
             line = f"{n}: {s.get('last_status', '-')}"
             le = s.get("last_eval")
             if le and (broker_now - pd.Timestamp(le)) > pd.Timedelta(minutes=30):
-                line += f"  [old status, last checked {broker_to_myt(le):%d/%m %H:%M} MYT]"
+                line += f"  [old status, last checked {pd.Timestamp(le):%d/%m %H:%M} chart time]"
             lines.append(line)
-        msg = f"FIZY BOT is alive (cloud scanner)  |  {now_myt:%H:%M} Malaysia"
+        msg = f"FIZY BOT is alive (cloud scanner)  |  chart time {broker_now:%H:%M}"
         for line in lines:                 # Telegram limit is 4096 characters: split, never cut
             if len(msg) + 1 + len(line) > 4000:
                 tg_send(msg)
