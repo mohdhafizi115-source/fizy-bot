@@ -1,31 +1,31 @@
-run (UTC): started 2026-10-27 07:00:02  finished 07:00:40  broker time: 2026-10-27 10:00
-XAUUSD   deriv       5200  H4 BB not sloping down, sell skipped
-EURUSD   deriv       5211  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   deriv       5211  H1 / H4 trend not aligned
-AUDUSD   deriv       5212  H4 BB not sloping up, buy skipped
-NZDUSD   deriv       5212  H4 BB not sloping up, buy skipped
-USDJPY   deriv       5212  H4 BB not sloping down, sell skipped
-USDCHF   deriv       5212  H1 / H4 trend not aligned
-USDCAD   deriv       5212  H4 BB not sloping down, sell skipped
-EURGBP   deriv       5212  waiting for EMA 50 rejection on H1 / M30
-EURJPY   deriv       5212  H4 BB not sloping down, sell skipped
-EURCHF   deriv       5212  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5212  waiting for EMA 50 rejection on H1 / M30
-EURCAD   deriv       5212  waiting for EMA 50 rejection on H1 / M30
-EURNZD   deriv       5212  waiting for EMA 50 rejection on H1 / M30
-GBPJPY   deriv       4427  H1 / H4 trend not aligned
-GBPCHF   deriv       5212  M30 EMA 50 wick rejection (14:30 MYT, 30m ago), no H4 momentum in the last 5 candles
-GBPAUD   deriv       5213  H1 / H4 trend not aligned
-GBPCAD   deriv       5213  waiting for EMA 50 rejection on H1 / M30
-GBPNZD   deriv       5213  H1 EMA 50 2-candle rejection (06:00 MYT, 9h 00m ago), no H4 momentum in the last 5 candles
-AUDJPY   deriv       5213  H1 / H4 trend not aligned
-AUDCHF   deriv       5213  H1 / H4 trend not aligned
-AUDCAD   deriv       5213  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4428  H1 / H4 trend not aligned
-NZDJPY   deriv       5213  H4 BB not sloping up, buy skipped
-NZDCHF   deriv       5213  waiting for EMA 50 rejection on H1 / M30
-NZDCAD   deriv       5213  H4 BB not sloping down, sell skipped
-CADJPY   deriv       4428  H4 BB not sloping up, buy skipped
-CADCHF   deriv       5213  waiting for EMA 50 rejection on H1 / M30
-CHFJPY   deriv       4428  H1 / H4 trend not aligned
+run (UTC): started 2026-10-27 08:00:01  finished 08:00:37  broker time: 2026-10-27 11:00
+XAUUSD   deriv       5204  H4 BB not sloping down, sell skipped
+EURUSD   deriv       5215  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5215  H1 / H4 trend not aligned
+AUDUSD   deriv       5216  H4 BB not sloping up, buy skipped
+NZDUSD   deriv       5216  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5216  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5216  H1 / H4 trend not aligned
+USDCAD   deriv       5216  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5216  M30 EMA 50 wick rejection (15:30 MYT, 30m ago), no H4 momentum in the last 5 candles
+EURJPY   deriv       5216  H4 BB not sloping down, sell skipped
+EURCHF   deriv       5216  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5216  waiting for EMA 50 rejection on H1 / M30
+EURCAD   deriv       5216  waiting for EMA 50 rejection on H1 / M30
+EURNZD   deriv       5216  waiting for EMA 50 rejection on H1 / M30
+GBPJPY   deriv       4431  H1 / H4 trend not aligned
+GBPCHF   deriv       5216  H1 EMA 50 wick rejection (15:00 MYT, 1h 00m ago), no H4 momentum in the last 5 candles
+GBPAUD   deriv       5217  H1 / H4 trend not aligned
+GBPCAD   deriv       5217  waiting for EMA 50 rejection on H1 / M30
+GBPNZD   deriv       5217  H1 EMA 50 2-candle rejection (06:00 MYT, 10h 00m ago), no H4 momentum in the last 5 candles
+AUDJPY   deriv       5217  H1 / H4 trend not aligned
+AUDCHF   deriv       5217  H1 / H4 trend not aligned
+AUDCAD   deriv       5217  H4 BB not sloping down, sell skipped
+AUDNZD   deriv       4432  H1 / H4 trend not aligned
+NZDJPY   deriv       5217  H4 BB not sloping up, buy skipped
+NZDCHF   deriv       5217  waiting for EMA 50 rejection on H1 / M30
+NZDCAD   deriv       5217  H4 BB not sloping down, sell skipped
+CADJPY   deriv       4432  H4 BB not sloping up, buy skipped
+CADCHF   deriv       5217  waiting for EMA 50 rejection on H1 / M30
+CHFJPY   deriv       4432  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
