@@ -8,7 +8,7 @@ chart of each setup to Telegram.
 
 Active setup: H4 momentum + retrace to H4 MA5/10 + CSAK (buy shown, sell mirrored):
   1. H4 trend only: EMA 90 below EMA 50, and EMA 50 below Mid BB (no H1, no BB slope check)
-  2. H4 momentum: a candle closed above Top BB within the last 5 closed H4 candles
+  2. H4 momentum: a candle closed above Top BB within the last 10 closed H4 candles
   3. Price then comes back to the H4 MA5/10 Low zone (any number of touches; the first starts the watch)
   4. The first CSAK on M30 or M15 after that (ONE candle breaks Mid BB + EMA 50, not one that already
      closes outside the BB) -> Telegram alert with the M15 chart. One alert per H4 momentum candle.
@@ -76,7 +76,7 @@ CFG = {
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
-    "RT_MOM_LOOKBACK": 5,            # last N closed H4 candles to look for the momentum candle
+    "RT_MOM_LOOKBACK": 10,           # last N closed H4 candles to look for the momentum candle
     "SLOPE_FILTER":   True,          # BB must slope with the trade (Mid + Top BB up for buy, Mid + Low BB down for sell)
     "SLOPE_TF":       "4h",
     "SLOPE_BARS":     3,
