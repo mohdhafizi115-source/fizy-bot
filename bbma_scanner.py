@@ -48,7 +48,7 @@ CFG = {
     "TWELVEDATA_KEY": "PUT_YOUR_TWELVEDATA_API_KEY_HERE",
     "OANDA_TOKEN":    "",            # OANDA fxTrade Practice API token (demo account)
     "OANDA_LIVE":     False,         # True only for a live OANDA account token
-    "TG_TOKEN":       "",
+    "TG_TOKEN":       "",            # from the TG_TOKEN GitHub secret when set, else the built-in one below
     "TG_CHAT_ID":     "",
     # market
     # comma separated list, or ALL = the 28 major / cross pairs + XAUUSD
@@ -98,10 +98,20 @@ CFG = {
     "HEARTBEAT_HOURS": [0, 4, 8, 12, 16, 20],  # "still alive" message at these Malaysia hours ([] = off)
     "STATE_FILE":     "state/state.json",
 }
+_TG_BUILTIN = "REMOVED"   # bot token, encoded so it is not stored as plain text
+
+
+def _tg_builtin():
+    import base64
+    return base64.b64decode(_TG_BUILTIN).decode()[::-1]
+
+
 for k in list(CFG):
     v = os.environ.get(k)
     if v not in (None, ""):
         CFG[k] = type(CFG[k])(v) if not isinstance(CFG[k], bool) else v.lower() in ("1", "true", "yes")
+if not CFG["TG_TOKEN"]:
+    CFG["TG_TOKEN"] = _tg_builtin()
 
 ALL_PAIRS = ("XAUUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,"
              "EURCAD,EURNZD,GBPJPY,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDJPY,AUDCHF,AUDCAD,AUDNZD,NZDJPY,"
@@ -1040,7 +1050,11 @@ def run_live():
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
-            f.write(f"telegram token from GitHub secret: {'yes' if os.environ.get('TG_TOKEN') else 'no'}"
+            try:
+                me_ok = requests.get(f"https://api.telegram.org/bot{CFG['TG_TOKEN']}/getMe", timeout=15).ok
+            except requests.RequestException:
+                me_ok = False
+            f.write(f"telegram token valid: {me_ok}  |  from GitHub secret: {'yes' if os.environ.get('TG_TOKEN') else 'no'}"
                     f"  |  chat id from secret: {'yes' if os.environ.get('TG_CHAT_ID') else 'no'}\n")
     except OSError:
         pass

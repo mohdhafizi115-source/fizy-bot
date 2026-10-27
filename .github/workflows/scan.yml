@@ -57,11 +57,11 @@ jobs:
           n=0
           while :; do
             python bbma_scanner.py || echo "scan failed, retry next candle"
-            git pull -q --rebase origin main || true          # code / setting changes, ready for the next candle
+            git fetch -q origin main && git reset -q --hard origin/main || true   # newest code / settings for the next candle
             n=$((n + 1))
             if [ $n -le 3 ] || [ $((n % 4)) -eq 0 ]; then      # run summary in status/ (first 3, then hourly)
               mkdir -p status && cp state/last_run.txt status/last_run.txt 2>/dev/null || true
-              git add status/last_run.txt 2>/dev/null && git commit -q -m "run summary" && git push -q || true
+              git add status/last_run.txt 2>/dev/null && git commit -q -m "run summary" && git push -q origin HEAD:main || true
             fi
             now=$(date +%s)
             delay=$(cat scan_delay.txt 2>/dev/null | tr -dc 0-9); delay=${delay:-1}
