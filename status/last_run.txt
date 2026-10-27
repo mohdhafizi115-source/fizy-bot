@@ -1,31 +1,31 @@
-run (UTC): started 2026-10-27 04:45:01  finished 04:48:19  broker time: 2026-10-27 07:45
-XAUUSD   yahoo       4490  H4 BB not sloping down, sell skipped
-EURUSD   yahoo       5611  waiting for EMA 50 rejection on H1 / M30
-GBPUSD   yahoo       5612  H1 / H4 trend not aligned
-AUDUSD   deriv       5197  H4 BB not sloping up, buy skipped
-NZDUSD   deriv       5197  H4 BB not sloping up, buy skipped
-USDJPY   deriv       5197  H4 BB not sloping down, sell skipped
-USDCHF   deriv       5197  H1 / H4 trend not aligned
-USDCAD   deriv       5197  H4 BB not sloping down, sell skipped
-EURGBP   deriv       5197  H1 EMA 50 wick rejection (01:00 MYT, 11h 45m ago), no H4 momentum in the last 5 candles
-EURJPY   deriv       5197  H4 BB not sloping down, sell skipped
-EURCHF   deriv       5197  H4 BB not sloping down, sell skipped
-EURAUD   deriv       5197  M30 EMA 50 wick rejection (07:00 MYT, 5h 45m ago), no H4 momentum in the last 5 candles
-EURCAD   deriv       5197  waiting for EMA 50 rejection on H1 / M30
-EURNZD   deriv       5197  waiting for EMA 50 rejection on H1 / M30
-GBPJPY   deriv       4412  H1 / H4 trend not aligned
-GBPCHF   deriv       5197  H4 BB not sloping up, buy skipped
-GBPAUD   deriv       5197  H1 / H4 trend not aligned
-GBPCAD   deriv       5197  waiting for EMA 50 rejection on H1 / M30
-GBPNZD   deriv       5197  H1 EMA 50 2-candle rejection (06:00 MYT, 6h 45m ago), no H4 momentum in the last 5 candles
-AUDJPY   deriv       5197  H1 / H4 trend not aligned
-AUDCHF   deriv       5197  H1 / H4 trend not aligned
-AUDCAD   deriv       5197  H4 BB not sloping down, sell skipped
-AUDNZD   deriv       4412  H1 / H4 trend not aligned
-NZDJPY   deriv       5197  H4 BB not sloping up, buy skipped
-NZDCHF   deriv       5197  waiting for EMA 50 rejection on H1 / M30
-NZDCAD   deriv       5197  H4 BB not sloping down, sell skipped
-CADJPY   deriv       4412  H4 BB not sloping up, buy skipped
-CADCHF   deriv       5197  waiting for EMA 50 rejection on H1 / M30
-CHFJPY   deriv       4412  H1 / H4 trend not aligned
+run (UTC): started 2026-10-27 05:45:02  finished 05:45:35  broker time: 2026-10-27 08:45
+XAUUSD   deriv       5193  H4 BB not sloping down, sell skipped
+EURUSD   deriv       5204  waiting for EMA 50 rejection on H1 / M30
+GBPUSD   deriv       5204  H1 / H4 trend not aligned
+AUDUSD   deriv       5205  H4 BB not sloping up, buy skipped
+NZDUSD   deriv       5205  H4 BB not sloping up, buy skipped
+USDJPY   deriv       5205  H4 BB not sloping down, sell skipped
+USDCHF   deriv       5205  H1 / H4 trend not aligned
+USDCAD   deriv       5205  H4 BB not sloping down, sell skipped
+EURGBP   deriv       5205  H1 EMA 50 wick rejection (01:00 MYT, 12h 45m ago), no H4 momentum in the last 5 candles
+EURJPY   deriv       5205  H4 BB not sloping down, sell skipped
+EURCHF   deriv       5205  H4 BB not sloping down, sell skipped
+EURAUD   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+EURCAD   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+EURNZD   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+GBPJPY   deriv       4420  H1 / H4 trend not aligned
+GBPCHF   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+GBPAUD   deriv       5205  H1 / H4 trend not aligned
+GBPCAD   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+GBPNZD   deriv       5205  H1 EMA 50 2-candle rejection (06:00 MYT, 7h 45m ago), no H4 momentum in the last 5 candles
+AUDJPY   deriv       5205  H1 / H4 trend not aligned
+AUDCHF   deriv       5205  H1 / H4 trend not aligned
+AUDCAD   deriv       5205  H4 BB not sloping down, sell skipped
+AUDNZD   deriv       4420  H1 / H4 trend not aligned
+NZDJPY   deriv       5205  H4 BB not sloping up, buy skipped
+NZDCHF   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+NZDCAD   deriv       5205  H4 BB not sloping down, sell skipped
+CADJPY   deriv       4420  H4 BB not sloping up, buy skipped
+CADCHF   deriv       5205  waiting for EMA 50 rejection on H1 / M30
+CHFJPY   deriv       4420  H1 / H4 trend not aligned
 welcome telegram ok: True  example: None
