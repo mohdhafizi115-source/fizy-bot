@@ -126,6 +126,21 @@ MYT = ZoneInfo("Asia/Kuala_Lumpur")
 NY = ZoneInfo("America/New_York")
 
 
+def broker_to_myt(t):
+    """Broker time (naive, New York time + BROKER_OFFSET hours) -> Malaysia time."""
+    ny = pd.Timestamp(t) - pd.Timedelta(hours=CFG["BROKER_OFFSET"])
+    return ny.tz_localize(NY, ambiguous=False, nonexistent="shift_forward").tz_convert(MYT)
+
+
+def when(t, now):
+    """'14:00 MYT, 3h 15m ago' for a broker-time candle open `t`, seen at broker time `now`."""
+    m = broker_to_myt(t)
+    mins = max(0, int((pd.Timestamp(now) - pd.Timestamp(t)).total_seconds() // 60))
+    ago = f"{mins // 60}h {mins % 60:02d}m ago" if mins >= 60 else f"{mins}m ago"
+    day = "" if m.date() == broker_to_myt(now).date() else f"{m:%d/%m} "
+    return f"{day}{m:%H:%M} MYT, {ago}"
+
+
 #==================================================================
 # Indicators (same maths as the EA's LoadBB; arrays series-indexed: [0] forming, [1] last closed)
 #==================================================================
@@ -351,7 +366,8 @@ def evaluate(m15, T, state):
     j1, why1 = find_momentum_before(dM, dr, rT1, C["MOM_LOOKBACK"]) if r1 >= 0 else (-1, "")
     j2, why2 = find_momentum_before(dM, dr, rT2, C["MOM_LOOKBACK"]) if r2 >= 0 else (-1, "")
     if j1 < 0 and j2 < 0:
-        return None, (f"H1 EMA 50 {k1}, {why1}" if r1 >= 0 else f"M30 EMA 50 {k2}, {why2}")
+        return None, (f"H1 EMA 50 {k1} ({when(rT1, T)}), {why1}" if r1 >= 0
+                      else f"M30 EMA 50 {k2} ({when(rT2, T)}), {why2}")
     if C["MOM_EMA_VS_MID"] and dM.valid(1) and dM.ema[1] > 0 and \
             ((dr == 1 and dM.ema[1] >= dM.mid[1]) or (dr == -1 and dM.ema[1] <= dM.mid[1])):
         return None, f"H4 EMA 50 is {'above' if dr == 1 else 'below'} Mid BB, {'buy' if dr == 1 else 'sell'} skipped"
@@ -373,9 +389,12 @@ def evaluate(m15, T, state):
     done2 = okR2 and str(rT2) == state.get("last_rej")
     if (okR1 or okR2) and (not okR1 or done1) and (not okR2 or done2):
         at = state.get("last_alert_t", "")
-        return None, "alert already sent for this setup" + (f" ({at})" if at else "") + ", waiting for a new rejection"
+        return None, "alert already sent for this setup" + (f" ({when(at, T)})" if at else "") + \
+            ", waiting for a new rejection"
     if not csakE2 and not csakE1:
-        return None, ("H1" if okR1 and not done1 else "M30") + " EMA 50 rejection + H4 momentum, waiting for CSAK"
+        w1 = okR1 and not done1
+        return None, (f"H1 EMA 50 rejection ({when(rT1, T)})" if w1 else f"M30 EMA 50 rejection ({when(rT2, T)})") + \
+            " + H4 momentum, waiting for CSAK"
 
     useR1 = csakE2 or e1R1
     j = j1 if useR1 else j2
@@ -856,8 +875,21 @@ def run_live():
     # heartbeat every 4 hours (8 am, 12 pm, 4 pm, 8 pm, 12 am, 4 am Malaysia time)
     hb_key = f"{now_myt:%Y-%m-%d} {now_myt.hour:02d}"
     if now_myt.hour in CFG["HEARTBEAT_HOURS"] and state.get("heartbeat_slot") != hb_key:
-        lines = [f"{n}: {syms.get(n, {}).get('last_status', '-')}" for n in symbol_list()]
-        tg_send(f"FIZY BOT is alive (cloud scanner)  |  {now_myt:%H:%M} Malaysia\n" + "\n".join(lines)[:3500])
+        lines = []
+        for n in symbol_list():
+            s = syms.get(n, {})
+            line = f"{n}: {s.get('last_status', '-')}"
+            le = s.get("last_eval")
+            if le and (broker_now - pd.Timestamp(le)) > pd.Timedelta(minutes=30):
+                line += f"  [old status, last checked {broker_to_myt(le):%d/%m %H:%M} MYT]"
+            lines.append(line)
+        msg = f"FIZY BOT is alive (cloud scanner)  |  {now_myt:%H:%M} Malaysia"
+        for line in lines:                 # Telegram limit is 4096 characters: split, never cut
+            if len(msg) + 1 + len(line) > 4000:
+                tg_send(msg)
+                msg = "(continued)"
+            msg += "\n" + line
+        tg_send(msg)
         state["heartbeat_slot"] = hb_key
     save_state(state)
 
