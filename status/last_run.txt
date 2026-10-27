@@ -1,4 +1,4 @@
-run (UTC): started 2026-10-27 16:15:02  finished 16:15:11  broker time: 2026-10-27 19:15
+run (UTC): started 2026-10-27 16:17:08  finished 16:17:14  broker time: 2026-10-27 19:17
 XAUUSD   deriv       5237  H4 sell trend, no H4 momentum in the last 10 candles
 EURUSD   deriv       5248  H4 sell momentum (08:00 chart time, 11h 15m ago), waiting for retrace to H4 MA5/10 High
 GBPUSD   deriv       5248  H4 buy trend, no H4 momentum in the last 10 candles
@@ -29,4 +29,4 @@ CADJPY   deriv       4465  H4 buy trend, no H4 momentum in the last 10 candles
 CADCHF   deriv       5250  H4 buy trend, no H4 momentum in the last 10 candles
 CHFJPY   deriv       4465  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
 welcome telegram ok: True  example: None
-telegram token from GitHub secret: no  |  chat id from secret: no
+telegram token valid: True  |  from GitHub secret: no  |  chat id from secret: no
