@@ -1040,6 +1040,8 @@ def run_live():
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
+            f.write(f"telegram token from GitHub secret: {'yes' if os.environ.get('TG_TOKEN') else 'no'}"
+                    f"  |  chat id from secret: {'yes' if os.environ.get('TG_CHAT_ID') else 'no'}\n")
     except OSError:
         pass
     # daily heartbeat
