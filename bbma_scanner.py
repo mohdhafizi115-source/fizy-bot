@@ -75,6 +75,10 @@ CFG = {
     "ENTRY_TF2":      "30min",
     "ENTRY_TF":       "15min",
     "SKIP_MOM_CSAK":  True,          # skip a CSAK candle that already closes outside the BB
+    # Setup 2 "retrace": H4 trend + H4 momentum, price back to H4 MA5/10, then M30 / M15 CSAK
+    # (no H1, no EMA 50 rejection, no BB slope check)
+    "RETRACE_SETUP":  True,
+    "RT_MOM_LOOKBACK": 5,            # last N closed H4 candles to look for the momentum candle
     "SLOPE_FILTER":   True,          # BB must slope with the trade (Mid + Top BB up for buy, Mid + Low BB down for sell)
     "SLOPE_TF":       "4h",
     "SLOPE_BARS":     3,
@@ -467,6 +471,97 @@ def px(v):
     return f"{v:.{CUR['digits']}f}"
 
 
+#==================================================================
+# Setup 2: H4 momentum + retrace to H4 MA5/10 + CSAK (buy shown, sell mirrored)
+#   1. H4 trend: EMA 90 below EMA 50, and EMA 50 below Mid BB
+#   2. H4 momentum: a candle closed above Top BB within the last RT_MOM_LOOKBACK closed H4 candles
+#      (momentum the other way after it cancels)
+#   3. After that candle, price comes back to the H4 MA5/10 Low (low <= the higher of MA5 / MA10 Low)
+#   4. Then CSAK on M30 or M15 (same CSAK rule), at or after the retrace -> alert with the M15 chart
+#==================================================================
+def evaluate_retrace(m15, T, state):
+    C = CFG; B = C["BARS"]
+    tfs = {C["MOM_TF"], C["ENTRY_TF"], C["ENTRY_TF2"]}
+    D = {tf: BB(series_as_of(m15, T, tf, B), tf) for tf in tfs}
+    if any(D[tf].n < 120 for tf in tfs):
+        return None, "not enough history"
+    dM, dE, dE2 = D[C["MOM_TF"]], D[C["ENTRY_TF"]], D[C["ENTRY_TF2"]]
+    if not dM.valid(1) or dM.ema[1] <= 0 or dM.ema90[1] <= 0:
+        return None, "no H4 data"
+    e50, e90, mid = dM.ema[1], dM.ema90[1], dM.mid[1]
+    if e90 < e50 < mid:
+        dr = 1
+    elif mid < e50 < e90:
+        dr = -1
+    else:
+        return None, "H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order"
+    side = "buy" if dr == 1 else "sell"
+    j, why = find_momentum_before(dM, dr, None, C["RT_MOM_LOOKBACK"])
+    if j < 0:
+        return None, f"H4 {side} trend, {why}"
+    momT = dM.t[j]
+    # first H4 candle after the momentum that reaches the MA5/10 zone, then the exact M15 touch
+    touchT = None
+    for k in range(j - 1, -1, -1):
+        line = max(dM.ma5l[k], dM.ma10l[k]) if dr == 1 else min(dM.ma5h[k], dM.ma10h[k])
+        if line <= 0:
+            continue
+        hit = dM.l[k] <= line if dr == 1 else dM.h[k] >= line
+        if not hit:
+            continue
+        end = dM.t[k] + timedelta(hours=4)
+        for i in range(dE.n - 1, 0, -1):            # oldest -> newest closed M15 candles
+            if dE.t[i] < dM.t[k] or dE.t[i] >= end:
+                continue
+            if (dE.l[i] <= line) if dr == 1 else (dE.h[i] >= line):
+                touchT = dE.t[i]
+                break
+        if touchT is not None:
+            break
+    if touchT is None:
+        return None, f"H4 {side} momentum ({when(momT, T)}), waiting for retrace to H4 MA5/10 {'Low' if dr == 1 else 'High'}"
+    if str(momT) == state.get("rt_last_mom"):
+        return None, f"retrace alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)})"
+    csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr)
+    csakE1 = dE.t[1] >= touchT and is_csak(dE, dr)
+    if not csakE2 and not csakE1:
+        return None, (f"H4 {side} momentum ({when(momT, T)}) + retrace to MA5/10 ({when(touchT, T)}), "
+                      f"waiting for M30 / M15 CSAK")
+    cTF = C["ENTRY_TF2"] if csakE2 else C["ENTRY_TF"]
+    csakT = dE2.t[1] if csakE2 else dE.t[1]
+    entry = float(dE.o[0]) + (CUR["spread"] if dr == 1 else 0)
+    state["rt_last_mom"] = str(momT)
+    state["rt_last_alert_t"] = f"{csakT:%Y-%m-%d %H:%M}"
+    state["last_alert_t"] = state["rt_last_alert_t"]
+    sig = dict(setup="retrace", dir=dr, time=T, entry=entry, mom_t=momT, touch_t=touchT, csak_tf=cTF,
+               csak_t=csakT, data=dE, chart_tf=C["ENTRY_TF"])
+    return sig, "SIGNAL (retrace)"
+
+
+def evaluate_all(m15, T, state):
+    """Setup 1 (EMA 50 rejection) first; setup 2 (retrace) when setup 1 has no alert on this candle."""
+    sig, st1 = evaluate(m15, T, state)
+    if sig or not CFG["RETRACE_SETUP"]:
+        return sig, st1
+    sig2, st2 = evaluate_retrace(m15, T, state)
+    if sig2:
+        return sig2, st2
+    return None, f"{st1}  ||  retrace: {st2}"
+
+
+def message_retrace(sig):
+    side = "BUY" if sig["dir"] == 1 else "SELL"
+    sep = "=============================\n"
+    return (f"FIZY BOT | {CUR['name']} {side} (alert only)\n" + sep +
+            f"Setup: BBMA H4 momentum + retrace MA5/10 + CSAK\n"
+            f"Trend: H4 {'bullish' if sig['dir'] == 1 else 'bearish'} (EMA 90 {'below' if sig['dir'] == 1 else 'above'} EMA 50, "
+            f"EMA 50 {'below' if sig['dir'] == 1 else 'above'} Mid BB)\n"
+            f"H4 momentum: {sig['mom_t']:%Y-%m-%d %H:%M}\n"
+            f"Retrace to H4 MA5/10 {'Low' if sig['dir'] == 1 else 'High'}: {sig['touch_t']:%Y-%m-%d %H:%M}\n"
+            f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50\n" + sep +
+            f"Broker time: {sig['time']:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}")
+
+
 def message(sig):
     side = "BUY" if sig["dir"] == 1 else "SELL"
     myt = sig["time"]  # broker time
@@ -523,7 +618,8 @@ def chart_png(sig, bars=110):
         s.set_color("#2a2e36")
     ax.grid(color="#1c1f26", linewidth=0.6)
     side = "BUY" if sig["dir"] == 1 else "SELL"
-    ax.set_title(f"FIZY BOT  {CUR['name']} {TF_NAME[sig['csak_tf']]}  BBMA {side}",
+    ax.set_title(f"FIZY BOT  {CUR['name']} {TF_NAME[sig.get('chart_tf', sig['csak_tf'])]}  BBMA "
+                 f"{'retrace ' if sig.get('setup') == 'retrace' else ''}{side}",
                  color="#ffd700", fontsize=12, loc="left")
     leg = ax.legend(loc="upper left", fontsize=7, ncol=5, facecolor=bg, edgecolor="#2a2e36", labelcolor="#c8c8c8")
     buf = io.BytesIO()
@@ -801,10 +897,11 @@ def scan_symbol(name, st, broker_now):
     if last_eval is None:
         todo = todo[-1:]
     for T in todo:
-        sig, status = evaluate(m15, T, st)
+        sig, status = evaluate_all(m15, T, st)
         print(f"{name}  {T}  {status}")
         if sig:
-            ok = tg_send(message(sig), chart_png(sig))
+            text = message_retrace(sig) if sig.get("setup") == "retrace" else message(sig)
+            ok = tg_send(text, chart_png(sig))
             print("  telegram sent" if ok else "  telegram FAILED")
         st["last_eval"] = str(T)
         st["last_status"] = status
@@ -972,15 +1069,16 @@ def run_audit(since="2026-10-23 00:00"):
                         if t >= t_since)
             st, sigs = {}, []
             for T in ts:
-                sig, _ = evaluate(m15, T, st)
+                sig, _ = evaluate_all(m15, T, st)
                 if sig:
                     sigs.append(sig)
-            _, now_status = evaluate(m15, m15.index[-1], st)
+            _, now_status = evaluate_all(m15, m15.index[-1], st)
             lines.append(f"{name:8s} {len(sigs)} setup(s) | now: {now_status}")
             for g in sigs:
-                lines.append(f"    {'BUY ' if g['dir'] == 1 else 'SELL'} CSAK {TF_NAME[g['csak_tf']]} {g['csak_t']:%m-%d %H:%M}"
-                             f"  alert at {g['time']:%m-%d %H:%M}  rej {g['rej_tf']} {g['rej_t']:%m-%d %H:%M}"
-                             f"  H4 mom {g['mom_t']:%m-%d %H:%M}")
+                extra = (f"retrace {g['touch_t']:%m-%d %H:%M}" if g.get("setup") == "retrace"
+                         else f"rej {g['rej_tf']} {g['rej_t']:%m-%d %H:%M}")
+                lines.append(f"    {g.get('setup', 'rejection'):9s} {'BUY ' if g['dir'] == 1 else 'SELL'} CSAK {TF_NAME[g['csak_tf']]}"
+                             f" {g['csak_t']:%m-%d %H:%M}  alert at {g['time']:%m-%d %H:%M}  {extra}  H4 mom {g['mom_t']:%m-%d %H:%M}")
         except Exception as e:
             lines.append(f"{name:8s} error: {e}")
         print(lines[-1])
