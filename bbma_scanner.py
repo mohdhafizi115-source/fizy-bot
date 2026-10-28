@@ -1165,7 +1165,7 @@ def run_audit(since="2026-10-23 00:00"):
     out = os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "audit.txt")
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
     t_since = pd.Timestamp(since)
-    lines = [f"audit from {since} (broker time), rules: MOM_LOOKBACK={CFG['MOM_LOOKBACK']}, run {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC"]
+    lines = [f"audit from {since} (broker time), rules: RT_MOM_LOOKBACK={CFG['RT_MOM_LOOKBACK']}, run {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC"]
     for name in symbol_list():
         try:
             set_symbol(name)
