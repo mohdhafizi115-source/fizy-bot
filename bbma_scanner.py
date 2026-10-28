@@ -555,7 +555,8 @@ def evaluate_retrace(m15, T, state):
             state["_zone_sig"] = dict(setup="zone", dir=dr, time=T, entry=float(dE.o[0]), mom_t=momT,
                                       touch_t=touchT, data=dM, chart_tf=C["MOM_TF"], csak_tf=C["MOM_TF"])
     if str(momT) == state.get("rt_last_mom"):
-        return None, f"retrace alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)})"
+        return None, (f"CSAK alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)}), "
+                      f"waiting for a new H4 momentum")
     csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr)
     csakE1 = dE.t[1] >= touchT and is_csak(dE, dr)
     if not csakE2 and not csakE1:
