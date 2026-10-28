@@ -76,6 +76,7 @@ CFG = {
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "CSAK_MA510":     True,          # retrace setup: CSAK must also close beyond MA5/10 Low (sell) / High (buy)
     "FETCH_WORKERS":  6,             # parallel Deriv downloads per scan (1 = one by one)
     "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
     "ZONE_ALERT_MAX_AGE": 60,        # minutes; an older first touch is not alerted (e.g. after a restart)
@@ -298,6 +299,18 @@ def is_csak(d, dr):
     return brk
 
 
+def csak_ma510(d, dr):
+    """Retrace setup: the CSAK candle must also close beyond the MA5/10 of its own TF:
+    sell -> below both MA5 Low and MA10 Low, buy -> above both MA5 High and MA10 High."""
+    if not CFG["CSAK_MA510"]:
+        return True
+    if not d.valid(1) or d.ma10l[1] <= 0 or d.ma10h[1] <= 0:
+        return False
+    if dr == 1:
+        return d.c[1] > max(d.ma5h[1], d.ma10h[1])
+    return d.c[1] < min(d.ma5l[1], d.ma10l[1])
+
+
 def fresh_close(d, de):
     return d.n >= 2 and de.n >= 2 and d.t[1] + timedelta(minutes=TF_MIN[d.tf]) > de.t[1]
 
@@ -489,7 +502,8 @@ def px(v):
 #      (momentum the other way after it cancels)
 #   3. After that candle, price comes back to the H4 MA5/10 Low (low <= the higher of MA5 / MA10 Low);
 #      how many times it touches does not matter, the first touch starts the watch
-#   4. Then the first CSAK on M30 or M15 (whichever comes first, same CSAK rule) at or after the
+#   4. Then the first CSAK on M30 or M15 (whichever comes first; Mid BB + EMA 50, and the close also
+#      beyond MA5/10 Low for a sell / MA5/10 High for a buy, on the CSAK TF) at or after the
 #      first touch -> alert with the M15 chart. One alert per H4 momentum candle.
 #   5. Cancelled for good when price breaks the H4 EMA 50 the other way after the momentum (H4 candle
 #      closed below it for a buy / above for a sell, or the live H4 price there at an M15 close)
@@ -557,11 +571,11 @@ def evaluate_retrace(m15, T, state):
     if str(momT) == state.get("rt_last_mom"):
         return None, (f"CSAK alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)}), "
                       f"waiting for a new H4 momentum")
-    csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr)
-    csakE1 = dE.t[1] >= touchT and is_csak(dE, dr)
+    csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr) and csak_ma510(dE2, dr)
+    csakE1 = dE.t[1] >= touchT and is_csak(dE, dr) and csak_ma510(dE, dr)
     if not csakE2 and not csakE1:
         return None, (f"H4 {side} momentum ({when(momT, T)}) + retrace to MA5/10 ({when(touchT, T)}), "
-                      f"waiting for M30 / M15 CSAK")
+                      f"waiting for M30 / M15 CSAK (Mid BB + EMA 50 + MA5/10)")
     cTF = C["ENTRY_TF2"] if csakE2 else C["ENTRY_TF"]
     csakT = dE2.t[1] if csakE2 else dE.t[1]
     entry = float(dE.o[0]) + (CUR["spread"] if dr == 1 else 0)
@@ -609,7 +623,7 @@ def message_retrace(sig):
             f"EMA 50 {'below' if sig['dir'] == 1 else 'above'} Mid BB)\n"
             f"H4 momentum: {sig['mom_t']:%Y-%m-%d %H:%M}\n"
             f"Retrace to H4 MA5/10 {'Low' if sig['dir'] == 1 else 'High'}: {sig['touch_t']:%Y-%m-%d %H:%M}\n"
-            f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50\n" + sep +
+            f"CSAK: {TF_NAME[sig['csak_tf']]} candle broke Mid BB + EMA 50 + MA5/10 {'High' if sig['dir'] == 1 else 'Low'}\n" + sep +
             f"Broker time: {sig['time']:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}")
 
 
