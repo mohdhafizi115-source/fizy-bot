@@ -508,6 +508,9 @@ def px(v):
 #   5. Cancelled for good when price breaks the H4 EMA 50 the other way after the momentum (H4 candle
 #      closed below it for a buy / above for a sell, or the live H4 price there at an M15 close)
 #==================================================================
+RT_RULE = 2   # CSAK rule version; an alert sent under an older rule does not block a new one
+
+
 def evaluate_retrace(m15, T, state):
     C = CFG; B = C["BARS"]
     tfs = {C["MOM_TF"], C["ENTRY_TF"], C["ENTRY_TF2"]}
@@ -568,7 +571,7 @@ def evaluate_retrace(m15, T, state):
         if (T - touchT) <= pd.Timedelta(minutes=C["ZONE_ALERT_MAX_AGE"]):
             state["_zone_sig"] = dict(setup="zone", dir=dr, time=T, entry=float(dE.o[0]), mom_t=momT,
                                       touch_t=touchT, data=dM, chart_tf=C["MOM_TF"], csak_tf=C["MOM_TF"])
-    if str(momT) == state.get("rt_last_mom"):
+    if str(momT) == state.get("rt_last_mom") and state.get("rt_rule") == RT_RULE:
         return None, (f"CSAK alert already sent for this H4 momentum ({when(state.get('rt_last_alert_t', str(momT)), T)}), "
                       f"waiting for a new H4 momentum")
     csakE2 = fresh_close(dE2, dE) and dE2.t[1] >= touchT.floor("30min") and is_csak(dE2, dr) and csak_ma510(dE2, dr)
@@ -580,6 +583,7 @@ def evaluate_retrace(m15, T, state):
     csakT = dE2.t[1] if csakE2 else dE.t[1]
     entry = float(dE.o[0]) + (CUR["spread"] if dr == 1 else 0)
     state["rt_last_mom"] = str(momT)
+    state["rt_rule"] = RT_RULE
     state["rt_last_alert_t"] = f"{csakT:%Y-%m-%d %H:%M}"
     state["last_alert_t"] = state["rt_last_alert_t"]
     sig = dict(setup="retrace", dir=dr, time=T, entry=entry, mom_t=momT, touch_t=touchT, csak_tf=cTF,
