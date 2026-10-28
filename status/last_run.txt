@@ -1,32 +1,32 @@
-run (UTC): started 2026-10-28 02:30:02  finished 02:30:08  broker time: 2026-10-28 05:30
-XAUUSD   deriv       5274  H4 sell trend, no H4 momentum in the last 10 candles
-EURUSD   deriv       5289  H4 sell momentum (27/10 20:00 chart time, 9h 30m ago), waiting for retrace to H4 MA5/10 High
-GBPUSD   deriv       5289  H4 buy trend, no H4 momentum in the last 10 candles
-AUDUSD   deriv       5290  H4 buy momentum (00:00 chart time, 5h 30m ago), waiting for retrace to H4 MA5/10 Low
-NZDUSD   deriv       5290  H4 buy trend, no H4 momentum in the last 10 candles
-USDJPY   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-USDCHF   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-USDCAD   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-EURGBP   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-EURJPY   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-EURCHF   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-EURAUD   deriv       5290  H4 sell momentum (00:00 chart time, 5h 30m ago), waiting for retrace to H4 MA5/10 High
-EURCAD   deriv       5290  H4 sell trend, no H4 momentum in the last 10 candles
-EURNZD   deriv       5290  H4 sell momentum (27/10 12:00 chart time, 17h 30m ago) + retrace to MA5/10 (03:45 chart time, 1h 45m ago), waiting for M30 / M15 CSAK
-GBPJPY   deriv       4505  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
-GBPCHF   deriv       5290  H4 buy trend, no H4 momentum in the last 10 candles
-GBPAUD   deriv       5291  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
-GBPCAD   deriv       5291  H4 sell trend, no H4 momentum in the last 10 candles
-GBPNZD   deriv       5291  H4 sell momentum (27/10 12:00 chart time, 17h 30m ago) + retrace to MA5/10 (27/10 20:00 chart time, 9h 30m ago), waiting for M30 / M15 CSAK
-AUDJPY   deriv       5291  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
-AUDCHF   deriv       5291  H4 buy trend, no H4 momentum in the last 10 candles
-AUDCAD   deriv       5291  H4 sell trend, no H4 momentum in the last 10 candles
-AUDNZD   deriv       4506  H4 sell trend, no H4 momentum in the last 10 candles
-NZDJPY   deriv       5291  H4 buy momentum (27/10 12:00 chart time, 17h 30m ago) + retrace to MA5/10 (03:15 chart time, 2h 15m ago), waiting for M30 / M15 CSAK
-NZDCHF   deriv       5291  H4 buy trend, no H4 momentum in the last 10 candles
-NZDCAD   deriv       5291  H4 sell trend, no H4 momentum in the last 10 candles
-CADJPY   deriv       4506  H4 buy trend, no H4 momentum in the last 10 candles
-CADCHF   deriv       5291  H4 buy trend, no H4 momentum in the last 10 candles
-CHFJPY   deriv       4506  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
+run (UTC): started 2026-10-28 03:15:36  finished 03:15:42  broker time: 2026-10-28 06:15
+XAUUSD   deriv       5277  H4 sell trend, no H4 momentum in the last 10 candles
+EURUSD   deriv       5292  H4 sell momentum (27/10 20:00 chart time, 10h 15m ago), waiting for retrace to H4 MA5/10 High
+GBPUSD   deriv       5292  H4 buy trend, no H4 momentum in the last 10 candles
+AUDUSD   deriv       5293  H4 buy momentum (00:00 chart time, 6h 15m ago), waiting for retrace to H4 MA5/10 Low
+NZDUSD   deriv       5293  H4 buy trend, no H4 momentum in the last 10 candles
+USDJPY   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+USDCHF   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+USDCAD   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+EURGBP   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+EURJPY   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+EURCHF   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+EURAUD   deriv       5293  H4 sell momentum (00:00 chart time, 6h 15m ago), waiting for retrace to H4 MA5/10 High
+EURCAD   deriv       5293  H4 sell trend, no H4 momentum in the last 10 candles
+EURNZD   deriv       5293  H4 sell momentum (27/10 12:00 chart time, 18h 15m ago) + retrace to MA5/10 (03:45 chart time, 2h 30m ago), waiting for M30 / M15 CSAK
+GBPJPY   deriv       4508  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
+GBPCHF   deriv       5293  H4 buy trend, no H4 momentum in the last 10 candles
+GBPAUD   deriv       5294  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
+GBPCAD   deriv       5294  H4 sell trend, no H4 momentum in the last 10 candles
+GBPNZD   deriv       5294  H4 sell momentum (27/10 12:00 chart time, 18h 15m ago) + retrace to MA5/10 (27/10 20:00 chart time, 10h 15m ago), waiting for M30 / M15 CSAK
+AUDJPY   deriv       5294  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
+AUDCHF   deriv       5294  H4 buy trend, no H4 momentum in the last 10 candles
+AUDCAD   deriv       5294  H4 sell trend, no H4 momentum in the last 10 candles
+AUDNZD   deriv       4509  H4 sell trend, no H4 momentum in the last 10 candles
+NZDJPY   deriv       5294  H4 buy momentum (27/10 12:00 chart time, 18h 15m ago) + retrace to MA5/10 (03:15 chart time, 3h 00m ago), waiting for M30 / M15 CSAK
+NZDCHF   deriv       5294  H4 buy trend, no H4 momentum in the last 10 candles
+NZDCAD   deriv       5294  H4 sell trend, no H4 momentum in the last 10 candles
+CADJPY   deriv       4509  H4 buy trend, no H4 momentum in the last 10 candles
+CADCHF   deriv       5294  H4 buy trend, no H4 momentum in the last 10 candles
+CHFJPY   deriv       4509  H4 EMA 50 / EMA 90 / Mid BB not in buy or sell order
 welcome telegram ok: True  example: None
 telegram token valid: True  |  from GitHub secret: no  |  chat id from secret: no
