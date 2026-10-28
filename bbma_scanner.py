@@ -491,6 +491,8 @@ def px(v):
 #      how many times it touches does not matter, the first touch starts the watch
 #   4. Then the first CSAK on M30 or M15 (whichever comes first, same CSAK rule) at or after the
 #      first touch -> alert with the M15 chart. One alert per H4 momentum candle.
+#   5. Cancelled for good when price breaks the H4 EMA 50 the other way after the momentum (H4 candle
+#      closed below it for a buy / above for a sell, or the live H4 price there at an M15 close)
 #==================================================================
 def evaluate_retrace(m15, T, state):
     C = CFG; B = C["BARS"]
@@ -513,6 +515,20 @@ def evaluate_retrace(m15, T, state):
     if j < 0:
         return None, f"H4 {side} trend, {why}"
     momT = dM.t[j]
+    # setup cancelled for good once price breaks the H4 EMA 50 against the trade after the momentum:
+    # an H4 candle closed beyond it, or the forming H4 candle is beyond it at the last M15 close
+    brokeT = None
+    if state.get("rt_dead_mom") == str(momT):
+        brokeT = pd.Timestamp(state.get("rt_dead_t", str(momT)))
+    else:
+        for k in range(j - 1, -1, -1):
+            if dM.ema[k] > 0 and ((dM.c[k] < dM.ema[k]) if dr == 1 else (dM.c[k] > dM.ema[k])):
+                brokeT = dM.t[k] if k > 0 else T
+                state["rt_dead_mom"] = str(momT); state["rt_dead_t"] = str(brokeT)
+                break
+    if brokeT is not None:
+        return None, (f"H4 {side} setup cancelled: price broke H4 EMA 50 ({when(brokeT, T)}), "
+                      f"waiting for a new H4 momentum")
     # first H4 candle after the momentum that reaches the MA5/10 zone, then the exact M15 touch
     touchT = None
     for k in range(j - 1, -1, -1):
