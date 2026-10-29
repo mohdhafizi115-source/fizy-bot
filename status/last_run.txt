@@ -1,6 +1,6 @@
-run (UTC): started 2026-10-29 22:30:01  finished 22:30:02  broker time: 2026-10-30 01:30
-XAUUSD   deriv       5442  BBMA alerts off
+run (UTC): started 2026-10-29 23:15:26  finished 23:15:27  broker time: 2026-10-30 02:15
+XAUUSD   deriv       5445  BBMA alerts off
 XAUUSD London breakout: waiting for the Asian range (03:00-08:00)
 XAUUSD RSI2 pullback: watching
 welcome telegram ok: True  example: None
-telegram token valid: False  |  from GitHub secret: no  |  chat id from secret: no
+telegram token valid: True  |  from GitHub secret: no  |  chat id from secret: no
