@@ -84,6 +84,7 @@ CFG = {
     "LB_TP_R":        2.5,
     "LB_BE_R":        1.5,
     "LB_BUFFER":      0.10,          # entry this far beyond the range high / low
+    "LB_SQUEEZE_ATR": 0.6,           # trade only when the Asian range < this x daily ATR(14) (0 = off)
     "CSAK_MA510":     True,          # retrace setup: CSAK must also close beyond MA5/10 Low (sell) / High (buy)
     "FETCH_WORKERS":  6,             # parallel Deriv downloads per scan (1 = one by one)
     "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
@@ -987,7 +988,8 @@ def save_state(st):
 # XAUUSD London breakout (alerts only), same rules as the backtest:
 #   Asian range 03:00-08:00 chart time; at 08:00 buy stop above the high and sell stop below the
 #   low (OCO); SL at the other side of the range (max 0.6% of price); TP 2.5R; SL to entry at
-#   1.5R; close at 21:00. Trade only when the range is 0.30%-1.60% of price.
+#   1.5R; close at 21:00. Trade only when the range is 0.30%-1.60% of price and narrower than
+#   0.6 x the daily ATR(14) (squeeze filter, added 29 Oct after testing 12 indicator filters).
 #==================================================================
 def _lb_levels(hi, lo):
     C = CFG; buf = C["LB_BUFFER"]
@@ -1067,6 +1069,20 @@ def london_step(m15, lb, cur, send=None):
             lb.update(status="done", text="not enough Asian range data today"); return
         L = _lb_levels(float(rng.high.max()), float(rng.low.min()))
         lo_p, hi_p = C["LB_MIN_MAX_PCT"]
+        # squeeze filter: the Asian range must be narrow compared with the usual daily move
+        d1 = m15[m15.index < day].resample("1D").agg({"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+        d1 = d1[d1.index.dayofweek < 5]
+        tr_ = np.maximum(d1.high - d1.low, np.maximum(abs(d1.high - d1.close.shift()), abs(d1.low - d1.close.shift())))
+        datr = float(tr_.rolling(14).mean().iloc[-1]) if len(d1) >= 15 else float("nan")
+        L["ratio"] = (L["hi"] - L["lo"]) / datr if datr == datr and datr > 0 else float("nan")
+        sq = C["LB_SQUEEZE_ATR"]
+        if sq > 0 and L["ratio"] == L["ratio"] and L["ratio"] >= sq:
+            lb.update(status="done", text=f"no trade today: Asian range {L['ratio']:.2f}x daily ATR (needs < {sq:.2f}x)")
+            send(_lb_head("NO TRADE TODAY") +
+                 f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} = ${L['hi'] - L['lo']:.2f}\n"
+                 f"That is {L['ratio']:.2f}x the daily ATR(14) of ${datr:.2f} (needs < {sq:.2f}x): the range is already\n"
+                 f"too wide, so no orders today.\n" + _lb_foot(cur))
+            return
         if not (lo_p <= L["pct"] <= hi_p):
             lb.update(status="done", text=f"no trade today: Asian range {L['pct']:.2f}% (needs {lo_p:.2f}-{hi_p:.2f}%)")
             send(_lb_head("NO TRADE TODAY") +
@@ -1076,7 +1092,8 @@ def london_step(m15, lb, cur, send=None):
         lb.update(status="placed", L=L, last_t=str(t_open - pd.Timedelta(minutes=15)),
                   text=f"orders placed: BUY STOP {px(L['b_in'])} / SELL STOP {px(L['s_in'])}")
         send(_lb_head("PLACE ORDERS") +
-             f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} ({L['pct']:.2f}%)\n"
+             f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} ({L['pct']:.2f}%, "
+             + (f"{L['ratio']:.2f}x daily ATR)\n" if L["ratio"] == L["ratio"] else "daily ATR n/a)\n") +
              f"BUY STOP  {px(L['b_in'])} | SL {px(L['b_sl'])} | TP {px(L['b_tp'])} | BE at {px(L['b_be'])}\n"
              f"SELL STOP {px(L['s_in'])} | SL {px(L['s_sl'])} | TP {px(L['s_tp'])} | BE at {px(L['s_be'])}\n"
              f"Risk per 0.01 lot: buy ${L['b_risk']:.2f} / sell ${L['s_risk']:.2f}\n"
