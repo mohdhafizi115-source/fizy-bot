@@ -109,6 +109,12 @@ def snd(e, ztf="1h", trend=True, rr=2.0, dep=2.0, max_age=120, sl_buf=0.1, swap=
             live = keep
             if pos is not None:
                 dr = pos["dr"]
+                if pos["t"] == t and pos.get("seg") is None:
+                    # filled inside this segment: only the move AFTER the fill (fill price -> segment end)
+                    # can hit SL / TP, not the part of the segment before it
+                    pos["seg"] = 1
+                    fill_px = pos["entry"] - (sp[n] if dr == 1 else 0)   # bid-side price at the fill
+                    lo, hi = min(fill_px, b_), max(fill_px, b_)
                 if dr == 1:
                     ex = pos["sl"] if lo <= pos["sl"] else (pos["tp"] if hi >= pos["tp"] else None)
                 else:
