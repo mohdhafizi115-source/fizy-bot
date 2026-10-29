@@ -16,8 +16,11 @@ UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0"}
 
 def yahoo(name, interval, rng):
     ysym = "GC=F" if name.startswith("XAU") else name + "=X"
-    r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{ysym}",
-                     params={"interval": interval, "range": rng}, headers=UA, timeout=60)
+    if interval == "1d":     # explicit dates: range=max returns down-sampled candles
+        p = {"interval": "1d", "period1": 1072915200, "period2": int(time.time())}
+    else:
+        p = {"interval": interval, "range": rng}
+    r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{ysym}", params=p, headers=UA, timeout=60)
     res = r.json()["chart"]["result"][0]
     q = res["indicators"]["quote"][0]
     df = pd.DataFrame({"open": q["open"], "high": q["high"], "low": q["low"], "close": q["close"]},
@@ -53,7 +56,7 @@ daily = {}
 errs = []
 for name in S.symbol_list():
     d = None
-    for rng in ("max", "20y", "10y"):
+    for rng in ("max",):
         try:
             d = yahoo(name, "1d", rng); break
         except Exception as e:
