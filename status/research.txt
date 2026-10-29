@@ -1,35 +1,35 @@
-Market structure strategy on Yahoo H1 data, 2 years (spread 1 pip forex / 2 pips gold, swap ignored)
-ALL H4/H1 TP 2R: trades 1627, win 34%, total -11.5R, PF 0.99, max DD 81.3R, first half +40.8R / second half -52.3R, pairs positive 45%
-ALL H4/H1 TP swing: trades 1210, win 36%, total +5.4R, PF 1.01, max DD 46.7R, first half +18.6R / second half -13.2R, pairs positive 52%
-ALL H4/H1 TP 2R swing5: trades 1261, win 33%, total -27.0R, PF 0.97, max DD 79.3R, first half -4.8R / second half -22.2R, pairs positive 45%
-ALL D1/H4 TP 2R: trades 527, win 31%, total -15.0R, PF 0.96, max DD 54.8R, first half +6.5R / second half -21.5R, pairs positive 48%
+SnD zone strategy on Yahoo H1 data, 2 years (spread 1 pip forex / 2 pips gold, swap ignored)
+ALL A H1 zones, H4 trend, 2R, dep 2, legout 1.5: trades 2783, win 41%, total +594.0R, PF 1.36, max DD 32.0R, PF first half 1.39 / second half 1.33, forex pairs positive 86%
+ALL B H1 zones, no trend, 1.5R, dep 3, legout 1.2: trades 6992, win 50%, total +1761.5R, PF 1.51, max DD 23.5R, PF first half 1.53 / second half 1.49, forex pairs positive 93%
+ALL C H1 zones, H4 trend, 1.5R, dep 2, legout 1.2: trades 4789, win 51%, total +1293.0R, PF 1.55, max DD 15.5R, PF first half 1.55 / second half 1.55, forex pairs positive 93%
+ALL D H4 zones, H4 trend, 2R, dep 2, legout 1.5: trades 1110, win 36%, total +93.0R, PF 1.13, max DD 32.0R, PF first half 1.26 / second half 1.02, forex pairs positive 64%
 
-XAUUSD  13737 H1 candles 2024-06-03..2026-10-23 | H4/H1 TP 2R: n=80 R=+18.6 PF=1.40 | H4/H1 TP swing: n=59 R=+12.6 PF=1.37 | H4/H1 TP 2R swing5: n=61 R=+20.1 PF=1.59 | D1/H4 TP 2R: n=13 R=+33.3 PF=6.54 |
-EURUSD  17265 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=43 R=+13.8 PF=1.57 | H4/H1 TP swing: n=38 R=+10.8 PF=1.54 | H4/H1 TP 2R swing5: n=32 R=+2.5 PF=1.12 | D1/H4 TP 2R: n=17 R=+3.8 PF=1.38 |
-GBPUSD  17268 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=45 R=+12.7 PF=1.49 | H4/H1 TP swing: n=37 R=-2.3 PF=0.92 | H4/H1 TP 2R swing5: n=39 R=+5.2 PF=1.22 | D1/H4 TP 2R: n=16 R=-4.0 PF=0.67 |
-AUDUSD  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=34 R=-11.7 PF=0.55 | H4/H1 TP swing: n=28 R=-11.4 PF=0.46 | H4/H1 TP 2R swing5: n=27 R=+2.1 PF=1.13 | D1/H4 TP 2R: n=17 R=-2.5 PF=0.79 |
-NZDUSD  17333 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=24 R=-1.4 PF=0.92 | H4/H1 TP swing: n=21 R=+8.8 PF=1.68 | H4/H1 TP 2R swing5: n=22 R=+4.5 PF=1.35 | D1/H4 TP 2R: n=11 R=+1.1 PF=1.16 |
-USDJPY  17169 H1 candles 2024-01-08..2026-10-23 | H4/H1 TP 2R: n=100 R=-8.0 PF=0.88 | H4/H1 TP swing: n=71 R=+16.9 PF=1.42 | H4/H1 TP 2R swing5: n=55 R=-1.4 PF=0.96 | D1/H4 TP 2R: n=22 R=+1.8 PF=1.13 |
-USDCHF  17201 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=44 R=-3.8 PF=0.87 | H4/H1 TP swing: n=38 R=+1.7 PF=1.07 | H4/H1 TP 2R swing5: n=33 R=+15.9 PF=1.99 | D1/H4 TP 2R: n=16 R=+5.1 PF=1.56 |
-USDCAD  17335 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=36 R=-0.7 PF=0.97 | H4/H1 TP swing: n=31 R=-1.5 PF=0.93 | H4/H1 TP 2R swing5: n=28 R=+5.1 PF=1.30 | D1/H4 TP 2R: n=15 R=+3.1 PF=1.34 |
-EURGBP  17288 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=23 R=-11.0 PF=0.42 | H4/H1 TP swing: n=20 R=-8.3 PF=0.48 | H4/H1 TP 2R swing5: n=22 R=-10.1 PF=0.44 | D1/H4 TP 2R: n=13 R=-7.1 PF=0.36 |
-EURJPY  17274 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=102 R=-4.6 PF=0.93 | H4/H1 TP swing: n=59 R=+11.3 PF=1.35 | H4/H1 TP 2R swing5: n=58 R=-10.8 PF=0.74 | D1/H4 TP 2R: n=17 R=+3.8 PF=1.38 |
-EURCHF  17274 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=28 R=+15.7 PF=2.20 | H4/H1 TP swing: n=21 R=+6.0 PF=1.50 | H4/H1 TP 2R swing5: n=24 R=-3.8 PF=0.77 | D1/H4 TP 2R: n=9 R=+8.9 PF=3.97 |
-EURAUD  17282 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=48 R=-6.5 PF=0.81 | H4/H1 TP swing: n=40 R=+3.8 PF=1.16 | H4/H1 TP 2R swing5: n=40 R=-1.6 PF=0.94 | D1/H4 TP 2R: n=19 R=-7.1 PF=0.53 |
-EURCAD  17285 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=43 R=-4.5 PF=0.85 | H4/H1 TP swing: n=41 R=-5.6 PF=0.81 | H4/H1 TP 2R swing5: n=38 R=-14.5 PF=0.52 | D1/H4 TP 2R: n=12 R=+2.5 PF=1.35 |
-EURNZD  17284 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=73 R=+3.0 PF=1.06 | H4/H1 TP swing: n=58 R=+0.6 PF=1.02 | H4/H1 TP 2R swing5: n=60 R=-17.1 PF=0.64 | D1/H4 TP 2R: n=22 R=-13.3 PF=0.30 |
-GBPJPY  17270 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=99 R=+7.7 PF=1.12 | H4/H1 TP swing: n=59 R=+6.3 PF=1.18 | H4/H1 TP 2R swing5: n=75 R=+16.5 PF=1.37 | D1/H4 TP 2R: n=28 R=-7.1 PF=0.66 |
-GBPCHF  17273 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=42 R=+5.1 PF=1.20 | H4/H1 TP swing: n=37 R=+9.6 PF=1.48 | H4/H1 TP 2R swing5: n=34 R=-2.0 PF=0.91 | D1/H4 TP 2R: n=18 R=-6.1 PF=0.56 |
-GBPAUD  17323 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=49 R=-4.5 PF=0.87 | H4/H1 TP swing: n=40 R=-5.0 PF=0.82 | H4/H1 TP 2R swing5: n=51 R=-6.3 PF=0.83 | D1/H4 TP 2R: n=24 R=-12.2 PF=0.39 |
-GBPCAD  17325 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=52 R=+3.3 PF=1.10 | H4/H1 TP swing: n=46 R=+9.0 PF=1.33 | H4/H1 TP 2R swing5: n=43 R=-2.1 PF=0.93 | D1/H4 TP 2R: n=18 R=-3.1 PF=0.76 |
-GBPNZD  17322 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=67 R=+1.9 PF=1.04 | H4/H1 TP swing: n=49 R=+12.9 PF=1.44 | H4/H1 TP 2R swing5: n=47 R=+13.7 PF=1.51 | D1/H4 TP 2R: n=18 R=-12.0 PF=0.25 |
-AUDJPY  17276 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=107 R=-17.0 PF=0.78 | H4/H1 TP swing: n=68 R=-15.6 PF=0.67 | H4/H1 TP 2R swing5: n=68 R=-3.7 PF=0.92 | D1/H4 TP 2R: n=31 R=+10.3 PF=1.60 |
-AUDCHF  17319 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=28 R=-19.4 PF=0.23 | H4/H1 TP swing: n=21 R=-12.4 PF=0.27 | H4/H1 TP 2R swing5: n=25 R=-10.3 PF=0.49 | D1/H4 TP 2R: n=16 R=-1.3 PF=0.89 |
-AUDCAD  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=32 R=+12.2 PF=1.72 | H4/H1 TP swing: n=27 R=+3.9 PF=1.26 | H4/H1 TP 2R swing5: n=32 R=+3.3 PF=1.17 | D1/H4 TP 2R: n=22 R=-0.9 PF=0.94 |
-AUDNZD  17330 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=39 R=+0.3 PF=1.01 | H4/H1 TP swing: n=33 R=-15.8 PF=0.39 | H4/H1 TP 2R swing5: n=35 R=-14.0 PF=0.50 | D1/H4 TP 2R: n=20 R=+0.9 PF=1.07 |
-NZDJPY  17275 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=101 R=-7.0 PF=0.90 | H4/H1 TP swing: n=65 R=-10.1 PF=0.78 | H4/H1 TP 2R swing5: n=79 R=-7.8 PF=0.86 | D1/H4 TP 2R: n=25 R=+1.2 PF=1.08 |
-NZDCHF  17331 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=37 R=+7.0 PF=1.32 | H4/H1 TP swing: n=29 R=+3.8 PF=1.20 | H4/H1 TP 2R swing5: n=35 R=+6.4 PF=1.30 | D1/H4 TP 2R: n=21 R=-15.5 PF=0.18 |
-NZDCAD  17329 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=23 R=-5.4 PF=0.68 | H4/H1 TP swing: n=19 R=-0.4 PF=0.97 | H4/H1 TP 2R swing5: n=20 R=-8.4 PF=0.47 | D1/H4 TP 2R: n=15 R=-3.1 PF=0.72 |
-CADJPY  17276 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=97 R=-9.1 PF=0.86 | H4/H1 TP swing: n=57 R=-13.6 PF=0.67 | H4/H1 TP 2R swing5: n=67 R=+9.5 PF=1.23 | D1/H4 TP 2R: n=16 R=+5.0 PF=1.55 |
-CADCHF  17284 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=30 R=-0.1 PF=0.99 | H4/H1 TP swing: n=31 R=-5.7 PF=0.72 | H4/H1 TP 2R swing5: n=33 R=-18.3 PF=0.35 | D1/H4 TP 2R: n=15 R=-3.3 PF=0.70 |
-CHFJPY  17267 H1 candles 2024-01-08..2026-10-24 | H4/H1 TP 2R: n=101 R=+1.9 PF=1.03 | H4/H1 TP swing: n=67 R=-5.0 PF=0.89 | H4/H1 TP 2R swing5: n=78 R=+0.3 PF=1.01 | D1/H4 TP 2R: n=21 R=+2.9 PF=1.22 |
+XAUUSD  13725 H1 2024-06-07..2026-10-29 | A: n=92 R=+30.0 PF=1.59 | B: n=261 R=+95.0 PF=1.81 | C: n=152 R=+60.0 PF=1.90 | D: n=46 R=+7.0 PF=1.25 |
+EURUSD  17250 H1 2024-01-12..2026-10-29 | A: n=124 R=-16.0 PF=0.82 | B: n=288 R=+27.0 PF=1.17 | C: n=187 R=-2.0 PF=0.98 | D: n=46 R=+7.0 PF=1.25 |
+GBPUSD  17253 H1 2024-01-12..2026-10-29 | A: n=137 R=-11.0 PF=0.88 | B: n=301 R=-29.0 PF=0.85 | C: n=204 R=-21.5 PF=0.84 | D: n=42 R=-9.0 PF=0.71 |
+AUDUSD  17316 H1 2024-01-12..2026-10-29 | A: n=148 R=+11.0 PF=1.12 | B: n=354 R=+13.5 PF=1.07 | C: n=247 R=+11.5 PF=1.08 | D: n=48 R=+0.0 PF=1.00 |
+NZDUSD  17318 H1 2024-01-12..2026-10-29 | A: n=151 R=+0.0 PF=1.00 | B: n=401 R=-28.0 PF=0.89 | C: n=261 R=+6.5 PF=1.04 | D: n=45 R=-9.0 PF=0.73 |
+USDJPY  17154 H1 2024-01-12..2026-10-29 | A: n=133 R=+17.0 PF=1.21 | B: n=340 R=+97.5 PF=1.59 | C: n=232 R=+61.5 PF=1.54 | D: n=41 R=+15.0 PF=1.68 |
+USDCHF  17186 H1 2024-01-12..2026-10-29 | A: n=95 R=+26.0 PF=1.48 | B: n=282 R=+41.0 PF=1.27 | C: n=185 R=+58.5 PF=1.67 | D: n=33 R=+3.0 PF=1.14 |
+USDCAD  17320 H1 2024-01-12..2026-10-29 | A: n=71 R=+46.0 PF=2.44 | B: n=147 R=+59.0 PF=1.92 | C: n=102 R=+52.5 PF=2.31 | D: n=29 R=+1.0 PF=1.05 |
+EURGBP  17273 H1 2024-01-12..2026-10-29 | A: n=87 R=+18.0 PF=1.35 | B: n=195 R=+32.5 PF=1.31 | C: n=133 R=+27.0 PF=1.39 | D: n=49 R=+11.0 PF=1.38 |
+EURJPY  17259 H1 2024-01-12..2026-10-29 | A: n=124 R=+32.0 PF=1.44 | B: n=326 R=+83.5 PF=1.52 | C: n=216 R=+56.5 PF=1.53 | D: n=46 R=+2.0 PF=1.07 |
+EURCHF  17259 H1 2024-01-12..2026-10-29 | A: n=46 R=+0.0 PF=1.00 | B: n=99 R=+42.5 PF=2.01 | C: n=78 R=+36.0 PF=2.12 | D: n=30 R=+15.0 PF=2.00 |
+EURAUD  17267 H1 2024-01-12..2026-10-29 | A: n=101 R=+37.0 PF=1.67 | B: n=283 R=+124.5 PF=2.04 | C: n=195 R=+90.0 PF=2.11 | D: n=43 R=+2.0 PF=1.07 |
+EURCAD  17270 H1 2024-01-12..2026-10-29 | A: n=70 R=+2.0 PF=1.04 | B: n=156 R=+34.0 PF=1.42 | C: n=118 R=+34.5 PF=1.61 | D: n=54 R=+12.0 PF=1.38 |
+EURNZD  17269 H1 2024-01-12..2026-10-29 | A: n=105 R=+62.0 PF=2.27 | B: n=267 R=+130.0 PF=2.20 | C: n=208 R=+101.5 PF=2.21 | D: n=44 R=-2.0 PF=0.93 |
+GBPJPY  17255 H1 2024-01-12..2026-10-29 | A: n=122 R=+16.0 PF=1.21 | B: n=312 R=+75.5 PF=1.48 | C: n=203 R=+37.0 PF=1.35 | D: n=48 R=-6.0 PF=0.82 |
+GBPCHF  17258 H1 2024-01-12..2026-10-29 | A: n=52 R=+2.0 PF=1.06 | B: n=146 R=+66.5 PF=2.09 | C: n=94 R=+48.5 PF=2.31 | D: n=44 R=+4.0 PF=1.14 |
+GBPAUD  17308 H1 2024-01-12..2026-10-29 | A: n=125 R=+37.0 PF=1.52 | B: n=302 R=+97.5 PF=1.69 | C: n=214 R=+96.0 PF=2.07 | D: n=35 R=+1.0 PF=1.04 |
+GBPCAD  17310 H1 2024-01-12..2026-10-29 | A: n=92 R=+37.0 PF=1.76 | B: n=217 R=+48.0 PF=1.43 | C: n=143 R=+37.0 PF=1.52 | D: n=45 R=-3.0 PF=0.90 |
+GBPNZD  17307 H1 2024-01-12..2026-10-29 | A: n=101 R=+22.0 PF=1.37 | B: n=274 R=+93.5 PF=1.74 | C: n=198 R=+59.5 PF=1.63 | D: n=30 R=+12.0 PF=1.75 |
+AUDJPY  17261 H1 2024-01-12..2026-10-29 | A: n=127 R=+46.0 PF=1.67 | B: n=320 R=+91.5 PF=1.59 | C: n=212 R=+50.0 PF=1.47 | D: n=45 R=-9.0 PF=0.73 |
+AUDCHF  17304 H1 2024-01-12..2026-10-29 | A: n=32 R=+4.0 PF=1.20 | B: n=70 R=+39.5 PF=2.52 | C: n=49 R=+26.0 PF=2.37 | D: n=18 R=+0.0 PF=1.00 |
+AUDCAD  17316 H1 2024-01-12..2026-10-29 | A: n=33 R=+18.0 PF=2.12 | B: n=72 R=+43.0 PF=2.65 | C: n=48 R=+24.5 PF=2.29 | D: n=24 R=+3.0 PF=1.20 |
+AUDNZD  17315 H1 2024-01-12..2026-10-29 | A: n=46 R=+19.0 PF=1.79 | B: n=162 R=+68.0 PF=1.97 | C: n=94 R=+35.5 PF=1.85 | D: n=17 R=+19.0 PF=4.80 |
+NZDJPY  17260 H1 2024-01-12..2026-10-29 | A: n=125 R=+30.0 PF=1.41 | B: n=320 R=+69.0 PF=1.42 | C: n=231 R=+48.5 PF=1.41 | D: n=48 R=-3.0 PF=0.91 |
+NZDCHF  17316 H1 2024-01-12..2026-10-29 | A: n=77 R=+16.0 PF=1.35 | B: n=211 R=+90.5 PF=2.01 | C: n=156 R=+53.0 PF=1.74 | D: n=15 R=+9.0 PF=2.29 |
+NZDCAD  17314 H1 2024-01-12..2026-10-29 | A: n=94 R=+38.0 PF=1.76 | B: n=245 R=+64.0 PF=1.53 | C: n=183 R=+67.0 PF=1.81 | D: n=35 R=+13.0 PF=1.68 |
+CADJPY  17261 H1 2024-01-12..2026-10-29 | A: n=115 R=+7.0 PF=1.09 | B: n=294 R=+72.5 PF=1.49 | C: n=197 R=+45.0 PF=1.45 | D: n=43 R=+2.0 PF=1.07 |
+CADCHF  17269 H1 2024-01-12..2026-10-29 | A: n=20 R=+15.0 PF=2.88 | B: n=42 R=+30.5 PF=3.35 | C: n=31 R=+21.0 PF=3.10 | D: n=24 R=-6.0 PF=0.67 |
+CHFJPY  17252 H1 2024-01-12..2026-10-29 | A: n=138 R=+33.0 PF=1.41 | B: n=305 R=+89.0 PF=1.61 | C: n=218 R=+72.0 PF=1.71 | D: n=43 R=+2.0 PF=1.07 |
