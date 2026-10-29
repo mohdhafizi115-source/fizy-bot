@@ -1,52 +1,46 @@
 Evidence-based strategy tests (Yahoo data)
 1. GOLD HOUR-OF-DAY (GC=F hourly, 2 years, broker time = New York + 7), average $ move per hour
   00:00  mean  +0.76  t +1.00  n    7  | 1st half  +0.00  2nd half  +0.88
-  01:00  mean  +0.94  t +1.85  n  592  | 1st half  -0.16  2nd half  +2.04
-  02:00  mean  +0.17  t +0.44  n  591  | 1st half  +0.07  2nd half  +0.28
-  03:00  mean  +0.84  t +1.50  n  593  | 1st half  +0.12  2nd half  +1.56
-  04:00  mean  -0.17  t -0.27  n  593  | 1st half  +0.26  2nd half  -0.60
-  05:00  mean  -0.17  t -0.41  n  593  | 1st half  +0.16  2nd half  -0.50
-  06:00  mean  +0.19  t +0.65  n  593  | 1st half  -0.16  2nd half  +0.55
-  07:00  mean  +0.29  t +0.79  n  596  | 1st half  +0.24  2nd half  +0.33
-  08:00  mean  -0.70  t -1.51  n  596  | 1st half  -0.33  2nd half  -1.07
-  09:00  mean  +0.95  t +2.27  n  595  | 1st half  +0.23  2nd half  +1.67
-  10:00  mean  +0.53  t +1.19  n  596  | 1st half  +1.00  2nd half  +0.05
-  11:00  mean  -0.41  t -0.90  n  596  | 1st half  +0.43  2nd half  -1.24
-  12:00  mean  -0.24  t -0.64  n  598  | 1st half  +0.28  2nd half  -0.75
-  13:00  mean  +0.32  t +0.84  n  598  | 1st half  +0.29  2nd half  +0.34
-  14:00  mean  +0.85  t +1.83  n  598  | 1st half  +0.27  2nd half  +1.43
-  15:00  mean  +0.21  t +0.31  n  599  | 1st half  +0.15  2nd half  +0.27
-  16:00  mean  -0.49  t -0.73  n  603  | 1st half  -0.39  2nd half  -0.59
-  17:00  mean  +0.07  t +0.09  n  603  | 1st half  +0.78  2nd half  -0.64
-  18:00  mean  +0.17  t +0.31  n  602  | 1st half  -0.07  2nd half  +0.40
-  19:00  mean  -0.22  t -0.54  n  602  | 1st half  +0.34  2nd half  -0.77
-  20:00  mean  +0.05  t +0.12  n  602  | 1st half  -0.10  2nd half  +0.19
-  21:00  mean  -0.69  t -1.47  n  596  | 1st half  -0.01  2nd half  -1.36
-  22:00  mean  +0.78  t +1.73  n  594  | 1st half  +0.45  2nd half  +1.11
-  23:00  mean  +0.27  t +0.75  n  594  | 1st half  +1.03  2nd half  -0.48
+  01:00  mean  +0.95  t +1.87  n  589  | 1st half  -0.15  2nd half  +2.05
+  02:00  mean  +0.16  t +0.40  n  587  | 1st half  +0.10  2nd half  +0.23
+  03:00  mean  +0.88  t +1.56  n  589  | 1st half  +0.07  2nd half  +1.69
+  04:00  mean  -0.11  t -0.17  n  590  | 1st half  +0.23  2nd half  -0.45
+  05:00  mean  -0.18  t -0.43  n  590  | 1st half  +0.17  2nd half  -0.53
+  06:00  mean  +0.20  t +0.66  n  590  | 1st half  -0.18  2nd half  +0.58
+  07:00  mean  +0.28  t +0.76  n  593  | 1st half  +0.21  2nd half  +0.34
+  08:00  mean  -0.69  t -1.49  n  593  | 1st half  -0.31  2nd half  -1.08
+  09:00  mean  +0.96  t +2.31  n  593  | 1st half  +0.25  2nd half  +1.68
+  10:00  mean  +0.52  t +1.18  n  594  | 1st half  +0.99  2nd half  +0.05
+  11:00  mean  -0.44  t -0.97  n  594  | 1st half  +0.45  2nd half  -1.33
+  12:00  mean  -0.22  t -0.60  n  595  | 1st half  +0.27  2nd half  -0.71
+  13:00  mean  +0.34  t +0.88  n  596  | 1st half  +0.31  2nd half  +0.36
+  14:00  mean  +0.84  t +1.80  n  596  | 1st half  +0.25  2nd half  +1.42
+  15:00  mean  +0.11  t +0.17  n  597  | 1st half  +0.15  2nd half  +0.08
+  16:00  mean  -0.45  t -0.67  n  601  | 1st half  -0.37  2nd half  -0.53
+  17:00  mean  +0.08  t +0.10  n  601  | 1st half  +0.76  2nd half  -0.60
+  18:00  mean  +0.17  t +0.31  n  599  | 1st half  -0.07  2nd half  +0.40
+  19:00  mean  -0.16  t -0.40  n  599  | 1st half  +0.35  2nd half  -0.68
+  20:00  mean  +0.04  t +0.12  n  599  | 1st half  -0.09  2nd half  +0.18
+  21:00  mean  -0.70  t -1.48  n  593  | 1st half  -0.01  2nd half  -1.39
+  22:00  mean  +0.77  t +1.70  n  591  | 1st half  +0.45  2nd half  +1.09
+  23:00  mean  +0.34  t +0.93  n  591  | 1st half  +1.04  2nd half  -0.36
   period 2024-06-07 .. 2026-10-29
 
-daily data: 0 markets
-  data note: XAUUSD: only 235 daily candles
-  data note: EURUSD: only 275 daily candles
-  data note: GBPUSD: only 275 daily candles
-  data note: AUDUSD: only 246 daily candles
-  data note: NZDUSD: only 275 daily candles
-  data note: USDJPY: only 275 daily candles
-  data note: USDCHF: only 275 daily candles
-  data note: USDCAD: only 275 daily candles
-  data note: EURGBP: only 275 daily candles
-  data note: EURJPY: only 275 daily candles
-  data note: EURCHF: only 275 daily candles
-  data note: EURAUD: only 275 daily candles
-  data note: EURCAD: only 275 daily candles
-  data note: EURNZD: only 275 daily candles
-  data note: GBPJPY: only 275 daily candles
+daily data: 29 markets, from 2004-01-01
 
 2. DAILY DONCHIAN 55/20 TREND FOLLOWING (per trade, R = 2 x ATR20; spread included, swap not)
+  ALL: trades 2236, win 24%, total -266R, PF 0.83, avg -0.119R/trade, forex pairs positive 18%
+  by year (R): 2004:-31  2005:-55  2006:+15  2007:-5  2008:+115  2009:-13  2010:-42  2011:-53  2012:+41  2013:+18  2014:+22  2015:+7  2016:-19  2017:-26  2018:-40  2019:-53  2020:-3  2021:-7  2022:-17  2023:-47  2024:-46  2025:+10  2026:-39
+  2004-2014: trades 1209, total +13R, PF 1.02
+  2015-2020: trades 543, total -134R, PF 0.64
+  2021-2026: trades 484, total -145R, PF 0.61
+  GOLD only: trades 102, total +45.4R, PF 1.62; since 2021: +19.2R PF 2.51
+  per market (R): EURGBP -40, GBPCHF -34, NZDCAD -27, AUDCAD -24, EURCHF -23, CADCHF -22, GBPNZD -20, EURAUD -20, AUDJPY -19, EURJPY -18, AUDCHF -17, GBPAUD -16, USDCHF -13, AUDUSD -12, GBPCAD -12, AUDNZD -11, EURCAD -11, GBPJPY -10, NZDUSD -10, CHFJPY -8, NZDCHF -7, EURNZD -5, USDCAD -1, EURUSD +3, NZDJPY +6, GBPUSD +7, CADJPY +14, USDJPY +38, XAUUSD +45
 
 3. TIME-SERIES MOMENTUM PORTFOLIO (monthly, sign of 12-month return, equal volatility, 10% vol target per market)
-  error Only valid with DatetimeIndex, TimedeltaIndex or PeriodIndex, but got an instance of 'RangeIndex'
+  2005-12..2026-10: annual mean -0.5%, vol 4.4%, Sharpe -0.11
+  by year (%): 2005:-1.0  2006:-2.3  2007:+0.7  2008:+7.0  2009:-4.1  2010:+2.6  2011:-3.1  2012:-3.0  2013:+4.1  2014:-1.5  2015:+1.0  2016:-3.0  2017:-1.5  2018:-3.9  2019:-1.2  2020:+3.0  2021:-4.3  2022:+0.4  2023:+0.5  2024:-3.1  2025:+2.9  2026:-1.8
+  max drawdown -18.0%; positive years 9/22
 
 4. GOLD MONTH-OF-YEAR (GC=F daily, average monthly return %)
-  error 'XAUUSD'
+  1:+3.4% (68% up)  2:+1.4% (57% up)  3:+0.5% (48% up)  4:+1.2% (57% up)  5:-0.3% (43% up)  6:-0.7% (43% up)  7:+1.2% (61% up)  8:+2.3% (70% up)  9:+0.0% (43% up)  10:+0.4% (57% up)  11:+1.4% (59% up)  12:+0.9% (59% up)
