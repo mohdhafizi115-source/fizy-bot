@@ -1,35 +1,52 @@
-Fib + trend line strategy (BabyPips) on Yahoo H1 data, 2 years (spread 1 pip forex / 2 pips gold, swap ignored)
-ALL A L3, SL swing, TP 2R, no trend, leg 1.5 ATR: trades 3283, win 32%, total -198.8R, PF 0.91, max DD 299.0R, PF first half 1.02 / second half 0.81, forex pairs positive 29%
-ALL B L3, SL bounce bar, TP swing high, no trend, leg 1.5 ATR: trades 2728, win 31%, total -324.4R, PF 0.83, max DD 354.2R, PF first half 0.84 / second half 0.82, forex pairs positive 21%
-ALL C L3, SL bounce bar, TP swing high, H4 trend, leg 1.5 ATR: trades 1513, win 29%, total -234.9R, PF 0.78, max DD 252.8R, PF first half 0.84 / second half 0.72, forex pairs positive 29%
-ALL D L5, SL swing, TP 2R, no trend, leg 1.5 ATR: trades 2354, win 29%, total -302.9R, PF 0.82, max DD 314.3R, PF first half 0.88 / second half 0.76, forex pairs positive 18%
+Evidence-based strategy tests (Yahoo data)
+1. GOLD HOUR-OF-DAY (GC=F hourly, 2 years, broker time = New York + 7), average $ move per hour
+  00:00  mean  +0.76  t +1.00  n    7  | 1st half  +0.00  2nd half  +0.88
+  01:00  mean  +0.94  t +1.85  n  592  | 1st half  -0.16  2nd half  +2.04
+  02:00  mean  +0.17  t +0.44  n  591  | 1st half  +0.07  2nd half  +0.28
+  03:00  mean  +0.84  t +1.50  n  593  | 1st half  +0.12  2nd half  +1.56
+  04:00  mean  -0.17  t -0.27  n  593  | 1st half  +0.26  2nd half  -0.60
+  05:00  mean  -0.17  t -0.41  n  593  | 1st half  +0.16  2nd half  -0.50
+  06:00  mean  +0.19  t +0.65  n  593  | 1st half  -0.16  2nd half  +0.55
+  07:00  mean  +0.29  t +0.79  n  596  | 1st half  +0.24  2nd half  +0.33
+  08:00  mean  -0.70  t -1.51  n  596  | 1st half  -0.33  2nd half  -1.07
+  09:00  mean  +0.95  t +2.27  n  595  | 1st half  +0.23  2nd half  +1.67
+  10:00  mean  +0.53  t +1.19  n  596  | 1st half  +1.00  2nd half  +0.05
+  11:00  mean  -0.41  t -0.90  n  596  | 1st half  +0.43  2nd half  -1.24
+  12:00  mean  -0.24  t -0.64  n  598  | 1st half  +0.28  2nd half  -0.75
+  13:00  mean  +0.32  t +0.84  n  598  | 1st half  +0.29  2nd half  +0.34
+  14:00  mean  +0.85  t +1.83  n  598  | 1st half  +0.27  2nd half  +1.43
+  15:00  mean  +0.21  t +0.31  n  599  | 1st half  +0.15  2nd half  +0.27
+  16:00  mean  -0.49  t -0.73  n  603  | 1st half  -0.39  2nd half  -0.59
+  17:00  mean  +0.07  t +0.09  n  603  | 1st half  +0.78  2nd half  -0.64
+  18:00  mean  +0.17  t +0.31  n  602  | 1st half  -0.07  2nd half  +0.40
+  19:00  mean  -0.22  t -0.54  n  602  | 1st half  +0.34  2nd half  -0.77
+  20:00  mean  +0.05  t +0.12  n  602  | 1st half  -0.10  2nd half  +0.19
+  21:00  mean  -0.69  t -1.47  n  596  | 1st half  -0.01  2nd half  -1.36
+  22:00  mean  +0.78  t +1.73  n  594  | 1st half  +0.45  2nd half  +1.11
+  23:00  mean  +0.27  t +0.75  n  594  | 1st half  +1.03  2nd half  -0.48
+  period 2024-06-07 .. 2026-10-29
 
-XAUUSD  13662 H1 2024-06-07..2026-10-29 | A: n=90 R=-2.2 PF=0.96 | B: n=70 R=-8.2 PF=0.84 | C: n=39 R=-2.6 PF=0.90 | D: n=51 R=-3.1 PF=0.91 |
-EURUSD  17187 H1 2024-01-12..2026-10-29 | A: n=70 R=+8.7 PF=1.20 | B: n=56 R=-14.1 PF=0.68 | C: n=34 R=-3.7 PF=0.86 | D: n=60 R=-11.5 PF=0.74 |
-GBPUSD  17190 H1 2024-01-12..2026-10-29 | A: n=100 R=+11.6 PF=1.19 | B: n=83 R=-1.9 PF=0.97 | C: n=48 R=+1.1 PF=1.03 | D: n=74 R=-8.7 PF=0.83 |
-AUDUSD  17253 H1 2024-01-12..2026-10-29 | A: n=112 R=-18.1 PF=0.77 | B: n=97 R=-15.7 PF=0.76 | C: n=55 R=-13.4 PF=0.67 | D: n=62 R=-14.4 PF=0.69 |
-NZDUSD  17254 H1 2024-01-12..2026-10-29 | A: n=106 R=-13.4 PF=0.82 | B: n=95 R=-36.0 PF=0.50 | C: n=48 R=-23.7 PF=0.39 | D: n=77 R=-14.4 PF=0.74 |
-USDJPY  17092 H1 2024-01-12..2026-10-29 | A: n=98 R=-3.1 PF=0.95 | B: n=103 R=-11.9 PF=0.84 | C: n=55 R=-19.5 PF=0.54 | D: n=68 R=-0.2 PF=1.00 |
-USDCHF  17122 H1 2024-01-12..2026-10-29 | A: n=91 R=-12.3 PF=0.81 | B: n=71 R=-5.8 PF=0.87 | C: n=47 R=+9.1 PF=1.36 | D: n=73 R=-9.1 PF=0.82 |
-USDCAD  17255 H1 2024-01-12..2026-10-29 | A: n=98 R=+3.4 PF=1.05 | B: n=75 R=-3.6 PF=0.92 | C: n=42 R=-13.9 PF=0.55 | D: n=63 R=+1.3 PF=1.03 |
-EURGBP  17210 H1 2024-01-12..2026-10-29 | A: n=107 R=-3.0 PF=0.96 | B: n=84 R=-24.1 PF=0.61 | C: n=42 R=-10.4 PF=0.67 | D: n=77 R=-1.3 PF=0.98 |
-EURJPY  17196 H1 2024-01-12..2026-10-29 | A: n=98 R=+8.6 PF=1.14 | B: n=88 R=-25.6 PF=0.62 | C: n=45 R=-18.4 PF=0.49 | D: n=84 R=-22.0 PF=0.65 |
-EURCHF  17196 H1 2024-01-12..2026-10-29 | A: n=104 R=-5.6 PF=0.92 | B: n=77 R=-20.1 PF=0.63 | C: n=44 R=-8.5 PF=0.73 | D: n=87 R=-10.4 PF=0.83 |
-EURAUD  17204 H1 2024-01-12..2026-10-29 | A: n=143 R=-6.8 PF=0.93 | B: n=134 R=-1.1 PF=0.99 | C: n=77 R=+1.8 PF=1.04 | D: n=91 R=-13.6 PF=0.79 |
-EURCAD  17207 H1 2024-01-12..2026-10-29 | A: n=91 R=-26.0 PF=0.62 | B: n=70 R=-14.4 PF=0.70 | C: n=35 R=-15.1 PF=0.42 | D: n=70 R=+7.9 PF=1.18 |
-EURNZD  17206 H1 2024-01-12..2026-10-29 | A: n=142 R=-28.5 PF=0.73 | B: n=112 R=-19.8 PF=0.75 | C: n=67 R=-16.2 PF=0.67 | D: n=86 R=-13.6 PF=0.78 |
-GBPJPY  17192 H1 2024-01-12..2026-10-29 | A: n=127 R=-5.2 PF=0.94 | B: n=113 R=+15.4 PF=1.22 | C: n=65 R=-0.2 PF=1.00 | D: n=77 R=-23.4 PF=0.60 |
-GBPCHF  17195 H1 2024-01-12..2026-10-29 | A: n=131 R=-25.3 PF=0.73 | B: n=106 R=-38.0 PF=0.52 | C: n=57 R=-23.8 PF=0.46 | D: n=91 R=-0.9 PF=0.98 |
-GBPAUD  17245 H1 2024-01-12..2026-10-29 | A: n=136 R=-14.2 PF=0.85 | B: n=110 R=-9.8 PF=0.87 | C: n=66 R=-15.8 PF=0.68 | D: n=85 R=+1.7 PF=1.03 |
-GBPCAD  17247 H1 2024-01-12..2026-10-29 | A: n=113 R=+41.7 PF=1.68 | B: n=90 R=+19.1 PF=1.34 | C: n=47 R=+10.1 PF=1.34 | D: n=83 R=-3.0 PF=0.95 |
-GBPNZD  17244 H1 2024-01-12..2026-10-29 | A: n=121 R=+6.0 PF=1.08 | B: n=119 R=+8.5 PF=1.12 | C: n=66 R=+3.6 PF=1.09 | D: n=90 R=-8.8 PF=0.86 |
-AUDJPY  17197 H1 2024-01-12..2026-10-29 | A: n=125 R=-12.6 PF=0.86 | B: n=103 R=-31.3 PF=0.58 | C: n=48 R=-7.2 PF=0.78 | D: n=90 R=-4.3 PF=0.93 |
-AUDCHF  17240 H1 2024-01-12..2026-10-29 | A: n=140 R=-9.9 PF=0.90 | B: n=103 R=+14.1 PF=1.22 | C: n=48 R=+2.9 PF=1.10 | D: n=108 R=-20.2 PF=0.74 |
-AUDCAD  17252 H1 2024-01-12..2026-10-29 | A: n=142 R=-27.0 PF=0.74 | B: n=101 R=-10.8 PF=0.84 | C: n=56 R=-11.0 PF=0.72 | D: n=109 R=-30.0 PF=0.63 |
-AUDNZD  17251 H1 2024-01-12..2026-10-29 | A: n=101 R=-15.5 PF=0.78 | B: n=91 R=+17.3 PF=1.33 | C: n=43 R=+6.6 PF=1.25 | D: n=86 R=-35.3 PF=0.49 |
-NZDJPY  17196 H1 2024-01-12..2026-10-29 | A: n=123 R=+9.2 PF=1.12 | B: n=99 R=-5.8 PF=0.91 | C: n=57 R=-7.3 PF=0.81 | D: n=77 R=-5.0 PF=0.91 |
-NZDCHF  17252 H1 2024-01-12..2026-10-29 | A: n=96 R=-13.5 PF=0.80 | B: n=78 R=-30.0 PF=0.52 | C: n=47 R=-25.4 PF=0.35 | D: n=79 R=-18.1 PF=0.69 |
-NZDCAD  17250 H1 2024-01-12..2026-10-29 | A: n=137 R=-4.1 PF=0.96 | B: n=118 R=-30.3 PF=0.65 | C: n=70 R=-16.8 PF=0.68 | D: n=90 R=+7.3 PF=1.13 |
-CADJPY  17196 H1 2024-01-12..2026-10-29 | A: n=123 R=-8.8 PF=0.90 | B: n=102 R=-20.0 PF=0.73 | C: n=61 R=-11.4 PF=0.73 | D: n=91 R=+0.6 PF=1.01 |
-CADCHF  17204 H1 2024-01-12..2026-10-29 | A: n=110 R=-39.3 PF=0.54 | B: n=77 R=-31.5 PF=0.49 | C: n=47 R=-12.3 PF=0.66 | D: n=94 R=-38.5 PF=0.49 |
-CHFJPY  17187 H1 2024-01-12..2026-10-29 | A: n=108 R=+6.5 PF=1.09 | B: n=103 R=+11.3 PF=1.17 | C: n=57 R=+6.4 PF=1.18 | D: n=81 R=-12.2 PF=0.79 |
+daily data: 0 markets
+  data note: XAUUSD: only 235 daily candles
+  data note: EURUSD: only 275 daily candles
+  data note: GBPUSD: only 275 daily candles
+  data note: AUDUSD: only 246 daily candles
+  data note: NZDUSD: only 275 daily candles
+  data note: USDJPY: only 275 daily candles
+  data note: USDCHF: only 275 daily candles
+  data note: USDCAD: only 275 daily candles
+  data note: EURGBP: only 275 daily candles
+  data note: EURJPY: only 275 daily candles
+  data note: EURCHF: only 275 daily candles
+  data note: EURAUD: only 275 daily candles
+  data note: EURCAD: only 275 daily candles
+  data note: EURNZD: only 275 daily candles
+  data note: GBPJPY: only 275 daily candles
+
+2. DAILY DONCHIAN 55/20 TREND FOLLOWING (per trade, R = 2 x ATR20; spread included, swap not)
+
+3. TIME-SERIES MOMENTUM PORTFOLIO (monthly, sign of 12-month return, equal volatility, 10% vol target per market)
+  error Only valid with DatetimeIndex, TimedeltaIndex or PeriodIndex, but got an instance of 'RangeIndex'
+
+4. GOLD MONTH-OF-YEAR (GC=F daily, average monthly return %)
+  error 'XAUUSD'
