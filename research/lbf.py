@@ -57,6 +57,11 @@ def prepare(m):
 
 
 def allowed(name, F, day, hi, lo, px8):
+    if "+" in name:                         # combination: every part must allow the side
+        out = {1, -1}
+        for part in name.split("+"):
+            out &= allowed(part, F, day, hi, lo, px8)
+        return out
     both = {1, -1}
     t_h1 = day + pd.Timedelta(hours=7); t_h4 = day + pd.Timedelta(hours=4)
     d1 = F["d1"]; prev = d1[d1.index < day]
@@ -128,5 +133,7 @@ def london_f(m, filt="none", F=None, bars_per_hour=4, r0=3, r1=8, tp_r=2.5, be_r
     return run_bars(m, sig, lambda pos, t, n: "close" if pos.close_at is not None and t >= pos.close_at else None)
 
 
+COMBOS = ["none", "squeeze"] + [f"squeeze+{x}" for x in ("d1_ema20", "d1_ema50", "h4_ema50", "ema_stack", "adx20", "adx_low",
+                                                       "rsi_ok", "bb_squeeze", "prev_dir", "mid_bias")]
 FILTERS = ["none", "d1_ema20", "d1_ema50", "h4_ema50", "ema_stack", "adx20", "adx_low", "squeeze", "wide_skip",
            "rsi_ok", "bb_squeeze", "prev_dir", "mid_bias"]

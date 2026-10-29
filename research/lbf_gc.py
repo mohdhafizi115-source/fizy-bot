@@ -3,7 +3,7 @@ import os, sys
 import numpy as np, pandas as pd, requests
 sys.path.insert(0, os.path.dirname(__file__)); sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import bbma_scanner as S
-from lbf import london_f, prepare, FILTERS
+from lbf import london_f, prepare, FILTERS, COMBOS
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0"}
 r = requests.get("https://query1.finance.yahoo.com/v8/finance/chart/GC=F", params={"interval": "60m", "range": "730d"},
                  headers=UA, timeout=60)
@@ -13,8 +13,8 @@ g.index = pd.DatetimeIndex([S.utc_to_broker(x) for x in g.index]); g = g[~g.inde
 g["spread"] = 0.30
 F = prepare(g)
 pf = lambda x: x[x > 0].sum() / -x[x < 0].sum() if (x < 0).any() else 99
-out = [f"London breakout + filter on GC=F hourly {g.index[0]:%Y-%m-%d}..{g.index[-1]:%Y-%m-%d} (all filters start after 60 daily bars)"]
-for f in FILTERS:
+out = [f"London breakout + squeeze + second filter on GC=F hourly {g.index[0]:%Y-%m-%d}..{g.index[-1]:%Y-%m-%d} (all filters start after 60 daily bars)"]
+for f in COMBOS:
     tr = london_f(g, f, F, bars_per_hour=1)
     if len(tr) == 0:
         out.append(f"  {f:10s}: no trades"); continue
