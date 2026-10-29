@@ -1,1 +1,0 @@
-fibtl_forex.py
