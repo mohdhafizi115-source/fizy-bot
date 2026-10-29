@@ -1,6 +1,35 @@
-London breakout on GC=F hourly 2024-06-07..2026-10-29 (spread $0.30, est. swap)
-  base 03-08, TP 2.5R, BE 1.5R: trades 494, win 47%, net $+1300 per 0.01 lot, PF 1.27, +54.2R, 1st half PF 1.07 / 2nd half PF 1.39, losing months 12/29; 2024:-35 2025:+387 2026:+948
-  range 02-08: trades 483, win 47%, net $+1151 per 0.01 lot, PF 1.25, +52.2R, 1st half PF 1.12 / 2nd half PF 1.32, losing months 12/29; 2024:+1 2025:+391 2026:+759
-  TP 2R: trades 494, win 47%, net $+1048 per 0.01 lot, PF 1.22, +44.6R, 1st half PF 1.06 / 2nd half PF 1.32, losing months 13/29; 2024:-16 2025:+335 2026:+729
-  no BE: trades 494, win 43%, net $+1444 per 0.01 lot, PF 1.29, +63.7R, 1st half PF 1.19 / 2nd half PF 1.34, losing months 12/29; 2024:+79 2025:+412 2026:+953
-  close 18:00: trades 488, win 48%, net $+1193 per 0.01 lot, PF 1.26, +48.4R, 1st half PF 1.07 / 2nd half PF 1.38, losing months 15/29; 2024:-86 2025:+456 2026:+823
+Head and shoulders on Yahoo H1 data, 2 years (spread 1 pip forex / 2 pips gold, swap ignored)
+ALL A H1 L3, shoulders within 50%, prior trend, SL shoulder, TP measured: trades 1394, win 38%, total -61.2R, PF 0.93, max DD 79.3R, PF first half 0.85 / second half 1.01, forex pairs positive 39%
+ALL B H1 L3, shoulders within 50%, no trend filter, SL shoulder, TP 2R: trades 2273, win 32%, total -117.5R, PF 0.92, max DD 144.6R, PF first half 0.94 / second half 0.91, forex pairs positive 36%
+ALL C H4 L3, shoulders within 50%, prior trend, SL shoulder, TP measured: trades 377, win 41%, total +30.8R, PF 1.14, max DD 29.0R, PF first half 1.20 / second half 1.08, forex pairs positive 50%
+ALL D H1 L5, shoulders within 50%, no trend filter, SL head, TP measured: trades 1357, win 48%, total -52.0R, PF 0.93, max DD 81.5R, PF first half 0.99 / second half 0.86, forex pairs positive 36%
+
+XAUUSD  13667 H1 2024-06-07..2026-10-29 | A: n=43 R=-4.2 PF=0.84 | B: n=66 R=+8.3 PF=1.20 | C: n=14 R=+16.0 PF=6.33 | D: n=44 R=+7.5 PF=1.39 |
+EURUSD  17193 H1 2024-01-12..2026-10-29 | A: n=47 R=+2.8 PF=1.10 | B: n=72 R=-2.9 PF=0.94 | C: n=12 R=+7.7 PF=2.53 | D: n=50 R=+3.5 PF=1.16 |
+GBPUSD  17196 H1 2024-01-12..2026-10-29 | A: n=41 R=-9.8 PF=0.65 | B: n=72 R=-22.4 PF=0.59 | C: n=17 R=+6.2 PF=1.56 | D: n=44 R=-13.8 PF=0.51 |
+AUDUSD  17259 H1 2024-01-12..2026-10-29 | A: n=48 R=-6.1 PF=0.82 | B: n=82 R=-12.7 PF=0.78 | C: n=17 R=+1.0 PF=1.10 | D: n=55 R=-6.0 PF=0.80 |
+NZDUSD  17260 H1 2024-01-12..2026-10-29 | A: n=48 R=-2.3 PF=0.92 | B: n=85 R=-6.6 PF=0.89 | C: n=14 R=+6.4 PF=1.80 | D: n=52 R=-0.1 PF=1.00 |
+USDJPY  17098 H1 2024-01-12..2026-10-29 | A: n=47 R=+7.7 PF=1.31 | B: n=73 R=+24.8 PF=1.62 | C: n=10 R=+4.4 PF=2.11 | D: n=48 R=+0.5 PF=1.02 |
+USDCHF  17128 H1 2024-01-12..2026-10-29 | A: n=43 R=-2.8 PF=0.90 | B: n=75 R=-7.0 PF=0.86 | C: n=16 R=+0.3 PF=1.03 | D: n=55 R=-11.6 PF=0.64 |
+USDCAD  17261 H1 2024-01-12..2026-10-29 | A: n=38 R=-0.6 PF=0.97 | B: n=72 R=+14.4 PF=1.33 | C: n=12 R=+3.5 PF=1.70 | D: n=37 R=+9.8 PF=1.82 |
+EURGBP  17216 H1 2024-01-12..2026-10-29 | A: n=54 R=-7.3 PF=0.78 | B: n=91 R=-12.2 PF=0.81 | C: n=17 R=-6.1 PF=0.53 | D: n=40 R=-5.1 PF=0.77 |
+EURJPY  17202 H1 2024-01-12..2026-10-29 | A: n=48 R=-3.4 PF=0.89 | B: n=74 R=+5.4 PF=1.11 | C: n=8 R=+8.4 PF=5.22 | D: n=48 R=-3.2 PF=0.88 |
+EURCHF  17202 H1 2024-01-12..2026-10-29 | A: n=48 R=+0.2 PF=1.01 | B: n=68 R=+2.1 PF=1.05 | C: n=12 R=-2.3 PF=0.71 | D: n=41 R=+6.4 PF=1.37 |
+EURAUD  17210 H1 2024-01-12..2026-10-29 | A: n=51 R=+1.8 PF=1.06 | B: n=78 R=-6.2 PF=0.88 | C: n=12 R=-3.0 PF=0.62 | D: n=46 R=+1.5 PF=1.07 |
+EURCAD  17213 H1 2024-01-12..2026-10-29 | A: n=52 R=+0.0 PF=1.00 | B: n=66 R=-21.8 PF=0.57 | C: n=7 R=-0.4 PF=0.89 | D: n=41 R=-4.7 PF=0.79 |
+EURNZD  17212 H1 2024-01-12..2026-10-29 | A: n=56 R=+2.1 PF=1.07 | B: n=90 R=+2.3 PF=1.04 | C: n=12 R=+2.6 PF=1.43 | D: n=57 R=-4.1 PF=0.87 |
+GBPJPY  17198 H1 2024-01-12..2026-10-29 | A: n=57 R=-11.1 PF=0.72 | B: n=79 R=-4.8 PF=0.91 | C: n=16 R=+7.2 PF=1.90 | D: n=46 R=+5.6 PF=1.29 |
+GBPCHF  17201 H1 2024-01-12..2026-10-29 | A: n=49 R=+14.9 PF=1.60 | B: n=77 R=+14.8 PF=1.32 | C: n=18 R=-9.3 PF=0.34 | D: n=53 R=-2.3 PF=0.92 |
+GBPAUD  17251 H1 2024-01-12..2026-10-29 | A: n=51 R=-9.1 PF=0.72 | B: n=80 R=+2.2 PF=1.04 | C: n=13 R=+0.7 PF=1.09 | D: n=42 R=-7.6 PF=0.68 |
+GBPCAD  17253 H1 2024-01-12..2026-10-29 | A: n=39 R=-8.7 PF=0.68 | B: n=68 R=-23.3 PF=0.56 | C: n=21 R=+15.5 PF=2.94 | D: n=42 R=-13.1 PF=0.50 |
+GBPNZD  17250 H1 2024-01-12..2026-10-29 | A: n=54 R=+2.4 PF=1.07 | B: n=93 R=+5.0 PF=1.08 | C: n=15 R=+4.1 PF=1.46 | D: n=44 R=-8.1 PF=0.69 |
+AUDJPY  17203 H1 2024-01-12..2026-10-29 | A: n=58 R=-1.0 PF=0.97 | B: n=86 R=+26.2 PF=1.54 | C: n=14 R=+3.5 PF=1.50 | D: n=58 R=+1.8 PF=1.06 |
+AUDCHF  17246 H1 2024-01-12..2026-10-29 | A: n=43 R=+8.3 PF=1.33 | B: n=67 R=-1.7 PF=0.96 | C: n=7 R=-1.5 PF=0.62 | D: n=44 R=+4.3 PF=1.20 |
+AUDCAD  17258 H1 2024-01-12..2026-10-29 | A: n=47 R=-14.8 PF=0.57 | B: n=76 R=-26.0 PF=0.56 | C: n=16 R=-11.4 PF=0.19 | D: n=44 R=-4.3 PF=0.82 |
+AUDNZD  17257 H1 2024-01-12..2026-10-29 | A: n=41 R=-9.2 PF=0.67 | B: n=82 R=-17.4 PF=0.71 | C: n=3 R=-0.4 PF=0.81 | D: n=49 R=-8.1 PF=0.71 |
+NZDJPY  17202 H1 2024-01-12..2026-10-29 | A: n=63 R=-3.5 PF=0.91 | B: n=96 R=+1.6 PF=1.02 | C: n=11 R=-0.3 PF=0.94 | D: n=42 R=+13.9 PF=1.87 |
+NZDCHF  17258 H1 2024-01-12..2026-10-29 | A: n=44 R=+20.8 PF=2.09 | B: n=84 R=-8.6 PF=0.85 | C: n=12 R=-3.5 PF=0.61 | D: n=46 R=-4.7 PF=0.82 |
+NZDCAD  17256 H1 2024-01-12..2026-10-29 | A: n=46 R=-2.5 PF=0.91 | B: n=79 R=-18.4 PF=0.69 | C: n=11 R=-4.8 PF=0.47 | D: n=45 R=-14.7 PF=0.51 |
+CADJPY  17202 H1 2024-01-12..2026-10-29 | A: n=43 R=+8.0 PF=1.32 | B: n=71 R=-10.0 PF=0.80 | C: n=14 R=-4.9 PF=0.51 | D: n=50 R=-1.3 PF=0.95 |
+CADCHF  17210 H1 2024-01-12..2026-10-29 | A: n=39 R=-19.7 PF=0.40 | B: n=73 R=-22.1 PF=0.60 | C: n=12 R=-4.1 PF=0.54 | D: n=44 R=-1.7 PF=0.93 |
+CHFJPY  17193 H1 2024-01-12..2026-10-29 | A: n=56 R=-14.1 PF=0.62 | B: n=98 R=-0.2 PF=1.00 | C: n=14 R=-4.4 PF=0.56 | D: n=50 R=+7.8 PF=1.37 |
