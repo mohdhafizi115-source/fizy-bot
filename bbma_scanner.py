@@ -76,6 +76,14 @@ CFG = {
     # (no H1, no EMA 50 rejection, no BB slope check)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "LONDON_BREAKOUT": True,         # XAUUSD London breakout alerts (place orders / filled / BE / close)
+    "LB_RANGE":       [3, 8],        # Asian range hours (chart time), orders at the end hour
+    "LB_CLOSE_HOUR":  21,            # close any open trade at this chart hour
+    "LB_MIN_MAX_PCT": [0.30, 1.60],  # trade only when the range is this % of price
+    "LB_CAP_PCT":     0.6,           # SL at the other side of the range, at most this % of price
+    "LB_TP_R":        2.5,
+    "LB_BE_R":        1.5,
+    "LB_BUFFER":      0.10,          # entry this far beyond the range high / low
     "CSAK_MA510":     True,          # retrace setup: CSAK must also close beyond MA5/10 Low (sell) / High (buy)
     "FETCH_WORKERS":  6,             # parallel Deriv downloads per scan (1 = one by one)
     "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
@@ -975,6 +983,166 @@ def save_state(st):
 #==================================================================
 # Runs
 #==================================================================
+#==================================================================
+# XAUUSD London breakout (alerts only), same rules as the backtest:
+#   Asian range 03:00-08:00 chart time; at 08:00 buy stop above the high and sell stop below the
+#   low (OCO); SL at the other side of the range (max 0.6% of price); TP 2.5R; SL to entry at
+#   1.5R; close at 21:00. Trade only when the range is 0.30%-1.60% of price.
+#==================================================================
+def _lb_levels(hi, lo):
+    C = CFG; buf = C["LB_BUFFER"]
+    mid = (hi + lo) / 2; capd = mid * C["LB_CAP_PCT"] / 100
+    b_in, s_in = hi + buf, lo - buf
+    b_sl = max(lo, b_in - capd); s_sl = min(hi, s_in + capd)
+    rb, rs = b_in - b_sl, s_sl - s_in
+    return dict(hi=hi, lo=lo, pct=(hi - lo) / mid * 100,
+                b_in=b_in, b_sl=b_sl, b_tp=b_in + C["LB_TP_R"] * rb, b_be=b_in + C["LB_BE_R"] * rb, b_risk=rb,
+                s_in=s_in, s_sl=s_sl, s_tp=s_in - C["LB_TP_R"] * rs, s_be=s_in - C["LB_BE_R"] * rs, s_risk=rs)
+
+
+def _lb_head(title):
+    return f"FIZY BOT | XAUUSD London breakout - {title}\n=============================\n"
+
+
+def _lb_foot(t):
+    return f"=============================\nBroker time: {t:%Y-%m-%d %H:%M}  |  data: {CUR.get('source', '-')}"
+
+
+def lb_chart_png(m15, L, day):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    d = m15[(m15.index >= day - pd.Timedelta(hours=4)) & (m15.index < day + pd.Timedelta(hours=CFG["LB_RANGE"][1]))]
+    x = np.arange(len(d))
+    fig, ax = plt.subplots(figsize=(12.8, 7.2), dpi=100)
+    bg = "#0f1115"; fig.patch.set_facecolor(bg); ax.set_facecolor(bg)
+    for xi, (t, r) in zip(x, d.iterrows()):
+        col = "#26a69a" if r.close >= r.open else "#ef5350"
+        ax.vlines(xi, r.low, r.high, color=col, linewidth=0.8)
+        ax.add_patch(plt.Rectangle((xi - 0.32, min(r.open, r.close)), 0.64, max(abs(r.close - r.open), 1e-6), color=col))
+    r0 = int(np.searchsorted(d.index, day + pd.Timedelta(hours=CFG["LB_RANGE"][0])))
+    ax.add_patch(plt.Rectangle((r0 - 0.5, L["lo"]), len(d) - r0, L["hi"] - L["lo"], color="#3a6ea5", alpha=0.18))
+    right = len(d) + 10
+    for y, txt, col, st in ((L["b_in"], f"BUY STOP {px(L['b_in'])}", "#26a69a", "-"),
+                            (L["b_tp"], f"BUY TP {px(L['b_tp'])}", "#26a69a", ":"),
+                            (L["s_in"], f"SELL STOP {px(L['s_in'])}", "#ef5350", "-"),
+                            (L["s_tp"], f"SELL TP {px(L['s_tp'])}", "#ef5350", ":")):
+        ax.hlines(y, r0 - 0.5, right, color=col, linewidth=1.2, linestyle=st)
+        ax.text(right + 0.3, y, " " + txt, color=col, va="center", fontsize=9)
+    ys = [d.low.min(), d.high.max(), L["b_tp"], L["s_tp"]]
+    pad = (max(ys) - min(ys)) * 0.05
+    ax.set_ylim(min(ys) - pad, max(ys) + pad); ax.set_xlim(-1, right + 12)
+    step = max(1, len(d) // 8)
+    ax.set_xticks(x[::step]); ax.set_xticklabels([f"{t:%d/%m %H:%M}" for t in d.index][::step], color="#9aa0a6", fontsize=8)
+    ax.tick_params(axis="y", colors="#9aa0a6", labelsize=8)
+    for sp_ in ax.spines.values():
+        sp_.set_color("#2a2e36")
+    ax.grid(color="#1c1f26", linewidth=0.6)
+    ax.set_title(f"FIZY BOT  XAUUSD M15  London breakout  {day:%d/%m}  (Asian range shaded)", color="#ffd700",
+                 fontsize=12, loc="left")
+    buf = io.BytesIO(); fig.tight_layout(); fig.savefig(buf, format="png", facecolor=bg); plt.close(fig)
+    return buf.getvalue()
+
+
+def london_step(m15, lb, cur, send=None):
+    """Advance the London breakout state `lb` (dict, kept in the XAUUSD state) using the M15 candles
+    closed before `cur` (the open of the forming candle, chart time). Sends Telegram alerts."""
+    send = send or tg_send
+    C = CFG; h0, h1 = C["LB_RANGE"]; hc = C["LB_CLOSE_HOUR"]
+    day = cur.normalize()
+    if day.dayofweek >= 5:
+        return
+    if lb.get("day") != str(day.date()):
+        lb.clear(); lb.update(day=str(day.date()), status="waiting", text=f"waiting for the Asian range ({h0:02d}:00-{h1:02d}:00)")
+    t_open, t_close = day + pd.Timedelta(hours=h1), day + pd.Timedelta(hours=hc)
+    closed = m15[m15.index < cur]
+    if lb["status"] == "waiting":
+        if cur < t_open:
+            return
+        if cur > t_open + pd.Timedelta(minutes=30):
+            # (re)started after 08:30: no stale alerts for today's earlier moves
+            lb.update(status="done", text=f"started after {h1:02d}:30 today, alerts start next trading day"); return
+        rng = closed[(closed.index >= day + pd.Timedelta(hours=h0)) & (closed.index < t_open)]
+        if len(rng) < (h1 - h0) * 4 - 2:
+            lb.update(status="done", text="not enough Asian range data today"); return
+        L = _lb_levels(float(rng.high.max()), float(rng.low.min()))
+        lo_p, hi_p = C["LB_MIN_MAX_PCT"]
+        if not (lo_p <= L["pct"] <= hi_p):
+            lb.update(status="done", text=f"no trade today: Asian range {L['pct']:.2f}% (needs {lo_p:.2f}-{hi_p:.2f}%)")
+            send(_lb_head("NO TRADE TODAY") +
+                 f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} ({L['pct']:.2f}% of price)\n"
+                 f"Needs {lo_p:.2f}%-{hi_p:.2f}%, so no orders today.\n" + _lb_foot(cur))
+            return
+        lb.update(status="placed", L=L, last_t=str(t_open - pd.Timedelta(minutes=15)),
+                  text=f"orders placed: BUY STOP {px(L['b_in'])} / SELL STOP {px(L['s_in'])}")
+        send(_lb_head("PLACE ORDERS") +
+             f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} ({L['pct']:.2f}%)\n"
+             f"BUY STOP  {px(L['b_in'])} | SL {px(L['b_sl'])} | TP {px(L['b_tp'])} | BE at {px(L['b_be'])}\n"
+             f"SELL STOP {px(L['s_in'])} | SL {px(L['s_sl'])} | TP {px(L['s_tp'])} | BE at {px(L['s_be'])}\n"
+             f"Risk per 0.01 lot: buy ${L['b_risk']:.2f} / sell ${L['s_risk']:.2f}\n"
+             f"OCO: when one fills, delete the other. Close any open trade at {hc:02d}:00 chart time.\n"
+             f"Check the range high / low on your own MT5 chart (data source can differ by a few points).\n"
+             + _lb_foot(cur), lb_chart_png(m15, L, day))
+    if lb["status"] in ("placed", "open"):
+        L = lb["L"]
+        last = pd.Timestamp(lb["last_t"])
+        todo = closed[(closed.index > last) & (closed.index < t_close)]
+        for t, r in todo.iterrows():
+            o_, h_, l_, c_ = float(r.open), float(r.high), float(r.low), float(r.close)
+            path = [o_, l_, h_, c_] if c_ >= o_ else [o_, h_, l_, c_]
+            for a_, b_ in zip(path[:-1], path[1:]):
+                lo_, hi_ = min(a_, b_), max(a_, b_)
+                if lb["status"] == "placed":
+                    if hi_ >= L["b_in"] and (a_ <= b_ or lo_ > L["s_in"]):
+                        dr = 1
+                    elif lo_ <= L["s_in"]:
+                        dr = -1
+                    else:
+                        continue
+                    k = "b" if dr == 1 else "s"
+                    lb.update(status="open", dir=dr, entry=L[k + "_in"], sl=L[k + "_sl"], tp=L[k + "_tp"], be=L[k + "_be"],
+                              be_done=False, text=f"{'BUY' if dr == 1 else 'SELL'} open from {px(L[k + '_in'])}")
+                    send(_lb_head(f"{'BUY' if dr == 1 else 'SELL'} STOP FILLED") +
+                         f"Filled at {px(lb['entry'])} (M15 candle {t:%H:%M} chart time)\n"
+                         f"Delete the {'SELL' if dr == 1 else 'BUY'} STOP now.\n"
+                         f"SL {px(lb['sl'])} | TP {px(lb['tp'])} | move SL to entry at {px(lb['be'])}\n" + _lb_foot(cur))
+                    lo_, hi_ = (min(lb["entry"], b_), max(lb["entry"], b_))
+                if lb["status"] == "open":
+                    dr = lb["dir"]
+                    hit_sl = lo_ <= lb["sl"] if dr == 1 else hi_ >= lb["sl"]
+                    hit_tp = hi_ >= lb["tp"] if dr == 1 else lo_ <= lb["tp"]
+                    if hit_sl or hit_tp:
+                        ex = lb["sl"] if hit_sl else lb["tp"]
+                        pips = (ex - lb["entry"]) * dr / 0.10
+                        what = "TP HIT" if hit_tp and not hit_sl else ("BREAKEVEN" if lb["be_done"] else "SL HIT")
+                        lb.update(status="done", text=f"{what.lower()} ({pips:+.0f} pips)")
+                        send(_lb_head(what) + f"{'BUY' if dr == 1 else 'SELL'} from {px(lb['entry'])} closed at {px(ex)} "
+                             f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M15 candle {t:%H:%M}\n"
+                             f"Done for today.\n" + _lb_foot(cur))
+                        break
+                    if not lb["be_done"] and ((hi_ >= lb["be"]) if dr == 1 else (lo_ <= lb["be"])):
+                        lb["be_done"] = True; lb["sl"] = lb["entry"] + dr * 0.10
+                        lb["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(lb['entry'])}, SL at breakeven"
+                        send(_lb_head("MOVE SL TO ENTRY") +
+                             f"Price reached {px(lb['be'])} (1.5R). Move the SL to {px(lb['sl'])} (entry).\n"
+                             f"TP stays at {px(lb['tp'])}.\n" + _lb_foot(cur))
+            lb["last_t"] = str(t)
+            if lb["status"] == "done":
+                break
+    if lb["status"] in ("placed", "open") and cur >= t_close:
+        price = float(closed["close"].iloc[-1])
+        if lb["status"] == "placed":
+            lb.update(status="done", text="no breakout today")
+            send(_lb_head("NO BREAKOUT") + f"{hc:02d}:00 chart time: neither order filled. Delete both stop orders.\n"
+                 + _lb_foot(cur))
+        else:
+            dr = lb["dir"]; pips = (price - lb["entry"]) * dr / 0.10
+            lb.update(status="done", text=f"closed at {hc:02d}:00 ({pips:+.0f} pips)")
+            send(_lb_head(f"CLOSE AT {hc:02d}:00") + f"Close the {'BUY' if dr == 1 else 'SELL'} now. Price {px(price)}, "
+                 f"about {pips:+.0f} pips (${pips * 0.10:+.2f} per 0.01 lot) from entry {px(lb['entry'])}.\n"
+                 + _lb_foot(cur))
+
+
 def scan_symbol(name, st, broker_now):
     """One symbol: download, evaluate the M15 candles not checked yet, send alerts. Updates st."""
     set_symbol(name)
@@ -1010,6 +1178,11 @@ def scan_symbol(name, st, broker_now):
             print("  telegram sent" if ok else "  telegram FAILED")
         st["last_eval"] = str(T)
         st["last_status"] = status
+    if name == "XAUUSD" and CFG["LONDON_BREAKOUT"]:
+        try:
+            london_step(m15, st.setdefault("lb", {}), cur)
+        except Exception as e:
+            print("London breakout error:", e)
 
 
 def run_live():
@@ -1105,6 +1278,8 @@ def run_live():
             if le and (broker_now - pd.Timestamp(le)) > pd.Timedelta(minutes=30):
                 line += f"  [old status, last checked {pd.Timestamp(le):%d/%m %H:%M} chart time]"
             lines.append(line)
+            if n == "XAUUSD" and CFG["LONDON_BREAKOUT"] and s.get("lb", {}).get("text"):
+                lines.append(f"XAUUSD London breakout: {s['lb']['text']}")
         msg = f"FIZY BOT is alive (cloud scanner)  |  chart time {broker_now:%H:%M}"
         for line in lines:                 # Telegram limit is 4096 characters: split, never cut
             if len(msg) + 1 + len(line) > 4000:
