@@ -77,6 +77,10 @@ CFG = {
     "BBMA_ALERTS":    False,         # BBMA scanner on all pairs (turned off 29 Oct: only the XAUUSD London breakout runs)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "RSI2_ALERTS":    True,          # XAUUSD H1 RSI(2) pullback alerts (entry / exit / SL), added 30 Oct at the user's request
+    "RSI2_LO":        10,
+    "RSI2_HI":        90,
+    "RSI2_SL_ATR":    2.0,
     "LONDON_BREAKOUT": True,         # XAUUSD London breakout alerts (place orders / filled / BE / close)
     "LB_RANGE":       [3, 8],        # Asian range hours (chart time), orders at the end hour
     "LB_CLOSE_HOUR":  21,            # close any open trade at this chart hour
@@ -1166,6 +1170,90 @@ def london_step(m15, lb, cur, send=None):
                  + _lb_foot(cur))
 
 
+#==================================================================
+# XAUUSD H1 RSI(2) pullback alerts (same rules as the backtest `rsi2` in research/strategies.py):
+#   buy when the H1 close is above the H1 SMA 200 and RSI(2) < 10 (sell: below SMA 200, RSI(2) > 90);
+#   SL = 2 x ATR14(H1) from the signal close; exit when an H1 close crosses back over the SMA 5.
+#   One signal at a time. Backtest: PF 1.22 on JustMarkets M15 (Jan-Oct 2026), PF 1.05 on GC=F 2 years.
+#==================================================================
+def _rsi2_frame(closed):
+    h1 = closed.resample("1h", label="left", closed="left", origin="start_day").agg(
+        {"open": "first", "high": "max", "low": "min", "close": "last"}).dropna()
+    d = h1.close.diff()
+    up = d.clip(lower=0).ewm(alpha=1 / 2, adjust=False).mean(); dn = (-d.clip(upper=0)).ewm(alpha=1 / 2, adjust=False).mean()
+    h1["rsi2"] = 100 - 100 / (1 + up / dn)
+    h1["sma200"] = h1.close.rolling(200).mean(); h1["sma5"] = h1.close.rolling(5).mean()
+    tr = np.maximum(h1.high - h1.low, np.maximum(abs(h1.high - h1.close.shift()), abs(h1.low - h1.close.shift())))
+    h1["atr"] = tr.rolling(14).mean()
+    return h1
+
+
+def _rs_head(title):
+    return f"FIZY BOT | XAUUSD RSI2 pullback (H1) - {title}\n=============================\n"
+
+
+def rsi2_step(m15, rs, cur, send=None):
+    """Advance the RSI(2) state `rs` with the M15 candles closed before `cur`; send alerts."""
+    send = send or tg_send
+    C = CFG
+    closed = m15[m15.index < cur]
+    if len(closed) < 4 * 260:
+        return
+    h1 = _rsi2_frame(closed)
+    h1 = h1[h1.index + pd.Timedelta(hours=1) <= cur]          # complete H1 candles only
+    if len(h1) < 210:
+        return
+    last_t = h1.index[-1]
+    if not rs.get("last_h1"):                                  # first run: no alerts for the past
+        rs.update(last_h1=str(last_t), last_m15=str(closed.index[-1]), pos=None, text="watching")
+        return
+    pos = rs.get("pos")
+    # SL check on new M15 candles
+    if pos:
+        new = closed[closed.index > pd.Timestamp(rs.get("last_m15", str(closed.index[0])))]
+        for t, r in new.iterrows():
+            if (pos["dir"] == 1 and r.low <= pos["sl"]) or (pos["dir"] == -1 and r.high >= pos["sl"]):
+                pips = (pos["sl"] - pos["entry"]) * pos["dir"] / 0.10
+                send(_rs_head("SL HIT") + f"{'BUY' if pos['dir'] == 1 else 'SELL'} from {px(pos['entry'])} stopped at {px(pos['sl'])} "
+                     f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M15 candle {t:%H:%M}\n=============================\n"
+                     f"Broker time: {cur:%Y-%m-%d %H:%M}")
+                rs["pos"] = pos = None; rs["text"] = "watching (last trade: SL)"
+                break
+    rs["last_m15"] = str(closed.index[-1])
+    if str(last_t) == rs.get("last_h1"):
+        return
+    rs["last_h1"] = str(last_t)
+    b = h1.iloc[-1]
+    if any(np.isnan(b[k]) for k in ("rsi2", "sma200", "sma5", "atr")):
+        return
+    if pos:
+        if (pos["dir"] == 1 and b.close > b.sma5) or (pos["dir"] == -1 and b.close < b.sma5):
+            pips = (b.close - pos["entry"]) * pos["dir"] / 0.10
+            send(_rs_head("EXIT NOW") + f"H1 candle {last_t:%H:%M} closed {'above' if pos['dir'] == 1 else 'below'} the SMA 5 "
+                 f"({px(b.sma5)}).\nClose the {'BUY' if pos['dir'] == 1 else 'SELL'} from {px(pos['entry'])} at market "
+                 f"(now {px(b.close)}, about {pips:+.0f} pips).\n=============================\nBroker time: {cur:%Y-%m-%d %H:%M}")
+            rs["pos"] = None; rs["text"] = f"watching (last trade closed {pips:+.0f} pips)"
+        return
+    dr = 0
+    if b.close > b.sma200 and b.rsi2 < C["RSI2_LO"]:
+        dr = 1
+    elif b.close < b.sma200 and b.rsi2 > C["RSI2_HI"]:
+        dr = -1
+    if not dr:
+        return
+    sl = b.close - dr * C["RSI2_SL_ATR"] * b.atr
+    rs["pos"] = dict(dir=dr, entry=float(b.close), sl=float(sl), t=str(last_t))
+    rs["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(b.close)}, SL {px(sl)}"
+    send(_rs_head("BUY NOW" if dr == 1 else "SELL NOW") +
+         f"H1 candle {last_t:%H:%M}: close {px(b.close)} {'above' if dr == 1 else 'below'} SMA 200 ({px(b.sma200)}), "
+         f"RSI(2) {b.rsi2:.1f}\n"
+         f"Entry: market now (about {px(b.close)})\n"
+         f"SL: {px(sl)} ({C['RSI2_SL_ATR']:.0f} x ATR, ${abs(b.close - sl):.2f} per 0.01 lot)\n"
+         f"Exit: wait for the EXIT alert (H1 close back over the SMA 5, now {px(b.sma5)}), no fixed TP\n"
+         f"Backtest: PF 1.22 (JustMarkets 10 months), PF 1.05 (gold futures 2 years): small edge\n"
+         f"=============================\nBroker time: {cur:%Y-%m-%d %H:%M}")
+
+
 def scan_symbol(name, st, broker_now):
     """One symbol: download, evaluate the M15 candles not checked yet, send alerts. Updates st."""
     set_symbol(name)
@@ -1204,6 +1292,11 @@ def scan_symbol(name, st, broker_now):
             print("  telegram sent" if ok else "  telegram FAILED")
         st["last_eval"] = str(T)
         st["last_status"] = status
+    if name == "XAUUSD" and CFG["RSI2_ALERTS"]:
+        try:
+            rsi2_step(m15, st.setdefault("rs2", {}), cur)
+        except Exception as e:
+            print("RSI2 error:", e)
     if name == "XAUUSD" and CFG["LONDON_BREAKOUT"]:
         try:
             london_step(m15, st.setdefault("lb", {}), cur)
@@ -1283,6 +1376,8 @@ def run_live():
                         + (f"  [last alert {la}]" if la else "") + "\n")
                 if n == "XAUUSD" and st.get("lb", {}).get("text"):
                     f.write(f"XAUUSD London breakout: {st['lb']['text']}\n")
+                if n == "XAUUSD" and st.get("rs2", {}).get("text"):
+                    f.write(f"XAUUSD RSI2 pullback: {st['rs2']['text']}\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
@@ -1308,6 +1403,8 @@ def run_live():
             lines.append(line)
             if n == "XAUUSD" and CFG["LONDON_BREAKOUT"] and s.get("lb", {}).get("text"):
                 lines.append(f"XAUUSD London breakout: {s['lb']['text']}")
+            if n == "XAUUSD" and CFG["RSI2_ALERTS"] and s.get("rs2", {}).get("text"):
+                lines.append(f"XAUUSD RSI2 pullback: {s['rs2']['text']}")
         msg = f"FIZY BOT is alive (cloud scanner)  |  chart time {broker_now:%H:%M}"
         for line in lines:                 # Telegram limit is 4096 characters: split, never cut
             if len(msg) + 1 + len(line) > 4000:
