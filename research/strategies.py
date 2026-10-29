@@ -35,6 +35,7 @@ def run_bars(m, signals, manage):
                         risk = abs(px - p["sl"])
                         pos = Pos(t, p["dir"], px, p["sl"], p["tp"], risk, p.get("tag", ""))
                         pos.be_at = p.get("be_at"); pos.close_at = p.get("close_at"); pos.trail = p.get("trail")
+                        pos.be_off = p.get("be_off", 0.10)   # breakeven offset in price (0.10 = $0.10 gold)
                         pend = []
                         break
             if pos is not None:
@@ -55,7 +56,7 @@ def run_bars(m, signals, manage):
                 if pos.be_at and not pos.be_done:
                     reach = (bid_hi >= pos.entry + pos.be_at * pos.risk) if dr == 1 else (ask_lo <= pos.entry - pos.be_at * pos.risk)
                     if reach:
-                        pos.sl = pos.entry + dr * 0.10; pos.be_done = True
+                        pos.sl = pos.entry + dr * pos.be_off; pos.be_done = True
     return pd.DataFrame(trades)
 
 

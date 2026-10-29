@@ -40,8 +40,8 @@ def lb(m, pip, fmin, fmax, cap, squeeze, r0=3, r1=8, tp_r=2.5, be_r=1.5, close_h
         capd = mid * cap / 100; buf = pip
         sl_b = max(lo, hi + buf - capd); sl_s = min(hi, lo - buf + capd)
         rb = hi + buf - sl_b; rs = sl_s - (lo - buf)
-        sig[t] = [dict(type="stop", dir=1, price=hi + buf, sl=sl_b, tp=hi + buf + tp_r * rb, expire=exp, be_at=be_r, close_at=exp, tag="LB"),
-                  dict(type="stop", dir=-1, price=lo - buf, sl=sl_s, tp=lo - buf - tp_r * rs, expire=exp, be_at=be_r, close_at=exp, tag="LB")]
+        sig[t] = [dict(type="stop", dir=1, price=hi + buf, sl=sl_b, tp=hi + buf + tp_r * rb, expire=exp, be_at=be_r, be_off=pip, close_at=exp, tag="LB"),
+                  dict(type="stop", dir=-1, price=lo - buf, sl=sl_s, tp=lo - buf - tp_r * rs, expire=exp, be_at=be_r, be_off=pip, close_at=exp, tag="LB")]
     return ST.run_bars(m, sig, lambda pos, t, n: "close" if pos.close_at is not None and t >= pos.close_at else None)
 
 
