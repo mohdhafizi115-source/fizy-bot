@@ -1,17 +1,14 @@
-VSA on GC=F hourly with real volume 2024-06-07..2026-10-29 (bars with volume: 96%)
-  1h NS         1.5R: trades 1440, win 40%, net $-559, PF 0.87, -93.4R, 1st half PF 0.87 / 2nd half PF 0.87
-  1h NS         2.0R: trades 1406, win 35%, net $-402, PF 0.91, -90.4R, 1st half PF 0.93 / 2nd half PF 0.90
-  1h TST        1.5R: trades 279, win 43%, net $+18, PF 1.01, +22.5R, 1st half PF 0.82 / 2nd half PF 1.14
-  1h TST        2.0R: trades 273, win 37%, net $+58, PF 1.03, +38.0R, 1st half PF 0.96 / 2nd half PF 1.07
-  1h SV         1.5R: trades 55, win 36%, net $-232, PF 0.80, -7.3R, 1st half PF 0.31 / 2nd half PF 1.24
-  1h SV         2.0R: trades 55, win 33%, net $-112, PF 0.91, -2.8R, 1st half PF 0.41 / 2nd half PF 1.30
-  1h NS+TST+SV  1.5R: trades 1524, win 41%, net $-540, PF 0.92, -55.3R, 1st half PF 0.75 / 2nd half PF 1.01
-  1h NS+TST+SV  2.0R: trades 1456, win 35%, net $-325, PF 0.95, -29.4R, 1st half PF 0.81 / 2nd half PF 1.02
-  4h NS         1.5R: trades 313, win 38%, net $-247, PF 0.85, -33.9R, 1st half PF 0.80 / 2nd half PF 0.87
-  4h NS         2.0R: trades 313, win 31%, net $-161, PF 0.91, -38.7R, 1st half PF 0.80 / 2nd half PF 0.96
-  4h TST        1.5R: trades 45, win 44%, net $+21, PF 1.03, +5.5R, 1st half PF 1.04 / 2nd half PF 1.03
-  4h TST        2.0R: trades 44, win 39%, net $-14, PF 0.98, +7.4R, 1st half PF 1.09 / 2nd half PF 0.91
-  4h SV         1.5R: trades 9, win 33%, net $-80, PF 0.82, -1.7R, 1st half PF 0.65 / 2nd half PF 0.86
-  4h SV         2.0R: trades 9, win 33%, net $+43, PF 1.09, -0.2R, 1st half PF 0.85 / 2nd half PF 1.14
-  4h NS+TST+SV  1.5R: trades 348, win 37%, net $-474, PF 0.82, -38.2R, 1st half PF 0.94 / 2nd half PF 0.78
-  4h NS+TST+SV  2.0R: trades 343, win 31%, net $-258, PF 0.91, -41.2R, 1st half PF 0.96 / 2nd half PF 0.88
+London breakout + filter on GC=F hourly 2024-06-07..2026-10-29 (all filters start after 60 daily bars)
+  none      : trades 444, win 47%, PF 1.27, net $+1231, 1st half PF 1.03 / 2nd half PF 1.43, winning months 15/26, max DD $469; 2024:-104 2025:+387 2026:+948
+  d1_ema20  : trades 299, win 44%, PF 1.21, net $ +653, 1st half PF 0.98 / 2nd half PF 1.36, winning months 14/26, max DD $390; 2024:-85 2025:+195 2026:+543
+  d1_ema50  : trades 309, win 45%, PF 1.16, net $ +486, 1st half PF 1.10 / 2nd half PF 1.19, winning months 15/26, max DD $387; 2024:-89 2025:+273 2026:+303
+  h4_ema50  : trades 314, win 46%, PF 1.22, net $ +688, 1st half PF 1.07 / 2nd half PF 1.30, winning months 12/26, max DD $437; 2024:-43 2025:+239 2026:+492
+  ema_stack : trades 298, win 45%, PF 1.17, net $ +530, 1st half PF 1.02 / 2nd half PF 1.27, winning months 14/26, max DD $436; 2024:-93 2025:+200 2026:+423
+  adx20     : trades 317, win 44%, PF 1.19, net $ +635, 1st half PF 0.75 / 2nd half PF 1.47, winning months 12/26, max DD $381; 2024:-126 2025:+25 2026:+737
+  adx_low   : trades 221, win 48%, PF 1.46, net $ +971, 1st half PF 1.46 / 2nd half PF 1.46, winning months 18/26, max DD $170; 2024:+28 2025:+468 2026:+474
+  squeeze   : trades 399, win 48%, PF 1.38, net $+1500, 1st half PF 1.20 / 2nd half PF 1.49, winning months 17/26, max DD $381; 2024:-12 2025:+570 2026:+942
+  wide_skip : trades 442, win 47%, PF 1.28, net $+1250, 1st half PF 1.04 / 2nd half PF 1.43, winning months 15/26, max DD $469; 2024:-104 2025:+405 2026:+948
+  rsi_ok    : trades 417, win 45%, PF 1.21, net $ +883, 1st half PF 0.98 / 2nd half PF 1.35, winning months 13/26, max DD $467; 2024:-138 2025:+231 2026:+790
+  bb_squeeze: trades 189, win 44%, PF 1.14, net $ +273, 1st half PF 1.16 / 2nd half PF 1.12, winning months 14/26, max DD $418; 2024:-175 2025:+172 2026:+275
+  prev_dir  : trades 285, win 45%, PF 1.10, net $ +274, 1st half PF 1.08 / 2nd half PF 1.10, winning months 12/26, max DD $376; 2024:-54 2025:+321 2026:+7
+  mid_bias  : trades 331, win 44%, PF 1.18, net $ +613, 1st half PF 1.15 / 2nd half PF 1.19, winning months 13/26, max DD $519; 2024:-107 2025:+304 2026:+416
