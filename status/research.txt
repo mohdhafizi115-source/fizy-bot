@@ -1,46 +1,16 @@
-Evidence-based strategy tests (Yahoo data)
-1. GOLD HOUR-OF-DAY (GC=F hourly, 2 years, broker time = New York + 7), average $ move per hour
-  00:00  mean  +0.76  t +1.00  n    7  | 1st half  +0.00  2nd half  +0.88
-  01:00  mean  +0.95  t +1.87  n  589  | 1st half  -0.15  2nd half  +2.05
-  02:00  mean  +0.16  t +0.40  n  587  | 1st half  +0.10  2nd half  +0.23
-  03:00  mean  +0.88  t +1.56  n  589  | 1st half  +0.07  2nd half  +1.69
-  04:00  mean  -0.11  t -0.17  n  590  | 1st half  +0.23  2nd half  -0.45
-  05:00  mean  -0.18  t -0.43  n  590  | 1st half  +0.17  2nd half  -0.53
-  06:00  mean  +0.20  t +0.66  n  590  | 1st half  -0.18  2nd half  +0.58
-  07:00  mean  +0.28  t +0.76  n  593  | 1st half  +0.21  2nd half  +0.34
-  08:00  mean  -0.69  t -1.49  n  593  | 1st half  -0.31  2nd half  -1.08
-  09:00  mean  +0.96  t +2.31  n  593  | 1st half  +0.25  2nd half  +1.68
-  10:00  mean  +0.52  t +1.18  n  594  | 1st half  +0.99  2nd half  +0.05
-  11:00  mean  -0.44  t -0.97  n  594  | 1st half  +0.45  2nd half  -1.33
-  12:00  mean  -0.22  t -0.60  n  595  | 1st half  +0.27  2nd half  -0.71
-  13:00  mean  +0.34  t +0.88  n  596  | 1st half  +0.31  2nd half  +0.36
-  14:00  mean  +0.84  t +1.80  n  596  | 1st half  +0.25  2nd half  +1.42
-  15:00  mean  +0.11  t +0.17  n  597  | 1st half  +0.15  2nd half  +0.08
-  16:00  mean  -0.45  t -0.67  n  601  | 1st half  -0.37  2nd half  -0.53
-  17:00  mean  +0.08  t +0.10  n  601  | 1st half  +0.76  2nd half  -0.60
-  18:00  mean  +0.17  t +0.31  n  599  | 1st half  -0.07  2nd half  +0.40
-  19:00  mean  -0.16  t -0.40  n  599  | 1st half  +0.35  2nd half  -0.68
-  20:00  mean  +0.04  t +0.12  n  599  | 1st half  -0.09  2nd half  +0.18
-  21:00  mean  -0.70  t -1.48  n  593  | 1st half  -0.01  2nd half  -1.39
-  22:00  mean  +0.77  t +1.70  n  591  | 1st half  +0.45  2nd half  +1.09
-  23:00  mean  +0.34  t +0.93  n  591  | 1st half  +1.04  2nd half  -0.36
-  period 2024-06-07 .. 2026-10-29
+Gold follow-up tests
+A. GOLD SESSION HOLDS (GC=F hourly 2024-06-07..2026-10-29, broker time, spread $0.30)
+  (buy and hold over the period: $+1634)
+  long 01->10: days 578, net $+1150 per 0.01 lot, avg $+1.99, win 52%, PF 1.21, max DD $458, 1st half $-49 / 2nd half $+1199; 2024:-17 2025:+425 2026:+743
+  long 01->04: days 592, net $+1010 per 0.01 lot, avg $+1.71, win 53%, PF 1.33, max DD $287, 1st half $-73 / 2nd half $+1083; 2024:-77 2025:+312 2026:+775
+  long 09->10: days 595, net $+384 per 0.01 lot, avg $+0.65, win 52%, PF 1.22, max DD $236, 1st half $-16 / 2nd half $+399; 2024:-3 2025:+70 2026:+317
+  short 15->22: days 595, net $+614 per 0.01 lot, avg $+1.03, win 48%, PF 1.09, max DD $596, 1st half $-100 / 2nd half $+713; 2024:+73 2025:-325 2026:+865
+  long 10->22 (rest of day): days 593, net $-374 per 0.01 lot, avg $-0.63, win 55%, PF 0.96, max DD $1409, 1st half $+425 / 2nd half $-799; 2024:+53 2025:+566 2026:-993
 
-daily data: 29 markets, from 2004-01-01
-
-2. DAILY DONCHIAN 55/20 TREND FOLLOWING (per trade, R = 2 x ATR20; spread included, swap not)
-  ALL: trades 2236, win 24%, total -266R, PF 0.83, avg -0.119R/trade, forex pairs positive 18%
-  by year (R): 2004:-31  2005:-55  2006:+15  2007:-5  2008:+115  2009:-13  2010:-42  2011:-53  2012:+41  2013:+18  2014:+22  2015:+7  2016:-19  2017:-26  2018:-40  2019:-53  2020:-3  2021:-7  2022:-17  2023:-47  2024:-46  2025:+10  2026:-39
-  2004-2014: trades 1209, total +13R, PF 1.02
-  2015-2020: trades 543, total -134R, PF 0.64
-  2021-2026: trades 484, total -145R, PF 0.61
-  GOLD only: trades 102, total +45.4R, PF 1.62; since 2021: +19.2R PF 2.51
-  per market (R): EURGBP -40, GBPCHF -34, NZDCAD -27, AUDCAD -24, EURCHF -23, CADCHF -22, GBPNZD -20, EURAUD -20, AUDJPY -19, EURJPY -18, AUDCHF -17, GBPAUD -16, USDCHF -13, AUDUSD -12, GBPCAD -12, AUDNZD -11, EURCAD -11, GBPJPY -10, NZDUSD -10, CHFJPY -8, NZDCHF -7, EURNZD -5, USDCAD -1, EURUSD +3, NZDJPY +6, GBPUSD +7, CADJPY +14, USDJPY +38, XAUUSD +45
-
-3. TIME-SERIES MOMENTUM PORTFOLIO (monthly, sign of 12-month return, equal volatility, 10% vol target per market)
-  2005-12..2026-10: annual mean -0.5%, vol 4.4%, Sharpe -0.11
-  by year (%): 2005:-1.0  2006:-2.3  2007:+0.7  2008:+7.0  2009:-4.1  2010:+2.6  2011:-3.1  2012:-3.0  2013:+4.1  2014:-1.5  2015:+1.0  2016:-3.0  2017:-1.5  2018:-3.9  2019:-1.2  2020:+3.0  2021:-4.3  2022:+0.4  2023:+0.5  2024:-3.1  2025:+2.9  2026:-1.8
-  max drawdown -18.0%; positive years 9/22
-
-4. GOLD MONTH-OF-YEAR (GC=F daily, average monthly return %)
-  1:+3.4% (68% up)  2:+1.4% (57% up)  3:+0.5% (48% up)  4:+1.2% (57% up)  5:-0.3% (43% up)  6:-0.7% (43% up)  7:+1.2% (61% up)  8:+2.3% (70% up)  9:+0.0% (43% up)  10:+0.4% (57% up)  11:+1.4% (59% up)  12:+0.9% (59% up)
+B. GOLD DAILY DONCHIAN (GC=F 2004-01-05..2026-10-29), R = 2 x ATR20, spread $0.30, est. swap
+  20/10 long+short: trades 200, win 30%, +25.3R (PF 1.22), after swap -17.2R (PF 0.87); 2004-2014 -10.8R, 2015-2026 -6.4R
+  20/10 long only : trades 110, win 39%, +57.8R (PF 2.06), after swap +31.9R (PF 1.51); 2004-2014 +19.2R, 2015-2026 +12.6R
+  55/20 long+short: trades 102, win 28%, +45.4R (PF 1.62), after swap +8.0R (PF 1.10); 2004-2014 +7.0R, 2015-2026 +0.9R
+  55/20 long only : trades 58, win 40%, +62.9R (PF 2.74), after swap +37.8R (PF 1.93); 2004-2014 +22.7R, 2015-2026 +15.0R
+  100/50 long+short: trades 50, win 28%, +80.2R (PF 3.22), after swap +42.3R (PF 1.96); 2004-2014 +17.8R, 2015-2026 +24.4R
+  100/50 long only : trades 31, win 39%, +85.8R (PF 5.50), after swap +55.7R (PF 3.36); 2004-2014 +21.1R, 2015-2026 +34.6R
