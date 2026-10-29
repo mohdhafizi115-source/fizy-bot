@@ -90,7 +90,7 @@ jobs:
       - name: Research backtest (when run_research.txt exists)
         if: github.event_name != 'schedule' && hashFiles('run_research.txt') != ''
         run: |
-          python research/ms_forex.py
+          python research/$(head -1 run_research.txt | tr -dc "A-Za-z0-9_." || echo ms_forex.py)
           git rm -q run_research.txt
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
