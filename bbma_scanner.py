@@ -1255,6 +1255,8 @@ def run_live():
                 la = st.get("last_alert_t")
                 f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}"
                         + (f"  [last alert {la}]" if la else "") + "\n")
+                if n == "XAUUSD" and st.get("lb", {}).get("text"):
+                    f.write(f"XAUUSD London breakout: {st['lb']['text']}\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
