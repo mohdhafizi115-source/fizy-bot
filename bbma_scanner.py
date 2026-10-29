@@ -74,6 +74,7 @@ CFG = {
     "SKIP_MOM_CSAK":  True,          # skip a CSAK candle that already closes outside the BB
     # Setup 2 "retrace": H4 trend + H4 momentum, price back to H4 MA5/10, then M30 / M15 CSAK
     # (no H1, no EMA 50 rejection, no BB slope check)
+    "BBMA_ALERTS":    False,         # BBMA scanner on all pairs (turned off 29 Oct: only the XAUUSD London breakout runs)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
     "LONDON_BREAKOUT": True,         # XAUUSD London breakout alerts (place orders / filled / BE / close)
@@ -138,6 +139,11 @@ def set_symbol(name):
     pip = 0.10 if gold else (0.01 if jpy else 0.0001)
     CUR.update(name=name, pip=pip, digits=2 if gold else (3 if jpy else 5),
                spread=(CFG["SPREAD_PIPS_XAU"] if gold else CFG["SPREAD_PIPS_FX"]) * pip)
+
+
+def scan_list():
+    """symbols downloaded each scan: all pairs when the BBMA scanner is on, else only XAUUSD (London breakout)"""
+    return symbol_list() if CFG["BBMA_ALERTS"] else [n for n in symbol_list() if n == "XAUUSD"] or ["XAUUSD"]
 
 
 def symbol_list():
@@ -1182,6 +1188,9 @@ def scan_symbol(name, st, broker_now):
     todo = [t for t in opens[-CFG["CATCHUP_BARS"]:] if last_eval is None or t > last_eval]
     if last_eval is None:
         todo = todo[-1:]
+    if not CFG["BBMA_ALERTS"]:
+        todo = []
+        st["last_status"] = "BBMA alerts off"
     for T in todo:
         sig, status = evaluate_all(m15, T, st)
         print(f"{name}  {T}  {status}")
@@ -1217,11 +1226,11 @@ def run_live():
     provs = [p.strip().lower() for p in CFG["PROVIDER"].split(",") if p.strip()]
     if provs and provs[0] == "deriv" and CFG["FETCH_WORKERS"] > 1:
         pool = ThreadPoolExecutor(max_workers=CFG["FETCH_WORKERS"])
-        for name in symbol_list():
+        for name in scan_list():
             c = _load_cache(name, "deriv")
             ok = c is not None and len(c) >= 3000 and (broker_now - c.index[-1]) < pd.Timedelta(days=6)
             _prefetch[name] = pool.submit(fetch_deriv, name, 700 if ok else 5000)
-    for name in symbol_list():
+    for name in scan_list():
         st = syms.setdefault(name, {})
         try:
             scan_symbol(name, st, broker_now)
@@ -1233,7 +1242,7 @@ def run_live():
         _prefetch.clear()
     # one-time welcome: confirms Telegram works and shows a chart of the latest past XAUUSD setup
     if not state.get("welcome_sent"):
-        ok = tg_send("FIZY BOT cloud scanner is set up.\nScanning " + str(len(symbol_list())) +
+        ok = tg_send("FIZY BOT cloud scanner is set up.\nScanning " + str(len(scan_list())) +
                      " symbols every 15 minutes (Sunday-Friday). Alerts only, no trades.\n"
                      "'Alive' message every 4 hours (8 am, 12 pm, 4 pm, 8 pm, 12 am, 4 am Malaysia time).")
         state["welcome_telegram_ok"] = ok
@@ -1267,7 +1276,7 @@ def run_live():
         with open(os.path.join(os.path.dirname(CFG["STATE_FILE"]) or ".", "last_run.txt"), "w") as f:
             f.write(f"run (UTC): started {RUN_START:%Y-%m-%d %H:%M:%S}  finished {datetime.now(timezone.utc):%H:%M:%S}"
                     f"  broker time: {broker_now:%Y-%m-%d %H:%M}\n")
-            for n in symbol_list():
+            for n in scan_list():
                 st = syms.get(n, {})
                 la = st.get("last_alert_t")
                 f.write(f"{n:8s} {st.get('source', '-'):10s} {st.get('candles', 0):5d}  {st.get('last_status', '-')}"
@@ -1290,7 +1299,7 @@ def run_live():
     hb_key = f"{now_myt:%Y-%m-%d} {now_myt.hour:02d}"
     if now_myt.hour in CFG["HEARTBEAT_HOURS"] and state.get("heartbeat_slot") != hb_key:
         lines = []
-        for n in symbol_list():
+        for n in scan_list():
             s = syms.get(n, {})
             line = f"{n}: {s.get('last_status', '-')}"
             le = s.get("last_eval")
