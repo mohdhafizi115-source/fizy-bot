@@ -9,6 +9,17 @@ out = []
 def log(*a):
     out.append(" ".join(str(x) for x in a)); print(*a)
 try:
+    import tempfile, json
+    tmp = tempfile.mkdtemp()
+    old_sf = S.CFG["STATE_FILE"]; S.CFG["STATE_FILE"] = os.path.join(tmp, "state.json")
+    os.makedirs(os.path.join(tmp, "candles")); open(os.path.join(tmp, "candles", "XAUUSD_deriv.csv"), "w").write("x")
+    st = {"symbols": {"XAUUSD": {"last_eval": "2026-10-30 16:45:00", "lb": {"day": "2026-10-30", "last_t": "2026-10-30 16:30:00"},
+          "rs2": {"last_h1": "2026-10-30 15:00:00", "pos": {"t": "2026-10-30 15:00:00"}}, "m5": {"last": "2026-10-30 16:50:00"}}}}
+    S.migrate_broker_tz(st)
+    log("migration:", json.dumps(st["symbols"]["XAUUSD"]), "| rule", st.get("broker_tz"),
+        "| cache left:", os.path.exists(os.path.join(tmp, "candles", "XAUUSD_deriv.csv")))
+    S.migrate_broker_tz(st); log("second call keeps:", st["symbols"]["XAUUSD"]["m5"]["last"])
+    S.CFG["STATE_FILE"] = old_sf
     S.set_symbol("XAUUSD")
     m15 = S.fetch_m15("XAUUSD")
     m1 = S.fetch_deriv("XAUUSD", need=1000, max_pages=1, granularity=60)

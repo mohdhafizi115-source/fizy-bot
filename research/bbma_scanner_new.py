@@ -55,7 +55,9 @@ CFG = {
     "SYMBOLS":        "ALL",
     "SPREAD_PIPS_FX": 1.0,           # assumed spread for the sell SL / buy entry (forex, pips)
     "SPREAD_PIPS_XAU": 2.0,          # assumed spread for gold (pips, 1 pip = 0.10)
-    "BROKER_OFFSET":  7,             # broker server time = New York time + N hours (GMT+2 / GMT+3)
+    "BROKER_OFFSET":  7,             # only used when BROKER_TZ is empty: broker time = New York time + N hours
+    "BROKER_TZ":      "Europe/Athens",  # JustMarkets server time: GMT+2 winter / GMT+3 summer, clocks change on the
+                                     # EU dates (its M15 export: daily break at 23:00 from 9 to 27 Mar 2026, else 00:00)
     # BBMA model
     "TREND_TF1":      "1h",
     "TREND_TF2":      "4h",
@@ -167,7 +169,10 @@ NY = ZoneInfo("America/New_York")
 
 
 def broker_to_myt(t):
-    """Broker time (naive, New York time + BROKER_OFFSET hours) -> Malaysia time."""
+    """Broker time (naive, chart time) -> Malaysia time."""
+    if CFG.get("BROKER_TZ"):
+        return pd.Timestamp(t).tz_localize(ZoneInfo(CFG["BROKER_TZ"]), ambiguous=False,
+                                           nonexistent="shift_forward").tz_convert(MYT)
     ny = pd.Timestamp(t) - pd.Timedelta(hours=CFG["BROKER_OFFSET"])
     return ny.tz_localize(NY, ambiguous=False, nonexistent="shift_forward").tz_convert(MYT)
 
@@ -751,8 +756,52 @@ def tg_send(text, png=None):
 # Data
 #==================================================================
 def utc_to_broker(ts_utc):
+    if CFG.get("BROKER_TZ"):
+        return ts_utc.tz_convert(ZoneInfo(CFG["BROKER_TZ"])).tz_localize(None)
     ny = ts_utc.tz_convert(NY)
     return (ny + pd.Timedelta(hours=CFG["BROKER_OFFSET"])).tz_localize(None)
+
+
+def _old_broker(ts_utc):
+    return (ts_utc.tz_convert(NY) + pd.Timedelta(hours=CFG["BROKER_OFFSET"])).tz_localize(None)
+
+
+def migrate_broker_tz(state):
+    """Once, when the chart-time rule changes (New York + 7 -> BROKER_TZ): move the times kept in the
+    state by the difference right now and drop the candle caches (their index is chart time)."""
+    rule = CFG.get("BROKER_TZ") or f"NY+{CFG['BROKER_OFFSET']}"
+    if state.get("broker_tz") == rule:
+        return
+    nowu = pd.Timestamp.now(tz="UTC")
+    shift = (utc_to_broker(nowu) - _old_broker(nowu)).round("1h") if CFG.get("BROKER_TZ") else pd.Timedelta(0)
+    if state.get("broker_tz") and state["broker_tz"] != rule:
+        shift = pd.Timedelta(0)                   # switched again later: no reliable shift, keep the times
+    keys = {None: ("last_eval",), "lb": ("last_t", "done_to"), "rs2": ("last_h1", "last_m15", "sl_to"),
+            "m5": ("last", "sl_to", "cool")}
+    if shift != pd.Timedelta(0):
+        for st in state.get("symbols", {}).values():
+            for sub, ks in keys.items():
+                d = st if sub is None else st.get(sub)
+                if not isinstance(d, dict):
+                    continue
+                for k in ks:
+                    if d.get(k):
+                        try:
+                            d[k] = str(pd.Timestamp(d[k]) + shift)
+                        except (ValueError, TypeError):
+                            pass
+            p = (st.get("rs2") or {}).get("pos")
+            if isinstance(p, dict) and p.get("t"):
+                p["t"] = str(pd.Timestamp(p["t"]) + shift)
+    dropped = 0
+    for name in set(symbol_list()) | {"XAUUSD"}:
+        for prov in [p.strip().lower() for p in CFG["PROVIDER"].split(",") if p.strip()]:
+            try:
+                os.remove(_cache_path(name, prov)); dropped += 1
+            except OSError:
+                pass
+    print(f"chart time rule -> {rule}: state times moved {shift}, {dropped} candle caches dropped")
+    state["broker_tz"] = rule
 
 
 _last_td_call = [0.0]
@@ -1460,6 +1509,7 @@ def run_live():
     global RUN_START
     RUN_START = datetime.now(timezone.utc)
     state = load_state()
+    migrate_broker_tz(state)
     syms = state.setdefault("symbols", {})
     now_myt = datetime.now(MYT)
     broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
