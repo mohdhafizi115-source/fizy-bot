@@ -24,18 +24,33 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install MetaTrader 5 (silent)
+      - name: Install MetaTrader 5 (silent) and start it once
         shell: pwsh
+        env:
+          HAS_LOGIN: ${{ secrets.MT5_LOGIN != '' }}
+          HAS_PASSWORD: ${{ secrets.MT5_PASSWORD != '' }}
+          HAS_SERVER: ${{ secrets.MT5_SERVER != '' }}
+          VAR_LOGIN: ${{ vars.MT5_LOGIN != '' }}
         run: |
+          New-Item -ItemType Directory -Force -Path status | Out-Null
+          $d = "status\mt5_diag.txt"
+          "secret MT5_LOGIN set: $env:HAS_LOGIN, MT5_PASSWORD: $env:HAS_PASSWORD, MT5_SERVER: $env:HAS_SERVER, variable MT5_LOGIN: $env:VAR_LOGIN" | Out-File $d
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
+          "installer size: $((Get-Item mt5setup.exe).Length)" | Out-File $d -Append
           $p = Start-Process -FilePath .\mt5setup.exe -ArgumentList "/auto" -PassThru
-          $exe = "C:\Program Files\MetaTrader 5\terminal64.exe"
           for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
-          Write-Host "installer exited: $($p.HasExited) after about $($i * 5) s"
-          Start-Sleep -Seconds 30
+          "installer exited: $($p.HasExited) after about $($i * 5) s, exit code $($p.ExitCode)" | Out-File $d -Append
+          Start-Sleep -Seconds 20
+          "processes after install: $((Get-Process terminal64, mt5setup, metaeditor64 -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ' (window: ' + $_.MainWindowTitle + ')' }) -join ', ')" | Out-File $d -Append
           Get-Process terminal64, mt5setup -ErrorAction SilentlyContinue | Stop-Process -Force
-          Write-Host "terminal installed: $(Test-Path $exe)"
-          Get-ChildItem "C:\Program Files\MetaTrader 5" | Select-Object Name, Length | Format-Table -AutoSize
+          $dir = "C:\Program Files\MetaTrader 5"
+          "install dir files: $((Get-ChildItem $dir -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ':' + $_.Length }) -join ', ')" | Out-File $d -Append
+          $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable" -PassThru
+          Start-Sleep -Seconds 60
+          "terminal started by hand: alive $(-not $t.HasExited), window '$((Get-Process -Id $t.Id -ErrorAction SilentlyContinue).MainWindowTitle)'" | Out-File $d -Append
+          "dirs after start: $((Get-ChildItem $dir -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }) -join ', ')" | Out-File $d -Append
+          "appdata terminals: $((Get-ChildItem "$env:APPDATA\MetaQuotes\Terminal" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name.Substring(0, 6) }) -join ', ')" | Out-File $d -Append
+          "session: $([Environment]::UserInteractive) user $env:USERNAME" | Out-File $d -Append
 
       - name: Python packages
         run: pip install MetaTrader5 pandas requests
@@ -55,6 +70,6 @@ jobs:
           python mt5/mask_logs.py || true
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
-          git add status/mt5_check.txt status/mt5_logs.txt || true
+          git add status/mt5_check.txt status/mt5_logs.txt status/mt5_diag.txt || true
           git commit -m "MT5 check result" || true
           for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true

@@ -23,9 +23,9 @@ threading.Thread(target=watchdog, daemon=True).start()
 if mt5:
     t0 = time.time()
     if login and pw and srv:
-        ok = mt5.initialize(path=PATH, login=int(login), password=pw, server=srv, timeout=180000, portable=False)
+        ok = mt5.initialize(path=PATH, login=int(login), password=pw, server=srv, timeout=180000, portable=True)
     else:
-        ok = mt5.initialize(path=PATH, timeout=180000)
+        ok = mt5.initialize(path=PATH, timeout=180000, portable=True)
     say(f"initialize: {ok} ({time.time() - t0:.0f} s), last_error {mt5.last_error()}")
     if ok:
         say(f"terminal version: {mt5.version()}")

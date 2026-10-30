@@ -1,7 +1,7 @@
 """Copy the last lines of the MT5 terminal logs to status/mt5_logs.txt with every 5+ digit number masked
 (the account number must never reach the public repo)."""
 import glob, os, re
-files = glob.glob(r"C:\Program Files\MetaTrader 5\logs\*.log") + glob.glob(os.path.expandvars(r"%APPDATA%\MetaQuotes\Terminal\*\logs\*.log"))
+files = glob.glob(r"C:\Program Files\MetaTrader 5\logs\*.log") + glob.glob(r"C:\Program Files\MetaTrader 5\MQL5\Logs\*.log") + glob.glob(os.path.expandvars(r"%APPDATA%\MetaQuotes\Terminal\*\logs\*.log"))
 login = os.environ.get("MT5_LOGIN", "").strip()
 out = []
 for f in sorted(files, key=os.path.getmtime)[-3:]:
