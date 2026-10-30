@@ -1,94 +1,88 @@
-terminal file exists: True
+terminal: JustMarkets MetaTrader 5, exists True
 secrets set: login yes, password yes, server yes (JustMarkets-Demo6)
 initialize (attach): False (65 s), last_error (-10005, 'IPC timeout')
-initialize (path, portable): False (129 s), last_error (-10005, 'IPC timeout')
+initialize (path, portable): False (130 s), last_error (-10005, 'IPC timeout')
 terminal log files: 2
 == metaeditor.log
-  0 2026.10.30 18:37:53.028 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Examples\ZigZag.mq5 - 0 errors, 0 warnings, 354 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:53.030 Compiler compiled ZigZag.mq5
-  0 2026.10.30 18:37:53.398 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Examples\ZigzagColor.mq5 - 0 errors, 0 warnings, 365 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:53.400 Compiler compiled ZigzagColor.mq5
-  0 2026.10.30 18:37:53.784 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Camarilla Channel.mq5 - 0 errors, 0 warnings, 378 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:53.786 Compiler compiled Camarilla Channel.mq5
-  0 2026.10.30 18:37:54.150 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\DeMark Channel.mq5 - 0 errors, 0 warnings, 361 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:54.154 Compiler compiled DeMark Channel.mq5
-  0 2026.10.30 18:37:54.507 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Donchian Channel.mq5 - 0 errors, 0 warnings, 350 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:54.509 Compiler compiled Donchian Channel.mq5
-  0 2026.10.30 18:37:54.903 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Fibonacci Channel.mq5 - 0 errors, 0 warnings, 390 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:54.905 Compiler compiled Fibonacci Channel.mq5
-  0 2026.10.30 18:37:55.280 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Keltner Channel.mq5 - 0 errors, 0 warnings, 370 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:55.282 Compiler compiled Keltner Channel.mq5
-  0 2026.10.30 18:37:55.767 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\MarketProfile Canvas.mq5 - 0 errors, 0 warnings, 480 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:55.771 Compiler compiled MarketProfile Canvas.mq5
-  0 2026.10.30 18:37:56.151 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\MarketProfile.mq5 - 0 errors, 0 warnings, 377 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:56.153 Compiler compiled MarketProfile.mq5
-  0 2026.10.30 18:37:56.556 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\MurreyMath Channel.mq5 - 0 errors, 0 warnings, 399 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:56.558 Compiler compiled MurreyMath Channel.mq5
-  0 2026.10.30 18:37:56.913 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\NRTR Channel.mq5 - 0 errors, 0 warnings, 351 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:56.915 Compiler compiled NRTR Channel.mq5
-  0 2026.10.30 18:37:57.263 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Parabolic Channel.mq5 - 0 errors, 0 warnings, 343 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:57.265 Compiler compiled Parabolic Channel.mq5
-  0 2026.10.30 18:37:57.639 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Pivot Channel.mq5 - 0 errors, 0 warnings, 366 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:57.641 Compiler compiled Pivot Channel.mq5
-  0 2026.10.30 18:37:57.995 Compile C:\Program Files\MetaTrader 5\MQL5\Indicators\Free Indicators\Woodie Channel.mq5 - 0 errors, 0 warnings, 351 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:57.996 Compiler compiled Woodie Channel.mq5
-  0 2026.10.30 18:37:58.375 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\AccountInfo\AccountInfoSample.mq5 - 0 errors, 0 warnings, 374 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:58.377 Compiler compiled AccountInfoSample.mq5
-  0 2026.10.30 18:37:58.747 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ArrayDouble\ArrayDoubleSample.mq5 - 0 errors, 0 warnings, 365 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:58.749 Compiler compiled ArrayDoubleSample.mq5
-  0 2026.10.30 18:37:59.209 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\CanvasSample.mq5 - 0 errors, 0 warnings, 454 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:59.211 Compiler compiled CanvasSample.mq5
-  0 2026.10.30 18:37:59.759 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\HistogramChartSample.mq5 - 0 errors, 0 warnings, 545 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:37:59.763 Compiler compiled HistogramChartSample.mq5
-  0 2026.10.30 18:38:00.334 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\LineChartSample.mq5 - 0 errors, 0 warnings, 567 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:00.336 Compiler compiled LineChartSample.mq5
-  0 2026.10.30 18:38:00.996 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\PieChartSample.mq5 - 0 errors, 0 warnings, 655 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:01.000 Compiler compiled PieChartSample.mq5
-  0 2026.10.30 18:38:01.574 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectChart\ObjChartSample.mq5 - 0 errors, 0 warnings, 570 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:01.576 Compiler compiled ObjChartSample.mq5
-  0 2026.10.30 18:38:01.980 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\ObjectSphere\SphereSample.mq5 - 0 errors, 0 warnings, 400 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:01.982 Compiler compiled SphereSample.mq5
-  0 2026.10.30 18:38:02.368 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\BitonicSort.mq5 - 0 errors, 0 warnings, 381 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:02.370 Compiler compiled BitonicSort.mq5
-  0 2026.10.30 18:38:02.797 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\FFT.mq5 - 0 errors, 0 warnings, 422 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:02.799 Compiler compiled FFT.mq5
-  0 2026.10.30 18:38:03.191 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\MatrixMult.mq5 - 0 errors, 0 warnings, 387 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:03.193 Compiler compiled MatrixMult.mq5
-  0 2026.10.30 18:38:04.032 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\Wavelet.mq5 - 0 errors, 0 warnings, 836 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:04.036 Compiler compiled Wavelet.mq5
-  0 2026.10.30 18:38:04.411 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\BitonicSort.mq5 - 0 errors, 0 warnings, 370 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:04.413 Compiler compiled BitonicSort.mq5
-  0 2026.10.30 18:38:04.818 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\FFT.mq5 - 0 errors, 0 warnings, 402 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:04.820 Compiler compiled FFT.mq5
-  0 2026.10.30 18:38:05.201 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\MatrixMult.mq5 - 0 errors, 0 warnings, 376 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:05.203 Compiler compiled MatrixMult.mq5
-  0 2026.10.30 18:38:06.218 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\Wavelet.mq5 - 0 errors, 0 warnings, 1011 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:06.222 Compiler compiled Wavelet.mq5
-  0 2026.10.30 18:38:06.855 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Seascape\Seascape.mqproj - 0 errors, 0 warnings, 628 ms elapsed, cpu='X64 Regular'
-  0 2026.10.30 18:38:06.857 Compiler compiled Seascape.mqproj
-  0 2026.10.30 18:38:07.380 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\OrderInfo\OrderInfoSample.mq5 - 0 errors, 0 warnings, 519 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:07.382 Compiler compiled OrderInfoSample.mq5
-  0 2026.10.30 18:38:07.778 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\PositionInfo\PositionInfoSample.mq5 - 0 errors, 0 warnings, 390 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:07.780 Compiler compiled PositionInfoSample.mq5
-  0 2026.10.30 18:38:08.700 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\Remnant 3D\Remnant 3D.mqproj - 0 errors, 0 warnings, 917 ms elapsed, cpu='X64 Regular'
-  0 2026.10.30 18:38:08.704 Compiler compiled Remnant 3D.mqproj
-  0 2026.10.30 18:38:09.196 Compile C:\Program Files\MetaTrader 5\MQL5\Scripts\Examples\SymbolInfo\SymbolInfoSample.mq5 - 0 errors, 0 warnings, 488 ms elapsed without optimizations, cpu='X64 Regular'
-  0 2026.10.30 18:38:09.198 Compiler compiled SymbolInfoSample.mq5
+  0 2026.10.30 18:48:35.533 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Examples\ZigZag.mq5 - 0 errors, 0 warnings, 351 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:35.536 Compiler compiled ZigZag.mq5
+  0 2026.10.30 18:48:35.905 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Examples\ZigzagColor.mq5 - 0 errors, 0 warnings, 365 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:35.907 Compiler compiled ZigzagColor.mq5
+  0 2026.10.30 18:48:36.277 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Camarilla Channel.mq5 - 0 errors, 0 warnings, 365 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:36.279 Compiler compiled Camarilla Channel.mq5
+  0 2026.10.30 18:48:36.642 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\DeMark Channel.mq5 - 0 errors, 0 warnings, 356 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:36.644 Compiler compiled DeMark Channel.mq5
+  0 2026.10.30 18:48:36.992 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Donchian Channel.mq5 - 0 errors, 0 warnings, 345 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:36.994 Compiler compiled Donchian Channel.mq5
+  0 2026.10.30 18:48:37.361 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Fibonacci Channel.mq5 - 0 errors, 0 warnings, 363 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:37.364 Compiler compiled Fibonacci Channel.mq5
+  0 2026.10.30 18:48:37.721 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Keltner Channel.mq5 - 0 errors, 0 warnings, 352 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:37.723 Compiler compiled Keltner Channel.mq5
+  0 2026.10.30 18:48:38.170 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\MarketProfile Canvas.mq5 - 0 errors, 0 warnings, 443 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:38.173 Compiler compiled MarketProfile Canvas.mq5
+  0 2026.10.30 18:48:38.544 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\MarketProfile.mq5 - 0 errors, 0 warnings, 367 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:38.546 Compiler compiled MarketProfile.mq5
+  0 2026.10.30 18:48:38.940 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\MurreyMath Channel.mq5 - 0 errors, 0 warnings, 390 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:38.942 Compiler compiled MurreyMath Channel.mq5
+  0 2026.10.30 18:48:39.301 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\NRTR Channel.mq5 - 0 errors, 0 warnings, 355 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:39.303 Compiler compiled NRTR Channel.mq5
+  0 2026.10.30 18:48:39.651 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Parabolic Channel.mq5 - 0 errors, 0 warnings, 343 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:39.653 Compiler compiled Parabolic Channel.mq5
+  0 2026.10.30 18:48:40.012 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Pivot Channel.mq5 - 0 errors, 0 warnings, 356 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:40.014 Compiler compiled Pivot Channel.mq5
+  0 2026.10.30 18:48:40.370 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Indicators\Free Indicators\Woodie Channel.mq5 - 0 errors, 0 warnings, 353 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:40.372 Compiler compiled Woodie Channel.mq5
+  0 2026.10.30 18:48:40.749 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\AccountInfo\AccountInfoSample.mq5 - 0 errors, 0 warnings, 372 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:40.753 Compiler compiled AccountInfoSample.mq5
+  0 2026.10.30 18:48:41.118 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\ArrayDouble\ArrayDoubleSample.mq5 - 0 errors, 0 warnings, 362 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:41.122 Compiler compiled ArrayDoubleSample.mq5
+  0 2026.10.30 18:48:41.577 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\Canvas\CanvasSample.mq5 - 0 errors, 0 warnings, 451 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:41.579 Compiler compiled CanvasSample.mq5
+  0 2026.10.30 18:48:42.125 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\HistogramChartSample.mq5 - 0 errors, 0 warnings, 542 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:42.129 Compiler compiled HistogramChartSample.mq5
+  0 2026.10.30 18:48:42.687 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\LineChartSample.mq5 - 0 errors, 0 warnings, 554 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:42.689 Compiler compiled LineChartSample.mq5
+  0 2026.10.30 18:48:43.333 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\Canvas\Charts\PieChartSample.mq5 - 0 errors, 0 warnings, 640 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:43.337 Compiler compiled PieChartSample.mq5
+  0 2026.10.30 18:48:43.895 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\ObjectChart\ObjChartSample.mq5 - 0 errors, 0 warnings, 553 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:43.897 Compiler compiled ObjChartSample.mq5
+  0 2026.10.30 18:48:44.299 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\ObjectSphere\SphereSample.mq5 - 0 errors, 0 warnings, 396 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:44.302 Compiler compiled SphereSample.mq5
+  0 2026.10.30 18:48:44.683 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\BitonicSort.mq5 - 0 errors, 0 warnings, 376 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:44.685 Compiler compiled BitonicSort.mq5
+  0 2026.10.30 18:48:45.101 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\FFT.mq5 - 0 errors, 0 warnings, 414 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:45.106 Compiler compiled FFT.mq5
+  0 2026.10.30 18:48:45.489 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\MatrixMult.mq5 - 0 errors, 0 warnings, 381 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:45.491 Compiler compiled MatrixMult.mq5
+  0 2026.10.30 18:48:46.308 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Double\Wavelet.mq5 - 0 errors, 0 warnings, 813 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:46.312 Compiler compiled Wavelet.mq5
+  0 2026.10.30 18:48:46.687 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\BitonicSort.mq5 - 0 errors, 0 warnings, 370 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:46.690 Compiler compiled BitonicSort.mq5
+  0 2026.10.30 18:48:47.102 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\FFT.mq5 - 0 errors, 0 warnings, 408 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:47.105 Compiler compiled FFT.mq5
+  0 2026.10.30 18:48:47.482 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\MatrixMult.mq5 - 0 errors, 0 warnings, 373 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:47.484 Compiler compiled MatrixMult.mq5
+  0 2026.10.30 18:48:48.304 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Float\Wavelet.mq5 - 0 errors, 0 warnings, 817 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:48.309 Compiler compiled Wavelet.mq5
+  0 2026.10.30 18:48:48.807 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OpenCL\Seascape\Seascape.mqproj - 0 errors, 0 warnings, 495 ms elapsed, cpu='X64 Regular'
+  0 2026.10.30 18:48:48.809 Compiler compiled Seascape.mqproj
+  0 2026.10.30 18:48:49.216 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\OrderInfo\OrderInfoSample.mq5 - 0 errors, 0 warnings, 402 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:49.218 Compiler compiled OrderInfoSample.mq5
+  0 2026.10.30 18:48:49.604 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\PositionInfo\PositionInfoSample.mq5 - 0 errors, 0 warnings, 380 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:49.606 Compiler compiled PositionInfoSample.mq5
+  0 2026.10.30 18:48:50.104 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\Remnant 3D\Remnant 3D.mqproj - 0 errors, 0 warnings, 492 ms elapsed, cpu='X64 Regular'
+  0 2026.10.30 18:48:50.106 Compiler compiled Remnant 3D.mqproj
+  0 2026.10.30 18:48:50.539 Compile C:\Program Files\JustMarkets MetaTrader 5\MQL5\Scripts\Examples\SymbolInfo\SymbolInfoSample.mq5 - 0 errors, 0 warnings, 427 ms elapsed without optimizations, cpu='X64 Regular'
+  0 2026.10.30 18:48:50.541 Compiler compiled SymbolInfoSample.mq5
 == 20261030.log
-  GL 0 18:37:06.919 Terminal updating C:\Program Files\MetaTrader 5\MQL5 folder
-  NJ 0 18:37:06.919 Terminal 453 files updated
-  DH 0 18:37:06.980 Terminal MetaTrader 5 x64 build 6295 started for MetaQuotes Ltd.
-  MK 0 18:37:06.980 Terminal Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 30 / 149 Gb disk, UAC, admin, GMT+0
-  FK 0 18:37:06.980 Terminal C:\Program Files\MetaTrader 5
-  FL 0 18:37:06.982 MCP started on 127.0.0.1:<num>
-  DF 0 18:37:06.983 Compiler full recompilation has been started
-  OL 0 18:38:07.924 LiveUpdate new version build 6230 (IDE: 6230, Tester: 6230) is available
-  RF 0 18:38:09.133 LiveUpdate 'mt5onnx64' downloaded and updated (<num> kb)
-  HM 0 18:38:09.136 LiveUpdate downloaded successfully
-  LK 0 18:38:09.225 Compiler full recompilation has been finished:  131 file(s) compiled
-  DD 0 18:39:19.092 Startup successfully initialized from start config "C:\Program Files\MetaTrader 5\start.ini"
-  LP 0 18:39:19.117 Terminal MetaTrader 5 x64 build 6295 started for MetaQuotes Ltd.
-  HP 0 18:39:19.118 Terminal Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  CS 0 18:39:19.118 Terminal C:\Program Files\MetaTrader 5
-  QJ 0 18:39:19.118 Terminal launched with C:\Program Files\MetaTrader 5\start.ini
-  JM 0 18:39:19.119 MCP started on 127.0.0.1:<num>
+  KP 0 18:47:50.789 Terminal updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
+  CK 0 18:47:50.789 Terminal 453 files updated
+  LP 0 18:47:50.817 Startup successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
+  EN 0 18:47:50.845 Terminal JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  RH 0 18:47:50.846 Terminal Windows Server 2025 build <num>, 4 x Intel Xeon Platinum 8370C  @ 2.80GHz, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  NQ 0 18:47:50.846 Terminal C:\Program Files\JustMarkets MetaTrader 5
+  PF 0 18:47:50.846 Terminal launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
+  PN 0 18:47:50.849 MCP started on 127.0.0.1:<num>
+  QI 0 18:47:50.850 Compiler full recompilation has been started
+  PM 0 18:47:50.894 HistoryCenter delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\Default\history\USDCHF, last access time 2023.06.08 10:59
+  OK 0 18:48:50.577 Compiler full recompilation has been finished:  131 file(s) compiled
