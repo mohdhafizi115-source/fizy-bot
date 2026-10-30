@@ -4,46 +4,48 @@ compile finished: True, ex5 exists: True
    : information: generating code 95%
    : information: generating code 100%
    : information: code generated
-  Result: 0 errors, 0 warnings, 522 ms elapsed, cpu='X64 Regular'
-terminal closed by the EA: True after about 260 s
+  Result: 0 errors, 0 warnings, 534 ms elapsed, cpu='X64 Regular'
+secret shape: login digits only True, password has ; or # False, password has leading/trailing space False, server has spaces False
+servers.dat (56188 bytes) names: 
+terminal closed by the EA: True after about 255 s; accounts.dat exists: True
 EA ran: yes, connected 0 after 240 s
 server JustMarkets-Demo6, demo 0, company 
 algo trading: terminal 1, account 0, expert 0, program 1
 balance > 0: 0, currency , leverage 1:0, margin mode 0
 XAUUSD.m: tick 1 bid 3392.55 ask 3392.73, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 100
-server time 2025.08.08 16:16:23, GMT 2026.10.30 19:15:59 (server offset -10755 h)
+server time 2025.08.08 16:16:23, GMT 2026.10.30 19:24:05 (server offset -10755 h)
 terminal journal (network / account lines, last 30 other lines):
-  N MD	0	19:11:46.244	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  N QO	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 2: 10 gbit" found
-  N QK	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud USA 1: 10 gbit" found
-  N IR	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 2: 10 gbit" found
-  N RG	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud USA 2: 10 gbit" found
-  N HE	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 1: 1 gbit" found
-  N LL	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 3: 10 gbit" found
-  N LJ	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 1: 10 gbit" found
-  IP	0	19:11:46.184	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
-  QK	0	19:11:46.184	Terminal	453 files updated
-  JP	0	19:11:46.216	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
-  ON	0	19:11:46.244	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
-  MD	0	19:11:46.244	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  KS	0	19:11:46.244	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  ID	0	19:11:46.244	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
-  EM	0	19:11:46.247	MCP	started on 127.0.0.1:<num>
-  QG	0	19:11:46.248	Compiler	full recompilation has been started
-  HS	0	19:11:46.284	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\Default\history\USDCHF, last access time 2023.06.08 10:59
-  CM	0	19:11:47.804	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
-  QO	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 2: 10 gbit" found
-  QK	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud USA 1: 10 gbit" found
-  IR	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 2: 10 gbit" found
-  RG	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud USA 2: 10 gbit" found
-  HE	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 1: 1 gbit" found
-  LL	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 3: 10 gbit" found
-  LJ	0	19:12:19.157	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 1: 10 gbit" found
-  OS	0	19:12:50.539	Compiler	full recompilation has been finished:  131 file(s) compiled
-  QP	3	19:15:59.253	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
-  RE	0	19:15:59.284	Experts	expert CheckEA (XAUUSD.m,M15) removed
-  RQ	0	19:15:59.379	Terminal	exit with code 0
-  KG	0	19:16:00.979	Terminal	stopped with 0
-  OF	0	19:16:00.985	Terminal	shutdown with 0
+  N QD	0	19:19:51.800	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  N FO	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 2: 10 gbit" found
+  N FK	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud USA 1: 10 gbit" found
+  N NR	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 2: 10 gbit" found
+  N EG	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud USA 2: 10 gbit" found
+  N KE	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 1: 1 gbit" found
+  N GL	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 3: 10 gbit" found
+  N GJ	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 1: 10 gbit" found
+  HP	0	19:19:51.743	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
+  PK	0	19:19:51.743	Terminal	453 files updated
+  KP	0	19:19:51.774	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
+  KN	0	19:19:51.800	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  QD	0	19:19:51.800	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  OS	0	19:19:51.800	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  ED	0	19:19:51.800	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
+  DM	0	19:19:51.804	MCP	started on 127.0.0.1:<num>
+  EG	0	19:19:51.804	Compiler	full recompilation has been started
+  NS	0	19:19:51.853	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\Default\history\USDCHF, last access time 2023.06.08 10:59
+  PM	0	19:19:53.590	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
+  FO	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 2: 10 gbit" found
+  FK	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud USA 1: 10 gbit" found
+  NR	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 2: 10 gbit" found
+  EG	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud USA 2: 10 gbit" found
+  KE	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Asia 1: 1 gbit" found
+  GL	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 3: 10 gbit" found
+  GJ	0	19:20:24.706	Tester	MQL5 Cloud Server "MQL5 Cloud Europe 1: 10 gbit" found
+  OS	0	19:20:59.403	Compiler	full recompilation has been finished:  131 file(s) compiled
+  GP	3	19:24:05.063	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
+  JE	0	19:24:05.094	Experts	expert CheckEA (XAUUSD.m,M15) removed
+  KQ	0	19:24:05.212	Terminal	exit with code 0
+  NG	0	19:24:05.415	Terminal	stopped with 0
+  KF	0	19:24:05.422	Terminal	shutdown with 0
 EA log tail:
-  NQ	3	19:15:59.253	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
+  DQ	3	19:24:05.063	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
