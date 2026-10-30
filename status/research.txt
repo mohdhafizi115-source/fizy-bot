@@ -1,9 +1,8 @@
-Gold M5 scalping candidates
-Yahoo GC=F 5m: 13508 candles, 2026-08-21..2026-10-30 (50 days)
-  A EMA 9/21/50 pullback, TP 1.5R: trades 437 (8.7/day), win 45%, PF 0.75, net $-179 per 0.01 lot, halves PF 0.66/0.89, winning days 45%, max DD $177
-  B RSI(2) + EMA 200, exit SMA 5: trades 601 (12.0/day), win 46%, PF 0.86, net $-110 per 0.01 lot, halves PF 1.04/0.68, winning days 47%, max DD $152
-  C 1h breakout + EMA 50 slope, TP 1.5R: trades 878 (17.6/day), win 46%, PF 0.91, net $-122 per 0.01 lot, halves PF 0.95/0.86, winning days 31%, max DD $206
-Deriv XAUUSD 5m: 26705 candles, 2026-06-15..2026-10-30 (100 days)
-  A EMA 9/21/50 pullback, TP 1.5R: trades 809 (8.1/day), win 46%, PF 0.83, net $-203 per 0.01 lot, halves PF 0.83/0.82, winning days 48%, max DD $226
-  B RSI(2) + EMA 200, exit SMA 5: trades 1243 (12.4/day), win 50%, PF 1.00, net $+3 per 0.01 lot, halves PF 1.14/0.87, winning days 58%, max DD $131
-  C 1h breakout + EMA 50 slope, TP 1.5R: trades 1929 (19.3/day), win 47%, PF 0.92, net $-225 per 0.01 lot, halves PF 0.86/0.99, winning days 36%, max DD $288
+granularity 300: lowest low 3924.65 at 2026-10-30 16:35:00
+  16:30 o 3944.49 h 3944.73 l 3928.99 c 3931.05
+  16:35 o 3931.85 h 3937.49 l 3924.65 c 3936.93
+  16:40 o 3936.90 h 3938.14 l 3926.29 c 3928.81
+  16:45 o 3928.94 h 3928.94 l 3925.91 c 3928.46
+granularity 900: lowest low 3924.65 at 2026-10-30 16:30:00
+  16:30 o 3944.49 h 3944.73 l 3924.65 c 3928.81
+  16:45 o 3928.94 h 3928.94 l 3925.91 c 3928.46
