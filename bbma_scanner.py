@@ -80,7 +80,7 @@ CFG = {
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
     "M1_CHECKS":      True,          # check fills / BE / TP / SL on M1 candles (alerts within ~1 min) instead of M15
-    "M5_SCALP":       True,          # XAUUSD M5 RSI(2) scalp alerts (added 30 Oct on the user's insistence; tested ~breakeven)
+    "M5_SCALP":       False,         # XAUUSD M5 RSI(2) scalp alerts: OFF since 31 Oct (lost on 3.7 years of JustMarkets M5, PF 0.94)
     "M5_SESSION":     [8, 20],       # entries only between these chart hours
     "M5_MAX_BARS":    24,            # time exit after this many M5 candles (2 hours)
     "RSI2_ALERTS":    True,          # XAUUSD H1 RSI(2) pullback alerts (entry / exit / SL), added 30 Oct at the user's request
