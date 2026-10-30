@@ -108,12 +108,19 @@ jobs:
           $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=CheckEA`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
           $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
-          for ($i = 0; $i -lt 60 -and -not $t.HasExited; $i++) { Start-Sleep -Seconds 5 }
+          for ($i = 0; $i -lt 70 -and -not $t.HasExited; $i++) { Start-Sleep -Seconds 5 }
           Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
           "terminal closed by the EA: $($t.HasExited) after about $($i * 5) s" | Out-File $out -Append -Encoding utf8
           $f = "$dir\MQL5\Files\mt5_ea_check.txt"
           if (Test-Path $f) { Get-Content $f | Out-File $out -Append -Encoding utf8 } else { "EA output file not found" | Out-File $out -Append -Encoding utf8 }
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          $jl = Get-ChildItem "$dir\logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
+          if ($jl) {
+            "terminal journal (network / account lines, last 30 other lines):" | Out-File $out -Append -Encoding utf8
+            $all = Get-Content $jl.FullName -Encoding Unicode
+            $all | Where-Object { $_ -match "Network|auth|connect|login|ccount|server|Server|failed|error" } | Select-Object -Last 25 | ForEach-Object { "  N " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8
+            $all | Select-Object -Last 30 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8
+          }
           $lg = Get-ChildItem "$dir\MQL5\Logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
           if ($lg) { "EA log tail:" | Out-File $out -Append -Encoding utf8; Get-Content $lg.FullName -Tail 15 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8 }
 

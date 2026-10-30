@@ -14,7 +14,7 @@ void OnTimer()
 {
    ticks++;
    bool conn = (bool)TerminalInfoInteger(TERMINAL_CONNECTED);
-   if(!conn && ticks < 60) return;                 // wait up to 2 minutes for the connection
+   if(!conn && ticks < 120) return;                // wait up to 4 minutes for the connection
    SymbolSelect(InpSymbol, true);
    MqlTick tk; bool hasTick = SymbolInfoTick(InpSymbol, tk);
    int h = FileOpen("mt5_ea_check.txt", FILE_WRITE | FILE_TXT | FILE_ANSI);
