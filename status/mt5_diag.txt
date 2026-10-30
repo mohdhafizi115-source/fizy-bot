@@ -1,9 +1,12 @@
 secret MT5_LOGIN set: true, MT5_PASSWORD: true, MT5_SERVER: true, variable MT5_LOGIN: false
 installer size: 23784536
-installer exited: True after about 20 s, exit code 1
+installer exited: True after about 25 s, exit code 1
 processes after install: 
 install dir files: Bases:1, Config:1, Profiles:1, Sounds:1, MetaEditor64.exe:70948568, metatester64.exe:24042416, Terminal.ico:410598, terminal64.exe:122386344, uninstall.exe:23784536
 terminal started by hand: alive True, window 'MetaTrader 5 - Netting - EURUSD,H1'
 dirs after start: Bases, Config, llm-agent, logs, MQL5, Profiles, Sounds, Tester
 appdata terminals: Common, Commun, D0E820
 session: True user runneradmin
+broker installer: https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe
+terminal folders: JustMarkets MetaTrader 5, MetaTrader 5
+servers.dat copied from JustMarkets MetaTrader 5 (56188 bytes)
