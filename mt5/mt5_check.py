@@ -22,11 +22,15 @@ def watchdog():
 threading.Thread(target=watchdog, daemon=True).start()
 if mt5:
     t0 = time.time()
-    if login and pw and srv:
-        ok = mt5.initialize(path=PATH, login=int(login), password=pw, server=srv, timeout=180000, portable=True)
-    else:
-        ok = mt5.initialize(path=PATH, timeout=180000, portable=True)
-    say(f"initialize: {ok} ({time.time() - t0:.0f} s), last_error {mt5.last_error()}")
+    ok = mt5.initialize(timeout=60000)                     # attach to the terminal started by the workflow
+    say(f"initialize (attach): {ok} ({time.time() - t0:.0f} s), last_error {mt5.last_error()}")
+    if not ok:
+        t0 = time.time()
+        ok = mt5.initialize(path=PATH, portable=True, timeout=120000)
+        say(f"initialize (path, portable): {ok} ({time.time() - t0:.0f} s), last_error {mt5.last_error()}")
+    if ok and login and pw and srv and (not mt5.account_info() or str(mt5.account_info().login) != login):
+        lg = mt5.login(int(login), password=pw, server=srv, timeout=60000)
+        say(f"login call: {lg}, last_error {mt5.last_error()}")
     if ok:
         say(f"terminal version: {mt5.version()}")
         ti = mt5.terminal_info()

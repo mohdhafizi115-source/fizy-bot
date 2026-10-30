@@ -34,34 +34,48 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path status | Out-Null
           $d = "status\mt5_diag.txt"
-          "secret MT5_LOGIN set: $env:HAS_LOGIN, MT5_PASSWORD: $env:HAS_PASSWORD, MT5_SERVER: $env:HAS_SERVER, variable MT5_LOGIN: $env:VAR_LOGIN" | Out-File $d
+          "secret MT5_LOGIN set: $env:HAS_LOGIN, MT5_PASSWORD: $env:HAS_PASSWORD, MT5_SERVER: $env:HAS_SERVER, variable MT5_LOGIN: $env:VAR_LOGIN" | Out-File $d -Encoding utf8
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
-          "installer size: $((Get-Item mt5setup.exe).Length)" | Out-File $d -Append
+          "installer size: $((Get-Item mt5setup.exe).Length)" | Out-File $d -Append -Encoding utf8
           $p = Start-Process -FilePath .\mt5setup.exe -ArgumentList "/auto" -PassThru
           for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
-          "installer exited: $($p.HasExited) after about $($i * 5) s, exit code $($p.ExitCode)" | Out-File $d -Append
+          "installer exited: $($p.HasExited) after about $($i * 5) s, exit code $($p.ExitCode)" | Out-File $d -Append -Encoding utf8
           Start-Sleep -Seconds 20
-          "processes after install: $((Get-Process terminal64, mt5setup, metaeditor64 -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ' (window: ' + $_.MainWindowTitle + ')' }) -join ', ')" | Out-File $d -Append
+          "processes after install: $((Get-Process terminal64, mt5setup, metaeditor64 -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ' (window: ' + $_.MainWindowTitle + ')' }) -join ', ')" | Out-File $d -Append -Encoding utf8
           Get-Process terminal64, mt5setup -ErrorAction SilentlyContinue | Stop-Process -Force
           $dir = "C:\Program Files\MetaTrader 5"
-          "install dir files: $((Get-ChildItem $dir -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ':' + $_.Length }) -join ', ')" | Out-File $d -Append
+          "install dir files: $((Get-ChildItem $dir -ErrorAction SilentlyContinue | ForEach-Object { $_.Name + ':' + $_.Length }) -join ', ')" | Out-File $d -Append -Encoding utf8
           $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable" -PassThru
           Start-Sleep -Seconds 60
-          "terminal started by hand: alive $(-not $t.HasExited), window '$((Get-Process -Id $t.Id -ErrorAction SilentlyContinue).MainWindowTitle)'" | Out-File $d -Append
-          "dirs after start: $((Get-ChildItem $dir -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }) -join ', ')" | Out-File $d -Append
-          "appdata terminals: $((Get-ChildItem "$env:APPDATA\MetaQuotes\Terminal" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name.Substring(0, 6) }) -join ', ')" | Out-File $d -Append
-          "session: $([Environment]::UserInteractive) user $env:USERNAME" | Out-File $d -Append
+          "terminal started by hand: alive $(-not $t.HasExited), window '$((Get-Process -Id $t.Id -ErrorAction SilentlyContinue).MainWindowTitle)'" | Out-File $d -Append -Encoding utf8
+          "dirs after start: $((Get-ChildItem $dir -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name }) -join ', ')" | Out-File $d -Append -Encoding utf8
+          "appdata terminals: $((Get-ChildItem "$env:APPDATA\MetaQuotes\Terminal" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name.Substring(0, 6) }) -join ', ')" | Out-File $d -Append -Encoding utf8
+          "session: $([Environment]::UserInteractive) user $env:USERNAME" | Out-File $d -Append -Encoding utf8
 
       - name: Python packages
         run: pip install MetaTrader5 pandas requests
 
       - name: Check terminal and login (no orders)
         timeout-minutes: 8
+        shell: pwsh
         env:
           MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
           MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
           MT5_SERVER: ${{ secrets.MT5_SERVER }}
-        run: python mt5/mt5_check.py
+        run: |
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          Start-Sleep -Seconds 3
+          $dir = "C:\Program Files\MetaTrader 5"
+          $a = "/portable"
+          if ($env:MT5_LOGIN) {
+            $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n"
+            [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
+            $a = "/portable /config:`"$dir\start.ini`""
+          }
+          Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList $a
+          Start-Sleep -Seconds 60
+          Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
+          python mt5/mt5_check.py
 
       - name: Publish the check result
         if: always()
