@@ -148,7 +148,7 @@ def run(d, sig, sp, flat=None):
     return pd.DataFrame(trades, columns=["t", "pnl", "res"])
 
 
-def sig_sb(d, w0, w1, sweep):
+def sig_sb(d, w0, w1, sweep, tp_r=2.0, gap=0.2, ce=False):
     A = d.atr.values; o, h, l, c = (d[x].values for x in ("open", "high", "low", "close"))
     nyh = d.ny_h.values; nyday = d.ny_day.values
     sig = {}; used = set(); flat = np.zeros(len(d), bool)
@@ -167,9 +167,9 @@ def sig_sb(d, w0, w1, sweep):
         if not (inwin[i] and inwin[i - 2]) or cur in used or np.isnan(A[i]):
             continue
         dr = 0
-        if l[i] > h[i - 2] and c[i - 1] > o[i - 1] and l[i] - h[i - 2] >= 0.2 * A[i]:
+        if l[i] > h[i - 2] and c[i - 1] > o[i - 1] and l[i] - h[i - 2] >= gap * A[i]:
             dr = 1
-        elif h[i] < l[i - 2] and c[i - 1] < o[i - 1] and l[i - 2] - h[i] >= 0.2 * A[i]:
+        elif h[i] < l[i - 2] and c[i - 1] < o[i - 1] and l[i - 2] - h[i] >= gap * A[i]:
             dr = -1
         if not dr:
             continue
@@ -177,16 +177,16 @@ def sig_sb(d, w0, w1, sweep):
             continue
         used.add(cur)
         if dr == 1:
-            entry = l[i]; sl = min(l[i - 2], l[i - 1]) - 0.1 * A[i]
+            entry = (l[i] + h[i - 2]) / 2 if ce else l[i]; sl = min(l[i - 2], l[i - 1]) - 0.1 * A[i]
         else:
-            entry = h[i]; sl = max(h[i - 2], h[i - 1]) + 0.1 * A[i]
+            entry = (h[i] + l[i - 2]) / 2 if ce else h[i]; sl = max(h[i - 2], h[i - 1]) + 0.1 * A[i]
         risk = (entry - sl) * dr
         if risk <= 0:
             continue
         j = i
         while j + 1 < len(d) and inwin[j + 1]:
             j += 1
-        sig[i] = dict(type="limit", dir=dr, price=entry, sl=sl, tp=entry + dr * 2 * risk, exp=j, maxb=10 ** 6)
+        sig[i] = dict(type="limit", dir=dr, price=entry, sl=sl, tp=entry + dr * tp_r * risk, exp=j, maxb=10 ** 6)
     return sig, flat
 
 
