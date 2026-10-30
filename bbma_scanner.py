@@ -89,7 +89,8 @@ CFG = {
     "LB_TP_R":        2.5,
     "LB_BE_R":        1.5,
     "LB_BUFFER":      0.10,          # entry this far beyond the range high / low
-    "LB_SQUEEZE_ATR": 0.6,           # trade only when the Asian range < this x daily ATR(14) (0 = off)
+    "LB_SQUEEZE_ATR": 0.6,
+    "LB_WARN_MIN":    60,            # reminder this many minutes before the close hour (0 = off)           # trade only when the Asian range < this x daily ATR(14) (0 = off)
     "CSAK_MA510":     True,          # retrace setup: CSAK must also close beyond MA5/10 Low (sell) / High (buy)
     "FETCH_WORKERS":  6,             # parallel Deriv downloads per scan (1 = one by one)
     "ZONE_ALERT":     True,          # alert 1: price entered the H4 MA5/10 zone (with the H4 chart)
@@ -1156,6 +1157,18 @@ def london_step(m15, lb, cur, send=None):
             lb["last_t"] = str(t)
             if lb["status"] == "done":
                 break
+    wm = C.get("LB_WARN_MIN", 0)
+    if wm and lb["status"] in ("placed", "open") and t_close - pd.Timedelta(minutes=wm) <= cur < t_close and not lb.get("warned"):
+        lb["warned"] = True
+        price = float(closed["close"].iloc[-1])
+        if lb["status"] == "open":
+            dr = lb["dir"]; pips = (price - lb["entry"]) * dr / 0.10
+            send(_lb_head(f"{wm} MIN TO CLOSE") + f"The {'BUY' if dr == 1 else 'SELL'} from {px(lb['entry'])} is still open "
+                 f"(now {px(price)}, about {pips:+.0f} pips).\nClose it at {hc:02d}:00 chart time if TP / SL is not hit before.\n"
+                 + _lb_foot(cur))
+        else:
+            send(_lb_head(f"{wm} MIN TO CLOSE") + f"Neither stop order has filled yet. Delete both at {hc:02d}:00 chart time "
+                 f"if they are still not filled.\n" + _lb_foot(cur))
     if lb["status"] in ("placed", "open") and cur >= t_close:
         price = float(closed["close"].iloc[-1])
         if lb["status"] == "placed":
