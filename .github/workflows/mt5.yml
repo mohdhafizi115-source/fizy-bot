@@ -105,12 +105,21 @@ jobs:
           "compile finished: $($c.HasExited), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Append -Encoding utf8
           if (Test-Path "$dir\compile.log") { Get-Content "$dir\compile.log" -Tail 5 | ForEach-Object { "  " + $_ } | Out-File $out -Append -Encoding utf8 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          $pw = $env:MT5_PASSWORD
+          "secret shape: login digits only $($env:MT5_LOGIN -match '^\d+$'), password has ; or # $($pw -match '[;#]'), password has leading/trailing space $($pw -ne $pw.Trim()), server has spaces $($env:MT5_SERVER -match '\s')" | Out-File $out -Append -Encoding utf8
+          $sd = "$dir\Config\servers.dat"
+          if (Test-Path $sd) {
+            $b = [IO.File]::ReadAllBytes($sd)
+            $u = [Text.Encoding]::Unicode.GetString($b); $a8 = [Text.Encoding]::ASCII.GetString($b)
+            $names = ([regex]::Matches($u + " " + $a8, 'JustMarkets-[A-Za-z0-9]+') | ForEach-Object { $_.Value } | Sort-Object -Unique) -join ', '
+            "servers.dat ($($b.Length) bytes) names: $names" | Out-File $out -Append -Encoding utf8
+          } else { "servers.dat missing" | Out-File $out -Append -Encoding utf8 }
           $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=CheckEA`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
           $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
           for ($i = 0; $i -lt 70 -and -not $t.HasExited; $i++) { Start-Sleep -Seconds 5 }
           Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
-          "terminal closed by the EA: $($t.HasExited) after about $($i * 5) s" | Out-File $out -Append -Encoding utf8
+          "terminal closed by the EA: $($t.HasExited) after about $($i * 5) s; accounts.dat exists: $(Test-Path "$dir\Config\accounts.dat")" | Out-File $out -Append -Encoding utf8
           $f = "$dir\MQL5\Files\mt5_ea_check.txt"
           if (Test-Path $f) { Get-Content $f | Out-File $out -Append -Encoding utf8 } else { "EA output file not found" | Out-File $out -Append -Encoding utf8 }
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
