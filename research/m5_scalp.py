@@ -49,53 +49,55 @@ def atr(d, n=14):
     return tr.rolling(n).mean()
 
 def setups(d, kind):
-    c, o, h, l = d.close, d.open, d.high, d.low
-    a = atr(d); hr = d.index.hour
+    c_s = d.close
+    A_ = atr(d).values; hr = d.index.hour
     sess = (hr >= 8) & (hr < 20)
-    e9, e21, e50, e200 = (c.ewm(span=n, adjust=False).mean() for n in (9, 21, 50, 200))
-    dl = c.diff(); up = dl.clip(lower=0).ewm(alpha=0.5, adjust=False).mean(); dn = (-dl.clip(upper=0)).ewm(alpha=0.5, adjust=False).mean()
-    rsi2 = 100 - 100 / (1 + up / dn); sma5 = c.rolling(5).mean()
-    sig, meta = {}, {}
+    c, o, h, l = (d[x].values for x in ("close", "open", "high", "low"))
+    e9, e21, e50, e200 = (c_s.ewm(span=n, adjust=False).mean().values for n in (9, 21, 50, 200))
+    dl = c_s.diff(); up = dl.clip(lower=0).ewm(alpha=0.5, adjust=False).mean(); dn = (-dl.clip(upper=0)).ewm(alpha=0.5, adjust=False).mean()
+    rsi2 = (100 - 100 / (1 + up / dn)).values; sma5 = c_s.rolling(5).mean().values
+    sig = {}
     for i in range(210, len(d) - 1):
-        if not sess.iloc[i] or np.isnan(a.iloc[i]):
+        a = A_[i]
+        if not sess[i] or np.isnan(a):
             continue
-        dr = 0
+        dr = 0; tp = None
         if kind == "A":
-            if e9.iloc[i] > e21.iloc[i] > e50.iloc[i] and l.iloc[i] <= e21.iloc[i] and c.iloc[i] > o.iloc[i] and c.iloc[i] > e9.iloc[i]:
-                dr = 1; sl = l.iloc[i] - 0.1 * a.iloc[i]
-            elif e9.iloc[i] < e21.iloc[i] < e50.iloc[i] and h.iloc[i] >= e21.iloc[i] and c.iloc[i] < o.iloc[i] and c.iloc[i] < e9.iloc[i]:
-                dr = -1; sl = h.iloc[i] + 0.1 * a.iloc[i]
+            if e9[i] > e21[i] > e50[i] and l[i] <= e21[i] and c[i] > o[i] and c[i] > e9[i]:
+                dr = 1; sl = l[i] - 0.1 * a
+            elif e9[i] < e21[i] < e50[i] and h[i] >= e21[i] and c[i] < o[i] and c[i] < e9[i]:
+                dr = -1; sl = h[i] + 0.1 * a
             if dr:
-                risk = (c.iloc[i] - sl) * dr; tp = c.iloc[i] + dr * 1.5 * risk
+                risk = (c[i] - sl) * dr; tp = c[i] + dr * 1.5 * risk
         elif kind == "B":
-            if c.iloc[i] > e200.iloc[i] and rsi2.iloc[i] < 10:
+            if c[i] > e200[i] and rsi2[i] < 10:
                 dr = 1
-            elif c.iloc[i] < e200.iloc[i] and rsi2.iloc[i] > 90:
+            elif c[i] < e200[i] and rsi2[i] > 90:
                 dr = -1
             if dr:
-                sl = c.iloc[i] - dr * 2 * a.iloc[i]; tp = None; risk = 2 * a.iloc[i]
+                sl = c[i] - dr * 2 * a; risk = 2 * a
         elif kind == "C":
-            hh, ll = h.iloc[i - 12:i].max(), l.iloc[i - 12:i].min()
-            if c.iloc[i] > hh and e50.iloc[i] > e50.iloc[i - 3]:
+            hh, ll = h[i - 12:i].max(), l[i - 12:i].min()
+            if c[i] > hh and e50[i] > e50[i - 3]:
                 dr = 1
-            elif c.iloc[i] < ll and e50.iloc[i] < e50.iloc[i - 3]:
+            elif c[i] < ll and e50[i] < e50[i - 3]:
                 dr = -1
             if dr:
-                sl = c.iloc[i] - dr * a.iloc[i]; risk = a.iloc[i]; tp = c.iloc[i] + dr * 1.5 * risk
+                sl = c[i] - dr * a; risk = a; tp = c[i] + dr * 1.5 * risk
         if not dr or risk <= 0:
             continue
-        nt = d.index[i + 1]
-        sig[nt] = [dict(type="market", dir=dr, price=None, sl=sl, tp=tp, tag=kind)]
+        sig[d.index[i + 1]] = [dict(type="market", dir=dr, price=None, sl=sl, tp=tp, tag=kind)]
     pos_n = {}
     def manage(pos, t, n):
         k = pos_n.setdefault(id(pos), n)
-        i = d.index.get_loc(t) - 1
-        if kind == "B" and i >= 0 and ((pos.dr == 1 and c.iloc[i] > sma5.iloc[i]) or (pos.dr == -1 and c.iloc[i] < sma5.iloc[i])):
+        i = n - 1
+        if kind == "B" and i >= 0 and ((pos.dr == 1 and c[i] > sma5[i]) or (pos.dr == -1 and c[i] < sma5[i])):
             return "close"
         if n - k >= (24 if kind == "B" else 12):
             return "close"
         return None
     return run_bars(d, sig, manage)
+
 
 pf = lambda x: x[x > 0].sum() / -x[x < 0].sum() if (x < 0).any() else 99
 for src, loader, spread in (("Yahoo GC=F 5m", yahoo5, 0.30), ("Deriv XAUUSD 5m", deriv5, 0.25)):
