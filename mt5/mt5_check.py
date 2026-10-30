@@ -13,10 +13,29 @@ PATH = r"C:\Program Files\MetaTrader 5\terminal64.exe"
 say(f"terminal file exists: {os.path.exists(PATH)}")
 login, pw, srv = os.environ.get("MT5_LOGIN", "").strip(), os.environ.get("MT5_PASSWORD", ""), os.environ.get("MT5_SERVER", "").strip()
 say(f"secrets set: login {'yes' if login else 'no'}, password {'yes' if pw else 'no'}, server {'yes (' + srv + ')' if srv else 'no'}")
+
+def log_tail():
+    """Last terminal log lines, with the login and every 5+ digit number masked (public repo)."""
+    import glob, re
+    files = glob.glob(r"C:\Program Files\MetaTrader 5\logs\*.log")
+    res = [f"terminal log files: {len(files)}"]
+    for f in sorted(files, key=os.path.getmtime)[-1:]:
+        try:
+            raw = open(f, "rb").read()
+            txt = raw.decode("utf-16-le", errors="ignore") if raw[1:2] == b"\x00" else raw.decode("utf-8", errors="ignore")
+            for l in [x for x in txt.splitlines() if x.strip()][-30:]:
+                if login:
+                    l = l.replace(login, "<login>")
+                res.append("  " + re.sub(r"\d{5,}", "<num>", l.replace("\t", " ")))
+        except Exception as e:
+            res.append(f"  cannot read {os.path.basename(f)}: {e.__class__.__name__} {e}")
+    return res
 import threading
 def watchdog():
     time.sleep(240)
     say("watchdog: initialize did not return in 240 s, giving up")
+    for l in log_tail():
+        say(l)
     os.makedirs("status", exist_ok=True); open("status/mt5_check.txt", "w").write("\n".join(out) + "\n")
     os._exit(2)
 threading.Thread(target=watchdog, daemon=True).start()
@@ -51,5 +70,7 @@ if mt5:
         else:
             say("account: not logged in")
         mt5.shutdown()
+for l in log_tail():
+    say(l)
 os.makedirs("status", exist_ok=True)
 open("status/mt5_check.txt", "w").write("\n".join(out) + "\n")
