@@ -1,3 +1,3 @@
 terminal file exists: True
 secrets set: login no, password no, server no
-initialize: False (198 s), last_error (-10005, 'IPC timeout')
+initialize: False (196 s), last_error (-10005, 'IPC timeout')
