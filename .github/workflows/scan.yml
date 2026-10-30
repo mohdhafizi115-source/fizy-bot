@@ -97,7 +97,7 @@ jobs:
           git config user.email "fizy-bot@users.noreply.github.com"
           git add status/research.txt || true
           git commit -m "research results" || true
-          git push || true
+          for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
 
       - name: Audit all pairs (when run_audit.txt exists)
         if: github.event_name == 'push' && hashFiles('run_audit.txt') != ''
