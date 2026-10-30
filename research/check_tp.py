@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import bbma_scanner as S
 out = []
 for g in (300, 900):
-    d = S.fetch_deriv("XAUUSD", need=300, max_pages=1, granularity=g)
+    d = S.fetch_deriv("XAUUSD", need=700, max_pages=2, granularity=g)
     d.index = pd.DatetimeIndex([S.utc_to_broker(x) for x in d.index])
     x = d[(d.index >= "2026-10-30 14:30") & (d.index < "2026-10-30 17:00")]
     out.append(f"granularity {g}: lowest low {x.low.min():.2f} at {x.low.idxmin()}")
