@@ -13,6 +13,13 @@ PATH = r"C:\Program Files\MetaTrader 5\terminal64.exe"
 say(f"terminal file exists: {os.path.exists(PATH)}")
 login, pw, srv = os.environ.get("MT5_LOGIN", "").strip(), os.environ.get("MT5_PASSWORD", ""), os.environ.get("MT5_SERVER", "").strip()
 say(f"secrets set: login {'yes' if login else 'no'}, password {'yes' if pw else 'no'}, server {'yes (' + srv + ')' if srv else 'no'}")
+import threading
+def watchdog():
+    time.sleep(240)
+    say("watchdog: initialize did not return in 240 s, giving up")
+    os.makedirs("status", exist_ok=True); open("status/mt5_check.txt", "w").write("\n".join(out) + "\n")
+    os._exit(2)
+threading.Thread(target=watchdog, daemon=True).start()
 if mt5:
     t0 = time.time()
     if login and pw and srv:

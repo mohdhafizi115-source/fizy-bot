@@ -28,17 +28,20 @@ jobs:
         shell: pwsh
         run: |
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe" -OutFile mt5setup.exe
-          Start-Process -FilePath .\mt5setup.exe -ArgumentList "/auto"
+          $p = Start-Process -FilePath .\mt5setup.exe -ArgumentList "/auto" -PassThru
           $exe = "C:\Program Files\MetaTrader 5\terminal64.exe"
-          for ($i = 0; $i -lt 60 -and -not (Test-Path $exe); $i++) { Start-Sleep -Seconds 5 }
-          Start-Sleep -Seconds 20
+          for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
+          Write-Host "installer exited: $($p.HasExited) after about $($i * 5) s"
+          Start-Sleep -Seconds 30
           Get-Process terminal64, mt5setup -ErrorAction SilentlyContinue | Stop-Process -Force
           Write-Host "terminal installed: $(Test-Path $exe)"
+          Get-ChildItem "C:\Program Files\MetaTrader 5" | Select-Object Name, Length | Format-Table -AutoSize
 
       - name: Python packages
         run: pip install MetaTrader5 pandas requests
 
       - name: Check terminal and login (no orders)
+        timeout-minutes: 8
         env:
           MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
           MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
@@ -49,8 +52,9 @@ jobs:
         if: always()
         shell: bash
         run: |
+          python mt5/mask_logs.py || true
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
-          git add status/mt5_check.txt || true
+          git add status/mt5_check.txt status/mt5_logs.txt || true
           git commit -m "MT5 check result" || true
           for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
