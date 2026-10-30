@@ -1,5 +1,9 @@
-H1 RSI(2) pullback on GC=F hourly 2024-06-07..2026-10-29
-  RSI 10/90, SL 2.0 ATR: trades 646, win 61%, PF $ 1.05, net $+241, PF R 1.01, halves PF 0.81/1.19, winning months 14/29, max DD $413; 2024:-129 2025:+68 2026:+302
-  RSI 10/90, SL 3.0 ATR: trades 597, win 62%, PF $ 1.01, net $+59, PF R 1.01, halves PF 0.86/1.09, winning months 16/29, max DD $439; 2024:-44 2025:-21 2026:+123
-  RSI 5/95, SL 2.0 ATR: trades 341, win 57%, PF $ 0.92, net $-231, PF R 0.82, halves PF 0.67/1.06, winning months 12/29, max DD $454; 2024:-262 2025:-12 2026:+42
-  RSI 5/95, SL 3.0 ATR: trades 312, win 59%, PF $ 0.88, net $-284, PF R 0.81, halves PF 0.71/0.97, winning months 13/29, max DD $402; 2024:-182 2025:-41 2026:-62
+Gold M5 scalping candidates
+Yahoo GC=F 5m: 13508 candles, 2026-08-21..2026-10-30 (50 days)
+  A EMA 9/21/50 pullback, TP 1.5R: trades 437 (8.7/day), win 45%, PF 0.75, net $-179 per 0.01 lot, halves PF 0.66/0.89, winning days 45%, max DD $177
+  B RSI(2) + EMA 200, exit SMA 5: trades 601 (12.0/day), win 46%, PF 0.86, net $-110 per 0.01 lot, halves PF 1.04/0.68, winning days 47%, max DD $152
+  C 1h breakout + EMA 50 slope, TP 1.5R: trades 878 (17.6/day), win 46%, PF 0.91, net $-122 per 0.01 lot, halves PF 0.95/0.86, winning days 31%, max DD $206
+Deriv XAUUSD 5m: 26705 candles, 2026-06-15..2026-10-30 (100 days)
+  A EMA 9/21/50 pullback, TP 1.5R: trades 809 (8.1/day), win 46%, PF 0.83, net $-203 per 0.01 lot, halves PF 0.83/0.82, winning days 48%, max DD $226
+  B RSI(2) + EMA 200, exit SMA 5: trades 1243 (12.4/day), win 50%, PF 1.00, net $+3 per 0.01 lot, halves PF 1.14/0.87, winning days 58%, max DD $131
+  C 1h breakout + EMA 50 slope, TP 1.5R: trades 1929 (19.3/day), win 47%, PF 0.92, net $-225 per 0.01 lot, halves PF 0.86/0.99, winning days 36%, max DD $288
