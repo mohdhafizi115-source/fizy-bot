@@ -52,6 +52,36 @@ jobs:
           "appdata terminals: $((Get-ChildItem "$env:APPDATA\MetaQuotes\Terminal" -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.Name.Substring(0, 6) }) -join ', ')" | Out-File $d -Append -Encoding utf8
           "session: $([Environment]::UserInteractive) user $env:USERNAME" | Out-File $d -Append -Encoding utf8
 
+      - name: Broker server list (JustMarkets installer -> servers.dat)
+        shell: pwsh
+        run: |
+          $d = "status\mt5_diag.txt"
+          $cands = @(
+            "https://download.mql5.com/cdn/web/just.global.markets.ltd/mt5/justmarkets5setup.exe",
+            "https://download.mql5.com/cdn/web/just.global.markets.mu.ltd/mt5/justmarkets5setup.exe",
+            "https://download.mql5.com/cdn/web/justmarkets.ltd/mt5/justmarkets5setup.exe",
+            "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe",
+            "https://download.mql5.com/cdn/web/justforex.ltd/mt5/justforex5setup.exe",
+            "https://download.mql5.com/cdn/web/just.global.markets.ltd/mt5/justforex5setup.exe")
+          $got = $null
+          foreach ($u in $cands) {
+            try { Invoke-WebRequest -Uri $u -OutFile jm.exe -ErrorAction Stop; if ((Get-Item jm.exe).Length -gt 1000000) { $got = $u; break } } catch { }
+          }
+          "broker installer: $got" | Out-File $d -Append -Encoding utf8
+          if ($got) {
+            $p = Start-Process -FilePath .\jm.exe -ArgumentList "/auto" -PassThru
+            for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
+            Start-Sleep -Seconds 20
+            Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+            $dirs = Get-ChildItem "C:\Program Files" -Directory | Where-Object { Test-Path "$($_.FullName)\terminal64.exe" } | ForEach-Object { $_.Name }
+            "terminal folders: $($dirs -join ', ')" | Out-File $d -Append -Encoding utf8
+            $sd = Get-ChildItem "C:\Program Files\*\Config\servers.dat" -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notlike "*\MetaTrader 5\Config\*" } | Select-Object -First 1
+            if ($sd) {
+              Copy-Item $sd.FullName "C:\Program Files\MetaTrader 5\Config\servers.dat" -Force
+              "servers.dat copied from $($sd.Directory.Parent.Name) ($($sd.Length) bytes)" | Out-File $d -Append -Encoding utf8
+            }
+          }
+
       - name: Python packages
         run: pip install MetaTrader5 pandas requests
 
