@@ -1,23 +1,31 @@
-London Silver Bullet robustness
+Gold scalping round 3 (high frequency)
 
-Deriv XAUUSD 5m: 29765 candles 2026-05-29..2026-10-30 (111 days)
-  72 settings: PF > 1 in 60%, both halves > 1 in 29%, median PF 1.07
-   window 02-03 NY: median PF 0.97, PF>1 in 44%, median net $-5
-   window 02-04 NY: median PF 1.25, PF>1 in 78%, median net $+72
-   window 03-04 NY: median PF 1.10, PF>1 in 78%, median net $+23
-   window 03-05 NY: median PF 0.99, PF>1 in 39%, median net $-1
-   by tp: 1.5: PF 1.05, 2.0: PF 1.33, 3.0: PF 1.09
-   by gap: 0.1: PF 1.02, 0.2: PF 1.07, 0.3: PF 1.51
-   by entry: edge: PF 1.25, mid: PF 1.05
-   base SB_LDN by month: 2026-06 8t $-15, 2026-07 16t $+87, 2026-08 15t $-66, 2026-09 7t $+33, 2026-10 17t $+46
+Deriv XAUUSD 5m: 20086 candles 2026-07-20..2026-10-30 (75 days), spread $0.25
+  ST           324 trades ( 4.3/day) win  39% PF 0.92 net $  -171 halves 0.91/0.94 | gross before spread PF 0.96 | winning days 46% | max DD $312
+  ST+ema200    176 trades ( 2.3/day) win  42% PF 1.11 net $  +126 halves 1.28/0.92 | gross before spread PF 1.15 | winning days 44% | max DD $174
+  HA           287 trades ( 3.8/day) win  28% PF 0.78 net $  -163 halves 0.89/0.65 | gross before spread PF 0.87 | winning days 32% | max DD $272
+  MACD         163 trades ( 2.2/day) win  44% PF 1.15 net $   +81 halves 1.30/0.98 | gross before spread PF 1.23 | winning days 51% | max DD $71
+  MOM          322 trades ( 4.3/day) win  50% PF 0.89 net $   -87 halves 0.81/0.97 | gross before spread PF 0.99 | winning days 41% | max DD $125
+  IB           479 trades ( 6.4/day) win  41% PF 0.89 net $  -194 halves 1.00/0.76 | gross before spread PF 0.95 | winning days 51% | max DD $348
+  KC           272 trades ( 3.6/day) win  31% PF 1.00 net $    +1 halves 1.25/0.76 | gross before spread PF 1.06 | winning days 38% | max DD $254
+  RN             3 trades ( 0.0/day) win  33% PF 0.01 net $   -14 halves 99.00/0.01 | gross before spread PF 0.03 | winning days 33% | max DD $5
 
-Yahoo GC=F 5m: 13552 candles 2026-08-21..2026-10-30 (50 days)
-  72 settings: PF > 1 in 94%, both halves > 1 in 53%, median PF 1.45
-   window 02-03 NY: median PF 1.96, PF>1 in 100%, median net $+57
-   window 02-04 NY: median PF 1.60, PF>1 in 100%, median net $+66
-   window 03-04 NY: median PF 1.31, PF>1 in 94%, median net $+27
-   window 03-05 NY: median PF 1.23, PF>1 in 83%, median net $+32
-   by tp: 1.5: PF 1.09, 2.0: PF 1.44, 3.0: PF 1.47
-   by gap: 0.1: PF 1.44, 0.2: PF 1.18, 0.3: PF 1.38
-   by entry: edge: PF 1.45, mid: PF 1.28
-   base SB_LDN by month: 2026-08 5t $-20, 2026-09 6t $+23, 2026-10 16t $+38
+Yahoo GC=F 5m: 13561 candles 2026-08-21..2026-10-30 (50 days), spread $0.3
+  ST           184 trades ( 3.7/day) win  36% PF 0.99 net $   -12 halves 1.09/0.86 | gross before spread PF 1.04 | winning days 51% | max DD $212
+  ST+ema200     99 trades ( 2.0/day) win  39% PF 1.17 net $  +100 halves 1.35/0.92 | gross before spread PF 1.22 | winning days 43% | max DD $107
+  HA           180 trades ( 3.6/day) win  28% PF 0.72 net $  -136 halves 0.84/0.56 | gross before spread PF 0.82 | winning days 30% | max DD $156
+  MACD         109 trades ( 2.2/day) win  50% PF 1.41 net $  +156 halves 1.78/1.03 | gross before spread PF 1.52 | winning days 60% | max DD $75
+  MOM          156 trades ( 3.1/day) win  51% PF 0.95 net $   -18 halves 1.04/0.84 | gross before spread PF 1.08 | winning days 37% | max DD $71
+  IB           278 trades ( 5.6/day) win  37% PF 0.77 net $  -263 halves 0.75/0.81 | gross before spread PF 0.84 | winning days 37% | max DD $307
+  KC           167 trades ( 3.3/day) win  31% PF 0.80 net $  -168 halves 0.99/0.59 | gross before spread PF 0.85 | winning days 39% | max DD $249
+  RN             1 trades ( 0.0/day) win   0% PF 0.00 net $   -10 halves 0.00/99.00 | gross before spread PF 0.00 | winning days 0% | max DD $0
+
+Deriv XAUUSD 1m: 6440 candles 2026-10-26..2026-10-30 (5 days), spread $0.25
+  ST           105 trades (21.0/day) win  40% PF 1.29 net $   +63 halves 2.16/0.90 | gross before spread PF 1.45 | winning days 60% | max DD $68
+  ST+ema200     52 trades (10.4/day) win  42% PF 1.34 net $   +37 halves 1.40/1.31 | gross before spread PF 1.50 | winning days 40% | max DD $36
+  HA            97 trades (19.4/day) win  31% PF 0.60 net $   -41 halves 0.48/0.68 | gross before spread PF 0.81 | winning days 0% | max DD $47
+  MACD          46 trades ( 9.2/day) win  41% PF 0.65 net $   -25 halves 0.65/0.65 | gross before spread PF 0.79 | winning days 40% | max DD $29
+  MOM          126 trades (25.2/day) win  47% PF 0.66 net $   -37 halves 0.46/0.84 | gross before spread PF 0.94 | winning days 20% | max DD $53
+  IB           177 trades (35.4/day) win  42% PF 0.79 net $   -51 halves 1.11/0.61 | gross before spread PF 0.97 | winning days 40% | max DD $77
+  KC            90 trades (18.0/day) win  27% PF 0.99 net $    -1 halves 1.09/0.93 | gross before spread PF 1.19 | winning days 40% | max DD $56
+  RN         no trades
