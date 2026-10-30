@@ -1,0 +1,3 @@
+terminal file exists: True
+secrets set: login no, password no, server no
+initialize: False (197 s), last_error (-10005, 'IPC timeout')
