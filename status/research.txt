@@ -1,18 +1,20 @@
-M15 5503 to 2026-10-30 16:45:00 | M1 954 2026-10-30 01:00:00 to 2026-10-30 16:53:00 | M5 500 | now 2026-10-30 16:53:22.512758
+migration: {"last_eval": "2026-10-30 15:45:00", "lb": {"day": "2026-10-30", "last_t": "2026-10-30 15:30:00"}, "rs2": {"last_h1": "2026-10-30 14:00:00", "pos": {"t": "2026-10-30 14:00:00"}}, "m5": {"last": "2026-10-30 15:50:00"}} | rule Europe/Athens | cache left: False
+second call keeps: 2026-10-30 15:50:00
+M15 5519 to 2026-10-30 15:45:00 | M1 958 2026-10-30 00:00:00 to 2026-10-30 15:57:00 | M5 500 | now 2026-10-30 15:57:03.709797
 
 === old (M15 only, scan every 5 min)
-[sent 08:00:01] FIZY BOT | XAUUSD London breakout - PLACE ORDERS | Asian range 03:00-08:00: high 4018.77 / low 3987.55 (0.78%, 0.48x daily ATR) / BUY STOP  4018.87 | SL 3994.85 | TP 4078.92 | BE at 4054.90 / SELL STOP 3987.45 | SL 4011.47 | TP 3927.40 | BE at 3951.42 / Risk per 0.01 lot: buy $24.02 / sell $24.02 / OCO: when one fills, delete the other. Close any open trade at 21:00 chart time. / Check the range high / low on your own MT5 chart (data source can differ by a few points).
-[sent 09:15:01] FIZY BOT | XAUUSD London breakout - SELL STOP FILLED | Filled at 3987.45 (M15 candle 09:00 chart time) / Delete the BUY STOP now. / SL 4011.47 | TP 3927.40 | move SL to entry at 3951.42
-[sent 16:15:01] FIZY BOT | XAUUSD London breakout - MOVE SL TO ENTRY | Price reached 3951.42 (1.5R). Move the SL to 3987.35 (entry). / TP stays at 3927.40.
-[sent 16:45:01] FIZY BOT | XAUUSD London breakout - TP HIT | SELL from 3987.45 closed at 3927.40 (+600 pips, $+60.05 per 0.01 lot), M15 candle 16:30 / Done for today.
+[sent 08:00:01] FIZY BOT | XAUUSD London breakout - PLACE ORDERS | Asian range 03:00-08:00: high 4013.93 / low 3987.55 (0.66%, 0.41x daily ATR) / BUY STOP  4014.03 | SL 3990.03 | TP 4074.04 | BE at 4050.04 / SELL STOP 3987.45 | SL 4011.45 | TP 3927.44 | BE at 3951.44 / Risk per 0.01 lot: buy $24.00 / sell $24.00 / OCO: when one fills, delete the other. Close any open trade at 21:00 chart time. / Check the range high / low on your own MT5 chart (data source can differ by a few points).
+[sent 08:15:01] FIZY BOT | XAUUSD London breakout - SELL STOP FILLED | Filled at 3987.45 (M15 candle 08:00 chart time) / Delete the BUY STOP now. / SL 4011.45 | TP 3927.44 | move SL to entry at 3951.44
+[sent 15:15:01] FIZY BOT | XAUUSD London breakout - MOVE SL TO ENTRY | Price reached 3951.44 (1.5R). Move the SL to 3987.35 (entry). / TP stays at 3927.44.
+[sent 15:45:01] FIZY BOT | XAUUSD London breakout - TP HIT | SELL from 3987.45 closed at 3927.44 (+600 pips, $+60.01 per 0.01 lot), M15 candle 15:30 / Done for today.
 final state: done - tp hit (+600 pips)
 
 === new (M1 checks, scan every 1 min)
-[sent 08:00:01] FIZY BOT | XAUUSD London breakout - PLACE ORDERS | Asian range 03:00-08:00: high 4018.77 / low 3987.55 (0.78%, 0.48x daily ATR) / BUY STOP  4018.87 | SL 3994.85 | TP 4078.92 | BE at 4054.90 / SELL STOP 3987.45 | SL 4011.47 | TP 3927.40 | BE at 3951.42 / Risk per 0.01 lot: buy $24.02 / sell $24.02 / OCO: when one fills, delete the other. Close any open trade at 21:00 chart time. / Check the range high / low on your own MT5 chart (data source can differ by a few points).
-[sent 09:14:01] FIZY BOT | XAUUSD London breakout - SELL STOP FILLED | Filled at 3987.45 (M1 candle 09:13 chart time) / Delete the BUY STOP now. / SL 4011.47 | TP 3927.40 | move SL to entry at 3951.42
-[sent 16:01:01] FIZY BOT | XAUUSD London breakout - MOVE SL TO ENTRY | Price reached 3951.42 (1.5R). Move the SL to 3987.35 (entry). / TP stays at 3927.40.
-[sent 16:37:01] FIZY BOT | XAUUSD London breakout - TP HIT | SELL from 3987.45 closed at 3927.40 (+600 pips, $+60.05 per 0.01 lot), M1 candle 16:36 / Done for today.
+[sent 08:00:01] FIZY BOT | XAUUSD London breakout - PLACE ORDERS | Asian range 03:00-08:00: high 4013.93 / low 3987.55 (0.66%, 0.41x daily ATR) / BUY STOP  4014.03 | SL 3990.03 | TP 4074.04 | BE at 4050.04 / SELL STOP 3987.45 | SL 4011.45 | TP 3927.44 | BE at 3951.44 / Risk per 0.01 lot: buy $24.00 / sell $24.00 / OCO: when one fills, delete the other. Close any open trade at 21:00 chart time. / Check the range high / low on your own MT5 chart (data source can differ by a few points).
+[sent 08:14:01] FIZY BOT | XAUUSD London breakout - SELL STOP FILLED | Filled at 3987.45 (M1 candle 08:13 chart time) / Delete the BUY STOP now. / SL 4011.45 | TP 3927.44 | move SL to entry at 3951.44
+[sent 15:01:01] FIZY BOT | XAUUSD London breakout - MOVE SL TO ENTRY | Price reached 3951.44 (1.5R). Move the SL to 3987.35 (entry). / TP stays at 3927.44.
+[sent 15:37:01] FIZY BOT | XAUUSD London breakout - TP HIT | SELL from 3987.45 closed at 3927.44 (+600 pips, $+60.01 per 0.01 lot), M1 candle 15:36 / Done for today.
 final state: done - tp hit (+600 pips)
 
-RSI2 M1 SL test: BUY from 3917.62 stopped at 3918.12 (+5 pips, $+0.50 per 0.01 lot), M1 candle 16:51 | state: watching (last trade: SL) 2026-10-30 16:52:00
-M5 scalp M1 SL test: SELL from 3917.62 stopped at 3947.05 (-294 pips, $-29.43 per 0.01 lot), M1 candle 16:24 | cool: 2026-10-30 16:25:00
+RSI2 M1 SL test: BUY from 3918.62 stopped at 3916.29 (-23 pips, $-2.33 per 0.01 lot), M1 candle 15:53 | state: watching (last trade: SL) 2026-10-30 15:54:00
+M5 scalp M1 SL test: SELL from 3918.62 stopped at 3945.43 (-268 pips, $-26.81 per 0.01 lot), M1 candle 15:29 | cool: 2026-10-30 15:30:00
