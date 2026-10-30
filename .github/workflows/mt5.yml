@@ -96,9 +96,15 @@ jobs:
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
           $dir = "C:\Program Files\JustMarkets MetaTrader 5"
           $out = "status\mt5_check.txt"
+          $ErrorActionPreference = "Continue"
+          "folders in the terminal dir: $((Get-ChildItem $dir -Directory | ForEach-Object { $_.Name }) -join ', ')" | Out-File $out -Encoding utf8
+          New-Item -ItemType Directory -Force -Path "$dir\MQL5\Experts" | Out-Null
           Copy-Item mt5\CheckEA.mq5 "$dir\MQL5\Experts\CheckEA.mq5" -Force
-          $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\CheckEA.mq5`" /log:`"$dir\compile.log`"" -PassThru -Wait
-          "compile exit $($c.ExitCode), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Encoding utf8
+          $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\CheckEA.mq5`" /log:`"$dir\compile.log`"" -PassThru
+          for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
+          "compile finished: $($c.HasExited), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Append -Encoding utf8
+          if (Test-Path "$dir\compile.log") { Get-Content "$dir\compile.log" -Tail 5 | ForEach-Object { "  " + $_ } | Out-File $out -Append -Encoding utf8 }
+          Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
           $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=CheckEA`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
           $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
