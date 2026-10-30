@@ -77,6 +77,9 @@ CFG = {
     "BBMA_ALERTS":    False,         # BBMA scanner on all pairs (turned off 29 Oct: only the XAUUSD London breakout runs)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "M5_SCALP":       True,          # XAUUSD M5 RSI(2) scalp alerts (added 30 Oct on the user's insistence; tested ~breakeven)
+    "M5_SESSION":     [8, 20],       # entries only between these chart hours
+    "M5_MAX_BARS":    24,            # time exit after this many M5 candles (2 hours)
     "RSI2_ALERTS":    True,          # XAUUSD H1 RSI(2) pullback alerts (entry / exit / SL), added 30 Oct at the user's request
     "RSI2_LO":        10,
     "RSI2_HI":        90,
@@ -842,13 +845,13 @@ def _deriv_call(req):
     raise RuntimeError(f"Deriv: {last}")
 
 
-def fetch_deriv(name, need=5000, max_pages=12):
+def fetch_deriv(name, need=5000, max_pages=12, granularity=900):
     """Deriv public market data: 15-minute candles, no account needed. Deriv returns about 800
     candles per request, so older candles are fetched page by page (end = oldest candle - 1)."""
     got = {}
     end = "latest"
     for page in range(max_pages):
-        req = {"ticks_history": "frx" + name, "style": "candles", "granularity": 900,
+        req = {"ticks_history": "frx" + name, "style": "candles", "granularity": granularity,
                "count": min(5000, need + 100), "end": end, "adjust_start_time": 1}
         if page == 0:
             req["start"] = int(time.time()) - max(80, need // 80) * 86400
@@ -1267,6 +1270,68 @@ def rsi2_step(m15, rs, cur, send=None):
          f"=============================\nBroker time: {cur:%Y-%m-%d %H:%M}")
 
 
+#==================================================================
+# XAUUSD M5 scalp (RSI(2) pullback on M5, research/m5_scalp.py setup "B"), alerts only:
+#   buy when the M5 close is above EMA 200 and RSI(2) < 10 (sell: below, > 90), 08:00-20:00 chart time;
+#   SL 2 x ATR14(M5); exit when an M5 close crosses back over the SMA 5, or after 24 candles (2 hours).
+#   Test (30 Oct): Deriv 5m 100 days PF 1.00 (+$3), Yahoo GC=F 5m 50 days PF 0.86 (-$110): no proven edge.
+#==================================================================
+def _m5_head(title):
+    return f"FIZY BOT | XAUUSD M5 scalp - {title}\n=============================\n"
+
+
+def m5_step(m5, sc, cur5, send=None):
+    send = send or tg_send
+    C = CFG
+    d = m5[m5.index < cur5]
+    if len(d) < 260:
+        return
+    c = d.close
+    e200 = c.ewm(span=200, adjust=False).mean()
+    dl = c.diff(); up = dl.clip(lower=0).ewm(alpha=0.5, adjust=False).mean(); dn = (-dl.clip(upper=0)).ewm(alpha=0.5, adjust=False).mean()
+    rsi2 = 100 - 100 / (1 + up / dn); sma5 = c.rolling(5).mean()
+    tr = np.maximum(d.high - d.low, np.maximum(abs(d.high - c.shift()), abs(d.low - c.shift())))
+    atr = tr.rolling(14).mean()
+    if not sc.get("last"):
+        sc.update(last=str(d.index[-1]), pos=None, text="watching"); return
+    new = d.index[d.index > pd.Timestamp(sc["last"])]
+    s0, s1 = C["M5_SESSION"]
+    for t in new:
+        b = d.loc[t]; pos = sc.get("pos")
+        foot = f"=============================\nBroker time: {t + pd.Timedelta(minutes=5):%Y-%m-%d %H:%M}"
+        if pos:
+            dr = pos["dir"]
+            if (dr == 1 and b.low <= pos["sl"]) or (dr == -1 and b.high >= pos["sl"]):
+                pips = (pos["sl"] - pos["entry"]) * dr / 0.10
+                send(_m5_head("SL HIT") + f"{'BUY' if dr == 1 else 'SELL'} from {px(pos['entry'])} stopped at {px(pos['sl'])} "
+                     f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot)\n" + foot)
+                sc["pos"] = None; sc["text"] = "watching (last: SL)"; continue
+            pos["bars"] = pos.get("bars", 0) + 1
+            cross = (dr == 1 and b.close > sma5[t]) or (dr == -1 and b.close < sma5[t])
+            if cross or pos["bars"] >= C["M5_MAX_BARS"]:
+                pips = (b.close - pos["entry"]) * dr / 0.10
+                why = "M5 close back over the SMA 5" if cross else f"{C['M5_MAX_BARS']} candles (time exit)"
+                send(_m5_head("EXIT NOW") + f"{why}. Close the {'BUY' if dr == 1 else 'SELL'} from {px(pos['entry'])} at market "
+                     f"(now {px(b.close)}, about {pips:+.0f} pips)\n" + foot)
+                sc["pos"] = None; sc["text"] = f"watching (last {pips:+.0f} pips)"
+            continue
+        if not (s0 <= t.hour < s1) or np.isnan(atr[t]):
+            continue
+        dr = 1 if (b.close > e200[t] and rsi2[t] < 10) else (-1 if (b.close < e200[t] and rsi2[t] > 90) else 0)
+        if not dr:
+            continue
+        sl = b.close - dr * 2 * atr[t]
+        sc["pos"] = dict(dir=dr, entry=float(b.close), sl=float(sl), bars=0)
+        sc["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(b.close)}, SL {px(sl)}"
+        send(_m5_head("BUY NOW" if dr == 1 else "SELL NOW") +
+             f"M5 candle {t:%H:%M}: close {px(b.close)} {'above' if dr == 1 else 'below'} EMA 200 ({px(e200[t])}), RSI(2) {rsi2[t]:.1f}\n"
+             f"Entry: market now (about {px(b.close)})\n"
+             f"SL: {px(sl)} (${abs(b.close - sl):.2f} per 0.01 lot)\n"
+             f"Exit: wait for EXIT NOW (M5 close back over the SMA 5, or after 2 hours)\n"
+             f"Note: this scalp tested about breakeven, use a small lot\n" + foot)
+    sc["last"] = str(d.index[-1])
+
+
 def scan_symbol(name, st, broker_now):
     """One symbol: download, evaluate the M15 candles not checked yet, send alerts. Updates st."""
     set_symbol(name)
@@ -1305,6 +1370,13 @@ def scan_symbol(name, st, broker_now):
             print("  telegram sent" if ok else "  telegram FAILED")
         st["last_eval"] = str(T)
         st["last_status"] = status
+    if name == "XAUUSD" and CFG["M5_SCALP"]:
+        try:
+            m5 = fetch_deriv("XAUUSD", need=500, max_pages=1, granularity=300)
+            m5.index = pd.DatetimeIndex([utc_to_broker(x) for x in m5.index])
+            m5_step(m5, st.setdefault("m5", {}), broker_now.floor("5min"))
+        except Exception as e:
+            print("M5 scalp error:", e)
     if name == "XAUUSD" and CFG["RSI2_ALERTS"]:
         try:
             rsi2_step(m15, st.setdefault("rs2", {}), cur)
@@ -1391,6 +1463,8 @@ def run_live():
                     f.write(f"XAUUSD London breakout: {st['lb']['text']}\n")
                 if n == "XAUUSD" and st.get("rs2", {}).get("text"):
                     f.write(f"XAUUSD RSI2 pullback: {st['rs2']['text']}\n")
+                if n == "XAUUSD" and st.get("m5", {}).get("text"):
+                    f.write(f"XAUUSD M5 scalp: {st['m5']['text']}\n")
             for e in errors:
                 f.write(f"ERROR {e}\n")
             f.write(f"welcome telegram ok: {state.get('welcome_telegram_ok')}  example: {state.get('welcome_example')}\n")
@@ -1418,6 +1492,8 @@ def run_live():
                 lines.append(f"XAUUSD London breakout: {s['lb']['text']}")
             if n == "XAUUSD" and CFG["RSI2_ALERTS"] and s.get("rs2", {}).get("text"):
                 lines.append(f"XAUUSD RSI2 pullback: {s['rs2']['text']}")
+            if n == "XAUUSD" and CFG["M5_SCALP"] and s.get("m5", {}).get("text"):
+                lines.append(f"XAUUSD M5 scalp: {s['m5']['text']}")
         msg = f"FIZY BOT is alive (cloud scanner)  |  chart time {broker_now:%H:%M}"
         for line in lines:                 # Telegram limit is 4096 characters: split, never cut
             if len(msg) + 1 + len(line) > 4000:
