@@ -86,7 +86,7 @@ jobs:
         run: pip install MetaTrader5 pandas requests
 
       - name: Check terminal and login (no orders)
-        timeout-minutes: 8
+        timeout-minutes: 9
         shell: pwsh
         env:
           MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
@@ -95,7 +95,9 @@ jobs:
         run: |
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
           Start-Sleep -Seconds 3
-          $dir = "C:\Program Files\MetaTrader 5"
+          $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+          if (-not (Test-Path "$dir\terminal64.exe")) { $dir = "C:\Program Files\MetaTrader 5" }
+          $env:MT5_PATH = "$dir\terminal64.exe"
           $a = "/portable"
           if ($env:MT5_LOGIN) {
             $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n"
@@ -103,8 +105,26 @@ jobs:
             $a = "/portable /config:`"$dir\start.ini`""
           }
           Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList $a
-          Start-Sleep -Seconds 60
+          Start-Sleep -Seconds 75
           Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
+          Add-Type @"
+          using System; using System.Text; using System.Collections.Generic; using System.Runtime.InteropServices;
+          public class Win {
+            public delegate bool EnumProc(IntPtr h, IntPtr p);
+            [DllImport("user32.dll")] public static extern bool EnumWindows(EnumProc f, IntPtr p);
+            [DllImport("user32.dll")] public static extern int GetWindowText(IntPtr h, StringBuilder s, int n);
+            [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
+            [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+            public static List<string> Titles(uint pid) {
+              var r = new List<string>();
+              EnumWindows((h, p) => { uint q; GetWindowThreadProcessId(h, out q);
+                if (q == pid && IsWindowVisible(h)) { var sb = new StringBuilder(256); GetWindowText(h, sb, 256); r.Add(sb.ToString()); } return true; }, IntPtr.Zero);
+              return r; } }
+          "@
+          foreach ($pr in Get-Process terminal64 -ErrorAction SilentlyContinue) {
+            $t = ([Win]::Titles([uint32]$pr.Id) | ForEach-Object { $_ -replace '\d{5,}', '<num>' }) -join ' | '
+            "terminal $($pr.Path.Split('\')[-2]) visible windows: $t" | Out-File status\mt5_diag.txt -Append -Encoding utf8
+          }
           python mt5/mt5_check.py
 
       - name: Publish the check result

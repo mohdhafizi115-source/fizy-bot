@@ -9,15 +9,15 @@ try:
     import MetaTrader5 as mt5
 except Exception as e:
     say(f"MetaTrader5 package import failed: {e}"); mt5 = None
-PATH = r"C:\Program Files\MetaTrader 5\terminal64.exe"
-say(f"terminal file exists: {os.path.exists(PATH)}")
+PATH = os.environ.get("MT5_PATH") or r"C:\Program Files\MetaTrader 5\terminal64.exe"
+say(f"terminal: {os.path.basename(os.path.dirname(PATH))}, exists {os.path.exists(PATH)}")
 login, pw, srv = os.environ.get("MT5_LOGIN", "").strip(), os.environ.get("MT5_PASSWORD", ""), os.environ.get("MT5_SERVER", "").strip()
 say(f"secrets set: login {'yes' if login else 'no'}, password {'yes' if pw else 'no'}, server {'yes (' + srv + ')' if srv else 'no'}")
 
 def log_tail():
     """Last terminal log lines, with the login and every 5+ digit number masked (public repo)."""
     import glob, re
-    files = glob.glob(r"C:\Program Files\MetaTrader 5\logs\*.log")
+    files = glob.glob(os.path.join(os.path.dirname(PATH), "logs", "*.log"))
     res = [f"terminal log files: {len(files)}"]
     for f in sorted(files, key=os.path.getmtime)[-2:]:
         res.append(f"== {os.path.basename(f)}")
