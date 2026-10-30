@@ -19,11 +19,13 @@ def log_tail():
     import glob, re
     files = glob.glob(r"C:\Program Files\MetaTrader 5\logs\*.log")
     res = [f"terminal log files: {len(files)}"]
-    for f in sorted(files, key=os.path.getmtime)[-1:]:
+    for f in sorted(files, key=os.path.getmtime)[-2:]:
+        res.append(f"== {os.path.basename(f)}")
         try:
             raw = open(f, "rb").read()
-            txt = raw.decode("utf-16-le", errors="ignore") if raw[1:2] == b"\x00" else raw.decode("utf-8", errors="ignore")
-            for l in [x for x in txt.splitlines() if x.strip()][-30:]:
+            txt = raw.decode("utf-16", errors="ignore") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") or raw[1:2] == b"\x00" else raw.decode("utf-8", errors="ignore")
+            keep = [x for x in txt.splitlines() if x.strip() and "Cloud Server" not in x]
+            for l in keep[-70:]:
                 if login:
                     l = l.replace(login, "<login>")
                 res.append("  " + re.sub(r"\d{5,}", "<num>", l.replace("\t", " ")))
