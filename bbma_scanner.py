@@ -55,7 +55,9 @@ CFG = {
     "SYMBOLS":        "ALL",
     "SPREAD_PIPS_FX": 1.0,           # assumed spread for the sell SL / buy entry (forex, pips)
     "SPREAD_PIPS_XAU": 2.0,          # assumed spread for gold (pips, 1 pip = 0.10)
-    "BROKER_OFFSET":  7,             # broker server time = New York time + N hours (GMT+2 / GMT+3)
+    "BROKER_OFFSET":  7,             # only used when BROKER_TZ is empty: broker time = New York time + N hours
+    "BROKER_TZ":      "Europe/Athens",  # JustMarkets server time: GMT+2 winter / GMT+3 summer, clocks change on the
+                                     # EU dates (its M15 export: daily break at 23:00 from 9 to 27 Mar 2026, else 00:00)
     # BBMA model
     "TREND_TF1":      "1h",
     "TREND_TF2":      "4h",
@@ -77,6 +79,7 @@ CFG = {
     "BBMA_ALERTS":    False,         # BBMA scanner on all pairs (turned off 29 Oct: only the XAUUSD London breakout runs)
     "RETRACE_SETUP":  True,
     "REJECTION_SETUP": False,        # setup 1 (EMA 50 rejection, H1 + H4 trend): removed 27 Oct, kept here only as an off switch
+    "M1_CHECKS":      True,          # check fills / BE / TP / SL on M1 candles (alerts within ~1 min) instead of M15
     "M5_SCALP":       True,          # XAUUSD M5 RSI(2) scalp alerts (added 30 Oct on the user's insistence; tested ~breakeven)
     "M5_SESSION":     [8, 20],       # entries only between these chart hours
     "M5_MAX_BARS":    24,            # time exit after this many M5 candles (2 hours)
@@ -166,7 +169,10 @@ NY = ZoneInfo("America/New_York")
 
 
 def broker_to_myt(t):
-    """Broker time (naive, New York time + BROKER_OFFSET hours) -> Malaysia time."""
+    """Broker time (naive, chart time) -> Malaysia time."""
+    if CFG.get("BROKER_TZ"):
+        return pd.Timestamp(t).tz_localize(ZoneInfo(CFG["BROKER_TZ"]), ambiguous=False,
+                                           nonexistent="shift_forward").tz_convert(MYT)
     ny = pd.Timestamp(t) - pd.Timedelta(hours=CFG["BROKER_OFFSET"])
     return ny.tz_localize(NY, ambiguous=False, nonexistent="shift_forward").tz_convert(MYT)
 
@@ -750,8 +756,52 @@ def tg_send(text, png=None):
 # Data
 #==================================================================
 def utc_to_broker(ts_utc):
+    if CFG.get("BROKER_TZ"):
+        return ts_utc.tz_convert(ZoneInfo(CFG["BROKER_TZ"])).tz_localize(None)
     ny = ts_utc.tz_convert(NY)
     return (ny + pd.Timedelta(hours=CFG["BROKER_OFFSET"])).tz_localize(None)
+
+
+def _old_broker(ts_utc):
+    return (ts_utc.tz_convert(NY) + pd.Timedelta(hours=CFG["BROKER_OFFSET"])).tz_localize(None)
+
+
+def migrate_broker_tz(state):
+    """Once, when the chart-time rule changes (New York + 7 -> BROKER_TZ): move the times kept in the
+    state by the difference right now and drop the candle caches (their index is chart time)."""
+    rule = CFG.get("BROKER_TZ") or f"NY+{CFG['BROKER_OFFSET']}"
+    if state.get("broker_tz") == rule:
+        return
+    nowu = pd.Timestamp.now(tz="UTC")
+    shift = (utc_to_broker(nowu) - _old_broker(nowu)).round("1h") if CFG.get("BROKER_TZ") else pd.Timedelta(0)
+    if state.get("broker_tz") and state["broker_tz"] != rule:
+        shift = pd.Timedelta(0)                   # switched again later: no reliable shift, keep the times
+    keys = {None: ("last_eval",), "lb": ("last_t", "done_to"), "rs2": ("last_h1", "last_m15", "sl_to"),
+            "m5": ("last", "sl_to", "cool")}
+    if shift != pd.Timedelta(0):
+        for st in state.get("symbols", {}).values():
+            for sub, ks in keys.items():
+                d = st if sub is None else st.get(sub)
+                if not isinstance(d, dict):
+                    continue
+                for k in ks:
+                    if d.get(k):
+                        try:
+                            d[k] = str(pd.Timestamp(d[k]) + shift)
+                        except (ValueError, TypeError):
+                            pass
+            p = (st.get("rs2") or {}).get("pos")
+            if isinstance(p, dict) and p.get("t"):
+                p["t"] = str(pd.Timestamp(p["t"]) + shift)
+    dropped = 0
+    for name in set(symbol_list()) | {"XAUUSD"}:
+        for prov in [p.strip().lower() for p in CFG["PROVIDER"].split(",") if p.strip()]:
+            try:
+                os.remove(_cache_path(name, prov)); dropped += 1
+            except OSError:
+                pass
+    print(f"chart time rule -> {rule}: state times moved {shift}, {dropped} candle caches dropped")
+    state["broker_tz"] = rule
 
 
 _last_td_call = [0.0]
@@ -1060,10 +1110,26 @@ def lb_chart_png(m15, L, day):
     return buf.getvalue()
 
 
-def london_step(m15, lb, cur, send=None):
+def _fine_closed(fine, now, done_to):
+    """Closed candles of `fine` (M1, chart-time index) before `now`, and the candle length, when they
+    cover everything from `done_to`; (None, None) otherwise (caller falls back to M15)."""
+    if fine is None or now is None or len(fine) < 2:
+        return None, None
+    step = pd.Timedelta(fine.index.to_series().diff().median())
+    if step <= pd.Timedelta(0):
+        return None, None
+    fb = fine[fine.index + step <= now]
+    if not len(fb) or fb.index[0] > done_to.floor(step):
+        return None, None
+    return fb, step
+
+
+def london_step(m15, lb, cur, send=None, fine=None, now=None):
     """Advance the London breakout state `lb` (dict, kept in the XAUUSD state) using the M15 candles
-    closed before `cur` (the open of the forming candle, chart time). Sends Telegram alerts."""
+    closed before `cur` (the open of the forming candle, chart time). Fills, BE, TP and SL are checked on
+    the closed M1 candles of `fine` before `now` (chart time) when given. Sends Telegram alerts."""
     send = send or tg_send
+    tnow = now.floor("1min") if now is not None else cur
     C = CFG; h0, h1 = C["LB_RANGE"]; hc = C["LB_CLOSE_HOUR"]
     day = cur.normalize()
     if day.dayofweek >= 5:
@@ -1095,13 +1161,13 @@ def london_step(m15, lb, cur, send=None):
             send(_lb_head("NO TRADE TODAY") +
                  f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} = ${L['hi'] - L['lo']:.2f}\n"
                  f"That is {L['ratio']:.2f}x the daily ATR(14) of ${datr:.2f} (needs < {sq:.2f}x): the range is already\n"
-                 f"too wide, so no orders today.\n" + _lb_foot(cur))
+                 f"too wide, so no orders today.\n" + _lb_foot(tnow))
             return
         if not (lo_p <= L["pct"] <= hi_p):
             lb.update(status="done", text=f"no trade today: Asian range {L['pct']:.2f}% (needs {lo_p:.2f}-{hi_p:.2f}%)")
             send(_lb_head("NO TRADE TODAY") +
                  f"Asian range {h0:02d}:00-{h1:02d}:00: high {px(L['hi'])} / low {px(L['lo'])} ({L['pct']:.2f}% of price)\n"
-                 f"Needs {lo_p:.2f}%-{hi_p:.2f}%, so no orders today.\n" + _lb_foot(cur))
+                 f"Needs {lo_p:.2f}%-{hi_p:.2f}%, so no orders today.\n" + _lb_foot(tnow))
             return
         lb.update(status="placed", L=L, last_t=str(t_open - pd.Timedelta(minutes=15)),
                   text=f"orders placed: BUY STOP {px(L['b_in'])} / SELL STOP {px(L['s_in'])}")
@@ -1113,11 +1179,18 @@ def london_step(m15, lb, cur, send=None):
              f"Risk per 0.01 lot: buy ${L['b_risk']:.2f} / sell ${L['s_risk']:.2f}\n"
              f"OCO: when one fills, delete the other. Close any open trade at {hc:02d}:00 chart time.\n"
              f"Check the range high / low on your own MT5 chart (data source can differ by a few points).\n"
-             + _lb_foot(cur), lb_chart_png(m15, L, day))
+             + _lb_foot(tnow), lb_chart_png(m15, L, day))
     if lb["status"] in ("placed", "open"):
         L = lb["L"]
-        last = pd.Timestamp(lb["last_t"])
-        todo = closed[(closed.index > last) & (closed.index < t_close)]
+        # fills / BE / TP / SL on the closed M1 candles when available (alert within about a minute),
+        # else on the closed M15 candles. `done_to` = end of the last candle already checked.
+        done_to = (pd.Timestamp(lb["done_to"]) if lb.get("done_to")
+                   else pd.Timestamp(lb["last_t"]) + pd.Timedelta(minutes=15))
+        bars_, step = _fine_closed(fine, now, done_to)
+        if bars_ is None:
+            bars_, step = closed, pd.Timedelta(minutes=15)
+        tfl = f"M{int(step.total_seconds() // 60)}"
+        todo = bars_[(bars_.index >= done_to.floor(step)) & (bars_.index < t_close)]
         for t, r in todo.iterrows():
             o_, h_, l_, c_ = float(r.open), float(r.high), float(r.low), float(r.close)
             path = [o_, l_, h_, c_] if c_ >= o_ else [o_, h_, l_, c_]
@@ -1134,9 +1207,9 @@ def london_step(m15, lb, cur, send=None):
                     lb.update(status="open", dir=dr, entry=L[k + "_in"], sl=L[k + "_sl"], tp=L[k + "_tp"], be=L[k + "_be"],
                               be_done=False, text=f"{'BUY' if dr == 1 else 'SELL'} open from {px(L[k + '_in'])}")
                     send(_lb_head(f"{'BUY' if dr == 1 else 'SELL'} STOP FILLED") +
-                         f"Filled at {px(lb['entry'])} (M15 candle {t:%H:%M} chart time)\n"
+                         f"Filled at {px(lb['entry'])} ({tfl} candle {t:%H:%M} chart time)\n"
                          f"Delete the {'SELL' if dr == 1 else 'BUY'} STOP now.\n"
-                         f"SL {px(lb['sl'])} | TP {px(lb['tp'])} | move SL to entry at {px(lb['be'])}\n" + _lb_foot(cur))
+                         f"SL {px(lb['sl'])} | TP {px(lb['tp'])} | move SL to entry at {px(lb['be'])}\n" + _lb_foot(tnow))
                     lo_, hi_ = (min(lb["entry"], b_), max(lb["entry"], b_))
                 if lb["status"] == "open":
                     dr = lb["dir"]
@@ -1148,18 +1221,22 @@ def london_step(m15, lb, cur, send=None):
                         what = "TP HIT" if hit_tp and not hit_sl else ("BREAKEVEN" if lb["be_done"] else "SL HIT")
                         lb.update(status="done", text=f"{what.lower()} ({pips:+.0f} pips)")
                         send(_lb_head(what) + f"{'BUY' if dr == 1 else 'SELL'} from {px(lb['entry'])} closed at {px(ex)} "
-                             f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M15 candle {t:%H:%M}\n"
-                             f"Done for today.\n" + _lb_foot(cur))
+                             f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), {tfl} candle {t:%H:%M}\n"
+                             f"Done for today.\n" + _lb_foot(tnow))
                         break
                     if not lb["be_done"] and ((hi_ >= lb["be"]) if dr == 1 else (lo_ <= lb["be"])):
                         lb["be_done"] = True; lb["sl"] = lb["entry"] + dr * 0.10
                         lb["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(lb['entry'])}, SL at breakeven"
                         send(_lb_head("MOVE SL TO ENTRY") +
                              f"Price reached {px(lb['be'])} (1.5R). Move the SL to {px(lb['sl'])} (entry).\n"
-                             f"TP stays at {px(lb['tp'])}.\n" + _lb_foot(cur))
-            lb["last_t"] = str(t)
+                             f"TP stays at {px(lb['tp'])}.\n" + _lb_foot(tnow))
+            lb["last_t"] = str(t); lb["done_to"] = str(t + step)
             if lb["status"] == "done":
                 break
+    if fine is not None and now is not None:
+        fc = fine[fine.index + pd.Timedelta(minutes=1) <= now]
+        if len(fc) and (now - fc.index[-1]) < pd.Timedelta(minutes=10):
+            closed = fc                       # latest price for the reminder / 21:00 messages
     wm = C.get("LB_WARN_MIN", 0)
     if wm and lb["status"] in ("placed", "open") and t_close - pd.Timedelta(minutes=wm) <= cur < t_close and not lb.get("warned"):
         lb["warned"] = True
@@ -1168,22 +1245,22 @@ def london_step(m15, lb, cur, send=None):
             dr = lb["dir"]; pips = (price - lb["entry"]) * dr / 0.10
             send(_lb_head(f"{wm} MIN TO CLOSE") + f"The {'BUY' if dr == 1 else 'SELL'} from {px(lb['entry'])} is still open "
                  f"(now {px(price)}, about {pips:+.0f} pips).\nClose it at {hc:02d}:00 chart time if TP / SL is not hit before.\n"
-                 + _lb_foot(cur))
+                 + _lb_foot(tnow))
         else:
             send(_lb_head(f"{wm} MIN TO CLOSE") + f"Neither stop order has filled yet. Delete both at {hc:02d}:00 chart time "
-                 f"if they are still not filled.\n" + _lb_foot(cur))
+                 f"if they are still not filled.\n" + _lb_foot(tnow))
     if lb["status"] in ("placed", "open") and cur >= t_close:
         price = float(closed["close"].iloc[-1])
         if lb["status"] == "placed":
             lb.update(status="done", text="no breakout today")
             send(_lb_head("NO BREAKOUT") + f"{hc:02d}:00 chart time: neither order filled. Delete both stop orders.\n"
-                 + _lb_foot(cur))
+                 + _lb_foot(tnow))
         else:
             dr = lb["dir"]; pips = (price - lb["entry"]) * dr / 0.10
             lb.update(status="done", text=f"closed at {hc:02d}:00 ({pips:+.0f} pips)")
             send(_lb_head(f"CLOSE AT {hc:02d}:00") + f"Close the {'BUY' if dr == 1 else 'SELL'} now. Price {px(price)}, "
                  f"about {pips:+.0f} pips (${pips * 0.10:+.2f} per 0.01 lot) from entry {px(lb['entry'])}.\n"
-                 + _lb_foot(cur))
+                 + _lb_foot(tnow))
 
 
 #==================================================================
@@ -1208,8 +1285,9 @@ def _rs_head(title):
     return f"FIZY BOT | XAUUSD RSI2 pullback (H1) - {title}\n=============================\n"
 
 
-def rsi2_step(m15, rs, cur, send=None):
-    """Advance the RSI(2) state `rs` with the M15 candles closed before `cur`; send alerts."""
+def rsi2_step(m15, rs, cur, send=None, fine=None, now=None):
+    """Advance the RSI(2) state `rs` with the M15 candles closed before `cur`; send alerts. The SL is
+    checked on the closed M1 candles of `fine` before `now` when given (alert within about a minute)."""
     send = send or tg_send
     C = CFG
     closed = m15[m15.index < cur]
@@ -1224,15 +1302,21 @@ def rsi2_step(m15, rs, cur, send=None):
         rs.update(last_h1=str(last_t), last_m15=str(closed.index[-1]), pos=None, text="watching")
         return
     pos = rs.get("pos")
-    # SL check on new M15 candles
+    # SL check on the new M1 candles (else M15); `sl_to` = end of the last candle already checked
     if pos:
-        new = closed[closed.index > pd.Timestamp(rs.get("last_m15", str(closed.index[0])))]
+        sl_to = (pd.Timestamp(rs["sl_to"]) if rs.get("sl_to")
+                 else pd.Timestamp(rs.get("last_m15", str(closed.index[0]))) + pd.Timedelta(minutes=15))
+        new, step = _fine_closed(fine, now, sl_to)
+        if new is None:
+            new, step = closed, pd.Timedelta(minutes=15)
+        new = new[new.index >= sl_to.floor(step)]
         for t, r in new.iterrows():
+            rs["sl_to"] = str(t + step)
             if (pos["dir"] == 1 and r.low <= pos["sl"]) or (pos["dir"] == -1 and r.high >= pos["sl"]):
                 pips = (pos["sl"] - pos["entry"]) * pos["dir"] / 0.10
                 send(_rs_head("SL HIT") + f"{'BUY' if pos['dir'] == 1 else 'SELL'} from {px(pos['entry'])} stopped at {px(pos['sl'])} "
-                     f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M15 candle {t:%H:%M}\n=============================\n"
-                     f"Broker time: {cur:%Y-%m-%d %H:%M}")
+                     f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M{int(step.total_seconds() // 60)} candle {t:%H:%M}\n"
+                     f"=============================\nBroker time: {(now.floor('1min') if now is not None else cur):%Y-%m-%d %H:%M}")
                 rs["pos"] = pos = None; rs["text"] = "watching (last trade: SL)"
                 break
     rs["last_m15"] = str(closed.index[-1])
@@ -1259,6 +1343,7 @@ def rsi2_step(m15, rs, cur, send=None):
         return
     sl = b.close - dr * C["RSI2_SL_ATR"] * b.atr
     rs["pos"] = dict(dir=dr, entry=float(b.close), sl=float(sl), t=str(last_t))
+    rs["sl_to"] = str(last_t + pd.Timedelta(hours=1))           # SL checks start at the signal candle close
     rs["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(b.close)}, SL {px(sl)}"
     send(_rs_head("BUY NOW" if dr == 1 else "SELL NOW") +
          f"H1 candle {last_t:%H:%M}: close {px(b.close)} {'above' if dr == 1 else 'below'} SMA 200 ({px(b.sma200)}), "
@@ -1280,7 +1365,9 @@ def _m5_head(title):
     return f"FIZY BOT | XAUUSD M5 scalp - {title}\n=============================\n"
 
 
-def m5_step(m5, sc, cur5, send=None):
+def m5_step(m5, sc, cur5, send=None, fine=None, now=None):
+    """M5 scalp state `sc`: entries / exits on the closed M5 candles before `cur5`; the SL is also checked
+    on the closed M1 candles of `fine` before `now` when given (SL alert within about a minute)."""
     send = send or tg_send
     C = CFG
     d = m5[m5.index < cur5]
@@ -1299,8 +1386,12 @@ def m5_step(m5, sc, cur5, send=None):
     for t in new:
         b = d.loc[t]; pos = sc.get("pos")
         foot = f"=============================\nBroker time: {t + pd.Timedelta(minutes=5):%Y-%m-%d %H:%M}"
+        if not pos and sc.get("cool") and t < pd.Timestamp(sc["cool"]):
+            continue                          # the SL was hit (M1 check) inside this candle: no new entry on it
         if pos:
             dr = pos["dir"]
+            if not sc.get("sl_to") or pd.Timestamp(sc["sl_to"]) < t + pd.Timedelta(minutes=5):
+                sc["sl_to"] = str(t + pd.Timedelta(minutes=5))
             if (dr == 1 and b.low <= pos["sl"]) or (dr == -1 and b.high >= pos["sl"]):
                 pips = (pos["sl"] - pos["entry"]) * dr / 0.10
                 send(_m5_head("SL HIT") + f"{'BUY' if dr == 1 else 'SELL'} from {px(pos['entry'])} stopped at {px(pos['sl'])} "
@@ -1322,6 +1413,7 @@ def m5_step(m5, sc, cur5, send=None):
             continue
         sl = b.close - dr * 2 * atr[t]
         sc["pos"] = dict(dir=dr, entry=float(b.close), sl=float(sl), bars=0)
+        sc["sl_to"] = str(t + pd.Timedelta(minutes=5))
         sc["text"] = f"{'BUY' if dr == 1 else 'SELL'} open from {px(b.close)}, SL {px(sl)}"
         send(_m5_head("BUY NOW" if dr == 1 else "SELL NOW") +
              f"M5 candle {t:%H:%M}: close {px(b.close)} {'above' if dr == 1 else 'below'} EMA 200 ({px(e200[t])}), RSI(2) {rsi2[t]:.1f}\n"
@@ -1330,6 +1422,22 @@ def m5_step(m5, sc, cur5, send=None):
              f"Exit: wait for EXIT NOW (M5 close back over the SMA 5, or after 2 hours)\n"
              f"Note: this scalp tested about breakeven, use a small lot\n" + foot)
     sc["last"] = str(d.index[-1])
+    pos = sc.get("pos")
+    if pos:                                   # SL between M5 closes, on the M1 candles
+        sl_to = pd.Timestamp(sc["sl_to"]) if sc.get("sl_to") else pd.Timestamp(sc["last"]) + pd.Timedelta(minutes=5)
+        fb, step = _fine_closed(fine, now, sl_to)
+        if fb is not None:
+            dr = pos["dir"]
+            for t, r in fb[fb.index >= sl_to.floor(step)].iterrows():
+                sc["sl_to"] = str(t + step)
+                if (dr == 1 and r.low <= pos["sl"]) or (dr == -1 and r.high >= pos["sl"]):
+                    pips = (pos["sl"] - pos["entry"]) * dr / 0.10
+                    send(_m5_head("SL HIT") + f"{'BUY' if dr == 1 else 'SELL'} from {px(pos['entry'])} stopped at {px(pos['sl'])} "
+                         f"({pips:+.0f} pips, ${pips * 0.10:+.2f} per 0.01 lot), M1 candle {t:%H:%M}\n"
+                         f"=============================\nBroker time: {now.floor('1min'):%Y-%m-%d %H:%M}")
+                    sc["pos"] = None; sc["text"] = "watching (last: SL)"
+                    sc["cool"] = str(t.floor("5min") + pd.Timedelta(minutes=5))
+                    break
 
 
 def scan_symbol(name, st, broker_now):
@@ -1370,21 +1478,29 @@ def scan_symbol(name, st, broker_now):
             print("  telegram sent" if ok else "  telegram FAILED")
         st["last_eval"] = str(T)
         st["last_status"] = status
+    m1 = None
+    if name == "XAUUSD" and CFG.get("M1_CHECKS", True) and (CFG["M5_SCALP"] or CFG["RSI2_ALERTS"] or CFG["LONDON_BREAKOUT"]):
+        try:                                  # M1 candles: fills / BE / TP / SL alerts within about a minute
+            m1 = fetch_deriv("XAUUSD", need=1000, max_pages=1, granularity=60)
+            m1.index = pd.DatetimeIndex([utc_to_broker(x) for x in m1.index])
+        except Exception as e:
+            print("M1 fetch error (falling back to M5 / M15 checks):", e)
+            m1 = None
     if name == "XAUUSD" and CFG["M5_SCALP"]:
         try:
             m5 = fetch_deriv("XAUUSD", need=500, max_pages=1, granularity=300)
             m5.index = pd.DatetimeIndex([utc_to_broker(x) for x in m5.index])
-            m5_step(m5, st.setdefault("m5", {}), broker_now.floor("5min"))
+            m5_step(m5, st.setdefault("m5", {}), broker_now.floor("5min"), fine=m1, now=broker_now)
         except Exception as e:
             print("M5 scalp error:", e)
     if name == "XAUUSD" and CFG["RSI2_ALERTS"]:
         try:
-            rsi2_step(m15, st.setdefault("rs2", {}), cur)
+            rsi2_step(m15, st.setdefault("rs2", {}), cur, fine=m1, now=broker_now)
         except Exception as e:
             print("RSI2 error:", e)
     if name == "XAUUSD" and CFG["LONDON_BREAKOUT"]:
         try:
-            london_step(m15, st.setdefault("lb", {}), cur)
+            london_step(m15, st.setdefault("lb", {}), cur, fine=m1, now=broker_now)
         except Exception as e:
             print("London breakout error:", e)
 
@@ -1393,6 +1509,7 @@ def run_live():
     global RUN_START
     RUN_START = datetime.now(timezone.utc)
     state = load_state()
+    migrate_broker_tz(state)
     syms = state.setdefault("symbols", {})
     now_myt = datetime.now(MYT)
     broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
