@@ -107,11 +107,12 @@ def indicators(d):
 def run(d, sig, sp, flat=None):
     """sig: {i: order placed at the close of bar i}; order: type market|limit, dir, price, sl, tp, exp, maxb."""
     o, h, l, c = (d[x].values for x in ("open", "high", "low", "close"))
+    spv = sp if isinstance(sp, np.ndarray) else np.full(len(d), float(sp))
     trades, pend, pos = [], None, None
     n = len(d)
     for k in range(1, n):
         if pos is not None and (k - pos["k"] >= pos["maxb"] or (flat is not None and flat[k])):
-            trades.append((pos["t"], (o[k] - pos["entry"]) * pos["dir"] - sp, "time")); pos = None
+            trades.append((pos["t"], (o[k] - pos["entry"]) * pos["dir"] - pos["sp"], "time")); pos = None
         if pos is None and pend is None and (k - 1) in sig:
             pend = dict(sig[k - 1])
         if pend is not None and (k > pend["exp"] or (flat is not None and flat[k])):
@@ -130,7 +131,7 @@ def run(d, sig, sp, flat=None):
                     fill = max(P, a)
                 if fill is None:
                     continue
-                pos = dict(k=k, t=d.index[k], dir=dr, entry=fill, sl=pend["sl"], tp=pend["tp"], maxb=pend["maxb"])
+                pos = dict(k=k, t=d.index[k], dir=dr, entry=fill, sl=pend["sl"], tp=pend["tp"], maxb=pend["maxb"], sp=spv[k])
                 pend = None
                 lo, hi = min(fill, b), max(fill, b)          # only the prices after the fill
             if pos is not None:
@@ -142,7 +143,7 @@ def run(d, sig, sp, flat=None):
                 if ex is not None:
                     if ex == pos["sl"] and (pos["entry"] - pos["sl"]) * dr <= 0:
                         ex = pos["entry"]                 # filled already beyond the SL (gap): out at the fill
-                    trades.append((pos["t"], (ex - pos["entry"]) * dr - sp, "SL" if ex == pos["sl"] else "TP"))
+                    trades.append((pos["t"], (ex - pos["entry"]) * dr - pos["sp"], "SL" if ex == pos["sl"] else "TP"))
                     pos = None
                     break
     return pd.DataFrame(trades, columns=["t", "pnl", "res"])

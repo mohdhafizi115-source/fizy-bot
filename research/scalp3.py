@@ -76,13 +76,14 @@ def run3(d, sig, sp, xl=None, xs=None):
     """Like scalp2.run, plus stop orders and exit flags: xl[i] / xs[i] = close a long / short at the next open."""
     o, h, l, c = (d[x].values for x in ("open", "high", "low", "close"))
     flat = d.flat.values
+    spv = sp if isinstance(sp, np.ndarray) else np.full(len(d), float(sp))
     trades, pend, pos = [], None, None
     for k in range(1, len(d)):
         if pos is not None:
             dr = pos["dir"]
             ex_sig = (dr == 1 and xl is not None and xl[k - 1]) or (dr == -1 and xs is not None and xs[k - 1])
             if k - pos["k"] >= pos["maxb"] or flat[k] or ex_sig:
-                trades.append((pos["t"], (o[k] - pos["entry"]) * dr - sp, "exit")); pos = None
+                trades.append((pos["t"], (o[k] - pos["entry"]) * dr - pos["sp"], "exit")); pos = None
         if pos is None and pend is None and (k - 1) in sig:
             pend = dict(sig[k - 1])
         if pend is not None and (k > pend["exp"] or flat[k]):
@@ -104,7 +105,7 @@ def run3(d, sig, sp, xl=None, xs=None):
                 sl = pend["sl"]; tp = pend["tp"]
                 if pend.get("tp_r"):
                     tp = fill + dr * pend["tp_r"] * abs(fill - sl)
-                pos = dict(k=k, t=d.index[k], dir=dr, entry=fill, sl=sl, tp=tp, maxb=pend["maxb"]); pend = None
+                pos = dict(k=k, t=d.index[k], dir=dr, entry=fill, sl=sl, tp=tp, maxb=pend["maxb"], sp=spv[k]); pend = None
                 lo, hi = min(fill, b), max(fill, b)
             if pos is not None:
                 dr = pos["dir"]; sl, tp = pos["sl"], pos["tp"]
@@ -115,7 +116,7 @@ def run3(d, sig, sp, xl=None, xs=None):
                 if ex is not None:
                     if ex == sl and (pos["entry"] - sl) * dr <= 0:
                         ex = pos["entry"]
-                    trades.append((pos["t"], (ex - pos["entry"]) * dr - sp, "SL" if ex == sl else "TP")); pos = None
+                    trades.append((pos["t"], (ex - pos["entry"]) * dr - pos["sp"], "SL" if ex == sl else "TP")); pos = None
                     break
     return pd.DataFrame(trades, columns=["t", "pnl", "res"])
 
