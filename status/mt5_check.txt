@@ -4,9 +4,9 @@ compile finished: True, ex5 exists: True
    : information: generating code 95%
    : information: generating code 100%
    : information: code generated
-  Result: 0 errors, 0 warnings, 517 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 603 ms elapsed, cpu='X64 Regular'
 FizyLB compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 1527 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 1519 ms elapsed, cpu='X64 Regular'
 servers.dat from the user's MT5 copied in (127344 bytes)
 secret shape: login digits only True, password has ; or # False, password has leading/trailing space False, server has spaces False
 servers.dat (127344 bytes) names: 
@@ -16,49 +16,81 @@ server JustMarkets-Demo6, demo 1, company Just Global Markets Ltd.
 algo trading: terminal 1, account 1, expert 1, program 1
 balance > 0: 1, currency USD, leverage 1:2000, margin mode 2
 XAUUSD.m: tick 1 bid 3875.68 ask 3875.94, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 100
-server time 2026.10.31 09:45:14, GMT 2026.10.31 07:45:14 (server offset +2 h)
+server time 2026.10.31 14:18:29, GMT 2026.10.31 12:18:30 (server offset +2 h)
 terminal journal (network / account lines, last 30 other lines):
-  N CG	0	07:44:19.720	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  N OM	0	07:45:08.730	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  N PD	0	07:45:11.000	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  N HM	0	07:45:11.000	Network	'<num>': previous successful authorization performed from <ip> on 2026.10.31 09:40:43
-  N MR	0	07:45:11.578	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
-  N FO	0	07:45:11.578	Network	'<num>': trading has been enabled, demo account - hedging mode
-  N RR	0	07:45:11.578	Network	'<num>': balance management has been disabled - demo account
-  N RK	0	07:45:12.761	Network	'<num>': scanning network for access points
-  N LF	0	07:45:14.788	Network	'<num>': disconnected from JustMarkets-Demo6
-  N GF	2	07:45:15.423	MQL5.community	authorization failed
-  IP	0	07:44:19.668	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
-  QK	0	07:44:19.668	Terminal	453 files updated
-  IO	0	07:44:19.720	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
-  CG	0	07:44:19.720	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  ER	0	07:44:19.720	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  OI	0	07:44:19.723	MCP	started on <ip>:<num>
-  JL	0	07:44:19.723	Compiler	full recompilation has been started
-  FI	0	07:45:08.706	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
-  MQ	0	07:45:08.730	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
-  OM	0	07:45:08.730	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
-  IL	0	07:45:08.730	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  CM	0	07:45:08.730	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
-  QK	0	07:45:08.731	MCP	started on <ip>:<num>
-  IN	0	07:45:08.732	Compiler	full recompilation has been started
-  QK	0	07:45:08.786	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\JustMarkets-Demo6\history\USDCHF, last access time 2023.06.08 10:59
-  FE	0	07:45:10.210	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
-  PD	0	07:45:11.000	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  HM	0	07:45:11.000	Network	'<num>': previous successful authorization performed from <ip> on 2026.10.31 09:40:43
-  MR	0	07:45:11.578	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
-  FO	0	07:45:11.578	Network	'<num>': trading has been enabled, demo account - hedging mode
-  RR	0	07:45:11.578	Network	'<num>': balance management has been disabled - demo account
-  LK	0	07:45:11.916	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 1.00 ms via 'VPS Singapore 09' instead of <num>.00 ms
-  RK	0	07:45:12.761	Network	'<num>': scanning network for access points
-  LN	3	07:45:14.316	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
-  LL	0	07:45:14.340	Experts	expert CheckEA (XAUUSD.m,M15) removed
-  OH	0	07:45:14.526	Terminal	exit with code 0
-  LF	0	07:45:14.788	Network	'<num>': disconnected from JustMarkets-Demo6
-  GF	2	07:45:15.423	MQL5.community	authorization failed
-  KN	0	07:45:15.431	Terminal	stopped with 0
-  GM	0	07:45:15.544	Terminal	shutdown with 0
-snap test: compiled True, files: snap_TEST_XAUUSD_m_20261031_094518_890.png, snap_TEST_BTCUSD_m_20261031_094518_968.png
+  N RG	0	12:17:34.135	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  N OM	0	12:18:24.071	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  N DD	0	12:18:26.499	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  N LN	0	12:18:26.499	Network	'<num>': previous successful authorization performed from <ip> on 2026.10.31 10:41:29
+  N CR	0	12:18:27.218	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
+  N LO	0	12:18:27.218	Network	'<num>': trading has been enabled, demo account - hedging mode
+  N LS	0	12:18:27.218	Network	'<num>': balance management has been disabled - demo account
+  N OK	0	12:18:28.105	Network	'<num>': scanning network for access points
+  N EF	0	12:18:31.162	Network	'<num>': disconnected from JustMarkets-Demo6
+  FP	0	12:17:34.077	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
+  NK	0	12:17:34.077	Terminal	453 files updated
+  LO	0	12:17:34.135	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  RG	0	12:17:34.135	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  PR	0	12:17:34.135	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  PI	0	12:17:34.138	MCP	started on <ip>:<num>
+  IL	0	12:17:34.138	Compiler	full recompilation has been started
+  FI	0	12:18:24.047	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
+  MQ	0	12:18:24.071	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  OM	0	12:18:24.071	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
+  IL	0	12:18:24.071	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  CM	0	12:18:24.071	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
+  OK	0	12:18:24.072	MCP	started on <ip>:<num>
+  IN	0	12:18:24.073	Compiler	full recompilation has been started
+  LK	0	12:18:24.149	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\JustMarkets-Demo6\history\USDCHF, last access time 2023.06.08 10:59
+  CE	0	12:18:25.596	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
+  DD	0	12:18:26.499	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  LN	0	12:18:26.499	Network	'<num>': previous successful authorization performed from <ip> on 2026.10.31 10:41:29
+  CR	0	12:18:27.218	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
+  LO	0	12:18:27.218	Network	'<num>': trading has been enabled, demo account - hedging mode
+  LS	0	12:18:27.218	Network	'<num>': balance management has been disabled - demo account
+  JK	0	12:18:27.379	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 1.17 ms via 'VPS Singapore 09' instead of <num>.00 ms
+  OK	0	12:18:28.105	Network	'<num>': scanning network for access points
+  NN	3	12:18:30.097	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
+  QL	0	12:18:30.190	Experts	expert CheckEA (XAUUSD.m,M15) removed
+  PH	0	12:18:30.387	Terminal	exit with code 0
+  EF	0	12:18:31.162	Network	'<num>': disconnected from JustMarkets-Demo6
+  MG	0	12:18:31.301	Terminal	stopped with 0
+  EF	0	12:18:31.409	Terminal	shutdown with 0
+signal check (compiled True):
+  server time 2026.10.31 14:19; signals on closed H1 bars since 2026.10.30
+  open RSI2 positions (magic 260309): 0
+  BTCUSD.m: last bar 2026.10.31 13:00 close 77443.71 below SMA200, RSI2 89.3, tick age 0 min | SIGNALS: SELL@2026.10.30 08:00(rsi 91.7) SELL@2026.10.31 02:00(rsi 92.2)
+  XAUUSD.m: last bar 2026.10.30 21:00 close 3883.57 below SMA200, RSI2 34.0, tick age 921 min | no signal
+  EURUSD.m: last bar 2026.10.30 21:00 close 1.11674 below SMA200, RSI2 77.0, tick age 921 min | no signal
+  GBPUSD.m: last bar 2026.10.30 21:00 close 1.33955 above SMA200, RSI2 64.3, tick age 921 min | SIGNALS: BUY@2026.10.30 15:00(rsi 4.5)
+  AUDUSD.m: last bar 2026.10.30 21:00 close 0.70333 above SMA200, RSI2 73.1, tick age 921 min | no signal
+  NZDUSD.m: last bar 2026.10.30 21:00 close 0.56320 below SMA200, RSI2 36.0, tick age 921 min | SIGNALS: SELL@2026.10.30 10:00(rsi 90.9)
+  USDJPY.m: last bar 2026.10.30 21:00 close 157.521 below SMA200, RSI2 79.0, tick age 921 min | no signal
+  USDCHF.m: last bar 2026.10.30 21:00 close 0.82404 below SMA200, RSI2 64.5, tick age 921 min | SIGNALS: SELL@2026.10.30 08:00(rsi 96.6) SELL@2026.10.30 15:00(rsi 92.4) SELL@2026.10.30 16:00(rsi 92.4)
+  USDCAD.m: last bar 2026.10.30 21:00 close 1.39661 below SMA200, RSI2 82.0, tick age 921 min | no signal
+  EURGBP.m: last bar 2026.10.30 21:00 close 0.83362 below SMA200, RSI2 77.9, tick age 921 min | no signal
+  EURJPY.m: last bar 2026.10.30 21:00 close 175.920 below SMA200, RSI2 87.9, tick age 921 min | no signal
+  EURCHF.m: last bar 2026.10.30 21:00 close 0.92029 below SMA200, RSI2 93.7, tick age 921 min | SIGNALS: SELL@2026.10.30 08:00(rsi 90.5) SELL@2026.10.30 21:00(rsi 93.7)
+  EURAUD.m: last bar 2026.10.30 21:00 close 1.58766 below SMA200, RSI2 58.3, tick age 921 min | SIGNALS: SELL@2026.10.30 00:00(rsi 91.2)
+  EURCAD.m: last bar 2026.10.30 21:00 close 1.55967 below SMA200, RSI2 87.9, tick age 921 min | SIGNALS: SELL@2026.10.30 00:00(rsi 97.1)
+  EURNZD.m: last bar 2026.10.30 21:00 close 1.98256 above SMA200, RSI2 84.5, tick age 921 min | SIGNALS: BUY@2026.10.30 16:00(rsi 4.0)
+  GBPJPY.m: last bar 2026.10.30 21:00 close 211.002 above SMA200, RSI2 84.0, tick age 921 min | SIGNALS: BUY@2026.10.30 14:00(rsi 9.3)
+  GBPCHF.m: last bar 2026.10.30 21:00 close 1.10390 above SMA200, RSI2 78.8, tick age 921 min | no signal
+  GBPAUD.m: last bar 2026.10.30 21:00 close 1.90438 above SMA200, RSI2 37.5, tick age 921 min | SIGNALS: BUY@2026.10.30 16:00(rsi 9.8)
+  GBPCAD.m: last bar 2026.10.30 21:00 close 1.87080 below SMA200, RSI2 87.9, tick age 921 min | SIGNALS: SELL@2026.10.30 02:00(rsi 93.2) SELL@2026.10.30 09:00(rsi 93.7)
+  GBPNZD.m: last bar 2026.10.30 21:00 close 2.37807 above SMA200, RSI2 80.7, tick age 921 min | no signal
+  AUDJPY.m: last bar 2026.10.30 21:00 close 110.787 above SMA200, RSI2 80.5, tick age 921 min | no signal
+  AUDCHF.m: last bar 2026.10.30 21:00 close 0.57961 below SMA200, RSI2 73.2, tick age 921 min | no signal
+  AUDCAD.m: last bar 2026.10.30 21:00 close 0.98226 below SMA200, RSI2 91.0, tick age 921 min | SIGNALS: SELL@2026.10.30 21:00(rsi 91.0)
+  AUDNZD.m: last bar 2026.10.30 21:00 close 1.24864 above SMA200, RSI2 87.1, tick age 921 min | SIGNALS: BUY@2026.10.30 00:00(rsi 0.1) BUY@2026.10.30 10:00(rsi 3.7) BUY@2026.10.30 13:00(rsi 9.2)
+  NZDJPY.m: last bar 2026.10.30 21:00 close 88.726 below SMA200, RSI2 75.2, tick age 921 min | no signal
+  NZDCHF.m: last bar 2026.10.30 21:00 close 0.46418 below SMA200, RSI2 60.7, tick age 921 min | no signal
+  NZDCAD.m: last bar 2026.10.30 21:00 close 0.78658 below SMA200, RSI2 88.5, tick age 921 min | no signal
+  CADJPY.m: last bar 2026.10.30 21:00 close 112.790 above SMA200, RSI2 54.7, tick age 921 min | SIGNALS: BUY@2026.10.30 13:00(rsi 5.3)
+  CADCHF.m: last bar 2026.10.30 21:00 close 0.59004 above SMA200, RSI2 32.2, tick age 921 min | no signal
+  CHFJPY.m: last bar 2026.10.30 21:00 close 191.158 above SMA200, RSI2 67.6, tick age 921 min | SIGNALS: BUY@2026.10.30 14:00(rsi 5.4)
+snap test: compiled True, files: snap_TEST_XAUUSD_m_20261031_141941_640.png, snap_TEST_BTCUSD_m_20261031_141944_703.png
 EA log tail:
-  KQ	3	07:45:14.316	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
-  KE	3	07:45:31.706	SnapTest (XAUUSD.m,M15)	TerminalClose(0) function called
+  KQ	3	12:18:30.097	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
+  FH	3	12:19:29.185	SignalCheck (XAUUSD.m,H1)	TerminalClose(0) function called
+  GO	3	12:19:44.853	SnapTest (XAUUSD.m,M15)	TerminalClose(0) function called
