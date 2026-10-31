@@ -80,6 +80,13 @@ jobs:
               Copy-Item $sd.FullName "C:\Program Files\MetaTrader 5\Config\servers.dat" -Force
               "servers.dat copied from $($sd.Directory.Parent.Name) ($($sd.Length) bytes)" | Out-File $d -Append -Encoding utf8
             }
+            # first start fills the MQL5 folder (Include\Trade\Trade.mqh etc.) needed to compile the EA
+            $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+            $f = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable" -PassThru
+            for ($i = 0; $i -lt 24 -and -not (Test-Path "$dir\MQL5\Include\Trade\Trade.mqh"); $i++) { Start-Sleep -Seconds 5 }
+            Start-Sleep -Seconds 10
+            Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+            Write-Host "MQL5 include folder ready: $(Test-Path "$dir\MQL5\Include\Trade\Trade.mqh")"
           }
 
       - name: Python packages

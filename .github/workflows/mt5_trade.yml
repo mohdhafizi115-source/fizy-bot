@@ -52,7 +52,13 @@ jobs:
           for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
           Start-Sleep -Seconds 20
           Get-Process terminal64, metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          # first start fills the MQL5 folder (Include\Trade\Trade.mqh etc.) needed to compile the EA
           $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+          $f = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable" -PassThru
+          for ($i = 0; $i -lt 24 -and -not (Test-Path "$dir\MQL5\Include\Trade\Trade.mqh"); $i++) { Start-Sleep -Seconds 5 }
+          Start-Sleep -Seconds 10
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          Write-Host "MQL5 include folder ready: $(Test-Path "$dir\MQL5\Include\Trade\Trade.mqh")"
           New-Item -ItemType Directory -Force -Path "$dir\Config", "$dir\MQL5\Experts" | Out-Null
           Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
           (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
