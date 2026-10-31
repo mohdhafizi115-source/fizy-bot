@@ -1,3 +1,7 @@
-shift ended (UTC): 2026-10-31 02:51
+shift ended (UTC): 2026-10-31 02:57
 open
 
+events file: True, lines 1
+  MS	0	02:53:37.721	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.10.31 04:53, 0 open position(s), 0 pending order(s), lot 0.05
+  w: telegram ok: STARTED
+  w: shift end: done=False, state=none
