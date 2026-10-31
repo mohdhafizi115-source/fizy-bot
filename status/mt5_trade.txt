@@ -1,7 +1,11 @@
-shift ended (UTC): 2026-10-31 02:57
+shift ended (UTC): 2026-10-31 07:08
 open
 
-events file: True, lines 1
-  MS	0	02:53:37.721	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.10.31 04:53, 0 open position(s), 0 pending order(s), lot 0.05
+EA compile: ex5 exists True
+  Result: 0 errors, 0 warnings, 1109 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, RSI2 1 lines
+  KS	0	07:02:10.528	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.10.31 09:02, 0 open position(s), 0 pending order(s), lot 0.01
+  CL	0	07:02:10.530	FizyLB (XAUUSD.m,M15)	RSI2 EVENT RSI2 ONLINE | 30 symbols on H1, lot 0.01, 0 open RSI2 position(s)
   w: telegram ok: STARTED
+  w: telegram ok: RSI2 ONLINE
   w: shift end: done=False, state=none
