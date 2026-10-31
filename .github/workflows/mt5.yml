@@ -150,6 +150,19 @@ jobs:
             $all | Where-Object { $_ -match "Network|auth|connect|login|ccount|server|Server|failed|error" } | Select-Object -Last 25 | ForEach-Object { "  N " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8
             $all | Select-Object -Last 30 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8
           }
+          # screenshot test (no trading): SnapTest EA
+          Copy-Item mt5\SnapTest.mq5 "$dir\MQL5\Experts\SnapTest.mq5" -Force
+          $c3 = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\SnapTest.mq5`" /log:`"$dir\compile3.log`"" -PassThru
+          for ($i = 0; $i -lt 40 -and -not $c3.HasExited; $i++) { Start-Sleep -Seconds 3 }
+          Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          $ini2 = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=SnapTest`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
+          [IO.File]::WriteAllText("$dir\start.ini", $ini2, [Text.Encoding]::Unicode)
+          $t3 = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
+          for ($i = 0; $i -lt 36 -and -not $t3.HasExited; $i++) { Start-Sleep -Seconds 5 }
+          Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          "snap test: compiled $(Test-Path "$dir\MQL5\Experts\SnapTest.ex5"), files: $((Get-Content "$dir\MQL5\Files\snap_test.txt" -ErrorAction SilentlyContinue) -join ', ')" | Out-File $out -Append -Encoding utf8
+          Get-ChildItem "$dir\MQL5\Files\snap_TEST_*.png" -ErrorAction SilentlyContinue | ForEach-Object { Copy-Item $_.FullName "status\$($_.Name)" -Force }
           $lg = Get-ChildItem "$dir\MQL5\Logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
           if ($lg) { "EA log tail:" | Out-File $out -Append -Encoding utf8; Get-Content $lg.FullName -Tail 15 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8 }
 
@@ -160,6 +173,6 @@ jobs:
           python mt5/mask_logs.py || true
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
-          git add status/mt5_check.txt status/mt5_logs.txt status/mt5_diag.txt || true
+          git add status/mt5_check.txt status/mt5_logs.txt status/mt5_diag.txt status/snap_TEST_*.png || true
           git commit -m "MT5 check result" || true
           for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
