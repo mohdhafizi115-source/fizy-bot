@@ -1,7 +1,7 @@
-run (UTC): started 2026-10-31 06:00:01  finished 06:00:02  broker time: 2026-10-31 08:00
+run (UTC): started 2026-10-31 06:19:04  finished 06:19:04  broker time: 2026-10-31 08:19
 XAUUSD   deriv       5027  market closed (last candle 2026-10-30 22:45)
 XAUUSD London breakout: tp hit (+600 pips)
 XAUUSD RSI2 pullback: watching
 XAUUSD M5 scalp: watching (last +29 pips)
 welcome telegram ok: True  example: None
-telegram token valid: True  |  from GitHub secret: no  |  chat id from secret: no
+telegram token valid: True  |  from GitHub secret: yes  |  chat id from secret: yes
