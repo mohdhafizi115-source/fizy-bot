@@ -1,10 +1,11 @@
-shift ended (UTC): 2026-10-31 14:14
+shift ended (UTC): 2026-10-31 20:01
 open
 
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 1610 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 1477 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, RSI2 1 lines
-  QS	0	08:38:41.925	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.10.31 10:38, 0 open position(s), 0 pending order(s), lot 0.05
-  IL	0	08:38:41.929	FizyLB (XAUUSD.m,M15)	RSI2 EVENT RSI2 ONLINE | 30 symbols on H1, lot 0.01, 0 open RSI2 position(s)
-  w: telegram ok: daily status
+  FS	0	14:26:25.318	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.10.31 16:26, 0 open position(s), 0 pending order(s), lot 0.05
+  JL	0	14:26:25.320	FizyLB (XAUUSD.m,M15)	RSI2 EVENT RSI2 ONLINE | 23 symbols on H1, lot 0.01, 0 open RSI2 position(s)
+  CF	0	14:26:34.319	FizyLB (XAUUSD.m,M15)	NR7 EVENT NR7 ONLINE | 7 symbols on D1 (BTCUSD,USDJPY,EURJPY,GBPJPY,XAUUSD,AUDJPY,GBPUSD), lot 0.01, 0 open NR7 position(s)
+  w: status message already sent today
   w: shift end: done=False, state=none
