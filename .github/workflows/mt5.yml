@@ -105,6 +105,12 @@ jobs:
           "compile finished: $($c.HasExited), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Append -Encoding utf8
           if (Test-Path "$dir\compile.log") { Get-Content "$dir\compile.log" -Tail 5 | ForEach-Object { "  " + $_ } | Out-File $out -Append -Encoding utf8 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          Copy-Item mt5\FizyLB.mq5 "$dir\MQL5\Experts\FizyLB.mq5" -Force
+          $c2 = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\FizyLB.mq5`" /log:`"$dir\compile2.log`"" -PassThru
+          for ($i = 0; $i -lt 40 -and -not $c2.HasExited; $i++) { Start-Sleep -Seconds 3 }
+          Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          "FizyLB compile: ex5 exists $(Test-Path "$dir\MQL5\Experts\FizyLB.ex5")" | Out-File $out -Append -Encoding utf8
+          if (Test-Path "$dir\compile2.log") { Get-Content "$dir\compile2.log" | Where-Object { $_ -match "error|warning|Result" } | Select-Object -First 25 | ForEach-Object { "  " + $_ } | Out-File $out -Append -Encoding utf8 }
           if (Test-Path mt5\servers.dat) {
             New-Item -ItemType Directory -Force -Path "$dir\Config" | Out-Null
             Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force

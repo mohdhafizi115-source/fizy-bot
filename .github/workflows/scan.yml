@@ -9,7 +9,8 @@ on:
     paths: ["bbma_scanner.py", ".github/workflows/scan.yml", "send_example.txt", "run_research.txt", "run_audit.txt"]
 
 permissions:
-  contents: write                     # only for the keep-alive commit below
+  contents: write                     # keep-alive and summary commits
+  actions: write                      # start the MT5 auto-trade shifts (mt5_trade.yml)
 
 # Scheduled / manual runs stay alive ~5.5 h and scan 1 s after every M15 candle close (scan_delay.txt)
 # (GitHub's own 15-minute schedule is often 30-60 minutes late). While one loop runs, the next
@@ -47,6 +48,7 @@ jobs:
           TG_TOKEN: ${{ secrets.TG_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           OANDA_TOKEN: ${{ secrets.OANDA_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROVIDER: ${{ vars.PROVIDER }}
           SYMBOLS: ${{ vars.SYMBOLS }}
         run: |

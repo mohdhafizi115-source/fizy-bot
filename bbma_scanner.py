@@ -1124,6 +1124,40 @@ def _fine_closed(fine, now, done_to):
     return fb, step
 
 
+def mt5_auto_on():
+    """mt5_trade.txt line 1 = "on": the FizyLB EA trades the London breakout on the demo account."""
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mt5_trade.txt")) as f:
+            return f.readline().strip().lower() == "on"
+    except OSError:
+        return False
+
+
+def mt5_daily_dispatch(state, broker_now):
+    """Start the first MT5 trading shift of the day (GitHub workflow mt5_trade.yml) at about 07:25 chart time.
+    Retries every scan until 08:20 if the dispatch fails. Needs GH_TOKEN with actions: write (scan.yml)."""
+    if not mt5_auto_on() or broker_now.dayofweek >= 5:
+        return
+    key = f"{broker_now:%Y-%m-%d}"
+    hm = broker_now.hour * 60 + broker_now.minute
+    if not (7 * 60 + 25 <= hm < 8 * 60 + 20) or state.get("mt5_dispatch") == key:
+        return
+    tok, repo = os.environ.get("GH_TOKEN"), os.environ.get("GITHUB_REPOSITORY")
+    if not tok or not repo:
+        print("MT5 dispatch: no GH_TOKEN / GITHUB_REPOSITORY"); return
+    try:
+        r = requests.post(f"https://api.github.com/repos/{repo}/actions/workflows/mt5_trade.yml/dispatches",
+                          headers={"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"},
+                          json={"ref": "main"}, timeout=20)
+    except requests.RequestException as e:
+        print("MT5 dispatch error:", e); return
+    if r.status_code == 204:
+        state["mt5_dispatch"] = key
+        print("MT5 trading shift 1 dispatched")
+    else:
+        print("MT5 dispatch failed:", r.status_code, r.text[:200])
+
+
 def london_step(m15, lb, cur, send=None, fine=None, now=None):
     """Advance the London breakout state `lb` (dict, kept in the XAUUSD state) using the M15 candles
     closed before `cur` (the open of the forming candle, chart time). Fills, BE, TP and SL are checked on
@@ -1179,6 +1213,8 @@ def london_step(m15, lb, cur, send=None, fine=None, now=None):
              f"Risk per 0.01 lot: buy ${L['b_risk']:.2f} / sell ${L['s_risk']:.2f}\n"
              f"OCO: when one fills, delete the other. Close any open trade at {hc:02d}:00 chart time.\n"
              f"Check the range high / low on your own MT5 chart (data source can differ by a few points).\n"
+             + ("AUTO TRADE is ON (demo): the bot places its own orders from the broker's prices, do not place these by hand.\n"
+                if mt5_auto_on() else "")
              + _lb_foot(tnow), lb_chart_png(m15, L, day))
     if lb["status"] in ("placed", "open"):
         L = lb["L"]
@@ -1513,6 +1549,10 @@ def run_live():
     syms = state.setdefault("symbols", {})
     now_myt = datetime.now(MYT)
     broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
+    try:
+        mt5_daily_dispatch(state, broker_now)
+    except Exception as e:
+        print("MT5 dispatch error:", e)
     errors = []
     # download every symbol in parallel (several Deriv connections); each symbol is evaluated and
     # alerted as soon as its own data is in, in list order (XAUUSD first)

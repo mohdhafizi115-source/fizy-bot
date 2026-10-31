@@ -1,0 +1,100 @@
+name: MT5 auto trader
+
+# One trading shift (about 5h40m) of the FizyLB London breakout EA on a GitHub Windows runner.
+# The first shift of the day is dispatched by the scanner loop at about 07:30 chart time;
+# each shift dispatches the next one until the 21:00 close is done.
+# Switch: mt5_trade.txt line 1 "on" / "off", line 2 the lot size. Demo accounts only (the EA refuses others).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: mt5-trade
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: windows-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Switch
+        id: sw
+        shell: bash
+        run: |
+          mode=$(head -1 mt5_trade.txt 2>/dev/null | tr -dc a-z)
+          lot=$(sed -n 2p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
+          echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
+          echo "auto trade: ${mode:-off}, lot ${lot:-0.01}"
+
+      - name: Install packages
+        if: steps.sw.outputs.mode == 'on'
+        run: pip install -r requirements.txt
+
+      - name: Install the JustMarkets MT5 terminal and compile the EA
+        if: steps.sw.outputs.mode == 'on'
+        shell: pwsh
+        env:
+          LOT: ${{ steps.sw.outputs.lot }}
+        run: |
+          $ErrorActionPreference = "Continue"
+          Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
+          $p = Start-Process -FilePath .\jm.exe -ArgumentList "/auto" -PassThru
+          for ($i = 0; $i -lt 120 -and -not $p.HasExited; $i++) { Start-Sleep -Seconds 5 }
+          Start-Sleep -Seconds 20
+          Get-Process terminal64, metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+          New-Item -ItemType Directory -Force -Path "$dir\Config", "$dir\MQL5\Experts" | Out-Null
+          Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
+          (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
+          $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\FizyLB.mq5`" /log:`"$dir\compile.log`"" -PassThru
+          for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
+          Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          Get-Content "$dir\compile.log" -Tail 4
+          if (-not (Test-Path "$dir\MQL5\Experts\FizyLB.ex5")) { Write-Host "EA compile failed"; exit 1 }
+
+      - name: Trade (EA in the terminal, events to Telegram)
+        if: steps.sw.outputs.mode == 'on'
+        shell: pwsh
+        env:
+          MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
+          MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
+          MT5_SERVER: ${{ secrets.MT5_SERVER }}
+        run: |
+          $ErrorActionPreference = "Continue"
+          $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+          $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=FizyLB`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
+          [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
+          Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`""
+          Start-Sleep -Seconds 30
+          Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
+          python mt5/watch.py --dir "$dir" --minutes 335
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+
+      - name: Next shift
+        if: always() && steps.sw.outputs.mode == 'on'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python mt5/next_shift.py
+
+      - name: Shift summary (no account details)
+        if: always() && steps.sw.outputs.mode == 'on'
+        shell: bash
+        run: |
+          mkdir -p status
+          { echo "shift ended (UTC): $(date -u '+%Y-%m-%d %H:%M')"; cat mt5_shift.txt 2>/dev/null; } > status/mt5_trade.txt
+          git config user.name "fizy-bot"
+          git config user.email "fizy-bot@users.noreply.github.com"
+          git add status/mt5_trade.txt
+          git commit -q -m "MT5 shift summary" || true
+          for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
