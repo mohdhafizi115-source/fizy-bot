@@ -3,7 +3,8 @@ import os, sys
 import numpy as np, pandas as pd
 src = open(os.path.join(os.path.dirname(__file__), "nr7.py")).read().split("for n in (\"XAUUSD\"")[0]
 ns = {"__file__": os.path.join(os.path.dirname(__file__), "nr7.py")}; exec(src, ns)
-say, yahoo, nr_trades, ALL = ns["say"], ns["yahoo"], ns["nr_trades"], ns["ALL"]
+say, yahoo, nr_trades = ns["say"], ns["yahoo"], ns["nr_trades"]
+ALL, OUT = ns["ns"]["ALL"], ns["ns"]["out"]
 pfh = lambda x: x[x > 0].sum() / -x[x < 0].sum() if (x < 0).any() else 99
 rows = []
 for n in ALL:
@@ -28,4 +29,4 @@ for hold in (1, 3):
     for r in g.itertuples():
         say(f"  {r.inst:7s} from {r.first} {r.n:4d}t PF {r.pf:.2f} {r.R:+6.1f}R halves {r.h1:.2f}/{r.h2:.2f} last 3y {r.l3:+5.1f}R PF {r.l3pf:.2f}")
 os.makedirs("status", exist_ok=True)
-open("status/research.txt", "w").write("NR7 breakout per instrument\n" + "\n".join(ns["out"]) + "\n")
+open("status/research.txt", "w").write("NR7 breakout per instrument\n" + "\n".join(OUT) + "\n")
