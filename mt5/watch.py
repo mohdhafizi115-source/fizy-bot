@@ -26,7 +26,7 @@ def send(line):
     parts = [p for p in parts if not p.startswith("IMG:")]
     when, kind, rest = parts[0], parts[1] if len(parts) > 1 else "", parts[2:]
     title = TITLES.get(kind, kind)
-    head = "XAUUSD AUTO TRADE (demo)" if not kind.startswith("RSI2") else "AUTO TRADE RSI2 H1 (demo)"
+    head = "LONDON BREAKOUT XAUUSD (demo)" if not kind.startswith("RSI2") else "RSI2 H1 (demo)"
     body = "\n".join(rest)
     msg = (f"FIZY BOT | {head} - {title}\n=============================\n{body}\n"
            f"=============================\nBroker time: {when}")
@@ -49,16 +49,50 @@ def read_lines(path):
         return []
 
 
+ONLINE_FILE = os.path.join(os.path.dirname(__file__), "..", "status", "mt5_online.txt")   # date of the last status message
+
+
+def online_sent_today(day):
+    try:
+        return open(ONLINE_FILE).read().strip() == day
+    except OSError:
+        return False
+
+
+def send_status(lines):
+    """One status message a day: London breakout + RSI2 start lines merged."""
+    day = lines[0].split("|")[0].strip().split(" ")[0]
+    if online_sent_today(day):
+        print("status message already sent today", flush=True); return
+    body = []
+    for l in lines:
+        p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]
+        body.append(("London breakout: " if "STARTED" in p[1] else "RSI2 H1: ") + " | ".join(p[2:]))
+    msg = ("FIZY BOT | AUTO TRADE (demo) - BOT ONLINE (daily status)\n=============================\n" + "\n".join(body) +
+           f"\n=============================\nBroker time: {lines[0].split('|')[0].strip()}")
+    ok = S.tg_send(msg)
+    print(f"telegram {'ok' if ok else 'FAILED'}: daily status", flush=True)
+    if ok:
+        os.makedirs(os.path.dirname(ONLINE_FILE), exist_ok=True)
+        open(ONLINE_FILE, "w").write(day + "\n")
+
+
 t0, started = time.time(), False
 sent = {p: 0 for p in ev_paths}
 state = ""
+status_lines, status_done = [], False
 while time.time() - t0 < a.minutes * 60:
     for path in ev_paths:
         lines = read_lines(path)
         for l in lines[sent[path]:]:
             started = started or "| STARTED |" in l or "| STOPPED |" in l
+            if not status_done and ("| STARTED |" in l or "| RSI2 ONLINE |" in l) and "IMG:" not in l:
+                status_lines.append(l)             # merged into one daily status message below
+                continue
             send(l)
         sent[path] = len(lines)
+    if not status_done and (len(status_lines) >= 2 or (status_lines and time.time() - t0 > 120)):
+        send_status(status_lines); status_done = True
     st = read_lines(st_path)
     if st:
         state = st[-1]
