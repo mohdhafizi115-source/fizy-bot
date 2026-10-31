@@ -12,11 +12,11 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.00"
+#property version "1.10"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
-input double InpLot        = 0.05;
+input double InpLot        = 0.01;
 input long   InpMagic      = 260308;
 input int    InpRangeStart = 3;       // Asian range start hour (server)
 input int    InpRangeEnd   = 8;       // range end = order time (server)
@@ -34,6 +34,8 @@ input bool   InpDemoOnly   = true;
 CTrade trade;
 string g_noTradeDay = "";             // day already reported as "no trade" in this run
 ulong  g_known[];                     // position tickets seen open (to report TP / SL closes)
+
+#include "FizyRSI2.mqh"                // H1 RSI(2) on gold, 28 forex pairs and BTCUSD (same EA, same chart)
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -276,6 +278,7 @@ void OnTimer()
       Event(StringFormat("STARTED | server time %s, %d open position(s), %d pending order(s), lot %.2f",
                          TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)));
    }
+   RsiOnTimer();                                                            // 24/7 (BTCUSD trades at weekends)
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
    if(minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))

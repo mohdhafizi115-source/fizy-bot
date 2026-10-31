@@ -1,7 +1,8 @@
-"""Runs next to the FizyLB EA on the GitHub Windows runner: forwards the EA events
-(MQL5/Files/flb_events.txt) to Telegram and stops when the trading day is done or the
-time budget of this shift is used up. Writes mt5_shift.txt (done flag, server time) for
-the next-shift step. Never prints account numbers, balances or passwords (public logs)."""
+"""Runs next to the FizyLB EA (London breakout + RSI2 H1) on the GitHub Windows runner: forwards
+the EA events (MQL5/Files/flb_events.txt and rsi2_events.txt) to Telegram until the time budget
+of this shift is used up (the EA trades 24/7, so the shift never stops early). Writes
+mt5_shift.txt (server time) for the next-shift step. Never prints account numbers, balances or
+passwords (public logs)."""
 import os, sys, time, argparse
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import bbma_scanner as S
@@ -11,18 +12,21 @@ ap.add_argument("--dir", required=True)
 ap.add_argument("--minutes", type=float, default=340)
 a = ap.parse_args()
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_path, st_path = os.path.join(files, "flb_events.txt"), os.path.join(files, "flb_state.txt")
+ev_paths = [os.path.join(files, "flb_events.txt"), os.path.join(files, "rsi2_events.txt")]
+st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
           "BREAKEVEN": "BREAKEVEN", "CLOSED": "CLOSED", "STARTED": "BOT ONLINE", "STOPPED": "STOPPED", "ERROR": "ERROR"}
+# RSI2 kinds ("RSI2 BUY EURUSD.m", "RSI2 EXIT ...", "RSI2 SL HIT ...", "RSI2 ONLINE") are used as the title as they are
 
 
 def send(line):
     parts = [p.strip() for p in line.split("|")]
     when, kind, rest = parts[0], parts[1] if len(parts) > 1 else "", parts[2:]
     title = TITLES.get(kind, kind)
+    head = "XAUUSD AUTO TRADE (demo)" if not kind.startswith("RSI2") else "AUTO TRADE RSI2 H1 (demo)"
     body = "\n".join(rest)
-    msg = (f"FIZY BOT | XAUUSD AUTO TRADE (demo) - {title}\n=============================\n{body}\n"
+    msg = (f"FIZY BOT | {head} - {title}\n=============================\n{body}\n"
            f"=============================\nBroker time: {when}")
     ok = S.tg_send(msg)
     print(f"telegram {'ok' if ok else 'FAILED'}: {kind}", flush=True)
@@ -36,25 +40,23 @@ def read_lines(path):
         return []
 
 
-t0, sent, started = time.time(), 0, False
+t0, started = time.time(), False
+sent = {p: 0 for p in ev_paths}
 state = ""
 while time.time() - t0 < a.minutes * 60:
-    lines = read_lines(ev_path)
-    for l in lines[sent:]:
-        started = started or "| STARTED |" in l or "| STOPPED |" in l
-        send(l)
-    sent = len(lines)
+    for path in ev_paths:
+        lines = read_lines(path)
+        for l in lines[sent[path]:]:
+            started = started or "| STARTED |" in l or "| STOPPED |" in l
+            send(l)
+        sent[path] = len(lines)
     st = read_lines(st_path)
     if st:
         state = st[-1]
-        p = state.split("|")
-        if len(p) >= 4 and p[3].strip() == "1":
-            print("trading day done", flush=True)
-            break
     if not started and time.time() - t0 > 360:
-        S.tg_send("FIZY BOT | XAUUSD AUTO TRADE (demo) - PROBLEM\n=============================\n"
+        S.tg_send("FIZY BOT | AUTO TRADE (demo) - PROBLEM\n=============================\n"
                   "The EA did not start within 6 minutes on GitHub (login / connection problem).\n"
-                  "Place today's London breakout orders by hand from the alert.\n=============================")
+                  "The next shift will try again.\n=============================")
         started = True                       # say it once
     time.sleep(5)
 p = state.split("|") if state else []

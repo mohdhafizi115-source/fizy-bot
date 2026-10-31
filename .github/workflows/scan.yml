@@ -2,7 +2,7 @@ name: BBMA scanner
 
 on:
   schedule:
-    - cron: "1,31 * * * 0-5"   # backup starter (UTC, Sunday to Friday); the scan itself loops, see below
+    - cron: "1,31 * * * *"     # backup starter (UTC, every day: also keeps the 24/7 MT5 shifts alive); the scan loops, see below
   workflow_dispatch:                  # "Run workflow" button for a manual run
   push:                               # first run right after the files are uploaded
     branches: [main]

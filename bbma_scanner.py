@@ -83,7 +83,7 @@ CFG = {
     "M5_SCALP":       False,         # XAUUSD M5 RSI(2) scalp alerts: OFF since 31 Oct (lost on 3.7 years of JustMarkets M5, PF 0.94)
     "M5_SESSION":     [8, 20],       # entries only between these chart hours
     "M5_MAX_BARS":    24,            # time exit after this many M5 candles (2 hours)
-    "RSI2_ALERTS":    True,          # XAUUSD H1 RSI(2) pullback alerts (entry / exit / SL), added 30 Oct at the user's request
+    "RSI2_ALERTS":    False,          # Deriv RSI(2) alerts: OFF since 31 Oct, RSI2 now trades in the MT5 EA (gold, forex, BTCUSD)
     "RSI2_LO":        10,
     "RSI2_HI":        90,
     "RSI2_SL_ATR":    2.0,
@@ -1123,30 +1123,42 @@ def mt5_auto_on():
         return False
 
 
-def mt5_daily_dispatch(state, broker_now):
-    """Start the first MT5 trading shift of the day (GitHub workflow mt5_trade.yml) at about 07:25 chart time.
-    Retries every scan until 08:20 if the dispatch fails. Needs GH_TOKEN with actions: write (scan.yml)."""
-    if not mt5_auto_on() or broker_now.dayofweek >= 5:
-        return
-    key = f"{broker_now:%Y-%m-%d}"
-    hm = broker_now.hour * 60 + broker_now.minute
-    if not (7 * 60 + 25 <= hm < 8 * 60 + 20) or state.get("mt5_dispatch") == key:
+def mt5_watchdog(state):
+    """Keep the MT5 trading shifts (GitHub workflow mt5_trade.yml) running 24/7: every 10 minutes, when
+    mt5_trade.txt says "on" and no mt5_trade run is queued or running, start one (at most every 15 min).
+    Each shift starts the next one itself; this only restarts a broken chain. Needs GH_TOKEN with
+    actions: write (scan.yml)."""
+    if not mt5_auto_on():
         return
     tok, repo = os.environ.get("GH_TOKEN"), os.environ.get("GITHUB_REPOSITORY")
     if not tok or not repo:
-        print("MT5 dispatch: no GH_TOKEN / GITHUB_REPOSITORY"); return
+        return
+    now = time.time()
+    if now - state.get("mt5_watch_t", 0) < 600:
+        return
+    state["mt5_watch_t"] = now
+    h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
+    base = f"https://api.github.com/repos/{repo}/actions/workflows/mt5_trade.yml"
     try:
-        r = requests.post(f"https://api.github.com/repos/{repo}/actions/workflows/mt5_trade.yml/dispatches",
-                          headers={"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"},
-                          json={"ref": "main"}, timeout=20)
+        r = requests.get(base + "/runs?per_page=10", headers=h, timeout=20)
+        if not r.ok:
+            print("MT5 watchdog: runs list failed", r.status_code); return
+        runs = r.json().get("workflow_runs", [])
+        active = [x for x in runs if x.get("status") != "completed"]
+        if active or now - state.get("mt5_dispatch_t", 0) < 900:
+            return
+        if runs and runs[0].get("conclusion") == "failure":          # broken shift: retry at most hourly
+            done = pd.Timestamp(runs[0].get("updated_at")).timestamp()
+            if now - done < 3600:
+                return
+        d = requests.post(base + "/dispatches", headers=h, json={"ref": "main"}, timeout=20)
     except requests.RequestException as e:
-        print("MT5 dispatch error:", e); return
-    if r.status_code == 204:
-        state["mt5_dispatch"] = key
-        print("MT5 trading shift 1 dispatched")
+        print("MT5 watchdog error:", e.__class__.__name__); return
+    if d.status_code == 204:
+        state["mt5_dispatch_t"] = now
+        print("MT5 shift started by the watchdog")
     else:
-        print("MT5 dispatch failed:", r.status_code, r.text[:200])
-
+        print("MT5 watchdog dispatch failed:", d.status_code, d.text[:200])
 
 def london_step(m15, lb, cur, send=None, fine=None, now=None):
     """Advance the London breakout state `lb` (dict, kept in the XAUUSD state) using the M15 candles
@@ -1540,9 +1552,9 @@ def run_live():
     now_myt = datetime.now(MYT)
     broker_now = utc_to_broker(pd.Timestamp.now(tz="UTC"))
     try:
-        mt5_daily_dispatch(state, broker_now)
+        mt5_watchdog(state)
     except Exception as e:
-        print("MT5 dispatch error:", e)
+        print("MT5 watchdog error:", e.__class__.__name__)
     errors = []
     # download every symbol in parallel (several Deriv connections); each symbol is evaluated and
     # alerted as soon as its own data is in, in list order (XAUUSD first)
