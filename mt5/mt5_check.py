@@ -28,7 +28,7 @@ def log_tail():
             for l in keep[-70:]:
                 if login:
                     l = l.replace(login, "<login>")
-                res.append("  " + re.sub(r"\d{5,}", "<num>", l.replace("\t", " ")))
+                res.append("  " + re.sub(r"\b\d{1,3}(\.\d{1,3}){3}\b", "<ip>", re.sub(r"\d{5,}", "<num>", l.replace("\t", " "))))
         except Exception as e:
             res.append(f"  cannot read {os.path.basename(f)}: {e.__class__.__name__} {e}")
     return res

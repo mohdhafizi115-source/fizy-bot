@@ -32,7 +32,7 @@ terminal journal (network / account lines, last 30 other lines):
   HD	0	02:32:07.074	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, AVX2, 13 / 15 Gb memory, 29 / 149 Gb disk, UAC, admin, GMT+0
   JS	0	02:32:07.074	Terminal	C:\Program Files\JustMarkets MetaTrader 5
   LD	0	02:32:07.074	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
-  EM	0	02:32:07.078	MCP	started on 127.0.0.1:<num>
+  EM	0	02:32:07.078	MCP	started on <ip>:<num>
   DG	0	02:32:07.078	Compiler	full recompilation has been started
   KR	0	02:32:07.166	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\JustMarkets-Demo6\history\USDCHF, last access time 2023.06.08 10:59
   NJ	0	02:32:08.597	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully

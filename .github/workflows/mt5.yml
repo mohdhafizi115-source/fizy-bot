@@ -132,11 +132,11 @@ jobs:
           if ($jl) {
             "terminal journal (network / account lines, last 30 other lines):" | Out-File $out -Append -Encoding utf8
             $all = Get-Content $jl.FullName -Encoding Unicode
-            $all | Where-Object { $_ -match "Network|auth|connect|login|ccount|server|Server|failed|error" } | Select-Object -Last 25 | ForEach-Object { "  N " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8
-            $all | Select-Object -Last 30 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8
+            $all | Where-Object { $_ -match "Network|auth|connect|login|ccount|server|Server|failed|error" } | Select-Object -Last 25 | ForEach-Object { "  N " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8
+            $all | Select-Object -Last 30 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8
           }
           $lg = Get-ChildItem "$dir\MQL5\Logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
-          if ($lg) { "EA log tail:" | Out-File $out -Append -Encoding utf8; Get-Content $lg.FullName -Tail 15 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>') } | Out-File $out -Append -Encoding utf8 }
+          if ($lg) { "EA log tail:" | Out-File $out -Append -Encoding utf8; Get-Content $lg.FullName -Tail 15 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>') } | Out-File $out -Append -Encoding utf8 }
 
       - name: Publish the check result
         if: always()

@@ -17,7 +17,7 @@ for f in sorted(files, key=os.path.getmtime)[-3:]:
     for l in lines:
         if login:
             l = l.replace(login, "<login>")
-        out.append(re.sub(r"\d{5,}", "<num>", l))
+        out.append(re.sub(r"\b\d{1,3}(\.\d{1,3}){3}\b", "<ip>", re.sub(r"\d{5,}", "<num>", l)))
 os.makedirs("status", exist_ok=True)
 open("status/mt5_logs.txt", "w").write("\n".join(out) + "\n")
 out.insert(0, f"log files found: {len(files)}"); open("status/mt5_logs.txt", "w").write("\n".join(out) + "\n")
