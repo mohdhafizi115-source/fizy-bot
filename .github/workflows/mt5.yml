@@ -105,6 +105,11 @@ jobs:
           "compile finished: $($c.HasExited), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Append -Encoding utf8
           if (Test-Path "$dir\compile.log") { Get-Content "$dir\compile.log" -Tail 5 | ForEach-Object { "  " + $_ } | Out-File $out -Append -Encoding utf8 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          if (Test-Path mt5\servers.dat) {
+            New-Item -ItemType Directory -Force -Path "$dir\Config" | Out-Null
+            Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
+            "servers.dat from the user's MT5 copied in ($((Get-Item mt5\servers.dat).Length) bytes)" | Out-File $out -Append -Encoding utf8
+          }
           $pw = $env:MT5_PASSWORD
           "secret shape: login digits only $($env:MT5_LOGIN -match '^\d+$'), password has ; or # $($pw -match '[;#]'), password has leading/trailing space $($pw -ne $pw.Trim()), server has spaces $($env:MT5_SERVER -match '\s')" | Out-File $out -Append -Encoding utf8
           $sd = "$dir\Config\servers.dat"
