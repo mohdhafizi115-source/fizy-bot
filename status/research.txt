@@ -1,56 +1,65 @@
-NR7 breakout deep check
+NR7 breakout per instrument
 
-XAUUSD: 2004-01-05..2026-10-30
-  NR7, stop other side, hold 1 day (base)  708 trades, win 46%, PF 1.28,  +88.8R (avg +0.125R), halves PF 1.46 / 1.07, last 3y 112t +12.2R PF 1.30
-   by year: 2004 +6.8R, 2005 +3.0R, 2006 +2.3R, 2007 -0.4R, 2008 +22.4R, 2009 -7.9R, 2010 -0.9R, 2011 +6.3R, 2012 +8.3R, 2013 +27.1R, 2014 +1.0R, 2015 +6.1R, 2016 +13.5R, 2017 -1.0R, 2018 +4.9R, 2019 -13.0R, 2020 +5.6R, 2021 -4.4R, 2022 +4.5R, 2023 -8.1R, 2024 +1.1R, 2025 +10.3R, 2026 +1.0R
-  hold 2 days                             708 trades, win 42%, PF 1.28, +117.0R (avg +0.165R), halves PF 1.44 / 1.09, last 3y 112t +18.8R PF 1.33
-  hold 3 days                             708 trades, win 36%, PF 1.28, +133.4R (avg +0.188R), halves PF 1.40 / 1.13, last 3y 113t +29.1R PF 1.46
-  hold 5 days                             708 trades, win 31%, PF 1.25, +133.0R (avg +0.188R), halves PF 1.30 / 1.18, last 3y 113t +27.5R PF 1.37
-  NR4                                    1216 trades, win 46%, PF 1.26, +134.4R (avg +0.110R), halves PF 1.51 / 1.00, last 3y 184t +16.9R PF 1.26
-  NR10                                    503 trades, win 47%, PF 1.33,  +78.0R (avg +0.155R), halves PF 1.44 / 1.17, last 3y 80t +14.8R PF 1.52
-  stop 1 ATR beyond entry                 708 trades, win 48%, PF 1.01,   +2.3R (avg +0.003R), halves PF 1.13 / 0.89, last 3y 112t +3.7R PF 1.15
-  NR7 + inside day                        274 trades, win 48%, PF 1.44,  +57.5R (avg +0.210R), halves PF 1.80 / 1.06, last 3y 41t +8.7R PF 1.64
+NR7 hold 1 day(s): 30 instruments, PF > 1 in 50%, both halves > 1 and last 3 years > 0 in 9: BTCUSD, USDJPY, EURJPY, GBPJPY, XAUUSD, AUDJPY, GBPUSD, GBPCHF, NZDUSD
+  BTCUSD  from 2014  671t PF 2.53 +318.3R halves 4.28/1.47 last 3y +37.7R PF 1.61
+  USDJPY  from 2004  890t PF 1.48 +152.3R halves 1.57/1.40 last 3y +31.9R PF 1.83
+  EURJPY  from 2004  865t PF 1.32  +97.5R halves 1.10/1.56 last 3y +14.3R PF 1.32
+  GBPJPY  from 2004  875t PF 1.31  +93.0R halves 1.26/1.35 last 3y +26.6R PF 1.72
+  XAUUSD  from 2004  708t PF 1.28  +88.8R halves 1.46/1.07 last 3y +12.2R PF 1.30
+  AUDJPY  from 2004  894t PF 1.25  +78.0R halves 1.24/1.26 last 3y  +9.9R PF 1.26
+  GBPUSD  from 2004  826t PF 1.21  +67.2R halves 1.16/1.27 last 3y +20.0R PF 1.51
+  EURUSD  from 2004  854t PF 1.15  +50.5R halves 1.19/1.11 last 3y  -2.2R PF 0.95
+  GBPCHF  from 2004  891t PF 1.14  +44.4R halves 1.06/1.22 last 3y  +1.3R PF 1.03
+  CADJPY  from 2004  853t PF 1.12  +37.6R halves 1.15/1.09 last 3y  -1.1R PF 0.98
+  NZDUSD  from 2004  832t PF 1.09  +28.2R halves 1.03/1.15 last 3y +13.4R PF 1.36
+  EURAUD  from 2004  846t PF 1.06  +17.5R halves 1.12/1.00 last 3y  -3.0R PF 0.94
+  NZDJPY  from 2004  891t PF 1.05  +15.2R halves 1.13/0.97 last 3y -12.7R PF 0.72
+  USDCHF  from 2004  838t PF 1.02   +6.9R halves 1.26/0.81 last 3y -10.0R PF 0.81
+  AUDUSD  from 2006  744t PF 1.01   +3.7R halves 1.18/0.87 last 3y  -5.1R PF 0.89
+  CHFJPY  from 2004  866t PF 1.00   -0.1R halves 0.99/1.01 last 3y  +7.1R PF 1.15
+  AUDCHF  from 2004  828t PF 0.99   -3.1R halves 1.29/0.72 last 3y -13.1R PF 0.75
+  NZDCAD  from 2004  844t PF 0.97   -9.2R halves 0.90/1.04 last 3y  +7.8R PF 1.23
+  USDCAD  from 2004  855t PF 0.97  -11.6R halves 1.12/0.85 last 3y -11.5R PF 0.80
+  EURGBP  from 2004  856t PF 0.95  -18.3R halves 0.96/0.93 last 3y -11.6R PF 0.79
+  GBPNZD  from 2004  843t PF 0.93  -22.4R halves 0.96/0.91 last 3y  +3.2R PF 1.07
+  GBPAUD  from 2004  852t PF 0.91  -29.7R halves 0.95/0.88 last 3y  -3.3R PF 0.92
+  GBPCAD  from 2004  862t PF 0.91  -29.0R halves 0.78/1.04 last 3y  +8.9R PF 1.23
+  EURNZD  from 2004  862t PF 0.88  -41.8R halves 0.92/0.84 last 3y  -6.8R PF 0.85
+  AUDCAD  from 2004  841t PF 0.88  -41.9R halves 0.97/0.79 last 3y -12.5R PF 0.76
+  EURCAD  from 2004  858t PF 0.87  -47.3R halves 0.80/0.94 last 3y +14.3R PF 1.33
+  NZDCHF  from 2004  847t PF 0.85  -50.2R halves 0.95/0.76 last 3y  -7.0R PF 0.84
+  CADCHF  from 2004  869t PF 0.78  -78.4R halves 0.95/0.62 last 3y -20.5R PF 0.55
+  AUDNZD  from 2004  837t PF 0.77  -74.0R halves 0.88/0.67 last 3y  +4.0R PF 1.10
+  EURCHF  from 2004  892t PF 0.75  -93.1R halves 0.71/0.80 last 3y  -9.6R PF 0.81
 
-BTCUSD: 2014-09-17..2026-10-31
-  NR7, stop other side, hold 1 day (base)  671 trades, win 56%, PF 2.53, +318.3R (avg +0.474R), halves PF 4.28 / 1.47, last 3y 165t +37.7R PF 1.61
-   by year: 2014 +13.9R, 2015 +56.7R, 2016 +57.7R, 2017 +42.6R, 2018 +20.3R, 2019 +37.7R, 2020 +34.6R, 2021 -4.0R, 2022 +20.8R, 2023 +3.8R, 2024 +9.6R, 2025 +11.1R, 2026 +13.3R
-  hold 2 days                             671 trades, win 44%, PF 2.46, +485.5R (avg +0.723R), halves PF 4.30 / 1.31, last 3y 165t +39.4R PF 1.40
-  hold 3 days                             671 trades, win 41%, PF 2.35, +525.2R (avg +0.783R), halves PF 4.17 / 1.14, last 3y 165t +16.7R PF 1.15
-  hold 5 days                             671 trades, win 34%, PF 2.43, +642.1R (avg +0.957R), halves PF 3.99 / 1.27, last 3y 165t +5.1R PF 1.04
-  NR4                                    1062 trades, win 55%, PF 2.39, +420.8R (avg +0.396R), halves PF 3.59 / 1.52, last 3y 254t +60.3R PF 1.77
-  NR10                                    472 trades, win 54%, PF 2.49, +234.6R (avg +0.497R), halves PF 4.15 / 1.49, last 3y 107t +24.5R PF 1.56
-  stop 1 ATR beyond entry                 671 trades, win 56%, PF 1.91, +105.0R (avg +0.156R), halves PF 2.97 / 1.19, last 3y 165t +7.9R PF 1.25
-  NR7 + inside day                        337 trades, win 53%, PF 2.54, +171.7R (avg +0.509R), halves PF 5.55 / 1.21, last 3y 96t +10.3R PF 1.25
-
-EURUSD: 2004-01-01..2026-10-30
-  NR7, stop other side, hold 1 day (base)  854 trades, win 48%, PF 1.15,  +50.5R (avg +0.059R), halves PF 1.19 / 1.11, last 3y 118t -2.2R PF 0.95
-   by year: 2004 +16.0R, 2005 +6.8R, 2006 +3.8R, 2007 +1.1R, 2008 -7.8R, 2009 +2.8R, 2010 +6.2R, 2011 +0.3R, 2012 -1.1R, 2013 -0.7R, 2014 -2.3R, 2015 +11.5R, 2016 -3.9R, 2017 -3.5R, 2018 +9.0R, 2019 -0.9R, 2020 +8.3R, 2021 -2.2R, 2022 +4.6R, 2023 +8.3R, 2024 -0.4R, 2025 +9.1R, 2026 -14.4R
-  hold 2 days                             854 trades, win 41%, PF 1.03,  +15.9R (avg +0.019R), halves PF 1.08 / 0.99, last 3y 118t +6.7R PF 1.11
-  hold 3 days                             854 trades, win 36%, PF 1.02,  +11.6R (avg +0.014R), halves PF 1.08 / 0.96, last 3y 118t +0.3R PF 1.00
-  hold 5 days                             854 trades, win 31%, PF 0.92,  -45.6R (avg -0.053R), halves PF 0.95 / 0.90, last 3y 118t -17.3R PF 0.81
-  NR4                                    1413 trades, win 47%, PF 1.14,  +69.8R (avg +0.049R), halves PF 1.18 / 1.09, last 3y 196t -0.6R PF 0.99
-  NR10                                    620 trades, win 47%, PF 1.17,  +44.5R (avg +0.072R), halves PF 1.17 / 1.17, last 3y 84t -2.8R PF 0.92
-  stop 1 ATR beyond entry                 854 trades, win 52%, PF 1.13,  +22.2R (avg +0.026R), halves PF 1.05 / 1.24, last 3y 118t -0.2R PF 0.99
-  NR7 + inside day                        268 trades, win 48%, PF 1.16,  +17.5R (avg +0.065R), halves PF 1.12 / 1.20, last 3y 35t -5.8R PF 0.65
-
-GBPUSD: 2004-01-01..2026-10-30
-  NR7, stop other side, hold 1 day (base)  826 trades, win 48%, PF 1.21,  +67.2R (avg +0.081R), halves PF 1.16 / 1.27, last 3y 105t +20.0R PF 1.51
-   by year: 2004 +4.5R, 2005 -1.7R, 2006 +12.8R, 2007 +16.2R, 2008 +3.4R, 2009 -8.6R, 2010 -3.4R, 2011 -4.8R, 2012 +4.9R, 2013 +4.1R, 2014 -4.5R, 2015 +6.0R, 2016 +3.1R, 2017 -0.9R, 2018 +2.8R, 2019 +11.0R, 2020 +16.4R, 2021 -0.7R, 2022 +1.6R, 2023 -10.4R, 2024 +4.0R, 2025 +9.8R, 2026 +1.7R
-  hold 2 days                             825 trades, win 43%, PF 1.22,  +93.3R (avg +0.113R), halves PF 1.08 / 1.36, last 3y 104t +26.4R PF 1.49
-  hold 3 days                             825 trades, win 38%, PF 1.16,  +78.1R (avg +0.095R), halves PF 1.14 / 1.17, last 3y 105t +5.2R PF 1.08
-  hold 5 days                             825 trades, win 32%, PF 1.19, +109.3R (avg +0.132R), halves PF 1.22 / 1.16, last 3y 105t +7.6R PF 1.10
-  NR4                                    1448 trades, win 48%, PF 1.12,  +61.3R (avg +0.042R), halves PF 1.05 / 1.19, last 3y 187t +24.4R PF 1.38
-  NR10                                    616 trades, win 49%, PF 1.18,  +44.6R (avg +0.072R), halves PF 1.01 / 1.37, last 3y 84t +22.3R PF 1.74
-  stop 1 ATR beyond entry                 826 trades, win 54%, PF 1.38,  +56.1R (avg +0.068R), halves PF 1.17 / 1.66, last 3y 105t +14.1R PF 1.96
-  NR7 + inside day                        303 trades, win 51%, PF 1.27,  +31.9R (avg +0.105R), halves PF 1.12 / 1.44, last 3y 40t +12.4R PF 1.95
-
-USDJPY: 2004-01-01..2026-10-30
-  NR7, stop other side, hold 1 day (base)  890 trades, win 50%, PF 1.48, +152.3R (avg +0.171R), halves PF 1.57 / 1.40, last 3y 112t +31.9R PF 1.83
-   by year: 2004 +2.8R, 2005 +8.9R, 2006 +8.5R, 2007 +7.9R, 2008 +20.1R, 2009 +5.1R, 2010 -5.8R, 2011 -1.5R, 2012 +8.9R, 2013 +12.0R, 2014 +10.0R, 2015 +10.8R, 2016 +4.4R, 2017 +2.9R, 2018 +4.3R, 2019 +1.0R, 2020 +6.6R, 2021 +8.3R, 2022 +6.6R, 2023 +5.9R, 2024 +16.0R, 2025 +7.9R, 2026 +0.8R
-  hold 2 days                             890 trades, win 44%, PF 1.35, +156.6R (avg +0.176R), halves PF 1.32 / 1.38, last 3y 112t +31.8R PF 1.56
-  hold 3 days                             890 trades, win 39%, PF 1.33, +175.2R (avg +0.197R), halves PF 1.38 / 1.27, last 3y 112t +27.1R PF 1.39
-  hold 5 days                             890 trades, win 34%, PF 1.33, +209.4R (avg +0.235R), halves PF 1.33 / 1.33, last 3y 112t +22.3R PF 1.28
-  NR4                                    1465 trades, win 50%, PF 1.37, +181.5R (avg +0.124R), halves PF 1.39 / 1.35, last 3y 176t +42.3R PF 1.72
-  NR10                                    665 trades, win 51%, PF 1.55, +133.6R (avg +0.201R), halves PF 1.54 / 1.55, last 3y 89t +30.0R PF 1.98
-  stop 1 ATR beyond entry                 890 trades, win 54%, PF 1.48,  +73.4R (avg +0.083R), halves PF 1.60 / 1.35, last 3y 112t +18.3R PF 2.38
-  NR7 + inside day                        334 trades, win 52%, PF 1.66,  +81.4R (avg +0.244R), halves PF 1.52 / 1.80, last 3y 41t +15.2R PF 2.27
+NR7 hold 3 day(s): 30 instruments, PF > 1 in 47%, both halves > 1 and last 3 years > 0 in 9: BTCUSD, EURJPY, USDJPY, XAUUSD, GBPUSD, GBPJPY, AUDJPY, NZDUSD, CHFJPY
+  BTCUSD  from 2014  671t PF 2.35 +525.2R halves 4.17/1.14 last 3y +16.7R PF 1.15
+  EURJPY  from 2004  865t PF 1.33 +162.9R halves 1.18/1.49 last 3y  +3.1R PF 1.04
+  USDJPY  from 2004  890t PF 1.33 +175.2R halves 1.38/1.27 last 3y +27.1R PF 1.39
+  XAUUSD  from 2004  708t PF 1.28 +133.4R halves 1.40/1.13 last 3y +29.1R PF 1.46
+  GBPUSD  from 2004  825t PF 1.16  +78.1R halves 1.14/1.17 last 3y  +5.2R PF 1.08
+  GBPJPY  from 2004  875t PF 1.14  +69.9R halves 1.16/1.12 last 3y +17.3R PF 1.29
+  AUDJPY  from 2004  894t PF 1.13  +69.2R halves 1.12/1.13 last 3y +20.7R PF 1.32
+  EURAUD  from 2004  846t PF 1.10  +50.6R halves 1.19/1.02 last 3y  -0.2R PF 1.00
+  NZDUSD  from 2004  832t PF 1.06  +30.0R halves 1.04/1.07 last 3y +14.3R PF 1.23
+  NZDJPY  from 2004  891t PF 1.06  +28.8R halves 1.23/0.90 last 3y -34.2R PF 0.57
+  CHFJPY  from 2004  866t PF 1.04  +21.7R halves 1.03/1.06 last 3y  +0.5R PF 1.01
+  EURUSD  from 2004  854t PF 1.02  +11.6R halves 1.08/0.96 last 3y  +0.3R PF 1.00
+  GBPCHF  from 2004  891t PF 1.02   +8.5R halves 1.02/1.02 last 3y  -6.2R PF 0.91
+  CADJPY  from 2004  853t PF 1.00   +2.3R halves 0.92/1.09 last 3y -25.6R PF 0.68
+  USDCHF  from 2004  838t PF 0.98  -11.8R halves 1.19/0.79 last 3y -14.2R PF 0.82
+  NZDCAD  from 2004  844t PF 0.97  -14.8R halves 1.00/0.94 last 3y  -1.0R PF 0.98
+  GBPCAD  from 2004  862t PF 0.96  -22.9R halves 0.93/0.98 last 3y  -3.6R PF 0.94
+  AUDCHF  from 2004  828t PF 0.95  -23.0R halves 1.27/0.67 last 3y -30.2R PF 0.61
+  EURNZD  from 2004  862t PF 0.94  -32.7R halves 1.02/0.86 last 3y -17.8R PF 0.77
+  USDCAD  from 2004  855t PF 0.92  -45.0R halves 1.04/0.81 last 3y -21.4R PF 0.76
+  GBPNZD  from 2004  843t PF 0.91  -47.0R halves 0.93/0.88 last 3y  +4.2R PF 1.06
+  NZDCHF  from 2004  847t PF 0.91  -48.6R halves 1.04/0.78 last 3y -13.0R PF 0.83
+  EURGBP  from 2004  856t PF 0.88  -61.6R halves 0.89/0.88 last 3y -15.7R PF 0.81
+  GBPAUD  from 2004  852t PF 0.88  -64.8R halves 0.96/0.79 last 3y -11.3R PF 0.83
+  AUDUSD  from 2006  744t PF 0.87  -63.4R halves 0.97/0.77 last 3y -35.8R PF 0.56
+  EURCAD  from 2004  858t PF 0.86  -79.8R halves 0.94/0.78 last 3y  +0.5R PF 1.01
+  EURCHF  from 2004  891t PF 0.85  -82.5R halves 0.81/0.89 last 3y +15.1R PF 1.22
+  AUDCAD  from 2004  841t PF 0.83  -88.1R halves 0.74/0.92 last 3y -21.7R PF 0.70
+  CADCHF  from 2004  869t PF 0.82  -95.8R halves 1.04/0.61 last 3y -24.4R PF 0.63
+  AUDNZD  from 2004  837t PF 0.82  -92.8R halves 0.92/0.73 last 3y  -7.5R PF 0.89
