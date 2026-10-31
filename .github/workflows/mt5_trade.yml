@@ -69,6 +69,11 @@ jobs:
           Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
           (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
           (Get-Content mt5\FizyRSI2.mqh) -replace '^input double InpRsiLot\s*=.*;', "input double InpRsiLot     = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyRSI2.mqh" -Encoding utf8
+          Copy-Item mt5\FizySnap.mqh "$dir\MQL5\Experts\FizySnap.mqh" -Force
+          $m = "${{ github.event.inputs.minutes }}"
+          if ($m -and [int]$m -lt 30) {           # short test shift: screenshot with the start message
+            (Get-Content "$dir\MQL5\Experts\FizyLB.mq5") -replace '^input bool   InpSnapTest\s*=.*;', 'input bool   InpSnapTest   = true;' | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
+          }
           $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\FizyLB.mq5`" /log:`"$dir\compile.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force

@@ -30,11 +30,13 @@ input double InpBeR        = 1.5;
 input double InpBuffer     = 0.10;
 input double InpSqueeze    = 0.60;    // 0 = off
 input bool   InpDemoOnly   = true;
+input bool   InpSnapTest   = false;   // test runs: send a screenshot with the start message
 
 CTrade trade;
 string g_noTradeDay = "";             // day already reported as "no trade" in this run
 ulong  g_known[];                     // position tickets seen open (to report TP / SL closes)
 
+#include "FizySnap.mqh"                // MT5 chart screenshots for the Telegram events
 #include "FizyRSI2.mqh"                // H1 RSI(2) on gold, 28 forex pairs and BTCUSD (same EA, same chart)
 
 //--- helpers -------------------------------------------------------
@@ -169,9 +171,14 @@ void PlaceOrders(datetime day)
    if(tk.bid <= sIn) okS = trade.Sell(lot, InpSymbol, 0, sSl, sTp, cm);
    else okS = trade.SellStop(lot, sIn, InpSymbol, sSl, sTp, tt, exp, cm);
    res += okS ? "" : StringFormat(" | sell error %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+   double lv[6]; color lc[6]; string lb[6];
+   lv[0] = bIn; lc[0] = clrSeaGreen; lb[0] = "BUY STOP";  lv[1] = bSl; lc[1] = clrIndianRed; lb[1] = "buy SL";
+   lv[2] = bTp; lc[2] = clrBlue;     lb[2] = "buy TP";    lv[3] = sIn; lc[3] = clrIndianRed; lb[3] = "SELL STOP";
+   lv[4] = sSl; lc[4] = clrSeaGreen; lb[4] = "sell SL";   lv[5] = sTp; lc[5] = clrBlue;      lb[5] = "sell TP";
+   string fn = Snap(InpSymbol, PERIOD_M15, "LB", lv, lc, lb, r0, r1, hi, lo, false);
    Event(StringFormat("ORDERS PLACED | %s | BUY STOP %s SL %s TP %s (BE at %s) | SELL STOP %s SL %s TP %s (BE at %s) | lot %.2f, risk per side $%.2f / $%.2f%s",
                       rng, P(bIn), P(bSl), P(bTp), P(bIn + InpBeR * bR), P(sIn), P(sSl), P(sTp), P(sIn - InpBeR * sR),
-                      lot, bR * lot * 100, sR * lot * 100, res));
+                      lot, bR * lot * 100, sR * lot * 100, res) + Img(fn));
 }
 
 //--- report positions that closed (TP / SL / BE) -------------------
@@ -189,7 +196,10 @@ void ReportClosed(ulong pos)
    }
    if(outPx == 0) return;
    string what = (reason == DEAL_REASON_TP) ? "TP HIT" : (reason == DEAL_REASON_SL) ? (MathAbs(outPx - inPx) <= 0.2 ? "BREAKEVEN" : "SL HIT") : "CLOSED";
-   Event(StringFormat("%s | %s from %s closed at %s, profit $%.2f", what, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL", P(inPx), P(outPx), profit));
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
+   string fn = Snap(InpSymbol, PERIOD_M15, "LBX", lv, lc, lb, 0, 0, 0, 0, false);
+   Event(StringFormat("%s | %s from %s closed at %s, profit $%.2f", what, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL", P(inPx), P(outPx), profit) + Img(fn));
 }
 
 void Manage(datetime now, datetime day)
@@ -275,8 +285,23 @@ void OnTimer()
          ulong t = PositionGetTicket(i);
          if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpMagic) { int m = ArraySize(g_known); ArrayResize(g_known, m + 1); g_known[m] = t; }
       }
+      string fn = "";
+      if(InpSnapTest)
+      {
+         double lv[1]; color lc[1]; string lb[1];
+         lv[0] = SymbolInfoDouble(InpSymbol, SYMBOL_BID); lc[0] = clrBlue; lb[0] = "bid";
+         fn = Snap(InpSymbol, PERIOD_M15, "TEST", lv, lc, lb, 0, 0, 0, 0, false);
+      }
       Event(StringFormat("STARTED | server time %s, %d open position(s), %d pending order(s), lot %.2f",
-                         TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)));
+                         TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)) + Img(fn));
+      if(InpSnapTest)
+      {
+         string b = RsiResolve("BTCUSD");
+         double lv2[1]; color lc2[1]; string lb2[1];
+         lv2[0] = SymbolInfoDouble(b, SYMBOL_BID); lc2[0] = clrBlue; lb2[0] = "bid";
+         string f2 = (b == "") ? "" : Snap(b, PERIOD_H1, "TEST", lv2, lc2, lb2, 0, 0, 0, 0, true);
+         RsiEvent("RSI2 TEST " + b + " | screenshot test: H1 chart with SMA 200, SMA 5 and RSI(2)" + Img(f2));
+      }
    }
    RsiOnTimer();                                                            // 24/7 (BTCUSD trades at weekends)
    if(s.day_of_week == 0 || s.day_of_week == 6) return;

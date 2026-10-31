@@ -22,13 +22,22 @@ TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", 
 
 def send(line):
     parts = [p.strip() for p in line.split("|")]
+    img = next((p[4:].strip() for p in parts if p.startswith("IMG:")), "")
+    parts = [p for p in parts if not p.startswith("IMG:")]
     when, kind, rest = parts[0], parts[1] if len(parts) > 1 else "", parts[2:]
     title = TITLES.get(kind, kind)
     head = "XAUUSD AUTO TRADE (demo)" if not kind.startswith("RSI2") else "AUTO TRADE RSI2 H1 (demo)"
     body = "\n".join(rest)
     msg = (f"FIZY BOT | {head} - {title}\n=============================\n{body}\n"
            f"=============================\nBroker time: {when}")
-    ok = S.tg_send(msg)
+    png = None
+    if img and "/" not in img and "\\" not in img:
+        path = os.path.join(files, img)
+        for _ in range(10):                          # the EA writes the PNG just before the event line
+            if os.path.exists(path) and os.path.getsize(path) > 0:
+                png = open(path, "rb").read(); break
+            time.sleep(0.5)
+    ok = S.tg_send(msg, png)
     print(f"telegram {'ok' if ok else 'FAILED'}: {kind}", flush=True)
 
 

@@ -131,9 +131,13 @@ void RsiReportClosed(ulong pos)
       if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_OUT) { outPx = HistoryDealGetDouble(d, DEAL_PRICE); reason = HistoryDealGetInteger(d, DEAL_REASON); }
    }
    if(outPx == 0 || s == "") return;
-   string what = (reason == DEAL_REASON_SL) ? "RSI2 SL HIT" : "RSI2 CLOSED";
-   RsiEvent(StringFormat("%s %s | %s from %s closed at %s, profit $%.2f", what, s, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL",
-                         RsiP(s, inPx), RsiP(s, outPx), profit));
+   string what = (reason == DEAL_REASON_SL) ? "RSI2 SL HIT" : (reason == DEAL_REASON_EXPERT ? "RSI2 EXIT" : "RSI2 CLOSED");
+   string why  = (reason == DEAL_REASON_SL) ? "stop loss" : (reason == DEAL_REASON_EXPERT ? "H1 close back over the SMA 5" : "closed outside the EA");
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
+   string fn = Snap(s, PERIOD_H1, "RSX", lv, lc, lb, 0, 0, 0, 0, true);
+   RsiEvent(StringFormat("%s %s | %s from %s closed at %s (%s), profit $%.2f", what, s, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL",
+                         RsiP(s, inPx), RsiP(s, outPx), why, profit) + Img(fn));
 }
 
 datetime r_lastRun = 0;
@@ -170,7 +174,7 @@ void RsiOnTimer()
          if((isBuy && close > sma5) || (!isBuy && close < sma5))
          {
             if(!trade.PositionClose(t)) RsiEvent(StringFormat("ERROR | RSI2 exit %s failed: %d %s", s, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
-            else RsiEvent(StringFormat("RSI2 EXIT %s | H1 close %s back over SMA 5 (%s), %s closed", s, RsiP(s, close), RsiP(s, sma5), isBuy ? "BUY" : "SELL"));
+            // the close (with profit and chart) is reported by RsiReportClosed on the next check
          }
          continue;                                                            // one setup = one entry
       }
@@ -198,9 +202,13 @@ void RsiOnTimer()
          if(pt > 0 && PositionGetInteger(POSITION_MAGIC) == InpRsiMagic && PositionGetString(POSITION_SYMBOL) == s)
          { int m = ArraySize(r_known); ArrayResize(r_known, m + 1); r_known[m] = pt; break; }
       }
+      double fill = trade.ResultPrice() > 0 ? trade.ResultPrice() : entry;
+      double lv[2]; color lc[2]; string lb[2];
+      lv[0] = fill; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
+      string fn = Snap(s, PERIOD_H1, "RS", lv, lc, lb, 0, 0, 0, 0, true);
       RsiEvent(StringFormat("RSI2 %s %s | H1 close %s %s SMA 200 (%s), RSI(2) %.1f | entry %s, SL %s (2 x ATR), lot %.2f | exit: H1 close back over SMA 5 (now %s)",
                             dr == 1 ? "BUY" : "SELL", s, RsiP(s, close), dr == 1 ? "above" : "below", RsiP(s, sma200), rsi,
-                            RsiP(s, trade.ResultPrice() > 0 ? trade.ResultPrice() : entry), RsiP(s, sl), lot, RsiP(s, sma5)));
+                            RsiP(s, fill), RsiP(s, sl), lot, RsiP(s, sma5)) + Img(fn));
    }
 }
 //+------------------------------------------------------------------+
