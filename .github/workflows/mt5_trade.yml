@@ -77,6 +77,8 @@ jobs:
         if: steps.sw.outputs.mode == 'on'
         shell: pwsh
         env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           MT5_LOGIN: ${{ secrets.MT5_LOGIN }}
           MT5_PASSWORD: ${{ secrets.MT5_PASSWORD }}
           MT5_SERVER: ${{ secrets.MT5_SERVER }}
