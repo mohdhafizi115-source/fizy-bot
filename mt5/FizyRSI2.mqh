@@ -9,7 +9,8 @@
 //|   one position per symbol (one setup = one entry), fixed lot      |
 //| Events go to MQL5\Files\rsi2_events.txt (forwarded to Telegram).  |
 //+------------------------------------------------------------------+
-input string InpRsiSymbols = "XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,GBPJPY,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDJPY,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY";
+// 23 forex pairs; XAUUSD, BTCUSD, USDJPY, EURJPY, GBPJPY, AUDJPY and GBPUSD trade the NR7 module instead (31 Oct)
+input string InpRsiSymbols = "EURUSD,AUDUSD,NZDUSD,USDCHF,USDCAD,EURGBP,EURCHF,EURAUD,EURCAD,EURNZD,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY";
 input bool   InpRsiOn      = true;
 input double InpRsiLot     = 0.01;
 input long   InpRsiMagic   = 260309;
@@ -20,6 +21,7 @@ input double InpRsiMaxSpreadAtr = 0.30;   // skip an entry when the spread is ab
 
 string   r_sym[];          // broker symbol names that exist
 datetime r_last[];         // last closed H1 bar handled per symbol
+bool     r_exitOnly[];     // symbol no longer in the list: only manage the open position
 ulong    r_known[];        // RSI2 position tickets seen open
 bool     r_ready = false;
 
@@ -61,13 +63,23 @@ void RsiInit()
       string s = RsiResolve(b);
       if(s == "") { missing += (missing == "" ? "" : ", ") + b; continue; }
       SymbolSelect(s, true);
-      int k = ArraySize(r_sym); ArrayResize(r_sym, k + 1); ArrayResize(r_last, k + 1);
-      r_sym[k] = s; r_last[k] = 0;
+      int k = ArraySize(r_sym); ArrayResize(r_sym, k + 1); ArrayResize(r_last, k + 1); ArrayResize(r_exitOnly, k + 1);
+      r_sym[k] = s; r_last[k] = 0; r_exitOnly[k] = false;
    }
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
       ulong t = PositionGetTicket(i);
-      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpRsiMagic) { int m = ArraySize(r_known); ArrayResize(r_known, m + 1); r_known[m] = t; }
+      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpRsiMagic)
+      {
+         int m = ArraySize(r_known); ArrayResize(r_known, m + 1); r_known[m] = t;
+         string ps = PositionGetString(POSITION_SYMBOL); bool inList = false;
+         for(int q = 0; q < ArraySize(r_sym); q++) if(r_sym[q] == ps) inList = true;
+         if(!inList)
+         {
+            int k = ArraySize(r_sym); ArrayResize(r_sym, k + 1); ArrayResize(r_last, k + 1); ArrayResize(r_exitOnly, k + 1);
+            r_sym[k] = ps; r_last[k] = 0; r_exitOnly[k] = true;
+         }
+      }
    }
    r_ready = true;
    RsiEvent(StringFormat("RSI2 ONLINE | %d symbols on H1, lot %.2f, %d open RSI2 position(s)%s", ArraySize(r_sym), InpRsiLot, ArraySize(r_known),
@@ -178,6 +190,7 @@ void RsiOnTimer()
          }
          continue;                                                            // one setup = one entry
       }
+      if(r_exitOnly[k]) continue;                                             // removed from the list: no new entries
       int dr = (close > sma200 && rsi < InpRsiLo) ? 1 : ((close < sma200 && rsi > InpRsiHi) ? -1 : 0);
       if(dr == 0) continue;
       double spread = tk.ask - tk.bid;

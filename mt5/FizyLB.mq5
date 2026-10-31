@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.10"
+#property version "1.20"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -37,7 +37,8 @@ string g_noTradeDay = "";             // day already reported as "no trade" in t
 ulong  g_known[];                     // position tickets seen open (to report TP / SL closes)
 
 #include "FizySnap.mqh"                // MT5 chart screenshots for the Telegram events
-#include "FizyRSI2.mqh"                // H1 RSI(2) on gold, 28 forex pairs and BTCUSD (same EA, same chart)
+#include "FizyRSI2.mqh"                // H1 RSI(2) on 23 forex pairs (same EA, same chart)
+#include "FizyNR7.mqh"                 // D1 NR7 breakout on BTCUSD, USDJPY, EURJPY, GBPJPY, XAUUSD, AUDJPY, GBPUSD
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -303,7 +304,8 @@ void OnTimer()
          RsiEvent("RSI2 TEST " + b + " | screenshot test: H1 chart with SMA 200, SMA 5 and RSI(2)" + Img(f2));
       }
    }
-   RsiOnTimer();                                                            // 24/7 (BTCUSD trades at weekends)
+   RsiOnTimer();
+   Nr7OnTimer();                                                            // 24/7 (BTCUSD trades at weekends)
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
    if(minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))

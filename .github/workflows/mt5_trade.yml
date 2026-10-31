@@ -40,9 +40,11 @@ jobs:
           mode=$(head -1 mt5_trade.txt 2>/dev/null | tr -dc a-z)
           lot=$(sed -n 2p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           rlot=$(sed -n 3p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          nlot=$(sed -n 4p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
           echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "rlot=${rlot:-${lot:-0.01}}" >> "$GITHUB_OUTPUT"
+          echo "nlot=${nlot:-${rlot:-0.01}}" >> "$GITHUB_OUTPUT"
           echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, RSI2 lot ${rlot:-${lot:-0.01}}"
 
       - name: Install packages
@@ -56,6 +58,7 @@ jobs:
         env:
           LOT: ${{ steps.sw.outputs.lot }}
           RLOT: ${{ steps.sw.outputs.rlot }}
+          NLOT: ${{ steps.sw.outputs.nlot }}
         run: |
           $ErrorActionPreference = "Continue"
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
@@ -75,6 +78,7 @@ jobs:
           (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
           (Get-Content mt5\FizyRSI2.mqh) -replace '^input double InpRsiLot\s*=.*;', "input double InpRsiLot     = $env:RLOT;" | Set-Content "$dir\MQL5\Experts\FizyRSI2.mqh" -Encoding utf8
           Copy-Item mt5\FizySnap.mqh "$dir\MQL5\Experts\FizySnap.mqh" -Force
+          (Get-Content mt5\FizyNR7.mqh) -replace '^input double InpNr7Lot\s*=.*;', "input double InpNr7Lot     = $env:NLOT;" | Set-Content "$dir\MQL5\Experts\FizyNR7.mqh" -Encoding utf8
           $m = "${{ github.event.inputs.minutes }}"
           if ($m -and [int]$m -lt 30) {           # short test shift: screenshot with the start message
             (Get-Content "$dir\MQL5\Experts\FizyLB.mq5") -replace '^input bool   InpSnapTest\s*=.*;', 'input bool   InpSnapTest   = true;' | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
