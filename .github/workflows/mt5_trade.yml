@@ -6,6 +6,11 @@ name: MT5 auto trader
 # Switch: mt5_trade.txt line 1 "on" / "off", line 2 the lot size. Demo accounts only (the EA refuses others).
 on:
   workflow_dispatch:
+    inputs:
+      minutes:
+        description: "shift length in minutes (test: 5)"
+        required: false
+        default: "335"
 
 permissions:
   contents: write
@@ -83,7 +88,7 @@ jobs:
           Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`""
           Start-Sleep -Seconds 30
           Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
-          python mt5/watch.py --dir "$dir" --minutes 335
+          python mt5/watch.py --dir "$dir" --minutes $(if ("${{ github.event.inputs.minutes }}") { "${{ github.event.inputs.minutes }}" } else { "335" })
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
 
       - name: Next shift
