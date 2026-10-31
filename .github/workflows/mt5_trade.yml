@@ -43,7 +43,7 @@ jobs:
 
       - name: Install packages
         if: steps.sw.outputs.mode == 'on'
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt tzdata
 
       - name: Install the JustMarkets MT5 terminal and compile the EA
         if: steps.sw.outputs.mode == 'on'
@@ -88,7 +88,13 @@ jobs:
           Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`""
           Start-Sleep -Seconds 30
           Remove-Item "$dir\start.ini" -ErrorAction SilentlyContinue
-          python mt5/watch.py --dir "$dir" --minutes $(if ("${{ github.event.inputs.minutes }}") { "${{ github.event.inputs.minutes }}" } else { "335" })
+          $m = if ("${{ github.event.inputs.minutes }}") { "${{ github.event.inputs.minutes }}" } else { "335" }
+          python mt5/watch.py --dir "$dir" --minutes $m 2>&1 | Tee-Object -FilePath watch.log
+          $ev = "$dir\MQL5\Files\flb_events.txt"
+          "events file: $(Test-Path $ev), lines $((Get-Content $ev -ErrorAction SilentlyContinue | Measure-Object).Count)" | Out-File shift_diag.txt -Encoding utf8
+          $el = Get-ChildItem "$dir\MQL5\Logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
+          if ($el) { Get-Content $el.FullName -Tail 12 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>' -replace '\$-?[\d.,]+', '$x') } | Out-File shift_diag.txt -Append -Encoding utf8 }
+          Get-Content watch.log -Tail 15 | ForEach-Object { "  w: " + $_ } | Out-File shift_diag.txt -Append -Encoding utf8
           Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
 
       - name: Next shift
@@ -103,7 +109,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p status
-          { echo "shift ended (UTC): $(date -u '+%Y-%m-%d %H:%M')"; cat mt5_shift.txt 2>/dev/null; } > status/mt5_trade.txt
+          { echo "shift ended (UTC): $(date -u '+%Y-%m-%d %H:%M')"; cat mt5_shift.txt 2>/dev/null; cat shift_diag.txt 2>/dev/null; } > status/mt5_trade.txt
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
           git add status/mt5_trade.txt
