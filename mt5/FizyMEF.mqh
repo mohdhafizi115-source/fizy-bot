@@ -119,6 +119,7 @@ void MefOnTimer()
    int jmin = j.hour * 60 + j.min, jday = j.year * 10000 + j.mon * 100 + j.day;
    for(int q = ArraySize(mf_known) - 1; q >= 0; q--)
       if(!PositionSelectByTicket(mf_known[q])) { MefReportClosed(mf_known[q]); ArrayRemove(mf_known, q, 1); }
+   string q_sym[], q_msg[]; double q_in[], q_sl[];
    for(int k = 0; k < ArraySize(mf_sym); k++)
    {
       string s = mf_sym[k];
@@ -160,10 +161,21 @@ void MefOnTimer()
       double px = trade.ResultPrice();
       trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
       if(ok)
-         GtbEvent(StringFormat("MONTHEND %s %s | last business day of the month, 09:40 JST: %s %.2f lot at %s, SL %s, no TP, closes at the 09:55 JST fix | spread %.1f pips",
-                               buy ? "BUY" : "SELL", s, buy ? "BUY" : "SELL", lot, PriceStr(s, px > 0 ? px : (buy ? tk.ask : tk.bid)), PriceStr(s, sl), spr));
+      {
+         int m = ArraySize(q_sym); ArrayResize(q_sym, m + 1); ArrayResize(q_msg, m + 1); ArrayResize(q_in, m + 1); ArrayResize(q_sl, m + 1);
+         q_sym[m] = s; q_in[m] = px > 0 ? px : (buy ? tk.ask : tk.bid); q_sl[m] = sl;
+         q_msg[m] = StringFormat("MONTHEND %s %s | last business day of the month, 09:40 JST: %s %.2f lot at %s, SL %s, no TP, closes at the 09:55 JST fix | spread %.1f pips",
+                                 buy ? "BUY" : "SELL", s, buy ? "BUY" : "SELL", lot, PriceStr(s, q_in[m]), PriceStr(s, sl), spr);
+      }
       else
          GtbEvent(StringFormat("ERROR | month-end %s %s failed: %d %s", buy ? "buy" : "sell", s, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   }
+   for(int m = 0; m < ArraySize(q_sym); m++)                               // charts after every order is in
+   {
+      double lv[2]; color lc[2]; string lb[2];
+      lv[0] = q_in[m]; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = q_sl[m]; lc[1] = clrIndianRed; lb[1] = "SL";
+      string fn = Snap(q_sym[m], PERIOD_M5, "ME", lv, lc, lb, 0, 0, 0, 0, false);
+      GtbEvent(q_msg[m] + Img(fn));
    }
 }
 //+------------------------------------------------------------------+

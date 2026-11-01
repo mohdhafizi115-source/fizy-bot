@@ -151,8 +151,13 @@ void GauOnTimer()
    double px = trade.ResultPrice();
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(ok)
+   {
+      double lv[2]; color lc[2]; string lb[2];
+      lv[0] = px > 0 ? px : tk.bid; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
+      string fn = Snap(ga_sym, PERIOD_M5, "GA", lv, lc, lb, 0, 0, 0, 0, false);
       GauEvent(StringFormat("AUCTION SELL %s | 10:15 London, 15 minutes before the LBMA gold auction: SELL %.2f lot at %s, SL %s, no TP, "
-                            "closes at 10:30 London | spread %.2f", ga_sym, lot, PriceStr(ga_sym, px > 0 ? px : tk.bid), PriceStr(ga_sym, sl), spr));
+                            "closes at 10:30 London | spread %.2f", ga_sym, lot, PriceStr(ga_sym, lv[0]), PriceStr(ga_sym, sl), spr) + Img(fn));
+   }
    else
       GauEvent(StringFormat("ERROR | gold auction sell failed: %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription()));
 }

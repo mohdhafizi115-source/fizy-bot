@@ -179,9 +179,14 @@ void Nr7OnTimer()
          {
             int m = ArraySize(n_known); ArrayResize(n_known, m + 1); n_known[m] = pt;
             PositionSelectByTicket(pt);
+            double lvf[2]; color lcf[2]; string lbf[2];
+            lvf[0] = PositionGetDouble(POSITION_PRICE_OPEN); lcf[0] = clrBlue; lbf[0] = "entry";
+            lvf[1] = PositionGetDouble(POSITION_SL); lcf[1] = clrIndianRed; lbf[1] = "SL";
+            string fnf = Snap(s, PERIOD_H1, "N7F", lvf, lcf, lbf, 0, 0, 0, 0, false);
+            PositionSelectByTicket(pt);
             Nr7Event(StringFormat("NR7 FILLED %s | %s %.2f lot from %s, SL %s, no TP: closes at the start of the next day",
                      s, PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", PositionGetDouble(POSITION_VOLUME),
-                     PriceStr(s, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(s, PositionGetDouble(POSITION_SL))));
+                     PriceStr(s, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(s, PositionGetDouble(POSITION_SL))) + Img(fnf));
          }
          if(Nr7Orders(s) > 0) Nr7DeletePending(s, "the other side filled");
          PositionSelectByTicket(pt);

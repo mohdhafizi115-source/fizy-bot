@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.60"
+#property version "1.61"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -223,7 +223,10 @@ void Manage(datetime now, datetime day)
       if(!known)
       {
          int m = ArraySize(g_known); ArrayResize(g_known, m + 1); g_known[m] = t;
-         Event(StringFormat("POSITION OPEN | %s %.2f lot from %s, SL %s, TP %s", isBuy ? "BUY" : "SELL", PositionGetDouble(POSITION_VOLUME), P(op), P(sl), P(tp)));
+         double lvf[3]; color lcf[3]; string lbf[3];
+         lvf[0] = op; lcf[0] = clrBlue; lbf[0] = "entry"; lvf[1] = sl; lcf[1] = clrIndianRed; lbf[1] = "SL"; lvf[2] = tp; lcf[2] = clrSeaGreen; lbf[2] = "TP";
+         string fnf = Snap(InpSymbol, PERIOD_M15, "LBF", lvf, lcf, lbf, 0, 0, 0, 0, false);
+         Event(StringFormat("POSITION OPEN | %s %.2f lot from %s, SL %s, TP %s", isBuy ? "BUY" : "SELL", PositionGetDouble(POSITION_VOLUME), P(op), P(sl), P(tp)) + Img(fnf));
       }
       if(CountOrders() > 0) DeletePending("the other side filled");
       double risk = MathAbs(op - sl);

@@ -173,6 +173,7 @@ void GtbOnTimer()
    int jmin = j.hour * 60 + j.min, jday = j.year * 10000 + j.mon * 100 + j.day;
    for(int q = ArraySize(gt_known) - 1; q >= 0; q--)
       if(!PositionSelectByTicket(gt_known[q])) { GtbReportClosed(gt_known[q]); ArrayRemove(gt_known, q, 1); }
+   string q_sym[], q_msg[]; double q_in[], q_sl[];
    for(int k = 0; k < ArraySize(gt_sym); k++)
    {
       string s = gt_sym[k];
@@ -211,11 +212,22 @@ void GtbOnTimer()
       double px = trade.ResultPrice();
       trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
       if(ok)
-         GtbEvent(StringFormat("GOTOBI SELL %s | Tokyo fix on a Gotobi day (%s JST): SELL %.2f lot at %s, SL %s (%.1f pips), no TP, "
-                               "closes at 10:15 JST | spread %.1f pips", s, TimeToString(jst, TIME_DATE), lot, PriceStr(s, px > 0 ? px : tk.bid),
-                               PriceStr(s, sl), (sl - tk.bid) / pip, spr));
+      {
+         int m = ArraySize(q_sym); ArrayResize(q_sym, m + 1); ArrayResize(q_msg, m + 1); ArrayResize(q_in, m + 1); ArrayResize(q_sl, m + 1);
+         q_sym[m] = s; q_in[m] = px > 0 ? px : tk.bid; q_sl[m] = sl;
+         q_msg[m] = StringFormat("GOTOBI SELL %s | Tokyo fix on a Gotobi day (%s JST): SELL %.2f lot at %s, SL %s (%.1f pips), no TP, "
+                                 "closes at 10:15 JST | spread %.1f pips", s, TimeToString(jst, TIME_DATE), lot, PriceStr(s, q_in[m]),
+                                 PriceStr(s, sl), (sl - tk.bid) / pip, spr);
+      }
       else
          GtbEvent(StringFormat("ERROR | Gotobi sell %s failed: %d %s", s, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   }
+   for(int m = 0; m < ArraySize(q_sym); m++)                               // charts after every order is in
+   {
+      double lv[2]; color lc[2]; string lb[2];
+      lv[0] = q_in[m]; lc[0] = clrBlue; lb[0] = "entry (fix)"; lv[1] = q_sl[m]; lc[1] = clrIndianRed; lb[1] = "SL";
+      string fn = Snap(q_sym[m], PERIOD_M5, "GT", lv, lc, lb, 0, 0, 0, 0, false);
+      GtbEvent(q_msg[m] + Img(fn));
    }
 }
 //+------------------------------------------------------------------+

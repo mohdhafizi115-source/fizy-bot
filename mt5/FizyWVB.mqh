@@ -157,9 +157,14 @@ void WvbOnTimer()
          {
             int m = ArraySize(wv_known); ArrayResize(wv_known, m + 1); wv_known[m] = pt;
             PositionSelectByTicket(pt);
+            double lvf[2]; color lcf[2]; string lbf[2];
+            lvf[0] = PositionGetDouble(POSITION_PRICE_OPEN); lcf[0] = clrBlue; lbf[0] = "entry";
+            lvf[1] = PositionGetDouble(POSITION_SL); lcf[1] = clrIndianRed; lbf[1] = "SL (open)";
+            string fnf = Snap(s, PERIOD_M15, "WVF", lvf, lcf, lbf, 0, 0, 0, 0, false);
+            PositionSelectByTicket(pt);
             WvbEvent(StringFormat("VOLBO FILLED %s | %s %.2f lot from %s, SL %s (today's open), no TP: closes at 22:30 server",
                      s, PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", PositionGetDouble(POSITION_VOLUME),
-                     PriceStr(s, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(s, PositionGetDouble(POSITION_SL))));
+                     PriceStr(s, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(s, PositionGetDouble(POSITION_SL))) + Img(fnf));
          }
          if(WvbOrders(s) > 0) WvbDeletePending(s, "the other side filled");
          PositionSelectByTicket(pt);
