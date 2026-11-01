@@ -1,4 +1,257 @@
-Traceback (most recent call last):
-  File "/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py", line 25, in <module>
-    from sklearn.ensemble import HistGradientBoostingClassifier
-ModuleNotFoundError: No module named 'sklearn'
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:198: Pandas4Warning: Sorting by default when concatenating all DatetimeIndex is deprecated.  In the future, pandas will respect the default of `sort=False`. Specify `sort=True` or `sort=False` to silence this message. If you see this warnings when not directly calling concat, report a bug to pandas.
+  closes = pd.concat({s: raw[s].c for s in fx}, axis=1).sort_index().ffill()
+Round 6a M5 model: 30 instruments, 28 forex pairs for currency strength, 6 s
+
+######## setting A K1.0 H12
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+rows 13,164,308, features 41, 27 s
+  fold 2021-04-01..2021-06-30: train 398,134 test 498,901 dir acc 0.512, 65 s
+  fold 2021-07-01..2021-09-30: train 497,914 test 508,377 dir acc 0.507, 110 s
+  fold 2021-10-01..2021-12-31: train 599,595 test 508,176 dir acc 0.511, 162 s
+  fold 2022-01-01..2022-03-31: train 701,225 test 492,795 dir acc 0.514, 221 s
+  fold 2022-04-01..2022-06-30: train 796,861 test 500,152 dir acc 0.511, 288 s
+  fold 2022-07-01..2022-09-30: train 798,006 test 508,441 dir acc 0.513, 355 s
+  fold 2022-10-01..2022-12-31: train 798,334 test 494,883 dir acc 0.514, 424 s
+  fold 2023-01-01..2023-03-31: train 798,813 test 499,705 dir acc 0.515, 492 s
+  fold 2023-04-01..2023-06-30: train 800,767 test 500,612 dir acc 0.510, 559 s
+  fold 2023-07-01..2023-09-30: train 801,110 test 500,500 dir acc 0.509, 627 s
+  fold 2023-10-01..2023-12-31: train 800,996 test 492,147 dir acc 0.509, 695 s
+  fold 2024-01-01..2024-03-31: train 797,793 test 492,246 dir acc 0.514, 762 s
+  fold 2024-04-01..2024-06-30: train 797,685 test 500,174 dir acc 0.514, 828 s
+  fold 2024-07-01..2024-09-30: train 797,685 test 508,515 dir acc 0.507, 896 s
+  fold 2024-10-01..2024-12-31: train 796,238 test 501,103 dir acc 0.508, 963 s
+  fold 2025-01-01..2025-03-31: train 797,482 test 485,520 dir acc 0.506, 1029 s
+  fold 2025-04-01..2025-06-30: train 794,645 test 500,638 dir acc 0.511, 1094 s
+  fold 2025-07-01..2025-09-30: train 794,650 test 508,012 dir acc 0.516, 1159 s
+  fold 2025-10-01..2025-12-31: train 796,152 test 501,122 dir acc 0.515, 1224 s
+  fold 2026-01-01..2026-03-31: train 797,947 test 485,076 dir acc 0.509, 1292 s
+  fold 2026-04-01..2026-06-30: train 796,513 test 500,783 dir acc 0.514, 1359 s
+  fold 2026-07-01..2026-09-30: train 796,635 test 508,659 dir acc 0.509, 1424 s
+  fold 2026-10-01..2026-11-01: train 796,664 test 169,507 dir acc 0.506, 1487 s
+out-of-sample 2021-04-01 .. 2026-11-01 (~1457 trading days)
+top q   trades  /day/all  win%    PF  half1 half2 stress  avgR   net$(0.01 lot)  syms PF>1
+ 0.002    14085      9.7  24.9  0.07  0.16  0.02  0.03 -1.569        -6311    0/30
+ 0.005    30788     21.1  28.3  0.10  0.17  0.04  0.04 -1.368       -12543    0/30
+ 0.010    58536     40.2  32.5  0.13  0.17  0.08  0.06 -1.188       -21537    0/30
+ 0.020   117479     80.6  37.2  0.17  0.18  0.15  0.08 -1.008       -37620    0/30
+ 0.050   286073    196.3  41.2  0.21  0.20  0.23  0.11 -0.842       -79897    0/30
+
+best q = 0.05: per instrument (trades, PF, half PFs, net $ per 0.01 lot) and by year
+  AUDCAD   9056  0.21  0.29  0.14    -1202  2021: 0.18 2022: 0.41 2023: 0.30 2024: 0.11 2025: 0.22 2026: 0.13
+  AUDCHF   9047  0.27  0.25  0.30    -1477  2021: 0.14 2022: 0.36 2023: 0.25 2024: 0.29 2025: 0.39 2026: 0.23
+  AUDJPY   8317  0.41  0.47  0.34     -907  2021: 0.37 2022: 0.58 2023: 0.45 2024: 0.41 2025: 0.39 2026: 0.23
+  AUDNZD  14867  0.23  0.29  0.16    -1507  2021: 0.20 2022: 0.35 2023: 0.32 2024: 0.18 2025: 0.18 2026: 0.13
+  AUDUSD   7277  0.34  0.38  0.31     -916  2021: 0.29 2022: 0.49 2023: 0.34 2024: 0.28 2025: 0.35 2026: 0.31
+  BTCUSD  17438  0.04  0.01  0.72   -38612  2021: 0.00 2022: 0.00 2023: 0.02 2024: 0.55 2025: 0.77 2026: 0.94
+  CADCHF  10306  0.20  0.13  0.26    -1741  2021: 0.06 2022: 0.18 2023: 0.17 2024: 0.24 2025: 0.32 2026: 0.21
+  CADJPY   8465  0.23  0.36  0.15    -1263  2021: 0.20 2022: 0.52 2023: 0.35 2024: 0.31 2025: 0.16 2026: 0.04
+  CHFJPY   9231  0.36  0.36  0.35    -1459  2021: 0.15 2022: 0.43 2023: 0.46 2024: 0.41 2025: 0.34 2026: 0.31
+  EURAUD   8497  0.37  0.61  0.22    -1459  2021: 0.52 2022: 0.69 2023: 0.60 2024: 0.30 2025: 0.26 2026: 0.13
+  EURCAD   9184  0.28  0.41  0.20    -1191  2021: 0.29 2022: 0.53 2023: 0.40 2024: 0.28 2025: 0.24 2026: 0.12
+  EURCHF  18890  0.08  0.14  0.04    -4234  2021: 0.05 2022: 0.29 2023: 0.12 2024: 0.05 2025: 0.06 2026: 0.01
+  EURGBP  14115  0.09  0.13  0.06    -2718  2021: 0.06 2022: 0.22 2023: 0.11 2024: 0.03 2025: 0.13 2026: 0.03
+  EURJPY   8824  0.56  0.73  0.38     -717  2021: 0.56 2022: 0.85 2023: 0.71 2024: 0.59 2025: 0.41 2026: 0.20
+  EURNZD   7099  0.33  0.51  0.19    -1312  2021: 0.37 2022: 0.66 2023: 0.51 2024: 0.35 2025: 0.23 2026: 0.08
+  EURUSD   6745  0.50  0.59  0.43     -512  2021: 0.38 2022: 0.70 2023: 0.64 2024: 0.43 2025: 0.49 2026: 0.39
+  GBPAUD   9075  0.51  0.66  0.38    -1264  2021: 0.49 2022: 0.76 2023: 0.65 2024: 0.45 2025: 0.45 2026: 0.24
+  GBPCAD  11954  0.29  0.46  0.18    -1879  2021: 0.37 2022: 0.57 2023: 0.44 2024: 0.30 2025: 0.21 2026: 0.06
+  GBPCHF  15508  0.19  0.26  0.14    -3692  2021: 0.19 2022: 0.44 2023: 0.19 2024: 0.15 2025: 0.20 2026: 0.06
+  GBPJPY   8736  0.51  0.59  0.44    -1087  2021: 0.41 2022: 0.66 2023: 0.64 2024: 0.58 2025: 0.47 2026: 0.32
+  GBPNZD   9213  0.37  0.57  0.22    -1874  2021: 0.45 2022: 0.68 2023: 0.61 2024: 0.31 2025: 0.24 2026: 0.09
+  GBPUSD   7069  0.56  0.60  0.52     -635  2021: 0.43 2022: 0.73 2023: 0.62 2024: 0.58 2025: 0.56 2026: 0.42
+  NZDCAD   8690  0.22  0.24  0.19    -1286  2021: 0.16 2022: 0.28 2023: 0.30 2024: 0.19 2025: 0.21 2026: 0.18
+  NZDCHF   7810  0.14  0.17  0.12    -1657  2021: 0.09 2022: 0.25 2023: 0.18 2024: 0.17 2025: 0.16 2026: 0.06
+  NZDJPY   8851  0.20  0.38  0.13    -1624  2021: 0.26 2022: 0.46 2023: 0.41 2024: 0.28 2025: 0.10 2026: 0.05
+  NZDUSD   6621  0.22  0.31  0.16    -1127  2021: 0.18 2022: 0.36 2023: 0.38 2024: 0.20 2025: 0.19 2026: 0.10
+  USDCAD   5689  0.32  0.41  0.26     -577  2021: 0.36 2022: 0.45 2023: 0.40 2024: 0.31 2025: 0.29 2026: 0.19
+  USDCHF   6806  0.31  0.26  0.37     -978  2021: 0.08 2022: 0.33 2023: 0.35 2024: 0.47 2025: 0.41 2026: 0.23
+  USDJPY   7218  0.55  0.54  0.56     -461  2021: 0.24 2022: 0.66 2023: 0.65 2024: 0.70 2025: 0.60 2026: 0.41
+  XAUUSD   5475  0.85  0.82  0.90     -528  2021: 0.75 2022: 0.83 2023: 0.87 2024: 0.81 2025: 0.89 2026: 0.99
+  all     2021: 0.15 2022: 0.19 2023: 0.26 2024: 0.27 2025: 0.27 2026: 0.16
+
+######## setting B K2.0 H36
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py:127: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  F["dow"] = d.index.dayofweek
+rows 12,931,595, features 41, 1520 s
+  fold 2021-04-01..2021-06-30: train 390,543 test 489,342 dir acc 0.507, 1558 s
+  fold 2021-07-01..2021-09-30: train 488,415 test 499,456 dir acc 0.510, 1603 s
+  fold 2021-10-01..2021-12-31: train 588,385 test 499,503 dir acc 0.510, 1657 s
+  fold 2022-01-01..2022-03-31: train 688,304 test 484,969 dir acc 0.517, 1718 s
+  fold 2022-04-01..2022-06-30: train 782,322 test 491,414 dir acc 0.515, 1787 s
+  fold 2022-07-01..2022-09-30: train 783,406 test 499,829 dir acc 0.514, 1857 s
+  fold 2022-10-01..2022-12-31: train 784,074 test 485,659 dir acc 0.510, 1925 s
+  fold 2023-01-01..2023-03-31: train 784,638 test 490,428 dir acc 0.513, 1993 s
+  fold 2023-04-01..2023-06-30: train 786,706 test 492,038 dir acc 0.515, 2060 s
+  fold 2023-07-01..2023-09-30: train 787,245 test 491,450 dir acc 0.517, 2129 s
+  fold 2023-10-01..2023-12-31: train 787,002 test 482,496 dir acc 0.510, 2196 s
+  fold 2024-01-01..2024-03-31: train 783,607 test 482,908 dir acc 0.518, 2261 s
+  fold 2024-04-01..2024-06-30: train 783,193 test 491,624 dir acc 0.513, 2327 s
+  fold 2024-07-01..2024-09-30: train 783,229 test 500,514 dir acc 0.498, 2393 s
+  fold 2024-10-01..2024-12-31: train 781,908 test 491,916 dir acc 0.505, 2460 s
+  fold 2025-01-01..2025-03-31: train 783,261 test 477,106 dir acc 0.509, 2526 s
+  fold 2025-04-01..2025-06-30: train 780,495 test 492,540 dir acc 0.513, 2592 s
+  fold 2025-07-01..2025-09-30: train 780,603 test 500,027 dir acc 0.516, 2658 s
+  fold 2025-10-01..2025-12-31: train 782,311 test 492,134 dir acc 0.515, 2725 s
+  fold 2026-01-01..2026-03-31: train 784,340 test 475,876 dir acc 0.507, 2793 s
+  fold 2026-04-01..2026-06-30: train 782,832 test 492,898 dir acc 0.523, 2860 s
+  fold 2026-07-01..2026-09-30: train 783,087 test 500,826 dir acc 0.519, 2926 s
+  fold 2026-10-01..2026-11-01: train 783,150 test 166,353 dir acc 0.522, 2989 s
+out-of-sample 2021-04-01 .. 2026-11-01 (~1457 trading days)
+top q   trades  /day/all  win%    PF  half1 half2 stress  avgR   net$(0.01 lot)  syms PF>1
+ 0.002     7437      5.1  43.6  0.55  1.21  0.29  0.31 -0.312        -1242    6/30
+ 0.005    15650     10.7  46.7  0.60  1.05  0.37  0.35 -0.261        -2124    5/30
+ 0.010    26531     18.2  49.6  0.64  0.88  0.47  0.39 -0.231        -3377    1/30
+ 0.020    47120     32.3  50.5  0.62  0.70  0.55  0.40 -0.242        -6880    0/30
+ 0.050   112045     76.9  50.3  0.58  0.57  0.59  0.39 -0.277       -20349    0/30
+
+best q = 0.01: per instrument (trades, PF, half PFs, net $ per 0.01 lot) and by year
+  AUDCAD    847  0.87  1.29  0.64      -12  2021: 1.13 2022: 1.11 2023: 1.63 2024: 0.65 2025: 0.85 2026: 0.43
+  AUDCHF   1247  0.99  1.14  0.87       20  2021: 0.77 2022: 1.24 2023: 1.50 2024: 1.18 2025: 1.21 2026: 0.51
+  AUDJPY    813  0.65  1.01  0.40      -63  2021: 0.69 2022: 0.96 2023: 1.74 2024: 0.79 2025: 0.36 2026: 0.25
+  AUDNZD   1353  0.62  1.03  0.33     -106  2021: 1.08 2022: 1.15 2023: 0.88 2024: 0.69 2025: 0.31 2026: 0.13
+  AUDUSD    735  0.84  0.94  0.73       -5  2021: 0.61 2022: 0.79 2023: 1.28 2024: 0.86 2025: 0.62 2026: 0.71
+  BTCUSD    429  0.05  0.02  0.86    -1166  2021: 0.01 2022: 0.00 2023: 0.06 2024: 0.82 2025: 0.91 2026: 0.85
+  CADCHF   1178  0.83  0.91  0.80      -10  2021: 0.52 2022: 1.29 2023: 1.04 2024: 1.02 2025: 0.83 2026: 0.59
+  CADJPY    637  0.44  0.78  0.22      -88  2021: 0.66 2022: 0.92 2023: 0.91 2024: 0.62 2025: 0.23 2026: 0.07
+  CHFJPY    976  0.60  0.94  0.27     -157  2021: 0.76 2022: 1.01 2023: 1.13 2024: 0.51 2025: 0.27 2026: 0.16
+  EURAUD   1181  0.63  1.18  0.51     -175  2021: 0.44 2022: 1.61 2023: 1.42 2024: 1.75 2025: 0.50 2026: 0.19
+  EURCAD    614  0.86  1.32  0.62        5  2021: 1.16 2022: 1.33 2023: 1.30 2024: 0.94 2025: 0.64 2026: 0.21
+  EURCHF   1635  0.36  0.68  0.20     -340  2021: 0.30 2022: 1.17 2023: 0.65 2024: 0.34 2025: 0.27 2026: 0.07
+  EURGBP   1246  0.65  0.98  0.49      -62  2021: 0.69 2022: 1.23 2023: 0.93 2024: 0.50 2025: 0.75 2026: 0.31
+  EURJPY    753  0.75  1.05  0.38      -50  2021: 0.93 2022: 0.96 2023: 1.67 2024: 0.73 2025: 0.43 2026: 0.20
+  EURNZD   1121  0.72  1.30  0.37     -144  2021: 1.05 2022: 1.85 2023: 1.04 2024: 1.98 2025: 0.31 2026: 0.13
+  EURUSD    358  0.86  0.99  0.64        2  2021: 0.71 2022: 1.08 2023: 1.17 2024: 0.76 2025: 0.66 2026: 0.42
+  GBPAUD   1277  0.99  1.48  0.75        3  2021: 1.12 2022: 1.44 2023: 1.72 2024: 1.61 2025: 0.69 2026: 0.31
+  GBPCAD    802  0.92  1.15  0.71        1  2021: 0.79 2022: 1.36 2023: 1.20 2024: 1.14 2025: 0.78 2026: 0.07
+  GBPCHF   1313  0.79  1.24  0.55      -61  2021: 0.96 2022: 1.53 2023: 1.28 2024: 0.64 2025: 0.72 2026: 0.33
+  GBPJPY    754  0.63  1.02  0.32     -104  2021: 0.98 2022: 0.88 2023: 1.49 2024: 1.00 2025: 0.28 2026: 0.20
+  GBPNZD   1511  0.65  1.31  0.43     -303  2021: 1.77 2022: 1.33 2023: 1.04 2024: 0.76 2025: 0.45 2026: 0.19
+  GBPUSD    555  1.12  1.29  0.79       32  2021: 1.38 2022: 1.05 2023: 1.59 2024: 0.91 2025: 0.76 2026: 0.44
+  NZDCAD    841  0.43  0.84  0.28     -125  2021: 0.50 2022: 0.75 2023: 1.26 2024: 0.54 2025: 0.23 2026: 0.13
+  NZDCHF    976  0.72  0.89  0.61      -54  2021: 0.54 2022: 1.52 2023: 0.92 2024: 0.80 2025: 0.74 2026: 0.41
+  NZDJPY   1054  0.45  1.00  0.24     -172  2021: 0.80 2022: 1.24 2023: 1.03 2024: 0.78 2025: 0.27 2026: 0.06
+  NZDUSD    852  0.50  0.97  0.36     -104  2021: 0.40 2022: 0.96 2023: 1.55 2024: 0.41 2025: 0.45 2026: 0.21
+  USDCAD    297  0.46  0.73  0.36      -25  2021: 0.68 2022: 0.76 2023: 0.68 2024: 0.53 2025: 0.44 2026: 0.21
+  USDCHF    680  0.76  0.85  0.68      -31  2021: 0.40 2022: 0.78 2023: 1.35 2024: 0.89 2025: 0.59 2026: 0.44
+  USDJPY    384  0.64  0.68  0.56      -27  2021: 0.47 2022: 0.87 2023: 0.60 2024: 0.96 2025: 1.11 2026: 0.26
+  XAUUSD    112  0.83  0.83  0.83      -57  2021: 0.85 2022: 1.12 2023: 0.59 2024: 1.58 2025: 0.30 2026: 0.95
+  all     2021: 0.64 2022: 0.95 2023: 1.04 2024: 0.80 2025: 0.51 2026: 0.23
+
+done in 2993 s
