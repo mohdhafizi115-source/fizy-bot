@@ -10,13 +10,16 @@
 //| be placed (e.g. after a restart), the day is skipped.             |
 //| Events go to MQL5\Files\nr7_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input string InpNr7Symbols = "BTCUSD,USDJPY,EURJPY,GBPJPY,XAUUSD,AUDJPY,GBPUSD";
+// 1 Nov 2026: on 6.6 years of JustMarkets data NR7 held up on XAUUSD (PF 1.30), USDJPY (1.30) and AUDJPY (1.17);
+// BTCUSD (0.53), GBPJPY (0.95), GBPUSD (1.05) and EURJPY (second half 0.79) were removed (research/live_check.py).
+input string InpNr7Symbols = "XAUUSD,USDJPY,AUDJPY";
 input bool   InpNr7On      = true;
 input double InpNr7Lot     = 0.01;
 input long   InpNr7Magic   = 260310;
 
 string   n_sym[];
 datetime n_day[];          // D1 bar handled per symbol (orders placed or skipped)
+bool     n_exitOnly[];     // removed from the list: only manage what is still open
 ulong    n_known[];
 bool     n_ready = false;
 datetime n_lastRun = 0;
@@ -31,6 +34,13 @@ void Nr7Event(string msg)
    Print("NR7 EVENT ", msg);
 }
 
+void Nr7AddExitOnly(string s)
+{
+   for(int q = 0; q < ArraySize(n_sym); q++) if(n_sym[q] == s) return;
+   int k = ArraySize(n_sym); ArrayResize(n_sym, k + 1); ArrayResize(n_day, k + 1); ArrayResize(n_exitOnly, k + 1);
+   n_sym[k] = s; n_day[k] = 0; n_exitOnly[k] = true;
+}
+
 void Nr7Init()
 {
    string parts[];
@@ -43,13 +53,22 @@ void Nr7Init()
       string s = RsiResolve(b);
       if(s == "") { missing += (missing == "" ? "" : ", ") + b; continue; }
       SymbolSelect(s, true);
-      int k = ArraySize(n_sym); ArrayResize(n_sym, k + 1); ArrayResize(n_day, k + 1);
-      n_sym[k] = s; n_day[k] = 0;
+      int k = ArraySize(n_sym); ArrayResize(n_sym, k + 1); ArrayResize(n_day, k + 1); ArrayResize(n_exitOnly, k + 1);
+      n_sym[k] = s; n_day[k] = 0; n_exitOnly[k] = false;
    }
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
       ulong t = PositionGetTicket(i);
-      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpNr7Magic) { int m = ArraySize(n_known); ArrayResize(n_known, m + 1); n_known[m] = t; }
+      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpNr7Magic)
+      {
+         int m = ArraySize(n_known); ArrayResize(n_known, m + 1); n_known[m] = t;
+         Nr7AddExitOnly(PositionGetString(POSITION_SYMBOL));
+      }
+   }
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t > 0 && OrderGetInteger(ORDER_MAGIC) == InpNr7Magic) Nr7AddExitOnly(OrderGetString(ORDER_SYMBOL));
    }
    n_ready = true;
    Nr7Event(StringFormat("NR7 ONLINE | %d symbols on D1 (%s), lot %.2f, %d open NR7 position(s)%s", ArraySize(n_sym), InpNr7Symbols, InpNr7Lot,
@@ -168,6 +187,11 @@ void Nr7OnTimer()
          PositionSelectByTicket(pt);
          if((datetime)PositionGetInteger(POSITION_TIME) < d0)                  // opened on an earlier day: hold is over
             if(!trade.PositionClose(pt)) Nr7Event(StringFormat("ERROR | NR7 day-end close %s failed: %d %s", s, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+         continue;
+      }
+      if(n_exitOnly[k])                                                     // removed symbol: no new setups
+      {
+         if(Nr7Orders(s) > 0) Nr7DeletePending(s, "symbol removed from the NR7 list");
          continue;
       }
       // 2. old pending orders from an earlier day expire

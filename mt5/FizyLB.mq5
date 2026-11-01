@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.20"
+#property version "1.30"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -37,8 +37,9 @@ string g_noTradeDay = "";             // day already reported as "no trade" in t
 ulong  g_known[];                     // position tickets seen open (to report TP / SL closes)
 
 #include "FizySnap.mqh"                // MT5 chart screenshots for the Telegram events
-#include "FizyRSI2.mqh"                // H1 RSI(2) on 23 forex pairs (same EA, same chart)
-#include "FizyNR7.mqh"                 // D1 NR7 breakout on BTCUSD, USDJPY, EURJPY, GBPJPY, XAUUSD, AUDJPY, GBPUSD
+#include "FizyRSI2.mqh"                // H1 RSI(2): off since 1 Nov 2026 (manages open positions only); RsiResolve/RsiP used by all
+#include "FizyNR7.mqh"                 // D1 NR7 breakout on XAUUSD, USDJPY, AUDJPY
+#include "FizyGTB.mqh"                 // Gotobi Tokyo-fix reversal on USDJPY, EURJPY (09:55 -> 10:15 JST)
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -260,7 +261,7 @@ int OnInit()
    trade.SetTypeFillingBySymbol(InpSymbol);
    trade.SetDeviationInPoints(50);
    SymbolSelect(InpSymbol, true);
-   EventSetTimer(2);
+   EventSetTimer(1);
    return(INIT_SUCCEEDED);
 }
 
@@ -304,8 +305,9 @@ void OnTimer()
          RsiEvent("RSI2 TEST " + b + " | screenshot test: H1 chart with SMA 200, SMA 5 and RSI(2)" + Img(f2));
       }
    }
+   GtbOnTimer();                                                            // first: the Tokyo-fix entry is time-critical
    RsiOnTimer();
-   Nr7OnTimer();                                                            // 24/7 (BTCUSD trades at weekends)
+   Nr7OnTimer();
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
    if(minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))

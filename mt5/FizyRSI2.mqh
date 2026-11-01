@@ -10,7 +10,9 @@
 //| Events go to MQL5\Files\rsi2_events.txt (forwarded to Telegram).  |
 //+------------------------------------------------------------------+
 // 23 forex pairs; XAUUSD, BTCUSD, USDJPY, EURJPY, GBPJPY, AUDJPY and GBPUSD trade the NR7 module instead (31 Oct)
-input string InpRsiSymbols = "EURUSD,AUDUSD,NZDUSD,USDCHF,USDCAD,EURGBP,EURCHF,EURAUD,EURCAD,EURNZD,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY";
+// 1 Nov 2026: RSI2 H1 lost on every forex pair in 6.6 years of JustMarkets M5 data (research/live_check.py,
+// PF 0.63-0.97 after spread), so no symbols trade it now; open RSI2 positions are still managed until they exit.
+input string InpRsiSymbols = "";
 input bool   InpRsiOn      = true;
 input double InpRsiLot     = 0.01;
 input long   InpRsiMagic   = 260309;
@@ -82,8 +84,12 @@ void RsiInit()
       }
    }
    r_ready = true;
-   RsiEvent(StringFormat("RSI2 ONLINE | %d symbols on H1, lot %.2f, %d open RSI2 position(s)%s", ArraySize(r_sym), InpRsiLot, ArraySize(r_known),
-                         missing == "" ? "" : " | not found at this broker: " + missing));
+   int active = 0; for(int q = 0; q < ArraySize(r_exitOnly); q++) if(!r_exitOnly[q]) active++;
+   if(active == 0)
+      RsiEvent(StringFormat("RSI2 OFF | no new RSI2 trades (lost on 6.6 years of broker data); %d open RSI2 position(s) managed until they exit", ArraySize(r_known)));
+   else
+      RsiEvent(StringFormat("RSI2 ONLINE | %d symbols on H1, lot %.2f, %d open RSI2 position(s)%s", active, InpRsiLot, ArraySize(r_known),
+                            missing == "" ? "" : " | not found at this broker: " + missing));
 }
 
 bool RsiPosition(string s, ulong &ticket, bool &isBuy)

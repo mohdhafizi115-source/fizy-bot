@@ -1,9 +1,9 @@
 name: MT5 auto trader
 
-# One trading shift (about 5h40m) of the FizyLB EA (London breakout on gold + RSI2 H1 on gold, 28 forex
-# pairs and BTCUSD) on a GitHub Windows runner. Shifts chain 24/7: each one dispatches the next; the scanner
+# One trading shift (about 5h40m) of the FizyLB EA (London breakout on gold, NR7 D1 on XAUUSD/USDJPY/AUDJPY,
+# Gotobi Tokyo-fix reversal on USDJPY/EURJPY; RSI2 off) on a GitHub Windows runner. Shifts chain 24/7: each one dispatches the next; the scanner
 # loop restarts the chain when no shift is queued or running.
-# Switch: mt5_trade.txt line 1 "on" / "off", line 2 the lot size. Demo accounts only (the EA refuses others).
+# Switch: mt5_trade.txt line 1 "on" / "off", lines 2-5 the lots (London, RSI2, NR7, Gotobi). Demo accounts only (the EA refuses others).
 on:
   workflow_dispatch:
     inputs:
@@ -41,11 +41,13 @@ jobs:
           lot=$(sed -n 2p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           rlot=$(sed -n 3p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           nlot=$(sed -n 4p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          glot=$(sed -n 5p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
           echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "rlot=${rlot:-${lot:-0.01}}" >> "$GITHUB_OUTPUT"
           echo "nlot=${nlot:-${rlot:-0.01}}" >> "$GITHUB_OUTPUT"
-          echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, RSI2 lot ${rlot:-${lot:-0.01}}"
+          echo "glot=${glot:-0.01}" >> "$GITHUB_OUTPUT"
+          echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, RSI2 lot ${rlot:-${lot:-0.01}}, NR7 lot ${nlot:-0.01}, Gotobi lot ${glot:-0.01}"
 
       - name: Install packages
         if: steps.sw.outputs.mode == 'on'
@@ -59,6 +61,7 @@ jobs:
           LOT: ${{ steps.sw.outputs.lot }}
           RLOT: ${{ steps.sw.outputs.rlot }}
           NLOT: ${{ steps.sw.outputs.nlot }}
+          GLOT: ${{ steps.sw.outputs.glot }}
         run: |
           $ErrorActionPreference = "Continue"
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
@@ -79,6 +82,7 @@ jobs:
           (Get-Content mt5\FizyRSI2.mqh) -replace '^input double InpRsiLot\s*=.*;', "input double InpRsiLot     = $env:RLOT;" | Set-Content "$dir\MQL5\Experts\FizyRSI2.mqh" -Encoding utf8
           Copy-Item mt5\FizySnap.mqh "$dir\MQL5\Experts\FizySnap.mqh" -Force
           (Get-Content mt5\FizyNR7.mqh) -replace '^input double InpNr7Lot\s*=.*;', "input double InpNr7Lot     = $env:NLOT;" | Set-Content "$dir\MQL5\Experts\FizyNR7.mqh" -Encoding utf8
+          (Get-Content mt5\FizyGTB.mqh) -replace '^input double InpGtbLot\s*=.*;', "input double InpGtbLot       = $env:GLOT;" | Set-Content "$dir\MQL5\Experts\FizyGTB.mqh" -Encoding utf8
           $m = "${{ github.event.inputs.minutes }}"
           if ($m -and [int]$m -lt 30) {           # short test shift: screenshot with the start message
             (Get-Content "$dir\MQL5\Experts\FizyLB.mq5") -replace '^input bool   InpSnapTest\s*=.*;', 'input bool   InpSnapTest   = true;' | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
@@ -110,8 +114,8 @@ jobs:
           $m = if ("${{ github.event.inputs.minutes }}") { "${{ github.event.inputs.minutes }}" } else { "335" }
           python mt5/watch.py --dir "$dir" --minutes $m 2>&1 | Tee-Object -FilePath watch.log
           $ev = "$dir\MQL5\Files\flb_events.txt"
-          $rv = "$dir\MQL5\Files\rsi2_events.txt"
-          "events: London $((Get-Content $ev -ErrorAction SilentlyContinue | Measure-Object).Count) lines, RSI2 $((Get-Content $rv -ErrorAction SilentlyContinue | Measure-Object).Count) lines" | Out-File shift_diag.txt -Append -Encoding utf8
+          $rv = "$dir\MQL5\Files\rsi2_events.txt"; $nv = "$dir\MQL5\Files\nr7_events.txt"; $gv = "$dir\MQL5\Files\gtb_events.txt"
+          "events: London $((Get-Content $ev -ErrorAction SilentlyContinue | Measure-Object).Count) lines, RSI2 $((Get-Content $rv -ErrorAction SilentlyContinue | Measure-Object).Count), NR7 $((Get-Content $nv -ErrorAction SilentlyContinue | Measure-Object).Count), Gotobi $((Get-Content $gv -ErrorAction SilentlyContinue | Measure-Object).Count)" | Out-File shift_diag.txt -Append -Encoding utf8
           $el = Get-ChildItem "$dir\MQL5\Logs\*.log" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime | Select-Object -Last 1
           if ($el) { Get-Content $el.FullName -Tail 12 | ForEach-Object { "  " + ($_ -replace '\d{5,}', '<num>' -replace '\b\d{1,3}(\.\d{1,3}){3}\b', '<ip>' -replace '\$-?[\d.,]+', '$x') } | Out-File shift_diag.txt -Append -Encoding utf8 }
           Get-Content watch.log -Tail 15 | ForEach-Object { "  w: " + $_ } | Out-File shift_diag.txt -Append -Encoding utf8
