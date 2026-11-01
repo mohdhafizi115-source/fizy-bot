@@ -81,7 +81,9 @@ def load_cot():
     lc_code, lc_name = col(L, "contract market code"), col(L, "market and exchange")
     lc_date = col(L, "yyyy-mm-dd")
     for k, (code, name, sym, sg) in MAP.items():
-        x = L[(L[lc_code].astype(str).str.strip().str.zfill(6) == code) | L[lc_name].str.upper().str.contains(name, regex=False)]
+        x = L[L[lc_code].astype(str).str.strip().str.zfill(6) == code]
+        if x.empty:
+            x = L[L[lc_name].str.upper().str.contains(name, regex=False)]
         if x.empty:
             say(f"  {k}: not in the legacy report"); continue
         f = pd.DataFrame({"date": pd.to_datetime(x[lc_date]),
@@ -95,7 +97,9 @@ def load_cot():
         for k, (code, name, sym, sg) in MAP.items():
             if k in ("GOLD",) or k not in out:
                 continue
-            x = T[(T[tc_code].astype(str).str.strip().str.zfill(6) == code) | T[tc_name].str.upper().str.contains(name, regex=False)]
+            x = T[T[tc_code].astype(str).str.strip().str.zfill(6) == code]
+            if x.empty:
+                x = T[T[tc_name].str.upper().str.contains(name, regex=False)]
             if x.empty:
                 continue
             f = pd.DataFrame({"date": pd.to_datetime(x[tc_date]),
@@ -150,7 +154,7 @@ def main():
         ret = (X.pout - X.pin) / X.pin                                   # long the broker symbol, fraction of price
         kind, val = SWAP.get(sym, ("pip", 0.3))
         pip = 0.01 if "JPY" in sym else 0.0001
-        swap = (6 * val / X.pin) if kind == "abs" else (6 * val if kind == "pct" else 6 * val * pip / X.pin)
+        swap = (6 * val / X.pin) if kind == "abs" else (pd.Series(6 * val, index=X.index) if kind == "pct" else 6 * val * pip / X.pin)
         cost = X.sp / X.pin
         for sig in ("spec_chg", "spec_tr", "spec_fade", "comm_ext", "lev_chg", "am_chg"):
             if sig not in X:
