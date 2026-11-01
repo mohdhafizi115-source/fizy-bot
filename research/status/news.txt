@@ -1,0 +1,72 @@
+Round 10 news test: 5706 high-importance releases (3698 with actual and forecast, 3429 with an impact flag), 0 s
+time check, NFP in server time (expected 15:30): 15:30 x74, 14:30 x5
+15834 release x instrument cases with M5 bars
+
+== 1. release bar: with a surprise of >= 1 z, the 5-minute release bar already moved in the surprise direction 57% of the time (2445 cases); average jump 2.1 ATR(M5)
+
+== 2. SURPRISE: trade in the surprise direction (all instruments together) ==
+  z >= 0, entry + 5 min, hold  15 min: 11646 trades, gross  +0.05 bp (t +0.35), PF  0.84, 2x spread  0.70, halves  0.90  0.78, yrs+ 1/7
+  z >= 0, entry + 5 min, hold  30 min: 11646 trades, gross  -0.02 bp (t -0.12), PF  0.87, 2x spread  0.75, halves  0.94  0.80, yrs+ 0/7
+  z >= 0, entry + 5 min, hold  60 min: 11638 trades, gross  -0.08 bp (t -0.39), PF  0.89, 2x spread  0.80, halves  0.96  0.82, yrs+ 1/7
+  z >= 0, entry + 5 min, hold 120 min: 11638 trades, gross  -0.44 bp (t -1.50), PF  0.89, 2x spread  0.82, halves  0.91  0.86, yrs+ 0/7
+  z >= 0, entry +10 min, hold  15 min: 11646 trades, gross  +0.07 bp (t +0.53), PF  0.84, 2x spread  0.70, halves  0.88  0.81, yrs+ 1/7
+  z >= 0, entry +10 min, hold  30 min: 11646 trades, gross  +0.10 bp (t +0.59), PF  0.88, 2x spread  0.77, halves  0.92  0.84, yrs+ 1/7
+  z >= 0, entry +10 min, hold  60 min: 11638 trades, gross  +0.01 bp (t +0.03), PF  0.90, 2x spread  0.81, halves  0.95  0.85, yrs+ 1/7
+  z >= 0, entry +10 min, hold 120 min: 11638 trades, gross  -0.36 bp (t -1.25), PF  0.89, 2x spread  0.82, halves  0.90  0.89, yrs+ 0/7
+  z >= 0, entry +15 min, hold  15 min: 11646 trades, gross  +0.14 bp (t +1.23), PF  0.85, 2x spread  0.70, halves  0.89  0.80, yrs+ 1/7
+  z >= 0, entry +15 min, hold  30 min: 11646 trades, gross  +0.05 bp (t +0.31), PF  0.87, 2x spread  0.75, halves  0.88  0.85, yrs+ 0/7
+  z >= 0, entry +15 min, hold  60 min: 11638 trades, gross  +0.10 bp (t +0.50), PF  0.91, 2x spread  0.81, halves  0.94  0.88, yrs+ 1/7
+  z >= 0, entry +15 min, hold 120 min: 11638 trades, gross  -0.21 bp (t -0.76), PF  0.90, 2x spread  0.83, halves  0.89  0.91, yrs+ 1/7
+  z >= 1, entry + 5 min, hold  15 min:  2441 trades, gross  +0.62 bp (t +1.95), PF  0.95, 2x spread  0.80, halves  1.12  0.80, yrs+ 2/7
+  z >= 1, entry + 5 min, hold  30 min:  2441 trades, gross  -0.38 bp (t -0.89), PF  0.83, 2x spread  0.73, halves  0.99  0.67, yrs+ 2/7
+  z >= 1, entry + 5 min, hold  60 min:  2441 trades, gross  +0.29 bp (t +0.57), PF  0.93, 2x spread  0.84, halves  1.14  0.75, yrs+ 2/7
+  z >= 1, entry + 5 min, hold 120 min:  2441 trades, gross  -0.08 bp (t -0.13), PF  0.91, 2x spread  0.84, halves  1.05  0.78, yrs+ 3/7
+  z >= 1, entry +10 min, hold  15 min:  2441 trades, gross  +0.08 bp (t +0.28), PF  0.85, 2x spread  0.71, halves  0.92  0.78, yrs+ 3/7
+  z >= 1, entry +10 min, hold  30 min:  2441 trades, gross  +0.03 bp (t +0.07), PF  0.88, 2x spread  0.76, halves  0.95  0.80, yrs+ 2/7
+  z >= 1, entry +10 min, hold  60 min:  2441 trades, gross  +0.56 bp (t +1.19), PF  0.97, 2x spread  0.87, halves  1.08  0.86, yrs+ 2/7
+  z >= 1, entry +10 min, hold 120 min:  2441 trades, gross  +0.11 bp (t +0.20), PF  0.93, 2x spread  0.85, halves  0.96  0.89, yrs+ 3/7
+  z >= 1, entry +15 min, hold  15 min:  2441 trades, gross  -0.53 bp (t -1.90), PF  0.74, 2x spread  0.62, halves  0.88  0.62, yrs+ 3/7
+  z >= 1, entry +15 min, hold  30 min:  2441 trades, gross  -0.23 bp (t -0.67), PF  0.83, 2x spread  0.72, halves  0.92  0.74, yrs+ 1/7
+  z >= 1, entry +15 min, hold  60 min:  2441 trades, gross  +0.21 bp (t +0.46), PF  0.92, 2x spread  0.83, halves  1.03  0.82, yrs+ 3/7
+  z >= 1, entry +15 min, hold 120 min:  2441 trades, gross  -0.29 bp (t -0.53), PF  0.89, 2x spread  0.81, halves  0.93  0.84, yrs+ 3/7
+  z >= 2, entry + 5 min, hold  15 min:   695 trades, gross  +0.12 bp (t +0.19), PF  0.86, 2x spread  0.73, halves  0.96  0.75, yrs+ 3/7
+  z >= 2, entry + 5 min, hold  30 min:   695 trades, gross  -1.10 bp (t -1.27), PF  0.76, 2x spread  0.67, halves  0.93  0.58, yrs+ 2/7
+  z >= 2, entry + 5 min, hold  60 min:   695 trades, gross  +0.07 bp (t +0.07), PF  0.91, 2x spread  0.82, halves  1.03  0.79, yrs+ 3/7
+  z >= 2, entry + 5 min, hold 120 min:   695 trades, gross  -1.89 bp (t -1.65), PF  0.77, 2x spread  0.71, halves  0.79  0.74, yrs+ 3/7
+  z >= 2, entry +10 min, hold  15 min:   695 trades, gross  -0.12 bp (t -0.23), PF  0.82, 2x spread  0.68, halves  0.82  0.81, yrs+ 3/7
+  z >= 2, entry +10 min, hold  30 min:   695 trades, gross  -0.38 bp (t -0.51), PF  0.83, 2x spread  0.73, halves  0.92  0.72, yrs+ 3/7
+  z >= 2, entry +10 min, hold  60 min:   695 trades, gross  -0.35 bp (t -0.38), PF  0.86, 2x spread  0.78, halves  0.93  0.79, yrs+ 3/7
+  z >= 2, entry +10 min, hold 120 min:   695 trades, gross  -1.52 bp (t -1.43), PF  0.78, 2x spread  0.72, halves  0.76  0.81, yrs+ 2/7
+  z >= 2, entry +15 min, hold  15 min:   695 trades, gross  -0.21 bp (t -0.38), PF  0.80, 2x spread  0.67, halves  1.00  0.59, yrs+ 2/7
+  z >= 2, entry +15 min, hold  30 min:   695 trades, gross  -0.69 bp (t -1.05), PF  0.77, 2x spread  0.67, halves  0.83  0.69, yrs+ 3/7
+  z >= 2, entry +15 min, hold  60 min:   695 trades, gross  -0.67 bp (t -0.77), PF  0.82, 2x spread  0.74, halves  0.92  0.71, yrs+ 2/7
+  z >= 2, entry +15 min, hold 120 min:   695 trades, gross  -1.57 bp (t -1.52), PF  0.77, 2x spread  0.70, halves  0.74  0.80, yrs+ 2/7
+
+   per instrument, z >= 1, entry +5 min, hold 30 min:
+   EUR news on EURUSD :    81 trades, gross  -1.27 bp (t -2.04), PF  0.39, 2x spread  0.26, halves  0.65  0.23, yrs+ 2/7
+   USD news on EURUSD :   564 trades, gross  -0.14 bp (t -0.24), PF  0.83, 2x spread  0.71, halves  1.05  0.58, yrs+ 2/7
+   GBP news on GBPUSD :    36 trades, gross  -1.72 bp (t -1.13), PF  0.45, 2x spread  0.36, halves  0.14  0.76, yrs+ 2/7
+   USD news on GBPUSD :   562 trades, gross  +0.40 bp (t +0.64), PF  0.94, 2x spread  0.82, halves  1.21  0.65, yrs+ 3/7
+   NZD news on NZDUSD :     6 trades
+   JPY news on USDJPY :    69 trades, gross  +0.99 bp (t +1.12), PF  0.97, 2x spread  0.65, halves  0.99  0.96, yrs+ 3/7
+   USD news on USDJPY :   564 trades, gross  +0.33 bp (t +0.43), PF  0.88, 2x spread  0.73, halves  0.94  0.83, yrs+ 3/7
+   USD news on XAUUSD :   559 trades, gross  -2.16 bp (t -1.52), PF  0.77, 2x spread  0.72, halves  0.92  0.64, yrs+ 1/7
+
+== 3. SHOCK: the release bar moved >= 1.5 ATR(M5); follow or fade it (all high-importance releases) ==
+  follow entry +5 min, hold  15 min:  5645 trades, gross  +0.63 bp (t +2.74), PF  0.96, 2x spread  0.82, halves  1.21  0.73, yrs+ 4/7
+  follow entry +5 min, hold  30 min:  5645 trades, gross  +0.75 bp (t +2.54), PF  0.98, 2x spread  0.87, halves  1.02  0.94, yrs+ 3/7
+  follow entry +5 min, hold  60 min:  5645 trades, gross  +0.10 bp (t +0.27), PF  0.92, 2x spread  0.84, halves  0.98  0.86, yrs+ 3/7
+  fade   entry +5 min, hold  15 min:  5645 trades, gross  -0.63 bp (t -2.74), PF  0.77, 2x spread  0.66, halves  0.60  1.03, yrs+ 2/7
+  fade   entry +5 min, hold  30 min:  5645 trades, gross  -0.75 bp (t -2.54), PF  0.80, 2x spread  0.71, halves  0.77  0.85, yrs+ 2/7
+  fade   entry +5 min, hold  60 min:  5645 trades, gross  -0.10 bp (t -0.27), PF  0.90, 2x spread  0.82, halves  0.84  0.97, yrs+ 4/7
+
+== 4. per event: surprise >= 1 z, entry +5 min, hold 30 min (USD events on EURUSD, USDJPY, XAUUSD, GBPUSD) ==
+  CPI                               28 trades, gross  -1.64 bp (t -0.86), PF  0.50, 2x spread  0.41, halves  0.21  1.16, yrs+ 2/7
+  ISM                              322 trades, gross  -1.00 bp (t -0.98), PF  0.74, 2x spread  0.65, halves  0.91  0.57, yrs+ 0/7
+  GDP                               36 trades, gross +10.62 bp (t +2.88), PF  6.74, 2x spread  5.45, halves 15.81  3.55, yrs+ 4/5
+  PMI                              468 trades, gross  -1.62 bp (t -1.66), PF  0.70, 2x spread  0.62, halves  0.81  0.61, yrs+ 2/7
+
+== passed ==
+  0 passed; about 60 tests were run, so 1-3 passes could be luck
+
+done in 2 s
