@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/runner/work/fizy-bot/fizy-bot/research/fx_flows.py", line 23, in <module>
+    import numpy as np, pandas as pd, requests
+ModuleNotFoundError: No module named 'requests'
