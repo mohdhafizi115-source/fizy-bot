@@ -50,7 +50,7 @@ void Nr7Init()
    {
       string b = parts[i]; StringTrimLeft(b); StringTrimRight(b);
       if(b == "") continue;
-      string s = RsiResolve(b);
+      string s = SymResolve(b);
       if(s == "") { missing += (missing == "" ? "" : ", ") + b; continue; }
       SymbolSelect(s, true);
       int k = ArraySize(n_sym); ArrayResize(n_sym, k + 1); ArrayResize(n_day, k + 1); ArrayResize(n_exitOnly, k + 1);
@@ -124,7 +124,7 @@ void Nr7DeletePending(string s, string why)
       if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpNr7Magic || OrderGetString(ORDER_SYMBOL) != s) continue;
       string side = OrderGetInteger(ORDER_TYPE) == ORDER_TYPE_BUY_STOP ? "BUY STOP" : "SELL STOP";
       double pr = OrderGetDouble(ORDER_PRICE_OPEN);
-      if(trade.OrderDelete(t)) Nr7Event(StringFormat("NR7 ORDER DELETED %s | %s %s deleted (%s)", s, side, RsiP(s, pr), why));
+      if(trade.OrderDelete(t)) Nr7Event(StringFormat("NR7 ORDER DELETED %s | %s %s deleted (%s)", s, side, PriceStr(s, pr), why));
    }
 }
 
@@ -148,7 +148,7 @@ void Nr7ReportClosed(ulong pos)
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
    string fn = Snap(s, PERIOD_H4, "N7X", lv, lc, lb, 0, 0, 0, 0, false);
    Nr7Event(StringFormat("%s %s | %s from %s closed at %s (%s), profit $%.2f", what, s, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL",
-                         RsiP(s, inPx), RsiP(s, outPx), why, profit) + Img(fn));
+                         PriceStr(s, inPx), PriceStr(s, outPx), why, profit) + Img(fn));
 }
 
 void Nr7OnTimer()
@@ -181,7 +181,7 @@ void Nr7OnTimer()
             PositionSelectByTicket(pt);
             Nr7Event(StringFormat("NR7 FILLED %s | %s %.2f lot from %s, SL %s, no TP: closes at the start of the next day",
                      s, PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", PositionGetDouble(POSITION_VOLUME),
-                     RsiP(s, PositionGetDouble(POSITION_PRICE_OPEN)), RsiP(s, PositionGetDouble(POSITION_SL))));
+                     PriceStr(s, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(s, PositionGetDouble(POSITION_SL))));
          }
          if(Nr7Orders(s) > 0) Nr7DeletePending(s, "the other side filled");
          PositionSelectByTicket(pt);
@@ -214,7 +214,7 @@ void Nr7OnTimer()
       double th = iHigh(s, PERIOD_D1, 0), tl = iLow(s, PERIOD_D1, 0);
       if(th >= hi || tl <= lo)
       {
-         if(now - d0 > 300) { Nr7Event(StringFormat("NR7 SKIPPED %s | yesterday was NR7 (%s - %s) but today already traded through a level before the orders were placed", s, RsiP(s, hi), RsiP(s, lo))); continue; }
+         if(now - d0 > 300) { Nr7Event(StringFormat("NR7 SKIPPED %s | yesterday was NR7 (%s - %s) but today already traded through a level before the orders were placed", s, PriceStr(s, hi), PriceStr(s, lo))); continue; }
       }
       double lot = Nr7Lot(s);
       string cm = "NR7 " + TimeToString(d0, TIME_DATE);
@@ -237,7 +237,7 @@ void Nr7OnTimer()
       string fn = Snap(s, PERIOD_D1, "N7", lv, lc, lb, 0, 0, 0, 0, false);
       Nr7Event(StringFormat("NR7 ORDERS PLACED %s | yesterday's range %s - %s was the narrowest of 7 days | BUY STOP %s (SL %s) / SELL STOP %s (SL %s), no TP, lot %.2f | "
                             "OCO; a filled trade closes at the start of the next day%s",
-                            s, RsiP(s, lo), RsiP(s, hi), RsiP(s, hi), RsiP(s, lo), RsiP(s, lo), RsiP(s, hi), lot, res) + Img(fn));
+                            s, PriceStr(s, lo), PriceStr(s, hi), PriceStr(s, hi), PriceStr(s, lo), PriceStr(s, lo), PriceStr(s, hi), lot, res) + Img(fn));
    }
    Nr7Trade(false);
    trade.SetTypeFillingBySymbol(InpSymbol);

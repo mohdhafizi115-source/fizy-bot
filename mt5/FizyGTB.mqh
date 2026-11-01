@@ -3,14 +3,15 @@
 //| FizyLB.mq5. Rules (research/gotobi.py, JustMarkets M5 2020-2026): |
 //|   on Gotobi days (the 5th, 10th, 15th, 20th, 25th and 30th in     |
 //|   Tokyo; the month end in February; a weekend date moves to the   |
-//|   Friday before) SELL at the Tokyo fix, 09:55:00 JST, and close   |
+//|   Friday before) and on the last business day of every month      |
+//|   (month-end flows) SELL at the Tokyo fix, 09:55:00 JST, and close|
 //|   at 10:15 JST. Protective SL 1.0 x ATR(H1, 120). No TP.          |
 //|   No entry when more than InpGtbLateSec late (the move is in the  |
 //|   first minutes) or when the spread is above InpGtbMaxSpread.     |
 //| Tokyo time comes from TimeGMT() + 9 h (no DST in Japan).          |
 //| Events go to MQL5\Files\gtb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input string InpGtbSymbols   = "USDJPY,EURJPY";
+input string InpGtbSymbols   = "USDJPY,EURJPY,GBPJPY";
 input bool   InpGtbOn        = true;
 input double InpGtbLot       = 0.01;
 input long   InpGtbMagic     = 260311;
@@ -47,6 +48,8 @@ bool GtbIsGotobi(datetime jst)
 {
    MqlDateTime d; TimeToStruct(jst, d);
    if(d.day_of_week == 0 || d.day_of_week == 6) return false;
+   MqlDateTime y; TimeToStruct(jst + (d.day_of_week == 5 ? 3 : 1) * 86400, y);
+   if(y.mon != d.mon) return true;                                // last business day of the month
    int span = (d.day_of_week == 5) ? 2 : 0;                       // a Friday also takes Saturday's and Sunday's date
    for(int k = 0; k <= span; k++)
    {
@@ -120,7 +123,7 @@ void GtbInit()
    {
       string b = parts[i]; StringTrimLeft(b); StringTrimRight(b);
       if(b == "") continue;
-      string s = RsiResolve(b);
+      string s = SymResolve(b);
       if(s == "") { missing += (missing == "" ? "" : ", ") + b; continue; }
       SymbolSelect(s, true);
       int k = ArraySize(gt_sym); ArrayResize(gt_sym, k + 1); ArrayResize(gt_day, k + 1);
@@ -157,7 +160,7 @@ void GtbReportClosed(ulong pos)
    double lv[2]; color lc[2]; string lb[2];
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
    string fn = Snap(s, PERIOD_M5, "GTX", lv, lc, lb, 0, 0, 0, 0, false);
-   GtbEvent(StringFormat("%s %s | SELL from %s closed at %s (%s), %+.1f pips, profit $%.2f", what, s, RsiP(s, inPx), RsiP(s, outPx), why,
+   GtbEvent(StringFormat("%s %s | SELL from %s closed at %s (%s), %+.1f pips, profit $%.2f", what, s, PriceStr(s, inPx), PriceStr(s, outPx), why,
                          (inPx - outPx) / pip, profit) + Img(fn));
 }
 
@@ -209,8 +212,8 @@ void GtbOnTimer()
       trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
       if(ok)
          GtbEvent(StringFormat("GOTOBI SELL %s | Tokyo fix on a Gotobi day (%s JST): SELL %.2f lot at %s, SL %s (%.1f pips), no TP, "
-                               "closes at 10:15 JST | spread %.1f pips", s, TimeToString(jst, TIME_DATE), lot, RsiP(s, px > 0 ? px : tk.bid),
-                               RsiP(s, sl), (sl - tk.bid) / pip, spr));
+                               "closes at 10:15 JST | spread %.1f pips", s, TimeToString(jst, TIME_DATE), lot, PriceStr(s, px > 0 ? px : tk.bid),
+                               PriceStr(s, sl), (sl - tk.bid) / pip, spr));
       else
          GtbEvent(StringFormat("ERROR | Gotobi sell %s failed: %d %s", s, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    }

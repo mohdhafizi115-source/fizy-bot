@@ -83,7 +83,7 @@ CFG = {
     "M5_SCALP":       False,         # XAUUSD M5 RSI(2) scalp alerts: OFF since 31 Oct (lost on 3.7 years of JustMarkets M5, PF 0.94)
     "M5_SESSION":     [8, 20],       # entries only between these chart hours
     "M5_MAX_BARS":    24,            # time exit after this many M5 candles (2 hours)
-    "RSI2_ALERTS":    False,          # Deriv RSI(2) alerts: OFF since 31 Oct, RSI2 now trades in the MT5 EA (gold, forex, BTCUSD)
+    "RSI2_ALERTS":    False,          # RSI(2) alerts: OFF. RSI2 was removed from the MT5 EA on 1 Nov 2026 (lost on 6.6 years of broker data)
     "RSI2_LO":        10,
     "RSI2_HI":        90,
     "RSI2_SL_ATR":    2.0,

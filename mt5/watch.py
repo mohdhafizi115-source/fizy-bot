@@ -1,5 +1,5 @@
-"""Runs next to the FizyLB EA (London breakout + RSI2 H1) on the GitHub Windows runner: forwards
-the EA events (MQL5/Files/flb_events.txt, rsi2_events.txt, nr7_events.txt, gtb_events.txt) to Telegram until the time budget
+"""Runs next to the FizyLB EA (London breakout, NR7, Gotobi, gold auction) on the GitHub Windows runner: forwards
+the EA events (MQL5/Files/flb_events.txt, nr7_events.txt, gtb_events.txt, gau_events.txt) to Telegram until the time budget
 of this shift is used up (the EA trades 24/7, so the shift never stops early). Writes
 mt5_shift.txt (server time) for the next-shift step. Never prints account numbers, balances or
 passwords (public logs)."""
@@ -20,13 +20,13 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "rsi2_events.txt", "nr7_events.txt", "gtb_events.txt")]
-STATUS_KINDS = ("| STARTED |", "| RSI2 ONLINE |", "| RSI2 OFF |", "| NR7 ONLINE |", "| GOTOBI ONLINE |")
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt")]
+STATUS_KINDS = ("| STARTED |", "| NR7 ONLINE |", "| GOTOBI ONLINE |", "| AUCTION ONLINE |")
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
           "BREAKEVEN": "BREAKEVEN", "CLOSED": "CLOSED", "STARTED": "BOT ONLINE", "STOPPED": "STOPPED", "ERROR": "ERROR"}
-# RSI2 kinds ("RSI2 BUY EURUSD.m", "RSI2 EXIT ...", "RSI2 SL HIT ...", "RSI2 ONLINE") are used as the title as they are
+# NR7 / GOTOBI / AUCTION kinds ("NR7 FILLED USDJPY.m", "GOTOBI SELL ...", "AUCTION CLOSED ...") are used as the title as they are
 
 
 def send(line):
@@ -35,8 +35,8 @@ def send(line):
     parts = [p for p in parts if not p.startswith("IMG:")]
     when, kind, rest = parts[0], parts[1] if len(parts) > 1 else "", parts[2:]
     title = TITLES.get(kind, kind)
-    head = ("RSI2 H1 (demo)" if kind.startswith("RSI2") else "NR7 BREAKOUT D1 (demo)" if kind.startswith("NR7")
-            else "GOTOBI TOKYO FIX (demo)" if kind.startswith("GOTOBI") else "LONDON BREAKOUT XAUUSD (demo)")
+    head = ("NR7 BREAKOUT D1 (demo)" if kind.startswith("NR7") else "GOTOBI TOKYO FIX (demo)" if kind.startswith("GOTOBI")
+            else "GOLD AUCTION SCALP (demo)" if kind.startswith("AUCTION") else "LONDON BREAKOUT XAUUSD (demo)")
     body = "\n".join(rest)
     msg = (f"FIZY BOT | {head} - {title}\n=============================\n{body}\n"
            f"=============================\nBroker time: {when}")
@@ -70,14 +70,14 @@ def online_sent_today(day):
 
 
 def send_status(lines):
-    """One status message a day: London breakout + RSI2 start lines merged."""
+    """One status message a day: the start lines of all modules merged."""
     day = lines[0].split("|")[0].strip().split(" ")[0]
     if online_sent_today(day):
         print("status message already sent today", flush=True); return
     body = []
     for l in lines:
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]
-        lab = ("London breakout: " if "STARTED" in p[1] else "RSI2 H1: " if "RSI2" in p[1] else "NR7 D1: " if "NR7" in p[1] else "Gotobi: ")
+        lab = ("London breakout: " if "STARTED" in p[1] else "NR7 D1: " if "NR7" in p[1] else "Gotobi: " if "GOTOBI" in p[1] else "Gold auction: ")
         body.append(lab + " | ".join(p[2:]))
     msg = ("FIZY BOT | AUTO TRADE (demo) - BOT ONLINE (daily status)\n=============================\n" + "\n".join(body) +
            f"\n=============================\nBroker time: {lines[0].split('|')[0].strip()}")

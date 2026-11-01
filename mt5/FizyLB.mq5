@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.30"
+#property version "1.40"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -37,9 +37,10 @@ string g_noTradeDay = "";             // day already reported as "no trade" in t
 ulong  g_known[];                     // position tickets seen open (to report TP / SL closes)
 
 #include "FizySnap.mqh"                // MT5 chart screenshots for the Telegram events
-#include "FizyRSI2.mqh"                // H1 RSI(2): off since 1 Nov 2026 (manages open positions only); RsiResolve/RsiP used by all
+#include "FizyCommon.mqh"              // symbol names, prices, London time; closes anything the removed RSI2 module left
 #include "FizyNR7.mqh"                 // D1 NR7 breakout on XAUUSD, USDJPY, AUDJPY
-#include "FizyGTB.mqh"                 // Gotobi Tokyo-fix reversal on USDJPY, EURJPY (09:55 -> 10:15 JST)
+#include "FizyGTB.mqh"                 // Gotobi / month-end Tokyo-fix reversal on USDJPY, EURJPY, GBPJPY (09:55 -> 10:15 JST)
+#include "FizyGAU.mqh"                 // gold before the LBMA AM auction (sell 10:15 -> 10:30 London)
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -296,18 +297,11 @@ void OnTimer()
       }
       Event(StringFormat("STARTED | server time %s, %d open position(s), %d pending order(s), lot %.2f",
                          TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)) + Img(fn));
-      if(InpSnapTest)
-      {
-         string b = RsiResolve("BTCUSD");
-         double lv2[1]; color lc2[1]; string lb2[1];
-         lv2[0] = SymbolInfoDouble(b, SYMBOL_BID); lc2[0] = clrBlue; lb2[0] = "bid";
-         string f2 = (b == "") ? "" : Snap(b, PERIOD_H1, "TEST", lv2, lc2, lb2, 0, 0, 0, 0, true);
-         RsiEvent("RSI2 TEST " + b + " | screenshot test: H1 chart with SMA 200, SMA 5 and RSI(2)" + Img(f2));
-      }
    }
-   GtbOnTimer();                                                            // first: the Tokyo-fix entry is time-critical
-   RsiOnTimer();
+   GtbOnTimer();                                                            // first: the timed entries
+   GauOnTimer();
    Nr7OnTimer();
+   CloseLeftovers();
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
    if(minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))
