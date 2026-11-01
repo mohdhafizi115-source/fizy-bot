@@ -1,0 +1,62 @@
+# FIZY BOT: notes for Claude Code
+
+## Working with the owner
+- Reply in **Malay** (Bahasa Malaysia), casual and short. Code, comments, commit messages and Telegram texts stay in **English**.
+- The owner wants only setups that pass a backtest on the broker's own data ("aku tak perlukan trade yang rugi").
+  - Test first. Add a setup only if it passes. Remove anything that loses.
+  - Say plainly when nothing works.
+- Realistic expectations: $100 capital, demo first, then a cent account. Weekly 50% returns are not possible; never build martingale or grid EAs.
+
+## Safety rules (always)
+- Never ask for, type or commit the MT5 password, login or the Telegram token. They live only in GitHub secrets: `MT5_LOGIN`, `MT5_PASSWORD`, `MT5_SERVER`, `TG_TOKEN`, `TG_CHAT_ID`.
+- This repository is **public**. Anything committed must be masked: account numbers (5+ digits), IP addresses and $ balances (`mt5/mask_logs.py`, the masking in the workflows).
+- The EA trades demo accounts only (`InpDemoOnly = true`). Do not change that without the owner's explicit go-ahead.
+
+## What runs
+- **`bbma_scanner.py` + `.github/workflows/scan.yml`:** Linux scanner loop (Deriv data, Telegram alerts). London-breakout alerts only; the M5 scalp and RSI2 alerts are off. Its `mt5_watchdog()` restarts the MT5 shift chain if no shift is running.
+- **`.github/workflows/mt5_trade.yml`:** the auto trader. A Windows runner installs the JustMarkets MT5 terminal, compiles `mt5/FizyLB.mq5` and runs it for about 335 minutes. `mt5/next_shift.py` then dispatches the next shift, so it runs 24/7.
+  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout.
+  - `mt5/watch.py` forwards the EA event files (`MQL5/Files/*_events.txt`, with PNG screenshots) to Telegram, with emoji blocks and MYT times. It also sends one "BOT ONLINE" daily status (`status/mt5_online.txt` holds the date sent).
+- **EA modules:** `mt5/FizyLB.mq5` (London breakout gold) includes the following.
+
+  | File | Module | Magic |
+  |---|---|---|
+  | `FizySnap.mqh` | screenshots | – |
+  | `FizyCommon.mqh` | symbol names, London time, closes leftover RSI2 positions | – |
+  | `FizyNR7.mqh` | NR7 D1 on XAUUSD, USDJPY, AUDJPY | 260310 |
+  | `FizyGTB.mqh` | Gotobi Tokyo fix: sell USDJPY, EURJPY, GBPJPY at 09:55 JST, close 10:15 | 260311 |
+  | `FizyMEF.mqh` | month-end Tokyo fix: CADCHF / NZDCHF sell, USDCAD / GBPNZD buy, 09:40 → 09:55 JST | 260313 |
+  | `FizyGAU.mqh` | gold before the LBMA auction: sell 10:15 → 10:30 London | 260312 |
+  | `FizyWVB.mqh` | Williams volatility breakout k 0.7 on USDJPY, EURJPY, GBPJPY, XAUUSD | 260314 |
+
+  The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
+
+## How to deploy an EA change
+1. Edit `mt5/*.mq*`.
+2. Touch `run_mt5.txt` and push. `.github/workflows/mt5.yml` compiles everything and writes `status/mt5_check.txt`. Check for `0 errors`.
+3. `git rm status/snap_TEST_*.png`, the test screenshots that the check commits.
+4. Cancel the running `mt5_trade.yml` run. Its "Next shift" step starts a new shift on the latest `main`. To force a fresh daily status, write any other text into `status/mt5_online.txt` before cancelling.
+- The GitHub CLI's `gh workflow run` may fail. Use REST instead: `gh api -X POST repos/<owner>/fizy-bot/actions/workflows/<file>/dispatches -f ref=main`, and `.../actions/runs/<id>/cancel`.
+
+## Research (backtests on the broker's own data)
+- **`.github/workflows/mt5_data.yml`:** exports M5 history with `mt5/ExportM5.mq5` (input `symbols`, default 30 instruments) into the artifact `m5data`, then runs `research/<script>.py` on Linux. Results go to `research/status/<script>.txt`.
+  - Re-run a script on an earlier export with the inputs `script=research/x.py` and `data_run=<run id>`.
+  - Exports: 30 FX / gold / BTC instruments, 2020-03 → 2026-10, in run 41277285458. WTI, Brent and XNG in run 41330505649.
+- **Economic calendar:** `mt5/ExportCal.mq5` + `.github/workflows/mt5_cal.yml` → `data/calendar.csv`. Past times are stored at today's server offset (+2 h): treat them as UTC+2, then convert to Europe/Athens.
+- **Pass rule used so far:** ≥ 150 trades, PF ≥ 1.15 after spread, both halves ≥ 1.05, stress (1.5× spread) ≥ 1.05, last 12 months positive.
+  - Always compare against a random-entry baseline or fake event times.
+  - Drop trades in the 23:45–01:30 server rollover; the bid is distorted there.
+- **Findings, short version:**
+  - **Edges:**
+    - Tokyo-fix flows: Gotobi and month-end.
+    - Gold before the LBMA AM auction.
+    - Breakouts on JPY pairs and gold: London breakout, NR7, Williams.
+  - **No edge:**
+    - Every M5 indicator scalp, on all 30 instruments.
+    - RSI2 on forex.
+    - The walk-forward ML model.
+    - COT positioning.
+    - Following news surprises.
+    - Smart-money / "bank jerung" fades.
+    - Every WTI, Brent or XNG setup.
+  - The full write-ups are in the owner's claude.ai project "Trade", in the `claude/*.md` docs.
