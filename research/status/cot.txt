@@ -1,0 +1,8 @@
+Round 9 COT test: 9 markets from the CFTC files: GOLD 461 weeks, EUR 461 weeks, GBP 461 weeks, AUD 461 weeks, NZD 461 weeks, JPY 461 weeks, CAD 461 weeks, CHF 461 weeks, BTC 447 weeks
+Traceback (most recent call last):
+  File "/home/runner/work/fizy-bot/fizy-bot/research/cot.py", line 198, in <module>
+    main()
+  File "/home/runner/work/fizy-bot/fizy-bot/research/cot.py", line 161, in main
+    n1 = g - cost.values[m]; n2 = n1 - swap.values[m]
+                                       ^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'values'
