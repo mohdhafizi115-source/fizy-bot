@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.50"
+#property version "1.60"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -42,6 +42,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyGTB.mqh"                 // Gotobi / month-end Tokyo-fix reversal on USDJPY, EURJPY, GBPJPY (09:55 -> 10:15 JST)
 #include "FizyMEF.mqh"                 // month-end Tokyo fix on crosses (CADCHF, NZDCHF sell; USDCAD, GBPNZD buy; 09:40 -> 09:55 JST)
 #include "FizyGAU.mqh"                 // gold before the LBMA AM auction (sell 10:15 -> 10:30 London)
+#include "FizyWVB.mqh"                 // Williams volatility breakout day trade (USDJPY, EURJPY, GBPJPY, XAUUSD)
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -303,6 +304,7 @@ void OnTimer()
    MefOnTimer();
    GauOnTimer();
    Nr7OnTimer();
+   WvbOnTimer();
    CloseLeftovers();
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
