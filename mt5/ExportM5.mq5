@@ -76,6 +76,15 @@ void OnTimer()
    int mh = FileOpen("m5data\\meta.txt", FILE_WRITE | FILE_TXT | FILE_ANSI);
    FileWriteString(mh, StringFormat("connected %d, max bars %d, from %s\r\n", (int)TerminalInfoInteger(TERMINAL_CONNECTED),
                    (int)TerminalInfoInteger(TERMINAL_MAXBARS), TimeToString(InpFrom, TIME_DATE)));
+   string energy = "";
+   for(int q = 0; q < SymbolsTotal(false); q++)
+   {
+      string nm = SymbolName(q, false), up = nm; StringToUpper(up);
+      if(StringFind(up, "OIL") >= 0 || StringFind(up, "WTI") >= 0 || StringFind(up, "XTI") >= 0 || StringFind(up, "BRENT") >= 0 ||
+         StringFind(up, "XBR") >= 0 || StringFind(up, "GAS") >= 0 || StringFind(up, "XNG") >= 0 || StringFind(up, "CRUDE") >= 0)
+         energy += (energy == "" ? "" : " ") + nm;
+   }
+   FileWriteString(mh, "energy symbols on the server: " + energy + "\r\n");
    FileWriteString(mh, "base,symbol,digits,point,tick_size,tick_value,contract,load_code,bars,first,last,median_spread_pts\r\n");
    string parts[]; int k = StringSplit(InpSyms, ',', parts);
    for(int j = 0; j < k; j++)
