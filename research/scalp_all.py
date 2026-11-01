@@ -41,6 +41,7 @@ Check of the live setups on the same broker data:
   LIVE_NR7   D1 NR7: OCO stops at yesterday's high/low, SL at the other side, exit at the next day's open.
 Pass rule for one instrument and rule (fixed in advance): >= 150 trades, PF(R) >= 1.15, both halves PF >= 1.05,
 stress PF >= 1.05, last 12 months positive.
+  RAND  chance baseline: random entries (about 3 a day), random direction, SL 1.5 ATR, TP 1.5R, max 24 bars.
 """
 import os, sys, glob, time
 import numpy as np, pandas as pd
@@ -429,6 +430,17 @@ def rules_m5(d, med_sp):
         dist = min(max(dist, 0.5 * A[i]), 3 * A[i])
         sig.append(mk(i, dr, c[i] - dr * dist, 1.5, 36))
     R["PSAR"] = (sig, flat23)
+
+    # RAND: chance baseline (no edge by construction): random bars 03:00-22:00 (about 3 a day), random direction,
+    # SL 1.5 ATR, TP 1.5R, max 24 bars. Its pass count shows how many passes luck alone gives.
+    rng = np.random.default_rng(12345)
+    sig = []
+    for i in np.where(W322 & (rng.random(n) < 3 / 228))[0]:
+        if i < 250 or i >= n - 1:
+            continue
+        dr = 1 if rng.random() < 0.5 else -1
+        sig.append(mk(i, dr, c[i] - dr * 1.5 * A[i], 1.5, 24))
+    R["RAND"] = (sig, flat23)
     return R
 
 
