@@ -11,6 +11,14 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--dir", required=True)
 ap.add_argument("--minutes", type=float, default=340)
 a = ap.parse_args()
+# keep shift changes away from the Tokyo fix (09:55 JST = 00:55 UTC, Gotobi entries): a shift that would end
+# between 00:25 and 01:05 UTC ends at 00:20 UTC instead, so the next shift is trading by 00:55
+import datetime as _dt
+_end = _dt.datetime.now(_dt.timezone.utc) + _dt.timedelta(minutes=a.minutes)
+_m = _end.hour * 60 + _end.minute
+if 25 <= _m <= 65:
+    a.minutes -= (_m - 20)
+    print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
 ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "rsi2_events.txt", "nr7_events.txt", "gtb_events.txt")]
 STATUS_KINDS = ("| STARTED |", "| RSI2 ONLINE |", "| RSI2 OFF |", "| NR7 ONLINE |", "| GOTOBI ONLINE |")
