@@ -1,0 +1,2 @@
+calendar export 2026-11-01 11:04:44Z: calendar values 100098, kept (moderate/high) 39246, from 2020.01.01, server time 2026.11.01 13:04, server offset +2 h, error 0; rows 39247
+  OP	3	11:04:38.115	ExportCal (XAUUSD.m,M5)	TerminalClose(0) function called
