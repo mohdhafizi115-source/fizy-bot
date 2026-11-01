@@ -1,8 +1,78 @@
 Round 9 COT test: 9 markets from the CFTC files: GOLD 461 weeks, EUR 461 weeks, GBP 461 weeks, AUD 461 weeks, NZD 461 weeks, JPY 461 weeks, CAD 461 weeks, CHF 461 weeks, BTC 447 weeks
-Traceback (most recent call last):
-  File "/home/runner/work/fizy-bot/fizy-bot/research/cot.py", line 198, in <module>
-    main()
-  File "/home/runner/work/fizy-bot/fizy-bot/research/cot.py", line 161, in main
-    n1 = g - cost.values[m]; n2 = n1 - swap.values[m]
-                                       ^^^^^^^^^^^
-AttributeError: 'float' object has no attribute 'values'
+
+per market: trades, gross % a week (t), PF after spread, PF after spread + est. swap, halves (after both)
+
+== spec_chg ==
+  XAUUSD   335 gross -0.175% (t -1.41) PF  0.81 /  0.63 halves  0.59  0.66 yrs+ 0/7
+  EURUSD   338 gross +0.038% (t +0.72) PF  1.09 /  1.04 halves  1.00  1.08 yrs+ 3/7
+  GBPUSD   337 gross -0.039% (t -0.67) PF  0.89 /  0.86 halves  0.80  0.94 yrs+ 1/7
+  AUDUSD   338 gross +0.023% (t +0.31) PF  1.01 /  0.96 halves  1.02  0.89 yrs+ 4/7
+  NZDUSD   338 gross +0.017% (t +0.22) PF  0.98 /  0.93 halves  1.05  0.82 yrs+ 3/7
+  USDJPY   338 gross -0.004% (t -0.06) PF  0.97 /  0.94 halves  0.96  0.92 yrs+ 3/7
+  USDCAD   338 gross +0.024% (t +0.53) PF  1.04 /  1.00 halves  1.06  0.93 yrs+ 3/7
+  USDCHF   338 gross +0.051% (t +0.90) PF  1.09 /  1.04 halves  1.23  0.86 yrs+ 5/7
+  BTCUSD   341 gross +0.121% (t +0.32) PF  0.86 /  0.74 halves  0.73  0.76 yrs+ 1/7
+  ALL     3041 gross +0.006% (t +0.13) PF after spread + swap  0.82
+
+== spec_tr ==
+  XAUUSD   336 gross +0.233% (t +1.88) PF  1.29 /  1.01 halves  0.75  1.26 yrs+ 2/7
+  EURUSD   338 gross +0.047% (t +0.90) PF  1.11 /  1.06 halves  1.21  0.91 yrs+ 3/7
+  GBPUSD   337 gross -0.056% (t -0.95) PF  0.85 /  0.82 halves  0.91  0.72 yrs+ 2/7
+  AUDUSD   338 gross -0.092% (t -1.25) PF  0.81 /  0.77 halves  0.90  0.63 yrs+ 2/7
+  NZDUSD   338 gross -0.079% (t -1.02) PF  0.83 /  0.79 halves  0.84  0.73 yrs+ 1/7
+  USDJPY   338 gross -0.006% (t -0.10) PF  0.96 /  0.93 halves  1.20  0.73 yrs+ 3/7
+  USDCAD   338 gross -0.081% (t -1.77) PF  0.75 /  0.72 halves  0.63  0.85 yrs+ 1/7
+  USDCHF   338 gross -0.048% (t -0.86) PF  0.84 /  0.80 halves  0.78  0.82 yrs+ 3/7
+  BTCUSD   340 gross -0.323% (t -0.84) PF  0.72 /  0.63 halves  0.53  0.80 yrs+ 1/7
+  ALL     3041 gross -0.045% (t -0.93) PF after spread + swap  0.76
+
+== spec_fade ==
+  XAUUSD    94 gross -0.093% (t -0.38) PF  0.89 /  0.71 halves  0.94  0.55 yrs+ 3/7
+  EURUSD   179 gross -0.053% (t -0.80) PF  0.83 /  0.79 halves  0.52  1.26 yrs+ 2/7
+  GBPUSD    71 gross +0.105% (t +0.95) PF  1.28 /  1.24 halves  0.48  5.20 yrs+ 5/6
+  AUDUSD   116 gross +0.023% (t +0.19) PF  1.01 /  0.96 halves  1.05  0.84 yrs+ 3/7
+  NZDUSD   111 gross +0.065% (t +0.53) PF  1.07 /  1.02 halves  0.85  1.21 yrs+ 4/7
+  USDJPY   138 gross +0.039% (t +0.40) PF  1.07 /  1.03 halves  0.94  1.10 yrs+ 3/7
+  USDCAD   102 gross +0.109% (t +1.32) PF  1.34 /  1.28 halves  1.39  1.16 yrs+ 6/7
+  USDCHF    84 gross -0.005% (t -0.05) PF  0.94 /  0.89 halves  0.71  1.12 yrs+ 4/7
+  BTCUSD   104 gross +0.718% (t +1.05) PF  1.06 /  0.92 halves  0.92  0.91 yrs+ 3/7
+  ALL      999 gross +0.090% (t +1.12) PF after spread + swap  0.92
+
+== comm_ext ==
+  XAUUSD    94 gross +0.093% (t +0.38) PF  1.10 /  0.87 halves  0.55  1.30 yrs+ 3/7
+  EURUSD   179 gross +0.053% (t +0.80) PF  1.14 /  1.09 halves  1.65  0.68 yrs+ 2/7
+  GBPUSD    71 gross -0.105% (t -0.95) PF  0.74 /  0.72 halves  1.85  0.17 yrs+ 1/6
+  AUDUSD   116 gross -0.023% (t -0.19) PF  0.92 /  0.87 halves  0.81  0.97 yrs+ 3/7
+  NZDUSD   111 gross -0.065% (t -0.53) PF  0.84 /  0.79 halves  0.96  0.66 yrs+ 3/7
+  USDJPY   138 gross -0.039% (t -0.40) PF  0.89 /  0.86 halves  0.88  0.84 yrs+ 1/7
+  USDCAD   102 gross -0.109% (t -1.32) PF  0.69 /  0.67 halves  0.62  0.74 yrs+ 1/7
+  USDCHF    84 gross +0.005% (t +0.05) PF  0.97 /  0.92 halves  1.13  0.74 yrs+ 3/7
+  BTCUSD   104 gross -0.718% (t -1.05) PF  0.58 /  0.50 halves  0.37  0.74 yrs+ 2/7
+  ALL      999 gross -0.090% (t -1.12) PF after spread + swap  0.70
+
+== lev_chg ==
+  EURUSD   338 gross +0.094% (t +1.82) PF  1.27 /  1.22 halves  1.20  1.23 yrs+ 5/7
+  GBPUSD   337 gross -0.033% (t -0.56) PF  0.90 /  0.87 halves  0.89  0.85 yrs+ 3/7
+  AUDUSD   338 gross -0.061% (t -0.82) PF  0.86 /  0.82 halves  0.80  0.84 yrs+ 1/7
+  NZDUSD   338 gross -0.024% (t -0.32) PF  0.91 /  0.87 halves  0.97  0.76 yrs+ 2/7
+  USDJPY   338 gross +0.004% (t +0.07) PF  0.99 /  0.96 halves  1.02  0.90 yrs+ 3/7
+  USDCAD   338 gross -0.042% (t -0.91) PF  0.85 /  0.81 halves  0.90  0.71 yrs+ 1/7
+  USDCHF   338 gross +0.054% (t +0.96) PF  1.10 /  1.04 halves  1.20  0.90 yrs+ 6/7
+  BTCUSD   342 gross -0.460% (t -1.21) PF  0.68 /  0.60 halves  0.59  0.61 yrs+ 0/7
+  ALL     2707 gross -0.059% (t -1.13) PF after spread + swap  0.75
+
+== am_chg ==
+  EURUSD   338 gross +0.030% (t +0.57) PF  1.06 /  1.01 halves  0.89  1.19 yrs+ 5/7
+  GBPUSD   337 gross -0.052% (t -0.89) PF  0.86 /  0.83 halves  0.84  0.82 yrs+ 0/7
+  AUDUSD   338 gross -0.044% (t -0.60) PF  0.89 /  0.84 halves  0.59  1.31 yrs+ 2/7
+  NZDUSD   338 gross +0.040% (t +0.51) PF  1.02 /  0.97 halves  0.79  1.23 yrs+ 3/7
+  USDJPY   338 gross +0.024% (t +0.36) PF  1.03 /  1.00 halves  1.02  0.98 yrs+ 3/7
+  USDCAD   338 gross -0.047% (t -1.04) PF  0.83 /  0.80 halves  0.81  0.79 yrs+ 1/7
+  USDCHF   338 gross -0.100% (t -1.79) PF  0.74 /  0.70 halves  0.65  0.76 yrs+ 1/7
+  BTCUSD   340 gross -0.400% (t -1.05) PF  0.70 /  0.62 halves  0.47  0.89 yrs+ 1/7
+  ALL     2705 gross -0.069% (t -1.32) PF after spread + swap  0.74
+
+== markets where a signal held in both halves (PF > 1.1 after spread + swap, >= 80 weeks) ==
+  spec_fade USDCAD: PF 1.28, halves 1.39 / 1.16, 102 weeks
+  lev_chg EURUSD: PF 1.22, halves 1.20 / 1.23, 338 weeks
+  2 of 52 market x signal tests passed; random signs pass 3.8% of the time, so luck alone would give about 2.0
