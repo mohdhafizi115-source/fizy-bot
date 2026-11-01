@@ -20,7 +20,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: mt5-data
+  group: mt5-data-${{ github.event.inputs.script || 'default' }}
   cancel-in-progress: false
 
 jobs:
