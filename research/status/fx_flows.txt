@@ -1,4 +1,126 @@
-Traceback (most recent call last):
-  File "/home/runner/work/fizy-bot/fizy-bot/research/fx_flows.py", line 23, in <module>
-    import numpy as np, pandas as pd, requests
-ModuleNotFoundError: No module named 'requests'
+Round 8 forex flows: 28 pairs, 2 s
+
+== A. Session drift (Breedon & Ranaldo): SELL the base in its home morning, BUY it in the quote's home morning ==
+  AUDCAD SELL in AUD morning (Tokyo 09-13)      1710 gross  -0.53p t -1.29 | net  -2.49p PF  0.68 halves  0.74  0.62 yrs+ 0/7 
+  AUDCAD BUY  in CAD morning (New_York 08-12)   1710 gross  -0.47p t -0.82 | net  -2.31p PF  0.77 halves  0.81  0.72 yrs+ 0/7 
+  AUDCHF SELL in AUD morning (Tokyo 09-13)      1710 gross  -0.16p t -0.49 | net  -1.63p PF  0.73 halves  0.73  0.73 yrs+ 0/7 
+  AUDCHF BUY  in CHF morning (London 08-12)     1710 gross  -0.43p t -1.04 | net  -1.79p PF  0.74 halves  0.71  0.80 yrs+ 1/7 
+  AUDUSD SELL in AUD morning (Tokyo 09-13)      1710 gross  -0.21p t -0.48 | net  -1.50p PF  0.80 halves  0.83  0.77 yrs+ 0/7 
+  AUDUSD BUY  in USD morning (New_York 08-12)   1710 gross  +0.42p t +0.67 | net  -0.85p PF  0.91 halves  0.92  0.89 yrs+ 2/7 
+  CADCHF SELL in CAD morning (New_York 08-12)   1710 gross  -0.04p t -0.08 | net  -1.45p PF  0.82 halves  0.80  0.84 yrs+ 0/7 
+  CADCHF BUY  in CHF morning (London 08-12)     1710 gross  -0.16p t -0.41 | net  -1.59p PF  0.75 halves  0.69  0.86 yrs+ 1/7 
+  CADJPY SELL in CAD morning (New_York 08-12)   1710 gross  -1.25p t -1.46 | net  -3.34p PF  0.77 halves  0.79  0.75 yrs+ 0/7 
+  CADJPY BUY  in JPY morning (Tokyo 09-13)      1710 gross  -0.25p t -0.42 | net  -2.39p PF  0.75 halves  0.78  0.72 yrs+ 0/7 
+  CHFJPY SELL in CHF morning (London 08-12)     1710 gross  -0.40p t -0.42 | net  -2.39p PF  0.84 halves  0.82  0.85 yrs+ 1/7 
+  CHFJPY BUY  in JPY morning (Tokyo 09-13)      1710 gross  +0.58p t +0.79 | net  -1.60p PF  0.85 halves  0.76  0.92 yrs+ 2/7 
+  EURAUD SELL in EUR morning (London 08-12)     1707 gross  -1.74p t -2.00 | net  -3.65p PF  0.76 halves  0.79  0.72 yrs+ 0/7 
+  EURAUD BUY  in AUD morning (Tokyo 09-13)      1708 gross  +0.39p t +0.48 | net  -1.59p PF  0.88 halves  0.89  0.87 yrs+ 1/7 
+  EURCAD SELL in EUR morning (London 08-12)     1709 gross  -0.80p t -1.23 | net  -2.66p PF  0.77 halves  0.80  0.73 yrs+ 0/7 
+  EURCAD BUY  in CAD morning (New_York 08-12)   1709 gross  -0.79p t -0.85 | net  -2.62p PF  0.84 halves  0.86  0.80 yrs+ 1/7 
+  EURJPY SELL in EUR morning (London 08-12)     1710 gross  -0.98p t -1.00 | net  -2.37p PF  0.85 halves  0.91  0.79 yrs+ 1/7 
+  EURJPY BUY  in JPY morning (Tokyo 09-13)      1710 gross  -0.29p t -0.36 | net  -1.70p PF  0.85 halves  0.88  0.83 yrs+ 0/7 
+  EURNZD SELL in EUR morning (London 08-12)     1710 gross  -1.92p t -2.07 | net  -4.72p PF  0.72 halves  0.79  0.65 yrs+ 0/7 
+  EURNZD BUY  in NZD morning (Tokyo 09-13)      1710 gross  +0.03p t +0.04 | net  -2.98p PF  0.81 halves  0.75  0.86 yrs+ 0/7 
+  EURUSD SELL in EUR morning (London 08-12)     1709 gross  -0.20p t -0.35 | net  -1.07p PF  0.88 halves  0.89  0.88 yrs+ 1/7 
+  EURUSD BUY  in USD morning (New_York 08-12)   1710 gross  +0.69p t +0.91 | net  -0.18p PF  0.98 halves  1.00  0.96 yrs+ 2/7 
+  GBPAUD SELL in GBP morning (London 08-12)     1710 gross  -1.35p t -1.29 | net  -3.17p PF  0.82 halves  0.84  0.80 yrs+ 0/7 
+  GBPAUD BUY  in AUD morning (Tokyo 09-13)      1710 gross  -0.34p t -0.38 | net  -2.43p PF  0.83 halves  0.81  0.86 yrs+ 0/7 
+  GBPCAD SELL in GBP morning (London 08-12)     1709 gross  -0.36p t -0.41 | net  -2.53p PF  0.83 halves  0.88  0.76 yrs+ 0/7 
+  GBPCAD BUY  in CAD morning (New_York 08-12)   1710 gross  -0.35p t -0.31 | net  -2.50p PF  0.87 halves  0.89  0.84 yrs+ 1/7 
+  GBPJPY SELL in GBP morning (London 08-12)     1709 gross  -0.58p t -0.49 | net  -2.30p PF  0.88 halves  0.93  0.84 yrs+ 0/7 
+  GBPJPY BUY  in JPY morning (Tokyo 09-13)      1709 gross  -0.75p t -0.78 | net  -2.62p PF  0.82 halves  0.79  0.84 yrs+ 0/7 
+  GBPNZD SELL in GBP morning (London 08-12)     1710 gross  -1.49p t -1.35 | net  -4.11p PF  0.79 halves  0.85  0.72 yrs+ 1/7 
+  GBPNZD BUY  in NZD morning (Tokyo 09-13)      1710 gross  +0.00p t +0.00 | net  -3.02p PF  0.82 halves  0.70  0.94 yrs+ 1/7 
+  GBPUSD SELL in GBP morning (London 08-12)     1707 gross  +0.20p t +0.26 | net  -0.70p PF  0.94 halves  0.94  0.95 yrs+ 1/7 
+  GBPUSD BUY  in USD morning (New_York 08-12)   1707 gross  +1.25p t +1.27 | net  +0.35p PF  1.02 halves  1.03  1.02 yrs+ 4/7 
+  NZDCAD SELL in NZD morning (Tokyo 09-13)      1710 gross  -0.85p t -2.04 | net  -2.78p PF  0.64 halves  0.61  0.67 yrs+ 0/7 
+  NZDCAD BUY  in CAD morning (New_York 08-12)   1710 gross  -0.86p t -1.60 | net  -2.60p PF  0.73 halves  0.72  0.75 yrs+ 0/7 
+  NZDCHF SELL in NZD morning (Tokyo 09-13)      1710 gross  -0.28p t -0.89 | net  -2.10p PF  0.64 halves  0.58  0.71 yrs+ 0/7 
+  NZDCHF BUY  in CHF morning (London 08-12)     1710 gross  -0.41p t -1.12 | net  -2.14p PF  0.67 halves  0.68  0.67 yrs+ 0/7 
+  NZDUSD SELL in NZD morning (Tokyo 09-13)      1710 gross  -0.39p t -0.97 | net  -1.93p PF  0.73 halves  0.72  0.75 yrs+ 0/7 
+  NZDUSD BUY  in USD morning (New_York 08-12)   1710 gross  +0.06p t +0.11 | net  -1.44p PF  0.84 halves  0.84  0.84 yrs+ 0/7 
+  USDCHF SELL in USD morning (New_York 08-12)   1710 gross  +0.97p t +1.46 | net  -0.35p PF  0.97 halves  0.98  0.95 yrs+ 4/7 
+  USDCHF BUY  in CHF morning (London 08-12)     1710 gross  +0.10p t +0.19 | net  -1.22p PF  0.85 halves  0.79  0.93 yrs+ 1/7 
+  USDJPY SELL in USD morning (New_York 08-12)   1710 gross  -0.14p t -0.12 | net  -1.47p PF  0.91 halves  0.90  0.92 yrs+ 1/7 
+  USDJPY BUY  in JPY morning (Tokyo 09-13)      1710 gross  -0.19p t -0.23 | net  -1.50p PF  0.87 halves  0.86  0.88 yrs+ 1/7 
+
+   A2. any 4-8 hour UTC window, side and window chosen on the first half (t >= 3), checked on the second half
+   NZDCAD SELL 14-18 UTC: t1 +3.55 t2 +0.71 net2 -1.04p PF2  0.84 
+   1 first-half hits of 2520 tests (chance about 3.4), 0 kept
+
+== B. Turn of the month: trade the USD side (buy USD) ==
+  AUDUSD buy USD last bday 08:00-16:00            80 gross  +1.49p t +0.46 | net  +0.24p PF  1.02 halves  1.52  0.62 yrs+ 3/7 
+  AUDUSD buy USD last bday 15:00-16:00            80 gross  -1.11p t -0.50 | net  -2.33p PF  0.72 halves  1.20  0.31 yrs+ 3/7 
+  AUDUSD buy USD last bday 16:00-17:00            80 gross  +1.97p t +1.75 | net  +0.74p PF  1.21 halves  0.71  2.90 yrs+ 5/7 
+  AUDUSD buy USD first bday 08:00-16:00           77 gross  -6.21p t -1.72 | net  -7.57p PF  0.55 halves  0.45  0.70 yrs+ 3/7 
+  EURUSD buy USD last bday 08:00-16:00            80 gross  +3.96p t +1.00 | net  +3.10p PF  1.24 halves  1.33  1.11 yrs+ 5/7 
+  EURUSD buy USD last bday 15:00-16:00            80 gross  -2.24p t -0.68 | net  -3.11p PF  0.75 halves  0.92  0.54 yrs+ 3/7 
+  EURUSD buy USD last bday 16:00-17:00            80 gross  +3.28p t +2.16 | net  +2.40p PF  1.59 halves  1.22  2.37 yrs+ 5/7 PASS
+  EURUSD buy USD first bday 08:00-16:00           77 gross  +4.18p t +0.84 | net  +3.30p PF  1.21 halves  1.17  1.25 yrs+ 4/7 
+  GBPUSD buy USD last bday 08:00-16:00            80 gross  -2.00p t -0.36 | net  -2.88p PF  0.86 halves  0.62  1.47 yrs+ 4/7 
+  GBPUSD buy USD last bday 15:00-16:00            80 gross  -6.30p t -1.54 | net  -7.21p PF  0.58 halves  0.76  0.36 yrs+ 2/7 
+  GBPUSD buy USD last bday 16:00-17:00            80 gross  +2.12p t +1.14 | net  +1.21p PF  1.21 halves  0.79  2.80 yrs+ 6/7 
+  GBPUSD buy USD first bday 08:00-16:00           74 gross  -3.26p t -0.45 | net  -4.20p PF  0.84 halves  0.88  0.79 yrs+ 4/7 
+  NZDUSD buy USD last bday 08:00-16:00            80 gross  +2.08p t +0.66 | net  +0.59p PF  1.06 halves  1.27  0.77 yrs+ 4/7 
+  NZDUSD buy USD last bday 15:00-16:00            80 gross  -0.23p t -0.11 | net  -1.69p PF  0.79 halves  1.07  0.45 yrs+ 3/7 
+  NZDUSD buy USD last bday 16:00-17:00            80 gross  +0.94p t +0.82 | net  -0.52p PF  0.87 halves  0.73  1.20 yrs+ 3/7 
+  NZDUSD buy USD first bday 08:00-16:00           77 gross  -4.50p t -1.42 | net  -6.12p PF  0.57 halves  0.41  0.80 yrs+ 2/7 
+  USDCAD buy USD last bday 08:00-16:00            80 gross -10.33p t -2.35 | net -11.75p PF  0.46 halves  0.46  0.46 yrs+ 0/7 
+  USDCAD buy USD last bday 15:00-16:00            80 gross  -7.63p t -2.24 | net  -9.04p PF  0.46 halves  0.60  0.30 yrs+ 1/7 
+  USDCAD buy USD last bday 16:00-17:00            80 gross  +1.02p t +0.47 | net  -0.35p PF  0.95 halves  0.45  2.60 yrs+ 5/7 
+  USDCAD buy USD first bday 08:00-16:00           76 gross  +2.63p t +0.51 | net  +1.16p PF  1.07 halves  1.01  1.13 yrs+ 5/7 
+  USDCHF buy USD last bday 08:00-16:00            80 gross  -2.07p t -0.55 | net  -3.38p PF  0.77 halves  0.71  0.83 yrs+ 1/7 
+  USDCHF buy USD last bday 15:00-16:00            80 gross  -2.33p t -0.80 | net  -3.60p PF  0.70 halves  0.73  0.65 yrs+ 2/7 
+  USDCHF buy USD last bday 16:00-17:00            80 gross  +2.65p t +1.73 | net  +1.40p PF  1.32 halves  0.86  2.64 yrs+ 5/7 
+  USDCHF buy USD first bday 08:00-16:00           77 gross  +4.53p t +1.04 | net  +3.09p PF  1.22 halves  1.40  1.06 yrs+ 4/7 
+  USDJPY buy USD last bday 08:00-16:00            80 gross  +6.84p t +0.86 | net  +5.54p PF  1.27 halves  2.27  0.89 yrs+ 5/7 
+  USDJPY buy USD last bday 15:00-16:00            80 gross  -1.36p t -0.47 | net  -2.66p PF  0.77 halves  0.92  0.66 yrs+ 3/7 
+  USDJPY buy USD last bday 16:00-17:00            80 gross  +2.34p t +1.36 | net  +1.03p PF  1.20 halves  0.35  4.46 yrs+ 4/7 
+  USDJPY buy USD first bday 08:00-16:00           77 gross -10.39p t -1.70 | net -11.71p PF  0.55 halves  0.43  0.63 yrs+ 1/7 
+
+== C. Month-end hedge rebalancing: US stocks beat the foreign index month-to-date -> SELL USD into the fix ==
+  AUDUSD hedge-flow USD 12:00-16:00 (vs ^AXJO)    80 gross  -0.08p t -0.03 | net  -1.37p PF  0.87 halves  0.71  1.11 yrs+ 2/7 
+  AUDUSD hedge-flow USD 15:00-16:00 (vs ^AXJO)    80 gross  -0.60p t -0.27 | net  -1.82p PF  0.78 halves  0.81  0.74 yrs+ 1/7 
+  EURUSD hedge-flow USD 12:00-16:00 (vs ^STOXX50E)    80 gross  -3.38p t -0.86 | net  -4.25p PF  0.74 halves  0.57  1.13 yrs+ 4/7 
+  EURUSD hedge-flow USD 15:00-16:00 (vs ^STOXX50E)    80 gross  -2.23p t -0.68 | net  -3.11p PF  0.76 halves  0.63  1.00 yrs+ 4/7 
+  GBPUSD hedge-flow USD 12:00-16:00 (vs ^FTSE)    80 gross  -8.63p t -1.70 | net  -9.52p PF  0.57 halves  0.34  1.35 yrs+ 2/7 
+  GBPUSD hedge-flow USD 15:00-16:00 (vs ^FTSE)    80 gross  -0.90p t -0.22 | net  -1.81p PF  0.88 halves  0.63  1.47 yrs+ 3/7 
+  NZDUSD hedge-flow USD 12:00-16:00 (vs ^NZ50)    80 gross  +1.68p t +0.66 | net  +0.18p PF  1.02 halves  0.60  2.44 yrs+ 2/7 
+  NZDUSD hedge-flow USD 15:00-16:00 (vs ^NZ50)    80 gross  +0.33p t +0.16 | net  -1.14p PF  0.85 halves  0.72  1.14 yrs+ 2/7 
+  USDCAD hedge-flow USD 12:00-16:00 (vs ^GSPTSE)    80 gross  -1.41p t -0.30 | net  -2.85p PF  0.84 halves  0.52  1.57 yrs+ 3/7 
+  USDCAD hedge-flow USD 15:00-16:00 (vs ^GSPTSE)    80 gross  -0.01p t -0.00 | net  -1.42p PF  0.89 halves  0.70  1.24 yrs+ 3/7 
+  USDCHF hedge-flow USD 12:00-16:00 (vs ^SSMI)    80 gross  -3.32p t -0.95 | net  -4.65p PF  0.69 halves  0.62  0.79 yrs+ 1/7 
+  USDCHF hedge-flow USD 15:00-16:00 (vs ^SSMI)    80 gross  -0.60p t -0.21 | net  -1.86p PF  0.83 halves  0.86  0.78 yrs+ 4/7 
+  USDJPY hedge-flow USD 12:00-16:00 (vs ^N225)    80 gross -10.78p t -2.44 | net -12.10p PF  0.46 halves  0.31  0.63 yrs+ 1/7 
+  USDJPY hedge-flow USD 15:00-16:00 (vs ^N225)    80 gross  -5.42p t -1.91 | net  -6.72p PF  0.50 halves  0.35  0.67 yrs+ 1/7 
+
+== D. Month-end Tokyo fix, round-7 finds, checked by year ==
+  CADCHF SELL 9:50->9:55 JST month-end            80 gross  +2.65p t +10.16 | net  +1.14p PF  3.65 halves  2.36  8.08 yrs+ 6/7 PASS | 20:-2 21:+3 22:+26 23:+23 24:+25 25:+12 26:+4
+  CADCHF SELL 9:40->9:55 JST month-end            80 gross  +2.62p t +7.55 | net  +1.06p PF  2.47 halves  1.46  6.34 yrs+ 5/7 PASS | 20:-7 21:-3 22:+25 23:+20 24:+35 25:+11 26:+3
+  NZDCHF SELL 9:40->9:55 JST month-end            80 gross  +3.43p t +4.37 | net  +1.63p PF  2.99 halves  3.74  2.13 yrs+ 6/7 PASS | 20:+49 21:+7 22:+34 23:+11 24:+21 25:+9 26:-0
+  NZDCHF SELL 9:25->9:55 JST month-end            80 gross  +3.39p t +4.63 | net  +1.56p PF  2.45 halves  3.07  1.62 yrs+ 7/7 PASS | 20:+38 21:+14 22:+46 23:+3 24:+7 25:+14 26:+3
+  USDCAD BUY 9:25->9:55 JST month-end             80 gross  +3.67p t +5.35 | net  +2.12p PF  2.69 halves  2.29  3.27 yrs+ 6/7 PASS | 20:+44 21:-5 22:+29 23:+25 24:+33 25:+41 26:+3
+  USDCAD BUY 9:40->9:55 JST month-end             80 gross  +3.14p t +5.24 | net  +1.58p PF  2.30 halves  2.16  2.51 yrs+ 5/7 PASS | 20:+49 21:+5 22:-2 23:+28 24:+34 25:+18 26:-5
+  GBPNZD BUY 9:40->9:55 JST month-end             80 gross  +7.76p t +6.72 | net  +4.66p PF  3.51 halves  7.14  1.85 yrs+ 7/7 PASS | 20:+49 21:+74 22:+96 23:+85 24:+53 25:+1 26:+16
+  GBPNZD BUY 9:25->9:55 JST month-end             80 gross  +8.07p t +6.38 | net  +5.02p PF  2.99 halves  8.01  1.48 yrs+ 7/7 PASS | 20:+39 21:+115 22:+137 23:+21 24:+3 25:+47 26:+37
+
+== E. Intraday momentum: follow the sign of an early return (first half picks follow / fade) ==
+  AUDCHF NY 1st hour -> 09-12 NY fade: t1 +3.03 t2 +0.17 net2 -0.94p PF2  0.83 
+  EURAUD London 1st hour -> 09-12 follow: t1 +3.19 t2 +0.40 net2 -1.85p PF2  0.82 
+  0 kept of 224 tests
+
+== F. Weekday drift 02:00 -> 23:00 server (first half picks the side) ==
+  0 kept of 280 tests (chance about 0.02)
+
+== Everything that passed ==
+  B EURUSD buy USD last bday 16:00-17:00
+  D CADCHF SELL 9:50-9:55 JST month-end
+  D CADCHF SELL 9:40-9:55 JST month-end
+  D NZDCHF SELL 9:40-9:55 JST month-end
+  D NZDCHF SELL 9:25-9:55 JST month-end
+  D USDCAD BUY 9:25-9:55 JST month-end
+  D USDCAD BUY 9:40-9:55 JST month-end
+  D GBPNZD BUY 9:40-9:55 JST month-end
+  D GBPNZD BUY 9:25-9:55 JST month-end
+
+done in 105 s
