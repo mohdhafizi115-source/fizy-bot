@@ -1,0 +1,146 @@
+Round 7 event-time scan: 30 instruments, 14 events, 3 s
+real events done, 92 s
+fake events done, 164 s
+
+first-half hits (t >= 3): real 795, fake 0; KEPT on the second half: real 122, fake 0
+
+== KEPT results (real events), best first ==
+sym      event     window          days      side  n     t1     t2    net2/trade  PF2   PF all  net all
+CADCHF   US_CLOSE  post +0->+60           gotobi   SELL   262 +9.04 +13.93    +6.30   29.11  7.00    +4.45
+AUDCHF   US_CLOSE  post +0->+60           gotobi   SELL   267 +10.10 +13.23    +6.27   24.97  9.94    +5.07
+NZDCAD   US_CLOSE  post +0->+60           gotobi   SELL   265 +7.45 +13.54    +7.13   15.13  5.71    +5.16
+CADCHF   US_CLOSE  post +0->+60           all      SELL  1333 +18.34 +27.93    +5.86   14.35  5.23    +3.98
+AUDCHF   US_CLOSE  post +0->+60           all      SELL  1361 +22.08 +27.80    +5.38   14.12  7.43    +4.48
+CADCHF   US_CLOSE  post +0->+60           monthend SELL    43 +3.02 +4.70    +6.12   11.82  4.34    +4.06
+NZDCAD   US_CLOSE  post +0->+60           all      SELL  1343 +12.97 +25.47    +7.55   10.80  4.13    +4.96
+NZDUSD   US_CLOSE  post +0->+60           monthend SELL    43 +3.61 +3.94    +3.69   10.57  6.53    +3.10
+AUDCHF   US_CLOSE  post +0->+60           monthend SELL    43 +3.60 +4.15    +5.45   10.24  6.78    +4.69
+GBPAUD   US_CLOSE  post +0->+60           all      SELL  1341 +17.96 +25.93   +11.18    9.79  6.29    +8.76
+GBPCHF   US_CLOSE  post +0->+60           gotobi   SELL   264 +9.58 +10.76    +7.55    9.71  7.07    +6.79
+CHFJPY   US_CLOSE  post +0->+60           all      SELL  1347 +12.83 +21.99   +12.58    9.12  4.64    +7.62
+EURGBP   US_CLOSE  post +0->+60           monthend SELL    43 +4.28 +5.89    +2.30    8.42  6.07    +2.32
+GBPNZD   US_CLOSE  post +0->+60           all      SELL  1332 +13.09 +24.47   +17.57    8.26  4.82   +12.08
+CADCHF   TKY_FIX   pre -5->+0             monthend SELL    80 +7.77 +6.68    +1.38    8.08  3.65    +1.14
+AUDCAD   US_CLOSE  post +0->+60           gotobi   SELL   264 +6.30 +12.36    +3.90    7.63  3.44    +2.81
+AUDUSD   US_CLOSE  post +0->+60           gotobi   SELL   261 +6.31 +10.96    +2.67    7.57  3.23    +1.91
+EURNZD   US_CLOSE  post +0->+60           all      SELL  1347 +14.13 +21.75   +14.29    7.42  4.68   +10.13
+AUDNZD   US_CLOSE  post +0->+60           all      SELL  1336 +15.87 +22.55    +7.70    7.30  4.93    +5.85
+NZDCHF   US_CLOSE  post +0->+60           gotobi   SELL   264 +9.70 +9.33    +4.36    7.30  5.47    +4.12
+EURCHF   US_CLOSE  post +0->+60           gotobi   SELL   265 +8.86 +10.08    +5.67    7.28  5.47    +4.37
+AUDNZD   US_CLOSE  post +0->+60           gotobi   SELL   261 +7.44 +10.68    +7.70    7.24  5.41    +5.78
+GBPCHF   US_CLOSE  post +0->+60           all      SELL  1347 +22.02 +24.10    +7.05    7.18  6.54    +6.63
+EURAUD   US_CLOSE  post +0->+60           all      SELL  1317 +13.93 +23.75    +7.83    7.12  4.14    +5.69
+GBPAUD   US_CLOSE  post +0->+60           gotobi   SELL   262 +6.66 +10.34    +9.57    6.60  4.57    +7.55
+GBPNZD   US_CLOSE  post +0->+60           gotobi   SELL   260 +4.83 +10.31   +15.10    6.54  3.91    +9.98
+CADCHF   TKY_FIX   pre -15->+0            monthend SELL    80 +4.90 +5.98    +1.60    6.34  2.47    +1.06
+CHFJPY   US_CLOSE  post +0->+60           gotobi   SELL   263 +5.45 +9.50    +9.86    5.86  3.63    +6.05
+NZDJPY   US_CLOSE  post +0->+60           monthend SELL    43 +3.89 +3.91    +5.12    5.85  7.07    +4.97
+EURNZD   US_CLOSE  post +0->+60           gotobi   SELL   263 +6.57 +8.39   +12.15    5.81  4.40    +8.80
+GBPCAD   US_CLOSE  post +0->+60           all      SELL  1345 +13.43 +20.26    +6.91    5.47  3.58    +5.45
+CHFJPY   TKY_FIX   pre -5->+0             monthend BUY     80 +3.16 +5.31    +6.45    5.39  3.59    +4.32
+NZDCHF   US_CLOSE  post +0->+60           all      SELL  1344 +17.58 +20.65    +3.86    5.22  3.73    +3.46
+GBPCAD   US_CLOSE  post +0->+60           gotobi   SELL   265 +5.73 +10.17    +5.44    5.14  3.24    +4.61
+AUDJPY   US_CLOSE  post +0->+60           gotobi   SELL   264 +7.43 +8.95    +4.79    5.10  3.85    +3.57
+EURCHF   US_CLOSE  post +0->+60           all      SELL  1342 +18.71 +19.07    +4.46    4.90  4.12    +3.66
+NZDJPY   US_CLOSE  post +0->+60           all      SELL  1350 +13.69 +17.82    +5.90    4.88  3.36    +4.29
+NZDJPY   US_CLOSE  post +0->+60           gotobi   SELL   265 +7.96 +8.81    +5.72    4.88  4.35    +4.67
+NZDCHF   US_CLOSE  post +0->+60           monthend SELL    43 +5.48 +2.97    +3.63    4.70  7.68    +5.10
+EURAUD   US_CLOSE  post +0->+60           gotobi   SELL   254 +6.08 +8.48    +6.89    4.60  3.42    +5.11
+AUDJPY   US_CLOSE  post +0->+60           monthend SELL    42 +3.20 +3.70    +4.94    4.48  3.91    +4.05
+EURGBP   US_CLOSE  post +0->+60           gotobi   SELL   259 +10.91 +10.83    +2.04    4.42  4.73    +2.23
+AUDCAD   US_CLOSE  post +0->+60           all      SELL  1342 +13.96 +21.14    +3.30    4.40  2.75    +2.45
+NZDUSD   US_CLOSE  post +0->+60           gotobi   SELL   265 +6.35 +9.16    +2.92    4.40  3.02    +2.21
+EURJPY   TKY_FIX   post +0->+60           monthend SELL    80 +3.18 +3.65   +11.27    4.19  3.72    +8.26
+EURGBP   US_CLOSE  post +0->+60           all      SELL  1338 +18.75 +22.90    +1.97    4.02  3.26    +1.87
+EURCAD   US_CLOSE  post +0->+60           all      SELL  1354 +12.02 +16.30    +4.51    3.88  2.72    +3.42
+AUDJPY   US_CLOSE  post +0->+60           all      SELL  1344 +14.85 +14.72    +4.30    3.81  3.06    +3.29
+EURNZD   TKY_FIX   post +0->+60           monthend SELL    80 +4.14 +4.37   +10.38    3.81  4.70   +11.20
+EURCAD   US_CLOSE  post +0->+60           gotobi   SELL   266 +5.86 +7.97    +3.66    3.68  2.82    +3.16
+USDCAD   TKY_FIX   pre -30->+0            monthend BUY     80 +3.34 +4.36    +2.34    3.27  2.69    +2.12
+CADJPY   US_CLOSE  post +0->+60           gotobi   SELL   266 +4.33 +8.04    +3.33    3.17  2.16    +2.23
+CADCHF   CNY_FIX   pre -30->+0            monthend SELL    80 +3.26 +4.29    +1.30    3.17  1.53    +0.58
+AUDUSD   US_CLOSE  post +0->+60           all      SELL  1343 +13.86 +15.31    +1.91    3.13  2.31    +1.53
+XAUUSD   US_CLOSE  cond fade 0->+5        monthend         77 +4.05 +2.41    +0.68    3.12  3.16    +0.50
+USDJPY   TKY_FIX   post +0->+30           monthend SELL    80 +3.64 +3.14    +6.91    3.07  3.19    +5.50
+USDCHF   US_CLOSE  post +0->+60           gotobi   SELL   267 +6.86 +6.05    +2.40    2.98  2.66    +2.24
+NZDUSD   US_CLOSE  post +0->+60           all      SELL  1344 +11.58 +15.53    +2.39    2.98  2.16    +1.79
+EURCHF   US_CLOSE  post +0->+60           monthend SELL    43 +3.54 +2.59    +3.40    2.93  3.33    +3.37
+USDCHF   US_CLOSE  post +0->+60           all      SELL  1349 +13.21 +13.86    +2.39    2.93  2.35    +2.02
+CHFJPY   TKY_FIX   post +0->+60           monthend SELL    80 +3.86 +2.98    +8.31    2.90  2.88    +5.95
+CADCHF   TKY_FIX   pre -30->+0            monthend SELL    80 +4.44 +4.35    +1.14    2.85  1.99    +0.89
+CADJPY   US_CLOSE  post +0->+60           all      SELL  1349 +11.46 +11.88    +3.29    2.82  2.19    +2.36
+EURNZD   CNY_FIX   post +5->+30           monthend SELL    80 +3.13 +4.14    +4.76    2.78  2.35    +3.84
+GBPCHF   US_CLOSE  post +0->+60           monthend SELL    43 +4.22 +2.36    +4.29    2.72  4.75    +6.73
+USDJPY   TKY_FIX   post +5->+30           monthend SELL    80 +3.09 +2.83    +4.48    2.70  2.41    +3.01
+USDCAD   TKY_FIX   pre -15->+0            monthend BUY     80 +3.47 +4.10    +1.52    2.51  2.30    +1.58
+GBPJPY   US_CLOSE  post +0->+60           all      SELL  1352 +6.23 +11.83    +4.88    2.44  1.80    +2.78
+USDJPY   TKY_FIX   post +0->+15           monthend SELL    80 +3.21 +2.67    +4.36    2.42  2.50    +3.42
+USDJPY   TKY_FIX   post +0->+5            gotobi   SELL   471 +4.07 +7.36    +2.03    2.32  1.58    +0.95
+EURJPY   TKY_FIX   post +0->+30           monthend SELL    80 +3.41 +2.72    +4.75    2.31  2.56    +4.31
+USDJPY   TKY_FIX   post +0->+15           gotobi   SELL   471 +3.71 +6.04    +3.52    2.26  1.76    +2.01
+GBPUSD   US_CLOSE  post +0->+60           gotobi   SELL   261 +7.26 +5.47    +1.54    2.23  3.01    +2.56
+EURJPY   TKY_FIX   post +0->+15           gotobi   SELL   471 +3.41 +6.44    +3.11    2.14  1.75    +1.96
+NZDCHF   TKY_FIX   pre -15->+0            monthend SELL    80 +3.11 +4.79    +0.86    2.13  2.99    +1.63
+CHFJPY   TKY_FIX   post +0->+15           gotobi   SELL   471 +4.93 +7.05    +3.04    2.13  1.62    +1.58
+EURJPY   US_CLOSE  post +0->+60           all      SELL  1327 +12.21 +8.71    +3.08    2.07  2.27    +2.92
+USDCAD   TKY_FIX   pre -5->+0             monthend BUY     80 +4.55 +5.02    +0.69    2.05  3.14    +1.39
+CHFJPY   ECB_FIX   post +0->+60           monthend BUY     80 +3.02 +2.18    +6.08    2.04  2.25    +5.81
+USDCAD   US_CLOSE  post +0->+60           all      SELL  1336 +7.51 +8.52    +1.76    2.01  1.58    +1.26
+GBPJPY   TKY_FIX   post +0->+15           gotobi   SELL   471 +3.17 +5.88    +3.35    2.01  1.53    +1.80
+GBPNZD   TKY_FIX   post +0->+60           monthend SELL    80 +3.89 +2.69    +6.44    1.99  2.63    +7.87
+GBPJPY   TKY_FIX   post +0->+30           gotobi   SELL   471 +4.09 +5.36    +3.81    1.97  1.68    +2.71
+USDJPY   TKY_FIX   post +0->+30           gotobi   SELL   471 +4.70 +4.90    +3.66    1.93  1.85    +2.90
+EURJPY   TKY_FIX   post +0->+30           gotobi   SELL   471 +4.25 +5.54    +3.24    1.93  1.81    +2.60
+XAUUSD   LBMA_AM   pre -5->+0             all      SELL  1700 +5.16 +9.23    +0.44    1.92  1.55    +0.22
+USDJPY   US_CLOSE  post +0->+60           all      SELL  1341 +6.65 +6.15    +2.19    1.92  1.53    +1.22
+CHFJPY   TKY_FIX   post +0->+30           monthend SELL    80 +4.28 +2.28    +4.36    1.89  2.16    +3.73
+USDJPY   CNY_FIX   pre -30->+0            gotobi   SELL   471 +3.66 +4.56    +3.68    1.89  1.67    +2.58
+CHFJPY   TKY_FIX   post +0->+15           monthend SELL    80 +3.90 +2.63    +2.98    1.87  2.02    +2.54
+GBPNZD   TKY_FIX   pre -15->+0            monthend BUY     80 +5.60 +3.95    +2.16    1.85  3.51    +4.66
+NZDCHF   TKY_FIX   post +0->+60           monthend BUY     80 +3.85 +2.83    +1.35    1.84  2.38    +2.12
+EURJPY   US_CLOSE  post +0->+60           gotobi   SELL   256 +5.63 +4.72    +2.40    1.83  2.13    +2.51
+EURJPY   TKY_FIX   post +5->+30           monthend SELL    80 +3.59 +2.45    +2.80    1.81  2.12    +2.79
+XAUUSD   LBMA_AM   pre -15->+0            all      SELL  1700 +3.64 +6.76    +0.66    1.81  1.51    +0.34
+EURUSD   US_CLOSE  post +0->+60           gotobi   SELL   263 +4.95 +4.60    +1.00    1.81  1.85    +1.11
+CHFJPY   TKY_FIX   post +0->+5            gotobi   SELL   471 +4.18 +8.18    +1.56    1.80  1.16    +0.34
+EURJPY   TKY_FIX   post +0->+15           monthend SELL    80 +3.09 +2.32    +2.69    1.79  2.06    +2.64
+CHFJPY   TKY_FIX   post +0->+30           gotobi   SELL   471 +5.07 +5.30    +2.86    1.78  1.60    +1.99
+NZDCHF   TKY_FIX   pre -5->+0             monthend SELL    80 +4.14 +5.80    +0.43    1.75  4.19    +1.74
+GBPUSD   US_CLOSE  post +0->+60           all      SELL  1345 +15.31 +8.75    +1.15    1.70  2.53    +2.34
+NZDCHF   TKY_FIX   pre -30->+0            monthend SELL    80 +3.54 +4.13    +0.57    1.62  2.45    +1.56
+GBPNZD   TKY_FIX   pre -5->+0             monthend BUY     80 +8.29 +4.83    +1.11    1.61  4.98    +4.91
+GBPJPY   CNY_FIX   pre -30->+0            gotobi   SELL   471 +3.80 +4.06    +2.99    1.58  1.47    +2.26
+EURJPY   CNY_FIX   pre -30->+0            gotobi   SELL   471 +3.18 +4.15    +2.45    1.54  1.47    +1.91
+EURJPY   CNY_FIX   pre -15->+0            monthend SELL    80 +3.65 +2.17    +1.72    1.54  1.83    +1.76
+NZDCHF   TKY_FIX   cond fade 0->+60       monthend         78 +3.31 +2.49    +0.92    1.52  1.95    +1.69
+GBPNZD   TKY_FIX   pre -30->+0            monthend BUY     80 +6.63 +2.85    +1.86    1.48  2.99    +5.02
+CADCHF   LBMA_AM   post +0->+60           monthend BUY     80 +3.22 +2.20    +0.69    1.48  1.64    +1.12
+USDJPY   US_CLOSE  post +0->+60           gotobi   SELL   261 +3.01 +2.98    +1.16    1.43  1.29    +0.74
+USDCAD   US_CLOSE  post +0->+60           gotobi   SELL   265 +3.47 +4.29    +0.74    1.41  1.38    +0.80
+XAUUSD   LBMA_AM   pre -5->+0             gotobi   SELL   465 +3.57 +3.32    +0.22    1.38  1.26    +0.12
+EURUSD   US_CLOSE  post +0->+60           all      SELL  1347 +10.46 +6.14    +0.45    1.27  1.49    +0.75
+GBPJPY   CNY_FIX   pre -15->+0            gotobi   SELL   471 +3.35 +3.34    +1.02    1.26  1.14    +0.51
+CADJPY   CNY_FIX   pre -30->+0            gotobi   SELL   471 +4.69 +4.53    +0.79    1.23  1.26    +0.83
+CADJPY   TKY_FIX   post +0->+15           gotobi   SELL   471 +3.15 +5.43    +0.54    1.20  0.99    -0.02
+AUDJPY   CNY_FIX   pre -30->+0            gotobi   SELL   471 +4.21 +3.15    +0.76    1.19  1.27    +0.97
+CADJPY   TKY_FIX   post +0->+30           gotobi   SELL   471 +4.30 +4.59    +0.61    1.19  1.19    +0.60
+USDCAD   TKY_FIX   post +0->+5            monthend SELL    80 +3.90 +3.66    +0.11    1.12  1.38    +0.39
+NZDUSD   TKY_FIX   post +0->+5            monthend BUY     80 +3.05 +4.33    +0.08    1.12  1.47    +0.42
+GBPJPY   TKY_FIX   post +5->+30           gotobi   SELL   471 +3.62 +2.55    +0.51    1.11  1.14    +0.58
+GBPNZD   TKY_FIX   post +0->+5            monthend SELL    80 +3.67 +3.72    +0.25    1.10  1.53    +1.13
+
+== KEPT results on FAKE event times (what luck gives) ==
+
+== SHOCK: after a big M5 bar (|close - open| >= 3 ATR), fade or follow; first half picks the side ==
+sym       side   hold  n     first-half t  second-half t  net2/trade  PF2   KEPT
+AUDCHF   fade      6   860   +3.21         -0.22          -1.09    0.71  
+AUDNZD   fade      1   724   +3.58         +1.29          -1.26    0.56  
+AUDNZD   fade      3   724   +3.79         +0.77          -1.34    0.64  
+EURCHF   fade      1  1145   +3.49         +0.74          -1.67    0.37  
+GBPNZD   fade      1   729   +3.08         +0.99          -2.21    0.65  
+NZDCHF   fade      1   760   +3.48         -0.58          -1.61    0.33  
+NZDCHF   fade      3   760   +3.99         -0.42          -1.60    0.48  
+NZDCHF   fade      6   760   +3.74         -0.15          -1.50    0.58  
+SHOCK: 0 kept of 180 tests
+
+done in 165 s
