@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/runner/work/fizy-bot/fizy-bot/research/ml_m5.py", line 25, in <module>
+    from sklearn.ensemble import HistGradientBoostingClassifier
+ModuleNotFoundError: No module named 'sklearn'
