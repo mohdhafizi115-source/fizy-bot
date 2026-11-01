@@ -11,7 +11,8 @@ the market (fixings, opens, closes, option cuts). This scans every such time for
   days    all days, Gotobi days, month-end (last business day)
 Honest selection: direction and window chosen on the first half only (t >= 3); a result is KEPT only if the
 second half also has t >= 2 and PF > 1.1 after spread. The same scan on fake event times (each event shifted by
-+2h17m) shows how many KEPT results luck alone produces.
++2h15m) shows how many KEPT results luck alone produces. Trades that enter or exit between 23:45 and 01:30 server
+time are dropped: around the daily rollover the bid is distorted by very wide spreads (a data artefact, not an edge).
 Also: SHOCK = fade / follow a big M5 bar (|close-open| >= 3 ATR(14)), exit after 1, 3 or 6 bars.
 Entry and exit at M5 bar opens; cost = the entry bar's spread (MT5 export), once per trade.
 """
@@ -28,7 +29,7 @@ EVENTS = [("TKY_FIX", "Asia/Tokyo", 595), ("TKY_OPEN", "Asia/Tokyo", 540), ("CNY
           ("LBMA_AM", "Europe/London", 630), ("LBMA_PM", "Europe/London", 900), ("WMR_FIX", "Europe/London", 960),
           ("US_DATA", "America/New_York", 510), ("US_OPEN", "America/New_York", 570), ("NY_CUT", "America/New_York", 600),
           ("COMEX_CL", "America/New_York", 810), ("US_CLOSE", "America/New_York", 960)]
-FAKE_SHIFT = 137
+FAKE_SHIFT = 135                 # a multiple of 5 minutes, so the fake times fall on M5 bar opens
 WINDOWS = [("pre", -30, 0), ("pre", -15, 0), ("pre", -5, 0), ("post", 0, 5), ("post", 0, 15), ("post", 0, 30), ("post", 0, 60),
            ("post", 5, 30)]
 COND = [5, 15, 30, 60]
@@ -66,10 +67,13 @@ def scan(D, shift=0):
             loc = d.index.tz_convert(tz)
             hm = (loc.hour * 60 + loc.minute).values
             dates = np.array(loc.date)
+            srv = d.index.tz_convert("Europe/Athens"); shm = (srv.hour * 60 + srv.minute).values
+            roll = (shm >= 1425) | (shm < 90)
             need = sorted({(m0 + a) % 1440 for _, a, b in WINDOWS} | {(m0 + b) % 1440 for _, a, b in WINDOWS} | {(m0 + c) % 1440 for c in COND} | {(m0 - 30) % 1440})
             px, sp = {}, {}
             for m in need:
                 k = hm == m
+                k = k & ~roll
                 ser = pd.Series(d.o.values[k], index=dates[k]); ser = ser[~ser.index.duplicated()]
                 sps = pd.Series(d.s.values[k], index=dates[k]); sps = sps[~sps.index.duplicated()]
                 px[m], sp[m] = ser, sps
@@ -106,9 +110,10 @@ def scan(D, shift=0):
                         n2 = g2 - Y.sp.values[~first]
                         t2 = FL.tstat(g2); p2 = FL.pf(n2)
                         nall = side * Y.g.values - Y.sp.values
+                        yr = pd.Series(nall, index=pd.to_datetime(list(Y.index)).year).groupby(level=0).sum()
                         res.append(dict(sym=s, ev=ev, kind=kind, a=a, b=b, days=dt, side=side, n=len(Y), t1=t1, t2=t2,
                                         net2=n2.mean() / pip, pf2=p2, pf=FL.pf(nall), netall=nall.mean() / pip,
-                                        kept=(t2 >= 2 and p2 > 1.1)))
+                                        yrs=f"{int((yr > 0).sum())}/{len(yr)}", kept=(t2 >= 2 and p2 > 1.1)))
     return res
 
 
@@ -165,12 +170,12 @@ def main():
     nk_r = sum(r["kept"] for r in real); nk_f = sum(r["kept"] for r in fake)
     say(f"\nfirst-half hits (t >= 3): real {len(real)}, fake {len(fake)}; KEPT on the second half: real {nk_r}, fake {nk_f}")
     say("\n== KEPT results (real events), best first ==")
-    say("sym      event     window          days      side  n     t1     t2    net2/trade  PF2   PF all  net all")
+    say("sym      event     window                 days     side  n     t1     t2    net2/trade  PF2   PF all  net all  years+")
     for r in sorted([r for r in real if r["kept"]], key=lambda r: -r["pf2"]):
         w = (f"cond follow 0->+{r['b']}" if r["side"] == 1 else f"cond fade 0->+{r['b']}") if r["kind"] == "cond" else f"{r['kind']} {r['a']:+d}->{r['b']:+d}"
         side = "" if r["kind"] == "cond" else ("BUY " if r["side"] == 1 else "SELL")
         say(f"{r['sym']:8s} {r['ev']:9s} {w:22s} {r['days']:8s} {side:4s} {r['n']:5d} {r['t1']:+5.2f} {r['t2']:+5.2f} {r['net2']:+8.2f}   "
-            f"{FL.f2(r['pf2'])} {FL.f2(r['pf'])} {r['netall']:+8.2f}")
+            f"{FL.f2(r['pf2'])} {FL.f2(r['pf'])} {r['netall']:+8.2f}  {r['yrs']}")
     say("\n== KEPT results on FAKE event times (what luck gives) ==")
     for r in sorted([r for r in fake if r["kept"]], key=lambda r: -r["pf2"])[:40]:
         say(f"  {r['sym']:8s} {r['ev']}+{FAKE_SHIFT}m {r['kind']} {r['a']:+d}->{r['b']:+d} {r['days']} side {r['side']:+d} n {r['n']} "
