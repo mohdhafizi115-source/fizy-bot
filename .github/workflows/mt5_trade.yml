@@ -3,7 +3,7 @@ name: MT5 auto trader
 # One trading shift (about 5h40m) of the FizyLB EA (London breakout on gold, NR7 D1 on XAUUSD/USDJPY/AUDJPY,
 # Gotobi Tokyo-fix reversal on USDJPY/EURJPY/GBPJPY, gold before the LBMA auction) on a GitHub Windows runner. Shifts chain 24/7: each one dispatches the next; the scanner
 # loop restarts the chain when no shift is queued or running.
-# Switch: mt5_trade.txt line 1 "on" / "off", lines 2-5 the lots (London, NR7, Gotobi, gold auction). Demo accounts only (the EA refuses others).
+# Switch: mt5_trade.txt line 1 "on" / "off", lines 2-6 the lots (London, NR7, Gotobi, gold auction, month-end fix). Demo accounts only (the EA refuses others).
 on:
   workflow_dispatch:
     inputs:
@@ -42,11 +42,13 @@ jobs:
           nlot=$(sed -n 3p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           glot=$(sed -n 4p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           alot=$(sed -n 5p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          mlot=$(sed -n 6p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
           echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "nlot=${nlot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "glot=${glot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "alot=${alot:-0.01}" >> "$GITHUB_OUTPUT"
+          echo "mlot=${mlot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, NR7 lot ${nlot:-0.01}, Gotobi lot ${glot:-0.01}, gold auction lot ${alot:-0.01}"
 
       - name: Install packages
@@ -62,6 +64,7 @@ jobs:
           NLOT: ${{ steps.sw.outputs.nlot }}
           GLOT: ${{ steps.sw.outputs.glot }}
           ALOT: ${{ steps.sw.outputs.alot }}
+          MLOT: ${{ steps.sw.outputs.mlot }}
         run: |
           $ErrorActionPreference = "Continue"
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
@@ -80,6 +83,7 @@ jobs:
           Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
           (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
           Copy-Item mt5\FizyCommon.mqh "$dir\MQL5\Experts\FizyCommon.mqh" -Force
+          (Get-Content mt5\FizyMEF.mqh) -replace '^input double InpMefLot\s*=.*;', "input double InpMefLot      = $env:MLOT;" | Set-Content "$dir\MQL5\Experts\FizyMEF.mqh" -Encoding utf8
           (Get-Content mt5\FizyGAU.mqh) -replace '^input double InpGauLot\s*=.*;', "input double InpGauLot       = $env:ALOT;" | Set-Content "$dir\MQL5\Experts\FizyGAU.mqh" -Encoding utf8
           Copy-Item mt5\FizySnap.mqh "$dir\MQL5\Experts\FizySnap.mqh" -Force
           (Get-Content mt5\FizyNR7.mqh) -replace '^input double InpNr7Lot\s*=.*;', "input double InpNr7Lot     = $env:NLOT;" | Set-Content "$dir\MQL5\Experts\FizyNR7.mqh" -Encoding utf8

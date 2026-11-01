@@ -21,7 +21,7 @@ if 25 <= _m <= 65:
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
 ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt")]
-STATUS_KINDS = ("| STARTED |", "| NR7 ONLINE |", "| GOTOBI ONLINE |", "| AUCTION ONLINE |")
+STATUS_KINDS = ("| STARTED |", "| NR7 ONLINE |", "| GOTOBI ONLINE |", "| MONTHEND ONLINE |", "| AUCTION ONLINE |")
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -36,6 +36,7 @@ def send(line):
     when, kind, rest = parts[0], parts[1] if len(parts) > 1 else "", parts[2:]
     title = TITLES.get(kind, kind)
     head = ("NR7 BREAKOUT D1 (demo)" if kind.startswith("NR7") else "GOTOBI TOKYO FIX (demo)" if kind.startswith("GOTOBI")
+            else "MONTH-END TOKYO FIX (demo)" if kind.startswith("MONTHEND")
             else "GOLD AUCTION SCALP (demo)" if kind.startswith("AUCTION") else "LONDON BREAKOUT XAUUSD (demo)")
     body = "\n".join(rest)
     msg = (f"FIZY BOT | {head} - {title}\n=============================\n{body}\n"
@@ -77,7 +78,8 @@ def send_status(lines):
     body = []
     for l in lines:
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]
-        lab = ("London breakout: " if "STARTED" in p[1] else "NR7 D1: " if "NR7" in p[1] else "Gotobi: " if "GOTOBI" in p[1] else "Gold auction: ")
+        lab = ("London breakout: " if "STARTED" in p[1] else "NR7 D1: " if "NR7" in p[1] else "Gotobi: " if "GOTOBI" in p[1]
+               else "Month-end fix: " if "MONTHEND" in p[1] else "Gold auction: ")
         body.append(lab + " | ".join(p[2:]))
     msg = ("FIZY BOT | AUTO TRADE (demo) - BOT ONLINE (daily status)\n=============================\n" + "\n".join(body) +
            f"\n=============================\nBroker time: {lines[0].split('|')[0].strip()}")
@@ -102,7 +104,7 @@ while time.time() - t0 < a.minutes * 60:
                 continue
             send(l)
         sent[path] = len(lines)
-    if not status_done and (len(status_lines) >= 4 or (status_lines and time.time() - t0 > 120)):
+    if not status_done and (len(status_lines) >= 5 or (status_lines and time.time() - t0 > 120)):
         send_status(status_lines); status_done = True
     st = read_lines(st_path)
     if st:

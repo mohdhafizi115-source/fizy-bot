@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.40"
+#property version "1.50"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -40,6 +40,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyCommon.mqh"              // symbol names, prices, London time; closes anything the removed RSI2 module left
 #include "FizyNR7.mqh"                 // D1 NR7 breakout on XAUUSD, USDJPY, AUDJPY
 #include "FizyGTB.mqh"                 // Gotobi / month-end Tokyo-fix reversal on USDJPY, EURJPY, GBPJPY (09:55 -> 10:15 JST)
+#include "FizyMEF.mqh"                 // month-end Tokyo fix on crosses (CADCHF, NZDCHF sell; USDCAD, GBPNZD buy; 09:40 -> 09:55 JST)
 #include "FizyGAU.mqh"                 // gold before the LBMA AM auction (sell 10:15 -> 10:30 London)
 
 //--- helpers -------------------------------------------------------
@@ -299,6 +300,7 @@ void OnTimer()
                          TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)) + Img(fn));
    }
    GtbOnTimer();                                                            // first: the timed entries
+   MefOnTimer();
    GauOnTimer();
    Nr7OnTimer();
    CloseLeftovers();
