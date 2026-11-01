@@ -1,1 +1,1 @@
-reset 2026-11-02 (new message format)
+2026.11.01
