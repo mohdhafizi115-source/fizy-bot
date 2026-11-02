@@ -1,0 +1,56 @@
+  XAUUSD  done,     2 s
+  EURUSD  done,     3 s
+  GBPUSD  done,     5 s
+  USDJPY  done,     6 s
+  AUDUSD  done,     8 s
+  USDCAD  done,     9 s
+  USDCHF  done,    11 s
+  NZDUSD  done,    12 s
+  EURJPY  done,    14 s
+  GBPJPY  done,    15 s
+  EURGBP  done,    17 s
+  BTCUSD  done,    19 s
+
+== All 12 instruments together (R after spread) ==
+tf   rule       trades /sym/day  win%    PF  half1 half2 stress  syms PF>1  pass
+M5   QM_2R       62902    2.93  29.6  0.28  0.20  0.41  0.18   0/12    0
+M5   QM_BOS      58563    2.73  22.3  0.35  0.26  0.50  0.25   0/12    0
+M5   QM_CONF     43291    2.02  33.8  0.46  0.36  0.62  0.34   0/12    0
+M5   FAKE_2R     58612    2.73  28.6  0.26  0.19  0.40  0.17   0/12    0
+M5   RAND        55379    2.58  33.2  0.48  0.35  0.70  0.36   0/12    0
+M15  QM_2R       23557    1.10  31.3  0.43  0.34  0.57  0.32   0/12    0
+M15  QM_BOS      21602    1.01  24.1  0.49  0.40  0.63  0.38   0/12    0
+M15  QM_CONF     16600    0.77  35.6  0.64  0.56  0.75  0.53   0/12    0
+M15  FAKE_2R     21962    1.02  30.8  0.41  0.33  0.55  0.31   0/12    0
+M15  RAND        21147    0.99  35.1  0.69  0.59  0.81  0.58   0/12    0
+H1   QM_2R        6363    0.30  30.7  0.61  0.54  0.69  0.52   0/12    0
+H1   QM_BOS       5921    0.28  22.3  0.63  0.57  0.70  0.54   0/12    0
+H1   QM_CONF      4353    0.20  35.2  0.78  0.68  0.91  0.70   1/12    0
+H1   FAKE_2R      5929    0.28  31.7  0.64  0.54  0.77  0.54   0/12    0
+H1   RAND         5587    0.26  33.3  0.84  0.79  0.89  0.77   1/12    0
+
+== Gold (XAUUSD) ==
+  M5  QM_2R     5565 trades (3.27/day) win 31.8% PF  0.66 halves  0.64  0.68 net $-1405/0.01 lot
+  M5  QM_BOS    5227 trades (3.07/day) win 22.8% PF  0.67 halves  0.69  0.65 net $-1865/0.01 lot
+  M5  QM_CONF   3811 trades (2.24/day) win 35.2% PF  0.81 halves  0.82  0.81 net $-1026/0.01 lot
+  M5  FAKE_2R   5251 trades (3.08/day) win 30.9% PF  0.64 halves  0.60  0.68 net $-1163/0.01 lot
+  M5  RAND      4844 trades (2.84/day) win 35.3% PF  0.88 halves  0.81  0.97 net $-415/0.01 lot
+  M15 QM_2R     1965 trades (1.15/day) win 31.2% PF  0.69 halves  0.72  0.66 net $-819/0.01 lot
+  M15 QM_BOS    1805 trades (1.06/day) win 23.9% PF  0.78 halves  0.84  0.71 net $-826/0.01 lot
+  M15 QM_CONF   1366 trades (0.80/day) win 34.7% PF  0.82 halves  0.82  0.81 net $-320/0.01 lot
+  M15 FAKE_2R   1836 trades (1.08/day) win 30.6% PF  0.66 halves  0.68  0.65 net $-1302/0.01 lot
+  M15 RAND      1767 trades (1.04/day) win 37.9% PF  0.96 halves  0.94  0.98 net $-172/0.01 lot
+  H1  QM_2R      507 trades (0.30/day) win 30.2% PF  0.78 halves  0.76  0.81 net $+4/0.01 lot
+  H1  QM_BOS     469 trades (0.28/day) win 20.9% PF  0.73 halves  0.74  0.73 net $-416/0.01 lot
+  H1  QM_CONF    332 trades (0.19/day) win 36.4% PF  0.98 halves  0.92  1.03 net $+367/0.01 lot
+  H1  FAKE_2R    458 trades (0.27/day) win 34.5% PF  0.93 halves  1.06  0.83 net $+287/0.01 lot
+  H1  RAND       450 trades (0.26/day) win 33.6% PF  0.94 halves  0.97  0.91 net $-176/0.01 lot
+
+== Per instrument PF (R), QM_2R / QM_BOS / QM_CONF / FAKE_2R / RAND ==
+  M5: XAUUSD 0.66/0.67/0.81/0.64/0.88 | EURUSD 0.50/0.59/0.72/0.48/0.76 | GBPUSD 0.55/0.63/0.78/0.51/0.80 | USDJPY 0.45/0.53/0.65/0.42/0.68 | AUDUSD 0.38/0.45/0.60/0.36/0.64 | USDCAD 0.35/0.44/0.53/0.33/0.64 | USDCHF 0.34/0.43/0.58/0.32/0.61 | NZDUSD 0.32/0.42/0.58/0.29/0.60 | EURJPY 0.48/0.57/0.66/0.47/0.79 | GBPJPY 0.52/0.60/0.70/0.47/0.74 | EURGBP 0.20/0.33/0.40/0.20/0.46 | BTCUSD 0.05/0.07/0.11/0.05/0.11
+  M15: XAUUSD 0.69/0.78/0.82/0.66/0.96 | EURUSD 0.57/0.63/0.86/0.63/0.78 | GBPUSD 0.66/0.70/0.94/0.62/0.89 | USDJPY 0.54/0.61/0.80/0.60/0.77 | AUDUSD 0.59/0.65/0.72/0.54/0.74 | USDCAD 0.55/0.63/0.76/0.50/0.92 | USDCHF 0.48/0.60/0.70/0.49/0.69 | NZDUSD 0.47/0.61/0.67/0.46/0.69 | EURJPY 0.63/0.62/0.79/0.60/0.85 | GBPJPY 0.62/0.67/0.83/0.58/0.92 | EURGBP 0.41/0.54/0.64/0.34/0.58 | BTCUSD 0.10/0.11/0.21/0.11/0.27
+  H1: XAUUSD 0.78/0.73/0.98/0.93/0.94 | EURUSD 0.61/0.67/0.81/0.70/0.98 | GBPUSD 0.75/0.76/0.79/0.76/0.78 | USDJPY 0.76/0.67/1.01/0.80/0.99 | AUDUSD 0.63/0.62/0.81/0.65/0.87 | USDCAD 0.60/0.64/0.94/0.82/0.78 | USDCHF 0.63/0.66/0.89/0.70/0.94 | NZDUSD 0.63/0.65/0.70/0.61/0.88 | EURJPY 0.75/0.65/0.98/0.69/1.05 | GBPJPY 0.74/0.83/0.91/0.90/0.82 | EURGBP 0.61/0.70/0.73/0.53/0.81 | BTCUSD 0.29/0.34/0.42/0.26/0.50
+
+== Passed ==
+  0 QM passes (incl. beating the fake twin) of 108; FAKE_2R passed the base rule 0, RAND 0 of 36
+done in 27 s
