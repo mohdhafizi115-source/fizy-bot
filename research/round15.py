@@ -147,7 +147,7 @@ def gold_flows(path, point, unit=1.0):
                 if ta < 0 or tb >= 1440:
                     continue
                 I = no_roll(FL.window_trades(d, tz, ta, tb, side=1), tz, ta, tb)
-                I = I[I.index.dayofweek < 5] if len(I) else I
+                I = I[I.index.day_of_week < 5] if len(I) else I
                 if len(I) < 200:
                     continue
                 first = I.index < I.index[len(I) // 2]
