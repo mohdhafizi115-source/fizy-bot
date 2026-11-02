@@ -1,0 +1,60 @@
+  XAUUSD  done,    10 s
+  EURUSD  done,    20 s
+  GBPUSD  done,    29 s
+  USDJPY  done,    39 s
+  AUDUSD  done,    49 s
+  USDCAD  done,    59 s
+  USDCHF  done,    68 s
+  NZDUSD  done,    78 s
+  EURJPY  done,    87 s
+  GBPJPY  done,    97 s
+  EURGBP  done,   106 s
+  BTCUSD  done,   120 s
+
+== All 12 instruments together (R units after spread) ==
+rule        trades /sym/day  win%    PF  half1 half2 stress  syms PF>1  pass
+MOMO         85318    3.98  39.7  0.71  0.58  0.87  0.60   0/12    0
+EMA_RSI      31572    1.47  23.8  0.48  0.37  0.69  0.37   0/12    0
+EMA_BB       13869    0.65  25.3  0.34  0.24  0.55  0.24   0/12    0
+DUCKS        23411    1.09  36.6  0.71  0.60  0.86  0.61   0/12    0
+WPR         176141    8.22  49.1  0.54  0.41  0.73  0.41   0/12    0
+WPR_TREND    88592    4.13  48.9  0.52  0.39  0.74  0.40   0/12    0
+CCI          61239    2.86  28.2  0.22  0.14  0.39  0.13   0/12    0
+STOCH533    206108    9.61  42.4  0.23  0.16  0.36  0.13   0/12    0
+RIBBON       24767    1.16  33.8  0.12  0.05  0.72  0.08   0/12    0
+EMA9_21     218076   10.17  32.8  0.43  0.32  0.62  0.31   0/12    0
+ADX_RIB      52876    2.47  27.1  0.63  0.53  0.79  0.52   0/12    0
+RAND         61479    2.87  47.1  0.34  0.24  0.54  0.22   0/12    0
+
+== Per instrument PF (R after spread) ==
+sym         MOMO  EMA_RSI   EMA_BB    DUCKS      WPR WPR_TREN      CCI STOCH533   RIBBON  EMA9_21  ADX_RIB     RAND
+XAUUSD      0.89     0.95     0.79     0.97     0.90     0.92     0.69     0.70     0.89     0.84     0.91     0.82
+EURUSD      0.96     0.73     0.66     0.87     0.80     0.78     0.54     0.48     0.74     0.73     0.83     0.63
+GBPUSD      0.94     0.85     0.72     0.89     0.83     0.82     0.58     0.59     0.72     0.79     0.90     0.71
+USDJPY      0.90     0.80     0.50     0.88     0.70     0.73     0.40     0.37     0.84     0.66     0.87     0.55
+AUDUSD      0.89     0.61     0.45     0.79     0.70     0.69     0.31     0.29     0.63     0.56     0.70     0.46
+USDCAD      0.84     0.68     0.52     0.81     0.71     0.69     0.36     0.29     0.55     0.60     0.74     0.48
+USDCHF      0.76     0.67     0.48     0.83     0.68     0.70     0.32     0.29     0.67     0.58     0.74     0.47
+NZDUSD      0.81     0.53     0.40     0.73     0.64     0.59     0.23     0.20     0.52     0.48     0.70     0.36
+EURJPY      0.89     0.74     0.53     0.89     0.76     0.79     0.46     0.46     0.83     0.69     0.87     0.65
+GBPJPY      0.84     0.74     0.66     0.92     0.75     0.75     0.50     0.49     0.75     0.72     0.96     0.66
+EURGBP      0.74     0.53     0.32     0.70     0.50     0.47     0.20     0.14     0.43     0.42     0.61     0.28
+BTCUSD      0.33     0.14     0.07     0.29     0.13     0.12     0.03     0.04     0.07     0.09     0.24     0.06
+
+== Gold (XAUUSD) per rule: trades a day, net $ per 0.01 lot ==
+  MOMO       10.01/day  PF  0.89  net $   -3215
+  EMA_RSI     1.47/day  PF  0.95  net $    -309
+  EMA_BB      0.69/day  PF  0.79  net $    -274
+  DUCKS       1.18/day  PF  0.97  net $    +113
+  WPR         8.23/day  PF  0.90  net $   -2369
+  WPR_TREND   4.11/day  PF  0.92  net $    -231
+  CCI         2.87/day  PF  0.69  net $    -978
+  STOCH533    9.04/day  PF  0.70  net $   -3401
+  RIBBON      2.07/day  PF  0.89  net $    -646
+  EMA9_21    10.54/day  PF  0.84  net $   -3738
+  ADX_RIB     2.48/day  PF  0.91  net $    -876
+  RAND        2.89/day  PF  0.82  net $    -673
+
+== Passed (instrument x rule) ==
+  0 rule passes of 132; RAND passed on 0 of 12 instruments
+done in 136 s
