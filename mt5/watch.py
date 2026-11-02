@@ -1,4 +1,4 @@
-"""Runs next to the FizyLB EA (London breakout, NR7, Gotobi, month-end fix, gold auction, volatility breakout, S/R zone alerts) on the
+"""Runs next to the FizyLB EA (London breakout, NR7, Gotobi, month-end fix, gold auction, volatility breakout, USDJPY day trades, S/R zone alerts) on the
 GitHub Windows runner: forwards the EA events (MQL5/Files/*_events.txt) to Telegram, one readable block per item, until the time budget
 of this shift is used up (the EA trades 24/7, so the shift never stops early). Writes
 mt5_shift.txt (server time) for the next-shift step. Never prints account numbers, balances or
@@ -21,8 +21,8 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt")]
-STATUS_KINDS = ("| STARTED |", "| NR7 ONLINE |", "| GOTOBI ONLINE |", "| MONTHEND ONLINE |", "| AUCTION ONLINE |", "| VOLBO ONLINE |", "| SR ONLINE |")
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt")]
+STATUS_KINDS = ("| STARTED |", "| NR7 ONLINE |", "| GOTOBI ONLINE |", "| MONTHEND ONLINE |", "| AUCTION ONLINE |", "| VOLBO ONLINE |", "| PDHL ONLINE |", "| NYCONT ONLINE |", "| SR ONLINE |")
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -34,6 +34,7 @@ LINE = "━━━━━━━━━━━━━━━━━━"
 MODS = [  # kind prefix, emoji, title
     ("NR7", "📊", "NR7 BREAKOUT D1"), ("GOTOBI", "🇯🇵", "GOTOBI TOKYO FIX"), ("MONTHEND", "📅", "MONTH-END TOKYO FIX"),
     ("AUCTION", "🏦", "GOLD AUCTION SCALP · XAUUSD"), ("VOLBO", "⚡", "VOLATILITY BREAKOUT · day trade"),
+    ("PDHL", "📏", "PREVIOUS-DAY BREAKOUT · USDJPY"), ("NYCONT", "🗽", "NEW YORK CONTINUATION · USDJPY"),
     ("SR ", "🧱", "S/R ZONES · XAUUSD M15 · alerts only"),
 ]
 BULLETS = (("Idea ", "💡 "), ("If an M15 bar closes", "↩️ "), ("Not a tested edge", "⚠️ "), ("Bias:", "🧭 "),
@@ -164,6 +165,14 @@ def status_block(kind, text):
         return ["🏦 GOLD AUCTION SCALP · XAUUSD",
                 f"▫️ SELL 10:15 → close 10:30 London ({myt('10:15', 'Europe/London')} → {myt('10:30', 'Europe/London')} MYT)",
                 f"▫️ Every trading day · Lot {lot} · open {opened}"]
+    if kind == "PDHL ONLINE":
+        return ["📏 PREVIOUS-DAY BREAKOUT · USDJPY",
+                f"▫️ From 02:00 broker ({myt('02:00', 'Europe/Athens')} MYT): stops at yesterday's high / low, TP 2R",
+                f"▫️ Close 22:30 broker ({myt('22:30', 'Europe/Athens')} MYT) · Lot {lot}"]
+    if kind == "NYCONT ONLINE":
+        return ["🗽 NEW YORK CONTINUATION · USDJPY",
+                f"▫️ 15:30 broker ({myt('15:30', 'Europe/Athens')} MYT): follow the 09:00-15:30 move",
+                f"▫️ Close 22:00 broker ({myt('22:00', 'Europe/Athens')} MYT) · Lot {lot} · open {opened}"]
     if kind == "SR ONLINE":
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",
                 f"▫️ Zone map at 01:30, 08:00, 15:00 broker ({myt('01:30', 'Europe/Athens')}, {myt('08:00', 'Europe/Athens')}, "
@@ -182,7 +191,7 @@ def send_status(lines):
     day = lines[0].split("|")[0].strip().split(" ")[0]
     if online_sent_today(day):
         print("status message already sent today", flush=True); return
-    order = {k: i for i, k in enumerate(("STARTED", "NR7 ONLINE", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "VOLBO ONLINE", "SR ONLINE"))}
+    order = {k: i for i, k in enumerate(("STARTED", "NR7 ONLINE", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "VOLBO ONLINE", "PDHL ONLINE", "NYCONT ONLINE", "SR ONLINE"))}
     blocks = []
     for l in sorted(lines, key=lambda x: order.get(x.split("|")[1].strip(), 99)):
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]

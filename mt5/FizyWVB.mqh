@@ -1,16 +1,17 @@
 //+------------------------------------------------------------------+
 //| FizyWVB.mqh - Larry Williams volatility breakout, day trade, demo  |
 //| only, included by FizyLB.mq5. Rules (research/daytrade.py,        |
-//| JustMarkets 2020-2026, k = 0.7: USDJPY PF 1.27, XAUUSD 1.19,      |
-//| EURJPY 1.18, GBPJPY 1.17, both halves > 1.05):                    |
-//|   at 01:30 server time place OCO stops at today's open +- 0.7 x   |
+//| JustMarkets 2020-2026; from 2 Nov k = 0.5 on the JPY pairs, more  |
+//| trades, USDJPY PF 1.24, EURJPY 1.25, GBPJPY 1.17; k = 0.7 on gold,|
+//| PF 1.19; all halves >= 1.05):                                     |
+//|   at 01:30 server time place OCO stops at today's open +- k x     |
 //|   yesterday's range (BUY STOP above, SELL STOP below), SL at       |
 //|   today's open, no TP. Orders stay until 20:00 server; a filled    |
 //|   trade closes at 22:30 server. Skip the day if the price is       |
 //|   already beyond a level when the orders would be placed.          |
 //| Events go to MQL5\Files\wvb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input string InpWvbSymbols  = "USDJPY,EURJPY,GBPJPY,XAUUSD";
+input string InpWvbSymbols  = "USDJPY:0.5,EURJPY:0.5,GBPJPY:0.5,XAUUSD:0.7";   // symbol:k (k missing = InpWvbK)
 input bool   InpWvbOn       = true;
 input double InpWvbLot      = 0.01;
 input long   InpWvbMagic    = 260314;
@@ -20,6 +21,7 @@ input int    InpWvbOrderEnd = 1200;    // 20:00 server: unfilled orders deleted
 input int    InpWvbCloseMin = 1350;    // 22:30 server: positions closed
 
 string   wv_sym[];
+double   wv_k[];
 datetime wv_day[];
 ulong    wv_known[];
 bool     wv_ready = false;
@@ -90,11 +92,15 @@ void WvbInit()
    {
       string b = parts[i]; StringTrimLeft(b); StringTrimRight(b);
       if(b == "") continue;
+      double kk = InpWvbK;
+      int c = StringFind(b, ":");
+      if(c > 0) { kk = StringToDouble(StringSubstr(b, c + 1)); b = StringSubstr(b, 0, c); }
+      if(kk <= 0) kk = InpWvbK;
       string s = SymResolve(b);
       if(s == "") { missing += (missing == "" ? "" : ", ") + b; continue; }
       SymbolSelect(s, true);
-      int k = ArraySize(wv_sym); ArrayResize(wv_sym, k + 1); ArrayResize(wv_day, k + 1);
-      wv_sym[k] = s; wv_day[k] = 0; names += (names == "" ? "" : ", ") + s;
+      int k = ArraySize(wv_sym); ArrayResize(wv_sym, k + 1); ArrayResize(wv_day, k + 1); ArrayResize(wv_k, k + 1);
+      wv_sym[k] = s; wv_day[k] = 0; wv_k[k] = kk; names += (names == "" ? "" : ", ") + s + StringFormat(" (k %.1f)", kk);
    }
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
@@ -102,8 +108,8 @@ void WvbInit()
       if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpWvbMagic) { int m = ArraySize(wv_known); ArrayResize(wv_known, m + 1); wv_known[m] = t; }
    }
    wv_ready = true;
-   WvbEvent(StringFormat("VOLBO ONLINE | %s: day trade, at 01:30 server OCO stops at today's open +- %.1f x yesterday's range, SL at the open, "
-                         "orders until 20:00, close 22:30 server, lot %.2f | %d open position(s)%s", names, InpWvbK, InpWvbLot,
+   WvbEvent(StringFormat("VOLBO ONLINE | %s: day trade, at 01:30 server OCO stops at today's open +- k x yesterday's range, SL at the open, "
+                         "orders until 20:00, close 22:30 server, lot %.2f | %d open position(s)%s", names, InpWvbLot,
                          ArraySize(wv_known), missing == "" ? "" : " | not found: " + missing));
 }
 
@@ -191,7 +197,7 @@ void WvbOnTimer()
       double O = iOpen(s, PERIOD_D1, 0), ph = iHigh(s, PERIOD_D1, 1), pl = iLow(s, PERIOD_D1, 1);
       double th = iHigh(s, PERIOD_D1, 0), tl = iLow(s, PERIOD_D1, 0);
       if(O <= 0 || ph <= pl) { wv_day[k] = 0; continue; }                     // history not loaded yet: retry
-      double rg = ph - pl, up = O + InpWvbK * rg, dn = O - InpWvbK * rg;
+      double rg = ph - pl, up = O + wv_k[k] * rg, dn = O - wv_k[k] * rg;
       int dg = (int)SymbolInfoInteger(s, SYMBOL_DIGITS);
       up = NormalizeDouble(up, dg); dn = NormalizeDouble(dn, dg); O = NormalizeDouble(O, dg);
       if(th >= up || tl <= dn || tk.ask >= up || tk.bid <= dn)
@@ -209,9 +215,9 @@ void WvbOnTimer()
       double lv[3]; color lc[3]; string lb[3];
       lv[0] = up; lc[0] = clrSeaGreen; lb[0] = "BUY STOP"; lv[1] = O; lc[1] = clrGray; lb[1] = "open / SL"; lv[2] = dn; lc[2] = clrIndianRed; lb[2] = "SELL STOP";
       string fn = Snap(s, PERIOD_M15, "WV", lv, lc, lb, 0, 0, 0, 0, false);
-      WvbEvent(StringFormat("VOLBO ORDERS PLACED %s | today's open %s, yesterday's range %s | BUY STOP %s / SELL STOP %s, SL at the open, no TP, "
+      WvbEvent(StringFormat("VOLBO ORDERS PLACED %s | today's open %s, yesterday's range %s, k %.1f | BUY STOP %s / SELL STOP %s, SL at the open, no TP, "
                             "lot %.2f | OCO; unfilled at 20:00 server = deleted; a trade closes at 22:30 server%s",
-                            s, PriceStr(s, O), PriceStr(s, rg), PriceStr(s, up), PriceStr(s, dn), lot, res) + Img(fn));
+                            s, PriceStr(s, O), PriceStr(s, rg), wv_k[k], PriceStr(s, up), PriceStr(s, dn), lot, res) + Img(fn));
    }
 }
 //+------------------------------------------------------------------+
