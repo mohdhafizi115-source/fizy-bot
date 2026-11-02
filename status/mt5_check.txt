@@ -4,9 +4,9 @@ compile finished: True, ex5 exists: True
    : information: generating code 95%
    : information: generating code 100%
    : information: code generated
-  Result: 0 errors, 0 warnings, 394 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 507 ms elapsed, cpu='X64 Regular'
 FizyLB compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 1602 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 2807 ms elapsed, cpu='X64 Regular'
 servers.dat from the user's MT5 copied in (127344 bytes)
 secret shape: login digits only True, password has ; or # False, password has leading/trailing space False, server has spaces False
 servers.dat (127344 bytes) names: 
@@ -15,48 +15,50 @@ EA ran: yes, connected 1 after 2 s
 server JustMarkets-Demo6, demo 1, company Just Global Markets Ltd.
 algo trading: terminal 1, account 1, expert 1, program 1
 balance > 0: 1, currency USD, leverage 1:2000, margin mode 2
-XAUUSD.m: tick 1 bid 3875.68 ask 3875.94, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 100
-server time 2026.11.01 18:52:17, GMT 2026.11.01 16:52:17 (server offset +2 h)
+XAUUSD.m: tick 1 bid 3913.84 ask 3914.10, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 100
+server time 2026.11.02 07:38:44, GMT 2026.11.02 05:38:44 (server offset +2 h)
 terminal journal (network / account lines, last 30 other lines):
-  N OI	0	16:51:30.916	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 9V45 96-Core, AVX2, 13 / 15 Gb memory, 27 / 149 Gb disk, UAC, admin, GMT+0
-  N NS	0	16:52:11.895	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 9V45 96-Core, AVX2, 13 / 15 Gb memory, 26 / 149 Gb disk, UAC, admin, GMT+0
-  N QD	0	16:52:14.176	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  N RN	0	16:52:14.176	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.01 13:46:16
-  N HR	0	16:52:14.765	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
-  N OO	0	16:52:14.765	Network	'<num>': trading has been enabled, demo account - hedging mode
-  N OS	0	16:52:14.765	Network	'<num>': balance management has been disabled - demo account
-  N CK	0	16:52:15.927	Network	'<num>': scanning network for access points
-  N MF	0	16:52:18.927	Network	'<num>': disconnected from JustMarkets-Demo6
-  HP	0	16:51:30.884	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
-  PK	0	16:51:30.884	Terminal	453 files updated
-  EO	0	16:51:30.916	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
-  OI	0	16:51:30.916	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 9V45 96-Core, AVX2, 13 / 15 Gb memory, 27 / 149 Gb disk, UAC, admin, GMT+0
-  IR	0	16:51:30.916	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  MI	0	16:51:30.917	MCP	started on <ip>:<num>
-  DL	0	16:51:30.917	Compiler	full recompilation has been started
-  NI	0	16:52:11.878	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
-  GQ	0	16:52:11.895	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
-  NS	0	16:52:11.895	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 9V45 96-Core, AVX2, 13 / 15 Gb memory, 26 / 149 Gb disk, UAC, admin, GMT+0
-  KL	0	16:52:11.895	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  QM	0	16:52:11.895	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
-  EK	0	16:52:11.896	MCP	started on <ip>:<num>
-  LN	0	16:52:11.896	Compiler	full recompilation has been started
-  KK	0	16:52:12.310	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\JustMarkets-Demo6\history\USDCHF, last access time 2023.06.08 10:59
-  OE	0	16:52:13.108	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
-  QD	0	16:52:14.176	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  RN	0	16:52:14.176	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.01 13:46:16
-  HR	0	16:52:14.765	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 0 orders, 272 symbols, 0 spreads
-  OO	0	16:52:14.765	Network	'<num>': trading has been enabled, demo account - hedging mode
-  OS	0	16:52:14.765	Network	'<num>': balance management has been disabled - demo account
-  RK	0	16:52:15.018	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 0.99 ms via 'VPS Singapore 09' instead of <num>.00 ms
-  CK	0	16:52:15.927	Network	'<num>': scanning network for access points
-  LN	3	16:52:17.838	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
-  JL	0	16:52:17.853	Experts	expert CheckEA (XAUUSD.m,M15) removed
-  HH	0	16:52:17.946	Terminal	exit with code 0
-  MF	0	16:52:18.927	Network	'<num>': disconnected from JustMarkets-Demo6
-  DG	0	16:52:18.998	Terminal	stopped with 0
-  QF	0	16:52:19.111	Terminal	shutdown with 0
-snap test: compiled True, files: snap_TEST_XAUUSD_m_20261101_185229_187.png, snap_TEST_BTCUSD_m_20261101_185229_234.png
+  N NK	0	05:37:48.538	Terminal	Windows Server 2025 build <num>, 4 x INTEL XEON PLATINUM 8573C, AVX2, 13 / 15 Gb memory, 27 / 149 Gb disk, UAC, admin, GMT+0
+  N PP	0	05:38:38.467	Terminal	Windows Server 2025 build <num>, 4 x INTEL XEON PLATINUM 8573C, AVX2, 13 / 15 Gb memory, 26 / 149 Gb disk, UAC, admin, GMT+0
+  N FG	0	05:38:41.267	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  N PR	0	05:38:41.267	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.02 07:21:42
+  N EM	0	05:38:41.979	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 8 orders, 272 symbols, 0 spreads
+  N FL	0	05:38:41.979	Network	'<num>': trading has been enabled, demo account - hedging mode
+  N RS	0	05:38:41.979	Network	'<num>': balance management has been disabled - demo account
+  N MJ	0	05:38:42.495	Network	'<num>': scanning network for access points
+  N EG	2	05:38:44.774	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
+  N JE	0	05:38:45.533	Network	'<num>': disconnected from JustMarkets-Demo6
+  OP	0	05:37:48.473	Terminal	updating C:\Program Files\JustMarkets MetaTrader 5\MQL5 folder
+  GK	0	05:37:48.473	Terminal	453 files updated
+  RO	0	05:37:48.538	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  NK	0	05:37:48.538	Terminal	Windows Server 2025 build <num>, 4 x INTEL XEON PLATINUM 8573C, AVX2, 13 / 15 Gb memory, 27 / 149 Gb disk, UAC, admin, GMT+0
+  FR	0	05:37:48.538	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  DJ	0	05:37:48.540	MCP	started on <ip>:<num>
+  NL	0	05:37:48.541	Compiler	full recompilation has been started
+  HI	0	05:38:38.411	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
+  LF	0	05:38:38.466	Terminal	JustMarkets MetaTrader 5 x64 build 6295 started for Just Global Markets Ltd.
+  PP	0	05:38:38.467	Terminal	Windows Server 2025 build <num>, 4 x INTEL XEON PLATINUM 8573C, AVX2, 13 / 15 Gb memory, 26 / 149 Gb disk, UAC, admin, GMT+0
+  OK	0	05:38:38.467	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  ML	0	05:38:38.467	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
+  ND	0	05:38:38.469	MCP	started on <ip>:<num>
+  CO	0	05:38:38.469	Compiler	full recompilation has been started
+  FJ	0	05:38:38.582	HistoryCenter	delete old files from C:\Program Files\JustMarkets MetaTrader 5\bases\JustMarkets-Demo6\history\USDCHF, last access time 2023.06.08 10:59
+  OR	0	05:38:39.971	Experts	expert CheckEA (XAUUSD.m,M15) loaded successfully
+  FG	0	05:38:41.267	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  PR	0	05:38:41.267	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.02 07:21:42
+  EM	0	05:38:41.979	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 8 orders, 272 symbols, 0 spreads
+  FL	0	05:38:41.979	Network	'<num>': trading has been enabled, demo account - hedging mode
+  RS	0	05:38:41.979	Network	'<num>': balance management has been disabled - demo account
+  EJ	0	05:38:42.194	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 0.79 ms via 'VPS Singapore 10' instead of <num>.00 ms
+  MJ	0	05:38:42.495	Network	'<num>': scanning network for access points
+  EI	3	05:38:44.604	Experts	CheckEA (XAUUSD.m,M15) calls TerminalClose(0) function
+  CM	0	05:38:44.636	Experts	expert CheckEA (XAUUSD.m,M15) removed
+  EG	2	05:38:44.774	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
+  QM	0	05:38:44.943	Terminal	exit with code 0
+  JE	0	05:38:45.533	Network	'<num>': disconnected from JustMarkets-Demo6
+  GP	0	05:38:46.701	Terminal	stopped with 0
+  FK	0	05:38:46.813	Terminal	shutdown with 0
+snap test: compiled True, files: snap_TEST_XAUUSD_m_20261102_073859_953.png, snap_TEST_BTCUSD_m_20261102_073900_15.png, snap_TEST_SRM_XAUUSD_m_20261102_073903_78.png, snap_TEST_SRZ_XAUUSD_m_20261102_073905_109.png, SR: 851 M15 bars, 8 zones, ATR 7.37, price 3914.19, resistance 3964.05-3971.86 (2x), 3977.04-4023.60 (55x), 4023.85-4040.35 (22x), support 3897.10-3910.11 (5x), 3882.92-3894.02 (5x), 3868.99-3877.30 (3x)
 EA log tail:
-  MQ	3	16:52:17.838	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
-  DE	3	16:52:34.319	SnapTest (XAUUSD.m,M15)	TerminalClose(0) function called
+  FQ	3	05:38:44.604	CheckEA (XAUUSD.m,M15)	TerminalClose(0) function called
+  JE	3	05:39:05.660	SnapTest (XAUUSD.m,M15)	TerminalClose(0) function called
