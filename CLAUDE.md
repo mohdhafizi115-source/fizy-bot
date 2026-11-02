@@ -28,7 +28,7 @@
   | `FizyMEF.mqh` | month-end Tokyo fix: CADCHF / NZDCHF sell, USDCAD / GBPNZD buy, 09:40 → 09:55 JST | 260313 |
   | `FizyGAU.mqh` | gold before the LBMA auction: sell 10:15 → 10:30 London | 260312 |
   | `FizyWVB.mqh` | Williams volatility breakout k 0.7 on USDJPY, EURJPY, GBPJPY, XAUUSD | 260314 |
-  | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading): map at 01:30 / 08:00 / 15:00 server and at the first shift of the day, chart when price enters a zone; ideas labelled untested | – |
+  | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading): slim zones (0.5 ATR clusters, ≤ 1.2 ATR wide, ≥ 3 touches), only the 2 nearest above and below; map at 01:30 / 08:00 / 15:00 server and at the first shift of the day, chart when price enters a zone; ideas labelled untested | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
 
@@ -60,5 +60,5 @@
     - Following news surprises.
     - Smart-money / "bank jerung" fades.
     - Every WTI, Brent or XNG setup.
-    - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.87–1.00 vs random 0.94, capped zones). Kept only as labelled alerts at the owner's request.
+    - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.87–1.00 with wide zones, 0.83–0.93 with the slim live zones, random 0.94). Kept only as labelled alerts at the owner's request; the owner wants few, thin zones on the pictures.
   - The full write-ups are in the owner's claude.ai project "Trade", in the `claude/*.md` docs.
