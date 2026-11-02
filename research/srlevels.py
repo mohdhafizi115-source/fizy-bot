@@ -136,10 +136,12 @@ def limit_trades(B, ev, flat, tp_mult, trend_only=False, costs=True):
         risk = (e - sl) * dr
         if risk <= 0.2 * a:
             continue
+        # fill bar: the price came from the other side, so its high (support test) may come before the fill; only
+        # the SL (beyond the level) or a close past the TP can be counted after the fill on this bar
         ex = None
         if (l[i] <= sl) if dr == 1 else (h[i] >= sl):
             ex = sl
-        elif (h[i] >= tp) if dr == 1 else (l[i] <= tp):
+        elif (c[i] >= tp) if dr == 1 else (c[i] <= tp):
             ex = tp
         k = i + 1
         while ex is None and k < n:
