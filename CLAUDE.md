@@ -56,6 +56,7 @@
   - **No edge:**
     - Every M5 indicator scalp, on all 30 instruments.
     - Round 15 (`research/round15.py`, 2 Nov, for more trades a day): H1 / H4 NR7 and inside-bar breakouts, H1 Donchian 20/10, H1 z-score reversion on all 30 (0 of 180 pass); new gold event times (Shanghai Gold Benchmark AM / PM, SHFE night open, MCX open; 0 kept).
+    - Gold M5 scalping, round 16 (`research/goldscalp16.py`, 2 Nov): lead-lag from the USD basket (EURUSD, USDJPY, AUDUSD) or BTC to gold, 5–15 min holds, and tick-volume spikes. Gold does catch up with the dollar (first-half t up to 4.6) but the move is smaller than the $0.18 spread: PF 0.84–1.04, 0 of 24 pass. The only gold scalp with an edge is the LBMA pre-auction sell (live).
     - RSI2 on forex.
     - The walk-forward ML model.
     - COT positioning.
