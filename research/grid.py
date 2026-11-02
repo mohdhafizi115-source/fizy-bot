@@ -43,7 +43,7 @@ def run(d, trend, step, maxlev, mode, val, start=100.0):
     n = len(o)
     days = d.index.normalize().values
     newday = np.r_[False, days[1:] != days[:-1]]
-    dow = d.index.dayofweek.values
+    dow = d.index.day_of_week.values
     hm = d.index.hour.values * 60 + d.index.minute.values
     roll = (hm >= 1425) | (hm < 90)                 # server rollover: the bid is distorted, no grid actions
     dirs = {"LONG": (1,), "SHORT": (-1,), "BOTH": (1, -1), "TREND": (1, -1)}[mode]

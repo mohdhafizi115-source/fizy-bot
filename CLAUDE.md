@@ -5,7 +5,7 @@
 - The owner wants only setups that pass a backtest on the broker's own data ("aku tak perlukan trade yang rugi").
   - Test first. Add a setup only if it passes. Remove anything that loses.
   - Say plainly when nothing works.
-- Realistic expectations: $100 capital, demo first, then a cent account. Weekly 50% returns are not possible; never build martingale or grid EAs.
+- Realistic expectations: $100 capital, demo first, then a cent account. Weekly 50% returns are not possible; never build martingale or grid EAs (the owner asked for a gold grid on 2 Nov; it was tested and failed, see the findings).
 
 ## Safety rules (always)
 - Never ask for, type or commit the MT5 password, login or the Telegram token. They live only in GitHub secrets: `MT5_LOGIN`, `MT5_PASSWORD`, `MT5_SERVER`, `TG_TOKEN`, `TG_CHAT_ID`.
@@ -61,4 +61,5 @@
     - Smart-money / "bank jerung" fades.
     - Every WTI, Brent or XNG setup.
     - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.83–1.01, random 0.94) and reference levels (`research/srlevels.py`: previous day / week / month high-low-close, daily / weekly open, Asian range, floor pivots, $50 round numbers; 0 of 64 pass against fake levels). Real levels hold *less* often than random ones (37–50% vs about 50%). Closest: PDH break buy PF 1.28 but first half < 1.05. The owner wants only tested zones, so the S/R alerts are off.
+    - Gold fixed-lot grid (`research/grid.py`, 48 variants: long / short / both / trend, $10 / $20 / $40 steps, 10 levels or no limit, $100 standard and cent accounts, swaps, 1:500, stop-out 50%). Standard: every variant blows the $100 account 16–677 times in 6.6 years, mostly within days. Cent: the best survivor made $0.33 a week with a 61% drawdown. 0 pass.
   - The full write-ups are in the owner's claude.ai project "Trade", in the `claude/*.md` docs.
