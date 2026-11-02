@@ -218,9 +218,10 @@ void DtjOnTimer()
          {
             double mid = NormalizeDouble((ph + pl) / 2, dg);
             ph = NormalizeDouble(ph, dg); pl = NormalizeDouble(pl, dg);
-            if(tk.ask >= ph || tk.bid <= pl)
-               DtjEvent(StringFormat("PDHL SKIPPED %s | price already outside yesterday's range (%s - %s) at %s", dj_sym, PriceStr(dj_sym, pl),
-                                     PriceStr(dj_sym, ph), TimeToString(now, TIME_MINUTES)));
+            bool late = minute > 135 && (iHigh(dj_sym, PERIOD_D1, 0) >= ph || iLow(dj_sym, PERIOD_D1, 0) <= pl);   // EA started late, breakout already done
+            if(tk.ask >= ph || tk.bid <= pl || late)
+               DtjEvent(StringFormat("PDHL SKIPPED %s | price already %s yesterday's range (%s - %s) at %s", dj_sym, late ? "broke out of" : "outside",
+                                     PriceStr(dj_sym, pl), PriceStr(dj_sym, ph), TimeToString(now, TIME_MINUTES)));
             else
             {
                double tpb = NormalizeDouble(ph + 2 * (ph - mid), dg), tps = NormalizeDouble(pl - 2 * (mid - pl), dg);
