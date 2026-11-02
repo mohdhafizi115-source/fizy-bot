@@ -7,6 +7,8 @@ Zones (the same algorithm as the EA module mt5/FizySR.mqh):
 CAPPED zones (run 2, what the EA alerts use since 2 Nov): a swing joins a cluster only while the cluster spans
 <= 2 ATR, and overlapping zones merge only while the result is <= 2.5 ATR wide (otherwise the boundary moves to the
 middle of the overlap). Without the cap, a few days of range trading chain into one zone 6+ ATR wide.
+SLIM zones (run 3, 2 Nov evening, the owner found the map too busy): cluster within 0.5 ATR, span <= 1 ATR, widened
+by 0.1 ATR, merges <= 1.2 ATR, >= 3 touches, and only the 2 nearest zones above and below the last close are used.
 Zone event: an M15 bar trades into a zone coming from outside it (previous close outside); one event per zone area
 per 4 hours.
 Entry ideas tested (fixed before the run; entry at the next M15 open; flat 23:00 server; max 24 bars):
@@ -46,7 +48,14 @@ def m15(d5):
     return B
 
 
-def zones_at(ph, pl, i, atr, cap=False):
+CFG = {  # cluster tolerance, max cluster span, padding, max merged width (ATR), min touches, nearest zones per side
+    "CAPPED (2 ATR clusters, 2.5 ATR merge, >= 2 touches; live 2 Nov morning)": dict(tol=1.0, span=2.0, pad=0.15, merge=2.5, touches=2, near=None),
+    "SLIM (0.5 ATR clusters, 1.2 ATR max, >= 3 touches, nearest 2 per side)": dict(tol=0.5, span=1.0, pad=0.1, merge=1.2, touches=3, near=2),
+    "SLIM2 (the same with >= 2 touches)": dict(tol=0.5, span=1.0, pad=0.1, merge=1.2, touches=2, near=2),
+}
+
+
+def zones_at(ph, pl, i, atr, cfg):
     """zones from the swing prices of bars i-480 .. i-3 (a swing at bar j is confirmed by the close of bar j+2, so
     only swings confirmed before bar i opens are used; until 2 Nov the slice ended at i-2, one bar of look-ahead)"""
     p = np.r_[ph[max(0, i - 480):i - 2], pl[max(0, i - 480):i - 2]]
@@ -55,16 +64,16 @@ def zones_at(ph, pl, i, atr, cap=False):
         return []
     out, cur = [], [p[0]]
     for x in p[1:]:
-        if x - np.mean(cur) <= atr and (not cap or x - cur[0] <= 2 * atr):
+        if x - np.mean(cur) <= cfg["tol"] * atr and x - cur[0] <= cfg["span"] * atr:
             cur.append(x)
         else:
             out.append(cur); cur = [x]
     out.append(cur)
-    Z = [[min(c) - 0.15 * atr, max(c) + 0.15 * atr, len(c)] for c in out if len(c) >= 2]
+    Z = [[min(c) - cfg["pad"] * atr, max(c) + cfg["pad"] * atr, len(c)] for c in out if len(c) >= cfg["touches"]]
     M = []
     for z in sorted(Z):
         if M and z[0] <= M[-1][1]:
-            if not cap or max(M[-1][1], z[1]) - M[-1][0] <= 2.5 * atr:
+            if max(M[-1][1], z[1]) - M[-1][0] <= cfg["merge"] * atr:
                 M[-1] = [M[-1][0], max(M[-1][1], z[1]), M[-1][2] + z[2]]
             else:
                 b = (z[0] + M[-1][1]) / 2
@@ -79,13 +88,20 @@ def main():
     meta = SA.load_meta(os.path.join(DATA, "meta.txt"))
     d5 = SA.load(os.path.join(DATA, SYM + ".csv"), meta[SYM]["point"])
     B = m15(d5)
-    for cap in (False, True):
-        print(f"\n==== zones {'CAPPED (2 ATR clusters, 2.5 ATR merge)' if cap else 'ORIGINAL (no width cap)'} ====")
-        run(B, meta, cap)
+    for name, cfg in CFG.items():
+        print(f"\n==== zones {name} ====")
+        run(B, meta, cfg)
     print(f"done in {time.time() - T0:.0f} s")
 
 
-def run(B, meta, cap):
+def nearest(Z, px, k):
+    """the k nearest zones above and below px (zones containing px are kept too)"""
+    up = [z for z in Z if z[0] > px][:k]
+    dn = [z for z in Z if z[1] < px][-k:]
+    return dn + [z for z in Z if z[0] <= px <= z[1]] + up
+
+
+def run(B, meta, cfg):
     o, h, l, c, sp, A, tr, hm = (B[x].values for x in ("o", "h", "l", "c", "s", "atr", "trend", "hm"))
     n = len(B)
     dates = B.index.normalize().values
@@ -99,15 +115,18 @@ def run(B, meta, cap):
         if l[i] < min(l[i - 2], l[i - 1], l[i + 1], l[i + 2]):
             pl[i] = l[i]
     sig = {k: [] for k in ("BOUNCE_ALL", "BOUNCE_TREND", "REJECT_ALL", "REJECT_TREND", "BREAK_ALL", "BREAK_TREND")}
-    Z = []
+    Z, Z0 = [], []
     recent = []                                                         # (bar, price) of recent zone events
     n_events = 0
-    widths = []
+    widths, shown = [], []
     ok_time = (hm >= 90) & (hm < 1320)
     for i in range(500, n - 1):
         if i % 4 == 0:
-            Z = zones_at(ph, pl, i, A[i], cap)
-            widths.extend((z[1] - z[0]) / A[i] for z in Z)
+            Z0 = zones_at(ph, pl, i, A[i], cfg)
+            widths.extend((z[1] - z[0]) / A[i] for z in Z0)
+        Z = nearest(Z0, c[i - 1], cfg["near"]) if cfg["near"] else Z0
+        if i % 4 == 0:
+            shown.append(sum(1 for z in Z if abs((z[0] + z[1]) / 2 - c[i - 1]) <= 8 * A[i]))
         if not ok_time[i] or not Z:
             continue
         a = A[i]
@@ -161,7 +180,8 @@ def run(B, meta, cap):
     usd = meta[SYM]["tick_value"] / meta[SYM]["tick_size"] * 0.01
     w = np.array(widths)
     print(f"{SYM} M15 {B.index[0].date()} .. {B.index[-1].date()}, {days} days, {n_events} zone events ({n_events / days:.1f} a day), "
-          f"zone width in ATR: median {np.median(w):.2f}, 90% {np.percentile(w, 90):.2f}, max {w.max():.1f}, {time.time() - T0:.0f} s")
+          f"zone width in ATR: median {np.median(w):.2f}, 90% {np.percentile(w, 90):.2f}, max {w.max():.1f}, "
+          f"zones within 8 ATR of the price: {np.mean(shown):.1f} on average, {time.time() - T0:.0f} s")
     print("rule          trades  /day  win%    PF  half1 half2 stress last12R   net$(0.01)  by year")
     mid_t = B.index[n // 2]; end_t = B.index[-1]
     for name, sg in sig.items():
