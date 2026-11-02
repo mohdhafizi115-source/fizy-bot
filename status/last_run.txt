@@ -1,5 +1,5 @@
-run (UTC): started 2026-11-02 13:19:29  finished 13:19:31  broker time: 2026-11-02 15:19
-XAUUSD   deriv       5823  BBMA alerts off
+run (UTC): started 2026-11-02 13:20:01  finished 13:20:03  broker time: 2026-11-02 15:20
+XAUUSD   deriv       5824  BBMA alerts off
 XAUUSD London breakout: SELL open from 3892.85
 XAUUSD RSI2 pullback: watching
 XAUUSD M5 scalp: watching (last +29 pips)
