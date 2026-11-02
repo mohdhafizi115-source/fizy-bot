@@ -42,7 +42,7 @@
 ## Research (backtests on the broker's own data)
 - **`.github/workflows/mt5_data.yml`:** exports M5 history with `mt5/ExportM5.mq5` (input `symbols`, default 30 instruments) into the artifact `m5data`, then runs `research/<script>.py` on Linux. Results go to `research/status/<script>.txt`.
   - Re-run a script on an earlier export with the inputs `script=research/x.py` and `data_run=<run id>`.
-  - Exports: 30 FX / gold / BTC instruments, 2020-03 → 2026-10, in run 41277285458. WTI, Brent and XNG in run 41330505649.
+  - Exports: WTI, Brent and XNG in run 41330505649; XAUUSD only, 2020-03 → 2026-11-02, in run 41395994896. The 30-instrument export (run 41277285458) was deleted on 2 Nov; make a new one when a test needs it (about 30 min).
 - **Economic calendar:** `mt5/ExportCal.mq5` + `.github/workflows/mt5_cal.yml` → `data/calendar.csv`. Past times are stored at today's server offset (+2 h): treat them as UTC+2, then convert to Europe/Athens.
 - **Pass rule used so far:** ≥ 150 trades, PF ≥ 1.15 after spread, both halves ≥ 1.05, stress (1.5× spread) ≥ 1.05, last 12 months positive.
   - Always compare against a random-entry baseline or fake event times.
@@ -60,5 +60,5 @@
     - Following news surprises.
     - Smart-money / "bank jerung" fades.
     - Every WTI, Brent or XNG setup.
-    - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.89–0.99 vs random 0.89). Kept only as labelled alerts at the owner's request.
+    - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.87–1.00 vs random 0.94, capped zones). Kept only as labelled alerts at the owner's request.
   - The full write-ups are in the owner's claude.ai project "Trade", in the `claude/*.md` docs.

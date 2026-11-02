@@ -9,8 +9,8 @@
 //| server time (and at the first shift of the day), and a chart when |
 //| the price enters a zone from outside (one alert per zone area per |
 //| 4 hours, 01:30-22:00). The entry / SL / TP ideas are labelled as  |
-//| untested: on 6.6 years of gold, zone entries had PF 0.89-0.99     |
-//| (random entries 0.89).                                            |
+//| untested: on 6.6 years of gold, zone entries had PF 0.87-1.00     |
+//| (random entries 0.94; research/srzones.py, capped zones).         |
 //| Events go to MQL5\Files\sr_events.txt (forwarded to Telegram).    |
 //+------------------------------------------------------------------+
 input string InpSrSymbol      = "XAUUSD";
@@ -29,7 +29,7 @@ double   sr_aMid[];
 datetime sr_aTime[];
 int      sr_mapKey = 0;
 int      sr_h50 = INVALID_HANDLE, sr_h200 = INVALID_HANDLE, sr_h450 = INVALID_HANDLE, sr_h4200 = INVALID_HANDLE;
-string   SR_NOTE = "Not a tested edge: zone entries on 6.6 years of gold had PF 0.89-0.99 (random entries 0.89). Info only, no auto trade";
+string   SR_NOTE = "Not a tested edge: zone entries on 6.6 years of gold had PF 0.87-1.00 (random entries 0.94). Info only, no auto trade";
 
 void SrEvent(string msg)
 {
@@ -160,7 +160,8 @@ string SrSnap(string tag, int active, double &lv[], color &lc[], string &lb[])
    {
       if(sr_hi[i] < vlo - pad || sr_lo[i] > vhi + pad) continue;
       bool res = sr_lo[i] > px, sup = sr_hi[i] < px;
-      color c = res ? (i == active ? C'250,160,160' : C'255,218,218') : (sup ? (i == active ? C'140,215,160' : C'210,240,216') : C'255,228,170');
+      color c = res ? (i == active ? C'250,160,160' : (i % 2 == 0 ? C'255,218,218' : C'255,200,200'))     // neighbours alternate shades
+                    : (sup ? (i == active ? C'140,215,160' : (i % 2 == 0 ? C'210,240,216' : C'190,232,200')) : C'255,228,170');
       string nm = "sr_z" + IntegerToString(i);
       ObjectCreate(cid, nm, OBJ_RECTANGLE, 0, t0, sr_hi[i], t1, sr_lo[i]);
       ObjectSetInteger(cid, nm, OBJPROP_COLOR, c); ObjectSetInteger(cid, nm, OBJPROP_FILL, true); ObjectSetInteger(cid, nm, OBJPROP_BACK, true);
