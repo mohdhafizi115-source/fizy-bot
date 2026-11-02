@@ -8,6 +8,7 @@ periods. New rules from that family, fixed before the run (server time, day trad
   NYBO_SQ    the same, only when the London range < 0.6 x D1 ATR (the squeeze idea of the live London breakout)
   ID_D1      yesterday was an inside day (high below and low above the day before): from 01:30 OCO stops at
              yesterday's high / low, SL at the other side, no TP, orders until 20:00
+  ID_NONR7   ID_D1 without the days that are also NR7 (those are traded by the live NR7 module)
   NR4_D1     yesterday's range was the narrowest of the last 4 days: the same orders
   NR4ID      NR4 and inside day together (Crabel): the same orders
   ASIA_EARLY early Asian range 01:30-04:00 (0.10-0.50 D1 ATR): at 04:00 OCO stops 0.02 ATR beyond it, SL at the other
@@ -27,7 +28,7 @@ import daytrade as DT
 
 DATA = sys.argv[1] if len(sys.argv) > 1 else "m5data"
 SYMS = ["XAUUSD", "USDJPY", "EURJPY", "GBPJPY"]
-RULES = ["NYBO", "NYBO_SQ", "ID_D1", "NR4_D1", "NR4ID", "ASIA_EARLY", "BIG_FOLLOW", "BIG_FADE", "RAND"]
+RULES = ["NYBO", "NYBO_SQ", "ID_D1", "ID_NONR7", "NR4_D1", "NR4ID", "ASIA_EARLY", "BIG_FOLLOW", "BIG_FADE", "RAND"]
 T0 = time.time()
 
 
@@ -48,8 +49,9 @@ def rules(B, D, seed):
     rng_ = Dh - Dl
     inside = (Dh < Dh.shift(1)) & (Dl > Dl.shift(1))
     nr4 = rng_ < rng_.shift(1).rolling(3).min()
+    nr7 = rng_ < rng_.shift(1).rolling(6).min()
     big = rng_ > 1.8 * D.atr
-    F = pd.DataFrame({"inside": inside.shift(1), "nr4": nr4.shift(1), "big": big.shift(1),
+    F = pd.DataFrame({"inside": inside.shift(1), "nr4": nr4.shift(1), "nr7": nr7.shift(1), "big": big.shift(1),
                       "pdir": np.sign(Dc - Do).shift(1)}, index=D.index)
     S = {r: [] for r in RULES}
     flats = {r: flat2230 for r in RULES}
@@ -83,6 +85,8 @@ def rules(B, D, seed):
             g = dict(k0=k130, kind="oco", dir=0, P=dd.ph, sl=dd.pl, P2=dd.pl, sl2=dd.ph, tp=None, exp=i20, maxb=10 ** 6)
             if ff.inside is True or ff.inside == 1.0:
                 S["ID_D1"].append(dict(g))
+                if not (ff.nr7 is True or ff.nr7 == 1.0):          # the live NR7 module already trades NR7 days
+                    S["ID_NONR7"].append(dict(g))
             if ff.nr4 is True or ff.nr4 == 1.0:
                 S["NR4_D1"].append(dict(g))
                 if ff.inside is True or ff.inside == 1.0:
