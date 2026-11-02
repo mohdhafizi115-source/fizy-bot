@@ -6,10 +6,10 @@ AUDCAD     1.90     3.21       0.591     11.8       0.161   17:0.35, 18:0.38, 16
 AUDCHF     1.50     2.62       0.572      9.8       0.153   17:0.33, 18:0.36, 16:0.38, 11:0.40
 AUDJPY     1.70     4.45       0.382     16.5       0.103   17:0.24, 18:0.27, 16:0.28, 10:0.30
 AUDNZD     1.80     2.93       0.615     10.7       0.168   17:0.45, 18:0.49, 16:0.50, 10:0.53
-AUDUSD     1.40     3.06       0.457     11.8       0.118   17:0.24, 18:0.27, 16:0.27, 10:0.32
-BTCUSD    29.19    89.00       0.328    358.3       0.081   18:0.46, 17:0.46, 19:0.49, 16:0.53
+AUDUSD     1.40     3.06       0.458     11.8       0.118   17:0.24, 18:0.27, 16:0.27, 10:0.32
+BTCUSD    29.19    88.97       0.328    358.1       0.082   18:0.45, 17:0.46, 19:0.49, 16:0.53
 CADCHF     1.60     2.27       0.704      8.6       0.186   17:0.31, 18:0.34, 16:0.34, 15:0.42
-CADJPY     2.00     3.99       0.501     15.3       0.131   17:0.28, 16:0.31, 18:0.31, 15:0.40
+CADJPY     2.00     3.99       0.502     15.3       0.131   17:0.28, 16:0.31, 18:0.31, 15:0.40
 CHFJPY     2.10     5.51       0.381     20.8       0.101   17:0.24, 16:0.26, 18:0.26, 11:0.27
 EURAUD     1.80     6.02       0.299     21.9       0.082   17:0.19, 18:0.21, 16:0.22, 10:0.24
 EURCAD     1.80     4.30       0.419     16.1       0.112   17:0.21, 16:0.22, 18:0.23, 15:0.28
@@ -24,15 +24,15 @@ GBPCHF     1.90     3.76       0.506     14.2       0.134   17:0.28, 18:0.30, 16
 GBPJPY     1.80     7.04       0.256     25.9       0.069   17:0.16, 16:0.17, 18:0.17, 11:0.18
 GBPNZD     2.40     7.86       0.305     28.7       0.084   17:0.19, 16:0.20, 18:0.20, 10:0.23
 GBPUSD     1.00     4.31       0.232     17.0       0.059   17:0.11, 16:0.12, 18:0.12, 11:0.14
-NZDCAD     1.90     3.12       0.609     11.7       0.162   17:0.35, 16:0.38, 18:0.39, 15:0.47
+NZDCAD     1.80     3.12       0.577     11.7       0.154   17:0.35, 16:0.38, 18:0.39, 15:0.47
 NZDCHF     1.70     2.38       0.715      9.1       0.188   17:0.48, 18:0.52, 16:0.54, 11:0.57
 NZDJPY     1.90     4.05       0.469     15.0       0.127   17:0.31, 18:0.36, 16:0.36, 10:0.38
 NZDUSD     1.70     2.85       0.596     11.1       0.153   17:0.30, 16:0.34, 18:0.35, 10:0.41
-USDCAD     1.50     3.52       0.426     13.9       0.108   17:0.19, 18:0.22, 16:0.23, 19:0.29
+USDCAD     1.50     3.51       0.427     13.9       0.108   17:0.19, 18:0.22, 16:0.23, 19:0.29
 USDCHF     1.40     2.81       0.497     11.1       0.126   17:0.24, 16:0.26, 18:0.27, 11:0.32
 USDJPY     1.30     4.38       0.297     17.9       0.072   17:0.18, 16:0.18, 18:0.20, 10:0.22
 XAUUSD     0.18     1.47       0.122      5.6       0.032   17:0.06, 16:0.06, 18:0.07, 15:0.08
-ranking (cheapest first): XAUUSD, GBPUSD, EURJPY, GBPJPY, GBPAUD, EURUSD, USDJPY, EURAUD, GBPNZD, BTCUSD, GBPCAD, CHFJPY, AUDJPY, EURNZD, EURCAD, USDCAD, AUDUSD, NZDJPY, USDCHF, CADJPY, GBPCHF, AUDCHF, AUDCAD, NZDUSD, NZDCAD, AUDNZD, CADCHF, NZDCHF, EURGBP, EURCHF
+ranking (cheapest first): XAUUSD, GBPUSD, EURJPY, GBPJPY, GBPAUD, EURUSD, USDJPY, EURAUD, GBPNZD, BTCUSD, GBPCAD, CHFJPY, AUDJPY, EURNZD, EURCAD, USDCAD, AUDUSD, NZDJPY, USDCHF, CADJPY, GBPCHF, AUDCHF, NZDCAD, AUDCAD, NZDUSD, AUDNZD, CADCHF, NZDCHF, EURGBP, EURCHF
 
 == GOTOBI / Tokyo fix 09:55 JST (per trade in pips (gold/BTC: $), after spread) ==
 /home/runner/work/fizy-bot/fizy-bot/research/flows.py:99: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
@@ -41,15 +41,15 @@ ranking (cheapest first): XAUUSD, GBPUSD, EURJPY, GBPJPY, GBPAUD, EURUSD, USDJPY
   while x.dayofweek >= 5:
  USDJPY: 469 gotobi days
   gotobi long 08:00->09:55                 465 gross  +1.88 t +1.89 | net  +0.37 PF  1.05 halves  0.96  1.12 | 2020:-83 2021:+85 2022:-76 2023:+87 2024:+153 2025:-76 2026:+80
-  other days long 08:00->09:55            1246 gross  +1.28 t +2.04 | net  -0.22 PF  0.97 halves  0.87  1.04 | 2020:-359 2021:+50 2022:+153 2023:-460 2024:+512 2025:-130 2026:-41
+  other days long 08:00->09:55            1247 gross  +1.30 t +2.07 | net  -0.20 PF  0.97 halves  0.87  1.05 | 2020:-359 2021:+50 2022:+153 2023:-460 2024:+512 2025:-130 2026:-17
   gotobi long 08:30->09:55                 465 gross  +0.97 t +1.07 | net  -0.51 PF  0.93 halves  0.98  0.90 | 2020:-117 2021:+30 2022:-54 2023:+145 2024:+24 2025:-186 2026:-80
-  other days long 08:30->09:55            1246 gross  +1.17 t +2.04 | net  -0.32 PF  0.96 halves  0.91  0.99 | 2020:-359 2021:-75 2022:+156 2023:+14 2024:+589 2025:-335 2026:-385
+  other days long 08:30->09:55            1247 gross  +1.18 t +2.06 | net  -0.31 PF  0.96 halves  0.91  0.99 | 2020:-359 2021:-75 2022:+156 2023:+14 2024:+589 2025:-335 2026:-374
   gotobi long 09:00->09:55                 465 gross  +0.43 t +0.52 | net  -0.88 PF  0.87 halves  0.94  0.83 | 2020:-76 2021:-5 2022:-33 2023:-39 2024:-42 2025:-85 2026:-129
-  other days long 09:00->09:55            1246 gross  +1.13 t +2.09 | net  -0.19 PF  0.97 halves  1.03  0.93 | 2020:-324 2021:-54 2022:+774 2023:-228 2024:+202 2025:-360 2026:-246
+  other days long 09:00->09:55            1247 gross  +1.13 t +2.10 | net  -0.18 PF  0.97 halves  1.03  0.93 | 2020:-324 2021:-54 2022:+774 2023:-228 2024:+202 2025:-360 2026:-240
   gotobi short 09:55->10:30                465 gross  +3.62 t +5.62 | net  +2.31 PF  1.61 halves  1.56  1.65 | 2020:+63 2021:-12 2022:+405 2023:+98 2024:+284 2025:+245 2026:-10
-  other days short 09:55->10:30           1244 gross  +0.82 t +2.12 | net  -0.49 PF  0.90 halves  0.96  0.86 | 2020:-35 2021:-204 2022:+238 2023:-111 2024:-223 2025:-111 2026:-165
+  other days short 09:55->10:30           1245 gross  +0.82 t +2.11 | net  -0.50 PF  0.90 halves  0.96  0.85 | 2020:-35 2021:-204 2022:+238 2023:-111 2024:-223 2025:-111 2026:-173
   gotobi short 09:55->11:00                465 gross  +3.64 t +4.68 | net  +2.33 PF  1.49 halves  1.32  1.63 | 2020:+129 2021:+34 2022:+306 2023:+41 2024:+421 2025:+223 2026:-71
-  other days short 09:55->11:00           1244 gross  +0.88 t +1.76 | net  -0.44 PF  0.93 halves  0.96  0.91 | 2020:-72 2021:-213 2022:+125 2023:+96 2024:-198 2025:-65 2026:-216
+  other days short 09:55->11:00           1245 gross  +0.87 t +1.75 | net  -0.44 PF  0.93 halves  0.96  0.91 | 2020:-72 2021:-213 2022:+125 2023:+96 2024:-198 2025:-65 2026:-222
 /home/runner/work/fizy-bot/fizy-bot/research/flows.py:99: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
   bd = days[days.dayofweek < 5]
 /home/runner/work/fizy-bot/fizy-bot/research/flows.py:103: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
@@ -199,9 +199,9 @@ ranking (cheapest first): XAUUSD, GBPUSD, EURJPY, GBPJPY, GBPAUD, EURUSD, USDJPY
  USDJPY  16:00 WMR      corr(pre, post) +0.074
      fade pre-fix move, all days           987 gross  -0.11 t -0.18 | net  -1.43 PF  0.77 halves  0.66  0.87 | 2020:-125 2021:-37 2022:-596 2023:-536 2024:-51 2025:-3 2026:-61
      fade pre-fix move, month-end days      69 gross  +1.32 t +0.74 | net  -0.00 PF  1.00 halves  0.75  1.28 | 2020:-14 2021:-17 2022:-28 2023:-14 2024:-25 2025:+117 2026:-20
- XAUUSD  10:30 LBMA AM  corr(pre, post) -0.181
+ XAUUSD  10:30 LBMA AM  corr(pre, post) -0.182
      fade pre-fix move, all days           550 gross  +0.48 t +1.13 | net  +0.31 PF  1.18 halves  0.78  1.42 | 2020:+19 2021:-26 2022:-52 2023:-29 2024:+8 2025:+57 2026:+191
-     fade pre-fix move, month-end days      51 gross  -1.88 t -1.31 | net  -2.11 PF  0.34 halves  0.58  0.29 | 2020:+4 2021:-9 2022:-4 2023:-0 2024:-16 2025:-5 2026:-77
+     fade pre-fix move, month-end days      52 gross  -1.67 t -1.17 | net  -1.90 PF  0.40 halves  0.68  0.34 | 2020:+4 2021:-9 2022:-4 2023:-0 2024:-16 2025:-5 2026:-68
  XAUUSD  15:00 LBMA PM  corr(pre, post) +0.000
      fade pre-fix move, all days          1056 gross  -0.29 t -0.94 | net  -0.47 PF  0.86 halves  0.94  0.83 | 2020:-25 2021:+45 2022:-98 2023:-45 2024:-157 2025:-191 2026:-26
      fade pre-fix move, month-end days      64 gross  -0.92 t -0.80 | net  -1.13 PF  0.72 halves  0.77  0.68 | 2020:+20 2021:-25 2022:-1 2023:-30 2024:-15 2025:-25 2026:+5
@@ -210,132 +210,131 @@ ranking (cheapest first): XAUUSD, GBPUSD, EURJPY, GBPJPY, GBPAUD, EURUSD, USDJPY
      fade pre-fix move, month-end days      68 gross  -0.06 t -0.05 | net  -0.24 PF  0.91 halves  0.64  1.08 | 2020:+21 2021:-26 2022:-19 2023:-16 2024:-15 2025:-40 2026:+78
 
 == HOURS: hour-of-day windows found on the first half (t >= 3), checked on the second half ==
-  AUDCAD  BUY  01:00->02:00  first half t +16.13  second half t +12.00, net/trade -0.55, PF  0.78   (starts at the daily reopen: real spread much wider)
-  AUDCAD  BUY  01:00->03:00  first half t +8.19  second half t +9.41, net/trade -0.14, PF  0.96   (starts at the daily reopen: real spread much wider)
-  AUDCAD  BUY  01:00->04:00  first half t +6.98  second half t +7.96, net/trade +0.32, PF  1.07   (starts at the daily reopen: real spread much wider)
-  AUDCAD  BUY  01:00->05:00  first half t +6.72  second half t +6.89, net/trade +0.59, PF  1.10  KEPT (starts at the daily reopen: real spread much wider)
-  AUDCAD  SELL 02:00->03:00  first half t +3.98  second half t -1.76, net/trade -2.43, PF  0.37  
-  AUDCAD  SELL 18:00->19:00  first half t +3.77  second half t +2.46, net/trade -1.17, PF  0.70  
-  AUDCAD  SELL 18:00->20:00  first half t +3.03  second half t +2.04, net/trade -1.09, PF  0.77  
-  AUDCHF  BUY  01:00->02:00  first half t +21.44  second half t +15.01, net/trade +0.41, PF  1.24  KEPT (starts at the daily reopen: real spread much wider)
-  AUDCHF  BUY  01:00->03:00  first half t +13.21  second half t +11.05, net/trade +0.52, PF  1.21  KEPT (starts at the daily reopen: real spread much wider)
-  AUDCHF  BUY  01:00->04:00  first half t +11.18  second half t +8.67, net/trade +0.68, PF  1.20  KEPT (starts at the daily reopen: real spread much wider)
-  AUDCHF  BUY  01:00->05:00  first half t +9.79  second half t +8.20, net/trade +1.09, PF  1.27  KEPT (starts at the daily reopen: real spread much wider)
-  AUDCHF  SELL 02:00->03:00  first half t +3.26  second half t -0.57, net/trade -1.16, PF  0.55  
-  AUDJPY  BUY  01:00->02:00  first half t +11.06  second half t +9.70, net/trade -0.36, PF  0.91   (starts at the daily reopen: real spread much wider)
-  AUDJPY  BUY  01:00->03:00  first half t +3.83  second half t +7.71, net/trade +0.57, PF  1.10   (starts at the daily reopen: real spread much wider)
-  AUDJPY  BUY  01:00->04:00  first half t +3.35  second half t +5.56, net/trade +0.41, PF  1.05   (starts at the daily reopen: real spread much wider)
-  AUDJPY  BUY  01:00->05:00  first half t +3.46  second half t +5.46, net/trade +1.24, PF  1.12  KEPT (starts at the daily reopen: real spread much wider)
-  AUDJPY  SELL 02:00->03:00  first half t +4.07  second half t -2.06, net/trade -2.62, PF  0.57  
-  AUDNZD  BUY  01:00->02:00  first half t +11.73  second half t +9.38, net/trade -4.14, PF  0.26   (starts at the daily reopen: real spread much wider)
-  AUDNZD  BUY  01:00->03:00  first half t +7.10  second half t +13.67, net/trade -1.48, PF  0.68   (starts at the daily reopen: real spread much wider)
-  AUDNZD  BUY  01:00->04:00  first half t +4.88  second half t +9.07, net/trade -1.59, PF  0.75   (starts at the daily reopen: real spread much wider)
-  AUDNZD  BUY  01:00->05:00  first half t +3.52  second half t +7.93, net/trade -1.34, PF  0.82   (starts at the daily reopen: real spread much wider)
-  AUDUSD  BUY  01:00->02:00  first half t +9.96  second half t +7.49, net/trade -0.40, PF  0.80   (starts at the daily reopen: real spread much wider)
-  AUDUSD  BUY  01:00->03:00  first half t +3.95  second half t +5.90, net/trade -0.05, PF  0.98   (starts at the daily reopen: real spread much wider)
-  AUDUSD  BUY  01:00->05:00  first half t +3.35  second half t +4.51, net/trade +0.49, PF  1.09   (starts at the daily reopen: real spread much wider)
-  AUDUSD  SELL 02:00->03:00  first half t +3.83  second half t -1.51, net/trade -1.39, PF  0.54  
-  CADCHF  BUY  01:00->02:00  first half t +20.28  second half t +18.28, net/trade -0.92, PF  0.59   (starts at the daily reopen: real spread much wider)
-  CADCHF  BUY  01:00->03:00  first half t +18.13  second half t +18.25, net/trade +0.06, PF  1.03   (starts at the daily reopen: real spread much wider)
-  CADCHF  BUY  01:00->04:00  first half t +15.47  second half t +14.84, net/trade -0.06, PF  0.97   (starts at the daily reopen: real spread much wider)
-  CADCHF  BUY  01:00->05:00  first half t +13.37  second half t +14.46, net/trade +0.19, PF  1.07   (starts at the daily reopen: real spread much wider)
-  CADCHF  BUY  17:00->20:00  first half t +3.11  second half t +1.76, net/trade -0.13, PF  0.97  
-  CADCHF  BUY  18:00->20:00  first half t +3.27  second half t +0.85, net/trade -0.59, PF  0.83  
-  CADCHF  SELL 22:00->23:00  first half t +3.07  second half t +2.17, net/trade -0.55, PF  0.68  
-  CADJPY  BUY  01:00->02:00  first half t +9.14  second half t +8.77, net/trade -1.18, PF  0.72   (starts at the daily reopen: real spread much wider)
-  CADJPY  BUY  01:00->03:00  first half t +4.89  second half t +6.98, net/trade -0.47, PF  0.92   (starts at the daily reopen: real spread much wider)
-  CADJPY  BUY  01:00->04:00  first half t +3.84  second half t +4.46, net/trade -1.20, PF  0.85   (starts at the daily reopen: real spread much wider)
-  CADJPY  BUY  01:00->05:00  first half t +3.36  second half t +4.64, net/trade -0.55, PF  0.94   (starts at the daily reopen: real spread much wider)
-  CHFJPY  BUY  01:00->02:00  first half t +16.56  second half t +17.13, net/trade -2.19, PF  0.67   (starts at the daily reopen: real spread much wider)
-  CHFJPY  BUY  01:00->03:00  first half t +9.99  second half t +16.53, net/trade +1.78, PF  1.26  KEPT (starts at the daily reopen: real spread much wider)
-  CHFJPY  BUY  01:00->04:00  first half t +7.26  second half t +12.72, net/trade +1.14, PF  1.12  KEPT (starts at the daily reopen: real spread much wider)
-  CHFJPY  BUY  01:00->05:00  first half t +6.16  second half t +11.10, net/trade +1.36, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
-  EURAUD  BUY  01:00->03:00  first half t +4.36  second half t +9.31, net/trade -4.69, PF  0.48   (starts at the daily reopen: real spread much wider)
-  EURAUD  BUY  02:00->03:00  first half t +4.11  second half t +9.03, net/trade +2.07, PF  1.55  KEPT
+  AUDCAD  BUY  01:00->02:00  first half t +16.12  second half t +12.05, net/trade -0.54, PF  0.79   (starts at the daily reopen: real spread much wider)
+  AUDCAD  BUY  01:00->03:00  first half t +8.21  second half t +9.44, net/trade -0.13, PF  0.96   (starts at the daily reopen: real spread much wider)
+  AUDCAD  BUY  01:00->04:00  first half t +6.97  second half t +8.02, net/trade +0.35, PF  1.08   (starts at the daily reopen: real spread much wider)
+  AUDCAD  BUY  01:00->05:00  first half t +6.65  second half t +6.98, net/trade +0.63, PF  1.11  KEPT (starts at the daily reopen: real spread much wider)
+  AUDCAD  SELL 02:00->03:00  first half t +3.95  second half t -1.75, net/trade -2.43, PF  0.37  
+  AUDCAD  SELL 18:00->19:00  first half t +3.74  second half t +2.50, net/trade -1.16, PF  0.70  
+  AUDCHF  BUY  01:00->02:00  first half t +21.44  second half t +15.06, net/trade +0.41, PF  1.24  KEPT (starts at the daily reopen: real spread much wider)
+  AUDCHF  BUY  01:00->03:00  first half t +13.24  second half t +11.08, net/trade +0.52, PF  1.21  KEPT (starts at the daily reopen: real spread much wider)
+  AUDCHF  BUY  01:00->04:00  first half t +11.18  second half t +8.73, net/trade +0.70, PF  1.21  KEPT (starts at the daily reopen: real spread much wider)
+  AUDCHF  BUY  01:00->05:00  first half t +9.75  second half t +8.28, net/trade +1.11, PF  1.27  KEPT (starts at the daily reopen: real spread much wider)
+  AUDCHF  SELL 02:00->03:00  first half t +3.23  second half t -0.57, net/trade -1.16, PF  0.55  
+  AUDJPY  BUY  01:00->02:00  first half t +11.05  second half t +9.77, net/trade -0.34, PF  0.92   (starts at the daily reopen: real spread much wider)
+  AUDJPY  BUY  01:00->03:00  first half t +3.82  second half t +7.78, net/trade +0.61, PF  1.10  KEPT (starts at the daily reopen: real spread much wider)
+  AUDJPY  BUY  01:00->04:00  first half t +3.29  second half t +5.66, net/trade +0.49, PF  1.06   (starts at the daily reopen: real spread much wider)
+  AUDJPY  BUY  01:00->05:00  first half t +3.40  second half t +5.56, net/trade +1.32, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
+  AUDJPY  SELL 02:00->03:00  first half t +4.07  second half t -2.10, net/trade -2.64, PF  0.57  
+  AUDNZD  BUY  01:00->02:00  first half t +11.69  second half t +9.47, net/trade -4.13, PF  0.26   (starts at the daily reopen: real spread much wider)
+  AUDNZD  BUY  01:00->03:00  first half t +7.11  second half t +13.71, net/trade -1.46, PF  0.68   (starts at the daily reopen: real spread much wider)
+  AUDNZD  BUY  01:00->04:00  first half t +4.90  second half t +9.12, net/trade -1.56, PF  0.75   (starts at the daily reopen: real spread much wider)
+  AUDNZD  BUY  01:00->05:00  first half t +3.50  second half t +8.02, net/trade -1.29, PF  0.83   (starts at the daily reopen: real spread much wider)
+  AUDUSD  BUY  01:00->02:00  first half t +9.92  second half t +7.59, net/trade -0.38, PF  0.81   (starts at the daily reopen: real spread much wider)
+  AUDUSD  BUY  01:00->03:00  first half t +3.95  second half t +5.94, net/trade -0.04, PF  0.99   (starts at the daily reopen: real spread much wider)
+  AUDUSD  BUY  01:00->05:00  first half t +3.30  second half t +4.58, net/trade +0.52, PF  1.10   (starts at the daily reopen: real spread much wider)
+  AUDUSD  SELL 02:00->03:00  first half t +3.81  second half t -1.50, net/trade -1.38, PF  0.54  
+  CADCHF  BUY  01:00->02:00  first half t +20.25  second half t +18.34, net/trade -0.92, PF  0.59   (starts at the daily reopen: real spread much wider)
+  CADCHF  BUY  01:00->03:00  first half t +18.12  second half t +18.30, net/trade +0.07, PF  1.03   (starts at the daily reopen: real spread much wider)
+  CADCHF  BUY  01:00->04:00  first half t +15.46  second half t +14.88, net/trade -0.06, PF  0.98   (starts at the daily reopen: real spread much wider)
+  CADCHF  BUY  01:00->05:00  first half t +13.35  second half t +14.51, net/trade +0.19, PF  1.07   (starts at the daily reopen: real spread much wider)
+  CADCHF  BUY  17:00->20:00  first half t +3.12  second half t +1.75, net/trade -0.13, PF  0.97  
+  CADCHF  BUY  18:00->20:00  first half t +3.26  second half t +0.86, net/trade -0.59, PF  0.83  
+  CADCHF  SELL 22:00->23:00  first half t +3.09  second half t +2.14, net/trade -0.56, PF  0.68  
+  CADJPY  BUY  01:00->02:00  first half t +9.15  second half t +8.80, net/trade -1.17, PF  0.72   (starts at the daily reopen: real spread much wider)
+  CADJPY  BUY  01:00->03:00  first half t +4.88  second half t +7.03, net/trade -0.44, PF  0.92   (starts at the daily reopen: real spread much wider)
+  CADJPY  BUY  01:00->04:00  first half t +3.80  second half t +4.54, net/trade -1.15, PF  0.85   (starts at the daily reopen: real spread much wider)
+  CADJPY  BUY  01:00->05:00  first half t +3.33  second half t +4.69, net/trade -0.51, PF  0.94   (starts at the daily reopen: real spread much wider)
+  CHFJPY  BUY  01:00->02:00  first half t +16.61  second half t +17.13, net/trade -2.21, PF  0.67   (starts at the daily reopen: real spread much wider)
+  CHFJPY  BUY  01:00->03:00  first half t +10.00  second half t +16.57, net/trade +1.80, PF  1.26  KEPT (starts at the daily reopen: real spread much wider)
+  CHFJPY  BUY  01:00->04:00  first half t +7.21  second half t +12.81, net/trade +1.19, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
+  CHFJPY  BUY  01:00->05:00  first half t +6.15  second half t +11.15, net/trade +1.41, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
+  EURAUD  BUY  01:00->03:00  first half t +4.36  second half t +9.31, net/trade -4.71, PF  0.48   (starts at the daily reopen: real spread much wider)
+  EURAUD  BUY  02:00->03:00  first half t +4.08  second half t +9.11, net/trade +2.11, PF  1.56  KEPT
   EURAUD  SELL 14:00->15:00  first half t +3.23  second half t +2.29, net/trade -1.09, PF  0.80  
-  EURCAD  BUY  01:00->02:00  first half t +11.53  second half t +10.12, net/trade -0.22, PF  0.93   (starts at the daily reopen: real spread much wider)
-  EURCAD  BUY  01:00->03:00  first half t +10.47  second half t +9.31, net/trade +0.52, PF  1.16  KEPT (starts at the daily reopen: real spread much wider)
-  EURCAD  BUY  01:00->04:00  first half t +7.41  second half t +7.99, net/trade +0.83, PF  1.20  KEPT (starts at the daily reopen: real spread much wider)
-  EURCAD  BUY  01:00->05:00  first half t +6.95  second half t +6.72, net/trade +0.49, PF  1.10   (starts at the daily reopen: real spread much wider)
+  EURCAD  BUY  01:00->02:00  first half t +11.53  second half t +10.13, net/trade -0.23, PF  0.92   (starts at the daily reopen: real spread much wider)
+  EURCAD  BUY  01:00->03:00  first half t +10.47  second half t +9.36, net/trade +0.53, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
+  EURCAD  BUY  01:00->04:00  first half t +7.41  second half t +8.05, net/trade +0.85, PF  1.20  KEPT (starts at the daily reopen: real spread much wider)
+  EURCAD  BUY  01:00->05:00  first half t +6.95  second half t +6.78, net/trade +0.52, PF  1.10  KEPT (starts at the daily reopen: real spread much wider)
   EURCAD  SELL 17:00->20:00  first half t +3.03  second half t +2.33, net/trade -0.06, PF  0.99  
-  EURCHF  BUY  01:00->02:00  first half t +24.54  second half t +17.54, net/trade -3.87, PF  0.18   (starts at the daily reopen: real spread much wider)
-  EURCHF  BUY  01:00->03:00  first half t +20.59  second half t +22.19, net/trade -2.10, PF  0.42   (starts at the daily reopen: real spread much wider)
-  EURCHF  BUY  01:00->04:00  first half t +16.64  second half t +17.43, net/trade -2.15, PF  0.48   (starts at the daily reopen: real spread much wider)
-  EURCHF  BUY  01:00->05:00  first half t +15.94  second half t +15.65, net/trade -1.96, PF  0.55   (starts at the daily reopen: real spread much wider)
-  EURGBP  BUY  01:00->02:00  first half t +14.31  second half t +14.89, net/trade -1.28, PF  0.35   (starts at the daily reopen: real spread much wider)
-  EURGBP  BUY  01:00->03:00  first half t +11.00  second half t +16.75, net/trade -0.56, PF  0.68   (starts at the daily reopen: real spread much wider)
-  EURGBP  BUY  01:00->04:00  first half t +6.82  second half t +13.48, net/trade -0.54, PF  0.74   (starts at the daily reopen: real spread much wider)
-  EURGBP  BUY  01:00->05:00  first half t +6.76  second half t +12.05, net/trade -0.52, PF  0.77   (starts at the daily reopen: real spread much wider)
-  EURGBP  BUY  10:00->11:00  first half t +3.45  second half t +1.64, net/trade -1.09, PF  0.65  
-  EURJPY  BUY  01:00->02:00  first half t +9.78  second half t +8.98, net/trade +0.07, PF  1.02   (starts at the daily reopen: real spread much wider)
-  EURJPY  BUY  01:00->03:00  first half t +4.58  second half t +6.88, net/trade +1.07, PF  1.16  KEPT (starts at the daily reopen: real spread much wider)
-  EURJPY  BUY  01:00->04:00  first half t +3.20  second half t +4.44, net/trade +0.26, PF  1.03   (starts at the daily reopen: real spread much wider)
-  EURNZD  BUY  01:00->02:00  first half t +5.58  second half t +6.46, net/trade -7.97, PF  0.28   (starts at the daily reopen: real spread much wider)
-  EURNZD  BUY  01:00->03:00  first half t +6.28  second half t +10.32, net/trade -3.38, PF  0.65   (starts at the daily reopen: real spread much wider)
-  EURNZD  BUY  01:00->04:00  first half t +3.75  second half t +6.78, net/trade -3.99, PF  0.71   (starts at the daily reopen: real spread much wider)
-  EURNZD  SELL 13:00->15:00  first half t +3.01  second half t +0.71, net/trade -2.80, PF  0.68  
+  EURCHF  BUY  01:00->02:00  first half t +24.47  second half t +17.63, net/trade -3.86, PF  0.18   (starts at the daily reopen: real spread much wider)
+  EURCHF  BUY  01:00->03:00  first half t +20.58  second half t +22.23, net/trade -2.09, PF  0.42   (starts at the daily reopen: real spread much wider)
+  EURCHF  BUY  01:00->04:00  first half t +16.59  second half t +17.52, net/trade -2.13, PF  0.49   (starts at the daily reopen: real spread much wider)
+  EURCHF  BUY  01:00->05:00  first half t +15.83  second half t +15.78, net/trade -1.93, PF  0.55   (starts at the daily reopen: real spread much wider)
+  EURGBP  BUY  01:00->02:00  first half t +14.27  second half t +14.96, net/trade -1.27, PF  0.35   (starts at the daily reopen: real spread much wider)
+  EURGBP  BUY  01:00->03:00  first half t +11.00  second half t +16.80, net/trade -0.56, PF  0.68   (starts at the daily reopen: real spread much wider)
+  EURGBP  BUY  01:00->04:00  first half t +6.80  second half t +13.58, net/trade -0.52, PF  0.75   (starts at the daily reopen: real spread much wider)
+  EURGBP  BUY  01:00->05:00  first half t +6.75  second half t +12.13, net/trade -0.51, PF  0.77   (starts at the daily reopen: real spread much wider)
+  EURGBP  BUY  10:00->11:00  first half t +3.43  second half t +1.68, net/trade -1.08, PF  0.65  
+  EURJPY  BUY  01:00->02:00  first half t +9.79  second half t +9.02, net/trade +0.08, PF  1.02   (starts at the daily reopen: real spread much wider)
+  EURJPY  BUY  01:00->03:00  first half t +4.56  second half t +6.95, net/trade +1.13, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
+  EURJPY  BUY  01:00->04:00  first half t +3.13  second half t +4.56, net/trade +0.37, PF  1.04   (starts at the daily reopen: real spread much wider)
+  EURNZD  BUY  01:00->02:00  first half t +5.58  second half t +6.48, net/trade -8.00, PF  0.28   (starts at the daily reopen: real spread much wider)
+  EURNZD  BUY  01:00->03:00  first half t +6.29  second half t +10.37, net/trade -3.36, PF  0.65   (starts at the daily reopen: real spread much wider)
+  EURNZD  BUY  01:00->04:00  first half t +3.77  second half t +6.81, net/trade -3.97, PF  0.71   (starts at the daily reopen: real spread much wider)
+  EURNZD  SELL 13:00->15:00  first half t +3.04  second half t +0.67, net/trade -2.83, PF  0.67  
   EURNZD  SELL 14:00->15:00  first half t +3.00  second half t +2.39, net/trade -2.16, PF  0.67  
-  EURUSD  BUY  01:00->02:00  first half t +8.58  second half t +4.18, net/trade -0.34, PF  0.85   (starts at the daily reopen: real spread much wider)
-  EURUSD  BUY  01:00->03:00  first half t +5.00  second half t +3.94, net/trade +0.08, PF  1.02   (starts at the daily reopen: real spread much wider)
-  EURUSD  BUY  01:00->05:00  first half t +3.05  second half t +2.78, net/trade +0.10, PF  1.02   (starts at the daily reopen: real spread much wider)
-  EURUSD  SELL 13:00->15:00  first half t +3.01  second half t +2.56, net/trade +0.39, PF  1.08  
-  GBPAUD  BUY  01:00->02:00  first half t +4.37  second half t +6.29, net/trade -6.58, PF  0.26   (starts at the daily reopen: real spread much wider)
-  GBPAUD  BUY  01:00->03:00  first half t +6.31  second half t +9.73, net/trade -2.77, PF  0.67   (starts at the daily reopen: real spread much wider)
-  GBPAUD  BUY  01:00->04:00  first half t +3.34  second half t +6.61, net/trade -3.21, PF  0.72   (starts at the daily reopen: real spread much wider)
-  GBPAUD  BUY  02:00->03:00  first half t +4.33  second half t +7.53, net/trade +1.78, PF  1.41  KEPT
-  GBPAUD  BUY  11:00->12:00  first half t +3.40  second half t +2.10, net/trade -0.58, PF  0.92  
-  GBPAUD  BUY  11:00->13:00  first half t +3.36  second half t +2.85, net/trade +0.48, PF  1.05  
-  GBPCAD  BUY  01:00->02:00  first half t +14.14  second half t +14.10, net/trade -0.62, PF  0.83   (starts at the daily reopen: real spread much wider)
-  GBPCAD  BUY  01:00->03:00  first half t +11.22  second half t +13.29, net/trade +0.39, PF  1.11  KEPT (starts at the daily reopen: real spread much wider)
-  GBPCAD  BUY  01:00->04:00  first half t +5.67  second half t +12.09, net/trade +0.76, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
-  GBPCAD  BUY  01:00->05:00  first half t +6.90  second half t +10.41, net/trade +0.34, PF  1.06   (starts at the daily reopen: real spread much wider)
-  GBPCHF  BUY  01:00->02:00  first half t +26.56  second half t +21.34, net/trade -1.95, PF  0.52   (starts at the daily reopen: real spread much wider)
-  GBPCHF  BUY  01:00->03:00  first half t +19.74  second half t +22.80, net/trade -0.03, PF  0.99   (starts at the daily reopen: real spread much wider)
-  GBPCHF  BUY  01:00->04:00  first half t +11.65  second half t +18.18, net/trade -0.11, PF  0.97   (starts at the daily reopen: real spread much wider)
-  GBPCHF  BUY  01:00->05:00  first half t +13.02  second half t +16.63, net/trade +0.08, PF  1.02   (starts at the daily reopen: real spread much wider)
-  GBPJPY  BUY  01:00->02:00  first half t +9.03  second half t +9.54, net/trade -0.98, PF  0.85   (starts at the daily reopen: real spread much wider)
-  GBPJPY  BUY  01:00->03:00  first half t +3.97  second half t +8.23, net/trade +1.10, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
-  GBPNZD  BUY  01:00->02:00  first half t +7.77  second half t +10.31, net/trade -13.26, PF  0.17   (starts at the daily reopen: real spread much wider)
-  GBPNZD  BUY  01:00->03:00  first half t +8.07  second half t +16.90, net/trade -4.91, PF  0.58   (starts at the daily reopen: real spread much wider)
-  GBPNZD  BUY  01:00->04:00  first half t +4.08  second half t +11.47, net/trade -5.74, PF  0.64   (starts at the daily reopen: real spread much wider)
-  GBPNZD  BUY  11:00->13:00  first half t +3.42  second half t +2.33, net/trade -1.00, PF  0.91  
-  GBPUSD  BUY  01:00->02:00  first half t +10.56  second half t +7.12, net/trade +0.19, PF  1.08   (starts at the daily reopen: real spread much wider)
-  GBPUSD  BUY  01:00->03:00  first half t +6.19  second half t +5.59, net/trade +0.51, PF  1.15  KEPT (starts at the daily reopen: real spread much wider)
-  GBPUSD  BUY  01:00->05:00  first half t +3.62  second half t +3.95, net/trade +0.50, PF  1.10   (starts at the daily reopen: real spread much wider)
-  NZDCAD  BUY  01:00->02:00  first half t +14.69  second half t +14.30, net/trade -1.87, PF  0.50   (starts at the daily reopen: real spread much wider)
-  NZDCAD  BUY  01:00->03:00  first half t +10.05  second half t +14.15, net/trade -0.74, PF  0.80   (starts at the daily reopen: real spread much wider)
-  NZDCAD  BUY  01:00->04:00  first half t +8.51  second half t +11.17, net/trade -0.15, PF  0.97   (starts at the daily reopen: real spread much wider)
-  NZDCAD  BUY  01:00->05:00  first half t +8.37  second half t +9.44, net/trade -0.14, PF  0.98   (starts at the daily reopen: real spread much wider)
-  NZDCAD  SELL 17:00->20:00  first half t +3.61  second half t +2.05, net/trade -0.42, PF  0.92  
-  NZDCAD  SELL 18:00->19:00  first half t +3.51  second half t +1.49, net/trade -1.05, PF  0.69  
-  NZDCAD  SELL 18:00->20:00  first half t +4.21  second half t +1.82, net/trade -0.81, PF  0.80  
-  NZDCAD  BUY  22:00->23:00  first half t +3.36  second half t +1.89, net/trade -1.01, PF  0.59  
-  NZDCHF  BUY  01:00->02:00  first half t +20.07  second half t +15.55, net/trade +0.43, PF  1.26  KEPT (starts at the daily reopen: real spread much wider)
-  NZDCHF  BUY  01:00->03:00  first half t +14.63  second half t +11.41, net/trade +0.33, PF  1.14  KEPT (starts at the daily reopen: real spread much wider)
-  NZDCHF  BUY  01:00->04:00  first half t +12.43  second half t +8.77, net/trade +0.56, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
-  NZDCHF  BUY  01:00->05:00  first half t +11.39  second half t +8.12, net/trade +0.79, PF  1.21  KEPT (starts at the daily reopen: real spread much wider)
-  NZDJPY  BUY  01:00->02:00  first half t +11.88  second half t +12.46, net/trade -3.24, PF  0.45   (starts at the daily reopen: real spread much wider)
-  NZDJPY  BUY  01:00->03:00  first half t +5.87  second half t +11.78, net/trade -1.35, PF  0.79   (starts at the daily reopen: real spread much wider)
-  NZDJPY  BUY  01:00->04:00  first half t +5.28  second half t +8.67, net/trade -1.40, PF  0.84   (starts at the daily reopen: real spread much wider)
-  NZDJPY  BUY  01:00->05:00  first half t +5.20  second half t +7.86, net/trade -0.84, PF  0.91   (starts at the daily reopen: real spread much wider)
-  NZDUSD  BUY  01:00->02:00  first half t +10.10  second half t +9.72, net/trade -1.56, PF  0.47   (starts at the daily reopen: real spread much wider)
-  NZDUSD  BUY  01:00->03:00  first half t +5.65  second half t +8.73, net/trade -1.05, PF  0.70   (starts at the daily reopen: real spread much wider)
-  NZDUSD  BUY  01:00->04:00  first half t +4.50  second half t +7.40, net/trade -0.54, PF  0.88   (starts at the daily reopen: real spread much wider)
-  NZDUSD  BUY  01:00->05:00  first half t +4.93  second half t +5.90, net/trade -0.59, PF  0.90   (starts at the daily reopen: real spread much wider)
-  USDCAD  BUY  01:00->02:00  first half t +4.11  second half t +3.62, net/trade -1.00, PF  0.64   (starts at the daily reopen: real spread much wider)
+  EURUSD  BUY  01:00->02:00  first half t +8.55  second half t +4.21, net/trade -0.33, PF  0.86   (starts at the daily reopen: real spread much wider)
+  EURUSD  BUY  01:00->03:00  first half t +4.99  second half t +3.99, net/trade +0.10, PF  1.03   (starts at the daily reopen: real spread much wider)
+  EURUSD  BUY  01:00->05:00  first half t +3.02  second half t +2.84, net/trade +0.13, PF  1.03   (starts at the daily reopen: real spread much wider)
+  EURUSD  SELL 13:00->15:00  first half t +3.03  second half t +2.54, net/trade +0.38, PF  1.08  
+  GBPAUD  BUY  01:00->02:00  first half t +4.43  second half t +6.13, net/trade -6.68, PF  0.26   (starts at the daily reopen: real spread much wider)
+  GBPAUD  BUY  01:00->03:00  first half t +6.33  second half t +9.68, net/trade -2.83, PF  0.66   (starts at the daily reopen: real spread much wider)
+  GBPAUD  BUY  01:00->04:00  first half t +3.37  second half t +6.54, net/trade -3.30, PF  0.72   (starts at the daily reopen: real spread much wider)
+  GBPAUD  BUY  02:00->03:00  first half t +4.28  second half t +7.62, net/trade +1.82, PF  1.43  KEPT
+  GBPAUD  BUY  11:00->12:00  first half t +3.39  second half t +2.09, net/trade -0.58, PF  0.92  
+  GBPAUD  BUY  11:00->13:00  first half t +3.37  second half t +2.83, net/trade +0.47, PF  1.05  
+  GBPCAD  BUY  01:00->02:00  first half t +14.18  second half t +14.07, net/trade -0.65, PF  0.82   (starts at the daily reopen: real spread much wider)
+  GBPCAD  BUY  01:00->03:00  first half t +11.24  second half t +13.28, net/trade +0.37, PF  1.10  KEPT (starts at the daily reopen: real spread much wider)
+  GBPCAD  BUY  01:00->04:00  first half t +5.69  second half t +12.09, net/trade +0.74, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
+  GBPCAD  BUY  01:00->05:00  first half t +6.92  second half t +10.43, net/trade +0.34, PF  1.06   (starts at the daily reopen: real spread much wider)
+  GBPCHF  BUY  01:00->02:00  first half t +26.60  second half t +21.33, net/trade -1.98, PF  0.52   (starts at the daily reopen: real spread much wider)
+  GBPCHF  BUY  01:00->03:00  first half t +19.77  second half t +22.82, net/trade -0.04, PF  0.99   (starts at the daily reopen: real spread much wider)
+  GBPCHF  BUY  01:00->04:00  first half t +11.67  second half t +18.20, net/trade -0.12, PF  0.97   (starts at the daily reopen: real spread much wider)
+  GBPCHF  BUY  01:00->05:00  first half t +13.02  second half t +16.68, net/trade +0.08, PF  1.02   (starts at the daily reopen: real spread much wider)
+  GBPJPY  BUY  01:00->02:00  first half t +9.03  second half t +9.58, net/trade -0.98, PF  0.85   (starts at the daily reopen: real spread much wider)
+  GBPJPY  BUY  01:00->03:00  first half t +3.97  second half t +8.28, net/trade +1.14, PF  1.13  KEPT (starts at the daily reopen: real spread much wider)
+  GBPNZD  BUY  01:00->02:00  first half t +7.79  second half t +10.31, net/trade -13.30, PF  0.17   (starts at the daily reopen: real spread much wider)
+  GBPNZD  BUY  01:00->03:00  first half t +8.08  second half t +16.94, net/trade -4.91, PF  0.58   (starts at the daily reopen: real spread much wider)
+  GBPNZD  BUY  01:00->04:00  first half t +4.12  second half t +11.47, net/trade -5.76, PF  0.64   (starts at the daily reopen: real spread much wider)
+  GBPNZD  BUY  11:00->13:00  first half t +3.44  second half t +2.31, net/trade -1.02, PF  0.91  
+  GBPUSD  BUY  01:00->02:00  first half t +10.56  second half t +7.11, net/trade +0.18, PF  1.08   (starts at the daily reopen: real spread much wider)
+  GBPUSD  BUY  01:00->03:00  first half t +6.19  second half t +5.60, net/trade +0.51, PF  1.15  KEPT (starts at the daily reopen: real spread much wider)
+  GBPUSD  BUY  01:00->05:00  first half t +3.62  second half t +3.95, net/trade +0.49, PF  1.09   (starts at the daily reopen: real spread much wider)
+  NZDCAD  BUY  01:00->02:00  first half t +14.71  second half t +14.27, net/trade -1.89, PF  0.50   (starts at the daily reopen: real spread much wider)
+  NZDCAD  BUY  01:00->03:00  first half t +10.06  second half t +14.15, net/trade -0.75, PF  0.80   (starts at the daily reopen: real spread much wider)
+  NZDCAD  BUY  01:00->04:00  first half t +8.47  second half t +11.21, net/trade -0.16, PF  0.97   (starts at the daily reopen: real spread much wider)
+  NZDCAD  BUY  01:00->05:00  first half t +8.33  second half t +9.47, net/trade -0.14, PF  0.98   (starts at the daily reopen: real spread much wider)
+  NZDCAD  SELL 17:00->20:00  first half t +3.60  second half t +2.06, net/trade -0.41, PF  0.93  
+  NZDCAD  SELL 18:00->19:00  first half t +3.49  second half t +1.52, net/trade -1.04, PF  0.70  
+  NZDCAD  SELL 18:00->20:00  first half t +4.18  second half t +1.85, net/trade -0.80, PF  0.80  
+  NZDCAD  BUY  22:00->23:00  first half t +3.37  second half t +1.88, net/trade -1.01, PF  0.59  
+  NZDCHF  BUY  01:00->02:00  first half t +20.08  second half t +15.54, net/trade +0.43, PF  1.25  KEPT (starts at the daily reopen: real spread much wider)
+  NZDCHF  BUY  01:00->03:00  first half t +14.64  second half t +11.41, net/trade +0.32, PF  1.14  KEPT (starts at the daily reopen: real spread much wider)
+  NZDCHF  BUY  01:00->04:00  first half t +12.41  second half t +8.80, net/trade +0.56, PF  1.17  KEPT (starts at the daily reopen: real spread much wider)
+  NZDCHF  BUY  01:00->05:00  first half t +11.36  second half t +8.15, net/trade +0.79, PF  1.21  KEPT (starts at the daily reopen: real spread much wider)
+  NZDJPY  BUY  01:00->02:00  first half t +11.88  second half t +12.48, net/trade -3.25, PF  0.45   (starts at the daily reopen: real spread much wider)
+  NZDJPY  BUY  01:00->03:00  first half t +5.86  second half t +11.83, net/trade -1.33, PF  0.79   (starts at the daily reopen: real spread much wider)
+  NZDJPY  BUY  01:00->04:00  first half t +5.20  second half t +8.77, net/trade -1.36, PF  0.84   (starts at the daily reopen: real spread much wider)
+  NZDJPY  BUY  01:00->05:00  first half t +5.15  second half t +7.92, net/trade -0.82, PF  0.92   (starts at the daily reopen: real spread much wider)
+  NZDUSD  BUY  01:00->02:00  first half t +10.10  second half t +9.71, net/trade -1.58, PF  0.47   (starts at the daily reopen: real spread much wider)
+  NZDUSD  BUY  01:00->03:00  first half t +5.65  second half t +8.73, net/trade -1.06, PF  0.70   (starts at the daily reopen: real spread much wider)
+  NZDUSD  BUY  01:00->04:00  first half t +4.48  second half t +7.43, net/trade -0.54, PF  0.88   (starts at the daily reopen: real spread much wider)
+  NZDUSD  BUY  01:00->05:00  first half t +4.90  second half t +5.91, net/trade -0.60, PF  0.90   (starts at the daily reopen: real spread much wider)
+  USDCAD  BUY  01:00->02:00  first half t +4.11  second half t +3.62, net/trade -1.00, PF  0.63   (starts at the daily reopen: real spread much wider)
   USDCAD  BUY  01:00->03:00  first half t +4.56  second half t +3.34, net/trade -0.60, PF  0.82   (starts at the daily reopen: real spread much wider)
-  USDCAD  BUY  01:00->04:00  first half t +3.90  second half t +2.52, net/trade -0.82, PF  0.81   (starts at the daily reopen: real spread much wider)
-  USDCHF  BUY  01:00->02:00  first half t +15.72  second half t +8.61, net/trade +0.12, PF  1.06   (starts at the daily reopen: real spread much wider)
-  USDCHF  BUY  01:00->03:00  first half t +13.20  second half t +6.23, net/trade +0.16, PF  1.06   (starts at the daily reopen: real spread much wider)
-  USDCHF  BUY  01:00->04:00  first half t +11.17  second half t +4.16, net/trade -0.21, PF  0.94   (starts at the daily reopen: real spread much wider)
-  USDCHF  BUY  01:00->05:00  first half t +8.76  second half t +4.57, net/trade +0.20, PF  1.05   (starts at the daily reopen: real spread much wider)
-  USDCHF  BUY  02:00->04:00  first half t +3.04  second half t -1.07, net/trade -1.35, PF  0.63  
-  USDCHF  BUY  19:00->20:00  first half t +3.49  second half t +1.19, net/trade -0.72, PF  0.77  
-  USDJPY  BUY  01:00->02:00  first half t +3.95  second half t +3.91, net/trade +0.14, PF  1.03   (starts at the daily reopen: real spread much wider)
-  XAUUSD  BUY  01:00->02:00  first half t +3.97  second half t +3.03, net/trade +0.96, PF  1.46  KEPT (starts at the daily reopen: real spread much wider)
-  XAUUSD  BUY  01:00->03:00  first half t +4.66  second half t +2.61, net/trade +1.05, PF  1.35  KEPT (starts at the daily reopen: real spread much wider)
-  XAUUSD  BUY  01:00->04:00  first half t +3.58  second half t +3.64, net/trade +2.02, PF  1.54  KEPT (starts at the daily reopen: real spread much wider)
-  XAUUSD  BUY  01:00->05:00  first half t +3.66  second half t +2.59, net/trade +1.69, PF  1.31  KEPT (starts at the daily reopen: real spread much wider)
-126 windows with t >= 3 on the first half out of about 4920 tested (chance alone: about 7); 26 held on the second half (t >= 2 and PF > 1.1 after spread)
+  USDCAD  BUY  01:00->04:00  first half t +3.90  second half t +2.53, net/trade -0.82, PF  0.81   (starts at the daily reopen: real spread much wider)
+  USDCHF  BUY  01:00->02:00  first half t +15.72  second half t +8.65, net/trade +0.13, PF  1.06   (starts at the daily reopen: real spread much wider)
+  USDCHF  BUY  01:00->03:00  first half t +13.20  second half t +6.25, net/trade +0.17, PF  1.06   (starts at the daily reopen: real spread much wider)
+  USDCHF  BUY  01:00->04:00  first half t +11.15  second half t +4.19, net/trade -0.20, PF  0.95   (starts at the daily reopen: real spread much wider)
+  USDCHF  BUY  01:00->05:00  first half t +8.75  second half t +4.60, net/trade +0.22, PF  1.05   (starts at the daily reopen: real spread much wider)
+  USDCHF  BUY  02:00->04:00  first half t +3.03  second half t -1.06, net/trade -1.35, PF  0.63  
+  USDCHF  BUY  19:00->20:00  first half t +3.50  second half t +1.18, net/trade -0.73, PF  0.77  
+  USDJPY  BUY  01:00->02:00  first half t +3.96  second half t +3.94, net/trade +0.16, PF  1.03   (starts at the daily reopen: real spread much wider)
+  XAUUSD  BUY  01:00->02:00  first half t +3.97  second half t +3.07, net/trade +0.98, PF  1.46  KEPT (starts at the daily reopen: real spread much wider)
+  XAUUSD  BUY  01:00->03:00  first half t +4.66  second half t +2.66, net/trade +1.07, PF  1.36  KEPT (starts at the daily reopen: real spread much wider)
+  XAUUSD  BUY  01:00->04:00  first half t +3.58  second half t +3.68, net/trade +2.05, PF  1.55  KEPT (starts at the daily reopen: real spread much wider)
+  XAUUSD  BUY  01:00->05:00  first half t +3.66  second half t +2.60, net/trade +1.70, PF  1.32  KEPT (starts at the daily reopen: real spread much wider)
+125 windows with t >= 3 on the first half out of about 4920 tested (chance alone: about 7); 28 held on the second half (t >= 2 and PF > 1.1 after spread)
 
-done in 30 s
+done in 28 s
