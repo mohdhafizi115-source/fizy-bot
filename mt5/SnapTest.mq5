@@ -51,7 +51,7 @@ void OnTimer()
       f4 = SrSnap("TEST_SRZ", zi, zl, zc, zb);
    }
    string zs = StringFormat("SR: %d M15 bars, %d zones, ATR %s, price %s, resistance %s, support %s", Bars(g, PERIOD_M15), ArraySize(sr_lo),
-                            SrP(sr_atr), SrP(px), SrList(px, true, 3), SrList(px, false, 3));
+                            SrP(sr_atr), SrP(px), SrList(px, true, 2), SrList(px, false, 2));
    int h = FileOpen("snap_test.txt", FILE_WRITE | FILE_TXT | FILE_ANSI);
    if(h != INVALID_HANDLE) { FileWriteString(h, f1 + "\r\n" + f2 + "\r\n" + f3 + "\r\n" + f4 + "\r\n" + zs + "\r\n"); FileClose(h); }
    TerminalClose(0);

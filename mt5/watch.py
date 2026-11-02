@@ -168,7 +168,7 @@ def status_block(kind, text):
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",
                 f"▫️ Zone map at 01:30, 08:00, 15:00 broker ({myt('01:30', 'Europe/Athens')}, {myt('08:00', 'Europe/Athens')}, "
                 f"{myt('15:00', 'Europe/Athens')} MYT)",
-                "▫️ Chart alert when the price enters a zone · ideas untested (PF ~0.95)"]
+                "▫️ 2 nearest zones above and below · chart when the price enters one · ideas untested (PF < 1)"]
     if kind == "VOLBO ONLINE":
         syms = t.split(":")[0].replace(", ", " · ")
         return ["⚡ VOLATILITY BREAKOUT · day trade", f"▫️ {syms}",

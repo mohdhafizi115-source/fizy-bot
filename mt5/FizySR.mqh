@@ -1,16 +1,18 @@
 //+------------------------------------------------------------------+
 //| FizySR.mqh - gold M15 support / resistance zones, ALERTS ONLY (no |
 //| trading), included by FizyLB.mq5.                                 |
-//| Zones (same algorithm as research/srzones.py): 5-bar swing highs  |
-//| and lows of the last 480 closed M15 bars, clustered within 1 x    |
-//| ATR(M15, 14) (a cluster spans <= 2 ATR), >= 2 touches, widened by |
-//| 0.15 ATR, overlaps merged while <= 2.5 ATR wide.                  |
+//| Zones (same algorithm as research/srzones.py, "SLIM"): 5-bar      |
+//| swing highs and lows of the last 480 closed M15 bars, clustered   |
+//| within 0.5 x ATR(M15, 14) (a cluster spans <= 1 ATR), >= 3        |
+//| touches, widened by 0.1 ATR, overlaps merged while <= 1.2 ATR     |
+//| wide; only the 2 nearest zones above and below the last close are |
+//| kept (the owner found the full map too busy).                     |
 //| Sends a zone map with a short analysis at 01:30, 08:00 and 15:00  |
 //| server time (and at the first shift of the day), and a chart when |
 //| the price enters a zone from outside (one alert per zone area per |
 //| 4 hours, 01:30-22:00). The entry / SL / TP ideas are labelled as  |
-//| untested: on 6.6 years of gold, zone entries had PF 0.87-1.00     |
-//| (random entries 0.94; research/srzones.py, capped zones).         |
+//| untested: on 6.6 years of gold, zone entries had PF 0.83-0.93     |
+//| (random entries 0.94; research/srzones.py, SLIM zones).           |
 //| Events go to MQL5\Files\sr_events.txt (forwarded to Telegram).    |
 //+------------------------------------------------------------------+
 input string InpSrSymbol      = "XAUUSD";
@@ -18,6 +20,12 @@ input bool   InpSrOn          = true;
 input bool   InpSrMapOnStart  = false;      // one map when the EA starts (the workflow sets it for the first shift of the day)
 input int    InpSrLookback    = 480;        // closed M15 bars (5 days)
 input int    InpSrCooldownMin = 240;
+input double InpSrTol         = 0.5;        // cluster: within this x ATR of the cluster mean
+input double InpSrSpan        = 1.0;        // cluster: at most this x ATR from its lowest swing
+input double InpSrPad         = 0.1;        // zone = cluster +- this x ATR
+input double InpSrMerge       = 1.2;        // overlapping zones merge while at most this x ATR wide
+input int    InpSrTouches     = 3;          // swings needed for a zone
+input int    InpSrNear        = 2;          // zones kept above and below the price
 
 string   sr_sym = "";
 bool     sr_ready = false, sr_startMap = false;
@@ -29,7 +37,7 @@ double   sr_aMid[];
 datetime sr_aTime[];
 int      sr_mapKey = 0;
 int      sr_h50 = INVALID_HANDLE, sr_h200 = INVALID_HANDLE, sr_h450 = INVALID_HANDLE, sr_h4200 = INVALID_HANDLE;
-string   SR_NOTE = "Not a tested edge: zone entries on 6.6 years of gold had PF 0.87-1.00 (random entries 0.94). Info only, no auto trade";
+string   SR_NOTE = "Not a tested edge: zone entries on 6.6 years of gold had PF 0.83-0.93 (random entries 0.94). Info only, no auto trade";
 
 void SrEvent(string msg)
 {
@@ -86,22 +94,39 @@ void SrCompute()
    double sum = p[0], mn = p[0], mx = p[0]; int cnt = 1;
    for(int i = 1; i <= m; i++)
    {
-      if(i < m && p[i] - sum / cnt <= sr_atr && p[i] - mn <= 2 * sr_atr) { sum += p[i]; cnt++; mx = p[i]; continue; }
-      if(cnt >= 2) { ArrayResize(cl, k + 1); ArrayResize(ch, k + 1); ArrayResize(cc, k + 1); cl[k] = mn - 0.15 * sr_atr; ch[k] = mx + 0.15 * sr_atr; cc[k] = cnt; k++; }
+      if(i < m && p[i] - sum / cnt <= InpSrTol * sr_atr && p[i] - mn <= InpSrSpan * sr_atr) { sum += p[i]; cnt++; mx = p[i]; continue; }
+      if(cnt >= InpSrTouches)
+      {
+         ArrayResize(cl, k + 1); ArrayResize(ch, k + 1); ArrayResize(cc, k + 1);
+         cl[k] = mn - InpSrPad * sr_atr; ch[k] = mx + InpSrPad * sr_atr; cc[k] = cnt; k++;
+      }
       if(i < m) { sum = p[i]; mn = p[i]; mx = p[i]; cnt = 1; }
    }
-   for(int i = 0; i < k; i++)                                          // merge overlaps (cl is sorted) while <= 2.5 ATR wide
+   double zl[], zh[]; int zc[];
+   for(int i = 0; i < k; i++)                                          // merge overlaps (cl is sorted) while narrow
+   {
+      int z = ArraySize(zl);
+      double lo = cl[i];
+      if(z > 0 && cl[i] <= zh[z - 1])
+      {
+         if(MathMax(zh[z - 1], ch[i]) - zl[z - 1] <= InpSrMerge * sr_atr) { zh[z - 1] = MathMax(zh[z - 1], ch[i]); zc[z - 1] += cc[i]; continue; }
+         lo = (cl[i] + zh[z - 1]) / 2;                                  // too wide: split in the middle of the overlap
+         zh[z - 1] = lo;
+      }
+      ArrayResize(zl, z + 1); ArrayResize(zh, z + 1); ArrayResize(zc, z + 1);
+      zl[z] = lo; zh[z] = ch[i]; zc[z] = cc[i];
+   }
+   // keep the nearest InpSrNear zones below and above the last close (and one containing it)
+   int nz = ArraySize(zl), first = 0, last = nz - 1, below = 0, above = 0;
+   for(int i = nz - 1; i >= 0; i--) if(zh[i] < sr_prevClose) { below++; if(below <= InpSrNear) first = i; }
+   for(int i = 0; i < nz; i++)      if(zl[i] > sr_prevClose) { above++; if(above <= InpSrNear) last = i; }
+   if(below == 0) for(int i = 0; i < nz; i++) if(zh[i] >= sr_prevClose) { first = i; break; }
+   if(above == 0) for(int i = nz - 1; i >= 0; i--) if(zl[i] <= sr_prevClose) { last = i; break; }
+   for(int i = first; i <= last && i < nz; i++)
    {
       int z = ArraySize(sr_lo);
-      double lo = cl[i];
-      if(z > 0 && cl[i] <= sr_hi[z - 1])
-      {
-         if(MathMax(sr_hi[z - 1], ch[i]) - sr_lo[z - 1] <= 2.5 * sr_atr) { sr_hi[z - 1] = MathMax(sr_hi[z - 1], ch[i]); sr_cnt[z - 1] += cc[i]; continue; }
-         lo = (cl[i] + sr_hi[z - 1]) / 2;                               // too wide: split in the middle of the overlap
-         sr_hi[z - 1] = lo;
-      }
       ArrayResize(sr_lo, z + 1); ArrayResize(sr_hi, z + 1); ArrayResize(sr_cnt, z + 1);
-      sr_lo[z] = lo; sr_hi[z] = ch[i]; sr_cnt[z] = cc[i];
+      sr_lo[z] = zl[i]; sr_hi[z] = zh[i]; sr_cnt[z] = zc[i];
    }
 }
 
@@ -199,7 +224,7 @@ void SrMap(string why, string tag)
    string fn = SrSnap(tag, -1, none, nc, nl);
    SrEvent(StringFormat("SR ZONE MAP %s | %s | Price %s, H1 trend %s, H4 trend %s, ATR(M15) %s%s | Resistance: %s | Support: %s | %s | %s",
                         sr_sym, why, SrP(px), SrTrendTxt(t1), SrTrendTxt(t4), SrP(sr_atr), inside,
-                        SrList(px, true, 3), SrList(px, false, 3), view, SR_NOTE) + Img(fn));
+                        SrList(px, true, 2), SrList(px, false, 2), view, SR_NOTE) + Img(fn));
 }
 
 void SrInit()
