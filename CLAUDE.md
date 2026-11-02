@@ -15,7 +15,7 @@
 ## What runs
 - **`bbma_scanner.py` + `.github/workflows/scan.yml`:** Linux scanner loop (Deriv data, Telegram alerts). London-breakout alerts only; the M5 scalp and RSI2 alerts are off. Its `mt5_watchdog()` restarts the MT5 shift chain if no shift is running.
 - **`.github/workflows/mt5_trade.yml`:** the auto trader. A Windows runner installs the JustMarkets MT5 terminal, compiles `mt5/FizyLB.mq5` and runs it for about 335 minutes. `mt5/next_shift.py` then dispatches the next shift, so it runs 24/7.
-  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed). Line 9 is the lot of the USDJPY day trades (`FizyDTJ.mqh`). Line 10 is the lot of the gold H1 Ichimoku cloud breakout (`FizyKUMO.mqh`).
+  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed). Line 9 is the lot of the USDJPY day trades (`FizyDTJ.mqh`). Line 10 is the lot of the gold H1 Ichimoku cloud breakout (`FizyKUMO.mqh`). **All lots are 0.01 since 3 Nov** (owner's request; London was 0.05).
   - `mt5/watch.py` forwards the EA event files (`MQL5/Files/*_events.txt`, with PNG screenshots) to Telegram, with emoji blocks and MYT times. It also sends one "BOT ONLINE" daily status (`status/mt5_online.txt` holds the date sent).
 - **EA modules:** `mt5/FizyLB.mq5` (London breakout gold) includes the following.
 
