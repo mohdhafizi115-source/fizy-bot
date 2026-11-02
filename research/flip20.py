@@ -16,7 +16,8 @@ next candle entry. tp pada resistant/support seterusnya atau snd terdekat. guna 
   TP        the nearest of: the next S/R level above (any kept swing high / low at least 0.3 ATR above the close) or
             the nearest fresh supply zone (M15 SnD: 1-3 base candles, then a leg-out candle >= 1.5 ATR with body
             >= 60%; target = its proximal line). No level above: 2R.
-  Flat      signal candles 01:30-21:30, everything closed at 23:00 (no overnight swap).
+  Flat      signal candles 01:30-21:30, everything closed at 23:00 or at the day's last candle (Friday 22:45 in
+            winter), so nothing is held overnight or over the weekend.
 Variants: REJ_RR1 (skip when the TP is < 1R away), PIN (lower wick >= 60%), TOUCH (any touch that closes back
 above the level: does the rejection matter?), REJ_SRONLY (TP only at S/R, no SnD), REJ_2R (fixed 2R), REJ_K3 /
 REJ_K10 (smaller / bigger swings). Control: FAKE = REJ on fake levels (every swing moved 1 ATR up or down at random;
@@ -202,6 +203,14 @@ VARIANTS = {
 }
 
 
+def flat_mask(B):
+    """close at 23:00 server, and at the last candle before any gap (Friday's gold close is at 22:45 in winter)"""
+    dates = B.date.values
+    newday = np.r_[True, dates[1:] != dates[:-1]]
+    lastbar = np.r_[dates[1:] != dates[:-1], True]
+    return (B.hm.values >= 1380) | newday | lastbar
+
+
 def stats(x, usd):
     if len(x) == 0:
         return None
@@ -216,8 +225,7 @@ def main():
     usd = m["tick_value"] / m["tick_size"] * 0.01 if m["tick_size"] > 0 else 1.0
     d5 = SA.load(os.path.join(DATA, SYM + ".csv"), m["point"])
     B = DT.bars(d5, "15min")
-    dates = B.date.values
-    flat = (B.hm.values >= 1380) | np.r_[True, dates[1:] != dates[:-1]]
+    flat = flat_mask(B)
     arr = [B[x].values for x in ("o", "h", "l", "c", "s")]
     end = B.index[-1]
     mid = B.index[len(B) // 2]

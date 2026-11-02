@@ -22,8 +22,7 @@ def main():
     usd = m["tick_value"] / m["tick_size"] * 0.01 if m["tick_size"] > 0 else 1.0
     d5 = SA.load(os.path.join(DATA, F.SYM + ".csv"), m["point"])
     B = DT.bars(d5, "15min")
-    dates = B.date.values
-    flat = (B.hm.values >= 1380) | np.r_[True, dates[1:] != dates[:-1]]
+    flat = F.flat_mask(B)
     arr = [B[x].values for x in ("o", "h", "l", "c", "s")]
     end = B.index[-1]
     t1m = end - pd.Timedelta(days=31)
