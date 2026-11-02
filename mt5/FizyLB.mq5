@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.61"
+#property version "1.70"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -43,6 +43,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyMEF.mqh"                 // month-end Tokyo fix on crosses (CADCHF, NZDCHF sell; USDCAD, GBPNZD buy; 09:40 -> 09:55 JST)
 #include "FizyGAU.mqh"                 // gold before the LBMA AM auction (sell 10:15 -> 10:30 London)
 #include "FizyWVB.mqh"                 // Williams volatility breakout day trade (USDJPY, EURJPY, GBPJPY, XAUUSD)
+#include "FizySR.mqh"                  // gold M15 support / resistance zone alerts (no trading)
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -322,5 +323,6 @@ void OnTimer()
       FileWriteString(h, StringFormat("%s|%d|%d|%d\r\n", TimeToString(now, TIME_DATE | TIME_SECONDS), CountPositions(), CountOrders(), done ? 1 : 0));
       FileClose(h);
    }
+   SrOnTimer();                                                             // last: alerts only, its screenshots may take 2 s
 }
 //+------------------------------------------------------------------+
