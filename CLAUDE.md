@@ -15,7 +15,7 @@
 ## What runs
 - **`bbma_scanner.py` + `.github/workflows/scan.yml`:** Linux scanner loop (Deriv data, Telegram alerts). London-breakout alerts only; the M5 scalp and RSI2 alerts are off. Its `mt5_watchdog()` restarts the MT5 shift chain if no shift is running.
 - **`.github/workflows/mt5_trade.yml`:** the auto trader. A Windows runner installs the JustMarkets MT5 terminal, compiles `mt5/FizyLB.mq5` and runs it for about 335 minutes. `mt5/next_shift.py` then dispatches the next shift, so it runs 24/7.
-  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed).
+  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed). Line 9 is the lot of the USDJPY day trades (`FizyDTJ.mqh`).
   - `mt5/watch.py` forwards the EA event files (`MQL5/Files/*_events.txt`, with PNG screenshots) to Telegram, with emoji blocks and MYT times. It also sends one "BOT ONLINE" daily status (`status/mt5_online.txt` holds the date sent).
 - **EA modules:** `mt5/FizyLB.mq5` (London breakout gold) includes the following.
 
@@ -27,7 +27,8 @@
   | `FizyGTB.mqh` | Gotobi Tokyo fix: sell USDJPY, EURJPY, GBPJPY at 09:55 JST, close 10:15 | 260311 |
   | `FizyMEF.mqh` | month-end Tokyo fix: CADCHF / NZDCHF sell, USDCAD / GBPNZD buy, 09:40 → 09:55 JST | 260313 |
   | `FizyGAU.mqh` | gold before the LBMA auction: sell 10:15 → 10:30 London | 260312 |
-  | `FizyWVB.mqh` | Williams volatility breakout k 0.7 on USDJPY, EURJPY, GBPJPY, XAUUSD | 260314 |
+  | `FizyWVB.mqh` | Williams volatility breakout: k 0.5 on USDJPY, EURJPY, GBPJPY, k 0.7 on XAUUSD (per symbol since v1.80) | 260314 |
+  | `FizyDTJ.mqh` | USDJPY day trades: previous-day breakout (PDHL, from 02:00, TP 2R, close 22:30) and New York continuation (NYCONT, 15:30 follow the 09:00–15:30 move, close 22:00) | 260315 / 260316 |
   | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading), **switched off** (line 8): slim zones (0.5 ATR clusters, ≤ 1.2 ATR wide, ≥ 3 touches), the 2 nearest above and below; map at 01:30 / 08:00 / 15:00 server, chart when price enters a zone. Turn on again only for a level type that passes | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
@@ -42,7 +43,7 @@
 ## Research (backtests on the broker's own data)
 - **`.github/workflows/mt5_data.yml`:** exports M5 history with `mt5/ExportM5.mq5` (input `symbols`, default 30 instruments) into the artifact `m5data`, then runs `research/<script>.py` on Linux. Results go to `research/status/<script>.txt`.
   - Re-run a script on an earlier export with the inputs `script=research/x.py` and `data_run=<run id>`.
-  - Exports: WTI, Brent and XNG in run 41330505649; XAUUSD only, 2020-03 → 2026-11-02, in run 41395994896. The 30-instrument export (run 41277285458) was deleted on 2 Nov; make a new one when a test needs it (about 30 min).
+  - Exports: 30 FX / gold / BTC instruments, 2020-03 → 2026-11-02, in run 41443785106 (kept 60 days). WTI, Brent and XNG in run 41330505649. The older 30-instrument export (run 41277285458) was deleted on 2 Nov.
 - **Economic calendar:** `mt5/ExportCal.mq5` + `.github/workflows/mt5_cal.yml` → `data/calendar.csv`. Past times are stored at today's server offset (+2 h): treat them as UTC+2, then convert to Europe/Athens.
 - **Pass rule used so far:** ≥ 150 trades, PF ≥ 1.15 after spread, both halves ≥ 1.05, stress (1.5× spread) ≥ 1.05, last 12 months positive.
   - Always compare against a random-entry baseline or fake event times.
@@ -51,9 +52,10 @@
   - **Edges:**
     - Tokyo-fix flows: Gotobi and month-end.
     - Gold before the LBMA AM auction.
-    - Breakouts on JPY pairs and gold: London breakout, NR7, Williams.
+    - Breakouts on JPY pairs and gold: London breakout, NR7, Williams; on USDJPY also the previous-day breakout and New York continuation (re-checked on the 2 Nov export with `research/daycheck.py`).
   - **No edge:**
     - Every M5 indicator scalp, on all 30 instruments.
+    - Round 15 (`research/round15.py`, 2 Nov, for more trades a day): H1 / H4 NR7 and inside-bar breakouts, H1 Donchian 20/10, H1 z-score reversion on all 30 (0 of 180 pass); new gold event times (Shanghai Gold Benchmark AM / PM, SHFE night open, MCX open; 0 kept).
     - RSI2 on forex.
     - The walk-forward ML model.
     - COT positioning.
