@@ -1,6 +1,6 @@
-run (UTC): started 2026-11-02 08:00:01  finished 08:00:03  broker time: 2026-11-02 10:00
-XAUUSD   deriv       5482  BBMA alerts off
-XAUUSD London breakout: orders placed: BUY STOP 3919.46 / SELL STOP 3892.85
+run (UTC): started 2026-11-02 09:00:01  finished 09:00:03  broker time: 2026-11-02 11:00
+XAUUSD   deriv       5546  BBMA alerts off
+XAUUSD London breakout: SELL open from 3892.85
 XAUUSD RSI2 pullback: watching
 XAUUSD M5 scalp: watching (last +29 pips)
 welcome telegram ok: True  example: None
