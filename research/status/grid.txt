@@ -1,0 +1,151 @@
+XAUUSD M5 2020-03-30 .. 2026-11-02 (344 weeks), gold 1631 -> 3915, lowest 1568, highest 5598
+Buy and hold 0.01 lot (STD) for the whole period: +2284 $ before swaps (about -671 $ of swap)
+Per variant: blow-ups (each = a $100 account lost), days to the first blow-up, end balance of the last life, realised $ in total / per week, max drawdown of the balance+floating, worst floating loss, $ in half 1 / half 2 / last 12 months
+variant                    blowups  1st(d)   total$   $/wk  maxDD   worst$     h1$     h2$    l12$ result
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $10 max 10             91       1    -8415 -24.46   102%     -705   -1034   -7381   -8042 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $10 no limit          224       1   -20489 -59.56    96%   -22047   -3883  -16606  -28697 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $20 max 10             72       1    -6798 -19.76    99%    -1101   -1102   -5696   -9022 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $20 no limit          122       1   -11642 -33.84    98%   -14535   -1198  -10445  -17814 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $40 max 10             16     245    -1492  -4.34    99%    -2197    -543    -950   -5086 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD LONG $40 no limit           63     245    -6003 -17.45    98%   -10902    -543   -5460  -11416 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $10 max 10           284       7   -22849 -66.42   111%     -669   -1933  -20916   -9253 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $10 no limit         374       7   -29212 -84.92    96%    -7002   -3201  -26011  -14170 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $20 max 10           157       7   -11561 -33.61    99%    -1103   -1149  -10412   -4198 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $20 no limit         216       7   -16792 -48.81    98%    -3914   -1061  -15731   -9516 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $40 max 10           127      10   -10437 -30.34    98%    -2191   -1188   -9249   -4783 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD SHORT $40 no limit         134      10   -11059 -32.15    97%    -3636   -1188   -9872   -5406 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $10 max 10            389       1   -34675 -100.80   217%     -661   -2683  -31992  -19974 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $10 no limit          677       1   -59842 -173.96    97%    -5796   -5078  -54764  -39628 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $20 max 10            283      10   -23795 -69.17   113%    -1101   -2540  -21255  -13709 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $20 no limit          259      10    -7864 -22.86    97%   -11564   -1820   -6044    1647 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $40 max 10            169      14   -15431 -44.86    98%    -2185   -1667  -13765  -10738 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD BOTH $40 no limit          174      14   -15963 -46.40    98%    -3618   -1667  -14296  -11077 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $10 max 10           143       3   -11820 -34.36   109%     -705   -4375   -7445   -4944 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $10 no limit         235       3   -20572 -59.80    96%   -22047   -5546  -15025  -26628 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $20 max 10            68       7    -4570 -13.28    99%    -1101   -3852    -717   -5289 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $20 no limit         112       7    -9926 -28.85    97%   -14535   -3852   -6073  -14688 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $40 max 10            27       7     -915  -2.66    98%    -2193   -2181    1267   -2904 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+STD TREND $40 no limit          60       7    -4972 -14.45    98%   -10902   -2181   -2790   -8780 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $10 max 10             1    2405      -99  -0.29   100%       -7     -14     -85     -92 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $10 no limit           3    2135     -246  -0.71    91%     -377      43    -289    -432 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $20 max 10             0      -1      -23  -0.07    63%      -11      -0     -23     -65 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $20 no limit           2    2135     -150  -0.44    93%     -278      29    -179    -274 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $40 max 10             0      -1       -6  -0.02    50%      -22      -0      -5     -54 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT LONG $40 no limit           0      -1      113   0.33    61%     -163      20      92      26 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $10 max 10            2    1814     -232  -0.67   100%       -7     -21    -210     -66 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $10 no limit         10     127     -730  -2.12    99%     -228     -42    -688    -164 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $20 max 10            2    2003     -185  -0.54   100%      -11     -18    -167     -76 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $20 no limit          5    1604     -309  -0.90    99%     -153      30    -340     -32 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $40 max 10            2    2002     -198  -0.58   100%      -30     -19    -179     -86 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT SHORT $40 no limit          4    1627     -261  -0.76    99%     -116      20    -281      26 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $10 max 10             3    1779     -328  -0.95   100%       -7     -36    -293    -154 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $10 no limit          10     128     -739  -2.15    99%     -288     -12    -726    -285 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $20 max 10             2    2131     -185  -0.54    99%      -11     -18    -167    -120 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $20 no limit           8    1639     -679  -1.97    98%     -250      59    -738    -409 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $40 max 10             2    2123     -233  -0.68   100%      -22     -19    -214    -152 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT BOTH $40 no limit           3    1663     -162  -0.47    99%     -163      41    -203      14 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $10 max 10            1    2320      -89  -0.26   100%       -7     -45     -44     -41 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $10 no limit          5     128     -391  -1.14    98%     -323     -39    -352    -315 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $20 max 10            0      -1      -65  -0.19    87%      -11     -31     -34     -66 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $20 no limit          3    1639     -208  -0.60    99%     -230      54    -262    -180 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $40 max 10            0      -1      -33  -0.09    54%      -22     -30      -2     -29 
+/home/runner/work/fizy-bot/fizy-bot/research/grid.py:46: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  dow = d.index.dayofweek.values
+CENT TREND $40 no limit          1    1663       17   0.05    99%     -163      40     -23      67 
+
+Result OK (0 blow-ups, max DD <= 50%, both halves and the last 12 months positive): 0
+done in 276 s
