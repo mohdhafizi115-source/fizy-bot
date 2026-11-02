@@ -87,7 +87,7 @@ CFG = {
     "RSI2_LO":        10,
     "RSI2_HI":        90,
     "RSI2_SL_ATR":    2.0,
-    "LONDON_BREAKOUT": True,         # XAUUSD London breakout alerts (place orders / filled / BE / close)
+    "LONDON_BREAKOUT": False,        # XAUUSD London breakout paper alerts (off since 3 Nov: the MT5 EA reports its real trades)
     "LB_RANGE":       [3, 8],        # Asian range hours (chart time), orders at the end hour
     "LB_CLOSE_HOUR":  21,            # close any open trade at this chart hour
     "LB_MIN_MAX_PCT": [0.30, 1.60],  # trade only when the range is this % of price
@@ -117,7 +117,7 @@ CFG = {
     # run
     "BARS":           300,           # bars per timeframe for the indicators (same as the EA)
     "CATCHUP_BARS":   4,             # re-check up to N missed M15 candles when a run was late
-    "HEARTBEAT_HOURS": [0, 4, 8, 12, 16, 20],  # "still alive" message at these Malaysia hours ([] = off)
+    "HEARTBEAT_HOURS": [],           # "still alive" message at these Malaysia hours, e.g. [0, 4, 8, 12, 16, 20] ([] = off, since 3 Nov)
     "STATE_FILE":     "state/state.json",
 }
 for k in list(CFG):
@@ -1602,7 +1602,8 @@ def run_live():
             _deriv_ws[0].close()
         except Exception:
             pass
-    if errors:
+    alerts_on = CFG["BBMA_ALERTS"] or CFG["LONDON_BREAKOUT"] or CFG["M5_SCALP"] or CFG["RSI2_ALERTS"]
+    if errors and alerts_on:               # no scanner alerts on: data problems do not matter to the owner
         last = state.get("last_error_msg")
         if not last or (datetime.now(timezone.utc) - datetime.fromisoformat(last)).total_seconds() > 6 * 3600:
             tg_send("FIZY BOT: data problem, will keep retrying every 15 minutes\n" + "\n".join(errors[:10]))
