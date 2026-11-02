@@ -1,45 +1,17 @@
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
-/home/runner/work/fizy-bot/fizy-bot/research/goldh1_detail.py:132: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
-  wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
 
 ==== XAUUSD H1, hold up to 48 h ====
 ICHI_KUMO (hold)             976 trades, hold  16.0 bars, nights 0.66, swap $-159 | PF(R)  1.29 halves  1.14  1.48 stress  1.27 | net $+2337 per 0.01 lot, last 12 months $+890, max DD $-474
                            BUY    465 trades PF(R)  1.60 net $+1985
                            SELL   511 trades PF(R)  1.03 net $+352
                            by year $: 2020:+397 2021:+29 2022:+17 2023:+61 2024:+287 2025:+679 2026:+867
-DIV_RSI (hold)               344 trades, hold  13.5 bars, nights 0.62, swap $-48 | PF(R)  1.34 halves  1.38  1.31 stress  1.31 | net $+905 per 0.01 lot, last 12 months $+467, max DD $-161
-                           BUY    134 trades PF(R)  1.62 net $+770
-                           SELL   210 trades PF(R)  1.19 net $+134
-                           by year $: 2020:+26 2021:+66 2022:+26 2023:-15 2024:+50 2025:+307 2026:+445
-DIV_MACD (hold)              687 trades, hold  14.1 bars, nights 0.63, swap $-100 | PF(R)  1.21 halves  1.20  1.22 stress  1.19 | net $+1485 per 0.01 lot, last 12 months $+1181, max DD $-349
-                           BUY    304 trades PF(R)  1.49 net $+1610
-                           SELL   383 trades PF(R)  1.03 net $-124
-                           by year $: 2020:+99 2021:+4 2022:-22 2023:+62 2024:+12 2025:+399 2026:+931
+DIV_RSI (hold)               399 trades, hold  11.9 bars, nights 0.55, swap $-51 | PF(R)  1.11 halves  1.15  1.07 stress  1.08 | net $+470 per 0.01 lot, last 12 months $+174, max DD $-265
+                           BUY    159 trades PF(R)  1.28 net $+511
+                           SELL   240 trades PF(R)  1.01 net $-41
+                           by year $: 2020:+1 2021:+50 2022:-10 2023:-39 2024:+40 2025:+258 2026:+170
+DIV_MACD (hold)              780 trades, hold  12.6 bars, nights 0.57, swap $-102 | PF(R)  1.01 halves  0.96  1.05 stress  0.98 | net $+910 per 0.01 lot, last 12 months $+915, max DD $-349
+                           BUY    346 trades PF(R)  1.20 net $+1315
+                           SELL   434 trades PF(R)  0.87 net $-405
+                           by year $: 2020:+67 2021:-77 2022:-84 2023:+16 2024:-4 2025:+310 2026:+682
 ICHI_TK (hold)               522 trades, hold  18.6 bars, nights 0.75, swap $-99 | PF(R)  1.11 halves  0.77  1.60 stress  1.10 | net $+1998 per 0.01 lot, last 12 months $+1491, max DD $-492
                            BUY    281 trades PF(R)  1.22 net $+1326
                            SELL   241 trades PF(R)  0.98 net $+672
@@ -62,14 +34,14 @@ ICHI_KUMO (day)              994 trades, hold   5.3 bars, nights 0.04, swap $-7 
                            BUY    480 trades PF(R)  1.23 net $+411
                            SELL   514 trades PF(R)  1.07 net $+780
                            by year $: 2020:+63 2021:-166 2022:+77 2023:+19 2024:+241 2025:+126 2026:+833
-DIV_RSI (day)                352 trades, hold   5.1 bars, nights 0.03, swap $-2 | PF(R)  1.31 halves  1.37  1.26 stress  1.27 | net $+713 per 0.01 lot, last 12 months $+487, max DD $-142
-                           BUY    138 trades PF(R)  1.55 net $+546
-                           SELL   214 trades PF(R)  1.18 net $+167
-                           by year $: 2020:-11 2021:+32 2022:+55 2023:-7 2024:+30 2025:+84 2026:+530
-DIV_MACD (day)               791 trades, hold   4.9 bars, nights 0.04, swap $-7 | PF(R)  1.25 halves  1.23  1.27 stress  1.21 | net $+873 per 0.01 lot, last 12 months $+390, max DD $-264
-                           BUY    351 trades PF(R)  1.60 net $+904
-                           SELL   440 trades PF(R)  1.01 net $-30
-                           by year $: 2020:-9 2021:+66 2022:+45 2023:+70 2024:+179 2025:+63 2026:+460
+DIV_RSI (day)                409 trades, hold   4.5 bars, nights 0.02, swap $-2 | PF(R)  1.02 halves  1.07  0.97 stress  0.99 | net $+317 per 0.01 lot, last 12 months $+215, max DD $-174
+                           BUY    163 trades PF(R)  1.15 net $+305
+                           SELL   246 trades PF(R)  0.94 net $+12
+                           by year $: 2020:-36 2021:+16 2022:+27 2023:-24 2024:+14 2025:+44 2026:+276
+DIV_MACD (day)               902 trades, hold   4.4 bars, nights 0.04, swap $-7 | PF(R)  0.98 halves  0.93  1.04 stress  0.95 | net $+296 per 0.01 lot, last 12 months $+135, max DD $-264
+                           BUY    405 trades PF(R)  1.21 net $+611
+                           SELL   497 trades PF(R)  0.82 net $-315
+                           by year $: 2020:-41 2021:-15 2022:-22 2023:+15 2024:+151 2025:-24 2026:+232
 ICHI_TK (day)                529 trades, hold   7.5 bars, nights 0.05, swap $-6 | PF(R)  1.14 halves  0.85  1.56 stress  1.12 | net $+1352 per 0.01 lot, last 12 months $+618, max DD $-295
                            BUY    284 trades PF(R)  1.19 net $+578
                            SELL   245 trades PF(R)  1.09 net $+774
