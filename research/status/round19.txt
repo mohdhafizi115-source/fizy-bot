@@ -1,0 +1,94 @@
+  XAUUSD  done,     2 s
+  EURUSD  done,     4 s
+  GBPUSD  done,     6 s
+  USDJPY  done,     8 s
+  AUDUSD  done,    10 s
+  USDCAD  done,    12 s
+  USDCHF  done,    15 s
+  NZDUSD  done,    17 s
+  EURJPY  done,    19 s
+  GBPJPY  done,    21 s
+  EURGBP  done,    23 s
+  BTCUSD  done,    26 s
+
+== All instruments together (R after spread) ==
+tf   rule        trades /sym/day  win%    PF  half1 half2 stress  syms PF>1  pass
+M15  ICHI_TK      32111    1.50  30.5  0.73  0.63  0.86  0.62   1/12    0
+M15  ICHI_KUMO    50848    2.37  19.2  0.63  0.51  0.81  0.51   0/12    0
+M15  DIV_RSI      16995    0.79  39.3  0.81  0.73  0.92  0.68   1/12    0
+M15  DIV_MACD     35711    1.67  38.9  0.76  0.66  0.88  0.61   1/12    0
+M15  ENGULF       32188    1.50  33.8  0.61  0.50  0.76  0.49   0/12    0
+M15  PINBAR        9737    0.45  32.4  0.59  0.51  0.70  0.48   0/12    0
+M15  GARTLEY       3432    0.16  30.2  0.51  0.38  0.74  0.40   0/12    0
+M15  BAT           1886    0.09  17.9  0.46  0.27  0.83  0.34   1/12    0
+M15  FAKE_HARM     4871    0.23  24.3  0.47  0.36  0.66  0.36   0/12    0
+M15  RAND         19387    0.90  34.8  0.67  0.57  0.80  0.56   0/12    0
+H1   ICHI_TK       6637    0.31  32.0  0.89  0.81  0.98  0.82   5/12    1
+H1   ICHI_KUMO    12286    0.57  20.2  0.88  0.76  1.02  0.79   4/12    1
+H1   DIV_RSI       4784    0.22  39.1  1.00  0.94  1.06  0.91   7/12    2
+H1   DIV_MACD      8909    0.42  38.6  0.97  0.93  1.02  0.88   8/12    1
+H1   ENGULF        7399    0.35  34.1  0.81  0.75  0.88  0.74   3/12    0
+H1   PINBAR        2525    0.12  34.4  0.84  0.77  0.91  0.76   3/12    0
+H1   GARTLEY       1012    0.05  28.9  0.69  0.52  0.91  0.59   3/12    0
+H1   BAT            689    0.03  15.4  0.64  0.45  0.91  0.55   3/12    0
+H1   FAKE_HARM     1558    0.07  22.6  0.67  0.55  0.83  0.58   3/12    0
+H1   RAND         14612    0.68  33.9  0.85  0.81  0.90  0.79   1/12    0
+
+== Gold (XAUUSD) ==
+  M15 ICHI_TK     2529 trades (1.49/day) win 32.6% PF  1.00 halves  1.01  0.99 last12 +23.5R net $+479/0.01 lot
+  M15 ICHI_KUMO   4006 trades (2.35/day) win 20.3% PF  0.95 halves  0.89  1.02 last12 -41.2R net $-379/0.01 lot
+  M15 DIV_RSI     1401 trades (0.82/day) win 38.5% PF  0.99 halves  1.04  0.95 last12 -6.4R net $-822/0.01 lot
+  M15 DIV_MACD    3008 trades (1.77/day) win 38.3% PF  1.01 halves  0.95  1.07 last12 +56.3R net $+362/0.01 lot
+  M15 ENGULF      2209 trades (1.30/day) win 34.8% PF  0.88 halves  0.85  0.92 last12 +1.4R net $-305/0.01 lot
+  M15 PINBAR       798 trades (0.47/day) win 33.1% PF  0.83 halves  0.84  0.81 last12 -9.5R net $-348/0.01 lot
+  M15 GARTLEY      304 trades (0.18/day) win 31.9% PF  0.87 halves  0.85  0.89 last12 +2.4R net $-6/0.01 lot
+  M15 BAT          176 trades (0.10/day) win 18.8% PF  0.88 halves  0.78  1.00 last12 -0.3R net $+55/0.01 lot
+  M15 FAKE_HARM    428 trades (0.25/day) win 28.5% PF  0.87 halves  0.98  0.76 last12 -21.7R net $-212/0.01 lot
+  M15 RAND        1553 trades (0.91/day) win 35.7% PF  0.85 halves  0.83  0.87 last12 -38.1R net $-882/0.01 lot
+  H1  ICHI_TK      522 trades (0.31/day) win 34.3% PF  1.14 halves  0.78  1.63 last12 +38.3R net $+2097/0.01 lot
+  H1  ICHI_KUMO    976 trades (0.57/day) win 22.2% PF  1.33 halves  1.16  1.52 last12 +15.6R net $+2496/0.01 lot
+  H1  DIV_RSI      344 trades (0.20/day) win 43.6% PF  1.37 halves  1.41  1.33 last12 +5.7R net $+953/0.01 lot
+  H1  DIV_MACD     687 trades (0.40/day) win 41.2% PF  1.23 halves  1.22  1.24 last12 +21.6R net $+1585/0.01 lot
+  H1  ENGULF       502 trades (0.29/day) win 36.5% PF  1.05 halves  0.88  1.26 last12 +14.5R net $+136/0.01 lot
+  H1  PINBAR       203 trades (0.12/day) win 37.4% PF  1.12 halves  1.02  1.22 last12 +6.3R net $+177/0.01 lot
+  H1  GARTLEY       73 trades (0.04/day) win 35.6% PF  1.24 halves  0.88  1.84 last12 +6.7R net $+157/0.01 lot
+  H1  BAT           62 trades (0.04/day) win 16.1% PF  1.02 halves  1.05  1.01 last12 +0.7R net $+200/0.01 lot
+  H1  FAKE_HARM    120 trades (0.07/day) win 27.5% PF  1.08 halves  1.02  1.14 last12 +5.5R net $+315/0.01 lot
+  H1  RAND        1153 trades (0.68/day) win 34.8% PF  1.01 halves  1.00  1.02 last12 -17.6R net $+200/0.01 lot
+
+== Per instrument PF (R) ==
+  M15: sym       ICHI_TK ICHI_KUMO   DIV_RSI  DIV_MACD    ENGULF    PINBAR   GARTLEY       BAT FAKE_HARM      RAND
+       XAUUSD       1.00      0.95      0.99      1.01      0.88      0.83      0.87      0.88      0.87      0.85
+       EURUSD       0.84      0.92      0.98      0.95      0.77      0.70      0.77      0.88      0.70      0.78
+       GBPUSD       0.86      0.84      0.96      0.97      0.80      0.83      0.69      0.70      0.69      0.90
+       USDJPY       1.09      1.00      0.93      0.96      0.81      0.87      0.61      0.61      0.63      0.83
+       AUDUSD       0.84      0.77      0.85      0.92      0.76      0.54      0.66      0.90      0.68      0.81
+       USDCAD       0.74      0.74      0.90      0.88      0.75      0.71      0.69      0.53      0.69      0.75
+       USDCHF       0.80      0.71      0.84      0.81      0.67      0.57      0.56      0.57      0.65      0.69
+       NZDUSD       0.71      0.65      0.82      0.79      0.71      0.68      0.87      0.70      0.65      0.72
+       EURJPY       0.97      0.87      0.99      0.95      0.84      0.80      0.65      0.49      0.84      0.86
+       GBPJPY       0.97      0.86      1.04      0.97      0.80      0.80      0.83      1.12      0.80      0.90
+       EURGBP       0.59      0.49      0.78      0.64      0.52      0.46      0.46      0.45      0.36      0.60
+       BTCUSD       0.32      0.24      0.29      0.27      0.17      0.17      0.18      0.10      0.12      0.25
+  H1: sym       ICHI_TK ICHI_KUMO   DIV_RSI  DIV_MACD    ENGULF    PINBAR   GARTLEY       BAT FAKE_HARM      RAND
+       XAUUSD       1.14      1.33      1.37      1.23      1.05      1.12      1.24      1.02      1.08      1.01
+       EURUSD       1.10      1.00      1.12      0.99      1.01      1.09      0.89      1.16      0.90      0.90
+       GBPUSD       0.99      1.00      1.10      1.07      0.91      0.73      0.72      0.70      0.75      0.97
+       USDJPY       1.07      1.16      1.25      1.11      0.91      0.94      0.61      0.34      0.48      0.93
+       AUDUSD       0.85      0.93      0.99      1.06      0.82      0.98      0.86      0.57      0.74      0.87
+       USDCAD       0.75      0.91      0.89      0.84      0.89      1.13      0.67      0.59      0.70      0.91
+       USDCHF       0.84      0.78      1.12      1.13      0.80      0.68      0.80      0.75      0.94      0.90
+       NZDUSD       0.73      0.77      0.93      1.03      0.73      0.81      1.05      1.77      0.91      0.89
+       EURJPY       1.41      1.01      1.12      0.97      1.02      0.97      0.84      0.41      1.05      0.89
+       GBPJPY       1.19      1.04      1.09      1.06      0.99      0.75      1.12      0.83      1.01      0.89
+       EURGBP       0.59      0.76      0.91      1.03      0.68      0.80      0.64      0.27      0.65      0.85
+       BTCUSD       0.63      0.51      0.53      0.55      0.45      0.44      0.29      0.34      0.25      0.52
+
+== Passed ==
+  H1  ICHI_TK   EURJPY    515 trades (0.30/day) PF  1.41 halves  1.74  1.18 stress  1.36 net $+186/0.01 lot
+  H1  ICHI_KUMO XAUUSD    976 trades (0.57/day) PF  1.33 halves  1.16  1.52 stress  1.30 net $+2496/0.01 lot
+  H1  DIV_RSI   USDJPY    433 trades (0.25/day) PF  1.25 halves  1.33  1.17 stress  1.18 net $+120/0.01 lot
+  H1  DIV_RSI   XAUUSD    344 trades (0.20/day) PF  1.37 halves  1.41  1.33 stress  1.33 net $+953/0.01 lot
+  H1  DIV_MACD  XAUUSD    687 trades (0.40/day) PF  1.23 halves  1.22  1.24 stress  1.21 net $+1585/0.01 lot
+  5 passes of 192 real rule tests; controls (RAND / FAKE_HARM) passed 0 of 48
+done in 37 s
