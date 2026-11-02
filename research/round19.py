@@ -19,6 +19,8 @@ rules fixed before the run (server time; M15 day trades flat 23:00, H1 at most 4
   FAKE_HARM  control: the Gartley and Bat setups moved 0.5 ATR at random (limit-fill effects)
   RAND       random market entries at about one a day, SL 1.5 ATR, TP 2R
 Usual pass rule per instrument and timeframe; harmonics must also beat FAKE_HARM by 0.10 PF.
+Divergences and harmonics are checked online, each time a swing is added or replaced (fixed 2 Nov: the first run used
+the final swing list, which drops swings later replaced by a more extreme one, a look-ahead that flatters them).
 """
 import os, sys, time
 import numpy as np, pandas as pd
@@ -120,47 +122,51 @@ def build(B, maxb, rng):
             mk("PINBAR", i, 1, l[i] - 0.1 * a, tp_r=2.0)
         if dnt and rg >= 0.8 * a and uw >= 2 * body and lw <= body and h[i] > e20[i] > c[i]:
             mk("PINBAR", i, -1, h[i] + 0.1 * a, tp_r=2.0)
-    # divergences and harmonics on fractal swings
-    sw = swings(h, l)
-    lows = [s for s in sw if s[0] == "L"]
-    highs = [s for s in sw if s[0] == "H"]
-    for grp, dr in ((lows, 1), (highs, -1)):
-        for p, q in zip(grp[:-1], grp[1:]):
-            k = q[3]
-            if k + 1 >= n or not ok[k] or q[2] - p[2] > 30:
+    # divergences and harmonics, checked online: every time a swing is added or replaced, with the swing list as it
+    # was at that bar (a later, more extreme swing must not erase an earlier signal)
+    harm = {"GARTLEY": [], "BAT": []}
+    sw = []
+    for k in range(4, n):
+        i = k - 2
+        for typ, cond, px in (("H", h[i] > max(h[i - 2], h[i - 1], h[i + 1], h[i + 2]), h[i]),
+                              ("L", l[i] < min(l[i - 2], l[i - 1], l[i + 1], l[i + 2]), l[i])):
+            if not cond:
+                continue
+            if sw and sw[-1][0] == typ:
+                if (typ == "H" and px > sw[-1][1]) or (typ == "L" and px < sw[-1][1]):
+                    sw[-1] = (typ, px, i, k)
+                else:
+                    continue
+            else:
+                sw.append((typ, px, i, k))
+            if k + 1 >= n or not ok[k]:
                 continue
             a = A[k]
-            if dr == 1 and q[1] < p[1]:
-                if rsi[q[2]] > rsi[p[2]] and rsi[q[2]] < 40:
-                    mk("DIV_RSI", k, 1, q[1] - 0.1 * a, tp_r=2.0)
-                if hist[q[2]] > hist[p[2]] and hist[q[2]] < 0:
-                    mk("DIV_MACD", k, 1, q[1] - 0.1 * a, tp_r=2.0)
-            if dr == -1 and q[1] > p[1]:
-                if rsi[q[2]] < rsi[p[2]] and rsi[q[2]] > 60:
-                    mk("DIV_RSI", k, -1, q[1] + 0.1 * a, tp_r=2.0)
-                if hist[q[2]] < hist[p[2]] and hist[q[2]] > 0:
-                    mk("DIV_MACD", k, -1, q[1] + 0.1 * a, tp_r=2.0)
-    harm = {"GARTLEY": [], "BAT": []}
-    for j in range(3, len(sw)):
-        X, Aa, Bb, Cc = sw[j - 3], sw[j - 2], sw[j - 1], sw[j]
-        k = Cc[3]
-        if k + 1 >= n or not ok[k]:
-            continue
-        dr = 1 if X[0] == "L" else -1                 # bullish: X low, A high, B low, C high, D low
-        xa = (Aa[1] - X[1]) * dr
-        if xa <= 0:
-            continue
-        ab = (Aa[1] - Bb[1]) * dr / xa
-        abl = (Aa[1] - Bb[1]) * dr
-        if abl <= 0:
-            continue
-        bc = (Cc[1] - Bb[1]) * dr / abl
-        if not (0.382 <= bc <= 0.886) or (Cc[1] - Aa[1]) * dr >= 0:
-            continue
-        for nm, lo, hi_, r in (("GARTLEY", 0.568, 0.668, 0.786), ("BAT", 0.382, 0.50, 0.886)):
-            if lo <= ab <= hi_:
-                D = Aa[1] - dr * r * xa
-                harm[nm].append((k, dr, D, X[1], Cc[1]))   # (bar, side, entry, SL reference, target)
+            if len(sw) >= 3 and sw[-3][0] == typ:
+                pq, qq = sw[-3], sw[-1]
+                if qq[2] - pq[2] <= 30:
+                    if typ == "L" and qq[1] < pq[1]:
+                        if rsi[qq[2]] > rsi[pq[2]] and rsi[qq[2]] < 40:
+                            mk("DIV_RSI", k, 1, qq[1] - 0.1 * a, tp_r=2.0)
+                        if hist[qq[2]] > hist[pq[2]] and hist[qq[2]] < 0:
+                            mk("DIV_MACD", k, 1, qq[1] - 0.1 * a, tp_r=2.0)
+                    if typ == "H" and qq[1] > pq[1]:
+                        if rsi[qq[2]] < rsi[pq[2]] and rsi[qq[2]] > 60:
+                            mk("DIV_RSI", k, -1, qq[1] + 0.1 * a, tp_r=2.0)
+                        if hist[qq[2]] < hist[pq[2]] and hist[qq[2]] > 0:
+                            mk("DIV_MACD", k, -1, qq[1] + 0.1 * a, tp_r=2.0)
+            if len(sw) >= 4:
+                X, Aa, Bb, Cc = sw[-4], sw[-3], sw[-2], sw[-1]
+                dr = 1 if X[0] == "L" else -1                 # bullish: X low, A high, B low, C high, D low
+                xa = (Aa[1] - X[1]) * dr
+                abl = (Aa[1] - Bb[1]) * dr
+                if xa > 0 and abl > 0:
+                    ab = abl / xa
+                    bc = (Cc[1] - Bb[1]) * dr / abl
+                    if 0.382 <= bc <= 0.886 and (Cc[1] - Aa[1]) * dr < 0:
+                        for nm, lo, hi_, r in (("GARTLEY", 0.568, 0.668, 0.786), ("BAT", 0.382, 0.50, 0.886)):
+                            if lo <= ab <= hi_:
+                                harm[nm].append((k, dr, Aa[1] - dr * r * xa, X[1], Cc[1]))
     return S, harm
 
 

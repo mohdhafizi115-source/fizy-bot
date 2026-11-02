@@ -129,7 +129,7 @@ def report(name, B, res, mid, end):
     for k, dr, kx in zip(T.k, T.dir, T.kx):
         ds = pd.unique(dates[k:kx + 1])
         nn = len(ds) - 1
-        wed = sum(1 for d in ds[1:] if pd.Timestamp(d).dayofweek == 3)      # rollover into Thursday = triple
+        wed = sum(1 for d in ds[1:] if pd.Timestamp(d).day_of_week == 3)      # rollover into Thursday = triple
         nights.append(nn)
         rate = 0.04 if dr == 1 else 0.01
         swap.append(-rate / 360 * B.c.values[k] * (nn + 2 * wed))
