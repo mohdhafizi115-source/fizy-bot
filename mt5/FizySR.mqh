@@ -154,7 +154,7 @@ void SrText(long cid, string nm, datetime t, double price, string txt, color c, 
 string SrSnap(string tag, int active, double &lv[], color &lc[], string &lb[])
 {
    MqlRates r[];
-   int n = CopyRates(sr_sym, PERIOD_M15, 0, 200, r);                 // about what the picture shows
+   int n = CopyRates(sr_sym, PERIOD_M15, 0, 100, r);                 // about what the picture shows (scale 3, ~1 day)
    if(n < 20) return "";
    double px = SymbolInfoDouble(sr_sym, SYMBOL_BID);
    double vlo = px, vhi = px;
@@ -171,7 +171,7 @@ string SrSnap(string tag, int active, double &lv[], color &lc[], string &lb[])
    if(cid == 0) { Print("sr snap: ChartOpen failed ", GetLastError()); return ""; }
    ChartSetInteger(cid, CHART_MODE, CHART_CANDLES); ChartSetInteger(cid, CHART_SHOW_GRID, false);
    ChartSetInteger(cid, CHART_AUTOSCROLL, true); ChartSetInteger(cid, CHART_SHIFT, true); ChartSetDouble(cid, CHART_SHIFT_SIZE, 18);
-   ChartSetInteger(cid, CHART_SCALE, 2);
+   ChartSetInteger(cid, CHART_SCALE, 3);
    ChartSetInteger(cid, CHART_SHOW_VOLUMES, CHART_VOLUME_HIDE); ChartSetInteger(cid, CHART_SHOW_ASK_LINE, false);
    ChartSetInteger(cid, CHART_SHOW_TRADE_LEVELS, false); ChartSetInteger(cid, CHART_SHOW_TRADE_HISTORY, false);   // the account's own orders
    ChartSetInteger(cid, CHART_COLOR_BACKGROUND, clrWhite); ChartSetInteger(cid, CHART_COLOR_FOREGROUND, clrBlack);
