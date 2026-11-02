@@ -1,25 +1,87 @@
-  BRENT   done,     2 s
-  WTI     done,     5 s
-  XNGUSD  done,     7 s
+  AUDCAD  done,     6 s
+  AUDCHF  done,    13 s
+  AUDJPY  done,    18 s
+  AUDNZD  done,    24 s
+  AUDUSD  done,    31 s
+  BTCUSD  done,    39 s
+  CADCHF  done,    45 s
+  CADJPY  done,    51 s
+  CHFJPY  done,    57 s
+  EURAUD  done,    63 s
+  EURCAD  done,    69 s
+  EURCHF  done,    75 s
+  EURGBP  done,    81 s
+  EURJPY  done,    87 s
+  EURNZD  done,    93 s
+  EURUSD  done,    99 s
+  GBPAUD  done,   106 s
+  GBPCAD  done,   112 s
+  GBPCHF  done,   118 s
+  GBPJPY  done,   124 s
+  GBPNZD  done,   130 s
+  GBPUSD  done,   135 s
+  NZDCAD  done,   141 s
+  NZDCHF  done,   148 s
+  NZDJPY  done,   154 s
+  NZDUSD  done,   160 s
+  USDCAD  done,   166 s
+  USDCHF  done,   172 s
+  USDJPY  done,   178 s
+  XAUUSD  done,   183 s
 
 == All instruments together (R units) ==
 rule        trades  win%    PF  half1 half2 stress  avgR   syms PF>1  pass
-ASIA_BO       3634  35.9  0.84  0.92  0.76  0.75 -0.111    0/ 3    0
-WILL50        2058  44.5  0.94  0.94  0.94  0.83 -0.029    2/ 3    0
-WILL70        1402  47.9  0.98  0.99  0.98  0.87 -0.006    1/ 3    0
-PDHL          2152  44.1  0.84  0.90  0.79  0.75 -0.075    2/ 3    0
-PIVOT         2042  49.7  0.80  0.86  0.74  0.70 -0.084    0/ 3    0
-NY_CONT       4528  39.7  0.87  0.88  0.87  0.78 -0.079    0/ 3    0
-TREND_PB       943  36.3  0.72  0.85  0.62  0.64 -0.192    0/ 3    0
-RAND          4607  36.7  0.76  0.82  0.71  0.67 -0.159    0/ 3    0
+ASIA_BO      43399  40.2  0.89  0.89  0.89  0.82 -0.061    6/30    0
+WILL50       36770  43.0  0.94  0.91  0.97  0.87 -0.027    8/30    3
+WILL70       26026  45.6  0.96  0.94  0.98  0.89 -0.014   13/30    3
+PDHL         38875  43.6  0.91  0.89  0.94  0.85 -0.039    8/30    1
+PIVOT        36702  50.2  0.88  0.85  0.93  0.81 -0.045    4/30    0
+NY_CONT      51425  41.9  0.84  0.81  0.88  0.76 -0.082    4/30    1
+TREND_PB     10959  39.8  0.79  0.77  0.81  0.72 -0.117    3/30    0
+RAND         52030  40.5  0.81  0.79  0.83  0.74 -0.104    2/30    0
 
 == Per instrument PF(R) ==
 sym      ASIA_BO   WILL50   WILL70     PDHL    PIVOT  NY_CONT TREND_PB     RAND
-BRENT       0.87     1.07     0.83     1.02     0.94     0.89     0.78     0.75
-WTI         0.94     1.14     1.14     1.01     0.97     0.97     0.80     0.87
-XNGUSD      0.59     0.66     0.78     0.61     0.56     0.73     0.54     0.65
+AUDCAD      0.88     0.76     0.77     0.76     0.77     0.77     0.82     0.79
+AUDCHF      0.81     0.91     0.90     0.84     0.82     0.81     0.90     0.79
+AUDJPY      0.94     1.05     1.08     1.10     0.96     0.96     0.86     0.79
+AUDNZD      0.77     0.86     0.92     0.91     0.78     0.65     0.76     0.65
+AUDUSD      0.85     0.93     0.88     0.89     0.85     0.94     0.80     0.88
+BTCUSD      0.48     0.67     0.70     0.56     0.51     0.44     0.45     0.38
+CADCHF      0.78     0.85     0.88     0.77     0.81     0.86     0.73     0.77
+CADJPY      1.03     1.12     1.17     1.06     0.96     0.99     0.98     0.78
+CHFJPY      0.91     1.00     1.06     0.98     0.95     0.93     0.71     0.81
+EURAUD      0.92     0.84     0.84     0.96     0.90     0.89     1.04     0.88
+EURCAD      0.94     0.94     0.91     0.88     0.90     0.97     0.74     0.85
+EURCHF      0.87     0.85     0.91     0.77     0.77     0.83     0.72     0.73
+EURGBP      0.86     0.78     0.73     0.79     0.86     0.72     0.65     0.76
+EURJPY      1.11     1.25     1.18     1.08     1.08     1.04     0.77     0.88
+EURNZD      0.90     1.00     1.06     0.91     0.94     0.79     0.97     0.78
+EURUSD      1.01     0.94     0.94     0.95     0.99     1.00     0.73     0.93
+GBPAUD      0.94     0.95     1.01     0.99     0.94     0.85     1.03     0.97
+GBPCAD      0.86     0.89     0.92     0.89     0.92     0.92     0.74     0.92
+GBPCHF      0.91     0.93     1.00     0.89     0.92     0.87     0.76     0.85
+GBPJPY      1.01     1.17     1.17     1.12     1.04     0.91     1.08     1.06
+GBPNZD      0.85     0.90     0.90     0.91     0.86     0.73     0.79     0.85
+GBPUSD      0.99     1.08     1.07     1.05     0.97     0.98     0.76     0.93
+NZDCAD      0.86     0.84     0.82     0.81     0.87     0.72     0.88     0.83
+NZDCHF      0.84     0.89     0.94     0.80     0.74     0.72     0.72     0.76
+NZDJPY      0.91     1.01     1.06     1.12     0.89     0.81     0.76     0.79
+NZDUSD      0.87     0.96     1.02     0.97     0.90     0.78     0.77     0.86
+USDCAD      0.83     0.91     0.86     0.86     0.97     1.00     0.85     0.86
+USDCHF      0.87     0.99     1.00     0.94     0.93     0.99     0.74     0.89
+USDJPY      1.13     1.24     1.27     1.21     1.14     1.18     0.74     0.92
+XAUUSD      1.13     1.09     1.19     1.08     1.05     0.99     0.97     1.05
 
 == Passed (instrument x rule) ==
-  0 passed of 24; RAND (no edge by design) passed on 0 of 3 instruments
+  WILL50    EURJPY   1212 trades PF  1.25 halves  1.30  1.20 stress  1.20 net $+250/0.01 lot | 20: 1.11 21: 1.22 22: 1.67 23: 1.30 24: 1.08 25: 1.21 26: 1.14
+  WILL50    GBPJPY   1207 trades PF  1.17 halves  1.21  1.13 stress  1.13 net $+267/0.01 lot | 20: 1.36 21: 1.17 22: 1.32 23: 1.34 24: 0.95 25: 0.95 26: 1.22
+  WILL50    USDJPY   1204 trades PF  1.24 halves  1.20  1.28 stress  1.19 net $+196/0.01 lot | 20: 0.88 21: 1.50 22: 1.49 23: 0.97 24: 1.40 25: 1.11 26: 1.26
+  WILL70    EURJPY    873 trades PF  1.18 halves  1.26  1.10 stress  1.13 net $+93/0.01 lot | 20: 1.11 21: 1.16 22: 1.75 23: 1.07 24: 0.95 25: 0.81 26: 1.60
+  WILL70    GBPJPY    868 trades PF  1.17 halves  1.24  1.10 stress  1.13 net $+133/0.01 lot | 20: 1.32 21: 1.23 22: 1.23 23: 1.50 24: 0.90 25: 0.77 26: 1.45
+  WILL70    USDJPY    846 trades PF  1.27 halves  1.27  1.27 stress  1.22 net $+246/0.01 lot | 20: 0.96 21: 1.42 22: 1.54 23: 1.09 24: 1.35 25: 1.10 26: 1.39
+  PDHL      USDJPY   1255 trades PF  1.21 halves  1.23  1.19 stress  1.16 net $+189/0.01 lot | 20: 1.12 21: 1.10 22: 1.83 23: 1.06 24: 1.22 25: 1.17 26: 1.13
+  NY_CONT   USDJPY   1690 trades PF  1.18 halves  1.16  1.20 stress  1.12 net $+233/0.01 lot | 20: 0.93 21: 1.02 22: 1.52 23: 1.24 24: 1.44 25: 1.05 26: 1.06
+  8 passed of 240; RAND (no edge by design) passed on 0 of 30 instruments
 
-done in 7 s
+done in 192 s
