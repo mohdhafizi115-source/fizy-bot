@@ -1,0 +1,16 @@
+
+DUCKS on XAUUSD: 2005 trades (1.18 a day), win rate 38.1%
+  $ per 0.01 lot: total +113, per trade +0.056, average win +11.04, average loss -6.69, spread paid 366, gross before spread +480
+  PF in $: all  1.01, half 1  0.97, half 2  1.04, stress 1.5x spread  0.99, last 12 months +70
+  PF in R (each trade sized to its stop, as the pass rule uses):  0.97, halves  0.96 /  0.99
+  max drawdown $-393; exits: SL 1093, TP 501, time 410, end 1
+  by year: 
+  by side: SELL 816 trades +626$, BUY 1189 trades -513$
+
+RAND on XAUUSD: 4917 trades (2.89 a day), win rate 50.3%
+  $ per 0.01 lot: total -673, per trade -0.137, average win +2.43, average loss -2.74, spread paid 914, gross before spread +241
+  PF in $: all  0.90, half 1  0.80, half 2  0.95, stress 1.5x spread  0.84, last 12 months +111
+  PF in R (each trade sized to its stop, as the pass rule uses):  0.82, halves  0.78 /  0.87
+  max drawdown $-856; exits: TP 2469, SL 2440, time 8
+  by year: 
+  by side: SELL 2361 trades -313$, BUY 2556 trades -360$
