@@ -4,6 +4,9 @@ Zones (the same algorithm as the EA module mt5/FizySR.mqh):
   every hour, take the 5-bar swing highs and lows (fractals) of the last 480 M15 bars (5 days), cluster their
   prices within 1 x ATR(M15, 14), keep clusters with >= 2 touches, widen each by 0.15 ATR, merge overlaps.
   Zones above the price are resistance, zones below are support. Trend = H1 EMA 50 vs EMA 200.
+CAPPED zones (run 2, what the EA alerts use since 2 Nov): a swing joins a cluster only while the cluster spans
+<= 2 ATR, and overlapping zones merge only while the result is <= 2.5 ATR wide (otherwise the boundary moves to the
+middle of the overlap). Without the cap, a few days of range trading chain into one zone 6+ ATR wide.
 Zone event: an M15 bar trades into a zone coming from outside it (previous close outside); one event per zone area
 per 4 hours.
 Entry ideas tested (fixed before the run; entry at the next M15 open; flat 23:00 server; max 24 bars):
@@ -43,15 +46,16 @@ def m15(d5):
     return B
 
 
-def zones_at(ph, pl, i, atr):
-    """zones from the swing prices of bars i-480 .. i-2"""
-    p = np.r_[ph[max(0, i - 480):i - 1], pl[max(0, i - 480):i - 1]]
+def zones_at(ph, pl, i, atr, cap=False):
+    """zones from the swing prices of bars i-480 .. i-3 (a swing at bar j is confirmed by the close of bar j+2, so
+    only swings confirmed before bar i opens are used; until 2 Nov the slice ended at i-2, one bar of look-ahead)"""
+    p = np.r_[ph[max(0, i - 480):i - 2], pl[max(0, i - 480):i - 2]]
     p = np.sort(p[np.isfinite(p)])
     if len(p) < 2 or not np.isfinite(atr) or atr <= 0:
         return []
     out, cur = [], [p[0]]
     for x in p[1:]:
-        if x - np.mean(cur) <= atr:
+        if x - np.mean(cur) <= atr and (not cap or x - cur[0] <= 2 * atr):
             cur.append(x)
         else:
             out.append(cur); cur = [x]
@@ -60,7 +64,12 @@ def zones_at(ph, pl, i, atr):
     M = []
     for z in sorted(Z):
         if M and z[0] <= M[-1][1]:
-            M[-1] = [M[-1][0], max(M[-1][1], z[1]), M[-1][2] + z[2]]
+            if not cap or max(M[-1][1], z[1]) - M[-1][0] <= 2.5 * atr:
+                M[-1] = [M[-1][0], max(M[-1][1], z[1]), M[-1][2] + z[2]]
+            else:
+                b = (z[0] + M[-1][1]) / 2
+                M[-1][1] = b
+                M.append([b, z[1], z[2]])
         else:
             M.append(z)
     return M
@@ -70,6 +79,13 @@ def main():
     meta = SA.load_meta(os.path.join(DATA, "meta.txt"))
     d5 = SA.load(os.path.join(DATA, SYM + ".csv"), meta[SYM]["point"])
     B = m15(d5)
+    for cap in (False, True):
+        print(f"\n==== zones {'CAPPED (2 ATR clusters, 2.5 ATR merge)' if cap else 'ORIGINAL (no width cap)'} ====")
+        run(B, meta, cap)
+    print(f"done in {time.time() - T0:.0f} s")
+
+
+def run(B, meta, cap):
     o, h, l, c, sp, A, tr, hm = (B[x].values for x in ("o", "h", "l", "c", "s", "atr", "trend", "hm"))
     n = len(B)
     dates = B.index.normalize().values
@@ -86,10 +102,12 @@ def main():
     Z = []
     recent = []                                                         # (bar, price) of recent zone events
     n_events = 0
+    widths = []
     ok_time = (hm >= 90) & (hm < 1320)
     for i in range(500, n - 1):
         if i % 4 == 0:
-            Z = zones_at(ph, pl, i, A[i])
+            Z = zones_at(ph, pl, i, A[i], cap)
+            widths.extend((z[1] - z[0]) / A[i] for z in Z)
         if not ok_time[i] or not Z:
             continue
         a = A[i]
@@ -141,8 +159,9 @@ def main():
         i = g["k0"] - 1; g["sl"] = c[i] - g["dir"] * 1.5 * A[i]
     days = len(np.unique(dates))
     usd = meta[SYM]["tick_value"] / meta[SYM]["tick_size"] * 0.01
+    w = np.array(widths)
     print(f"{SYM} M15 {B.index[0].date()} .. {B.index[-1].date()}, {days} days, {n_events} zone events ({n_events / days:.1f} a day), "
-          f"{time.time() - T0:.0f} s")
+          f"zone width in ATR: median {np.median(w):.2f}, 90% {np.percentile(w, 90):.2f}, max {w.max():.1f}, {time.time() - T0:.0f} s")
     print("rule          trades  /day  win%    PF  half1 half2 stress last12R   net$(0.01)  by year")
     mid_t = B.index[n // 2]; end_t = B.index[-1]
     for name, sg in sig.items():
@@ -159,7 +178,6 @@ def main():
         yr = " ".join(f"{y % 100}:{SA.f2(SA.pf(T[T.t.dt.year == y].R.values))}" for y in sorted(T.t.dt.year.unique()))
         print(f"{name:12s} {len(T):6d} {len(T) / days:5.2f} {100 * (T.R > 0).mean():5.1f} {SA.f2(P)} {SA.f2(P1)} {SA.f2(P2)} {SA.f2(PS)} "
               f"{l12:7.1f} {((T.pnl - T.sp) * usd).sum():9.0f}  {yr} {'PASS' if ok else ''}")
-    print(f"done in {time.time() - T0:.0f} s")
 
 
 if __name__ == "__main__":

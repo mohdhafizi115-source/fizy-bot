@@ -3,7 +3,8 @@
 //| trading), included by FizyLB.mq5.                                 |
 //| Zones (same algorithm as research/srzones.py): 5-bar swing highs  |
 //| and lows of the last 480 closed M15 bars, clustered within 1 x    |
-//| ATR(M15, 14), >= 2 touches, widened by 0.15 ATR, overlaps merged. |
+//| ATR(M15, 14) (a cluster spans <= 2 ATR), >= 2 touches, widened by |
+//| 0.15 ATR, overlaps merged while <= 2.5 ATR wide.                  |
 //| Sends a zone map with a short analysis at 01:30, 08:00 and 15:00  |
 //| server time (and at the first shift of the day), and a chart when |
 //| the price enters a zone from outside (one alert per zone area per |
@@ -85,16 +86,22 @@ void SrCompute()
    double sum = p[0], mn = p[0], mx = p[0]; int cnt = 1;
    for(int i = 1; i <= m; i++)
    {
-      if(i < m && p[i] - sum / cnt <= sr_atr) { sum += p[i]; cnt++; mx = p[i]; continue; }
+      if(i < m && p[i] - sum / cnt <= sr_atr && p[i] - mn <= 2 * sr_atr) { sum += p[i]; cnt++; mx = p[i]; continue; }
       if(cnt >= 2) { ArrayResize(cl, k + 1); ArrayResize(ch, k + 1); ArrayResize(cc, k + 1); cl[k] = mn - 0.15 * sr_atr; ch[k] = mx + 0.15 * sr_atr; cc[k] = cnt; k++; }
       if(i < m) { sum = p[i]; mn = p[i]; mx = p[i]; cnt = 1; }
    }
-   for(int i = 0; i < k; i++)                                          // merge overlaps (cl is sorted)
+   for(int i = 0; i < k; i++)                                          // merge overlaps (cl is sorted) while <= 2.5 ATR wide
    {
       int z = ArraySize(sr_lo);
-      if(z > 0 && cl[i] <= sr_hi[z - 1]) { sr_hi[z - 1] = MathMax(sr_hi[z - 1], ch[i]); sr_cnt[z - 1] += cc[i]; continue; }
+      double lo = cl[i];
+      if(z > 0 && cl[i] <= sr_hi[z - 1])
+      {
+         if(MathMax(sr_hi[z - 1], ch[i]) - sr_lo[z - 1] <= 2.5 * sr_atr) { sr_hi[z - 1] = MathMax(sr_hi[z - 1], ch[i]); sr_cnt[z - 1] += cc[i]; continue; }
+         lo = (cl[i] + sr_hi[z - 1]) / 2;                               // too wide: split in the middle of the overlap
+         sr_hi[z - 1] = lo;
+      }
       ArrayResize(sr_lo, z + 1); ArrayResize(sr_hi, z + 1); ArrayResize(sr_cnt, z + 1);
-      sr_lo[z] = cl[i]; sr_hi[z] = ch[i]; sr_cnt[z] = cc[i];
+      sr_lo[z] = lo; sr_hi[z] = ch[i]; sr_cnt[z] = cc[i];
    }
 }
 
@@ -141,6 +148,7 @@ string SrSnap(string tag, int active, double &lv[], color &lc[], string &lb[])
    ChartSetInteger(cid, CHART_AUTOSCROLL, true); ChartSetInteger(cid, CHART_SHIFT, true); ChartSetDouble(cid, CHART_SHIFT_SIZE, 18);
    ChartSetInteger(cid, CHART_SCALE, 2);
    ChartSetInteger(cid, CHART_SHOW_VOLUMES, CHART_VOLUME_HIDE); ChartSetInteger(cid, CHART_SHOW_ASK_LINE, false);
+   ChartSetInteger(cid, CHART_SHOW_TRADE_LEVELS, false); ChartSetInteger(cid, CHART_SHOW_TRADE_HISTORY, false);   // the account's own orders
    ChartSetInteger(cid, CHART_COLOR_BACKGROUND, clrWhite); ChartSetInteger(cid, CHART_COLOR_FOREGROUND, clrBlack);
    ChartSetInteger(cid, CHART_COLOR_CANDLE_BULL, clrSeaGreen); ChartSetInteger(cid, CHART_COLOR_CANDLE_BEAR, clrIndianRed);
    ChartSetInteger(cid, CHART_COLOR_CHART_UP, clrSeaGreen); ChartSetInteger(cid, CHART_COLOR_CHART_DOWN, clrIndianRed);
@@ -166,7 +174,7 @@ string SrSnap(string tag, int active, double &lv[], color &lc[], string &lb[])
       string lab = i < ArraySize(lb) ? lb[i] : "";
       SnapLine(cid, "sr_l" + IntegerToString(i), lv[i], c, lab);
       ObjectSetInteger(cid, "sr_l" + IntegerToString(i), OBJPROP_WIDTH, 2);
-      SrText(cid, "sr_lt" + IntegerToString(i), r[MathMax(0, n - 60)].time, lv[i], lab + " " + SrP(lv[i]), c, ANCHOR_LEFT_LOWER);
+      SrText(cid, "sr_lt" + IntegerToString(i), tl, lv[i], lab + " " + SrP(lv[i]), c, ANCHOR_LEFT_UPPER);   // under the line, right margin
    }
    ChartRedraw(cid); Sleep(2000); ChartRedraw(cid);
    string fn = SnapName(tag, sr_sym);

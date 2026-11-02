@@ -15,7 +15,7 @@
 ## What runs
 - **`bbma_scanner.py` + `.github/workflows/scan.yml`:** Linux scanner loop (Deriv data, Telegram alerts). London-breakout alerts only; the M5 scalp and RSI2 alerts are off. Its `mt5_watchdog()` restarts the MT5 shift chain if no shift is running.
 - **`.github/workflows/mt5_trade.yml`:** the auto trader. A Windows runner installs the JustMarkets MT5 terminal, compiles `mt5/FizyLB.mq5` and runs it for about 335 minutes. `mt5/next_shift.py` then dispatches the next shift, so it runs 24/7.
-  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout.
+  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts.
   - `mt5/watch.py` forwards the EA event files (`MQL5/Files/*_events.txt`, with PNG screenshots) to Telegram, with emoji blocks and MYT times. It also sends one "BOT ONLINE" daily status (`status/mt5_online.txt` holds the date sent).
 - **EA modules:** `mt5/FizyLB.mq5` (London breakout gold) includes the following.
 
@@ -28,6 +28,7 @@
   | `FizyMEF.mqh` | month-end Tokyo fix: CADCHF / NZDCHF sell, USDCAD / GBPNZD buy, 09:40 → 09:55 JST | 260313 |
   | `FizyGAU.mqh` | gold before the LBMA auction: sell 10:15 → 10:30 London | 260312 |
   | `FizyWVB.mqh` | Williams volatility breakout k 0.7 on USDJPY, EURJPY, GBPJPY, XAUUSD | 260314 |
+  | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading): map at 01:30 / 08:00 / 15:00 server and at the first shift of the day, chart when price enters a zone; ideas labelled untested | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
 
@@ -59,4 +60,5 @@
     - Following news surprises.
     - Smart-money / "bank jerung" fades.
     - Every WTI, Brent or XNG setup.
+    - Gold M15 S/R zone entries (bounce, rejection, break; PF 0.89–0.99 vs random 0.89). Kept only as labelled alerts at the owner's request.
   - The full write-ups are in the owner's claude.ai project "Trade", in the `claude/*.md` docs.
