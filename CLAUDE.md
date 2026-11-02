@@ -15,7 +15,7 @@
 ## What runs
 - **`bbma_scanner.py` + `.github/workflows/scan.yml`:** Linux scanner loop (Deriv data, Telegram alerts). London-breakout alerts only; the M5 scalp and RSI2 alerts are off. Its `mt5_watchdog()` restarts the MT5 shift chain if no shift is running.
 - **`.github/workflows/mt5_trade.yml`:** the auto trader. A Windows runner installs the JustMarkets MT5 terminal, compiles `mt5/FizyLB.mq5` and runs it for about 335 minutes. `mt5/next_shift.py` then dispatches the next shift, so it runs 24/7.
-  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed). Line 9 is the lot of the USDJPY day trades (`FizyDTJ.mqh`).
+  - `mt5_trade.txt`: line 1 `on`/`off`. Lines 2–7 are the lots for London breakout, NR7, Gotobi, gold auction, month-end fix and volatility breakout. Line 8 `on`/`off` switches the gold S/R zone alerts (**off since 2 Nov evening**: no S/R level passed). Line 9 is the lot of the USDJPY day trades (`FizyDTJ.mqh`). Line 10 is the lot of the gold H1 Ichimoku cloud breakout (`FizyKUMO.mqh`).
   - `mt5/watch.py` forwards the EA event files (`MQL5/Files/*_events.txt`, with PNG screenshots) to Telegram, with emoji blocks and MYT times. It also sends one "BOT ONLINE" daily status (`status/mt5_online.txt` holds the date sent).
 - **EA modules:** `mt5/FizyLB.mq5` (London breakout gold) includes the following.
 
@@ -29,6 +29,7 @@
   | `FizyGAU.mqh` | gold before the LBMA auction: sell 10:15 → 10:30 London | 260312 |
   | `FizyWVB.mqh` | Williams volatility breakout: k 0.5 on USDJPY, EURJPY, GBPJPY, k 0.7 on XAUUSD (per symbol since v1.80) | 260314 |
   | `FizyDTJ.mqh` | USDJPY day trades: previous-day breakout (PDHL, from 02:00, TP 2R, close 22:30) and New York continuation (NYCONT, 15:30 follow the 09:00–15:30 move, close 22:00) | 260315 / 260316 |
+  | `FizyKUMO.mqh` | gold H1 Ichimoku cloud breakout (v1.90): H1 close breaks out of the cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside or after 48 h; holds overnight | 260317 |
   | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading), **switched off** (line 8): slim zones (0.5 ATR clusters, ≤ 1.2 ATR wide, ≥ 3 touches), the 2 nearest above and below; map at 01:30 / 08:00 / 15:00 server, chart when price enters a zone. Turn on again only for a level type that passes | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
@@ -53,6 +54,7 @@
     - Tokyo-fix flows: Gotobi and month-end.
     - Gold before the LBMA AM auction.
     - Breakouts on JPY pairs and gold: London breakout, NR7, Williams; on USDJPY also the previous-day breakout and New York continuation (re-checked on the 2 Nov export with `research/daycheck.py`).
+    - Gold H1 Ichimoku cloud breakout (`research/round19.py`, `goldh1_detail.py`): 976 trades, PF 1.29 with swap, halves 1.14 / 1.48, every year positive; buys PF 1.60, sells 1.03; the day-trade version fails (first half 0.92). Live since v1.90.
   - **No edge:**
     - Every M5 indicator scalp, on all 30 instruments.
     - Round 15 (`research/round15.py`, 2 Nov, for more trades a day): H1 / H4 NR7 and inside-bar breakouts, H1 Donchian 20/10, H1 z-score reversion on all 30 (0 of 180 pass); new gold event times (Shanghai Gold Benchmark AM / PM, SHFE night open, MCX open; 0 kept).
@@ -60,6 +62,7 @@
     - Round 17, scalping systems taught on the web (`research/webscalp.py`, 2 Nov, M5, 12 instruments incl. gold): FXOpen Momo, EMA 9/55/200 + RSI, EMA 5/20 + MACD + Bollinger, Babypips 3 Ducks, Williams %R zones (± EMA 200), CCI ±100, Stochastic 5-3-3, SMA 5-8-13 ribbon, EMA 9/21 pullback, EMA ribbon + ADX. 0 of 132 pass; every rule loses on all 12 (PF 0.03–0.97); gold 0.69–0.97, worst −$3,700 per 0.01 lot. Gold 3 Ducks detail (`research/ducks_detail.py`): 2,005 trades, win 38%, +$113 = +$0.06 a trade (spread $0.18), PF $ 1.01 (halves 0.97 / 1.04), stress 0.99, max DD −$393. Break-even, not added.
     - Quasimodo / QML (`research/quasimodo.py`, 2 Nov; owner asked for "Quasimodo cikgu Bahar", whose own rules are not public, so the standard pattern was tested): limit at the left shoulder, SL beyond the head, TP 2R / at the break / candle confirmation; M5, M15, H1; 12 instruments; fake-level control. 0 of 108 pass, worse than random entries. Gold: M5 PF 0.66 (−$1,405), M15 0.69 (−$819), H1 best 0.98 (QM_CONF). Test the teacher's exact rules if the owner sends them.
     - Round 18, gold daily breakouts (`research/goldday18.py`, 2 Nov; also checked on USDJPY / EURJPY / GBPJPY): NY breakout of the London range (gold PF 1.12, last 12 months negative), NR4, NR4 + inside day (132 trades), early Asian range, day after a big day: no pass. **Inside-day breakout (ID_D1: OCO at yesterday's high / low from 01:30, SL other side, close 22:30) passes on gold (205 trades, PF 1.42, halves 1.24 / 1.64) and USDJPY (PF 1.46)**, but about half of the gold inside days are NR7 days already traded live; without them 113 trades, PF 1.35 (halves 1.40 / 1.28), below the 150-trade minimum. On USDJPY it duplicates PDHL. Not added yet; offered to the owner.
+    - Round 19 (`research/round19.py`, 2 Nov, M15 / H1, 12 instruments): Ichimoku TK cross, RSI / MACD divergence, engulfing and pin bar at the EMA 20, Gartley / Bat harmonics. Only gold H1 Kumo breakout (above) and EURJPY H1 TK cross (PF 1.41, not checked with swap) pass. The divergences first looked good on gold H1 (PF 1.23–1.37) but that came from evaluating the final swing list (look-ahead); checked online they fall to 0.98–1.11. Always detect swing patterns online.
     - RSI2 on forex.
     - The walk-forward ML model.
     - COT positioning.
