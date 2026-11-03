@@ -123,6 +123,7 @@ jobs:
           Copy-Item mt5\FizySR.mqh "$dir\MQL5\Experts\FizySR.mqh" -Force
           Copy-Item mt5\FizyDTJ.mqh "$dir\MQL5\Experts\FizyDTJ.mqh" -Force
           Copy-Item mt5\FizyKUMO.mqh "$dir\MQL5\Experts\FizyKUMO.mqh" -Force
+          Copy-Item mt5\FizyTK.mqh "$dir\MQL5\Experts\FizyTK.mqh" -Force
           $c2 = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\FizyLB.mq5`" /log:`"$dir\compile2.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c2.HasExited; $i++) { Start-Sleep -Seconds 3 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force

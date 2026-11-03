@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.91"
+#property version "1.92"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -46,6 +46,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizySR.mqh"                  // gold M15 support / resistance zone alerts (no trading)
 #include "FizyDTJ.mqh"                 // USDJPY day trades: previous-day breakout, New York continuation
 #include "FizyKUMO.mqh"                // gold H1 Ichimoku cloud breakout
+#include "FizyTK.mqh"                  // gold H1 Ichimoku Tenkan / Kijun cross, day trade
 
 //--- helpers -------------------------------------------------------
 datetime DayStart(datetime t) { MqlDateTime s; TimeToStruct(t, s); s.hour = 0; s.min = 0; s.sec = 0; return StructToTime(s); }
@@ -313,6 +314,7 @@ void OnTimer()
    WvbOnTimer();
    DtjOnTimer();
    KumoOnTimer();
+   TkOnTimer();
    CloseLeftovers();
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
