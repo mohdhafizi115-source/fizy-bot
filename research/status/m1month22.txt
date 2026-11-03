@@ -1,0 +1,37 @@
+XAUUSD M1 2020-03-30 .. 2026-11-03 17:30, 2,334,999 bars
+63 rules built in 5 s
+simulated in 25 s, 1,794,094 trades
+
+1. LAST MONTH (03 Oct - 03 Nov 2026): top 15 of 63 rules (RAND_x = random entries)
+rule                         trades  win%    PF   net$ |  2020-2026: PF   net$   months +
+OPEN_BO pre30 tp2                42  50.0  1.54  +83.01 |          0.96    -364   38/81
+OPEN_BO pre15 tp2                42  47.6  1.49  +73.35 |          0.95    -425   35/81
+OPEN_BO pre30 tp1                42  52.4  1.31  +47.75 |          0.93    -574   31/81
+OPEN_BO pre15 tp1                42  50.0  1.10  +13.64 |          0.92    -535   31/81
+RAND_2                          391  44.2  1.02  +13.49 |          0.82   -6483   5/81
+BB_RSI 2.5 rsi10 sl1.5           17  35.3  1.22   +8.34 |          1.02     +46   32/81
+BB_RSI 2.5 rsi10 sl3             14  50.0  1.13   +5.20 |          1.08    +244   36/81
+SPK_FADE 3 tpHalf                79  34.2  0.93   -6.90 |          0.88    -635   20/81
+BB_RSI 2.5 rsi20 sl3            162  46.9  0.98   -8.19 |          0.93   -1479   26/81
+BB_RSI 2 rsi10 sl3               33  39.4  0.90   -9.90 |          1.05    +321   33/81
+SPK_FADE 4 tpHalf                28  32.1  0.79  -11.15 |          0.88    -268   34/81
+BB_RSI 2 rsi10 sl1.5             41  31.7  0.84  -16.13 |          1.02    +107   31/81
+RAND_6                          396  44.2  0.97  -18.19 |          0.83   -6217   3/81
+EMA_X 20/50 sl2 tp1             200  50.5  0.94  -23.35 |          0.80   -3503   5/81
+SPK_FADE 4 tp1R                  28  50.0  0.46  -25.19 |          0.76    -471   21/81
+
+profitable last month: 6 of 53 real rules (11%), 1 of 10 random rules (10%)
+real rules over 2020-2026: 4 of 53 profitable; PF 0.62 - 1.08
+
+2. THE '1 MONTH TEST' METHOD, out of sample: each month trade the rule(s) that made the most the month before
+  real rules only  best 1: 80 months, net    -1534 $, months positive 25/80, worst month -332 $, by year 2020:-178 2021:-210 2022:-208 2023:-78 2024:-183 2025:+163 2026:-840
+  real rules only  best 3: 80 months, net    -1296 $, months positive 22/80, worst month -118 $, by year 2020:-163 2021:-252 2022:-149 2023:-102 2024:-101 2025:-212 2026:-316
+  real + random    best 1: 80 months, net    -1456 $, months positive 26/80, worst month -313 $, by year 2020:-223 2021:-210 2022:-208 2023:-78 2024:-183 2025:+148 2026:-701
+  real + random    best 3: 80 months, net    -1434 $, months positive 20/80, worst month -131 $, by year 2020:-203 2021:-252 2022:-149 2023:-102 2024:-116 2025:-193 2026:-419
+  picking a random real rule each month (200 tries): median net -5344 $, best -3462 $
+
+3. DOES A GOOD MONTH REPEAT? (real rules, months with >= 30 trades)
+  after a profitable month: next month profitable 30% of 432
+  after a losing month:     next month profitable 9% of 3453
+
+done in 27 s
