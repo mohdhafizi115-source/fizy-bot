@@ -33,6 +33,7 @@
   | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading), **switched off** (line 8): slim zones (0.5 ATR clusters, ≤ 1.2 ATR wide, ≥ 3 touches), the 2 nearest above and below; map at 01:30 / 08:00 / 15:00 server, chart when price enters a zone. Turn on again only for a level type that passes | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
+  - **Unfilled stop orders (v1.91):** the EA deletes them itself and reports "ORDER DELETED" to Telegram: London 21:00, Williams and PDHL 20:00, NR7 23:55 server. The broker expiry is set 5 minutes later, only as a backup (before v1.91 the broker expiry fired at the same time and removed them silently). Each day's orders are placed fresh: Williams 01:30, PDHL 02:00, London 08:00 server (07:30 / 08:00 / 14:00 MYT in winter).
 
 ## How to deploy an EA change
 1. Edit `mt5/*.mq*`.
