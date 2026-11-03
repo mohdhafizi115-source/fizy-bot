@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//| ExportM5: no trading. Loads the broker's M5 history for every    |
+//| ExportM5: no trading. Loads the broker's M5 (or InpTF) history   |
 //| symbol in InpSyms from InpFrom and writes one CSV per symbol to  |
 //| MQL5\Files\m5data\ (epoch server time, OHLC, tick volume, spread |
 //| in points) plus meta.txt, then closes the terminal.              |
@@ -8,6 +8,7 @@
 input string   InpSyms = "XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,GBPJPY,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDJPY,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY";
 input datetime InpFrom = D'2020.01.01 00:00';
 input int      InpSymTimeout = 300;                    // seconds per symbol for the history download
+input ENUM_TIMEFRAMES InpTF = PERIOD_M5;               // timeframe of the export (the workflow input tf sets M1)
 
 int  n = 0;
 bool busy = false;
@@ -74,8 +75,8 @@ void OnTimer()
    EventKillTimer();
    FolderCreate("m5data");
    int mh = FileOpen("m5data\\meta.txt", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   FileWriteString(mh, StringFormat("connected %d, max bars %d, from %s\r\n", (int)TerminalInfoInteger(TERMINAL_CONNECTED),
-                   (int)TerminalInfoInteger(TERMINAL_MAXBARS), TimeToString(InpFrom, TIME_DATE)));
+   FileWriteString(mh, StringFormat("connected %d, max bars %d, from %s, timeframe %s\r\n", (int)TerminalInfoInteger(TERMINAL_CONNECTED),
+                   (int)TerminalInfoInteger(TERMINAL_MAXBARS), TimeToString(InpFrom, TIME_DATE), EnumToString(InpTF)));
    string energy = "";
    for(int q = 0; q < SymbolsTotal(false); q++)
    {
@@ -92,10 +93,10 @@ void OnTimer()
       string s = Res(parts[j]);
       if(s == "") { FileWriteString(mh, parts[j] + ",not found\r\n"); FileFlush(mh); continue; }
       SymbolSelect(s, true);
-      int code = LoadHistory(s, PERIOD_M5, InpFrom, GetTickCount() + (uint)InpSymTimeout * 1000);
+      int code = LoadHistory(s, InpTF, InpFrom, GetTickCount() + (uint)InpSymTimeout * 1000);
       MqlRates r[];
       int m = -1;
-      for(int t = 0; t < 10 && m <= 0; t++) { m = CopyRates(s, PERIOD_M5, InpFrom, TimeCurrent(), r); if(m <= 0) Sleep(1000); }
+      for(int t = 0; t < 10 && m <= 0; t++) { m = CopyRates(s, InpTF, InpFrom, TimeCurrent(), r); if(m <= 0) Sleep(1000); }
       if(m > 0)
       {
          int fh = FileOpen("m5data\\" + parts[j] + ".csv", FILE_WRITE | FILE_TXT | FILE_ANSI);

@@ -18,6 +18,10 @@ on:
         description: "symbols to export instead of the default 30 (comma list of plain names)"
         required: false
         default: ""
+      tf:
+        description: "timeframe of the export: M5 (default) or M1"
+        required: false
+        default: "M5"
 
 permissions:
   contents: write
@@ -53,7 +57,8 @@ jobs:
           Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
           Copy-Item mt5\ExportM5.mq5 "$dir\MQL5\Experts\ExportM5.mq5" -Force
           $syms = "${{ github.event.inputs.symbols }}"
-          if ($syms) { (Get-Content mt5\ExportM5.mq5) -replace '^input string   InpSyms = ".*";', "input string   InpSyms = `"$syms`";" | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
+          if ($syms) { (Get-Content "$dir\MQL5\Experts\ExportM5.mq5") -replace '^input string   InpSyms = ".*";', "input string   InpSyms = `"$syms`";" | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
+          if ("${{ github.event.inputs.tf }}" -eq "M1") { (Get-Content "$dir\MQL5\Experts\ExportM5.mq5") -replace '^input ENUM_TIMEFRAMES InpTF = PERIOD_M5;', 'input ENUM_TIMEFRAMES InpTF = PERIOD_M1;' | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
           $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\ExportM5.mq5`" /log:`"$dir\compile.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
