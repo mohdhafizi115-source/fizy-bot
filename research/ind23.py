@@ -202,10 +202,11 @@ def signals(B, I, swing, maxb, seed):
     top, bot = I["ctop"], I["cbot"]
     top1, bot1 = np.r_[np.nan, top[:-1]], np.r_[np.nan, bot[:-1]]
     kok = ok & (hm <= 1319)
+    kxl, kxs = c < top, c > bot                                    # exit flags, built once (not per signal)
     for i in np.where(kok & (c > top) & (c1 <= top1) & (I["ten"] > I["kij"]))[0]:
-        add("KUMO", i, 1, min(bot[i] - 0.2 * A[i], c[i] - 0.5 * A[i]), xl=c < top, xs=c > bot)
+        add("KUMO", i, 1, min(bot[i] - 0.2 * A[i], c[i] - 0.5 * A[i]), xl=kxl, xs=kxs)
     for i in np.where(kok & (c < bot) & (c1 >= bot1) & (I["ten"] < I["kij"]))[0]:
-        add("KUMO", i, -1, max(top[i] + 0.2 * A[i], c[i] + 0.5 * A[i]), xl=c < top, xs=c > bot)
+        add("KUMO", i, -1, max(top[i] + 0.2 * A[i], c[i] + 0.5 * A[i]), xl=kxl, xs=kxs)
     rg = np.random.default_rng(seed)
     bars_day = max(1, int(round(86400 / max(pd.Series(B.index).diff().dt.total_seconds().median(), 1))))
     for i in np.where(ok & (rg.random(n) < 1 / bars_day))[0]:
