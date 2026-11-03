@@ -86,7 +86,7 @@ void OnTimer()
          energy += (energy == "" ? "" : " ") + nm;
    }
    FileWriteString(mh, "energy symbols on the server: " + energy + "\r\n");
-   FileWriteString(mh, "base,symbol,digits,point,tick_size,tick_value,contract,load_code,bars,first,last,median_spread_pts\r\n");
+   FileWriteString(mh, "base,symbol,digits,point,tick_size,tick_value,contract,load_code,bars,first,last,median_spread_pts,swap_mode,swap_long,swap_short,swap_3day\r\n");
    string parts[]; int k = StringSplit(InpSyms, ',', parts);
    for(int j = 0; j < k; j++)
    {
@@ -111,11 +111,13 @@ void OnTimer()
       int sp[]; ArrayResize(sp, MathMax(m, 1)); sp[0] = 0;
       for(int i = 0; i < m; i++) sp[i] = r[i].spread;
       if(m > 0) ArraySort(sp);
-      FileWriteString(mh, StringFormat("%s,%s,%d,%s,%s,%s,%.0f,%d,%d,%s,%s,%d\r\n", parts[j], s, (int)SymbolInfoInteger(s, SYMBOL_DIGITS),
+      FileWriteString(mh, StringFormat("%s,%s,%d,%s,%s,%s,%.0f,%d,%d,%s,%s,%d,%d,%.4f,%.4f,%d\r\n", parts[j], s, (int)SymbolInfoInteger(s, SYMBOL_DIGITS),
                       DoubleToString(SymbolInfoDouble(s, SYMBOL_POINT), 8), DoubleToString(SymbolInfoDouble(s, SYMBOL_TRADE_TICK_SIZE), 8),
                       DoubleToString(SymbolInfoDouble(s, SYMBOL_TRADE_TICK_VALUE), 6), SymbolInfoDouble(s, SYMBOL_TRADE_CONTRACT_SIZE),
                       code, m, m > 0 ? TimeToString(r[0].time, TIME_DATE | TIME_MINUTES) : "-",
-                      m > 0 ? TimeToString(r[m - 1].time, TIME_DATE | TIME_MINUTES) : "-", m > 0 ? sp[m / 2] : -1));
+                      m > 0 ? TimeToString(r[m - 1].time, TIME_DATE | TIME_MINUTES) : "-", m > 0 ? sp[m / 2] : -1,
+                      (int)SymbolInfoInteger(s, SYMBOL_SWAP_MODE), SymbolInfoDouble(s, SYMBOL_SWAP_LONG), SymbolInfoDouble(s, SYMBOL_SWAP_SHORT),
+                      (int)SymbolInfoInteger(s, SYMBOL_SWAP_ROLLOVER3DAYS)));
       FileFlush(mh);
    }
    FileClose(mh);

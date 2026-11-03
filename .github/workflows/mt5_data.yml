@@ -22,6 +22,10 @@ on:
         description: "timeframe of the export: M5 (default) or M1"
         required: false
         default: "M5"
+      from:
+        description: "first date of the export, yyyy.mm.dd (default 2020.01.01)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -58,6 +62,8 @@ jobs:
           Copy-Item mt5\ExportM5.mq5 "$dir\MQL5\Experts\ExportM5.mq5" -Force
           $syms = "${{ github.event.inputs.symbols }}"
           if ($syms) { (Get-Content "$dir\MQL5\Experts\ExportM5.mq5") -replace '^input string   InpSyms = ".*";', "input string   InpSyms = `"$syms`";" | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
+          $from = "${{ github.event.inputs.from }}" -replace '[^0-9.]', ''
+          if ($from) { (Get-Content "$dir\MQL5\Experts\ExportM5.mq5") -replace "^input datetime InpFrom = D'2020.01.01 00:00';", "input datetime InpFrom = D'$from 00:00';" | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
           if ("${{ github.event.inputs.tf }}" -eq "M1") { (Get-Content "$dir\MQL5\Experts\ExportM5.mq5") -replace '^input ENUM_TIMEFRAMES InpTF = PERIOD_M5;', 'input ENUM_TIMEFRAMES InpTF = PERIOD_M1;' | Set-Content "$dir\MQL5\Experts\ExportM5.mq5" -Encoding utf8 }
           $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\ExportM5.mq5`" /log:`"$dir\compile.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
