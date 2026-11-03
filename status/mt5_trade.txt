@@ -1,23 +1,29 @@
-shift ended (UTC): 2026-11-03 08:30
+shift ended (UTC): 2026-11-03 14:07
 open
-2026.11.03 10:30:05
+2026.11.03 16:07:37
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 3095 ms elapsed, cpu='X64 Regular'
-events: London 4 lines, NR7 1, Gotobi 2, gold auction 1
-  FS	0	02:54:41.945	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.03 04:54, 0 open position(s), 0 pending order(s), lot 0.01
-  FS	0	02:54:41.945	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.05 | 0 open position(s)
-  FJ	0	02:54:41.946	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
-  FI	0	02:54:41.952	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London, close at 10:30 when the LBMA gold auction starts, every trading day (12:15-12:30 server time now), SL 2.0 ATR(M5), lot 0.01 | 0 open position(s)
-  LD	0	02:54:41.953	FizyLB (XAUUSD.m,M15)	NR7 EVENT NR7 ONLINE | 3 symbols on D1 (XAUUSD,USDJPY,AUDJPY), lot 0.01, 0 open NR7 position(s)
-  CH	0	02:54:41.976	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO ONLINE | USDJPY.m (k 0.5), EURJPY.m (k 0.5), GBPJPY.m (k 0.5), XAUUSD.m (k 0.7): day trade, at 01:30 server OCO stops at today's open +- k x yesterday's range, SL at the open, orders until 20:00, close 22:30 server, lot 0.01 | 0 open position(s)
-  LN	0	02:54:42.418	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ONLINE | USDJPY.m: from 02:00 server OCO stops at yesterday's high / low, SL at yesterday's middle, TP 2R, orders until 20:00, close 22:30, lot 0.01
-  DG	0	02:54:42.418	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT ONLINE | USDJPY.m: at 15:30 server follow the 09:00-15:30 move, SL 1.5 x ATR(H1), no TP, close 22:00, lot 0.01 | 0 open position(s)
-  OL	0	02:54:42.418	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  MM	0	06:00:02.870	FizyLB (XAUUSD.m,M15)	EVENT ORDERS PLACED | Asian range 03:00-08:00 high 3960.69 / low 3917.45 (1.10%, 0.58x daily ATR) | BUY STOP 3960.79 SL 3937.16 TP 4019.87 (BE at 3996.24) | SELL STOP 3917.35 SL 3940.98 TP 3858.28 (BE at 3881.90) | lot 0.01, risk per side $x / $x | IMG:snap_LB_XAUUSD_m_<num>_<num>_328.png
-  KS	0	06:01:21.940	FizyLB (XAUUSD.m,M15)	EVENT POSITION OPEN | SELL 0.01 lot from 3917.35, SL 3940.98, TP 3858.28 | IMG:snap_LBF_XAUUSD_m_<num>_<num>_390.png
-  LM	0	06:01:22.117	FizyLB (XAUUSD.m,M15)	EVENT ORDER DELETED | BUY STOP 3960.79 deleted (the other side filled)
+  Result: 0 errors, 0 warnings, 3223 ms elapsed, cpu='X64 Regular'
+events: London 2 lines, NR7 1, Gotobi 2, gold auction 3
+  EN	0	08:32:13.448	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ONLINE | USDJPY.m: from 02:00 server OCO stops at yesterday's high / low, SL at yesterday's middle, TP 2R, orders until 20:00, close 22:30, lot 0.01
+  NG	0	08:32:13.449	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT ONLINE | USDJPY.m: at 15:30 server follow the 09:00-15:30 move, SL 1.5 x ATR(H1), no TP, close 22:00, lot 0.01 | 0 open position(s)
+  IL	0	08:32:13.449	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  JO	0	09:00:03.989	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL FILLED USDJPY.m | BUY 0.01 lot from 157.994, SL 157.699, TP 158.584 (2R): closes at 22:30 server | IMG:snap_PDF_USDJPY_m_<num>_<num>_390.png
+  FL	0	09:00:04.161	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ORDER DELETED USDJPY.m | SELL STOP 157.404 deleted (the other side filled)
+  EQ	0	10:02:35.285	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO FILLED USDJPY.m | BUY 0.01 lot from 158.179, SL 157.884 (today's open), no TP: closes at 22:30 server | IMG:snap_WVF_USDJPY_m_<num>_<num>_609.png
+  RK	0	10:02:35.455	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO ORDER DELETED USDJPY.m | SELL STOP 157.589 deleted (the other side filled)
+  PH	0	10:15:02.709	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 3906.22, SL 3912.68, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_15.png
+  QE	0	10:30:03.819	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION CLOSED XAUUSD.m | SELL from 3906.22 closed at 3903.60 (10:30 London, auction start), +2.62, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_93.png
+  JM	0	13:26:38.094	FizyLB (XAUUSD.m,M15)	EVENT SL HIT | SELL from 3917.35 closed at 3940.98, profit $x | IMG:snap_LBX_XAUUSD_m_<num>_<num>_125.png
+  HI	0	13:30:01.270	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT SIGNAL USDJPY.m | 09:00-15:30 move +0.268 (from 157.827 to 158.095): BUY, SL 157.921 (1.5 x ATR(H1))
+  MI	0	13:30:06.142	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT FILLED USDJPY.m | BUY 0.01 lot from 158.117, SL 157.921, no TP: closes at 22:00 server | IMG:snap_NYF_USDJPY_m_<num>_<num>_171.png
   w: status message already sent today
-  w: telegram ok: ORDERS PLACED
-  w: telegram ok: POSITION OPEN
-  w: telegram ok: ORDER DELETED
-  w: shift end: done=False, state=2026.11.03 10:30:05|1|0
+  w: telegram ok: PDHL FILLED USDJPY.m
+  w: telegram ok: PDHL ORDER DELETED USDJPY.m
+  w: telegram ok: VOLBO FILLED USDJPY.m
+  w: telegram ok: VOLBO ORDER DELETED USDJPY.m
+  w: telegram ok: AUCTION SELL XAUUSD.m
+  w: telegram ok: AUCTION CLOSED XAUUSD.m
+  w: telegram ok: SL HIT
+  w: telegram ok: NYCONT SIGNAL USDJPY.m
+  w: telegram ok: NYCONT FILLED USDJPY.m
+  w: shift end: done=False, state=2026.11.03 16:07:37|0|0
