@@ -165,6 +165,15 @@ jobs:
           { echo "shift ended (UTC): $(date -u '+%Y-%m-%d %H:%M')"; cat mt5_shift.txt 2>/dev/null; cat shift_diag.txt 2>/dev/null; } > status/mt5_trade.txt
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
-          git add status/mt5_trade.txt status/mt5_online.txt 2>/dev/null || git add status/mt5_trade.txt
-          git commit -q -m "MT5 shift summary" || true
-          for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
+          # commit on top of the newest main (a rebase conflicts when the previous shift's summary landed after this checkout)
+          cp status/mt5_trade.txt "$RUNNER_TEMP/sum.txt"
+          onl=0; if ! git diff --quiet HEAD -- status/mt5_online.txt 2>/dev/null; then onl=1; cp status/mt5_online.txt "$RUNNER_TEMP/onl.txt"; fi
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main || { sleep 5; continue; }
+            cp "$RUNNER_TEMP/sum.txt" status/mt5_trade.txt
+            if [ $onl = 1 ]; then cp "$RUNNER_TEMP/onl.txt" status/mt5_online.txt; fi
+            git add status/mt5_trade.txt status/mt5_online.txt
+            git commit -q -m "MT5 shift summary" || break
+            git push -q origin HEAD:main && break
+            sleep 5
+          done || true

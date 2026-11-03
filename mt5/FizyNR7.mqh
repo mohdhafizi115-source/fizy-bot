@@ -199,12 +199,14 @@ void Nr7OnTimer()
          if(Nr7Orders(s) > 0) Nr7DeletePending(s, "symbol removed from the NR7 list");
          continue;
       }
-      // 2. old pending orders from an earlier day expire
+      // 2. unfilled orders are deleted at 23:55 server (and reported), or when left from an earlier day;
+      //    the broker expiry at 23:59 is only a backup
       for(int i = OrdersTotal() - 1; i >= 0; i--)
       {
          ulong t = OrderGetTicket(i);
-         if(t > 0 && OrderGetInteger(ORDER_MAGIC) == InpNr7Magic && OrderGetString(ORDER_SYMBOL) == s && (datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0)
-            Nr7DeletePending(s, "day over, no breakout");
+         if(t > 0 && OrderGetInteger(ORDER_MAGIC) == InpNr7Magic && OrderGetString(ORDER_SYMBOL) == s &&
+            ((datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0 || now - d0 >= 1435 * 60))
+         { Nr7DeletePending(s, "day over, no breakout"); break; }
       }
       // 3. new day: is yesterday an NR7 day?
       if(n_day[k] == d0) continue;

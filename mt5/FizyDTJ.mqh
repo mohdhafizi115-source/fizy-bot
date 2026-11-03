@@ -227,7 +227,7 @@ void DtjOnTimer()
                double tpb = NormalizeDouble(ph + 2 * (ph - mid), dg), tps = NormalizeDouble(pl - 2 * (mid - pl), dg);
                int em = (int)SymbolInfoInteger(dj_sym, SYMBOL_EXPIRATION_MODE);
                ENUM_ORDER_TYPE_TIME tt = ((em & SYMBOL_EXPIRATION_SPECIFIED) != 0) ? ORDER_TIME_SPECIFIED : ORDER_TIME_GTC;
-               datetime exp = (tt == ORDER_TIME_SPECIFIED) ? d0 + 1200 * 60 : 0;
+               datetime exp = (tt == ORDER_TIME_SPECIFIED) ? d0 + 1205 * 60 : 0;   // backup: the EA deletes (and reports) at 20:00
                string cm = "PDHL " + TimeToString(d0, TIME_DATE), res = "";
                double lot = DtjLot();
                trade.SetExpertMagicNumber(InpPdhlMagic); trade.SetTypeFillingBySymbol(dj_sym);

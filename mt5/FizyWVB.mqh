@@ -206,7 +206,7 @@ void WvbOnTimer()
       double lot = NormalizeDouble(MathMax(mn, MathFloor(InpWvbLot / sv + 1e-9) * sv), 2);
       int em = (int)SymbolInfoInteger(s, SYMBOL_EXPIRATION_MODE);
       ENUM_ORDER_TYPE_TIME tt = ((em & SYMBOL_EXPIRATION_SPECIFIED) != 0) ? ORDER_TIME_SPECIFIED : ORDER_TIME_GTC;
-      datetime exp = (tt == ORDER_TIME_SPECIFIED) ? d0 + InpWvbOrderEnd * 60 : 0;
+      datetime exp = (tt == ORDER_TIME_SPECIFIED) ? d0 + InpWvbOrderEnd * 60 + 300 : 0;   // backup: the EA deletes (and reports) at 20:00
       string cm = "VOLBO " + TimeToString(d0, TIME_DATE), res = "";
       trade.SetExpertMagicNumber(InpWvbMagic); trade.SetTypeFillingBySymbol(s);
       if(!trade.BuyStop(lot, up, s, O, 0, tt, exp, cm)) res += StringFormat(" | buy stop error %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());

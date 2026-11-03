@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.90"
+#property version "1.91"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
@@ -166,10 +166,10 @@ void PlaceOrders(datetime day)
    double sIn = N(lo - InpBuffer), sSl = N(MathMin(hi, sIn + capd)), sR = sSl - sIn, sTp = N(sIn - InpTpR * sR);
    double lot = VolumeOk(InpLot);
    string cm = "FLB " + TimeToString(day, TIME_DATE);
-   // expiration at the close hour when the symbol allows it
+   // the EA deletes unfilled orders at the close hour (and reports it); the broker expiry 5 minutes later is only a backup
    int em = (int)SymbolInfoInteger(InpSymbol, SYMBOL_EXPIRATION_MODE);
    ENUM_ORDER_TYPE_TIME tt = ((em & SYMBOL_EXPIRATION_SPECIFIED) != 0) ? ORDER_TIME_SPECIFIED : ORDER_TIME_GTC;
-   datetime exp = (tt == ORDER_TIME_SPECIFIED) ? day + InpCloseHour * 3600 : 0;
+   datetime exp = (tt == ORDER_TIME_SPECIFIED) ? day + InpCloseHour * 3600 + 300 : 0;
    MqlTick tk; SymbolInfoTick(InpSymbol, tk);
    string res = "";
    bool okB, okS;
