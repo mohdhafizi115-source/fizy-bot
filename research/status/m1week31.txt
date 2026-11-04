@@ -1,0 +1,18 @@
+LAST WEEK (2026-11-01/2026-11-07): top 10 of 63 rules (RAND_x = random entries), $ per 0.01 lot
+  DON_BO 60 tp3                  32 trades   +49.37 $ | 2020-2026    -9037 $, weeks positive 14%
+  DON_BO 60 tp1.5                45 trades   +42.83 $ | 2020-2026   -11994 $, weeks positive 6%
+  EMA_X 9/21 sl2 tp2             21 trades   +27.68 $ | 2020-2026    -5546 $, weeks positive 24%
+  DON_BO 20 tp3                  50 trades   +26.61 $ | 2020-2026   -12467 $, weeks positive 12%
+  DON_BO 20 tp1.5                62 trades   +21.65 $ | 2020-2026   -17347 $, weeks positive 5%
+  PULL ema21 tp2                 47 trades   +20.72 $ | 2020-2026   -11842 $, weeks positive 11%
+  RAND_9                         35 trades   +18.68 $ | 2020-2026    -6109 $, weeks positive 16%
+  OPEN_BO pre30 tp1               3 trades   +16.42 $ | 2020-2026     -574 $, weeks positive 45%
+  RAND_6                         33 trades   +13.56 $ | 2020-2026    -6217 $, weeks positive 17%
+  EMA_X 20/50 sl2 tp2            11 trades   +12.79 $ | 2020-2026    -3567 $, weeks positive 26%
+profitable last week: 16 of 53 real rules, 3 of 10 random
+
+THE 'ONE WEEK' METHOD out of sample: each week trade the rule that made the most the week before (>= 20 trades)
+  best 1: 344 weeks, net -4539 $, weeks positive 88/344 (26%), last 12 weeks -521 $, by year 2020:-558 2021:-568 2022:-478 2023:-570 2024:-448 2025:-676 2026:-1240
+  best 3: 344 weeks, net -4202 $, weeks positive 65/344 (19%), last 12 weeks -272 $, by year 2020:-479 2021:-542 2022:-560 2023:-602 2024:-487 2025:-430 2026:-1101
+
+after a profitable week a rule is profitable the next week 26% of the time (2104 cases); after a losing week 13%
