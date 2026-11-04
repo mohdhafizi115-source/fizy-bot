@@ -1,0 +1,88 @@
+XAUUSD M1 2020-03-30 .. 2026-11-04, 2,336,469 bars. Spread per 0.01 lot: median $0.19, cheapest 25% <= $0.18, cheapest 10% <= $0.16
+Spread by server hour: 01h $0.24 04h $0.20 07h $0.20 10h $0.19 13h $0.19 16h $0.18 19h $0.19 22h $0.19
+
+signals built in 34 s: SPK3 half 16951, SPK4 half 5218, SPK4 1R 5218, SPK5 half 2223, BB_RSI 83284, WPR 111334, STOCH 36176, TK 43059, RAND 69785
+
+rule        filter         trades /day | PF at the real spread | PF if a trade cost $0.15 $0.10 $0.07 $0.05 | raw $/trade | break-even cost for PF 1.15
+SPK3 half   ALL             16686  9.79 |  0.80      |  0.92  1.01  1.07  1.12 |    +0.1050 | $0.035  (mean cost paid $0.22)
+SPK3 half   SPR<=p25         7777  4.56 |  0.81      |  0.87  0.97  1.04  1.08 |    +0.0855 | $0.024  (mean cost paid $0.18)
+SPK3 half   SPR<=p10         3015  1.77 |  0.69      |  0.73  0.86  0.94  1.00 |    +0.0505 | $0.008  (mean cost paid $0.17)
+SPK3 half   ATRx>=5          4211  2.47 |  1.05      |  1.12  1.17  1.20  1.23 |    +0.2763 | $0.120  (mean cost paid $0.22)
+SPK3 half   ATRx>=8          1732  1.02 |  1.16 PASS |  1.21  1.25  1.27  1.29 |    +0.4496 | $0.226  (mean cost paid $0.22)
+SPK3 half   ATRx>=12          668  0.39 |  1.44      |  1.49  1.53  1.55  1.57 |    +0.9708 | $0.669  (mean cost paid $0.21)
+SPK3 half   LDNNY            6256  3.67 |  0.88      |  0.96  1.04  1.09  1.12 |    +0.1239 | $0.034  (mean cost paid $0.21)
+SPK3 half   ATRx>=8+LDNNY     968  0.57 |  1.13      |  1.18  1.22  1.25  1.27 |    +0.4062 | $0.193  (mean cost paid $0.21)
+SPK4 half   ALL              5132  3.01 |  0.84      |  0.93  1.01  1.05  1.08 |    +0.1037 | $0.012  (mean cost paid $0.22)
+SPK4 half   SPR<=p25         2282  1.34 |  0.81      |  0.86  0.94  0.99  1.02 |    +0.0622 | $0.000  (mean cost paid $0.18)
+SPK4 half   SPR<=p10          924  0.54 |  0.67      |  0.71  0.80  0.85  0.90 |    +0.0061 | $0.000  (mean cost paid $0.17)
+SPK4 half   ATRx>=5          1253  0.73 |  1.04      |  1.09  1.13  1.16  1.17 |    +0.2809 | $0.078  (mean cost paid $0.22)
+SPK4 half   ATRx>=8           512  0.30 |  1.07      |  1.11  1.13  1.15  1.16 |    +0.3572 | $0.073  (mean cost paid $0.22)
+SPK4 half   ATRx>=12          198  0.12 |  1.31      |  1.34  1.37  1.39  1.40 |    +0.9075 | $0.539  (mean cost paid $0.22)
+SPK4 half   LDNNY            1982  1.16 |  0.87      |  0.94  0.99  1.02  1.05 |    +0.0900 | $0.000  (mean cost paid $0.22)
+SPK4 half   ATRx>=8+LDNNY     304  0.18 |  1.06      |  1.10  1.13  1.14  1.15 |    +0.3384 | $0.057  (mean cost paid $0.22)
+SPK4 1R     ALL              5131  3.01 |  0.73      |  0.83  0.92  0.97  1.01 |    +0.0531 | $0.000  (mean cost paid $0.22)
+SPK4 1R     SPR<=p25         2281  1.34 |  0.72      |  0.78  0.88  0.94  0.98 |    +0.0423 | $0.000  (mean cost paid $0.18)
+SPK4 1R     SPR<=p10          923  0.54 |  0.51      |  0.55  0.64  0.71  0.75 |    -0.0385 | $0.000  (mean cost paid $0.17)
+SPK4 1R     ATRx>=5          1253  0.73 |  0.98      |  1.04  1.09  1.11  1.13 |    +0.1950 | $0.033  (mean cost paid $0.22)
+SPK4 1R     ATRx>=8           512  0.30 |  1.03      |  1.07  1.11  1.13  1.14 |    +0.2661 | $0.041  (mean cost paid $0.22)
+SPK4 1R     ATRx>=12          198  0.12 |  1.41 PASS |  1.46  1.50  1.52  1.54 |    +0.9050 | $0.627  (mean cost paid $0.22)
+SPK4 1R     LDNNY            1980  1.16 |  0.75      |  0.82  0.88  0.92  0.95 |    +0.0100 | $0.000  (mean cost paid $0.22)
+SPK4 1R     ATRx>=8+LDNNY     304  0.18 |  0.99      |  1.03  1.07  1.09  1.10 |    +0.2037 | $0.000  (mean cost paid $0.22)
+SPK5 half   ALL              2186  1.28 |  0.87      |  0.95  1.01  1.04  1.07 |    +0.1047 | $0.000  (mean cost paid $0.22)
+SPK5 half   SPR<=p25          921  0.54 |  0.79      |  0.83  0.89  0.92  0.95 |    +0.0166 | $0.000  (mean cost paid $0.19)
+SPK5 half   SPR<=p10          377  0.22 |  0.64      |  0.67  0.73  0.78  0.81 |    -0.0500 | $0.000  (mean cost paid $0.17)
+SPK5 half   ATRx>=5           520  0.30 |  1.09      |  1.13  1.17  1.19  1.20 |    +0.3763 | $0.125  (mean cost paid $0.22)
+SPK5 half   ATRx>=8           217  0.13 |  1.16      |  1.19  1.22  1.23  1.24 |    +0.5992 | $0.237  (mean cost paid $0.23)
+SPK5 half   LDNNY             906  0.53 |  0.87      |  0.93  0.97  1.00  1.01 |    +0.0644 | $0.000  (mean cost paid $0.22)
+BB_RSI      ALL             54773 32.12 |  0.86      |  0.91  0.96  0.99  1.01 |    +0.0605 | $0.000  (mean cost paid $0.21)
+BB_RSI      SPR<=p25        28354 16.63 |  0.89      |  0.92  0.97  1.00  1.02 |    +0.0659 | $0.000  (mean cost paid $0.18)
+BB_RSI      SPR<=p10        10147  5.95 |  0.85      |  0.87  0.94  0.98  1.02 |    +0.0599 | $0.000  (mean cost paid $0.16)
+BB_RSI      ATRx>=5         18381 10.78 |  0.94      |  0.96  0.99  1.01  1.02 |    +0.0810 | $0.000  (mean cost paid $0.21)
+BB_RSI      ATRx>=8          8495  4.98 |  0.96      |  0.98  1.00  1.01  1.02 |    +0.1073 | $0.000  (mean cost paid $0.21)
+BB_RSI      ATRx>=12         3410  2.00 |  0.99      |  1.01  1.02  1.03  1.04 |    +0.1816 | $0.000  (mean cost paid $0.20)
+BB_RSI      LDNNY           23694 13.90 |  0.91      |  0.95  0.99  1.02  1.03 |    +0.0885 | $0.000  (mean cost paid $0.20)
+BB_RSI      ATRx>=8+LDNNY    5038  2.95 |  0.97      |  0.99  1.01  1.02  1.03 |    +0.1286 | $0.000  (mean cost paid $0.20)
+WPR         ALL             71497 41.93 |  0.82      |  0.88  0.92  0.95  0.97 |    +0.0205 | $0.000  (mean cost paid $0.22)
+WPR         SPR<=p25        33420 19.60 |  0.87      |  0.90  0.94  0.97  0.99 |    +0.0398 | $0.000  (mean cost paid $0.18)
+WPR         SPR<=p10        10587  6.21 |  0.79      |  0.81  0.87  0.91  0.94 |    +0.0129 | $0.000  (mean cost paid $0.16)
+WPR         ATRx>=5         22693 13.31 |  0.91      |  0.94  0.97  0.98  0.99 |    +0.0375 | $0.000  (mean cost paid $0.21)
+WPR         ATRx>=8         10224  6.00 |  0.95      |  0.97  0.99  1.00  1.01 |    +0.0744 | $0.000  (mean cost paid $0.21)
+WPR         ATRx>=12         4095  2.40 |  0.98      |  0.99  1.00  1.01  1.02 |    +0.1140 | $0.000  (mean cost paid $0.21)
+WPR         LDNNY           31004 18.18 |  0.86      |  0.90  0.94  0.96  0.98 |    +0.0252 | $0.000  (mean cost paid $0.20)
+WPR         ATRx>=8+LDNNY    6053  3.55 |  0.94      |  0.96  0.98  0.99  1.00 |    +0.0429 | $0.000  (mean cost paid $0.20)
+STOCH       ALL             32520 19.07 |  0.75      |  0.82  0.88  0.91  0.94 |    +0.0048 | $0.000  (mean cost paid $0.22)
+STOCH       SPR<=p25        14058  8.25 |  0.82      |  0.86  0.91  0.95  0.97 |    +0.0299 | $0.000  (mean cost paid $0.18)
+STOCH       SPR<=p10         4045  2.37 |  0.73      |  0.75  0.84  0.89  0.93 |    +0.0158 | $0.000  (mean cost paid $0.16)
+STOCH       ATRx>=5         10372  6.08 |  0.88      |  0.92  0.95  0.97  0.98 |    +0.0253 | $0.000  (mean cost paid $0.21)
+STOCH       ATRx>=8          4728  2.77 |  0.91      |  0.94  0.96  0.97  0.98 |    +0.0154 | $0.000  (mean cost paid $0.21)
+STOCH       ATRx>=12         1961  1.15 |  0.95      |  0.97  0.99  1.00  1.00 |    +0.0633 | $0.000  (mean cost paid $0.21)
+STOCH       LDNNY           14180  8.32 |  0.79      |  0.84  0.89  0.92  0.94 |    -0.0033 | $0.000  (mean cost paid $0.20)
+STOCH       ATRx>=8+LDNNY    2756  1.62 |  0.89      |  0.92  0.94  0.96  0.97 |    -0.0177 | $0.000  (mean cost paid $0.21)
+TK          ALL             40808 23.93 |  0.83      |  0.89  0.93  0.96  0.98 |    +0.0242 | $0.000  (mean cost paid $0.22)
+TK          SPR<=p25        18115 10.62 |  0.87      |  0.89  0.93  0.95  0.97 |    +0.0211 | $0.000  (mean cost paid $0.18)
+TK          SPR<=p10         5203  3.05 |  0.82      |  0.83  0.89  0.93  0.95 |    +0.0170 | $0.000  (mean cost paid $0.16)
+TK          ATRx>=5         12486  7.32 |  0.94      |  0.97  0.99  1.01  1.02 |    +0.0817 | $0.000  (mean cost paid $0.21)
+TK          ATRx>=8          5513  3.23 |  0.99      |  1.01  1.03  1.04  1.05 |    +0.1795 | $0.000  (mean cost paid $0.21)
+TK          ATRx>=12         2070  1.21 |  1.05      |  1.07  1.08  1.09  1.10 |    +0.3962 | $0.000  (mean cost paid $0.21)
+TK          LDNNY           18098 10.61 |  0.84      |  0.87  0.91  0.93  0.95 |    -0.0182 | $0.000  (mean cost paid $0.20)
+TK          ATRx>=8+LDNNY    3271  1.92 |  0.91      |  0.93  0.94  0.95  0.96 |    -0.0541 | $0.000  (mean cost paid $0.21)
+RAND        ALL             55286 32.43 |  0.79      |  0.85  0.90  0.93  0.95 |    +0.0032 | $0.000  (mean cost paid $0.22)
+RAND        SPR<=p25        24985 14.65 |  0.82      |  0.84  0.89  0.92  0.94 |    -0.0074 | $0.000  (mean cost paid $0.18)
+RAND        SPR<=p10         7485  4.39 |  0.79      |  0.81  0.88  0.92  0.96 |    +0.0241 | $0.000  (mean cost paid $0.16)
+RAND        ATRx>=5         17849 10.47 |  0.90      |  0.93  0.95  0.97  0.98 |    +0.0173 | $0.000  (mean cost paid $0.21)
+RAND        ATRx>=8          8069  4.73 |  0.90      |  0.92  0.94  0.95  0.96 |    -0.0557 | $0.000  (mean cost paid $0.21)
+RAND        ATRx>=12         3208  1.88 |  0.93      |  0.95  0.96  0.97  0.98 |    -0.0238 | $0.000  (mean cost paid $0.21)
+RAND        LDNNY           24461 14.35 |  0.83      |  0.88  0.92  0.95  0.96 |    +0.0116 | $0.000  (mean cost paid $0.20)
+RAND        ATRx>=8+LDNNY    4770  2.80 |  0.92      |  0.94  0.96  0.97  0.98 |    +0.0095 | $0.000  (mean cost paid $0.20)
+
+The most a trade may cost, for the best cells (PF 1.15 target):
+  SPK3 half   ATRx>=12          668 trades, raw +0.9708 $/trade, break-even cost $0.669 -> needs a spread under about 0.67 $ per 0.01 lot
+  SPK4 1R     ATRx>=12          198 trades, raw +0.9050 $/trade, break-even cost $0.627 -> needs a spread under about 0.63 $ per 0.01 lot
+  SPK4 half   ATRx>=12          198 trades, raw +0.9075 $/trade, break-even cost $0.539 -> needs a spread under about 0.54 $ per 0.01 lot
+  SPK5 half   ATRx>=8           217 trades, raw +0.5992 $/trade, break-even cost $0.237 -> needs a spread under about 0.24 $ per 0.01 lot
+  SPK3 half   ATRx>=8          1732 trades, raw +0.4496 $/trade, break-even cost $0.226 -> needs a spread under about 0.23 $ per 0.01 lot
+  SPK3 half   ATRx>=8+LDNNY     968 trades, raw +0.4062 $/trade, break-even cost $0.193 -> needs a spread under about 0.19 $ per 0.01 lot
+  SPK5 half   ATRx>=5           520 trades, raw +0.3763 $/trade, break-even cost $0.125 -> needs a spread under about 0.12 $ per 0.01 lot
+  SPK3 half   ATRx>=5          4211 trades, raw +0.2763 $/trade, break-even cost $0.120 -> needs a spread under about 0.12 $ per 0.01 lot
+
+done in 53 s
