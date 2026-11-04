@@ -26,13 +26,15 @@ cnt = T.groupby(["rule", "wk"]).net.count().unstack(fill_value=0)
 weeks = list(wk.columns)
 last = weeks[-1]
 label = lambda w: f"{pd.Period(ordinal=int(w), freq='W-SAT').start_time:%Y-%m-%d} + 2 weeks"
-print(f"LAST 2 WEEKS ({label(last)}, data to 3 Nov): top 10 of {len(rules)} rules (RAND_x = random entries), $ per 0.01 lot")
-top = wk[last].sort_values(ascending=False)
+t14 = T.t.max() - pd.Timedelta(days=14)
+L = T[T.t >= t14].groupby("rule").net.agg(["count", "sum"]).sort_values("sum", ascending=False)
 full = T.groupby("rule").net.sum()
-for r in top.index[:10]:
+print(f"LAST 14 DAYS ({t14:%Y-%m-%d} - {T.t.max():%Y-%m-%d}): top 10 of {len(rules)} rules (RAND_x = random entries), $ per 0.01 lot")
+for r, x in L.head(10).iterrows():
     pos = (wk.loc[r] > 0).mean() * 100
-    print(f"  {r:28s} {int(cnt.loc[r, last]):4d} trades {top[r]:+8.2f} $ | 2020-2026 {full[r]:+8.0f} $, 2-week periods positive {pos:.0f}%")
-print(f"profitable in the last 2 weeks: {sum(top[r] > 0 for r in real)} of {len(real)} real rules, {sum(top[r] > 0 for r in rules if r.startswith('RAND'))} of 10 random")
+    print(f"  {r:28s} {int(x['count']):4d} trades {x['sum']:+8.2f} $ | 2020-2026 {full[r]:+8.0f} $, 2-week periods positive {pos:.0f}%")
+print(f"profitable in the last 14 days: {sum(L.loc[r, 'sum'] > 0 for r in real if r in L.index)} of {len(real)} real rules, "
+      f"{sum(L.loc[r, 'sum'] > 0 for r in rules if r.startswith('RAND') and r in L.index)} of 10 random")
 print("\nTHE '2 WEEKS' METHOD out of sample: every 2 weeks trade the rule that made the most in the 2 weeks before (>= 20 trades)")
 for top_n in (1, 3):
     res = []
