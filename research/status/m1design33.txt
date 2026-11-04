@@ -1,0 +1,49 @@
+XAUUSD M1 2020-03-30 .. 2026-11-03 17:30 server, 2,334,999 bars, 1704 days, median spread $0.19 at 0.01 lot
+
+=== 1. MINUTE-OF-DAY SCAN (first half must give |t| >= 3.5, second half t >= 2 and PF >= 1.1) ===
+/home/runner/work/fizy-bot/fizy-bot/research/m1design33.py:67: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  ok_day = idx.dayofweek < 5
+
+London clock: 0 survivors out of 6025 entry-minute / hold windows (chance control gave 16)
+/home/runner/work/fizy-bot/fizy-bot/research/m1design33.py:67: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  ok_day = idx.dayofweek < 5
+
+New York clock: 0 survivors out of 5905 entry-minute / hold windows (chance control gave 6)
+
+total chance survivors across both clocks: 22 (that is how many a shuffled control produced)
+
+=== 2. BIG SPIKE FADE, wide stop ===
+rule                              trades /day  win%   PF  half1 half2 stress last12$    net$  $/trade  by year
+SPIKE 3ATR half 15m                13458 7.90  62.7  0.84  0.70  0.90  0.74    -327    -2108   -0.157  20:0.74 21:0.61 22:0.74 23:0.84 24:0.71 25:0.96 26:0.95 
+SPIKE 3ATR full 60m                10332 6.06  60.5  0.88  0.82  0.91  0.81    -396    -1560   -0.151  20:0.85 21:0.74 22:0.84 23:0.89 24:0.82 25:0.92 26:0.95 
+SPIKE 3ATR 2R 60m                  10345 6.07  41.5  0.94  0.89  0.96  0.89     +53    -1171   -0.113  20:0.92 21:0.84 22:0.87 23:0.88 24:0.85 25:0.96 26:1.02 
+SPIKE 3ATR full 240m                5744 3.37  60.8  0.88  0.83  0.90  0.81    -244     -943   -0.164  20:0.87 21:0.74 22:0.92 23:0.75 24:0.87 25:0.87 26:0.94 
+SPIKE 4ATR half 15m                 4673 2.74  60.9  0.85  0.80  0.87  0.78    -242     -877   -0.188  20:0.93 21:0.72 22:0.77 23:0.76 24:0.77 25:0.93 26:0.91 
+SPIKE 4ATR full 60m                 4216 2.47  60.5  0.91  0.86  0.94  0.86     -25     -613   -0.145  20:0.88 21:0.86 22:0.87 23:0.71 24:1.00 25:0.86 26:1.02 
+SPIKE 4ATR 2R 60m                   4222 2.48  44.9  0.97  0.93  0.99  0.93     +42     -244   -0.058  20:0.99 21:1.00 22:0.86 23:0.69 24:1.04 25:1.04 26:1.04 
+SPIKE 4ATR full 240m                3239 1.90  62.3  0.91  0.91  0.91  0.86     -82     -508   -0.157  20:0.93 21:0.95 22:0.87 23:0.71 24:1.10 25:0.80 26:0.99 
+SPIKE 5ATR half 15m                 2085 1.22  58.4  0.82  0.78  0.84  0.77     -98     -603   -0.289  20:1.07 21:0.61 22:0.74 23:0.80 24:0.68 25:0.86 26:0.91 
+SPIKE 5ATR full 60m                 1991 1.17  61.1  0.93  0.86  0.96  0.88    +104     -290   -0.146  20:0.93 21:0.80 22:0.88 23:0.78 24:1.02 25:0.80 26:1.07 
+SPIKE 5ATR 2R 60m                   1994 1.17  47.3  0.97  0.94  0.98  0.93    +127     -151   -0.076  20:1.01 21:0.95 22:0.90 23:0.76 24:0.99 25:0.93 26:1.08 
+SPIKE 5ATR full 240m                1762 1.03  63.7  0.95  0.96  0.94  0.90     +63     -216   -0.123  20:0.90 21:0.91 22:1.05 23:0.80 24:1.15 25:0.77 26:1.02 
+SPIKE 6ATR half 15m                 1132 0.66  58.0  0.83  0.83  0.83  0.78    -105     -376   -0.332  20:1.25 21:0.63 22:0.86 23:0.85 24:0.69 25:0.80 26:0.86 
+SPIKE 6ATR full 60m                 1103 0.65  62.8  0.88  0.87  0.89  0.84    -137     -320   -0.290  20:1.03 21:0.82 22:0.93 23:0.91 24:1.06 25:0.75 26:0.84 
+SPIKE 6ATR 2R 60m                   1105 0.65  51.6  0.95  1.00  0.92  0.91    -165     -159   -0.144  20:1.30 21:1.10 22:0.94 23:0.83 24:1.01 25:1.05 26:0.83 
+SPIKE 6ATR full 240m                1029 0.60  65.2  0.94  0.94  0.94  0.90     -30     -183   -0.178  20:0.88 21:0.87 22:1.12 23:0.94 24:1.19 25:0.71 26:0.93 
+
+=== 3. HIGH-IMPACT USD NEWS ===
+rule                              trades /day  win%   PF  half1 half2 stress last12$    net$  $/trade  by year
+NEWS fade                            905 0.53  55.0  0.98  0.75  1.13  0.93     +54      -46   -0.051  20:0.64 21:0.89 22:0.90 23:0.66 24:1.23 25:1.04 26:1.17 
+NEWS follow                          905 0.53  49.2  0.98  1.07  0.94  0.95     +63      -50   -0.055  20:1.08 21:0.87 22:0.99 23:1.21 24:0.80 25:0.98 26:1.02 
+/home/runner/work/fizy-bot/fizy-bot/research/m1design33.py:195: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  for i in np.where((hm == 615) & (pd.DatetimeIndex(pd.to_datetime(day)).dayofweek < 5))[0]:
+
+=== 4. LBMA PRE-AUCTION SELL, M1 entry timing (the live module is the baseline) ===
+rule                              trades /day  win%   PF  half1 half2 stress last12$    net$  $/trade  by year
+AUCTION base 10:15->10:30           1703 1.00  52.8  1.49  0.98  1.83  1.32    +514     +570   +0.335  20:1.30 21:1.11 22:0.84 23:0.81 24:1.08 25:1.39 26:3.03 
+AUCTION wait break of 10:00-10:15 low    693 0.41  46.0  1.30  0.88  1.59  1.09    +100     +109   +0.157  20:0.99 21:1.16 22:1.04 23:0.71 24:0.95 25:1.36 26:2.24 
+AUCTION wait a green M1 bar         1703 1.00  53.7  1.50  1.06  1.79  1.31    +477     +525   +0.308  20:1.46 21:1.18 22:0.88 23:0.80 24:1.07 25:1.36 26:3.07 PASS
+AUCTION base + SL 2 ATR             1703 1.00  46.3  1.22  0.89  1.41  1.08    +302     +296   +0.174  20:1.04 21:0.88 22:0.88 23:0.84 24:0.99 25:1.23 26:1.76 
+AUCTION base, exit 10:35            1703 1.00  52.7  1.54  1.09  1.85  1.39    +602     +737   +0.433  20:2.67 21:1.00 22:0.73 23:0.75 24:0.96 25:1.64 26:2.89 PASS
+
+done in 8 s
