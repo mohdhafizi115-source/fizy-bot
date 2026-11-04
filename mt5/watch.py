@@ -36,7 +36,7 @@ MODS = [  # kind prefix, emoji, title
     ("AUCTION", "🏦", "GOLD AUCTION SCALP · XAUUSD"), ("VOLBO", "⚡", "VOLATILITY BREAKOUT · day trade"),
     ("PDHL", "📏", "PREVIOUS-DAY BREAKOUT · USDJPY"), ("NYCONT", "🗽", "NEW YORK CONTINUATION · USDJPY"),
     ("KUMO", "☁️", "ICHIMOKU CLOUD BREAKOUT · XAUUSD H1"),
-    ("TK ", "🌤️", "ICHIMOKU TK CROSS · XAUUSD H1 · day trade"),
+    ("TK ", "🌤️", "ICHIMOKU TK CROSS · XAUUSD H1 + M15 · day trade"),
     ("SR ", "🧱", "S/R ZONES · XAUUSD M15 · alerts only"),
 ]
 BULLETS = (("Idea ", "💡 "), ("If an M15 bar closes", "↩️ "), ("Not a tested edge", "⚠️ "), ("Bias:", "🧭 "),
@@ -180,8 +180,8 @@ def status_block(kind, text):
                 "▫️ Any hour 01:30-22:00 broker: H1 close breaks out of the cloud",
                 f"▫️ Exit: close back inside the cloud or 48 h · Lot {lot} · open {opened}"]
     if kind == "TK ONLINE":
-        return ["🌤️ ICHIMOKU TK CROSS · XAUUSD H1 · day trade",
-                f"▫️ H1 bars 02:00-20:00 broker ({myt('02:00', 'Europe/Athens')}-{myt('20:00', 'Europe/Athens')} MYT): Tenkan crosses Kijun beyond the cloud",
+        return ["🌤️ ICHIMOKU TK CROSS · XAUUSD H1 + M15 · day trade",
+                f"▫️ bars 01:30-21:00 broker ({myt('02:00', 'Europe/Athens')}-{myt('20:00', 'Europe/Athens')} MYT): Tenkan crosses Kijun beyond the cloud",
                 f"▫️ Exit: opposite cross or 23:00 broker ({myt('23:00', 'Europe/Athens')} MYT) · Lot {lot} · open {opened}"]
     if kind == "SR ONLINE":
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",

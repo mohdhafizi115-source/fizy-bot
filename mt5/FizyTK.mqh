@@ -7,6 +7,8 @@
 //|   On closed H1 bars, Tenkan (9) crosses above Kijun (26) with the |
 //|   close above the cloud (spans 26 / 52): BUY at the next bar open |
 //|   (SELL mirrored). Signal bars 02:00-20:00 server, weekdays.      |
+//|   Also on M15 (InpTkM15, magic 260319): owner's choice, 4 Nov,    |
+//|   PF 1.08 / +$854 in the test, below the pass rule.               |
 //|   SL 2 ATR(14, H1) from the signal close, no TP. Exit on the      |
 //|   opposite cross, at 23:00 server, or at 22:00 on Fridays (never  |
 //|   overnight, so no swap). One trade at a time.                    |
@@ -15,11 +17,14 @@
 input bool   InpTkOn      = true;
 input string InpTkSymbol  = "XAUUSD";
 input double InpTkLot     = 0.01;
-input long   InpTkMagic   = 260318;
+input long   InpTkMagic   = 260318;              // H1; M15 uses InpTkMagic15
+input bool   InpTkM15     = true;                // also on M15 (owner's choice 4 Nov: PF 1.08, +$854, below the pass rule)
+input long   InpTkMagic15 = 260319;
 
 string   tkx_sym = "";
 bool     tkx_ready = false;
-datetime tkx_bar = 0;
+datetime tkx_bar[2] = {0, 0};
+ENUM_TIMEFRAMES tkx_tf[2] = {PERIOD_H1, PERIOD_M15};
 ulong    tkx_known[];
 
 void TkEvent(string msg)
@@ -32,12 +37,15 @@ void TkEvent(string msg)
    Print("TK EVENT ", msg);
 }
 
-bool TkPosition(ulong &ticket)
+long TkMagic(int x) { return x == 0 ? InpTkMagic : InpTkMagic15; }
+string TkTf(int x) { return x == 0 ? "H1" : "M15"; }
+
+bool TkPosition(int x, ulong &ticket)
 {
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
       ulong t = PositionGetTicket(i);
-      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpTkMagic && PositionGetString(POSITION_SYMBOL) == tkx_sym) { ticket = t; return true; }
+      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == TkMagic(x) && PositionGetString(POSITION_SYMBOL) == tkx_sym) { ticket = t; return true; }
    }
    return false;
 }
@@ -66,10 +74,11 @@ void TkInit()
    if(tkx_sym == "") { TkEvent("ERROR | TK cross: symbol " + InpTkSymbol + " not found"); return; }
    SymbolSelect(tkx_sym, true);
    ulong t;
-   if(TkPosition(t)) { int m = ArraySize(tkx_known); ArrayResize(tkx_known, m + 1); tkx_known[m] = t; }
-   TkEvent(StringFormat("TK ONLINE | %s H1: buy / sell when Tenkan crosses Kijun with the H1 close beyond the Ichimoku cloud, "
+   for(int x = 0; x < 2; x++)
+      if(TkPosition(x, t)) { int m = ArraySize(tkx_known); ArrayResize(tkx_known, m + 1); tkx_known[m] = t; }
+   TkEvent(StringFormat("TK ONLINE | %s %s: buy / sell when Tenkan crosses Kijun with the close beyond the Ichimoku cloud, "
                         "SL 2 ATR, exit on the opposite cross or at 23:00 server (day trade, no swap), lot %.2f | %d open position(s)",
-                        tkx_sym, InpTkLot, ArraySize(tkx_known)));
+                        tkx_sym, InpTkM15 ? "H1 + M15" : "H1", InpTkLot, ArraySize(tkx_known)));
 }
 
 void TkReportClosed(ulong pos)
@@ -85,18 +94,21 @@ void TkReportClosed(ulong pos)
       if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_OUT) { outPx = HistoryDealGetDouble(d, DEAL_PRICE); reason = HistoryDealGetInteger(d, DEAL_REASON); }
    }
    if(outPx == 0) return;
+   long mg = -1;
+   for(int i = 0; i < HistoryDealsTotal(); i++) { ulong d = HistoryDealGetTicket(i); if(d > 0) mg = HistoryDealGetInteger(d, DEAL_MAGIC); }
+   int x = mg == InpTkMagic15 ? 1 : 0;
    string what = reason == DEAL_REASON_SL ? "TK SL HIT" : "TK CLOSED";
    string why = reason == DEAL_REASON_SL ? "stop loss 2 ATR" : (reason == DEAL_REASON_EXPERT ? "opposite Tenkan / Kijun cross or day end" : "closed outside the EA");
    double lv[2]; color lc[2]; string lb[2];
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
-   string fn = Snap(tkx_sym, PERIOD_H1, "TKX", lv, lc, lb, 0, 0, 0, 0, false);
-   TkEvent(StringFormat("%s %s | %s from %s closed at %s (%s), profit $%.2f", what, tkx_sym, dtype == DEAL_TYPE_BUY ? "BUY" : "SELL",
+   string fn = Snap(tkx_sym, tkx_tf[x], "TKX", lv, lc, lb, 0, 0, 0, 0, false);
+   TkEvent(StringFormat("%s %s | %s %s from %s closed at %s (%s), profit $%.2f", what, tkx_sym, TkTf(x), dtype == DEAL_TYPE_BUY ? "BUY" : "SELL",
                         PriceStr(tkx_sym, inPx), PriceStr(tkx_sym, outPx), why, profit) + Img(fn));
 }
 
-void TkClose(ulong pt)
+void TkClose(int x, ulong pt)
 {
-   trade.SetExpertMagicNumber(InpTkMagic); trade.SetTypeFillingBySymbol(tkx_sym);
+   trade.SetExpertMagicNumber(TkMagic(x)); trade.SetTypeFillingBySymbol(tkx_sym);
    if(!trade.PositionClose(pt)) TkEvent(StringFormat("ERROR | TK close %s failed: %d %s", tkx_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
 }
@@ -111,23 +123,30 @@ void TkOnTimer()
    MqlTick tk;
    datetime now = TimeCurrent();
    if(!SymbolInfoTick(tkx_sym, tk) || now - tk.time > 600) return;            // market closed
+   for(int x = 0; x < 2; x++)
+      if(x == 0 || InpTkM15) TkRun(x, tk, now);
+}
+
+void TkRun(int x, MqlTick &tk, datetime now)
+{
+   ENUM_TIMEFRAMES tf = tkx_tf[x];
    MqlDateTime ns; TimeToStruct(now, ns);
    int nowMin = ns.hour * 60 + ns.min;
    ulong pt;
-   bool have = TkPosition(pt);
+   bool have = TkPosition(x, pt);
    if(have)
    {
       bool known = false;
       for(int q = 0; q < ArraySize(tkx_known); q++) if(tkx_known[q] == pt) known = true;
       if(!known) { int m = ArraySize(tkx_known); ArrayResize(tkx_known, m + 1); tkx_known[m] = pt; }
-      if(nowMin >= 1380 || (ns.day_of_week == 5 && nowMin >= 1320)) { TkClose(pt); return; }   // day trade: never overnight
+      if(nowMin >= 1380 || (ns.day_of_week == 5 && nowMin >= 1320)) { TkClose(x, pt); return; }   // day trade: never overnight
    }
-   datetime b0 = iTime(tkx_sym, PERIOD_H1, 0);
-   if(b0 == 0 || b0 == tkx_bar) return;                                       // act once per new H1 bar
+   datetime b0 = iTime(tkx_sym, tf, 0);
+   if(b0 == 0 || b0 == tkx_bar[x]) return;                                    // act once per new bar
    MqlRates r[];
-   int n = CopyRates(tkx_sym, PERIOD_H1, 1, 200, r);                          // closed bars, r[n-1] = the bar that just closed
+   int n = CopyRates(tkx_sym, tf, 1, 200, r);                                 // closed bars, r[n-1] = the bar that just closed
    if(n < 120) return;                                                        // history not loaded yet: retry next tick
-   tkx_bar = b0;
+   tkx_bar[x] = b0;
    int j = n - 1;
    double ten, kij, top, bot, ten1, kij1, top1, bot1;
    if(!TkAt(r, j, ten, kij, top, bot) || !TkAt(r, j - 1, ten1, kij1, top1, bot1)) return;
@@ -136,19 +155,18 @@ void TkOnTimer()
    {
       PositionSelectByTicket(pt);
       bool buy = PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY;
-      if((buy && crossDn) || (!buy && crossUp)) TkClose(pt);                  // opposite cross: out (no reverse on the same bar)
+      if((buy && crossDn) || (!buy && crossUp)) TkClose(x, pt);               // opposite cross: out (no reverse on the same bar)
       return;
    }
    MqlDateTime st; TimeToStruct(r[j].time, st);
    int hm = st.hour * 60 + st.min;
-   if(st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1260) return;   // signal bars 02:00-20:00 server
+   if(st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1260) return;   // signal bars 01:30-21:00 server
    double c = r[j].close;
    int dr = 0;
    if(crossUp && c > top) dr = 1;
    else if(crossDn && c < bot) dr = -1;
    if(dr == 0) return;
-   // ATR(14) Wilder up to the bar before the signal bar (as in the test)
-   double atr = r[1].high - r[1].low;
+   double atr = r[1].high - r[1].low;                                         // ATR(14) Wilder up to the bar before the signal bar
    for(int i = 2; i < j; i++)
    {
       double tr = MathMax(r[i].high - r[i].low, MathMax(MathAbs(r[i].high - r[i - 1].close), MathAbs(r[i].low - r[i - 1].close)));
@@ -160,20 +178,21 @@ void TkOnTimer()
    if((px - sl) * dr <= 0) return;
    double mn = SymbolInfoDouble(tkx_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(tkx_sym, SYMBOL_VOLUME_STEP);
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpTkLot / sv + 1e-9) * sv), 2);
-   trade.SetExpertMagicNumber(InpTkMagic); trade.SetTypeFillingBySymbol(tkx_sym);
-   bool ok = dr > 0 ? trade.Buy(lot, tkx_sym, 0, sl, 0, "TK") : trade.Sell(lot, tkx_sym, 0, sl, 0, "TK");
-   if(!ok) TkEvent(StringFormat("ERROR | TK %s order failed: %d %s", tkx_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   trade.SetExpertMagicNumber(TkMagic(x)); trade.SetTypeFillingBySymbol(tkx_sym);
+   string cm = "TK " + TkTf(x);
+   bool ok = dr > 0 ? trade.Buy(lot, tkx_sym, 0, sl, 0, cm) : trade.Sell(lot, tkx_sym, 0, sl, 0, cm);
+   if(!ok) TkEvent(StringFormat("ERROR | TK %s %s order failed: %d %s", TkTf(x), tkx_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) return;
    double lv[4]; color lc[4]; string lb[4];
    lv[0] = px; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
    lv[2] = ten; lc[2] = clrDarkOrange; lb[2] = "Tenkan"; lv[3] = kij; lc[3] = clrPurple; lb[3] = "Kijun";
-   string fn = Snap(tkx_sym, PERIOD_H1, "TKF", lv, lc, lb, 0, 0, 0, 0, false);
-   TkEvent(StringFormat("TK %s %s | Tenkan %s crossed %s Kijun %s with the H1 close %s %s the cloud (%s - %s) | %s %.2f lot at %s, SL %s, no TP: "
-                        "exit on the opposite cross or at 23:00 server", dr > 0 ? "BUY" : "SELL", tkx_sym, PriceStr(tkx_sym, ten),
+   string fn = Snap(tkx_sym, tf, "TKF", lv, lc, lb, 0, 0, 0, 0, false);
+   TkEvent(StringFormat("TK %s %s | %s: Tenkan %s crossed %s Kijun %s with the close %s %s the cloud (%s - %s) | %s %.2f lot at %s, SL %s, no TP: "
+                        "exit on the opposite cross or at 23:00 server", dr > 0 ? "BUY" : "SELL", tkx_sym, TkTf(x), PriceStr(tkx_sym, ten),
                         dr > 0 ? "above" : "below", PriceStr(tkx_sym, kij), PriceStr(tkx_sym, c), dr > 0 ? "above" : "below",
                         PriceStr(tkx_sym, bot), PriceStr(tkx_sym, top), dr > 0 ? "BUY" : "SELL", lot, PriceStr(tkx_sym, px), PriceStr(tkx_sym, sl)) + Img(fn));
    int m = ArraySize(tkx_known);
-   if(TkPosition(pt)) { ArrayResize(tkx_known, m + 1); tkx_known[m] = pt; }
+   if(TkPosition(x, pt)) { ArrayResize(tkx_known, m + 1); tkx_known[m] = pt; }
 }
 //+------------------------------------------------------------------+

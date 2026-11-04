@@ -12,7 +12,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.92"
+#property version "1.93"
 #include <Trade/Trade.mqh>
 
 input string InpSymbol     = "XAUUSD.m";
