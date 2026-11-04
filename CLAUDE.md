@@ -30,7 +30,7 @@
   | `FizyWVB.mqh` | Williams volatility breakout: k 0.5 on USDJPY, EURJPY, GBPJPY, k 0.7 on XAUUSD (per symbol since v1.80) | 260314 |
   | `FizyDTJ.mqh` | USDJPY day trades: previous-day breakout (PDHL, from 02:00, TP 2R, close 22:30) and New York continuation (NYCONT, 15:30 follow the 09:00–15:30 move, close 22:00) | 260315 / 260316 |
   | `FizyKUMO.mqh` | gold H1 Ichimoku cloud breakout (v1.90): H1 close breaks out of the cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside or after 48 h; holds overnight | 260317 |
-  | `FizyTK.mqh` | gold H1 Ichimoku Tenkan / Kijun cross with the close beyond the cloud (v1.92): day trade, signal bars 02:00–20:00, SL 2 ATR, exit on the opposite cross or 23:00 (Friday 22:00), no swap | 260318 |
+  | `FizyTK.mqh` | gold H1 Ichimoku Tenkan / Kijun cross with the close beyond the cloud (v1.92): day trade, signal bars 02:00–20:00, SL 2 ATR, exit on the opposite cross or 23:00 (Friday 22:00), no swap. **Also on M15 since v1.93** (`InpTkM15`, owner's explicit choice on 4 Nov although M15 failed the pass rule: PF 1.08, +$854, first half 1.02) | 260318 / 260319 (M15) |
   | `FizySR.mqh` | gold M15 S/R zone **alerts only** (no trading), **switched off** (line 8): slim zones (0.5 ATR clusters, ≤ 1.2 ATR wide, ≥ 3 touches), the 2 nearest above and below; map at 01:30 / 08:00 / 15:00 server, chart when price enters a zone. Turn on again only for a level type that passes | – |
 
   The London breakout uses magic 260308. Broker/server time is Europe/Athens (GMT+2/+3).
