@@ -1,18 +1,22 @@
-shift ended (UTC): 2026-11-03 21:55
-done
-2026.11.03 23:55:04
+shift ended (UTC): 2026-11-04 03:32
+open
+2026.11.04 05:32:28
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 4565 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 3356 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 1, Gotobi 2, gold auction 1
-  IS	0	16:19:47.883	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.03 18:19, 0 open position(s), 0 pending order(s), lot 0.01
-  ES	0	16:19:47.883	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.05 | 0 open position(s)
-  IJ	0	16:19:47.884	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
-  OI	0	16:19:47.964	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London, close at 10:30 when the LBMA gold auction starts, every trading day (12:15-12:30 server time now), SL 2.0 ATR(M5), lot 0.01 | 0 open position(s)
-  JD	0	16:19:47.964	FizyLB (XAUUSD.m,M15)	NR7 EVENT NR7 ONLINE | 3 symbols on D1 (XAUUSD,USDJPY,AUDJPY), lot 0.01, 0 open NR7 position(s)
-  DH	0	16:19:47.993	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO ONLINE | USDJPY.m (k 0.5), EURJPY.m (k 0.5), GBPJPY.m (k 0.5), XAUUSD.m (k 0.7): day trade, at 01:30 server OCO stops at today's open +- k x yesterday's range, SL at the open, orders until 20:00, close 22:30 server, lot 0.01 | 0 open position(s)
-  QN	0	16:19:47.993	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ONLINE | USDJPY.m: from 02:00 server OCO stops at yesterday's high / low, SL at yesterday's middle, TP 2R, orders until 20:00, close 22:30, lot 0.01
-  DG	0	16:19:47.994	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT ONLINE | USDJPY.m: at 15:30 server follow the 09:00-15:30 move, SL 1.5 x ATR(H1), no TP, close 22:00, lot 0.01 | 0 open position(s)
-  OL	0	16:19:47.994	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  JL	0	16:19:48.009	FizyLB (XAUUSD.m,M15)	TK EVENT TK ONLINE | XAUUSD.m H1: buy / sell when Tenkan crosses Kijun with the H1 close beyond the Ichimoku cloud, SL 2 ATR, exit on the opposite cross or at 23:00 server (day trade, no swap), lot 0.01 | 0 open position(s)
+  OQ	0	00:00:03.651	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ORDERS PLACED USDJPY.m | yesterday's high 158.761 / low 157.745 | BUY STOP 158.761 (TP 159.777) / SELL STOP 157.745 (TP 156.729), SL at the middle 158.253, lot 0.01 | OCO; unfilled at 20:00 server = deleted; a trade closes at 22:30 server | IMG:snap_PD_USDJPY_m_<num>_<num>_218.png
+  EF	0	01:15:08.647	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO FILLED USDJPY.m | SELL 0.01 lot from 158.171, SL 158.679 (today's open), no TP: closes at 22:30 server | IMG:snap_WVF_USDJPY_m_<num>_<num>_265.png
+  CP	0	01:15:08.872	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO ORDER DELETED USDJPY.m | BUY STOP 159.187 deleted (the other side filled)
+  LP	0	01:44:54.896	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL FILLED USDJPY.m | SELL 0.01 lot from 157.745, SL 158.253, TP 156.729 (2R): closes at 22:30 server | IMG:snap_PDF_USDJPY_m_<num>_<num>_515.png
+  JF	0	01:44:55.122	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ORDER DELETED USDJPY.m | BUY STOP 158.761 deleted (the other side filled)
   w: status message already sent today
-  w: shift end: done=True, state=2026.11.03 23:55:04|0|0
+  w: telegram ok: VOLBO ORDERS PLACED USDJPY.m
+  w: telegram ok: VOLBO ORDERS PLACED EURJPY.m
+  w: telegram ok: VOLBO ORDERS PLACED GBPJPY.m
+  w: telegram ok: VOLBO ORDERS PLACED XAUUSD.m
+  w: telegram ok: PDHL ORDERS PLACED USDJPY.m
+  w: telegram ok: VOLBO FILLED USDJPY.m
+  w: telegram ok: VOLBO ORDER DELETED USDJPY.m
+  w: telegram ok: PDHL FILLED USDJPY.m
+  w: telegram ok: PDHL ORDER DELETED USDJPY.m
+  w: shift end: done=False, state=2026.11.04 05:32:28|0|0
