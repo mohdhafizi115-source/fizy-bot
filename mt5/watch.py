@@ -165,7 +165,8 @@ def status_block(kind, text):
                 f"▫️ Next: {nxt_m} · Lot {lot}"]
     if kind == "AUCTION ONLINE":
         return ["🏦 GOLD AUCTION SCALP · XAUUSD",
-                f"▫️ SELL 10:15 → close 10:30 London ({myt('10:15', 'Europe/London')} → {myt('10:30', 'Europe/London')} MYT)",
+                f"▫️ SELL 10:15 London ({myt('10:15', 'Europe/London')} MYT) before the LBMA auction",
+                f"▫️ M1 trailing stop from 10:30, hard exit 10:45 ({myt('10:45', 'Europe/London')} MYT)",
                 f"▫️ Every trading day · Lot {lot} · open {opened}"]
     if kind == "PDHL ONLINE":
         return ["📏 PREVIOUS-DAY BREAKOUT · USDJPY",
