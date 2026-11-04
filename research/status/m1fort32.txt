@@ -1,15 +1,15 @@
-LAST 2 WEEKS (2026-11-01 + 2 weeks, data to 3 Nov): top 10 of 63 rules (RAND_x = random entries), $ per 0.01 lot
-  DON_BO 60 tp3                  32 trades   +49.37 $ | 2020-2026    -9037 $, 2-week periods positive 7%
-  DON_BO 60 tp1.5                45 trades   +42.83 $ | 2020-2026   -11994 $, 2-week periods positive 2%
-  EMA_X 9/21 sl2 tp2             21 trades   +27.68 $ | 2020-2026    -5546 $, 2-week periods positive 16%
-  DON_BO 20 tp3                  50 trades   +26.61 $ | 2020-2026   -12467 $, 2-week periods positive 7%
-  DON_BO 20 tp1.5                62 trades   +21.65 $ | 2020-2026   -17347 $, 2-week periods positive 1%
-  PULL ema21 tp2                 47 trades   +20.72 $ | 2020-2026   -11842 $, 2-week periods positive 6%
-  RAND_9                         35 trades   +18.68 $ | 2020-2026    -6109 $, 2-week periods positive 12%
-  OPEN_BO pre30 tp1               3 trades   +16.42 $ | 2020-2026     -574 $, 2-week periods positive 46%
-  RAND_6                         33 trades   +13.56 $ | 2020-2026    -6217 $, 2-week periods positive 10%
-  EMA_X 20/50 sl2 tp2            11 trades   +12.79 $ | 2020-2026    -3567 $, 2-week periods positive 21%
-profitable in the last 2 weeks: 16 of 53 real rules, 3 of 10 random
+LAST 14 DAYS (2026-10-20 - 2026-11-03): top 10 of 63 rules (RAND_x = random entries), $ per 0.01 lot
+  OPEN_BO pre30 tp2              19 trades  +104.55 $ | 2020-2026     -364 $, 2-week periods positive 45%
+  OPEN_BO pre15 tp2              19 trades   +93.32 $ | 2020-2026     -425 $, 2-week periods positive 45%
+  OPEN_BO pre30 tp1              19 trades   +78.93 $ | 2020-2026     -574 $, 2-week periods positive 46%
+  RAND_6                        197 trades   +66.65 $ | 2020-2026    -6217 $, 2-week periods positive 10%
+  OPEN_BO pre15 tp1              19 trades   +60.33 $ | 2020-2026     -535 $, 2-week periods positive 43%
+  BB_RSI 2.5 rsi10 sl1.5          7 trades    -5.18 $ | 2020-2026      +46 $, 2-week periods positive 45%
+  BB_RSI 2.5 rsi10 sl3            6 trades    -8.25 $ | 2020-2026     +244 $, 2-week periods positive 51%
+  DON_BO 60 tp1.5               250 trades    -8.83 $ | 2020-2026   -11994 $, 2-week periods positive 2%
+  DON_BO 60 tp3                 180 trades   -10.98 $ | 2020-2026    -9037 $, 2-week periods positive 7%
+  SPK_FADE 4 tp1R                16 trades   -15.15 $ | 2020-2026     -471 $, 2-week periods positive 38%
+profitable in the last 14 days: 4 of 53 real rules, 1 of 10 random
 
 THE '2 WEEKS' METHOD out of sample: every 2 weeks trade the rule that made the most in the 2 weeks before (>= 20 trades)
   best 1: 172 periods, net -3363 $, periods positive 54/172 (31%), last 6 periods (12 weeks) -63 $, by year 2020:-214 2021:-420 2022:-385 2023:-403 2024:-520 2025:-511 2026:-910
