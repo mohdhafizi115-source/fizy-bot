@@ -1,0 +1,117 @@
+XAUUSD M1 2020-03-30 .. 2026-11-04, 2,336,469 bars over 1705 days = 1370 bars a trading day.
+Spread per 0.01 lot: median $0.190, mean $0.219. Mean absolute 1-minute move $0.517, standard deviation $1.041.
+
+=== A. THE COST WALL: what the trading itself costs, before any strategy ===
+Every entry pays the spread once. At 0.01 lot, per year (255 trading days):
+
+  trades a day  trades a year  spread bill a year  needed per trade to break even
+          0.6             153                 $29                          $0.190  
+          1.3             332                 $63                          $0.190  
+          5.0           1,275                $242                          $0.190  
+         20.0           5,100                $969                          $0.190  
+         60.0          15,300              $2,907                          $0.190  
+        240.0          61,200             $11,628                          $0.190  
+       1370.0         349,350             $66,376                          $0.190  EVERY MINUTE
+
+For scale, the TOTAL profit of every edge this project has found, over 6.6 years at 0.01 lot:
+  gold M1 spike fade +$1,445 | gold LBMA auction +$762 | gold Tenkan/Kijun +$1,796 |
+  gold Kumo +$1,330 | Gotobi and month-end a few hundred each.
+  Everything together is roughly +$6,000 over 6.6 years, about $900 a year.
+  Trading every minute costs $66,376 a year in spread alone.
+  So an every-minute EA would have to find 74 times the total
+  edge of every working strategy found so far, just to break even.
+
+=== B. THE LITERAL REQUEST, actually traded: enter every M1 bar, hold one minute ===
+Direction rules, all using only information known at the bar's close.
+
+                 direction    trades   win%     PF    gross $  spread paid $      net $   net/yr $
+               always LONG   2334462   29.2   0.45      +1831        510,177    -508345     -76028
+              always SHORT   2334462   29.0   0.45      -1831        510,177    -512008     -76576
+        random each minute   2334462   29.1   0.45       -733        510,177    -510910     -76412
+    follow the last minute   2294406   28.9   0.45      -6418        501,079    -507497     -75901
+      fade the last minute   2294406   29.7   0.45      +6418        501,079    -494662     -73982
+        follow EMA20 slope   2334462   28.6   0.44      -8889        510,177    -519066     -77632
+
+The same direction rules but STAYING IN THE MARKET, paying the spread only when the signal
+flips (the cheapest honest way to be 'always trading'):
+
+                 direction     flips  flips/day    gross $  spread paid $      net $
+        random each minute   1169315      685.8       -733        255,520    -256253
+    follow the last minute   1164801      683.2      -6418        255,487    -261904
+      fade the last minute   1164801      683.2      +6418        255,487    -249069
+        follow EMA20 slope    330288      193.7      -8889         72,911     -81801
+
+(always LONG / always SHORT are buy-and-hold with one spread paid, shown above for reference:
+ they are not 'trading every minute' at all.)
+
+=== C. THE PREDICTABILITY CEILING: the best a model could POSSIBLY do, fitted in sample ===
+If a model that has already seen the answers cannot beat the spread, no honest model can.
+
+First, the simplest check: correlation between this minute's move and the next one = -0.0059.
+At that level there is essentially nothing to predict from the last move alone.
+/home/runner/work/fizy-bot/fizy-bot/research/everymin46.py:146: RuntimeWarning: invalid value encountered in divide
+  "bodyrange": np.where(h_ > l_, (c - o) / (h_ - l_), 0.0),
+
+Linear model, 20 features, fitted on all 2,334,462 bars IN SAMPLE:
+  in-sample R2 = 0.000365  (so it explains 0.037% of the next minute's move)
+  mean |predicted move| = $0.0102, against a $0.190 spread
+  the predictions are above the spread on only 0.1% of bars
+  trading its sign every minute, in sample, after cost: PF 0.456, net $-498,419 over 2,334,462 trades ($-0.2135 a trade)
+  trading only when its own prediction exceeds the spread (2,943 bars, 2 a day): PF 1.050, net $+247
+  the five largest coefficients: r1 -0.04338, body +0.03816, spread +0.01750, absr1 +0.01505, r2 -0.00941
+
+Saturated model - the in-sample mean next move in each bucket of
+(sign of the last move x gate tercile x hour of day). This can fit any shape, so it is an
+even higher ceiling than the linear fit:
+/home/runner/work/fizy-bot/fizy-bot/research/everymin46.py:179: RuntimeWarning: invalid value encountered in cast
+  key = (np.sign(r_prev) + 1).astype(np.int64) * 100 + gt * 10 + (hm // 60) % 24
+  132 buckets, median 31,064 bars each
+  mean |bucket mean| = $0.0062, against a $0.190 spread
+  largest bucket mean = $0.1546
+  trading its sign every minute, in sample, after cost: PF 0.459, net $-495,818
+  bars where a bucket mean even exceeds the spread: 367 (0.02%)
+
+And the same saturated model scored HONESTLY - bucket means learned on the first half only,
+then applied to the second half, which is what a real EA would face:
+  second half: PF 0.570, net $-241,726 over 1,167,231 trades ($-0.2071 a trade)
+  and BEFORE costs: PF 1.000, $-0.0000 a trade - so even the gross edge is below the $0.190 spread
+
+=== D. THE FRONTIER: the most trades a day that still PASSES ===
+The spike fade is the only M1 family with an edge. Lowering the spike size and the gate buys
+more trades; this is where that stops working. Settings otherwise as live: SL 0.2 ATR, no TP,
+45 minutes, buy side only.
+
+    k  gate   trades   a day     PF  half1  half2  stress   last12$     net$   maxDD$  pass
+  5.0     8      142    0.08  2.01  1.70  2.05  1.95      +496     +438     -105  
+  5.0     4      434    0.25  1.40  0.98  1.52  1.33      +459     +364     -146  
+  5.0     0     1186    0.70  1.24  0.93  1.45  1.14      +498     +360     -230  
+  4.0    12      143    0.08  1.38  1.99  1.36  1.34      +191     +173      -81  
+  4.0     8      338    0.20  1.44  1.91  1.40  1.39      +338     +399      -82  PASS
+  4.0     4     1021    0.60  1.21  0.96  1.28  1.14      +391     +374     -108  
+  4.0     0     2764    1.62  1.07  0.84  1.23  0.97      +437     +209     -282  
+  3.0    12      429    0.25  1.91  1.49  1.94  1.84      +902     +979     -101  PASS
+  3.0     8     1059    0.62  1.53  1.54  1.53  1.46      +933    +1163     -144  PASS
+  3.0     4     3224    1.89  1.22  1.03  1.27  1.13      +916     +974     -163  
+  3.0     0     8678    5.09  1.04  0.80  1.21  0.92      +973     +297     -771  
+  2.5    12      886    0.52  1.50  1.44  1.50  1.44      +905    +1085     -217  PASS
+  2.5     8     2230    1.31  1.34  1.47  1.33  1.27     +1049    +1445     -162  PASS
+  2.5     4     6736    3.95  1.13  1.04  1.15  1.04      +868    +1080     -204  
+  2.5     0    18059   10.59  0.95  0.74  1.08  0.82      +923     -761    -1823  
+  2.0    12     2147    1.26  1.17  1.00  1.18  1.12      +724     +838     -326  
+  2.0     8     5409    3.17  1.12  1.10  1.13  1.06      +901    +1138     -343  
+  2.0     4    16387    9.61  1.00  0.92  1.02  0.91      +436      -30     -735  
+  2.0     0    41998   24.63  0.86  0.69  0.96  0.74      +383    -4238    -4870  
+  1.5    12     5600    3.28  1.06  0.92  1.07  1.01      +521     +670     -555  
+  1.5     8    14427    8.46  1.03  0.93  1.04  0.96      +452     +568     -633  
+  1.5     4    42117   24.70  0.93  0.86  0.95  0.84      -886    -2862    -2956  
+  1.5     0    99398   58.30  0.80  0.64  0.90  0.69     -1049   -13003   -13103  
+  1.0    12    12489    7.32  1.05  0.88  1.06  0.99     +1068     +995     -916  
+  1.0     8    30412   17.84  0.99  0.87  1.01  0.92      +121     -320     -942  
+  1.0     4    83689   49.08  0.91  0.81  0.93  0.82     -2257    -7132    -7216  
+  1.0     0   183347  107.53  0.79  0.62  0.88  0.67     -2595   -24882   -24966  
+  0.5    12    16928    9.93  1.04  0.95  1.05  0.98      +745    +1096     -748  
+  0.5     8    40100   23.52  0.99  0.94  0.99  0.91      -388     -690    -1097  
+  0.5     4   106800   62.64  0.90  0.82  0.92  0.81     -3326    -9327    -9429  
+  0.5     0   225514  132.27  0.78  0.62  0.87  0.66     -3585   -30529   -30630  
+
+done in 25 s
