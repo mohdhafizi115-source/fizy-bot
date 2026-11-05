@@ -2,11 +2,11 @@
 //| FizySPK.mqh - gold M1 spike fade, demo only, included by          |
 //| FizyLB.mq5. The first M1 rule that ever passed on this broker's   |
 //| own data (research/scalpcost37.py, spike38.py, spike39.py;        |
-//| JustMarkets M1 2020-03 .. 2026-11, 1,064 trades, 0.62 a day:      |
-//| PF 1.37 after spread, halves 1.33 / 1.38, stress 1.30, +$675 per  |
-//| 0.01 lot, last 12 months +$519, max drawdown $87, every year      |
-//| 0.99 or better and 2022 the best at 1.45, so it is not just the   |
-//| gold uptrend).                                                    |
+//| spk44.py; JustMarkets M1 2020-03 .. 2026-11, 1,059 trades, 0.62   |
+//| a day: PF 1.53 after spread, halves 1.54 / 1.53, stress 1.46,     |
+//| +$1,163 per 0.01 lot, last 12 months +$933, max drawdown $144,    |
+//| every year 1.06 or better and 2022 the best at 2.04, so it is     |
+//| not just the gold uptrend).                                       |
 //| Rules, all on closed M1 bars:                                     |
 //|   1. COST GATE: ATR(14, M1) >= InpSpkAtrSpread x the current      |
 //|      spread. This gate is what makes the rule work: without it    |
@@ -15,10 +15,28 @@
 //|   2. SIGNAL: the bar that just closed fell (close < open) and its |
 //|      range >= InpSpkAtr x ATR(14, M1 up to the bar before it).    |
 //|   3. BUY at the next bar's open. SL = that bar's low - 0.2 ATR.   |
-//|      TP = its close + 0.75 x its range. Out after 20 minutes.     |
+//|      NO take profit; out after 45 minutes (v1.97, see below).     |
 //|   Signal bars 01:30-22:00 server, one position at a time.         |
 //| Only the BUY side is traded: fading UP spikes scored PF 0.92 and  |
 //| lost money, so it is left out.                                    |
+//| v1.97 (round 44, research/spk44.py) REMOVED the take profit.      |
+//| Round 42 measured that under the cost gate gold's variance ratio  |
+//| keeps falling out to 60 minutes (0.96 at 1 min -> 0.845 at 60),   |
+//| so the reversion was still running when the old TP cut it off.    |
+//| The TP sweep is unambiguous: 0.5 / 0.75 / 1.0 x the spike range   |
+//| give PF 1.30 / 1.39 / 1.33, while 1.5 / 2 / 3 / 5 / none give     |
+//| 1.49 / 1.47 / 1.51 / 1.53 / 1.53. The old 0.75 sat in the WORST   |
+//| zone. The hold plateau is wide: 30 / 45 / 60 / 90 / 120 min give  |
+//| 1.51 / 1.53 / 1.55 / 1.64 / 1.58; 45 was taken instead of the     |
+//| 90-minute peak because its halves are level (1.54 / 1.53) and     |
+//| every single year is 1.06 or better. The SL plateau still peaks   |
+//| where it was: 0.1 / 0.2 / 0.3 ATR give 1.48 / 1.53 / 1.54.        |
+//| Net effect: PF 1.37 -> 1.53, +$675 -> +$1,163 per 0.01 lot, last  |
+//| 12 months +$519 -> +$933. The price: win rate 30% -> 20%, a       |
+//| deeper drawdown (-$87 -> -$144, but it recovered in 20 days       |
+//| instead of 84) and longer losing runs (15 -> 27 in a row).        |
+//| Random entries with the same mechanics score 0.72-1.25 and the UP |
+//| side 0.91, so neither control survives.                           |
 //| Events go to MQL5\Files\spk_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input bool   InpSpkOn        = true;
@@ -28,8 +46,8 @@ input long   InpSpkMagic     = 260320;
 input double InpSpkAtr       = 3.0;      // the spike's range, in ATR(14, M1)
 input double InpSpkAtrSpread = 8.0;      // the cost gate: ATR(M1) must be at least this x the spread
 input double InpSpkSlAtr     = 0.2;      // SL this far below the spike's low, in ATR(M1)
-input double InpSpkTpRange   = 0.75;     // TP this much of the spike's range above its close
-input int    InpSpkHoldMin   = 20;       // close at market after this many minutes
+input double InpSpkTpRange   = 0.0;      // TP this much of the spike's range above its close; 0 = NO take profit
+input int    InpSpkHoldMin   = 45;       // close at market after this many minutes
 
 string   sp_sym = "";
 bool     sp_ready = false;
@@ -65,8 +83,11 @@ void SpkInit()
    ulong t;
    if(SpkPosition(t)) { int m = ArraySize(sp_known); ArrayResize(sp_known, m + 1); sp_known[m] = t; }
    SpkEvent(StringFormat("SPIKE ONLINE | %s M1: BUY when a down bar of %.0f x ATR(M1) closes AND ATR(M1) >= %.0f x the spread "
-                         "(the cost gate), SL %.1f ATR below its low, TP %.2f of its range, out after %d min, lot %.2f | %d open position(s)",
-                         sp_sym, InpSpkAtr, InpSpkAtrSpread, InpSpkSlAtr, InpSpkTpRange, InpSpkHoldMin, InpSpkLot, ArraySize(sp_known)));
+                         "(the cost gate), SL %.1f ATR below its low, %s, out after %d min, lot %.2f | %d open position(s)",
+                         sp_sym, InpSpkAtr, InpSpkAtrSpread, InpSpkSlAtr,
+                         InpSpkTpRange > 0 ? StringFormat("TP %.2f of its range", InpSpkTpRange)
+                                           : "no TP, the reversion is left to run",
+                         InpSpkHoldMin, InpSpkLot, ArraySize(sp_known)));
 }
 
 void SpkReportClosed(ulong pos)
@@ -84,7 +105,7 @@ void SpkReportClosed(ulong pos)
    if(outPx == 0) return;
    string what = reason == DEAL_REASON_SL ? "SPIKE SL HIT" : (reason == DEAL_REASON_TP ? "SPIKE TP HIT" : "SPIKE CLOSED");
    string why = reason == DEAL_REASON_SL ? "stop loss below the spike low"
-              : (reason == DEAL_REASON_TP ? "take profit, 0.75 of the spike range"
+              : (reason == DEAL_REASON_TP ? StringFormat("take profit, %.2f of the spike range", InpSpkTpRange)
               : (reason == DEAL_REASON_EXPERT ? StringFormat("%d minutes up", InpSpkHoldMin) : "closed outside the EA"));
    double lv[2]; color lc[2]; string lb[2];
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
@@ -144,8 +165,8 @@ void SpkOnTimer()
    if(st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;
    int dg = (int)SymbolInfoInteger(sp_sym, SYMBOL_DIGITS);
    double sl = NormalizeDouble(r[j].low - InpSpkSlAtr * atr, dg);
-   double tp = NormalizeDouble(r[j].close + InpSpkTpRange * rng, dg);
-   if(tk.ask <= sl || tk.ask >= tp) return;                                    // the price already left the setup
+   double tp = InpSpkTpRange > 0 ? NormalizeDouble(r[j].close + InpSpkTpRange * rng, dg) : 0.0;   // 0 = no TP
+   if(tk.ask <= sl || (tp > 0 && tk.ask >= tp)) return;                        // the price already left the setup
    double mn = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_STEP);
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpSpkLot / sv + 1e-9) * sv), 2);
    trade.SetExpertMagicNumber(InpSpkMagic); trade.SetTypeFillingBySymbol(sp_sym);
@@ -153,13 +174,17 @@ void SpkOnTimer()
    if(!ok) SpkEvent(StringFormat("ERROR | spike %s order failed: %d %s", sp_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) return;
-   double lv[3]; color lc[3]; string lb[3];
+   double lv[]; color lc[]; string lb[];
+   int nl = tp > 0 ? 3 : 2;
+   ArrayResize(lv, nl); ArrayResize(lc, nl); ArrayResize(lb, nl);
    lv[0] = tk.ask; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
-   lv[2] = tp; lc[2] = clrSeaGreen; lb[2] = "TP";
+   if(nl == 3) { lv[2] = tp; lc[2] = clrSeaGreen; lb[2] = "TP"; }
    string fn = Snap(sp_sym, PERIOD_M1, "SPF", lv, lc, lb, 0, 0, 0, 0, false);
    SpkEvent(StringFormat("SPIKE BUY %s | an M1 bar dropped %s (%.1f x ATR) and ATR %s is %.0f x the spread %.2f | BUY %.2f lot at %s, "
-                         "SL %s, TP %s, out after %d min", sp_sym, PriceStr(sp_sym, rng), rng / atr, PriceStr(sp_sym, atr),
-                         atr / spread, spread, lot, PriceStr(sp_sym, tk.ask), PriceStr(sp_sym, sl), PriceStr(sp_sym, tp), InpSpkHoldMin) + Img(fn));
+                         "SL %s, %s, out after %d min", sp_sym, PriceStr(sp_sym, rng), rng / atr, PriceStr(sp_sym, atr),
+                         atr / spread, spread, lot, PriceStr(sp_sym, tk.ask), PriceStr(sp_sym, sl),
+                         tp > 0 ? "TP " + PriceStr(sp_sym, tp) : "no TP: the reversion is left to run",
+                         InpSpkHoldMin) + Img(fn));
    int m = ArraySize(sp_known);
    if(SpkPosition(pt)) { ArrayResize(sp_known, m + 1); sp_known[m] = pt; }
 }
