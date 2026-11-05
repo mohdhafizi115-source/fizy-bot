@@ -1,0 +1,59 @@
+XAUUSD M1, 2,336,469 bars, 1705 days. Halves split at 2023-07-18. Median spread $0.190.
+
+=== benchmark: what is live now (enters on the spike bar itself) ===
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+LIVE v1.99 k2.0 TP0.5 45m                 5228 3.07 37.2  1.07  1.09  1.06  0.97    +209   +385    -226    -77.7       17       4  
+same, 30-min cooldown after a stop        4015 2.35 36.7  1.06  1.06  1.05  0.96    +145   +229    -200    -47.3       20       2  
+
+=== the owner's version: wait for a rejection wick, SL beyond the wick, TP at pre-spike level ===
+BUY side (down spikes):
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+buy W1 wick0.5 single TP                   889 0.52 44.2  1.08  1.31  1.06  1.02     +32   +124    -127    -35.3       10       2  
+buy W1 wick0.6 single TP                   521 0.31 44.1  0.92  1.46  0.87  0.87     -88    -86    -168    -37.5        9       2  
+buy W2 wick0.5 single TP                  1555 0.91 43.4  1.02  1.16  1.01  0.97     +54    +72    -147    -39.7       11       3  
+buy W2 wick0.6 single TP                   941 0.55 45.8  1.01  1.29  0.99  0.96     +11    +25    -139    -39.0        8       3  
+buy W3 wick0.5 single TP                  2025 1.19 42.2  0.95  1.08  0.94  0.90     -95   -175    -318    -50.1       12       3  
+buy W3 wick0.6 single TP                  1269 0.74 45.1  1.01  1.17  0.99  0.95     +30    +12    -144    -40.2        8       3  
+buy W5 wick0.5 single TP                  2721 1.60 42.8  0.95  1.07  0.94  0.90     -84   -257    -398    -52.8       14       3  
+buy W5 wick0.6 single TP                  1800 1.06 44.9  1.03  1.11  1.03  0.98    +192   +109    -210    -51.3       10       3  
+
+with half at 1:1 and the rest at breakeven (the doc's risk tip):
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+buy W1 wick0.5 PARTIAL+BE                  887 0.52 52.3  1.05  1.47  1.02  0.98     -45    +68    -145    -34.8        8       2  
+buy W3 wick0.5 PARTIAL+BE                 2020 1.18 51.8  0.96  1.20  0.94  0.89    -133   -145    -261    -45.3        9       3  
+buy W5 wick0.5 PARTIAL+BE                 2719 1.59 51.4  0.96  1.07  0.95  0.90     -48   -175    -382    -56.0       13       3  
+
+filters from the doc (W3, wick 0.5):
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+buy + RSI<30 at the spike                  760 0.45 47.5  1.28  1.34  1.27  1.22    +369   +412    -111    -45.4       16       3  PASS
+buy + H1 EMA50 rising                     1093 0.64 40.9  0.92  0.95  0.92  0.87     -50   -153    -258    -46.2       17       3  
+buy + RSI + H1 bias                        362 0.21 48.9  1.34  1.18  1.36  1.28    +190   +223     -79    -23.9        8       2  PASS
+buy + RSI + H1 bias, PARTIAL+BE            362 0.21 56.1  1.36  1.24  1.37  1.29    +136   +211     -60    -23.9        7       2  PASS
+buy W3 + 30-min cooldown                  1786 1.05 41.2  0.91  1.03  0.90  0.85    -194   -301    -381    -35.6       15       2  
+buy, spike bar itself may confirm         2258 1.32 45.1  0.94  1.13  0.92  0.88    -171   -263    -408    -50.1       12       3  
+
+spike size (W3, wick 0.5, single TP):
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+buy k1.5                                  5794 3.40 43.7  0.90  0.94  0.89  0.83    -497   -919    -975    -80.5       12       3  
+buy k2.0                                  2025 1.19 42.2  0.95  1.08  0.94  0.90     -95   -175    -318    -50.1       12       3  
+buy k2.5                                   808 0.47 45.5  1.15  1.17  1.14  1.09    +223   +249     -96    -36.6       13       2  
+buy k3.0                                   387 0.23 46.0  1.17  1.26  1.16  1.12    +188   +160    -110    -29.4        8       2  PASS
+
+SELL side (up spikes), same rules mirrored:
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+sell W1 wick0.5 single TP                  667 0.39 37.5  0.85  0.72  0.87  0.79     -53   -160    -172    -19.4       13       2  
+sell W3 wick0.5 single TP                 1596 0.94 39.0  0.88  0.80  0.89  0.82    -114   -320    -402    -31.2       14       2  
+sell W5 wick0.5 single TP                 2141 1.26 38.6  0.89  0.84  0.89  0.83    -153   -410    -521    -35.2       15       3  
+sell + RSI>70 + H1 falling                 199 0.12 40.2  0.86  1.05  0.84  0.81     -47    -52     -93    -21.5        7       2  
+sell + RSI + H1, PARTIAL+BE                199 0.12 49.7  0.90  0.95  0.89  0.83     -29    -31     -66    -21.5        7       2  
+
+both sides together (W3, wick 0.5, single TP):
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+buy + sell                                3569 2.09 40.7  0.93  0.94  0.93  0.87    -175   -455    -558    -48.1       13       3  
+
+=== control: a rejection wick with NO spike before it, and random entries ===
+variant                                 trades /day win%   PF  half1 half2 stress last12$  net$  maxDD$ worstday lose-run max/10m  pass
+wick only, no spike (TP 1 ATR)            6803 3.99 41.0  0.80  0.74  0.80  0.73   -1088  -1742   -1769   -106.2       17       2  
+random buy, gate 8                         651 0.38 41.0  0.90  0.62  0.92  0.84     -31   -118    -154    -18.4        9       2  
+
+done in 3 s
