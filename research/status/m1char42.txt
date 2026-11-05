@@ -1,0 +1,189 @@
+XAUUSD M1 2020-03-30 .. 2026-11-04, 2,259,073 bars after dropping the rollover, 1705 days. Halves split at 2023-07-18.
+$ per 0.01 lot per $1 of price = 1.00. Spread: median $0.190, p10 $0.160, p90 $0.280. ATR(14,M1): median $0.620. Gate ATR/spread: median 3.2, p10 1.2, p90 9.3
+
+=== A. Is gold M1 trending or mean-reverting? ===
+Variance ratio VR(h) = Var(h-minute move) / (h x Var(1-minute move)). VR > 1 trending, < 1 reverting.
+'move $' is the standard deviation of the h-minute move in dollars per 0.01 lot; compare it with the
+median spread above - a reverting horizon is only tradable where the move is far bigger than the cost.
+
+ horizon     VR  VR h1  VR h2  lag1 ac  move $ move/spread         n
+     1m   0.940  0.976  0.935   -0.003    1.02         5.4   2256760
+     2m   0.938  0.961  0.934   -0.010    1.45         7.6   2254964
+     3m   0.931  0.945  0.928   -0.007    1.77         9.3   2253216
+     5m   0.924  0.926  0.922   -0.020    2.27        11.9   2249735
+    10m   0.910  0.906  0.906    0.002    3.19        16.8   2241107
+    15m   0.905  0.899  0.899    0.009    3.89        20.5   2232525
+    20m   0.908  0.897  0.900   -0.015    4.50        23.7   2223975
+    30m   0.910  0.896  0.898   -0.006    5.52        29.0   2206882
+    45m   0.910  0.891  0.892   -0.046    6.76        35.6   2181231
+    60m   0.908  0.889  0.885   -0.015    7.79        41.0   2155635
+
+Same variance ratio, split by the volatility regime the bar is in (gate = ATR / spread):
+                  regime      1m      5m     15m     30m     60m         n
+          quiet   gate<2   0.927   0.905   0.926   0.967   1.072    745395
+                     mid   0.879   0.863   0.878   0.919   0.978    767983
+          busy    gate>5   0.946   0.928   0.900   0.894   0.873    745395
+ gate>=8 (the live gate)   0.960   0.939   0.899   0.884   0.845    312512
+
+Same, split by session (server time = Europe/Athens):
+                 session      1m      5m     15m     30m     60m         n  med spr  med ATR
+   Asia      01:30-09:00   0.823   0.816   0.812   0.832   0.816    766011    0.200    0.452
+   London    09:00-15:30   1.059   1.061   1.023   0.997   1.036    664319    0.190    0.634
+  NY overlap 15:30-19:00   0.949   0.912   0.886   0.891   0.858    357562    0.180    1.126
+   late NY   19:00-23:45   0.997   0.967   0.950   0.954   0.939    470881    0.190    0.537
+
+=== B. What happens after a shock of k x ATR? ===
+For every bar whose range >= k x ATR(14,M1) and which closed DOWN (or UP), the average move of the
+close over the next h minutes, in $ per 0.01 lot, with its t and the share of positive outcomes.
+A positive number after a DOWN bar means the drop gets bought back (fade works); after an UP bar a
+positive number means the move continues. 'cost' is the spread that has to be paid to take it.
+
+--- DOWN bar (fade = BUY) ---
+   k   gate      n      1m      2m      3m      5m     10m     15m     20m     30m     45m     60m   t at 20m  h1/h2 at 20m
+ 2.0    all  50805    0.04    0.07    0.08    0.09    0.13    0.13    0.12    0.12    0.15    0.14      5.2  +0.10/+0.15
+ 2.0    >=8   5992    0.16    0.21    0.25    0.32    0.38    0.34    0.31    0.21    0.38    0.33      1.9  +0.39/+0.29
+ 2.5    all  20483    0.07    0.11    0.13    0.17    0.22    0.22    0.22    0.25    0.26    0.29      5.1  +0.12/+0.34
+ 2.5    >=8   2394    0.27    0.39    0.43    0.68    0.86    0.83    0.79    0.95    0.95    0.99      2.6  +0.36/+0.89
+ 3.0    all   9636    0.11    0.16    0.17    0.20    0.25    0.24    0.26    0.28    0.36    0.38      4.1  +0.09/+0.49
+ 3.0    >=8   1130    0.52    0.62    0.68    0.86    1.17    1.13    1.20    1.27    1.54    1.48      2.7  +0.36/+1.41
+ 4.0    all   3020    0.17    0.21    0.25    0.24    0.23    0.14    0.19    0.14    0.22    0.28      1.3  +0.04/+0.38
+ 4.0    >=8    364    0.72    0.73    0.82    0.73    0.71    0.32    0.63    0.29    0.63    0.77      0.7  +0.36/+0.69
+ 5.0    all   1293    0.29    0.31    0.35    0.39    0.30    0.24    0.23    0.11    0.17    0.41      1.0  -0.08/+0.63
+ 5.0    >=8    150    1.59    1.27    1.38    1.67    1.80    1.51    1.46    0.44    0.48    1.11      1.0  -0.16/+1.89
+(for reference, the median spread is $0.190, so a mean move below that is not tradable)
+
+--- UP bar (fade = SELL) ---
+   k   gate      n      1m      2m      3m      5m     10m     15m     20m     30m     45m     60m   t at 20m  h1/h2 at 20m
+ 2.0    all  47627    0.01    0.02    0.02    0.02    0.02    0.03    0.04    0.02   -0.00   -0.01      1.7  +0.09/-0.03
+ 2.0    >=8   4748   -0.00   -0.07   -0.08   -0.04   -0.03    0.08    0.09   -0.14   -0.17   -0.16      0.6  +0.32/+0.04
+ 2.5    all  18610    0.01    0.00    0.01    0.00   -0.03   -0.03   -0.03   -0.05   -0.07   -0.07     -0.7  +0.10/-0.19
+ 2.5    >=8   1650   -0.15   -0.31   -0.29   -0.34   -0.62   -0.50   -0.49   -0.92   -0.88   -0.82     -1.6  +0.24/-0.70
+ 3.0    all   8509    0.02    0.01    0.01   -0.00   -0.05   -0.07   -0.07   -0.06   -0.06   -0.11     -1.2  +0.09/-0.30
+ 3.0    >=8    710   -0.14   -0.37   -0.43   -0.48   -0.76   -0.71   -0.74   -1.12   -0.80   -0.95     -1.5  +0.25/-1.04
+ 4.0    all   2547    0.02   -0.06   -0.04   -0.07   -0.13   -0.14   -0.13   -0.12   -0.07   -0.05     -1.2  +0.08/-0.41
+ 4.0    >=8    192   -0.54   -1.44   -1.50   -1.64   -1.96   -1.89   -1.46   -1.98   -0.97   -0.88     -1.5  +0.09/-2.01
+ 5.0    all   1070    0.06   -0.12   -0.04   -0.16   -0.29   -0.30   -0.21   -0.27   -0.19   -0.06     -1.0  -0.05/-0.40
+ 5.0    >=8     83   -0.18   -2.04   -1.94   -3.14   -3.91   -3.72   -2.76   -3.66   -2.67   -2.96     -1.6  -1.60/-3.16
+(for reference, the median spread is $0.190, so a mean move below that is not tradable)
+
+Stops and targets: after a 3 ATR shock with the gate on, how far does it go the right way (MFE)
+and the wrong way (MAE) within the hold, in $ per 0.01 lot? Medians, and the share that reach 1 ATR.
+                  side  hold      n  MFE med  MAE med  MFE p75  MAE p25  reach 1ATR
+   DOWN bar (fade BUY)   10m   1130     5.24     3.89     9.47     1.23       81.5%
+   DOWN bar (fade BUY)   20m   1130     6.49     5.24    12.02     1.71       86.5%
+   DOWN bar (fade BUY)   30m   1130     7.53     6.42    13.95     2.15       88.2%
+    UP bar (fade SELL)   10m    710     3.70     3.98     7.33     1.49       72.1%
+    UP bar (fade SELL)   20m    710     5.30     5.28     9.99     1.97       80.7%
+    UP bar (fade SELL)   30m    710     5.76     6.35    11.69     2.40       82.3%
+
+=== C. Does the cost gate predict the next 20 minutes, or only describe the past? ===
+The live rule uses ATR(14) of the bars BEFORE the signal. If volatility did not cluster, that would
+be a hindsight filter. Here: given the gate now, what is the realised range of the next 20 minutes,
+and what is the spread then?
+      gate now        n  next 20m range $  spread then $  range/spread      h1      h2
+           < 4  1351273              2.41          0.220          11.0    2.31    2.61
+         4 - 6   375518              4.96          0.205          24.2    4.13    5.44
+         6 - 8   219470              7.08          0.214          33.1    5.20    7.70
+        8 - 12   190564              9.67          0.216          44.8    6.24   10.35
+       12 - 20    90340             14.04          0.214          65.7    7.13   14.83
+         >= 20    31588             27.19          0.201         135.2    6.05   30.70
+
+correlation(gate now, next 20m range) = 0.692; correlation(ATR now, ATR in 20 min) = 0.945
+
+=== D. After n minutes in a row in the same direction ===
+        streak  gate       n      1m      5m     10m     20m     30m   t 20m
+   3 up (fade)   all  262682   0.011   0.025   0.026   0.013   0.003     1.5
+   3 up (fade)   >=8   38104   0.040   0.085   0.126   0.130   0.146     2.6
+ 3 down (fade)   all  256136   0.018   0.038   0.051   0.053   0.047     5.5
+ 3 down (fade)   >=8   36225   0.050   0.068   0.131   0.107   0.041     1.9
+   4 up (fade)   all  126735   0.015   0.029   0.025  -0.003  -0.015    -0.2
+   4 up (fade)   >=8   18513   0.048   0.089   0.110   0.069   0.079     0.9
+ 4 down (fade)   all  121628   0.026   0.046   0.057   0.052   0.053     3.6
+ 4 down (fade)   >=8   17331   0.075   0.094   0.149   0.096   0.075     1.1
+   5 up (fade)   all   60966   0.015   0.031   0.005  -0.037  -0.051    -2.0
+   5 up (fade)   >=8    8937   0.057   0.084  -0.000  -0.055  -0.046    -0.5
+ 5 down (fade)   all   57395   0.023   0.046   0.053   0.041   0.053     1.9
+ 5 down (fade)   >=8    8266   0.053   0.060   0.121   0.043   0.104     0.3
+   6 up (fade)   all   29288   0.017   0.031  -0.022  -0.084  -0.097    -3.0
+   6 up (fade)   >=8    4246   0.081   0.072  -0.097  -0.211  -0.194    -1.3
+ 6 down (fade)   all   27119   0.034   0.057   0.062   0.041   0.092     1.3
+ 6 down (fade)   >=8    3940   0.068   0.064   0.147   0.020   0.337     0.1
+   8 up (fade)   all    6814   0.011   0.034  -0.084  -0.162  -0.143    -2.7
+   8 up (fade)   >=8     931  -0.030  -0.032  -0.520  -0.528  -0.534    -1.5
+ 8 down (fade)   all    6040   0.034   0.040   0.018   0.048   0.111     0.7
+ 8 down (fade)   >=8     915   0.046  -0.108  -0.194   0.163   0.593     0.5
+
+=== E. After an unusually quiet stretch ===
+ratio = ATR(14) / ATR(100). Low = the last 15 minutes were quiet relative to the last hour and a half.
+         ratio        n  next 30m range $  |next 30m move| $  signed move $      t
+   < 0.6 quiet    61200              2.71               1.36          0.023    2.2
+     0.6 - 0.8   469586              4.29               2.11         -0.051   -8.5
+     0.8 - 1.2  1240408              5.81               2.83          0.018    3.8
+     1.2 - 1.6   386662              7.51               3.69          0.033    2.9
+   >= 1.6 busy    49026             11.04               5.41          0.228    4.7
+
+=== F. The hour-of-day profile (server time; MYT = server + 6 in winter) ===
+ server hour   MYT     bars  med ATR $  med spread $  med gate  mean |1m| $  drift $/h      h1      h2
+         1h     7h    51032      0.349         0.230       1.5        0.469      0.139   +0.03   +0.25
+         2h     8h   102111      0.354         0.210       1.6        0.392      0.246   -0.04   +0.53
+         3h     9h   102157      0.500         0.200       2.4        0.541      0.298   +0.20   +0.40
+         4h    10h   102115      0.580         0.200       2.8        0.574     -0.072   -0.04   -0.11
+         5h    11h   102095      0.492         0.200       2.4        0.442     -0.038   -0.01   -0.06
+         6h    12h   102106      0.398         0.200       1.9        0.355     -0.053   -0.11   +0.00
+         7h    13h   102161      0.381         0.200       1.8        0.365     -0.050   +0.10   -0.20
+         8h    14h   102234      0.479         0.200       2.4        0.462      0.084   +0.06   +0.11
+         9h    15h   102224      0.609         0.190       3.2        0.507      0.286   +0.11   +0.46
+        10h    16h   102165      0.690         0.190       3.7        0.537     -0.029   -0.10   +0.04
+        11h    17h   102205      0.642         0.190       3.5        0.494     -0.147   +0.01   -0.30
+        12h    18h   102202      0.584         0.190       3.1        0.450      0.039   -0.10   +0.17
+        13h    19h   102187      0.554         0.190       3.0        0.448      0.140   -0.05   +0.33
+        14h    20h   102227      0.628         0.190       3.4        0.504     -0.036   +0.01   -0.08
+        15h    21h   102156      1.002         0.180       5.5        0.795      0.040   +0.01   +0.06
+        16h    22h   102144      1.209         0.180       6.9        0.885     -0.393   -0.07   -0.72
+        17h    23h   102142      1.215         0.180       6.9        0.853      0.127   +0.19   +0.06
+        18h     0h   102229      0.903         0.180       5.0        0.644     -0.150   -0.05   -0.25
+        19h     1h   102175      0.677         0.190       3.6        0.510     -0.064   +0.02   -0.15
+        20h     2h   100854      0.609         0.190       3.2        0.484      0.017   -0.07   +0.10
+        21h     3h    99694      0.506         0.190       2.6        0.454      0.082   +0.05   +0.12
+        22h     4h    98811      0.461         0.190       2.4        0.419      0.090   +0.00   +0.18
+/home/runner/work/fizy-bot/fizy-bot/research/m1char42.py:291: RuntimeWarning: Mean of empty slice
+  f"{np.nanmedian(gate[m]):9.1f} {np.nanmean(np.abs(r1[m])):12.3f} {np.nanmean(dr):10.3f} "
+        23h     5h    69347      0.360         0.200       1.7        0.289        nan    +nan    +nan
+
+=== G. Micro round numbers ===
+Gold is widely said to respect round numbers. For each step, bars whose close is within 10% of the
+step from a level: does price push through (continuation) or turn back (reversion) over 20 minutes?
+Measured against the SAME statistic for a level grid shifted by half a step, which is the control:
+if the real levels are special, the shifted grid must behave differently.
+    step      grid        n  |20m move| $  toward level $    away $      t
+     1.0      real   462859          2.26          -0.005     0.005   -0.8
+     1.0   shifted   459235          2.27           0.006    -0.006    0.9
+     5.0      real   443091          2.34           0.001    -0.001    0.2
+     5.0   shifted   454459          2.30           0.003    -0.003    0.4
+    10.0      real   417109          2.39           0.002    -0.002    0.3
+    10.0   shifted   465645          2.27           0.008    -0.008    1.2
+
+=== H. The first minutes after a session opens (server time) ===
+                  open  minute      n  mean |1m| $  med spread $  next 30m range $
+            Asia 01:30      +0   1700        3.471         0.240              4.07
+            Asia 01:30      +1   1700        0.389         0.240              4.12
+            Asia 01:30      +2   1699        0.432         0.240              4.19
+            Asia 01:30      +5   1700        0.382         0.240              4.20
+            Asia 01:30     +15   1703        0.439         0.220              4.34
+      pre-London 09:00      +0   1704        0.762         0.190              5.78
+      pre-London 09:00      +1   1704        0.593         0.190              5.75
+      pre-London 09:00      +2   1704        0.554         0.190              5.74
+      pre-London 09:00      +5   1704        0.539         0.190              5.65
+      pre-London 09:00     +15   1704        0.522         0.190              5.52
+          London 10:00      +0   1704        0.757         0.180              6.04
+          London 10:00      +1   1704        0.627         0.190              5.99
+          London 10:00      +2   1704        0.619         0.190              5.96
+          London 10:00      +5   1703        0.586         0.190              5.95
+          London 10:00     +15   1700        0.597         0.190              5.89
+        New York 15:30      +0   1704        2.068         0.190              9.57
+        New York 15:30      +1   1702        1.201         0.190              9.48
+        New York 15:30      +2   1703        1.044         0.190              9.41
+        New York 15:30      +5   1699        0.990         0.180              9.25
+        New York 15:30     +15   1701        0.851         0.180              9.01
+
+done in 27 s
