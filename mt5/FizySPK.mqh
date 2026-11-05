@@ -72,16 +72,41 @@
 //| instead of 84) and longer losing runs (15 -> 27 in a row).        |
 //| Random entries with the same mechanics score 0.72-1.25 and the UP |
 //| side 0.91, so neither control survives.                           |
+//| v1.99 (6 Nov, the owner's explicit override) trades for FREQUENCY |
+//| and a high win rate instead of profit: k 2.0 and TP 0.5 x the     |
+//| spike range. He was shown three options with full numbers and     |
+//| chose this one knowing it FAILS the project's pass rule:          |
+//|   PF 1.08 (threshold 1.15) and stress 0.99 (threshold 1.05).      |
+//|   Halves 1.12 / 1.08 pass, 5,750 trades = 3.37 a day, win rate    |
+//|   37.4%, 48 of 80 months positive, +$535 over 6.7 years = about   |
+//|   $80 a year per 0.01 lot, max drawdown -$200.                    |
+//| What it replaced (v1.98, k 2.5 / no TP): PF 1.34, +$216 a year,    |
+//| win 17.3%, drawdown -$162. So this choice costs about 62% of the  |
+//| profit to buy 2.6x the trades and a win rate that feels like      |
+//| scalping. His words, repeatedly: "aku nak scalping, untung makan  |
+//| sikit-sikit ... 1 hari aku tunggu trade langsung tak ada, kalau   |
+//| ada pun 1 2 je. apa scalping macam tu."                           |
+//| The research behind the refusals that led here, so nobody redoes  |
+//| them: lowering the GATE below 8 adds losing trades (the 6-8 band  |
+//| alone is PF 0.90, -$29 a year, drawdown -$291 never recovered),   |
+//| and lowering k below 2.0 does the same (the 2.0-2.5 band is PF    |
+//| 0.96). Gate 8 and k 2.5 are both floors of the PROFIT-maximising  |
+//| setting; k 2.0 is below that floor on purpose, for the trade      |
+//| count. Range scalping (buy the bottom of the day's range, sell    |
+//| the top, M1, gated) is PF 0.77-0.95 at a 50% win rate, worse than |
+//| random, and is not what this is.                                  |
+//| To go back to the profit-maximising rule: InpSpkAtr 2.5,          |
+//| InpSpkTpRange 0.                                                  |
 //| Events go to MQL5\Files\spk_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input bool   InpSpkOn        = true;
 input string InpSpkSymbol    = "XAUUSD";
 input double InpSpkLot       = 0.01;
 input long   InpSpkMagic     = 260320;
-input double InpSpkAtr       = 2.5;      // the spike's range, in ATR(14, M1); 2.5 since v1.98, was 3.0
+input double InpSpkAtr       = 2.0;      // the spike's range, in ATR(14, M1); 2.0 since v1.99 (owner's override)
 input double InpSpkAtrSpread = 8.0;      // the cost gate: ATR(M1) must be at least this x the spread
 input double InpSpkSlAtr     = 0.2;      // SL this far below the spike's low, in ATR(M1)
-input double InpSpkTpRange   = 0.0;      // TP this much of the spike's range above its close; 0 = NO take profit
+input double InpSpkTpRange   = 0.5;      // TP this much of the spike's range above its close; 0 = no TP. 0.5 since v1.99
 input int    InpSpkHoldMin   = 45;       // close at market after this many minutes
 
 string   sp_sym = "";
