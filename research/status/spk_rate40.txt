@@ -1,0 +1,48 @@
+XAUUSD M1 2020-03-30 .. 2026-11-04
+
+year  trades  per trading day   net $ (0.01 lot)   PF
+2020     59    0.30                 +23    1.30
+2021     25    0.10                  +7    1.24
+2022     60    0.23                 +24    1.45
+2023     84    0.33                  -0    0.99
+2024     44    0.17                 +14    1.28
+2025    308    1.19                 +82    1.18
+2026    484    2.22                +526    1.47
+
+last 12 months, trades per month:
+  2025-10    9 trades    -4.57 $
+  2025-11   29 trades    -6.15 $
+  2025-12   60 trades    -2.19 $
+  2026-01   98 trades   +91.65 $
+  2026-02   95 trades  +244.48 $
+  2026-03   75 trades    +3.05 $
+  2026-04   52 trades   +27.66 $
+  2026-05   38 trades    -5.70 $
+  2026-06   36 trades    +2.08 $
+  2026-07   22 trades   +33.99 $
+  2026-08   29 trades   +70.53 $
+  2026-09   26 trades   +57.64 $
+  2026-10   13 trades    +0.66 $
+
+recent rate: 582 trades in 12 months = 48.5 a month = about 1 every 0.6 days
+hold: median 1 min from signal to entry bar; exits SL 728, TP 284, time 52
+
+three real examples (the biggest win, a typical loss, and the most recent trade):
+
+  biggest win — Mon 02 Feb 2026 09:10 MYT (broker 03:10)
+    the M1 candle: open 4656.12 high 4660.61 low 4586.63 close 4586.63  -> it fell $69.49, range $73.98
+    ATR(M1) was $24.27 and the spread $0.18, so ATR = 135x the spread (gate needs 8x)
+    range 3.0x ATR (needs 3x) -> BUY at 4585.50, SL 4581.78 (risk $3.72), TP 4642.11 (reward $56.61)
+    result: TP after  -> +56.43 $
+
+  typical loss — Thu 18 Dec 2025 22:41 MYT (broker 16:41)
+    the M1 candle: open 4328.29 high 4328.33 low 4318.33 close 4319.51  -> it fell $8.78, range $10.00
+    ATR(M1) was $3.24 and the spread $0.18, so ATR = 18x the spread (gate needs 8x)
+    range 3.1x ATR (needs 3x) -> BUY at 4319.54, SL 4317.68 (risk $1.86), TP 4327.01 (reward $7.47)
+    result: SL after  -> -2.04 $
+
+  most recent — Thu 29 Oct 2026 02:34 MYT (broker 20:34)
+    the M1 candle: open 4045.04 high 4050.24 low 4035.77 close 4039.46  -> it fell $5.58, range $14.47
+    ATR(M1) was $4.22 and the spread $0.26, so ATR = 16x the spread (gate needs 8x)
+    range 3.4x ATR (needs 3x) -> BUY at 4039.21, SL 4034.93 (risk $4.28), TP 4050.31 (reward $11.10)
+    result: TP after  -> +10.84 $
