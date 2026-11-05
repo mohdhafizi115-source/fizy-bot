@@ -13,7 +13,7 @@
 //|         day).                                                     |
 //| Events go to MQL5\Files\dtj_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpDtjOn       = true;
+input bool   InpDtjOn       = false;  // OFF since 5 Nov: the owner keeps only six modules
 input string InpDtjSymbol   = "USDJPY";
 input double InpDtjLot      = 0.01;
 input long   InpPdhlMagic   = 260315;

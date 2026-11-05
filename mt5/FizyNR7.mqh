@@ -13,7 +13,7 @@
 // 1 Nov 2026: on 6.6 years of JustMarkets data NR7 held up on XAUUSD (PF 1.30), USDJPY (1.30) and AUDJPY (1.17);
 // BTCUSD (0.53), GBPJPY (0.95), GBPUSD (1.05) and EURJPY (second half 0.79) were removed (research/live_check.py).
 input string InpNr7Symbols = "XAUUSD,USDJPY,AUDJPY";
-input bool   InpNr7On      = true;
+input bool   InpNr7On      = false;  // OFF since 5 Nov: the owner keeps only six modules
 input double InpNr7Lot     = 0.01;
 input long   InpNr7Magic   = 260310;
 

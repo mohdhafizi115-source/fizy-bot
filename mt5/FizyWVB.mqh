@@ -12,7 +12,7 @@
 //| Events go to MQL5\Files\wvb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input string InpWvbSymbols  = "USDJPY:0.5,EURJPY:0.5,GBPJPY:0.5,XAUUSD:0.7";   // symbol:k (k missing = InpWvbK)
-input bool   InpWvbOn       = true;
+input bool   InpWvbOn       = false;  // OFF since 5 Nov: the owner keeps only six modules
 input double InpWvbLot      = 0.01;
 input long   InpWvbMagic    = 260314;
 input double InpWvbK        = 0.7;

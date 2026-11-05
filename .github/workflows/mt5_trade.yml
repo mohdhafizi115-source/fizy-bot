@@ -1,11 +1,17 @@
 name: MT5 auto trader
 
-# One trading shift (about 5h40m) of the FizyLB EA (London breakout on gold, NR7 D1 on XAUUSD/USDJPY/AUDJPY,
-# Gotobi Tokyo-fix reversal on USDJPY/EURJPY/GBPJPY, gold before the LBMA auction) on a GitHub Windows runner. Shifts chain 24/7: each one dispatches the next; the scanner
-# loop restarts the chain when no shift is queued or running.
-# Switch: mt5_trade.txt line 1 "on" / "off", lines 2-7 the lots (London, NR7, Gotobi, gold auction, month-end fix,
-# volatility breakout), line 8 "on" / "off" for the gold S/R zone alerts (no trading), line 9 the lot of the USDJPY
-# day trades (previous-day breakout, New York continuation), line 10 the lot of the gold H1 Ichimoku cloud breakout. Demo accounts only (the EA refuses others).
+# One trading shift (about 5h40m) of the FizyLB EA on a GitHub Windows runner. Shifts chain 24/7: each one dispatches
+# the next; the scanner loop restarts the chain when no shift is queued or running.
+# SIX MODULES RUN since 5 Nov 2026, the owner's choice: Gotobi Tokyo fix, month-end Tokyo fix, gold LBMA auction
+# scalp, gold H1 Ichimoku cloud breakout, gold H1+M15 Tenkan/Kijun cross, gold M1 spike fade. The five breakout
+# modules (London breakout, NR7, Williams volatility breakout, USDJPY previous-day breakout and New York
+# continuation) are switched OFF in the EA source (InpLbOn, InpNr7On, InpWvbOn, InpDtjOn = false), so lines 2, 3, 7
+# and 9 below are inert until one of those inputs is set back to true. Line numbers are kept so the lots stay in
+# place.
+# Switch: mt5_trade.txt line 1 "on" / "off", lines 2-7 the lots (London [off], NR7 [off], Gotobi, gold auction,
+# month-end fix, volatility breakout [off]), line 8 "on" / "off" for the gold S/R zone alerts (no trading, off),
+# line 9 the lot of the USDJPY day trades [off], line 10 the gold Kumo lot, line 11 the gold Tenkan/Kijun lot,
+# line 12 the gold M1 spike-fade lot. Demo accounts only (the EA refuses others).
 on:
   workflow_dispatch:
     inputs:

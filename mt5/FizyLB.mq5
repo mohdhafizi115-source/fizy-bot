@@ -1,10 +1,17 @@
 //+------------------------------------------------------------------+
-//| FizyLB.mq5 - London breakout auto-trader for XAUUSD (demo only)  |
-//| Same rules as the FIZY BOT alerts / backtest (chart = server     |
-//| time): Asian range 03:00-08:00, OCO stops +-0.10 at 08:00, SL at |
-//| the other side capped at 0.6% of price, TP 2.5R, SL to entry at  |
-//| 1.5R, close everything at 21:00. Squeeze filter: range < 0.6 x   |
-//| daily ATR(14); range must be 0.30-1.60% of price.                |
+//| FizyLB.mq5 - the EA shell: it loads every module and, when       |
+//| InpLbOn is true, trades the London breakout itself (demo only).  |
+//| ON 5 NOV 2026 THE OWNER KEPT ONLY SIX MODULES: Gotobi, month-end |
+//| fix, gold LBMA auction, Kumo, Tenkan/Kijun and the M1 spike      |
+//| fade. The five breakout modules are switched off: the London     |
+//| breakout here (InpLbOn), NR7, Williams, and both USDJPY day      |
+//| trades. Their code stays in the repository so one input flips    |
+//| them back on; SweepOff() below closes anything they left behind. |
+//| London breakout rules, for when it is switched on again (chart = |
+//| server time): Asian range 03:00-08:00, OCO stops +-0.10 at       |
+//| 08:00, SL at the other side capped at 0.6% of price, TP 2.5R, SL |
+//| to entry at 1.5R, close everything at 21:00. Squeeze filter:     |
+//| range < 0.6 x daily ATR(14); range 0.30-1.60% of price.          |
 //| Stateless: everything is read back from the broker (orders,      |
 //| positions, history with the magic number), so the terminal can   |
 //| be restarted at any time (it runs on GitHub Actions in shifts).  |
@@ -12,9 +19,10 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "1.95"
+#property version "1.96"
 #include <Trade/Trade.mqh>
 
+input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
 input string InpSymbol     = "XAUUSD.m";
 input double InpLot        = 0.01;
 input long   InpMagic      = 260308;
@@ -279,6 +287,63 @@ int OnInit()
 void OnDeinit(const int reason) { EventKillTimer(); }
 
 bool g_started = false;
+//+------------------------------------------------------------------+
+//| The five modules switched off on 5 Nov cannot clean up after     |
+//| themselves: their OnTimer returns at the first line. So anything |
+//| they still had open when the switch was flipped is closed here   |
+//| and reported, once, instead of being left to the broker.         |
+//+------------------------------------------------------------------+
+datetime g_sweep = 0;
+
+void SweepOff()
+{
+   if(TimeCurrent() - g_sweep < 60) return;                                 // at most once a minute
+   g_sweep = TimeCurrent();
+   long off[];
+   ArrayResize(off, 0);
+   if(!InpLbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMagic; }
+   if(!InpNr7On) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpNr7Magic; }
+   if(!InpWvbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpWvbMagic; }
+   if(!InpDtjOn)
+   {
+      int m = ArraySize(off); ArrayResize(off, m + 2); off[m] = InpPdhlMagic; off[m + 1] = InpNycMagic;
+   }
+   int nOff = ArraySize(off);
+   if(nOff == 0) return;
+   for(int i = OrdersTotal() - 1; i >= 0; i--)                              // pending orders first
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0) continue;
+      long mg = OrderGetInteger(ORDER_MAGIC);
+      bool hit = false;
+      for(int q = 0; q < nOff; q++) if(mg == off[q]) hit = true;
+      if(!hit) continue;
+      string sy = OrderGetString(ORDER_SYMBOL);
+      if(trade.OrderDelete(t))
+         Event(StringFormat("CLEANUP | %s pending order of a switched-off module deleted (magic %d)", sy, (int)mg));
+   }
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      ulong t = PositionGetTicket(i);
+      if(t == 0) continue;
+      long mg = PositionGetInteger(POSITION_MAGIC);
+      bool hit = false;
+      for(int q = 0; q < nOff; q++) if(mg == off[q]) hit = true;
+      if(!hit) continue;
+      string sy = PositionGetString(POSITION_SYMBOL);
+      MqlTick tk;
+      if(!SymbolInfoTick(sy, tk) || TimeCurrent() - tk.time > 600) continue; // market closed: wait for the open
+      double profit = PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
+      trade.SetExpertMagicNumber(mg); trade.SetTypeFillingBySymbol(sy);
+      bool ok = trade.PositionClose(t);
+      trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+      if(ok)
+         Event(StringFormat("CLEANUP | %s position of a switched-off module closed at market, profit $%.2f (magic %d)",
+                            sy, profit, (int)mg));
+   }
+}
+//+------------------------------------------------------------------+
+
 void OnTimer()
 {
    if(!TerminalInfoInteger(TERMINAL_CONNECTED)) return;
@@ -318,11 +383,12 @@ void OnTimer()
    TkOnTimer();
    SpkOnTimer();
    CloseLeftovers();
+   SweepOff();                                                              // close what the switched-off modules left
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
-   if(minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))
+   if(InpLbOn && minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))
       PlaceOrders(day);
-   Manage(now, day);
+   if(InpLbOn) Manage(now, day);
    // heartbeat for the workflow: server time and whether the day is finished
    int h = FileOpen("flb_state.txt", FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_SHARE_READ);
    if(h != INVALID_HANDLE)
