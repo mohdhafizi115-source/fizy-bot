@@ -1,24 +1,21 @@
-shift ended (UTC): 2026-11-04 22:55
+shift ended (UTC): 2026-11-05 10:51
 open
-2026.11.05 00:55:44
+2026.11.05 12:51:20
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 4496 ms elapsed, cpu='X64 Regular'
-events: London 1 lines, NR7 1, Gotobi 2, gold auction 1
-  ND	0	17:20:22.186	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  MM	0	17:20:22.187	FizyLB (XAUUSD.m,M15)	NR7 EVENT NR7 ONLINE | 3 symbols on D1 (XAUUSD,USDJPY,AUDJPY), lot 0.01, 0 open NR7 position(s)
-  LS	0	17:20:22.244	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO ONLINE | USDJPY.m (k 0.5), EURJPY.m (k 0.5), GBPJPY.m (k 0.5), XAUUSD.m (k 0.7): day trade, at 01:30 server OCO stops at today's open +- k x yesterday's range, SL at the open, orders until 20:00, close 22:30 server, lot 0.01 | 1 open position(s)
-  MI	0	17:20:22.816	FizyLB (XAUUSD.m,M15)	DTJ EVENT PDHL ONLINE | USDJPY.m: from 02:00 server OCO stops at yesterday's high / low, SL at yesterday's middle, TP 2R, orders until 20:00, close 22:30, lot 0.01
-  FN	0	17:20:22.816	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT ONLINE | USDJPY.m: at 15:30 server follow the 09:00-15:30 move, SL 1.5 x ATR(H1), no TP, close 22:00, lot 0.01 | 1 open position(s)
-  QE	0	17:20:22.817	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  NP	0	17:20:22.832	FizyLB (XAUUSD.m,M15)	TK EVENT TK ONLINE | XAUUSD.m H1 + M15: buy / sell when Tenkan crosses Kijun with the close beyond the Ichimoku cloud, SL 2 ATR, exit on the opposite cross or at 23:00 server (day trade, no swap), lot 0.01 | 0 open position(s)
-  GP	0	17:20:22.832	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE ONLINE | XAUUSD.m M1: BUY when a down bar of 3 x ATR(M1) closes AND ATR(M1) >= 8 x the spread (the cost gate), SL 0.2 ATR below its low, TP 0.75 of its range, out after 20 min, lot 0.01 | 0 open position(s)
-  OO	0	17:45:03.427	FizyLB (XAUUSD.m,M15)	TK EVENT TK BUY XAUUSD.m | M15: Tenkan 4050.37 crossed above Kijun 4049.80 with the close 4069.18 above the cloud (3984.64 - 4019.53) | BUY 0.01 lot at 4069.70, SL 4049.44, no TP: exit on the opposite cross or at 23:00 server | IMG:snap_TKF_XAUUSD_m_<num>_<num>_640.png
-  OD	0	20:00:05.589	FizyLB (XAUUSD.m,M15)	DTJ EVENT NYCONT CLOSED USDJPY.m | BUY from 158.309 closed at 158.485 (22:00 day-end close), profit $x | IMG:snap_NYX_USDJPY_m_<num>_<num>_703.png
-  OR	0	20:30:07.647	FizyLB (XAUUSD.m,M15)	VOLBO EVENT VOLBO CLOSED EURJPY.m | BUY from 178.104 closed at 177.930 (22:30 day-end close), profit $x | IMG:snap_WVX_EURJPY_m_<num>_<num>_750.png
-  LJ	0	21:00:03.742	FizyLB (XAUUSD.m,M15)	TK EVENT TK CLOSED XAUUSD.m | M15 BUY from 4069.71 closed at 4063.95 (opposite Tenkan / Kijun cross or day end), profit $x | IMG:snap_TKX_XAUUSD_m_<num>_<num>_812.png
+  Result: 0 errors, 0 warnings, 3363 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 2, gold auction 3
+  MS	0	05:15:56.849	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.05 07:15, 0 open position(s), 0 pending order(s), lot 0.01
+  IS	0	05:15:56.850	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.10 | 0 open position(s)
+  CJ	0	05:15:56.851	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
+  GD	0	05:15:56.897	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  HM	0	05:15:56.898	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  GO	0	05:15:56.912	FizyLB (XAUUSD.m,M15)	TK EVENT TK ONLINE | XAUUSD.m H1 + M15: buy / sell when Tenkan crosses Kijun with the close beyond the Ichimoku cloud, SL 2 ATR, exit on the opposite cross or at 23:00 server (day trade, no swap), lot 0.01 | 0 open position(s)
+  IF	0	05:15:56.912	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE ONLINE | XAUUSD.m M1: BUY when a down bar of 3 x ATR(M1) closes AND ATR(M1) >= 8 x the spread (the cost gate), SL 0.2 ATR below its low, no TP, the reversion is left to run, out after 45 min, lot 0.01 | 0 open position(s)
+  LD	0	10:15:02.480	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 4125.80, SL 4133.86, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_765.png
+  RI	0	10:30:03.003	FizyLB (XAUUSD.m,M15)	TK EVENT TK BUY XAUUSD.m | M15: Tenkan 4127.85 crossed above Kijun 4127.05 with the close 4122.63 above the cloud (4088.05 - 4118.36) | BUY 0.01 lot at 4123.05, SL 4106.52, no TP: exit on the opposite cross or at 23:00 server | IMG:snap_TKF_XAUUSD_m_<num>_<num>_265.png
+  OL	0	10:30:08.041	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION STOP HIT XAUUSD.m | SELL from 4125.80 closed at 4123.73 (stop: the M1 trailing stop after 10:30, or the 2 ATR stop loss), +2.07, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_312.png
   w: telegram ok: daily status
+  w: telegram ok: AUCTION SELL XAUUSD.m
   w: telegram ok: TK BUY XAUUSD.m
-  w: telegram ok: NYCONT CLOSED USDJPY.m
-  w: telegram ok: VOLBO CLOSED EURJPY.m
-  w: telegram ok: TK CLOSED XAUUSD.m
-  w: shift end: done=False, state=2026.11.05 00:55:44|0|0
+  w: telegram ok: AUCTION STOP HIT XAUUSD.m
+  w: shift end: done=False, state=2026.11.05 12:51:20|0|0
