@@ -2,16 +2,23 @@
 //| FizySPK.mqh - gold M1 spike fade, demo only, included by          |
 //| FizyLB.mq5. The first M1 rule that ever passed on this broker's   |
 //| own data (research/scalpcost37.py, spike38.py, spike39.py;        |
-//| spk44.py; JustMarkets M1 2020-03 .. 2026-11, 1,059 trades, 0.62   |
-//| a day: PF 1.53 after spread, halves 1.54 / 1.53, stress 1.46,     |
-//| +$1,163 per 0.01 lot, last 12 months +$933, max drawdown $144,    |
-//| every year 1.06 or better and 2022 the best at 2.04, so it is     |
-//| not just the gold uptrend).                                       |
+//| spk44.py, spk45.py; JustMarkets M1 2020-03 .. 2026-11, at the     |
+//| v1.98 settings 2,230 trades, 1.31 a day: PF 1.34 after spread,    |
+//| halves 1.47 / 1.33, stress 1.27, +$1,445 per 0.01 lot, last 12    |
+//| months +$1,049, max drawdown $162 (recovered in 2 days), 44 of    |
+//| 75 months positive, every year 1.09 or better and 2022 at 1.65,   |
+//| so it is not just the gold uptrend.                               |
 //| Rules, all on closed M1 bars:                                     |
 //|   1. COST GATE: ATR(14, M1) >= InpSpkAtrSpread x the current      |
-//|      spread. This gate is what makes the rule work: without it    |
-//|      the same trade is PF 0.80, with it 1.37. On M1 the move has  |
-//|      to dwarf the cost.                                           |
+//|      spread. This gate is what makes the rule work - on M1 the    |
+//|      move has to dwarf the cost. Its sweep is monotone, which is  |
+//|      the signature of a real cost effect and not a fitted filter: |
+//|      gate 4 / 6 / 8 / 10 / 12 -> PF 1.13 / 1.21 / 1.34 / 1.44 /  |
+//|      1.50 at k 2.5. Round 42 also checked that it works FORWARD   |
+//|      rather than in hindsight: ATR now against ATR in 20 minutes  |
+//|      correlates 0.945, and against the next 20 minutes' range     |
+//|      0.692, so a volatile minute really does predict volatile     |
+//|      minutes after it.                                            |
 //|   2. SIGNAL: the bar that just closed fell (close < open) and its |
 //|      range >= InpSpkAtr x ATR(14, M1 up to the bar before it).    |
 //|   3. BUY at the next bar's open. SL = that bar's low - 0.2 ATR.   |
@@ -19,6 +26,34 @@
 //|   Signal bars 01:30-22:00 server, one position at a time.         |
 //| Only the BUY side is traded: fading UP spikes scored PF 0.92 and  |
 //| lost money, so it is left out.                                    |
+//| v1.98 (round 45, research/spk45.py) lowered InpSpkAtr from 3.0 to |
+//| 2.5, which doubles the trade rate, on the owner's call: "asalkan  |
+//| aku nak ea trade banyak kali dan profit". k 2.5 is a SUPERSET of  |
+//| k 3.0, so its headline +$1,445 already contains the +$1,163 that  |
+//| k 3.0 made, and a plateau sweep could not settle this. What       |
+//| decided it was measuring each spike-size band ON ITS OWN, with no |
+//| overlap, so no band could borrow another's profit:                |
+//|   2.0-2.5 ATR  3,352 trades  PF 0.96  -$193   <- the floor        |
+//|   2.5-3.0 ATR  1,195 trades  PF 1.17  +$351   <- what k 2.5 adds  |
+//|   3.0-3.5 ATR    500 trades  PF 1.89  +$763   <- the real edge    |
+//|   3.5-4.0 ATR    228 trades  PF 1.14  +$61                        |
+//|   4.0-5.0 ATR    197 trades  PF 0.89  -$54                        |
+//| So the band k 2.5 adds does carry its own edge and this is not    |
+//| just more exposure - but it is a THIN one: PF 1.17 against a 1.15 |
+//| threshold, stress 1.10 against 1.05, and on its own it draws down |
+//| $256 and never recovers, on $351 of profit. It only works blended |
+//| with the strong 3.0-3.5 core, which fills its gaps: the blend     |
+//| draws down $162 and recovers in 2 days, and its profit per dollar |
+//| of drawdown is 8.9 against 8.1 for k 3.0 alone. Below 2.5 the     |
+//| next band LOSES, so 2.5 is the floor, not a step on a ramp.       |
+//| The cost of the change: PF 1.53 -> 1.34 and the longest losing    |
+//| run goes from 27 trades to 36. The owner was shown both and chose |
+//| the trade count. Set InpSpkAtr back to 3.0 to undo it.            |
+//| Plateau at k 2.5: SL 0.1-0.75 ATR -> 1.23-1.34, hold 20-120 min   |
+//| -> 1.26-1.38, gate 6-16 -> 1.21-1.50 and monotone to 12; all of   |
+//| them pass. Controls: random 0.84-1.21, the UP side 0.95, and the  |
+//| 2.5-3.0 band on the UP side 0.96. The one-position-at-a-time rule |
+//| discards only 2.7% of signals, so the hold is not the limit.      |
 //| v1.97 (round 44, research/spk44.py) REMOVED the take profit.      |
 //| Round 42 measured that under the cost gate gold's variance ratio  |
 //| keeps falling out to 60 minutes (0.96 at 1 min -> 0.845 at 60),   |
@@ -43,7 +78,7 @@ input bool   InpSpkOn        = true;
 input string InpSpkSymbol    = "XAUUSD";
 input double InpSpkLot       = 0.01;
 input long   InpSpkMagic     = 260320;
-input double InpSpkAtr       = 3.0;      // the spike's range, in ATR(14, M1)
+input double InpSpkAtr       = 2.5;      // the spike's range, in ATR(14, M1); 2.5 since v1.98, was 3.0
 input double InpSpkAtrSpread = 8.0;      // the cost gate: ATR(M1) must be at least this x the spread
 input double InpSpkSlAtr     = 0.2;      // SL this far below the spike's low, in ATR(M1)
 input double InpSpkTpRange   = 0.0;      // TP this much of the spike's range above its close; 0 = NO take profit
@@ -82,7 +117,7 @@ void SpkInit()
    SymbolSelect(sp_sym, true);
    ulong t;
    if(SpkPosition(t)) { int m = ArraySize(sp_known); ArrayResize(sp_known, m + 1); sp_known[m] = t; }
-   SpkEvent(StringFormat("SPIKE ONLINE | %s M1: BUY when a down bar of %.0f x ATR(M1) closes AND ATR(M1) >= %.0f x the spread "
+   SpkEvent(StringFormat("SPIKE ONLINE | %s M1: BUY when a down bar of %.1f x ATR(M1) closes AND ATR(M1) >= %.0f x the spread "
                          "(the cost gate), SL %.1f ATR below its low, %s, out after %d min, lot %.2f | %d open position(s)",
                          sp_sym, InpSpkAtr, InpSpkAtrSpread, InpSpkSlAtr,
                          InpSpkTpRange > 0 ? StringFormat("TP %.2f of its range", InpSpkTpRange)
