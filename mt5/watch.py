@@ -194,8 +194,8 @@ def status_block(kind, text):
                 f"▫️ Exit: opposite cross or 23:00 broker ({myt('23:00', 'Europe/Athens')} MYT) · Lot {lot} · open {opened}"]
     if kind == "SPIKE ONLINE":
         return ["⚡ M1 SPIKE FADE · XAUUSD · scalp",
-                "▫️ BUY when an M1 bar drops 3x ATR and ATR is 8x the spread (cost gate)",
-                f"▫️ SL below the spike low, TP 0.75 of its range, out after 20 min · Lot {lot} · open {opened}"]
+                "▫️ Down spike 2x ATR + RSI < 30 + cost gate arms it; BUY only after a rejection candle",
+                f"▫️ SL under the wick, TP back at the spike's open, out after 45 min · Lot {lot} · open {opened}"]
     if kind == "SR ONLINE":
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",
                 f"▫️ Zone map at 01:30, 08:00, 15:00 broker ({myt('01:30', 'Europe/Athens')}, {myt('08:00', 'Europe/Athens')}, "
