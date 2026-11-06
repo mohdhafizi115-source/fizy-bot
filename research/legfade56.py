@@ -137,8 +137,8 @@ def main():
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
     run(label="THE OWNER'S RULE")
-    run(maxn=3, label="same, max 3 entries")
-    run(tpp=0.0013, label="same, TP at a median leg (~$5)")
+    run(N=90, label="leg age 90 instead of 60")
+    run(N=120, label="leg age 120")
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
