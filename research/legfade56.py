@@ -45,7 +45,7 @@ def main():
     yr = B.index.year.values
     say(f"XAUUSD M1 {B.index[0]:%Y-%m-%d} .. {B.index[-1]:%Y-%m-%d}, {n:,} bars, $ per 1.0 move at 0.01 lot = {usd:.2f}")
 
-    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True):
+    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True, lots=(1, 1, 1, 1, 1)):
         XH, XL = (H, L) if wick else (C, C)
         EV = pd.Series(C).ewm(span=emaP, adjust=False).mean().values if emaP else None
         EP = np.r_[np.nan, EV[:-1]] if emaP else None     # EMA of the last CLOSED bar, known at bar k
@@ -59,20 +59,22 @@ def main():
         for k in range(n):
             # ---- swap on open positions at each new server day
             if newd[k] and pos:
-                bal -= SWAP * len(pos)
+                bal -= SWAP * sum(lots[i] for i in range(len(pos)))
             # ---- manage the open basket on this bar
             if pos:
                 keep = []
-                for e, dd, k0 in pos:
+                for qi, (e, dd, k0) in enumerate(pos):
+                    m = lots[qi] if qi < len(lots) else 1
                     tp = e * (1 + dd * tpp) if not emaP else EP[k]
                     # sell closes at ask: bar low + spread <= tp ; buy closes at bid: high >= tp
                     hit = (L[k] + sp[k] <= tp) if dd == -1 else (H[k] >= tp)
                     if hit:
                         x = min(O[k] + sp[k], tp) if dd == -1 else max(O[k], tp)
-                        pnl = (x - e) * dd * usd
+                        pnl = (x - e) * dd * usd * m
                         bal += pnl; closed.append((k, pnl, k0))
                     else:
                         keep.append([e, dd, k0])
+                if emaP and len(keep) < len(pos): keep = []      # EMA mode closes the whole basket
                 pos = keep
             if pos:
                 dr = pos[0][1]
@@ -86,12 +88,12 @@ def main():
                     lvl = last * (1 - dr * pct)
                 # floating at the bar's worst point -> stop-out check (50% margin level)
                 adverse = (H[k] + sp[k]) if dr == -1 else L[k]
-                fl = sum((adverse - e) * dd * usd for e, dd, _ in pos)
+                fl = sum((adverse - e) * dd * usd * lots[qi] for qi, (e, dd, _) in enumerate(pos))
                 worst_float = min(worst_float, fl)
-                margin = len(pos) * C[k] * 100 * 0.01 / 500
+                margin = sum(lots[qi] for qi in range(len(pos))) * C[k] * 100 * 0.01 / 500
                 if bal + fl <= 0.5 * margin:
-                    for e, dd, k0 in pos:
-                        pnl = (adverse - e) * dd * usd
+                    for qi, (e, dd, k0) in enumerate(pos):
+                        pnl = (adverse - e) * dd * usd * lots[qi]
                         closed.append((k, pnl, k0))
                     bal += fl
                     blow += 1; blow_t.append(k)
@@ -145,11 +147,9 @@ def main():
             say(f"first stop-out on {first:%Y-%m-%d}, {(first - B.index[0]).days} days after the start; "
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
-    run(N=20, wick=True, label="LIVE v2.03: age 20, wicks, TP 0.35%")
-    for P in (20, 50, 100):
-        run(N=20, wick=True, emaP=P, label=f"age 20, wicks, TP = touch EMA{P}")
-    run(N=20, wick=True, emaP=50, side=False, label="age 20, wicks, TP = touch EMA50, no side filter")
-    run(N=60, wick=True, emaP=50, label="age 60, wicks, TP = touch EMA50")
+    for lots in ((1, 1, 1, 1, 1), (1, 1, 2, 2, 3), (1, 1, 2, 3, 4), (1, 1, 2, 3, 5), (1, 1, 2, 4, 8)):
+        run(N=20, wick=True, emaP=50, side=False, lots=lots,
+            label="LIVE v2.05 lots " + "/".join(f"0.0{x}" if x < 10 else "0.10" for x in lots))
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
