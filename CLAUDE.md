@@ -44,6 +44,7 @@
 2. Touch `run_mt5.txt` and push. `.github/workflows/mt5.yml` compiles everything and writes `status/mt5_check.txt`. Check for `0 errors`.
 3. `git rm status/snap_TEST_*.png`, the test screenshots that the check commits.
 4. Cancel the running `mt5_trade.yml` run. Its "Next shift" step starts a new shift on the latest `main`. To force a fresh daily status, write any other text into `status/mt5_online.txt` before cancelling.
+- **Ghost shift (6 Nov):** run 42066887371 sat `queued` with no jobs from 5 Nov 16:40Z, cannot be cancelled (409), and nothing traded for ~13 h; the watchdog did not restart it. Fix: dispatch `mt5_trade.yml` again, the new run starts. After a deploy, always check that a shift is `in_progress`.
 - The GitHub CLI's `gh workflow run` may fail. Use REST instead: `gh api -X POST repos/<owner>/fizy-bot/actions/workflows/<file>/dispatches -f ref=main`, and `.../actions/runs/<id>/cancel`.
 
 ## Research (backtests on the broker's own data)
