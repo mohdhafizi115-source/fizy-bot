@@ -45,7 +45,9 @@ def main():
     yr = B.index.year.values
     say(f"XAUUSD M1 {B.index[0]:%Y-%m-%d} .. {B.index[-1]:%Y-%m-%d}, {n:,} bars, $ per 1.0 move at 0.01 lot = {usd:.2f}")
 
-    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label=""):
+    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False):
+        XH, XL = (H, L) if wick else (C, C)
+        lo0 = hi0 = 0
         bal, blow, blow_t = 100.0, 0, []
         pos = []                       # [entry, dir, k]
         closed = []                    # (k_exit, pnl$, k_entry)
@@ -96,18 +98,21 @@ def main():
             # ---- online zigzag (closed bar k) and the entry signal
             if newd[k]:
                 d_, ext, piv, fired = 0, k, k, False
+                lo0 = hi0 = k
                 continue
             if d_ == 0:
-                if C[k] >= C[piv] * (1 + pct): d_, ext, fired = 1, k, False
-                elif C[k] <= C[piv] * (1 - pct): d_, ext, fired = -1, k, False
+                if XL[k] < XL[lo0]: lo0 = k
+                if XH[k] > XH[hi0]: hi0 = k
+                if XH[k] >= XL[lo0] * (1 + pct): d_, piv, ext, fired = 1, lo0, k, False
+                elif XL[k] <= XH[hi0] * (1 - pct): d_, piv, ext, fired = -1, hi0, k, False
                 continue
             if d_ == 1:
-                if C[k] > C[ext]: ext = k
-                elif C[k] <= C[ext] * (1 - pct):
+                if XH[k] > XH[ext]: ext = k
+                elif XL[k] <= XH[ext] * (1 - pct):
                     piv, d_, ext, fired = ext, -1, k, False; continue
             else:
-                if C[k] < C[ext]: ext = k
-                elif C[k] >= C[ext] * (1 + pct):
+                if XL[k] < XL[ext]: ext = k
+                elif XH[k] >= XL[ext] * (1 + pct):
                     piv, d_, ext, fired = ext, 1, k, False; continue
             if not fired and k - piv >= N:
                 fired = True
@@ -136,9 +141,9 @@ def main():
             say(f"first stop-out on {first:%Y-%m-%d}, {(first - B.index[0]).days} days after the start; "
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
-    for N in (10, 15, 20, 30, 60):
-        run(N=N, label=f"leg age {N}, TP 0.35%")
-        run(N=N, tpp=0.0013, label=f"leg age {N}, TP 0.13% (~$5, scalp)")
+    for N in (20, 60):
+        run(N=N, label=f"leg age {N}, CLOSES (live v2.02 at 20)")
+        run(N=N, wick=True, label=f"leg age {N}, WICKS (owner: count from the wick)")
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
