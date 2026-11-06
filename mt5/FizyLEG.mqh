@@ -1,6 +1,7 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.04 (6 Nov 2026): TP = price touches  |
+//| included by FizyLB.mq5.  v2.05: no EMA side filter on entries.   |
+//| v2.04 (6 Nov 2026): TP = price touches                           |
 //| EMA 50 (whole basket, closed by the EA), owner's order. v2.03:    |
 //| the zigzag runs on                                               |
 //| WICKS (low of the bottom candle, high of the top candle), the     |
@@ -41,6 +42,7 @@ input long   InpLegMagic  = 260321;
 input double InpLegPct    = 0.10;     // zigzag reversal and add step, % of price
 input int    InpLegAge    = 20;       // leg age in M1 candles that triggers the first entry (60 until 6 Nov evening)
 input double InpLegTpPct  = 0.35;     // fixed TP distance, % of price (only when InpLegTpEma = 0)
+input bool   InpLegEmaSide = false;   // v2.05: entries no longer need the EMA on the far side (owner: the EMA is only the TP)
 input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when price touches this EMA(M1); 0 = fixed TP
 input int    InpLegMax    = 5;        // most positions open at once
 
@@ -233,7 +235,7 @@ void LegOnTimer()
    MqlDateTime st; TimeToStruct(r[j].time, st);
    int hm = st.hour * 60 + st.min;
    if(n > 0 || st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;
-   if(InpLegTpEma > 0)                                                          // the EMA must be on the far side to be a target
+   if(InpLegTpEma > 0 && InpLegEmaSide)                                         // optional: EMA on the far side (off: owner, 6 Nov)
    {
       double ev = LegEma();
       if(ev <= 0 || (d_ == 1 && r[j].close <= ev) || (d_ == -1 && r[j].close >= ev)) return;
