@@ -1,6 +1,9 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.01 (6 Nov 2026).                      |
+//| included by FizyLB.mq5.  v2.02 (6 Nov 2026): leg age 60 -> 20,   |
+//| the owner's order ("kekerapan dia dalam range 20-23 candle").     |
+//| Tested first (round 56c, research/legfade56.py): age 20 PF 0.80,  |
+//| $100 account stopped out 95 times in the last 12 months.          |
 //|                                                                  |
 //| THE OWNER'S ORDER (6 Nov): "ea akan baca pergerakan bilangan     |
 //| candle di m1, buat range. jika dah sampai tahap max, entry. jika |
@@ -31,7 +34,7 @@ input string InpLegSymbol = "XAUUSD";
 input double InpLegLot    = 0.01;
 input long   InpLegMagic  = 260321;
 input double InpLegPct    = 0.10;     // zigzag reversal and add step, % of price
-input int    InpLegAge    = 60;       // leg age in M1 candles that triggers the first entry
+input int    InpLegAge    = 20;       // leg age in M1 candles that triggers the first entry (60 until 6 Nov evening)
 input double InpLegTpPct  = 0.35;     // TP distance, % of price
 input int    InpLegMax    = 5;        // most positions open at once
 
