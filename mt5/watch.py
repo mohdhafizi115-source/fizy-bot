@@ -200,7 +200,7 @@ def status_block(kind, text):
     if kind == "LEG ONLINE":
         return ["🌊 M1 LEG FADE · XAUUSD · no SL (owner's rule)",
                 "▫️ A 0.10% leg 20 candles old is faded; +1 entry every 0.10% further, max 5",
-                f"▫️ TP 0.35% per position, no SL, no time exit · Lot {lot} · open {opened}"]
+                f"▫️ TP when price touches EMA 50, no SL, no time exit · Lot {lot} · open {opened}"]
     if kind == "SR ONLINE":
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",
                 f"▫️ Zone map at 01:30, 08:00, 15:00 broker ({myt('01:30', 'Europe/Athens')}, {myt('08:00', 'Europe/Athens')}, "
