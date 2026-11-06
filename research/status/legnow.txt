@@ -1,4 +1,4 @@
-XAUUSD M1 server day 2026-11-06 00:00:00, last closed bar 09:53 server = 15:53 MYT, close 4052.46
+XAUUSD M1 server day 2026-11-06 00:00:00, last closed bar 11:00 server = 17:00 MYT, close 4077.81
   DOWN 07:00 -> 07:19 MYT   19 candles  4089.46 -> 4072.80
   UP   07:19 -> 07:29 MYT   10 candles  4072.80 -> 4097.42
   DOWN 07:29 -> 07:39 MYT   10 candles  4097.42 -> 4088.19
@@ -54,4 +54,10 @@ XAUUSD M1 server day 2026-11-06 00:00:00, last closed bar 09:53 server = 15:53 M
   DOWN 15:00 -> 15:06 MYT    6 candles  4050.80 -> 4044.71
   UP   15:06 -> 15:23 MYT   17 candles  4044.71 -> 4050.80
   DOWN 15:23 -> 15:34 MYT   11 candles  4050.80 -> 4042.83
-NOW: UP leg from 15:34 MYT at 4042.83, age 19 candles, extreme so far 4052.46; EA fades it at 60 candles
+  UP   15:34 -> 15:55 MYT   21 candles  4042.83 -> 4056.44
+  DOWN 15:55 -> 16:01 MYT    6 candles  4056.44 -> 4050.28
+  UP   16:01 -> 16:23 MYT   22 candles  4050.28 -> 4069.59
+  DOWN 16:23 -> 16:29 MYT    6 candles  4069.59 -> 4064.58
+  UP   16:29 -> 16:50 MYT   21 candles  4064.58 -> 4074.69
+  DOWN 16:50 -> 16:51 MYT    1 candles  4074.69 -> 4069.12
+NOW: UP leg from 16:51 MYT at 4069.12, age 9 candles, extreme so far 4077.81; EA fades it at 60 candles
