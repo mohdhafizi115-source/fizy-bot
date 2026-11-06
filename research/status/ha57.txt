@@ -1,0 +1,33 @@
+/home/runner/work/fizy-bot/fizy-bot/research/ha57.py:47: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  sp = B.s.values.astype(float); wd = B.index.dayofweek.values; yr = B.index.year.values
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,338,376 bars, 1707 days
+
+=== A. Heikin Ashi M1: how many candles of the same colour in a row ===
+             runs  median   mean   p75   p90   p95   p99   max | shuffled median p90 p99
+   GREEN   289430       3    4.1     5     9    11    16    42 |      3    9   18
+     RED   289249       3    4.0     5     8    11    16    41 |      3    9   18
+runs per day: 339
+share of runs that reach N, and of those how many go 5 more (real / shuffled):
+  N=  5: reach 32.17% / 36.93%   go 5 more  22.4% /  26.4%
+  N= 10: reach  7.21% /  9.76%   go 5 more  22.1% /  26.8%
+  N= 15: reach  1.59% /  2.61%   go 5 more  21.9% /  25.9%
+  N= 20: reach  0.35% /  0.68%   go 5 more  22.2% /  27.9%
+  N= 30: reach  0.02% /  0.05%   go 5 more  18.6% /  34.3%
+
+=== B. The owner's structure (fade, adds every 0.10%, max 5, TP 0.35%, NO SL), $100 account ===
+HA run   8:   5627 closed (3.30/day) win 80.6% PF 0.81 net $ -12686  last12 $ -7614  STOP-OUTS 218 (last 12 m 97)
+HA run  11:   5134 closed (3.01/day) win 81.9% PF 0.87 net $  -5949  last12 $ +1997  STOP-OUTS 186 (last 12 m 40)
+HA run  16:   3867 closed (2.27/day) win 81.4% PF 0.83 net $  -7155  last12 $ -5431  STOP-OUTS 144 (last 12 m 60)
+HA run  20:   2516 closed (1.47/day) win 84.1% PF 1.05 net $  +1039  last12 $ +2031  STOP-OUTS  80 (last 12 m 20)
+
+=== C. Plain trade on the same signal (SL 1 ATR, TP 1 ATR, 60 min, one position) ===
+HA run   8 fade  :  68424 trades (40.08/day) win 48.3% PF 0.67 halves 0.48/0.77 net $ -13278
+HA run   8 follow:  68424 trades (40.08/day) win 46.2% PF 0.60 halves 0.43/0.69 net $ -16797
+HA run  11 fade  :  27748 trades (16.26/day) win 47.9% PF 0.66 halves 0.48/0.76 net $  -5490
+HA run  11 follow:  27748 trades (16.26/day) win 46.4% PF 0.60 halves 0.44/0.69 net $  -6776
+HA run  16 fade  :   6105 trades (3.58/day) win 48.3% PF 0.71 halves 0.51/0.81 net $  -1001
+HA run  16 follow:   6105 trades (3.58/day) win 45.7% PF 0.56 halves 0.42/0.63 net $  -1682
+HA run  20 fade  :   1809 trades (1.06/day) win 48.9% PF 0.73 halves 0.51/0.85 net $   -269
+HA run  20 follow:   1809 trades (1.06/day) win 46.1% PF 0.55 halves 0.44/0.60 net $   -507
+
+done in 23 s
