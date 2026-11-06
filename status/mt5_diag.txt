@@ -1,8 +1,8 @@
 secret MT5_LOGIN set: true, MT5_PASSWORD: true, MT5_SERVER: true, variable MT5_LOGIN: false
 installer size: 23784536
-installer exited: True after about 20 s, exit code 1
+installer exited: True after about 25 s, exit code 1
 processes after install: 
-install dir files: Bases:1, Config:1, Profiles:1, Sounds:1, MetaEditor64.exe:69965496, metatester64.exe:23976944, Terminal.ico:410598, terminal64.exe:124048856, uninstall.exe:23784536
+install dir files: Bases:1, Config:1, Profiles:1, Sounds:1, MetaEditor64.exe:70668984, metatester64.exe:24095208, Terminal.ico:410598, terminal64.exe:130977736, uninstall.exe:23784536
 terminal started by hand: alive True, window 'MetaTrader 5 - Netting - EURUSD,H1'
 dirs after start: Bases, Config, llm-agent, logs, MQL5, Profiles, Sounds, Tester
 appdata terminals: Common, Commun, D0E820
