@@ -1,0 +1,92 @@
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,260,896 bars (rollover dropped). MYT = server + 6 h in winter.
+
+=== A. How many M1 candles of the same colour in a row? ===
+Share of runs of each length. 'random' is what a coin flip gives (each next candle 50/50).
+green candles 49.4%, red 49.0%, doji 1.6%
+
+  run length  green real  green shuf  red real  red shuf  coin flip
+           1      50.84%      50.69%    51.18%    50.97%     50.00%
+           2      25.40%      25.04%    25.32%    25.06%     25.00%
+           3      12.28%      12.25%    12.28%    12.18%     12.50%
+           4       5.96%       6.09%     5.93%     6.00%      6.25%
+           5       2.89%       2.99%     2.78%     2.96%      3.12%
+           6       1.36%       1.49%     1.33%     1.46%      1.56%
+           7       0.66%       0.74%     0.62%     0.69%      0.78%
+           8       0.32%       0.36%     0.29%     0.35%      0.39%
+        >=10       0.14%       0.16%     0.12%     0.16%      0.20%
+
+average run: green 1.95 candles (shuffled 1.97), red 1.94 (shuffled 1.96); longest green 20, longest red 19
+
+=== B. Trend legs (zigzag): swing low -> swing high = BUY leg, high -> low = SELL leg ===
+
+--- reversal threshold 0.05% of price (about $2 at $4,000) ---
+legs per day: real 117.2, shuffled 115.2
+                  n  candles: median   mean   p75   p90  $ median   $ p90 |  shuffled: candles median   mean  $ median
+   BUY leg   100027                7   11.1    14    25      2.82    8.10 |                         8   11.5      2.92
+  SELL leg   100015                7   10.8    13    24      2.79    8.01 |                         8   11.2      2.90
+speed ($ per candle): BUY 0.450, SELL 0.448 (shuffled 0.371)
+
+--- reversal threshold 0.10% of price (about $4 at $4,000) ---
+legs per day: real 47.6, shuffled 48.4
+                  n  candles: median   mean   p75   p90  $ median   $ p90 |  shuffled: candles median   mean  $ median
+   BUY leg    40652               14   26.6    32    63      5.28   13.87 |                        18   26.9      5.36
+  SELL leg    40587               14   25.2    30    59      5.26   13.90 |                        17   26.1      5.34
+speed ($ per candle): BUY 0.382, SELL 0.394 (shuffled 0.301)
+
+--- reversal threshold 0.20% of price (about $8 at $4,000) ---
+legs per day: real 15.7, shuffled 16.7
+                  n  candles: median   mean   p75   p90  $ median   $ p90 |  shuffled: candles median   mean  $ median
+   BUY leg    13428               37   73.9    87   177     10.36   26.09 |                        46   74.0     10.31
+  SELL leg    13440               35   68.7    80   164     10.32   26.06 |                        45   70.6     10.17
+speed ($ per candle): BUY 0.287, SELL 0.305 (shuffled 0.220)
+
+=== C. If a leg has ALREADY lasted N candles, how often does it last 10 more? (0.10% legs) ===
+This is the only part that could matter for trading: does a long leg tend to keep going?
+ already N  BUY real  BUY shuf  SELL real  SELL shuf
+         5     59.3%     64.1%      57.9%      63.4%
+        10     62.7%     64.2%      60.5%      63.2%
+        20     67.7%     65.5%      66.4%      65.0%
+        30     71.8%     67.7%      69.2%      67.3%
+        45     75.5%     70.7%      75.3%      70.2%
+        60     78.2%     71.8%      79.2%      71.3%
+        90     79.0%     76.1%      78.7%      74.1%
+
+=== D. The day's pattern: legs (0.10%) by the MYT hour they START ===
+legs/day = how many legs start in that hour per trading day; buy% = share that are BUY legs;
+candles = median leg length; $ = median size. Last column: 2026 only, to see if it holds now.
+ MYT hour  legs/day   buy%  candles   $ med  buy cand  sell cand |  2026 legs/day  2026 buy%
+      7:00      1.32   51.7       68    4.91        70         65 |           2.11      49.5
+      8:00      1.11   49.3       14    6.37        13         14 |           3.32      50.3
+      9:00      1.97   50.7       14    6.07        15         13 |           5.20      50.3
+     10:00      2.27   49.7       15    5.77        14         15 |           5.31      50.3
+     11:00      1.66   49.6       21    5.64        21         21 |           3.82      49.6
+     12:00      1.18   49.5       28    5.46        27         28 |           2.76      49.4
+     13:00      1.20   51.7       26    5.54        28         24 |           2.77      51.0
+     14:00      1.76   49.5       19    5.52        19         19 |           3.93      50.1
+     15:00      2.16   50.1       18    5.09        18         18 |           3.82      50.5
+     16:00      2.36   49.4       17    4.99        17         18 |           3.89      49.5
+     17:00      2.06   50.7       19    4.95        20         19 |           3.58      49.7
+     18:00      1.84   50.1       20    5.11        20         20 |           3.33      51.0
+     19:00      1.71   49.2       21    5.04        22         20 |           3.05      48.8
+     20:00      2.17   50.6       16    5.02        16         16 |           3.62      49.7
+     21:00      4.12   50.0        9    5.11         9          9 |           5.74      50.4
+     22:00      4.72   49.3        8    5.29         8          9 |           7.00      49.6
+     23:00      4.36   51.1       10    5.14        10          9 |           6.67      50.1
+      0:00      2.97   49.6       13    5.16        13         13 |           5.00      50.3
+      1:00      2.07   50.1       17    5.16        17         17 |           3.76      50.1
+      2:00      1.84   49.6       17    5.06        17         16 |           3.55      50.1
+      3:00      1.57   49.9       13    5.32        13         13 |           3.50      50.6
+      4:00      1.02   50.3       11    5.37        12         11 |           2.78      50.4
+      5:00      0.15   48.7        8    6.47         8          8 |           0.58      51.6
+
+=== E. by year (0.10% legs): has the pattern changed? ===
+  year  legs/day   buy%  buy candles  sell candles   buy $  sell $
+  2020      54.9   50.0           14            13    3.60    3.51
+  2021      36.2   49.9           19            19    3.39    3.44
+  2022      40.3   50.0           18            18    3.44    3.48
+  2023      29.5   50.3           23            22    3.62    3.63
+  2024      36.5   50.1           20            18    4.62    4.58
+  2025      54.5   50.0           14            13    7.04    6.84
+  2026      89.1   50.1            9             9    9.59    9.64
+
+done in 21 s
