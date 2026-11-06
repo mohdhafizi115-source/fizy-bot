@@ -1,0 +1,26 @@
+/home/runner/work/fizy-bot/fizy-bot/research/legfade56.py:44: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = B.index.dayofweek.values
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,338,376 bars, $ per 1.0 move at 0.01 lot = 1.00
+
+--- THE OWNER'S RULE: zigzag 0.10%, leg age 60, TP 0.35%, max 5 entries ---
+closed trades 3,499 (2.05 a day), win 84.4%, PF 1.01, net $+380 (swap included), avg win $10.31, avg loss $-54.94
+ACCOUNT $100 BLOWN (stop-out) 110 times in 7 years; worst day $-1903.07; worst floating loss $-2618.61; hold median 6 h, p90 55 h, max 3434 h
+by year: 2020: net $+690, blown 13x  2021: net $+2170, blown 0x  2022: net $+770, blown 0x  2023: net $+625, blown 0x  2024: net $-2549, blown 16x  2025: net $-4849, blown 64x  2026: net $+3524, blown 17x
+last 12 months: 871 trades, net $+2722, blown 29x
+first stop-out on 2020-03-31, 1 days after the start; median days between stop-outs 1.0
+
+--- same, max 3 entries: zigzag 0.10%, leg age 60, TP 0.35%, max 3 entries ---
+closed trades 1,940 (1.14 a day), win 86.9%, PF 0.89, net $-2,192 (swap included), avg win $10.41, avg loss $-77.39
+ACCOUNT $100 BLOWN (stop-out) 85 times in 7 years; worst day $-1079.22; worst floating loss $-1583.68; hold median 7 h, p90 69 h, max 3434 h
+by year: 2020: net $+150, blown 11x  2021: net $+1276, blown 0x  2022: net $+426, blown 0x  2023: net $+332, blown 0x  2024: net $-791, blown 5x  2025: net $-3913, blown 47x  2026: net $+329, blown 22x
+last 12 months: 529 trades, net $-21, blown 28x
+first stop-out on 2020-03-31, 1 days after the start; median days between stop-outs 2.5
+
+--- same, TP at a median leg (~$5): zigzag 0.10%, leg age 60, TP 0.13%, max 5 entries ---
+closed trades 7,097 (4.16 a day), win 93.1%, PF 0.89, net $-3,129 (swap included), avg win $3.76, avg loss $-57.14
+ACCOUNT $100 BLOWN (stop-out) 98 times in 7 years; worst day $-2656.91; worst floating loss $-2687.61; hold median 1 h, p90 17 h, max 4237 h
+by year: 2020: net $+1549, blown 7x  2021: net $+2254, blown 0x  2022: net $+630, blown 0x  2023: net $+1271, blown 0x  2024: net $-3764, blown 18x  2025: net $-4163, blown 52x  2026: net $-906, blown 21x
+last 12 months: 1770 trades, net $-1854, blown 31x
+first stop-out on 2020-04-03, 4 days after the start; median days between stop-outs 3.0
+
+done in 28 s
