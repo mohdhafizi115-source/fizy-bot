@@ -1,0 +1,201 @@
+//+------------------------------------------------------------------+
+//| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
+//| included by FizyLB.mq5.  v2.01 (6 Nov 2026).                      |
+//|                                                                  |
+//| THE OWNER'S ORDER (6 Nov): "ea akan baca pergerakan bilangan     |
+//| candle di m1, buat range. jika dah sampai tahap max, entry. jika |
+//| naik lagi entry lagi. TP di max perjalanan seterusnya. tiada sl" |
+//| He chose: fade the leg (SELL an up leg, BUY a down leg), at most  |
+//| 5 entries of the same lot (no doubling). Built on his explicit    |
+//| instruction although it has no stop loss and round 55 found no    |
+//| edge in leg age; round 56 (research/legfade56.py) tests this exact |
+//| rule on a $100 account, see CLAUDE.md.                             |
+//|                                                                  |
+//| RULES                                                            |
+//|  leg     online zigzag of InpLegPct (0.10%, ~$4) on today's       |
+//|          closed M1 closes (server day), as in research/legs54.py  |
+//|  entry   when the current leg is InpLegAge (60) candles old       |
+//|          (round 54: 90% of legs are shorter), fade it at market,  |
+//|          01:30-22:00 server, weekdays, only when no LEG position  |
+//|          is open                                                  |
+//|  adds    every time price runs another InpLegPct beyond the LAST  |
+//|          entry, one more in the same direction, up to InpLegMax   |
+//|  TP      each position InpLegTpPct (0.35%, ~$14) back the other   |
+//|          way: round 54's 90th-percentile leg size                 |
+//|  SL      NONE (owner's order). No time exit; holds overnight and  |
+//|          pays swap. Only the broker's stop-out limits the loss.   |
+//| Events go to MQL5\Files\leg_events.txt (forwarded to Telegram).   |
+//+------------------------------------------------------------------+
+input bool   InpLegOn     = true;
+input string InpLegSymbol = "XAUUSD";
+input double InpLegLot    = 0.01;
+input long   InpLegMagic  = 260321;
+input double InpLegPct    = 0.10;     // zigzag reversal and add step, % of price
+input int    InpLegAge    = 60;       // leg age in M1 candles that triggers the first entry
+input double InpLegTpPct  = 0.35;     // TP distance, % of price
+input int    InpLegMax    = 5;        // most positions open at once
+
+string   lg_sym = "";
+bool     lg_ready = false;
+datetime lg_bar = 0;
+ulong    lg_known[];
+
+void LegEvent(string msg)
+{
+   int h = FileOpen("leg_events.txt", FILE_READ | FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_SHARE_READ | FILE_SHARE_WRITE);
+   if(h == INVALID_HANDLE) { Print("leg event file error ", GetLastError()); return; }
+   FileSeek(h, 0, SEEK_END);
+   FileWriteString(h, TimeToString(TimeCurrent(), TIME_DATE | TIME_MINUTES) + " | " + msg + "\r\n");
+   FileClose(h);
+   Print("LEG EVENT ", msg);
+}
+
+// open LEG positions: count, direction of the basket (+1 buy / -1 sell) and the price of the newest entry
+int LegBasket(int &dir, double &last)
+{
+   int n = 0; datetime newest = 0; dir = 0; last = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      ulong t = PositionGetTicket(i);
+      if(t == 0 || PositionGetInteger(POSITION_MAGIC) != InpLegMagic || PositionGetString(POSITION_SYMBOL) != lg_sym) continue;
+      n++;
+      bool known = false;
+      for(int q = 0; q < ArraySize(lg_known); q++) if(lg_known[q] == t) known = true;
+      if(!known) { int m = ArraySize(lg_known); ArrayResize(lg_known, m + 1); lg_known[m] = t; }
+      dir = PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? 1 : -1;
+      datetime ot = (datetime)PositionGetInteger(POSITION_TIME);
+      if(ot >= newest) { newest = ot; last = PositionGetDouble(POSITION_PRICE_OPEN); }
+   }
+   return n;
+}
+
+void LegInit()
+{
+   lg_ready = true;
+   lg_sym = SymResolve(InpLegSymbol);
+   if(lg_sym == "") { LegEvent("ERROR | M1 leg fade: symbol " + InpLegSymbol + " not found"); return; }
+   SymbolSelect(lg_sym, true);
+   int dir; double last;
+   int n = LegBasket(dir, last);
+   LegEvent(StringFormat("LEG ONLINE | %s M1: a %.2f%% zigzag leg %d candles old is faded at market; another entry "
+                         "every %.2f%% further, up to %d; TP %.2f%% back per position; NO stop loss (owner's rule), "
+                         "lot %.2f | %d open position(s)", lg_sym, InpLegPct, InpLegAge, InpLegPct, InpLegMax,
+                         InpLegTpPct, InpLegLot, n));
+}
+
+void LegReportClosed(ulong pos)
+{
+   if(!HistorySelectByPosition(pos)) return;
+   double profit = 0, outPx = 0, inPx = 0; long reason = -1, typ = -1;
+   for(int i = 0; i < HistoryDealsTotal(); i++)
+   {
+      ulong d = HistoryDealGetTicket(i);
+      if(d == 0) continue;
+      profit += HistoryDealGetDouble(d, DEAL_PROFIT) + HistoryDealGetDouble(d, DEAL_SWAP) + HistoryDealGetDouble(d, DEAL_COMMISSION);
+      if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_IN) { inPx = HistoryDealGetDouble(d, DEAL_PRICE); typ = HistoryDealGetInteger(d, DEAL_TYPE); }
+      if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_OUT) { outPx = HistoryDealGetDouble(d, DEAL_PRICE); reason = HistoryDealGetInteger(d, DEAL_REASON); }
+   }
+   if(outPx == 0) return;
+   string what = reason == DEAL_REASON_TP ? "LEG TP HIT" : (reason == DEAL_REASON_SO ? "LEG STOP OUT" : "LEG CLOSED");
+   string why = reason == DEAL_REASON_TP ? "take profit" : (reason == DEAL_REASON_SO ? "broker stop-out, margin gone" : "closed outside the EA");
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
+   string fn = Snap(lg_sym, PERIOD_M1, "LGX", lv, lc, lb, 0, 0, 0, 0, false);
+   LegEvent(StringFormat("%s %s | %s from %s closed at %s (%s), profit $%.2f", what, lg_sym, typ == DEAL_TYPE_BUY ? "BUY" : "SELL",
+                         PriceStr(lg_sym, inPx), PriceStr(lg_sym, outPx), why, profit) + Img(fn));
+}
+
+bool LegOpen(int dir, int num, string why)
+{
+   MqlTick tk;
+   if(!SymbolInfoTick(lg_sym, tk)) return false;
+   int dg = (int)SymbolInfoInteger(lg_sym, SYMBOL_DIGITS);
+   double px = dir == 1 ? tk.ask : tk.bid;
+   double tp = NormalizeDouble(px * (1.0 + dir * InpLegTpPct / 100.0), dg);
+   double mn = SymbolInfoDouble(lg_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(lg_sym, SYMBOL_VOLUME_STEP);
+   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpLegLot / sv + 1e-9) * sv), 2);
+   trade.SetExpertMagicNumber(InpLegMagic); trade.SetTypeFillingBySymbol(lg_sym);
+   bool ok = dir == 1 ? trade.Buy(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num))
+                      : trade.Sell(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num));
+   if(!ok) LegEvent(StringFormat("ERROR | leg %s order failed: %d %s", lg_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+   if(!ok) return false;
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = px; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = tp; lc[1] = clrSeaGreen; lb[1] = "TP";
+   string fn = Snap(lg_sym, PERIOD_M1, "LGE", lv, lc, lb, 0, 0, 0, 0, false);
+   LegEvent(StringFormat("LEG %s %s | entry %d of %d | %s | %s %.2f lot at %s, TP %s, no SL", dir == 1 ? "BUY" : "SELL",
+                         lg_sym, num, InpLegMax, why, dir == 1 ? "BUY" : "SELL", lot, PriceStr(lg_sym, px),
+                         PriceStr(lg_sym, tp)) + Img(fn));
+   return true;
+}
+
+void LegOnTimer()
+{
+   if(!InpLegOn) return;
+   if(!lg_ready) LegInit();
+   if(lg_sym == "") return;
+   for(int q = ArraySize(lg_known) - 1; q >= 0; q--)
+      if(!PositionSelectByTicket(lg_known[q])) { LegReportClosed(lg_known[q]); ArrayRemove(lg_known, q, 1); }
+   MqlTick tk;
+   datetime now = TimeCurrent();
+   if(!SymbolInfoTick(lg_sym, tk) || now - tk.time > 600) return;              // market closed
+   MqlDateTime ns; TimeToStruct(now, ns);
+   int nowhm = ns.hour * 60 + ns.min;
+   int dir; double last;
+   int n = LegBasket(dir, last);
+
+   // ---- adds: price has run another step beyond the newest entry, against the basket
+   if(n > 0 && n < InpLegMax && nowhm >= 90 && nowhm < 1425 && last > 0)
+   {
+      double step = last * InpLegPct / 100.0;
+      if((dir == -1 && tk.bid >= last + step) || (dir == 1 && tk.ask <= last - step))
+      {
+         LegOpen(dir, n + 1, StringFormat("price ran another %.2f%% beyond the last entry %s", InpLegPct, PriceStr(lg_sym, last)));
+         return;
+      }
+   }
+
+   // ---- first entry: once per new M1 bar, rebuild today's zigzag from the closed bars
+   datetime b0 = iTime(lg_sym, PERIOD_M1, 0);
+   if(b0 == 0 || b0 == lg_bar) return;
+   MqlDateTime d0; TimeToStruct(b0, d0); d0.hour = 0; d0.min = 0; d0.sec = 0;
+   datetime dayStart = StructToTime(d0);
+   MqlRates r[];
+   int m = CopyRates(lg_sym, PERIOD_M1, dayStart, b0 - 1, r);                   // today's closed bars
+   if(m < 2) { lg_bar = b0; return; }
+   lg_bar = b0;
+   double pct = InpLegPct / 100.0;
+   int d_ = 0, ext = 0, piv = 0;
+   bool fired = false, fireNow = false;
+   for(int k = 1; k < m; k++)                                                    // same order as research/legfade56.py
+   {
+      double c = r[k].close;
+      fireNow = false;
+      if(d_ == 0)
+      {
+         if(c >= r[piv].close * (1 + pct)) { d_ = 1; ext = k; fired = false; }
+         else if(c <= r[piv].close * (1 - pct)) { d_ = -1; ext = k; fired = false; }
+         continue;
+      }
+      if(d_ == 1)
+      {
+         if(c > r[ext].close) ext = k;
+         else if(c <= r[ext].close * (1 - pct)) { piv = ext; d_ = -1; ext = k; fired = false; continue; }
+      }
+      else
+      {
+         if(c < r[ext].close) ext = k;
+         else if(c >= r[ext].close * (1 + pct)) { piv = ext; d_ = 1; ext = k; fired = false; continue; }
+      }
+      if(!fired && k - piv >= InpLegAge) { fired = true; fireNow = true; }
+   }
+   int j = m - 1;
+   if(!fireNow) return;                                                         // fires once per leg, the bar it turns 60
+   MqlDateTime st; TimeToStruct(r[j].time, st);
+   int hm = st.hour * 60 + st.min;
+   if(n > 0 || st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;
+   double move = MathAbs(r[j].close - r[piv].close);
+   LegOpen(-d_, 1, StringFormat("the %s leg from %s is %d candles old (+%s), faded", d_ == 1 ? "UP" : "DOWN",
+                                PriceStr(lg_sym, r[piv].close), j - piv, DoubleToString(move, 2)));
+}
+//+------------------------------------------------------------------+

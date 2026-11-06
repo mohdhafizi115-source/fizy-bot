@@ -11,7 +11,7 @@ name: MT5 auto trader
 # Switch: mt5_trade.txt line 1 "on" / "off", lines 2-7 the lots (London [off], NR7 [off], Gotobi, gold auction,
 # month-end fix, volatility breakout [off]), line 8 "on" / "off" for the gold S/R zone alerts (no trading, off),
 # line 9 the lot of the USDJPY day trades [off], line 10 the gold Kumo lot, line 11 the gold Tenkan/Kijun lot,
-# line 12 the gold M1 spike-fade lot. Demo accounts only (the EA refuses others).
+# line 12 the gold M1 spike-fade lot, line 13 the gold M1 leg-fade lot. Demo accounts only (the EA refuses others).
 on:
   workflow_dispatch:
     inputs:
@@ -57,6 +57,7 @@ jobs:
           klot=$(sed -n 10p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           tlot=$(sed -n 11p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           klot2=$(sed -n 12p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          llot=$(sed -n 13p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
           echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "nlot=${nlot:-0.01}" >> "$GITHUB_OUTPUT"
@@ -69,6 +70,7 @@ jobs:
           echo "klot=${klot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "tlot=${tlot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "slot=${klot2:-0.01}" >> "$GITHUB_OUTPUT"
+          echo "llot=${llot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, NR7 lot ${nlot:-0.01}, Gotobi lot ${glot:-0.01}, gold auction lot ${alot:-0.01}"
 
       - name: Install packages
@@ -91,6 +93,7 @@ jobs:
           KLOT: ${{ steps.sw.outputs.klot }}
           TLOT: ${{ steps.sw.outputs.tlot }}
           SLOT: ${{ steps.sw.outputs.slot }}
+          LLOT: ${{ steps.sw.outputs.llot }}
         run: |
           $ErrorActionPreference = "Continue"
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
@@ -124,6 +127,7 @@ jobs:
           (Get-Content mt5\FizyKUMO.mqh) -replace '^input double InpKumoLot\s*=.*;', "input double InpKumoLot     = $env:KLOT;" | Set-Content "$dir\MQL5\Experts\FizyKUMO.mqh" -Encoding utf8
           (Get-Content mt5\FizyTK.mqh) -replace '^input double InpTkLot\s*=.*;', "input double InpTkLot     = $env:TLOT;" | Set-Content "$dir\MQL5\Experts\FizyTK.mqh" -Encoding utf8
           (Get-Content mt5\FizySPK.mqh) -replace '^input double InpSpkLot\s*=.*;', "input double InpSpkLot       = $env:SLOT;" | Set-Content "$dir\MQL5\Experts\FizySPK.mqh" -Encoding utf8
+          (Get-Content mt5\FizyLEG.mqh) -replace '^input double InpLegLot\s*=.*;', "input double InpLegLot    = $env:LLOT;" | Set-Content "$dir\MQL5\Experts\FizyLEG.mqh" -Encoding utf8
           (Get-Content mt5\FizyDTJ.mqh) -replace '^input double InpDtjLot\s*=.*;', "input double InpDtjLot      = $env:DLOT;" | Set-Content "$dir\MQL5\Experts\FizyDTJ.mqh" -Encoding utf8
           (Get-Content mt5\FizySR.mqh) -replace '^input bool   InpSrOn\s*=.*;', "input bool   InpSrOn          = $srOn;" -replace '^input bool   InpSrMapOnStart\s*=.*;', "input bool   InpSrMapOnStart  = $srMap;" | Set-Content "$dir\MQL5\Experts\FizySR.mqh" -Encoding utf8
           $m = "${{ github.event.inputs.minutes }}"
