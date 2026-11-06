@@ -1,6 +1,8 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.02 (6 Nov 2026): leg age 60 -> 20,   |
+//| included by FizyLB.mq5.  v2.03 (6 Nov 2026): the zigzag runs on  |
+//| WICKS (low of the bottom candle, high of the top candle), the     |
+//| owner's way of counting ("kira dari wick"). v2.02: age 60 -> 20,  |
 //| the owner's order ("kekerapan dia dalam range 20-23 candle").     |
 //| Tested first (round 56c, research/legfade56.py): age 20 PF 0.80,  |
 //| $100 account stopped out 95 times in the last 12 months.          |
@@ -16,7 +18,8 @@
 //|                                                                  |
 //| RULES                                                            |
 //|  leg     online zigzag of InpLegPct (0.10%, ~$4) on today's       |
-//|          closed M1 closes (server day), as in research/legs54.py  |
+//|          closed M1 highs / lows (server day): a leg starts at the |
+//|          lowest wick (up) or highest wick (down)                  |
 //|  entry   when the current leg is InpLegAge (60) candles old       |
 //|          (round 54: 90% of legs are shorter), fade it at market,  |
 //|          01:30-22:00 server, weekdays, only when no LEG position  |
@@ -168,27 +171,28 @@ void LegOnTimer()
    if(m < 2) { lg_bar = b0; return; }
    lg_bar = b0;
    double pct = InpLegPct / 100.0;
-   int d_ = 0, ext = 0, piv = 0;
+   int d_ = 0, ext = 0, piv = 0, lo0 = 0, hi0 = 0;
    bool fired = false, fireNow = false;
-   for(int k = 1; k < m; k++)                                                    // same order as research/legfade56.py
+   for(int k = 1; k < m; k++)                                                    // same order as research/legfade56.py (wick mode)
    {
-      double c = r[k].close;
       fireNow = false;
       if(d_ == 0)
       {
-         if(c >= r[piv].close * (1 + pct)) { d_ = 1; ext = k; fired = false; }
-         else if(c <= r[piv].close * (1 - pct)) { d_ = -1; ext = k; fired = false; }
+         if(r[k].low < r[lo0].low) lo0 = k;
+         if(r[k].high > r[hi0].high) hi0 = k;
+         if(r[k].high >= r[lo0].low * (1 + pct)) { d_ = 1; piv = lo0; ext = k; fired = false; }
+         else if(r[k].low <= r[hi0].high * (1 - pct)) { d_ = -1; piv = hi0; ext = k; fired = false; }
          continue;
       }
       if(d_ == 1)
       {
-         if(c > r[ext].close) ext = k;
-         else if(c <= r[ext].close * (1 - pct)) { piv = ext; d_ = -1; ext = k; fired = false; continue; }
+         if(r[k].high > r[ext].high) ext = k;
+         else if(r[k].low <= r[ext].high * (1 - pct)) { piv = ext; d_ = -1; ext = k; fired = false; continue; }
       }
       else
       {
-         if(c < r[ext].close) ext = k;
-         else if(c >= r[ext].close * (1 + pct)) { piv = ext; d_ = 1; ext = k; fired = false; continue; }
+         if(r[k].low < r[ext].low) ext = k;
+         else if(r[k].high >= r[ext].low * (1 + pct)) { piv = ext; d_ = 1; ext = k; fired = false; continue; }
       }
       if(!fired && k - piv >= InpLegAge) { fired = true; fireNow = true; }
    }
@@ -197,8 +201,9 @@ void LegOnTimer()
    MqlDateTime st; TimeToStruct(r[j].time, st);
    int hm = st.hour * 60 + st.min;
    if(n > 0 || st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;
-   double move = MathAbs(r[j].close - r[piv].close);
+   double pivPx = d_ == 1 ? r[piv].low : r[piv].high;
+   double move = MathAbs(r[j].close - pivPx);
    LegOpen(-d_, 1, StringFormat("the %s leg from %s is %d candles old (+%s), faded", d_ == 1 ? "UP" : "DOWN",
-                                PriceStr(lg_sym, r[piv].close), j - piv, DoubleToString(move, 2)));
+                                PriceStr(lg_sym, pivPx), j - piv, DoubleToString(move, 2)));
 }
 //+------------------------------------------------------------------+
