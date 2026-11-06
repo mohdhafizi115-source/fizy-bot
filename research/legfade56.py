@@ -45,8 +45,10 @@ def main():
     yr = B.index.year.values
     say(f"XAUUSD M1 {B.index[0]:%Y-%m-%d} .. {B.index[-1]:%Y-%m-%d}, {n:,} bars, $ per 1.0 move at 0.01 lot = {usd:.2f}")
 
-    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False):
+    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True):
         XH, XL = (H, L) if wick else (C, C)
+        EV = pd.Series(C).ewm(span=emaP, adjust=False).mean().values if emaP else None
+        EP = np.r_[np.nan, EV[:-1]] if emaP else None     # EMA of the last CLOSED bar, known at bar k
         lo0 = hi0 = 0
         bal, blow, blow_t = 100.0, 0, []
         pos = []                       # [entry, dir, k]
@@ -62,7 +64,7 @@ def main():
             if pos:
                 keep = []
                 for e, dd, k0 in pos:
-                    tp = e * (1 + dd * tpp)
+                    tp = e * (1 + dd * tpp) if not emaP else EP[k]
                     # sell closes at ask: bar low + spread <= tp ; buy closes at bid: high >= tp
                     hit = (L[k] + sp[k] <= tp) if dd == -1 else (H[k] >= tp)
                     if hit:
@@ -118,6 +120,8 @@ def main():
                 fired = True
                 if not pos and k + 1 < n and not newd[k + 1] and 90 <= hm[k] < 1320 and wd[k] < 5:
                     dr = -d_
+                    if emaP and side and ((dr == -1 and C[k] <= EV[k]) or (dr == 1 and C[k] >= EV[k])):
+                        continue                                        # TP at the EMA needs price on the far side
                     e = O[k + 1] if dr == -1 else O[k + 1] + sp[k + 1]    # sell at bid, buy at ask
                     pos.append([e, dr, k + 1])
         T = pd.DataFrame(closed, columns=["k", "net", "k0"])
@@ -127,7 +131,7 @@ def main():
         daily = T.groupby(T.t.dt.normalize()).net.sum()
         held = (T.k - T.k0) / 60.0
         by = pd.Series(blow_t, dtype=int).map(lambda q: yr[q]).value_counts().sort_index() if blow_t else pd.Series(dtype=int)
-        say(f"\n--- {label}: zigzag {pct * 100:.2f}%, leg age {N}, TP {tpp * 100:.2f}%, max {maxn} entries ---")
+        say(f"\n--- {label}: zigzag {pct * 100:.2f}%, leg age {N}, TP {('EMA' + str(emaP)) if emaP else f'{tpp * 100:.2f}%'}, max {maxn} entries ---")
         say(f"closed trades {len(T):,} ({len(T) / len(np.unique(day)):.2f} a day), win {100 * (T.net > 0).mean():.1f}%, "
             f"PF {g / ls if ls else 0:.2f}, net ${T.net.sum():+,.0f} (swap included), avg win ${T.net[T.net > 0].mean():.2f}, "
             f"avg loss ${T.net[T.net < 0].mean():.2f}")
@@ -141,9 +145,11 @@ def main():
             say(f"first stop-out on {first:%Y-%m-%d}, {(first - B.index[0]).days} days after the start; "
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
-    for N in (20, 60):
-        run(N=N, label=f"leg age {N}, CLOSES (live v2.02 at 20)")
-        run(N=N, wick=True, label=f"leg age {N}, WICKS (owner: count from the wick)")
+    run(N=20, wick=True, label="LIVE v2.03: age 20, wicks, TP 0.35%")
+    for P in (20, 50, 100):
+        run(N=20, wick=True, emaP=P, label=f"age 20, wicks, TP = touch EMA{P}")
+    run(N=20, wick=True, emaP=50, side=False, label="age 20, wicks, TP = touch EMA50, no side filter")
+    run(N=60, wick=True, emaP=50, label="age 60, wicks, TP = touch EMA50")
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
