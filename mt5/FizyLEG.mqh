@@ -1,6 +1,7 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.05: no EMA side filter on entries.   |
+//| included by FizyLB.mq5.  v2.06: lots 1/1/2/2/3 x base by entry   |
+//| number (owner's order; round 56f).  v2.05: no EMA side filter.   |
 //| v2.04 (6 Nov 2026): TP = price touches                           |
 //| EMA 50 (whole basket, closed by the EA), owner's order. v2.03:    |
 //| the zigzag runs on                                               |
@@ -45,6 +46,7 @@ input double InpLegTpPct  = 0.35;     // fixed TP distance, % of price (only whe
 input bool   InpLegEmaSide = false;   // v2.05: entries no longer need the EMA on the far side (owner: the EMA is only the TP)
 input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when price touches this EMA(M1); 0 = fixed TP
 input int    InpLegMax    = 5;        // most positions open at once
+input string InpLegMult   = "1,1,2,2,3"; // v2.06: lot of entry 1..5 = InpLegLot x this (owner: bigger lots from entry 3 to cover the floating ones)
 
 string   lg_sym = "";
 bool     lg_ready = false;
@@ -135,7 +137,11 @@ bool LegOpen(int dir, int num, string why)
    double px = dir == 1 ? tk.ask : tk.bid;
    double tp = InpLegTpEma > 0 ? 0 : NormalizeDouble(px * (1.0 + dir * InpLegTpPct / 100.0), dg);   // EMA mode: the EA closes
    double mn = SymbolInfoDouble(lg_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(lg_sym, SYMBOL_VOLUME_STEP);
-   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpLegLot / sv + 1e-9) * sv), 2);
+   string mp[]; double mult = 1;
+   int nm = StringSplit(InpLegMult, ',', mp);
+   if(num >= 1 && num <= nm) mult = StringToDouble(mp[num - 1]);
+   if(mult <= 0) mult = 1;
+   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpLegLot * mult / sv + 1e-9) * sv), 2);
    trade.SetExpertMagicNumber(InpLegMagic); trade.SetTypeFillingBySymbol(lg_sym);
    bool ok = dir == 1 ? trade.Buy(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num))
                       : trade.Sell(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num));

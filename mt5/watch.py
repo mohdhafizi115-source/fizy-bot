@@ -199,7 +199,7 @@ def status_block(kind, text):
                 f"▫️ SL under the wick, TP back at the spike's open, out after 45 min · Lot {lot} · open {opened}"]
     if kind == "LEG ONLINE":
         return ["🌊 M1 LEG FADE · XAUUSD · no SL (owner's rule)",
-                "▫️ A 0.10% leg 20 candles old is faded; +1 entry every 0.10% further, max 5",
+                "▫️ A 0.10% leg 20 candles old is faded; +1 entry every 0.10% further, max 5, lots 1/1/2/2/3 x base",
                 f"▫️ TP when price touches EMA 50, no SL, no time exit · Lot {lot} · open {opened}"]
     if kind == "SR ONLINE":
         return ["🧱 S/R ZONES · XAUUSD M15 (alerts only, no trading)",
