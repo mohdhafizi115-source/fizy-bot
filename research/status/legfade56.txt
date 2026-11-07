@@ -1,40 +1,68 @@
 /home/runner/work/fizy-bot/fizy-bot/research/legfade56.py:44: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
   wd = B.index.dayofweek.values
-XAUUSD M1 2020-03-30 .. 2026-11-06, 2,338,376 bars, $ per 1.0 move at 0.01 lot = 1.00
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,339,516 bars, $ per 1.0 move at 0.01 lot = 1.00
 
---- LIVE v2.05 lots 0.01/0.01/0.01/0.01/0.01: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
-closed trades 51,332 (30.07 a day), win 56.9%, PF 0.79, net $-10,458 (swap included), avg win $1.36, avg loss $-2.27
-ACCOUNT $100 BLOWN (stop-out) 117 times in 7 years; worst day $-331.44; worst floating loss $-421.37; hold median 0 h, p90 1 h, max 6 h
-by year: 2020: net $-699, blown 7x  2021: net $-1063, blown 12x  2022: net $-1687, blown 17x  2023: net $-1806, blown 19x  2024: net $-2209, blown 24x  2025: net $-1174, blown 21x  2026: net $-1820, blown 17x
-last 12 months: 7298 trades, net $-1223, blown 19x
-first stop-out on 2020-07-27, 119 days after the start; median days between stop-outs 12.0
-
---- LIVE v2.05 lots 0.01/0.01/0.02/0.02/0.03: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
-closed trades 51,351 (30.08 a day), win 56.9%, PF 0.81, net $-12,892 (swap included), avg win $1.84, avg loss $-3.00
+--- LIVE v2.06: lots 1/1/2/2/3, max 5: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,376 (30.10 a day), win 56.9%, PF 0.81, net $-12,929 (swap included), avg win $1.84, avg loss $-3.01
 ACCOUNT $100 BLOWN (stop-out) 166 times in 7 years; worst day $-486.12; worst floating loss $-733.74; hold median 0 h, p90 1 h, max 6 h
-by year: 2020: net $-580, blown 6x  2021: net $-1225, blown 16x  2022: net $-1926, blown 18x  2023: net $-2234, blown 26x  2024: net $-2964, blown 35x  2025: net $-1664, blown 35x  2026: net $-2300, blown 30x
-last 12 months: 7300 trades, net $-1434, blown 34x
+by year: 2020: net $-580, blown 6x  2021: net $-1225, blown 16x  2022: net $-1926, blown 18x  2023: net $-2234, blown 26x  2024: net $-2964, blown 35x  2025: net $-1664, blown 35x  2026: net $-2337, blown 30x
+last 12 months: 7294 trades, net $-1464, blown 34x
 first stop-out on 2020-05-11, 42 days after the start; median days between stop-outs 4.0
 
---- LIVE v2.05 lots 0.01/0.01/0.02/0.03/0.04: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
-closed trades 51,374 (30.10 a day), win 56.8%, PF 0.81, net $-13,699 (swap included), avg win $2.03, avg loss $-3.28
-ACCOUNT $100 BLOWN (stop-out) 186 times in 7 years; worst day $-571.33; worst floating loss $-887.46; hold median 0 h, p90 1 h, max 6 h
-by year: 2020: net $-509, blown 5x  2021: net $-1196, blown 17x  2022: net $-1858, blown 16x  2023: net $-2404, blown 28x  2024: net $-3327, blown 40x  2025: net $-2205, blown 47x  2026: net $-2200, blown 33x
-last 12 months: 7300 trades, net $-1217, blown 38x
-first stop-out on 2020-04-21, 22 days after the start; median days between stop-outs 3.0
+--- flat 0.01, max 5 (v2.05): zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,357 (30.09 a day), win 56.9%, PF 0.79, net $-10,477 (swap included), avg win $1.36, avg loss $-2.28
+ACCOUNT $100 BLOWN (stop-out) 117 times in 7 years; worst day $-331.44; worst floating loss $-421.37; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-699, blown 7x  2021: net $-1063, blown 12x  2022: net $-1687, blown 17x  2023: net $-1806, blown 19x  2024: net $-2209, blown 24x  2025: net $-1174, blown 21x  2026: net $-1839, blown 17x
+last 12 months: 7292 trades, net $-1231, blown 19x
+first stop-out on 2020-07-27, 119 days after the start; median days between stop-outs 12.0
 
---- LIVE v2.05 lots 0.01/0.01/0.02/0.03/0.05: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
-closed trades 51,380 (30.10 a day), win 56.8%, PF 0.80, net $-14,812 (swap included), avg win $2.10, avg loss $-3.42
-ACCOUNT $100 BLOWN (stop-out) 204 times in 7 years; worst day $-597.24; worst floating loss $-961.85; hold median 0 h, p90 1 h, max 6 h
-by year: 2020: net $-539, blown 6x  2021: net $-1314, blown 18x  2022: net $-1918, blown 16x  2023: net $-2548, blown 30x  2024: net $-3949, blown 49x  2025: net $-2172, blown 49x  2026: net $-2372, blown 36x
-last 12 months: 7301 trades, net $-1289, blown 41x
-first stop-out on 2020-04-21, 22 days after the start; median days between stop-outs 3.0
+--- A: max 2 entries, no stop (stop adding): zigzag 0.10%, leg age 20, TP EMA50, max 2 entries ---
+closed trades 44,837 (26.27 a day), win 56.0%, PF 0.76, net $-8,999 (swap included), avg win $1.11, avg loss $-1.88
+ACCOUNT $100 BLOWN (stop-out) 93 times in 7 years; worst day $-198.57; worst floating loss $-183.39; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-737, blown 7x  2021: net $-994, blown 10x  2022: net $-1556, blown 16x  2023: net $-1430, blown 15x  2024: net $-1641, blown 17x  2025: net $-1137, blown 16x  2026: net $-1503, blown 12x
+last 12 months: 6033 trades, net $-1124, blown 12x
+first stop-out on 2020-06-15, 77 days after the start; median days between stop-outs 19.0
 
---- LIVE v2.05 lots 0.01/0.01/0.02/0.04/0.08: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
-closed trades 51,425 (30.13 a day), win 56.6%, PF 0.79, net $-18,682 (swap included), avg win $2.38, avg loss $-3.95
-ACCOUNT $100 BLOWN (stop-out) 272 times in 7 years; worst day $-957.27; worst floating loss $-1264.34; hold median 0 h, p90 1 h, max 5 h
-by year: 2020: net $-469, blown 6x  2021: net $-1905, blown 26x  2022: net $-2735, blown 24x  2023: net $-3426, blown 44x  2024: net $-4453, blown 58x  2025: net $-2313, blown 60x  2026: net $-3381, blown 54x
-last 12 months: 7305 trades, net $-1985, blown 60x
-first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 1.0
+--- B: max 2, cut the basket 1 step (~$4) past entry 2: zigzag 0.10%, leg age 20, TP EMA50, max 2 entries ---
+closed trades 46,701 (27.36 a day), win 52.8%, PF 0.74, net $-9,950 (swap included), avg win $1.13, avg loss $-1.71
+ACCOUNT $100 BLOWN (stop-out) 103 times in 7 years; worst day $-88.32; worst floating loss $-35.53; hold median 0 h, p90 1 h, max 3 h
+by year: 2020: net $-1280, blown 13x  2021: net $-1220, blown 12x  2022: net $-1552, blown 16x  2023: net $-1314, blown 14x  2024: net $-1503, blown 16x  2025: net $-1319, blown 15x  2026: net $-1762, blown 17x
+last 12 months: 6337 trades, net $-1717, blown 18x
+first stop-out on 2020-04-06, 7 days after the start; median days between stop-outs 20.5
 
-done in 18 s
+--- C: max 2, cut the basket 2 steps (~$8) past entry 2: zigzag 0.10%, leg age 20, TP EMA50, max 2 entries ---
+closed trades 45,896 (26.89 a day), win 55.3%, PF 0.74, net $-9,930 (swap included), avg win $1.13, avg loss $-1.88
+ACCOUNT $100 BLOWN (stop-out) 104 times in 7 years; worst day $-104.59; worst floating loss $-35.53; hold median 0 h, p90 1 h, max 3 h
+by year: 2020: net $-1139, blown 11x  2021: net $-1115, blown 12x  2022: net $-1422, blown 14x  2023: net $-1467, blown 16x  2024: net $-1559, blown 16x  2025: net $-1416, blown 17x  2026: net $-1811, blown 18x
+last 12 months: 6207 trades, net $-1708, blown 19x
+first stop-out on 2020-04-15, 16 days after the start; median days between stop-outs 19.0
+
+--- D: max 3, cut 1 step past entry 3: zigzag 0.10%, leg age 20, TP EMA50, max 3 entries ---
+closed trades 49,616 (29.07 a day), win 54.5%, PF 0.75, net $-11,056 (swap included), avg win $1.23, avg loss $-1.96
+ACCOUNT $100 BLOWN (stop-out) 116 times in 7 years; worst day $-133.33; worst floating loss $-63.35; hold median 0 h, p90 1 h, max 3 h
+by year: 2020: net $-1237, blown 12x  2021: net $-1165, blown 13x  2022: net $-1481, blown 15x  2023: net $-1637, blown 17x  2024: net $-1723, blown 18x  2025: net $-1642, blown 20x  2026: net $-2172, blown 21x
+last 12 months: 6889 trades, net $-2052, blown 22x
+first stop-out on 2020-04-15, 16 days after the start; median days between stop-outs 16.0
+
+--- E: max 5, close at break-even once 2 entries: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,214 (30.00 a day), win 54.2%, PF 0.75, net $-10,554 (swap included), avg win $1.13, avg loss $-1.78
+ACCOUNT $100 BLOWN (stop-out) 112 times in 7 years; worst day $-302.66; worst floating loss $-421.37; hold median 0 h, p90 1 h, max 4 h
+by year: 2020: net $-856, blown 8x  2021: net $-1104, blown 12x  2022: net $-2006, blown 21x  2023: net $-1542, blown 16x  2024: net $-1803, blown 20x  2025: net $-1167, blown 19x  2026: net $-2074, blown 16x
+last 12 months: 7161 trades, net $-1548, blown 16x
+first stop-out on 2020-05-07, 38 days after the start; median days between stop-outs 15.0
+
+--- F: max 2, break-even exit: zigzag 0.10%, leg age 20, TP EMA50, max 2 entries ---
+closed trades 45,988 (26.94 a day), win 54.8%, PF 0.72, net $-9,345 (swap included), avg win $0.97, avg loss $-1.63
+ACCOUNT $100 BLOWN (stop-out) 96 times in 7 years; worst day $-182.55; worst floating loss $-193.87; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-1151, blown 11x  2021: net $-1121, blown 11x  2022: net $-1550, blown 16x  2023: net $-1332, blown 14x  2024: net $-1502, blown 16x  2025: net $-1163, blown 16x  2026: net $-1526, blown 12x
+last 12 months: 6248 trades, net $-1151, blown 12x
+first stop-out on 2020-04-21, 22 days after the start; median days between stop-outs 22.0
+
+--- G: max 2, break-even exit + cut 1 step: zigzag 0.10%, leg age 20, TP EMA50, max 2 entries ---
+closed trades 47,346 (27.74 a day), win 52.2%, PF 0.70, net $-10,338 (swap included), avg win $0.98, avg loss $-1.53
+ACCOUNT $100 BLOWN (stop-out) 107 times in 7 years; worst day $-72.78; worst floating loss $-35.53; hold median 0 h, p90 0 h, max 2 h
+by year: 2020: net $-1372, blown 14x  2021: net $-1290, blown 13x  2022: net $-1551, blown 16x  2023: net $-1388, blown 14x  2024: net $-1524, blown 16x  2025: net $-1340, blown 16x  2026: net $-1874, blown 18x
+last 12 months: 6429 trades, net $-1718, blown 18x
+first stop-out on 2020-04-08, 9 days after the start; median days between stop-outs 20.0
+
+done in 34 s
