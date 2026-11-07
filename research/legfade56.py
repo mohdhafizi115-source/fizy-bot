@@ -45,7 +45,7 @@ def main():
     yr = B.index.year.values
     say(f"XAUUSD M1 {B.index[0]:%Y-%m-%d} .. {B.index[-1]:%Y-%m-%d}, {n:,} bars, $ per 1.0 move at 0.01 lot = {usd:.2f}")
 
-    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True, lots=(1, 1, 1, 1, 1)):
+    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True, lots=(1, 1, 1, 1, 1), stop_steps=None, be2=False):
         XH, XL = (H, L) if wick else (C, C)
         EV = pd.Series(C).ewm(span=emaP, adjust=False).mean().values if emaP else None
         EP = np.r_[np.nan, EV[:-1]] if emaP else None     # EMA of the last CLOSED bar, known at bar k
@@ -60,6 +60,25 @@ def main():
             # ---- swap on open positions at each new server day
             if newd[k] and pos:
                 bal -= SWAP * sum(lots[i] for i in range(len(pos)))
+            # ---- owner's question (6-7 Nov): what to do once 2 entries float
+            if pos and (stop_steps or (be2 and len(pos) >= 2)):
+                dr = pos[0][1]
+                xs = None
+                if stop_steps and len(pos) >= maxn:
+                    sl = pos[-1][0] * (1 - dr * pct * stop_steps)
+                    if (dr == -1 and H[k] + sp[k] >= sl) or (dr == 1 and L[k] <= sl):
+                        xs = max(O[k] + sp[k], sl) if dr == -1 else min(O[k], sl)
+                if xs is None and be2 and len(pos) >= 2:
+                    w = sum(lots[qi] for qi in range(len(pos)))
+                    avg = sum(e * lots[qi] for qi, (e, _, _) in enumerate(pos)) / w
+                    be = avg - dr * 0.05                                    # 5 cents over break-even
+                    if (dr == -1 and L[k] + sp[k] <= be) or (dr == 1 and H[k] >= be):
+                        xs = min(O[k] + sp[k], be) if dr == -1 else max(O[k], be)
+                if xs is not None:
+                    for qi, (e, dd, k0) in enumerate(pos):
+                        pnl = (xs - e) * dd * usd * lots[qi]
+                        bal += pnl; closed.append((k, pnl, k0))
+                    pos = []
             # ---- manage the open basket on this bar
             if pos:
                 keep = []
@@ -147,9 +166,16 @@ def main():
             say(f"first stop-out on {first:%Y-%m-%d}, {(first - B.index[0]).days} days after the start; "
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
-    for lots in ((1, 1, 1, 1, 1), (1, 1, 2, 2, 3), (1, 1, 2, 3, 4), (1, 1, 2, 3, 5), (1, 1, 2, 4, 8)):
-        run(N=20, wick=True, emaP=50, side=False, lots=lots,
-            label="LIVE v2.05 lots " + "/".join(f"0.0{x}" if x < 10 else "0.10" for x in lots))
+    base = dict(N=20, wick=True, emaP=50, side=False)
+    run(**base, lots=(1, 1, 2, 2, 3), label="LIVE v2.06: lots 1/1/2/2/3, max 5")
+    run(**base, label="flat 0.01, max 5 (v2.05)")
+    run(**base, maxn=2, label="A: max 2 entries, no stop (stop adding)")
+    run(**base, maxn=2, stop_steps=1, label="B: max 2, cut the basket 1 step (~$4) past entry 2")
+    run(**base, maxn=2, stop_steps=2, label="C: max 2, cut the basket 2 steps (~$8) past entry 2")
+    run(**base, maxn=3, stop_steps=1, label="D: max 3, cut 1 step past entry 3")
+    run(**base, be2=True, label="E: max 5, close at break-even once 2 entries")
+    run(**base, maxn=2, be2=True, label="F: max 2, break-even exit")
+    run(**base, maxn=2, stop_steps=1, be2=True, label="G: max 2, break-even exit + cut 1 step")
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
