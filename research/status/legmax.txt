@@ -1,0 +1,8 @@
+UP (buy) legs: n=76311, mean 14.7, median 7, p90 35, p99 118, max 644 candles (from 2020-07-17 04:46 server)
+   2024: mean 20.7, median 10, p99 149, max 606
+   2025: mean 13.2, median 6, p99 101, max 265
+   2026: mean 7.5, median 4, p99 48, max 127
+DOWN (sell) legs: n=76104, mean 14.0, median 7, p90 33, p99 112, max 454 candles (from 2024-02-07 01:09 server)
+   2024: mean 18.8, median 10, p99 132, max 454
+   2025: mean 11.9, median 6, p99 87, max 348
+   2026: mean 7.6, median 4, p99 50, max 136
