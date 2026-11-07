@@ -1144,12 +1144,21 @@ def mt5_watchdog(state):
         if not r.ok:
             print("MT5 watchdog: runs list failed", r.status_code); return
         runs = r.json().get("workflow_runs", [])
-        active = [x for x in runs if x.get("status") != "completed"]
+        # A "ghost" run can sit queued for days with no job (run 42066887371, 5 Nov) and must not count as
+        # active, or the chain is never restarted. Count a queued run for 30 min and a running one for 7 h.
+        def _live(x):
+            st = x.get("status")
+            if st == "completed":
+                return False
+            age = now - pd.Timestamp(x.get("run_started_at") or x.get("created_at")).timestamp()
+            return age < (1800 if st in ("queued", "pending", "waiting", "requested") else 7 * 3600)
+        active = [x for x in runs if _live(x)]
         if active or now - state.get("mt5_dispatch_t", 0) < 900:
             return
-        if runs and runs[0].get("conclusion") == "failure":          # broken shift: retry at most hourly
-            done = pd.Timestamp(runs[0].get("updated_at")).timestamp()
-            if now - done < 3600:
+        done_runs = [x for x in runs if x.get("status") == "completed"]
+        if done_runs and done_runs[0].get("conclusion") == "failure":  # broken shift: retry after 15 min
+            done = pd.Timestamp(done_runs[0].get("updated_at")).timestamp()
+            if now - done < 900:
                 return
         d = requests.post(base + "/dispatches", headers=h, json={"ref": "main"}, timeout=20)
     except requests.RequestException as e:

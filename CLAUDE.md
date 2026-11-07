@@ -44,7 +44,7 @@
 2. Touch `run_mt5.txt` and push. `.github/workflows/mt5.yml` compiles everything and writes `status/mt5_check.txt`. Check for `0 errors`.
 3. `git rm status/snap_TEST_*.png`, the test screenshots that the check commits.
 4. Cancel the running `mt5_trade.yml` run. Its "Next shift" step starts a new shift on the latest `main`. To force a fresh daily status, write any other text into `status/mt5_online.txt` before cancelling.
-- **Ghost shift (6 Nov):** run 42066887371 sat `queued` with no jobs from 5 Nov 16:40Z, cannot be cancelled (409), and nothing traded for ~13 h; the watchdog did not restart it. Fix: dispatch `mt5_trade.yml` again, the new run starts. After a deploy, always check that a shift is `in_progress`.
+- **Ghost shift (6 Nov):** run 42066887371 sat `queued` with no jobs from 5 Nov 16:40Z, cannot be cancelled (409), and nothing traded for ~13 h; the watchdog did not restart it. Fix: dispatch `mt5_trade.yml` again, the new run starts. After a deploy, always check that a shift is `in_progress`. **Root cause found 8 Nov: that ghost (still `queued`) made `mt5_watchdog()` see an "active" run forever, so it never restarted the chain** — e.g. after run 42368846500 died on 7 Nov 16:14Z ("The hosted runner lost communication with the server", a GitHub-side failure) nothing restarted it for 2 h. Fixed in `bbma_scanner.py`: a queued run counts as active for 30 min only and a running one for 7 h, and a failed shift is retried after 15 min (was 1 h).
 - The GitHub CLI's `gh workflow run` may fail. Use REST instead: `gh api -X POST repos/<owner>/fizy-bot/actions/workflows/<file>/dispatches -f ref=main`, and `.../actions/runs/<id>/cancel`.
 
 ## Research (backtests on the broker's own data)
