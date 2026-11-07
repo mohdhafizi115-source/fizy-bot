@@ -45,7 +45,7 @@ def main():
     yr = B.index.year.values
     say(f"XAUUSD M1 {B.index[0]:%Y-%m-%d} .. {B.index[-1]:%Y-%m-%d}, {n:,} bars, $ per 1.0 move at 0.01 lot = {usd:.2f}")
 
-    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True, lots=(1, 1, 1, 1, 1), stop_steps=None, be2=False):
+    def run(pct=0.0010, N=60, tpp=0.0035, maxn=5, label="", wick=False, emaP=None, side=True, lots=(1, 1, 1, 1, 1), stop_steps=None, be2=False, follow=False):
         XH, XL = (H, L) if wick else (C, C)
         EV = pd.Series(C).ewm(span=emaP, adjust=False).mean().values if emaP else None
         EP = np.r_[np.nan, EV[:-1]] if emaP else None     # EMA of the last CLOSED bar, known at bar k
@@ -140,7 +140,7 @@ def main():
             if not fired and k - piv >= N:
                 fired = True
                 if not pos and k + 1 < n and not newd[k + 1] and 90 <= hm[k] < 1320 and wd[k] < 5:
-                    dr = -d_
+                    dr = d_ if follow else -d_
                     if emaP and side and ((dr == -1 and C[k] <= EV[k]) or (dr == 1 and C[k] >= EV[k])):
                         continue                                        # TP at the EMA needs price on the far side
                     e = O[k + 1] if dr == -1 else O[k + 1] + sp[k + 1]    # sell at bid, buy at ask
@@ -166,16 +166,10 @@ def main():
             say(f"first stop-out on {first:%Y-%m-%d}, {(first - B.index[0]).days} days after the start; "
                 f"median days between stop-outs {np.median(np.diff([B.index[q] for q in blow_t]).astype('timedelta64[D]').astype(int)) if len(blow_t) > 1 else 0}")
 
-    base = dict(N=20, wick=True, emaP=50, side=False)
-    run(**base, lots=(1, 1, 2, 2, 3), label="LIVE v2.06: lots 1/1/2/2/3, max 5")
-    run(**base, label="flat 0.01, max 5 (v2.05)")
-    run(**base, maxn=2, label="A: max 2 entries, no stop (stop adding)")
-    run(**base, maxn=2, stop_steps=1, label="B: max 2, cut the basket 1 step (~$4) past entry 2")
-    run(**base, maxn=2, stop_steps=2, label="C: max 2, cut the basket 2 steps (~$8) past entry 2")
-    run(**base, maxn=3, stop_steps=1, label="D: max 3, cut 1 step past entry 3")
-    run(**base, be2=True, label="E: max 5, close at break-even once 2 entries")
-    run(**base, maxn=2, be2=True, label="F: max 2, break-even exit")
-    run(**base, maxn=2, stop_steps=1, be2=True, label="G: max 2, break-even exit + cut 1 step")
+    for fol in (False, True):
+        for N in (4, 6, 8, 10, 12, 15, 20):
+            run(N=N, wick=True, emaP=50, side=False, maxn=2, follow=fol,
+                label=f"{'FOLLOW' if fol else 'FADE'} at leg age {N}, max 2, flat 0.01, TP EMA50")
     say(f"\ndone in {time.time() - T0:.0f} s")
 
 
