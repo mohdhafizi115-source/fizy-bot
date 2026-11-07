@@ -1,0 +1,20 @@
+/home/runner/work/fizy-bot/fizy-bot/research/recov60.py:30: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  sp = B.s.values.astype(float); wd = B.index.dayofweek.values
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,339,516 bars
+
+--- recovery lot, +$1 if price retraces $2 from the last entry ---
+baskets 34,876 (20.4/day), won 72.6%, PF 0.49, net $-27,099; avg win $1.01, avg loss $-5.53
+reached entry 5: 1.8% of baskets; biggest lot asked 0.70; worst floating $-888; worst day $-841
+ACCOUNT $100 STOPPED OUT 411 times in 6.6 years; last 12 months: net $-10519, stop-outs 162
+
+--- recovery lot, +$1 if price retraces $4 (one full step) ---
+baskets 27,462 (16.1/day), won 73.7%, PF 0.59, net $-14,667; avg win $1.03, avg loss $-4.93
+reached entry 5: 3.2% of baskets; biggest lot asked 0.19; worst floating $-1536; worst day $-1610
+ACCOUNT $100 STOPPED OUT 200 times in 6.6 years; last 12 months: net $-4630, stop-outs 67
+
+--- recovery lot, retrace $4, max 3 entries ---
+baskets 19,326 (11.3/day), won 74.3%, PF 0.62, net $-9,407; avg win $1.08, avg loss $-5.02
+reached entry 5: 0.0% of baskets; biggest lot asked 0.06; worst floating $-2143; worst day $-2125
+ACCOUNT $100 STOPPED OUT 126 times in 6.6 years; last 12 months: net $-1899, stop-outs 28
+
+done in 21 s
