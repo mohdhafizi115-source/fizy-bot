@@ -1,37 +1,37 @@
 XAUUSD M1, last month 07 Oct .. 06 Nov 2026, month before 07 Sep .. 07 Oct
 
 --- first pullback of $1 ---
-                    age<5 continue | LAST MONTH  450 tr  50% win PF 0.89 net $   -74 worst day $  -19 | MONTH BEFORE  514 tr  46% win PF 0.76 net $  -201 worst day $  -41
-                       age>=5 fade | LAST MONTH 1052 tr  40% win PF 0.54 net $  -622 worst day $  -48 | MONTH BEFORE 1145 tr  43% win PF 0.63 net $  -549 worst day $  -49
-                        both (N=5) | LAST MONTH 1473 tr  43% win PF 0.65 net $  -698 worst day $  -66 | MONTH BEFORE 1639 tr  43% win PF 0.67 net $  -749 worst day $  -86
-       both (N=5) RANDOM direction | LAST MONTH 1475 tr  45% win PF 0.69 net $  -619 worst day $  -92 | MONTH BEFORE 1643 tr  45% win PF 0.72 net $  -623 worst day $  -67
-                   age<10 continue | LAST MONTH  898 tr  47% win PF 0.81 net $  -247 worst day $  -39 | MONTH BEFORE 1027 tr  47% win PF 0.80 net $  -309 worst day $  -55
-                      age>=10 fade | LAST MONTH  347 tr  39% win PF 0.53 net $  -199 worst day $  -22 | MONTH BEFORE  314 tr  38% win PF 0.52 net $  -190 worst day $  -25
-                       both (N=10) | LAST MONTH 1239 tr  45% win PF 0.73 net $  -457 worst day $  -65 | MONTH BEFORE 1332 tr  45% win PF 0.75 net $  -489 worst day $  -60
-      both (N=10) RANDOM direction | LAST MONTH 1241 tr  48% win PF 0.81 net $  -311 worst day $  -54 | MONTH BEFORE 1330 tr  49% win PF 0.84 net $  -288 worst day $  -51
-                   age<15 continue | LAST MONTH 1050 tr  49% win PF 0.85 net $  -217 worst day $  -34 | MONTH BEFORE 1171 tr  48% win PF 0.82 net $  -300 worst day $  -50
-                      age>=15 fade | LAST MONTH  117 tr  37% win PF 0.54 net $   -65 worst day $  -14 | MONTH BEFORE  109 tr  33% win PF 0.41 net $   -83 worst day $  -13
-                       both (N=15) | LAST MONTH 1166 tr  47% win PF 0.81 net $  -294 worst day $  -38 | MONTH BEFORE 1278 tr  47% win PF 0.79 net $  -380 worst day $  -55
-      both (N=15) RANDOM direction | LAST MONTH 1168 tr  48% win PF 0.85 net $  -238 worst day $  -41 | MONTH BEFORE 1276 tr  47% win PF 0.81 net $  -340 worst day $  -54
-                   age<20 continue | LAST MONTH 1095 tr  49% win PF 0.86 net $  -206 worst day $  -32 | MONTH BEFORE 1222 tr  48% win PF 0.82 net $  -323 worst day $  -47
-                      age>=20 fade | LAST MONTH   41 tr  27% win PF 0.39 net $   -32 worst day $   -5 | MONTH BEFORE   41 tr  29% win PF 0.34 net $   -38 worst day $   -5
-                       both (N=20) | LAST MONTH 1136 tr  48% win PF 0.85 net $  -237 worst day $  -35 | MONTH BEFORE 1263 tr  47% win PF 0.80 net $  -362 worst day $  -49
-      both (N=20) RANDOM direction | LAST MONTH 1137 tr  47% win PF 0.80 net $  -315 worst day $  -47 | MONTH BEFORE 1261 tr  47% win PF 0.79 net $  -389 worst day $  -52
+                    age<5 continue | LAST MONTH  448 tr  53% win PF 0.93 net $   -48 worst day $  -18 | MONTH BEFORE  514 tr  48% win PF 0.76 net $  -193 worst day $  -38
+                       age>=5 fade | LAST MONTH 1055 tr  45% win PF 0.57 net $  -535 worst day $  -43 | MONTH BEFORE 1155 tr  48% win PF 0.67 net $  -445 worst day $  -48
+                        both (N=5) | LAST MONTH 1477 tr  48% win PF 0.69 net $  -573 worst day $  -55 | MONTH BEFORE 1649 tr  48% win PF 0.71 net $  -634 worst day $  -84
+       both (N=5) RANDOM direction | LAST MONTH 1477 tr  48% win PF 0.70 net $  -559 worst day $  -65 | MONTH BEFORE 1649 tr  47% win PF 0.67 net $  -740 worst day $  -94
+                   age<10 continue | LAST MONTH  896 tr  50% win PF 0.81 net $  -237 worst day $  -38 | MONTH BEFORE 1026 tr  51% win PF 0.83 net $  -255 worst day $  -42
+                      age>=10 fade | LAST MONTH  348 tr  47% win PF 0.60 net $  -149 worst day $  -17 | MONTH BEFORE  313 tr  43% win PF 0.55 net $  -159 worst day $  -22
+                       both (N=10) | LAST MONTH 1240 tr  49% win PF 0.76 net $  -399 worst day $  -59 | MONTH BEFORE 1331 tr  49% win PF 0.78 net $  -405 worst day $  -47
+      both (N=10) RANDOM direction | LAST MONTH 1240 tr  48% win PF 0.76 net $  -411 worst day $  -54 | MONTH BEFORE 1331 tr  49% win PF 0.77 net $  -427 worst day $  -41
+                   age<15 continue | LAST MONTH 1049 tr  51% win PF 0.85 net $  -216 worst day $  -35 | MONTH BEFORE 1169 tr  52% win PF 0.85 net $  -243 worst day $  -40
+                      age>=15 fade | LAST MONTH  117 tr  46% win PF 0.63 net $   -45 worst day $  -12 | MONTH BEFORE  109 tr  39% win PF 0.47 net $   -65 worst day $   -8
+                       both (N=15) | LAST MONTH 1165 tr  51% win PF 0.83 net $  -266 worst day $  -38 | MONTH BEFORE 1277 tr  51% win PF 0.82 net $  -310 worst day $  -40
+      both (N=15) RANDOM direction | LAST MONTH 1165 tr  49% win PF 0.78 net $  -352 worst day $  -55 | MONTH BEFORE 1277 tr  50% win PF 0.81 net $  -347 worst day $  -50
+                   age<20 continue | LAST MONTH 1094 tr  52% win PF 0.86 net $  -208 worst day $  -31 | MONTH BEFORE 1220 tr  51% win PF 0.84 net $  -265 worst day $  -40
+                      age>=20 fade | LAST MONTH   41 tr  39% win PF 0.48 net $   -23 worst day $   -5 | MONTH BEFORE   41 tr  32% win PF 0.32 net $   -37 worst day $   -5
+                       both (N=20) | LAST MONTH 1135 tr  51% win PF 0.85 net $  -229 worst day $  -33 | MONTH BEFORE 1261 tr  51% win PF 0.83 net $  -307 worst day $  -41
+      both (N=20) RANDOM direction | LAST MONTH 1135 tr  48% win PF 0.72 net $  -465 worst day $  -62 | MONTH BEFORE 1261 tr  51% win PF 0.84 net $  -273 worst day $  -48
 
 --- first pullback of $2 ---
-                    age<5 continue | LAST MONTH  346 tr  51% win PF 0.95 net $   -25 worst day $  -22 | MONTH BEFORE  376 tr  47% win PF 0.81 net $  -130 worst day $  -32
-                       age>=5 fade | LAST MONTH 1072 tr  41% win PF 0.63 net $  -574 worst day $  -54 | MONTH BEFORE 1199 tr  45% win PF 0.70 net $  -515 worst day $  -57
-                        both (N=5) | LAST MONTH 1398 tr  44% win PF 0.71 net $  -608 worst day $  -65 | MONTH BEFORE 1553 tr  45% win PF 0.75 net $  -597 worst day $  -71
-       both (N=5) RANDOM direction | LAST MONTH 1405 tr  45% win PF 0.74 net $  -533 worst day $  -56 | MONTH BEFORE 1557 tr  46% win PF 0.76 net $  -567 worst day $  -68
-                   age<10 continue | LAST MONTH  668 tr  49% win PF 0.89 net $  -122 worst day $  -31 | MONTH BEFORE  782 tr  47% win PF 0.83 net $  -233 worst day $  -44
-                      age>=10 fade | LAST MONTH  498 tr  42% win PF 0.66 net $  -239 worst day $  -31 | MONTH BEFORE  446 tr  41% win PF 0.63 net $  -242 worst day $  -28
-                       both (N=10) | LAST MONTH 1153 tr  46% win PF 0.79 net $  -373 worst day $  -52 | MONTH BEFORE 1219 tr  45% win PF 0.77 net $  -453 worst day $  -62
-      both (N=10) RANDOM direction | LAST MONTH 1155 tr  48% win PF 0.83 net $  -290 worst day $  -72 | MONTH BEFORE 1219 tr  47% win PF 0.80 net $  -378 worst day $  -54
-                   age<15 continue | LAST MONTH  810 tr  50% win PF 0.93 net $   -94 worst day $  -30 | MONTH BEFORE  937 tr  48% win PF 0.83 net $  -264 worst day $  -44
-                      age>=15 fade | LAST MONTH  222 tr  42% win PF 0.64 net $  -118 worst day $  -24 | MONTH BEFORE  186 tr  41% win PF 0.67 net $   -89 worst day $  -17
-                       both (N=15) | LAST MONTH 1026 tr  48% win PF 0.85 net $  -247 worst day $  -38 | MONTH BEFORE 1120 tr  47% win PF 0.81 net $  -354 worst day $  -50
-      both (N=15) RANDOM direction | LAST MONTH 1030 tr  48% win PF 0.86 net $  -227 worst day $  -51 | MONTH BEFORE 1118 tr  48% win PF 0.86 net $  -259 worst day $  -66
-                   age<20 continue | LAST MONTH  870 tr  50% win PF 0.92 net $  -102 worst day $  -25 | MONTH BEFORE  985 tr  48% win PF 0.83 net $  -284 worst day $  -51
-                      age>=20 fade | LAST MONTH  112 tr  44% win PF 0.68 net $   -52 worst day $  -12 | MONTH BEFORE   96 tr  41% win PF 0.66 net $   -47 worst day $  -12
-                       both (N=20) | LAST MONTH  981 tr  49% win PF 0.88 net $  -179 worst day $  -35 | MONTH BEFORE 1079 tr  47% win PF 0.81 net $  -335 worst day $  -57
-      both (N=20) RANDOM direction | LAST MONTH  982 tr  47% win PF 0.79 net $  -337 worst day $  -40 | MONTH BEFORE 1080 tr  43% win PF 0.70 net $  -586 worst day $  -75
+                    age<5 continue | LAST MONTH  345 tr  53% win PF 0.95 net $   -27 worst day $  -26 | MONTH BEFORE  376 tr  49% win PF 0.83 net $  -114 worst day $  -30
+                       age>=5 fade | LAST MONTH 1089 tr  45% win PF 0.67 net $  -489 worst day $  -45 | MONTH BEFORE 1216 tr  49% win PF 0.74 net $  -423 worst day $  -53
+                        both (N=5) | LAST MONTH 1414 tr  48% win PF 0.75 net $  -503 worst day $  -66 | MONTH BEFORE 1567 tr  49% win PF 0.78 net $  -505 worst day $  -63
+       both (N=5) RANDOM direction | LAST MONTH 1414 tr  49% win PF 0.76 net $  -481 worst day $  -70 | MONTH BEFORE 1567 tr  47% win PF 0.70 net $  -721 worst day $  -94
+                   age<10 continue | LAST MONTH  667 tr  51% win PF 0.88 net $  -128 worst day $  -35 | MONTH BEFORE  781 tr  51% win PF 0.86 net $  -182 worst day $  -43
+                      age>=10 fade | LAST MONTH  502 tr  46% win PF 0.69 net $  -207 worst day $  -33 | MONTH BEFORE  453 tr  47% win PF 0.70 net $  -179 worst day $  -28
+                       both (N=10) | LAST MONTH 1159 tr  49% win PF 0.81 net $  -331 worst day $  -48 | MONTH BEFORE 1223 tr  49% win PF 0.81 net $  -351 worst day $  -60
+      both (N=10) RANDOM direction | LAST MONTH 1159 tr  46% win PF 0.72 net $  -509 worst day $  -80 | MONTH BEFORE 1223 tr  50% win PF 0.83 net $  -320 worst day $  -62
+                   age<15 continue | LAST MONTH  809 tr  52% win PF 0.93 net $   -86 worst day $  -27 | MONTH BEFORE  935 tr  51% win PF 0.87 net $  -208 worst day $  -46
+                      age>=15 fade | LAST MONTH  226 tr  46% win PF 0.69 net $   -98 worst day $  -26 | MONTH BEFORE  189 tr  48% win PF 0.77 net $   -56 worst day $  -17
+                       both (N=15) | LAST MONTH 1030 tr  51% win PF 0.88 net $  -193 worst day $  -30 | MONTH BEFORE 1122 tr  51% win PF 0.85 net $  -264 worst day $  -47
+      both (N=15) RANDOM direction | LAST MONTH 1030 tr  50% win PF 0.81 net $  -312 worst day $  -56 | MONTH BEFORE 1122 tr  50% win PF 0.82 net $  -321 worst day $  -53
+                   age<20 continue | LAST MONTH  868 tr  53% win PF 0.93 net $   -88 worst day $  -31 | MONTH BEFORE  983 tr  51% win PF 0.86 net $  -225 worst day $  -46
+                      age>=20 fade | LAST MONTH  115 tr  48% win PF 0.72 net $   -43 worst day $   -9 | MONTH BEFORE   97 tr  47% win PF 0.75 net $   -31 worst day $  -12
+                       both (N=20) | LAST MONTH  982 tr  52% win PF 0.90 net $  -150 worst day $  -29 | MONTH BEFORE 1080 tr  51% win PF 0.85 net $  -257 worst day $  -50
+      both (N=20) RANDOM direction | LAST MONTH  982 tr  49% win PF 0.81 net $  -308 worst day $  -46 | MONTH BEFORE 1080 tr  47% win PF 0.73 net $  -499 worst day $  -66
