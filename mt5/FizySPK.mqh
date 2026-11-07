@@ -47,7 +47,7 @@
 //| (1.08, the owner's frequency override). See CLAUDE.md.            |
 //| Events go to MQL5\Files\spk_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpSpkOn        = true;
+input bool   InpSpkOn        = false;   // OFF since 8 Nov (owner)
 input string InpSpkSymbol    = "XAUUSD";
 input double InpSpkLot       = 0.01;
 input long   InpSpkMagic     = 260320;

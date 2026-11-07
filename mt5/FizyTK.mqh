@@ -14,7 +14,7 @@
 //|   overnight, so no swap). One trade at a time.                    |
 //| Events go to MQL5\Files\tk_events.txt (forwarded to Telegram).    |
 //+------------------------------------------------------------------+
-input bool   InpTkOn      = true;
+input bool   InpTkOn      = false;               // OFF since 8 Nov (owner)
 input string InpTkSymbol  = "XAUUSD";
 input double InpTkLot     = 0.01;
 input long   InpTkMagic   = 260318;              // H1; M15 uses InpTkMagic15

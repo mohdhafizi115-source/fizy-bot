@@ -152,6 +152,7 @@ void KumoOnTimer()
    if((px - sl) * dr <= 0) return;
    double mn = SymbolInfoDouble(km_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(km_sym, SYMBOL_VOLUME_STEP);
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpKumoLot / sv + 1e-9) * sv), 2);
+   if(DayPaused()) return;                                              // daily target reached
    trade.SetExpertMagicNumber(InpKumoMagic); trade.SetTypeFillingBySymbol(km_sym);
    bool ok = dr > 0 ? trade.Buy(lot, km_sym, 0, sl, 0, "KUMO") : trade.Sell(lot, km_sym, 0, sl, 0, "KUMO");
    if(!ok) KumoEvent(StringFormat("ERROR | Kumo %s order failed: %d %s", km_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));

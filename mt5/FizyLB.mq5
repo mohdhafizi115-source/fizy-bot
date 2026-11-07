@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.06"
+#property version "2.07"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -305,6 +305,8 @@ void SweepOff()
    if(!InpLbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMagic; }
    if(!InpNr7On) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpNr7Magic; }
    if(!InpWvbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpWvbMagic; }
+   if(!InpTkOn) { int m = ArraySize(off); ArrayResize(off, m + 2); off[m] = InpTkMagic; off[m + 1] = InpTkMagic15; }
+   if(!InpSpkOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpSpkMagic; }
    if(!InpDtjOn)
    {
       int m = ArraySize(off); ArrayResize(off, m + 2); off[m] = InpPdhlMagic; off[m + 1] = InpNycMagic;
@@ -386,6 +388,7 @@ void OnTimer()
    LegOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
+   DayPaused();                                                             // daily $ target check (reports once when hit)
    if(s.day_of_week == 0 || s.day_of_week == 6) return;
    int minute = s.hour * 60 + s.min;
    if(InpLbOn && minute >= InpRangeEnd * 60 && minute < InpRangeEnd * 60 + InpLateMin && CountOrders() == 0 && CountPositions() == 0 && !TradedToday(day))

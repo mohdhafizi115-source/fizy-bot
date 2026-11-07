@@ -207,6 +207,7 @@ void GtbOnTimer()
       int dg = (int)SymbolInfoInteger(s, SYMBOL_DIGITS);
       double sl = NormalizeDouble(tk.bid + InpGtbSlAtr * atr, dg);
       double lot = GtbLot(s);
+      if(DayPaused()) { GtbEvent("GOTOBI SKIPPED " + s + " | daily target reached"); continue; }
       trade.SetExpertMagicNumber(InpGtbMagic); trade.SetTypeFillingBySymbol(s);
       bool ok = trade.Sell(lot, s, 0, sl, 0, "GOTOBI " + TimeToString(jst, TIME_DATE));
       double px = trade.ResultPrice();

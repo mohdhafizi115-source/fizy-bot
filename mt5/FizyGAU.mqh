@@ -203,6 +203,7 @@ void GauOnTimer()
    double sl = NormalizeDouble(tk.bid + InpGauSlAtr * atr, dg);
    double mn = SymbolInfoDouble(ga_sym, SYMBOL_VOLUME_MIN), st = SymbolInfoDouble(ga_sym, SYMBOL_VOLUME_STEP);
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpGauLot / st + 1e-9) * st), 2);
+   if(DayPaused()) { GauEvent("AUCTION SKIPPED " + ga_sym + " | daily target reached"); return; }
    trade.SetExpertMagicNumber(InpGauMagic); trade.SetTypeFillingBySymbol(ga_sym);
    bool ok = trade.Sell(lot, ga_sym, 0, sl, 0, "AUCTION " + TimeToString(ldn, TIME_DATE));
    double px = trade.ResultPrice();

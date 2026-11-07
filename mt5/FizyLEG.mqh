@@ -131,6 +131,7 @@ double LegEma()                                                                /
 
 bool LegOpen(int dir, int num, string why)
 {
+   if(DayPaused()) return false;                                        // daily target reached: no first entry, no adds
    MqlTick tk;
    if(!SymbolInfoTick(lg_sym, tk)) return false;
    int dg = (int)SymbolInfoInteger(lg_sym, SYMBOL_DIGITS);

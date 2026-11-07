@@ -64,3 +64,71 @@ void CloseLeftovers()
    }
 }
 //+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//| DAILY PROFIT TARGET (v2.07, owner 8 Nov: "target ea hanya 25     |
+//| dollar sehari. lepas achive dalam sehari tu, pausekan ea sambung |
+//| ke esok pulak"). Today's REALISED profit of every EA trade (magic |
+//| 260300-260399, profit + swap + commission of closing deals since |
+//| 00:00 server = 06:00 MYT in winter) reaching InpDayTarget stops   |
+//| NEW entries in every module until the next server day. Open       |
+//| positions keep their own exits (SL / TP / EMA / time).            |
+//+------------------------------------------------------------------+
+input double InpDayTarget = 25.0;        // $; 0 = no daily target
+
+datetime dt_day = 0;          // server day the flags below belong to
+bool     dt_hit = false;
+datetime dt_last = 0;
+double   dt_pnl = 0;
+
+double DayRealised()
+{
+   MqlDateTime s; TimeToStruct(TimeCurrent(), s); s.hour = 0; s.min = 0; s.sec = 0;
+   datetime d0 = StructToTime(s);
+   if(!HistorySelect(d0, TimeCurrent() + 60)) return 0;
+   double p = 0;
+   for(int i = HistoryDealsTotal() - 1; i >= 0; i--)
+   {
+      ulong d = HistoryDealGetTicket(i);
+      if(d == 0) continue;
+      long mg = HistoryDealGetInteger(d, DEAL_MAGIC);
+      if(mg < 260300 || mg > 260399) continue;
+      long en = HistoryDealGetInteger(d, DEAL_ENTRY);
+      if(en != DEAL_ENTRY_OUT && en != DEAL_ENTRY_OUT_BY && en != DEAL_ENTRY_INOUT) continue;
+      p += HistoryDealGetDouble(d, DEAL_PROFIT) + HistoryDealGetDouble(d, DEAL_SWAP) + HistoryDealGetDouble(d, DEAL_COMMISSION);
+   }
+   return p;
+}
+
+void DayEvent(string msg)
+{
+   int h = FileOpen("flb_events.txt", FILE_READ | FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_SHARE_READ | FILE_SHARE_WRITE);
+   if(h == INVALID_HANDLE) { Print("event file error ", GetLastError()); return; }
+   FileSeek(h, 0, SEEK_END);
+   FileWriteString(h, TimeToString(TimeCurrent(), TIME_DATE | TIME_MINUTES) + " | " + msg + "\r\n");
+   FileClose(h);
+   Print("EVENT ", msg);
+}
+
+// call once a minute from OnTimer, and before every new entry
+bool DayPaused()
+{
+   if(InpDayTarget <= 0) return false;
+   MqlDateTime s; TimeToStruct(TimeCurrent(), s); s.hour = 0; s.min = 0; s.sec = 0;
+   datetime d0 = StructToTime(s);
+   if(d0 != dt_day) { dt_day = d0; dt_hit = false; dt_last = 0; }
+   if(dt_hit) return true;
+   if(TimeCurrent() - dt_last >= 20)                                   // re-read the history at most every 20 s
+   {
+      dt_last = TimeCurrent();
+      dt_pnl = DayRealised();
+      if(dt_pnl >= InpDayTarget)
+      {
+         dt_hit = true;
+         DayEvent(StringFormat("DAILY TARGET REACHED | today's closed profit $%.2f >= $%.2f: no new trades until 06:00 MYT "
+                               "tomorrow (00:00 server); open positions keep their own exits", dt_pnl, InpDayTarget));
+         return true;
+      }
+   }
+   return false;
+}

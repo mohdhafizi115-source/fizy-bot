@@ -155,6 +155,7 @@ void MefOnTimer()
       double sl = NormalizeDouble(buy ? tk.ask - InpMefSlAtr * atr : tk.bid + InpMefSlAtr * atr, dg);
       double mn = SymbolInfoDouble(s, SYMBOL_VOLUME_MIN), st = SymbolInfoDouble(s, SYMBOL_VOLUME_STEP);
       double lot = NormalizeDouble(MathMax(mn, MathFloor(InpMefLot / st + 1e-9) * st), 2);
+      if(DayPaused()) continue;                                         // daily target reached
       trade.SetExpertMagicNumber(InpMefMagic); trade.SetTypeFillingBySymbol(s);
       string cm = "MONTHEND " + TimeToString(jst, TIME_DATE);
       bool ok = buy ? trade.Buy(lot, s, 0, sl, 0, cm) : trade.Sell(lot, s, 0, sl, 0, cm);
