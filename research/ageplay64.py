@@ -40,7 +40,7 @@ def main():
             # pending entry
             if pend is not None and k > busy and 90 <= hm[k] < 1320:
                 kind, lvl, dr, sl = pend; fill = None
-                if kind == "now": fill = O[k] + (sp[k] if dr == 1 else 0)
+                if kind == "now": fill = O[k]                                  # all prices on the bid; spread charged once below
                 elif dr == 1 and H[k] >= lvl: fill = max(O[k], lvl)
                 elif dr == -1 and L[k] <= lvl: fill = min(O[k], lvl)
                 if fill is not None:
@@ -55,12 +55,11 @@ def main():
                                 if L[q] <= sl: ex = min(O[q], sl); break
                                 if H[q] >= tp: ex = tp; break
                             else:
-                                if H[q] + sp[q] >= sl: ex = max(O[q] + sp[q], sl); break
-                                if L[q] + sp[q] <= tp: ex = tp; break
+                                if H[q] >= sl: ex = max(O[q], sl); break
+                                if L[q] <= tp: ex = tp; break
                             q += 1
                         if ex is None: ex = C[min(q, n - 1)]
-                        cost = sp[k] if dr == -1 else 0.0                  # buys paid the ask at entry already
-                        res.append((k, ((ex - fill) * dr - (sp[k] if dr == -1 else 0) - (0 if dr == -1 else 0)) * usd))
+                        res.append((k, ((ex - fill) * dr - sp[k]) * usd))
                         busy = q
                     pend = None
             # leg bookkeeping
