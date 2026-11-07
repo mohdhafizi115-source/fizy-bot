@@ -1,0 +1,17 @@
+XAUUSD M1 2020-03-30 .. 2026-11-06; trend = 0.10% wick zigzag leg
+
+=== REAL: 152,415 trends ===
+pullbacks of >= $1 inside a trend: mean 1.54, 0: 17%  1: 47%  2: 19%  3: 9%  4+: 8%; mean depth $2.53
+   by trend length: 1-9 candles: 1.0  10-19 candles: 1.9  20-29 candles: 2.4  30-59 candles: 2.8  60-+ candles: 3.6
+   2026 only: mean 1.80, 0: 6%, 1: 53%, 2+: 40%; trends of 20+ candles: 5.3
+pullbacks of >= $2 inside a trend: mean 0.63, 0: 57%  1: 31%  2: 8%  3: 3%  4+: 2%; mean depth $3.76
+   by trend length: 1-9 candles: 0.6  10-19 candles: 0.7  20-29 candles: 0.8  30-59 candles: 0.7  60-+ candles: 0.6
+   2026 only: mean 1.37, 0: 13%, 1: 57%, 2+: 30%; trends of 20+ candles: 3.3
+pullbacks of >= $3 inside a trend: mean 0.31, 0: 75%  1: 21%  2: 3%  3: 1%  4+: 0%; mean depth $4.88
+   by trend length: 1-9 candles: 0.3  10-19 candles: 0.3  20-29 candles: 0.3  30-59 candles: 0.2  60-+ candles: 0.2
+   2026 only: mean 0.86, 0: 33%, 1: 54%, 2+: 14%; trends of 20+ candles: 1.6
+
+=== SHUFFLED control: 128,928 trends ===
+pullbacks of >= $1 inside a trend: mean 1.51, 0: 22%  1: 40%  2: 20%  3: 9%  4+: 9%; mean depth $2.44
+pullbacks of >= $2 inside a trend: mean 0.59, 0: 61%  1: 27%  2: 8%  3: 3%  4+: 2%; mean depth $3.74
+pullbacks of >= $3 inside a trend: mean 0.29, 0: 77%  1: 19%  2: 4%  3: 1%  4+: 0%; mean depth $4.88
