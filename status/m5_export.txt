@@ -1,4 +1,4 @@
-export run: 42355999555
+export run: 42511147535
 connected 1, max bars 10000000, from 2020.01.01, timeframe PERIOD_M1
 energy symbols on the server: BRENT.m WTI.m XNGUSD.m
 base,symbol,digits,point,tick_size,tick_value,contract,load_code,bars,first,last,median_spread_pts,swap_mode,swap_long,swap_short,swap_3day
