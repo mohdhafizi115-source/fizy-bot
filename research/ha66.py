@@ -7,7 +7,7 @@ Owner's rule (buy; sell is the mirror):
   4 Stochastic 14,3,3 %K not overbought (< 80) on that candle (sell: > 20)
   entry at the next bar's open; SL at the nearest swing low (lowest low of the last 10 bars) minus the spread;
   TP = M x ATR(14) (M 1 / 1.5 / 2); out after 100 bars at most. One trade at a time.
-Timeframes M1 / M5 / M15 (built from the broker's M1). Each month reported on its own. $ per 0.01 lot after spread.
+M1 only (owner, 9 Nov: "m1 cukup"). Each month reported on its own. $ per 0.01 lot after spread.
 Control: the same entries with a random direction.
 """
 import os, sys
@@ -35,7 +35,7 @@ def main():
         X = pd.DataFrame({"o": g.o.first(), "h": g.h.max(), "l": g.l.min(), "c": g.c.last(), "s": g.s.median()}).dropna()
         return X
 
-    for tf in (1, 5, 15):
+    for tf in (1,):
         X = tfbars(tf)
         O, H, L, C, S = (X[k].values.astype(float) for k in ("o", "h", "l", "c", "s"))
         n = len(C); T = X.index
