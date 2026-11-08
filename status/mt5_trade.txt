@@ -1,14 +1,14 @@
-shift ended (UTC): 2026-11-08 05:33
+shift ended (UTC): 2026-11-08 11:10
 done
 2026.11.06 23:57:59
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 3736 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 3826 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 2, gold auction 1
-  ES	0	23:57:32.066	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.08 01:57, 0 open position(s), 0 pending order(s), lot 0.01
-  NS	0	23:57:32.066	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.10 | 0 open position(s)
-  PJ	0	23:57:32.067	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
-  HD	0	23:57:32.070	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  NM	0	23:57:32.070	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  LR	0	23:57:32.070	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG ONLINE | XAUUSD.m M1: a 0.10% zigzag leg 20 candles old is faded at market; another entry every 0.10% further, up to 5; TP when price touches EMA 50; NO stop loss (owner's rule), lot 0.01 | 0 open position(s)
-  w: telegram ok: daily status
+  KS	0	05:34:50.590	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.08 07:34, 0 open position(s), 0 pending order(s), lot 0.01
+  FS	0	05:34:50.591	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.10 | 0 open position(s)
+  JJ	0	05:34:50.592	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
+  JD	0	05:34:50.606	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  KM	0	05:34:50.607	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  MR	0	05:34:50.607	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG ONLINE | XAUUSD.m M1: a 0.10% zigzag leg 20 candles old is faded at market; another entry every 0.10% further, up to 5; TP when price touches EMA 50; NO stop loss (owner's rule), lot 0.01 | 0 open position(s)
+  w: status message already sent today
   w: shift end: done=True, state=2026.11.06 23:57:59|0|0
