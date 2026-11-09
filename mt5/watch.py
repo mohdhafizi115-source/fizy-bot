@@ -203,7 +203,7 @@ def status_block(kind, text):
     if kind == "LEG ONLINE":
         return ["🌊 M1 LEG FADE · XAUUSD · no SL (owner's rule)",
                 "▫️ A 0.10% leg 20 candles old is faded if its peak / trough is $5+ beyond EMA 50; +1 entry every 0.10% further, max 5, lots 1/1/2/2/3",
-                f"▫️ TP when price touches EMA 50, no SL, no time exit · Lot {lot} · open {opened}"]
+                f"▫️ TP at the 50% fib of the leg or EMA 50, whichever first; no SL, no time exit · Lot {lot} · open {opened}"]
     if kind == "HA ONLINE":
         return ["🕯️ M1 HEIKIN ASHI · XAUUSD (owner's rule)",
                 "▫️ EMA 10/30 aligned + HA indecision, then HA with no lower (upper) shadow + Stoch 14,3,3 not OB (OS)",

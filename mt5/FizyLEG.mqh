@@ -1,6 +1,8 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.10 (9 Nov): the first entry needs the|
+//| included by FizyLB.mq5.  v2.15 (10 Nov): basket TP at the 50% fib |
+//| retracement of the leg or the EMA 50, whichever first (round 77). |
+//|  v2.10 (9 Nov): the first entry needs the|
 //| price at least InpLegMinDist ($8) beyond EMA 50 (owner chose     |
 //| round 69 row 3: "jarak ema terlalu dekat").                      |
 //| v2.06: lots 1/1/2/2/3 x base by entry   |
@@ -51,6 +53,7 @@ input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when pric
 input int    InpLegMax    = 5;        // most positions open at once
 input double InpLegMinDist = 5.0;     // v2.13 (10 Nov, owner): $5 on the closed M1 bar. v2.11 off, v2.10 $8: fade only when the last close is at least this $ beyond EMA 50 (0 = off)
 input bool   InpLegDistExt = true;    // v2.14 (owner): measure InpLegMinDist from the leg's last peak (up leg) / trough (down leg), not the firing close
+input double InpLegFib    = 50.0;     // v2.15 (10 Nov, owner): basket TP also at this Fibonacci retracement of the leg, whichever of it and the EMA comes first (0 = EMA only)
 input string InpLegMult   = "1,1,2,2,3"; // v2.06: lot of entry 1..5 = InpLegLot x this (owner: bigger lots from entry 3 to cover the floating ones)
 
 string   lg_sym = "";
@@ -58,6 +61,9 @@ bool     lg_ready = false;
 datetime lg_bar = 0;
 ulong    lg_known[];
 int      lg_ema = INVALID_HANDLE;
+double   lg_piv = 0, lg_ext = 0;     // v2.15: the faded leg's start and extreme (kept in the position comments across shifts)
+datetime lg_t0 = 0;                  // open time of the basket's first position
+string   lg_why = "";
 
 void LegEvent(string msg)
 {
@@ -72,7 +78,8 @@ void LegEvent(string msg)
 // open LEG positions: count, direction of the basket (+1 buy / -1 sell) and the price of the newest entry
 int LegBasket(int &dir, double &last)
 {
-   int n = 0; datetime newest = 0; dir = 0; last = 0;
+   int n = 0; datetime newest = 0, oldest = 0; dir = 0; last = 0;
+   double piv = 0, ext = 0;
    for(int i = PositionsTotal() - 1; i >= 0; i--)
    {
       ulong t = PositionGetTicket(i);
@@ -84,7 +91,14 @@ int LegBasket(int &dir, double &last)
       dir = PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? 1 : -1;
       datetime ot = (datetime)PositionGetInteger(POSITION_TIME);
       if(ot >= newest) { newest = ot; last = PositionGetDouble(POSITION_PRICE_OPEN); }
+      if(oldest == 0 || ot < oldest) oldest = ot;
+      string cp[];                                                     // "LEG <num> <leg start> <leg extreme>"
+      if(StringSplit(PositionGetString(POSITION_COMMENT), ' ', cp) >= 4 && piv == 0)
+      { piv = StringToDouble(cp[2]); ext = StringToDouble(cp[3]); }
    }
+   lg_t0 = oldest;
+   if(n == 0) { lg_piv = 0; lg_ext = 0; }
+   else if(piv > 0 && ext > 0 && lg_piv == 0) { lg_piv = piv; lg_ext = ext; }
    return n;
 }
 
@@ -100,7 +114,7 @@ void LegInit()
    LegEvent(StringFormat("LEG ONLINE | %s M1: a %.2f%% zigzag leg %d candles old is faded at market; another entry "
                          "every %.2f%% further, up to %d; %s; NO stop loss (owner's rule), "
                          "lot %.2f | %d open position(s)", lg_sym, InpLegPct, InpLegAge, InpLegPct, InpLegMax,
-                         InpLegTpEma > 0 ? StringFormat("only when price is at least $%.2f beyond EMA %d; TP when price touches the EMA", InpLegMinDist, InpLegTpEma) : StringFormat("TP %.2f%% back per position", InpLegTpPct),
+                         InpLegTpEma > 0 ? StringFormat("only when the leg's peak / trough is at least $%.2f beyond EMA %d; TP at the %.1f%% fib retracement of the leg or the EMA touch, whichever first", InpLegMinDist, InpLegTpEma, InpLegFib) : StringFormat("TP %.2f%% back per position", InpLegTpPct),
                          InpLegLot, n));
 }
 
@@ -119,7 +133,7 @@ void LegReportClosed(ulong pos)
    if(outPx == 0) return;
    string what = reason == DEAL_REASON_TP ? "LEG TP HIT" : (reason == DEAL_REASON_SO ? "LEG STOP OUT" : "LEG CLOSED");
    string why = reason == DEAL_REASON_TP ? "take profit" : (reason == DEAL_REASON_SO ? "broker stop-out, margin gone"
-              : (reason == DEAL_REASON_EXPERT ? StringFormat("price touched EMA %d", InpLegTpEma) : "closed outside the EA"));
+              : (reason == DEAL_REASON_EXPERT ? (lg_why != "" ? lg_why : StringFormat("price touched EMA %d", InpLegTpEma)) : "closed outside the EA"));
    double lv[2]; color lc[2]; string lb[2];
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
    string fn = Snap(lg_sym, PERIOD_M1, "LGX", lv, lc, lb, 0, 0, 0, 0, false);
@@ -132,6 +146,22 @@ double LegEma()                                                                /
    double v[];
    if(lg_ema == INVALID_HANDLE || CopyBuffer(lg_ema, 0, 1, 1, v) != 1) return 0;
    return v[0];
+}
+
+// v2.15: the Fibonacci TP level of the open basket (0 = unknown / off). The extreme is updated from CLOSED M1 bars since
+// the first entry (research/legfib77.py): a buy basket fades a down leg, so its extreme is the lowest low.
+double LegFibTp(int dir)
+{
+   if(InpLegFib <= 0 || lg_piv <= 0 || lg_ext <= 0 || lg_t0 == 0) return 0;
+   int sh = iBarShift(lg_sym, PERIOD_M1, lg_t0, false);
+   double ext = lg_ext;
+   if(sh >= 1)
+   {
+      int cnt = sh;                                                     // closed bars 1 .. sh (the entry bar included)
+      if(dir == 1) { int q = iLowest(lg_sym, PERIOD_M1, MODE_LOW, cnt, 1); if(q > 0) ext = MathMin(ext, iLow(lg_sym, PERIOD_M1, q)); }
+      else         { int q = iHighest(lg_sym, PERIOD_M1, MODE_HIGH, cnt, 1); if(q > 0) ext = MathMax(ext, iHigh(lg_sym, PERIOD_M1, q)); }
+   }
+   return ext + InpLegFib / 100.0 * (lg_piv - ext);
 }
 
 bool LegOpen(int dir, int num, string why)
@@ -149,17 +179,24 @@ bool LegOpen(int dir, int num, string why)
    if(mult <= 0) mult = 1;
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpLegLot * mult / sv + 1e-9) * sv), 2);
    trade.SetExpertMagicNumber(InpLegMagic); trade.SetTypeFillingBySymbol(lg_sym);
-   bool ok = dir == 1 ? trade.Buy(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num))
-                      : trade.Sell(lot, lg_sym, 0, 0, tp, "LEG " + IntegerToString(num));
+   string cm = "LEG " + IntegerToString(num);
+   if(lg_piv > 0 && lg_ext > 0) cm += " " + DoubleToString(lg_piv, dg) + " " + DoubleToString(lg_ext, dg);   // v2.15: survives a shift change
+   bool ok = dir == 1 ? trade.Buy(lot, lg_sym, 0, 0, tp, cm)
+                      : trade.Sell(lot, lg_sym, 0, 0, tp, cm);
    if(!ok) LegEvent(StringFormat("ERROR | leg %s order failed: %d %s", lg_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) return false;
-   double lv[2]; color lc[2]; string lb[2];
+   if(lg_t0 == 0) lg_t0 = TimeCurrent();
+   double fb = LegFibTp(dir);
+   double lv[3]; color lc[3]; string lb[3];
    lv[0] = px; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = tp > 0 ? tp : LegEma(); lc[1] = clrSeaGreen; lb[1] = tp > 0 ? "TP" : "EMA";
+   lv[2] = fb > 0 ? fb : lv[1]; lc[2] = clrGoldenrod; lb[2] = StringFormat("fib %.1f", InpLegFib);
    string fn = Snap(lg_sym, PERIOD_M1, "LGE", lv, lc, lb, 0, 0, 0, 0, false);
+   string tps = tp > 0 ? "TP " + PriceStr(lg_sym, tp)
+              : (fb > 0 ? StringFormat("TP at fib %.1f%% (%s) or the EMA %d touch (now %s), whichever comes first", InpLegFib, PriceStr(lg_sym, fb), InpLegTpEma, PriceStr(lg_sym, LegEma()))
+                        : StringFormat("TP at the EMA %d touch (now %s)", InpLegTpEma, PriceStr(lg_sym, LegEma())));
    LegEvent(StringFormat("LEG %s %s | entry %d of %d | %s | %s %.2f lot at %s, %s, no SL", dir == 1 ? "BUY" : "SELL",
-                         lg_sym, num, InpLegMax, why, dir == 1 ? "BUY" : "SELL", lot, PriceStr(lg_sym, px),
-                         tp > 0 ? "TP " + PriceStr(lg_sym, tp) : StringFormat("TP at the EMA %d touch (now %s)", InpLegTpEma, PriceStr(lg_sym, LegEma()))) + Img(fn));
+                         lg_sym, num, InpLegMax, why, dir == 1 ? "BUY" : "SELL", lot, PriceStr(lg_sym, px), tps) + Img(fn));
    return true;
 }
 
@@ -181,8 +218,11 @@ void LegOnTimer()
    // ---- TP at the EMA (v2.04): the whole basket closes when the closing price side touches the EMA
    if(n > 0 && InpLegTpEma > 0)
    {
-      double ev = LegEma();
-      if(ev > 0 && ((dir == -1 && tk.ask <= ev) || (dir == 1 && tk.bid >= ev)))
+      double ev = LegEma(), fb = LegFibTp(dir), lvl = ev;
+      lg_why = StringFormat("price touched EMA %d", InpLegTpEma);
+      if(fb > 0 && ev > 0 && ((dir == 1 && fb < ev) || (dir == -1 && fb > ev)))   // v2.15: the nearer of fib and EMA
+      { lvl = fb; lg_why = StringFormat("price reached the %.1f%% fib retracement of the leg", InpLegFib); }
+      if(ev > 0 && ((dir == -1 && tk.ask <= lvl) || (dir == 1 && tk.bid >= lvl)))
       {
          trade.SetExpertMagicNumber(InpLegMagic); trade.SetTypeFillingBySymbol(lg_sym);
          for(int i = PositionsTotal() - 1; i >= 0; i--)
@@ -260,6 +300,7 @@ void LegOnTimer()
       if(ev <= 0 || dist < InpLegMinDist) return;
    }
    double pivPx = d_ == 1 ? r[piv].low : r[piv].high;
+   lg_piv = pivPx; lg_ext = d_ == 1 ? r[ext].high : r[ext].low; lg_t0 = 0;   // v2.15: the leg for the fib TP
    double move = MathAbs(r[j].close - pivPx);
    LegOpen(-d_, 1, StringFormat("the %s leg from %s is %d candles old (+%s), faded", d_ == 1 ? "UP" : "DOWN",
                                 PriceStr(lg_sym, pivPx), j - piv, DoubleToString(move, 2)));
