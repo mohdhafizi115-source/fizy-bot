@@ -75,11 +75,14 @@ void CloseLeftovers()
 //| positions keep their own exits (SL / TP / EMA / time).            |
 //+------------------------------------------------------------------+
 input double InpDayTarget = 25.0;        // $; 0 = no daily target
+input double InpDayLossLimit = 25.0;     // v2.12: $; today's closed + open loss of all EA trades at -this closes everything and pauses until tomorrow; 0 = off
 
 datetime dt_day = 0;          // server day the flags below belong to
 bool     dt_hit = false;
 datetime dt_last = 0;
 double   dt_pnl = 0;
+bool     dl_hit = false;      // v2.12: daily loss limit reached today
+datetime dl_try = 0;
 
 double DayRealised()
 {
@@ -110,25 +113,83 @@ void DayEvent(string msg)
    Print("EVENT ", msg);
 }
 
-// call once a minute from OnTimer, and before every new entry
+// v2.12: floating profit of all EA positions (magic 260300-260399), swap included
+double DayFloating()
+{
+   double f = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      ulong t = PositionGetTicket(i);
+      if(t == 0) continue;
+      long mg = PositionGetInteger(POSITION_MAGIC);
+      if(mg < 260300 || mg > 260399) continue;
+      f += PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
+   }
+   return f;
+}
+
+// v2.12: close every EA position and delete every EA pending order; returns how many are still open
+int DayFlatten()
+{
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0) continue;
+      long mg = OrderGetInteger(ORDER_MAGIC);
+      if(mg >= 260300 && mg <= 260399) trade.OrderDelete(t);
+   }
+   int left = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      ulong t = PositionGetTicket(i);
+      if(t == 0) continue;
+      long mg = PositionGetInteger(POSITION_MAGIC);
+      if(mg < 260300 || mg > 260399) continue;
+      string sy = PositionGetString(POSITION_SYMBOL);
+      trade.SetExpertMagicNumber(mg); trade.SetTypeFillingBySymbol(sy);
+      if(!trade.PositionClose(t)) left++;
+   }
+   trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+   return left;
+}
+
+// call every second from OnTimer, and before every new entry
 bool DayPaused()
 {
-   if(InpDayTarget <= 0) return false;
    MqlDateTime s; TimeToStruct(TimeCurrent(), s); s.hour = 0; s.min = 0; s.sec = 0;
    datetime d0 = StructToTime(s);
-   if(d0 != dt_day) { dt_day = d0; dt_hit = false; dt_last = 0; }
-   if(dt_hit) return true;
+   if(d0 != dt_day) { dt_day = d0; dt_hit = false; dl_hit = false; dt_last = 0; }
+   if(dl_hit)
+   {
+      if(TimeCurrent() - dl_try >= 10) { dl_try = TimeCurrent(); DayFlatten(); }   // keep the book flat (a close may have failed)
+      return true;
+   }
    if(TimeCurrent() - dt_last >= 20)                                   // re-read the history at most every 20 s
    {
       dt_last = TimeCurrent();
       dt_pnl = DayRealised();
-      if(dt_pnl >= InpDayTarget)
+   }
+   if(InpDayLossLimit > 0)
+   {
+      double fl = DayFloating();
+      if(dt_pnl + fl <= -InpDayLossLimit)
       {
-         dt_hit = true;
-         DayEvent(StringFormat("DAILY TARGET REACHED | today's closed profit $%.2f >= $%.2f: no new trades until 06:00 MYT "
-                               "tomorrow (00:00 server); open positions keep their own exits", dt_pnl, InpDayTarget));
+         dl_hit = true;
+         int left = DayFlatten();
+         DayEvent(StringFormat("DAILY LOSS LIMIT | today's closed $%.2f + open $%.2f = $%.2f <= -$%.2f: every EA position closed%s, "
+                               "no new trades until 06:00 MYT tomorrow (00:00 server)", dt_pnl, fl, dt_pnl + fl, InpDayLossLimit,
+                               left > 0 ? StringFormat(" (%d still open, retrying)", left) : ""));
          return true;
       }
+   }
+   if(InpDayTarget <= 0) return false;
+   if(dt_hit) return true;
+   if(dt_pnl >= InpDayTarget)
+   {
+      dt_hit = true;
+      DayEvent(StringFormat("DAILY TARGET REACHED | today's closed profit $%.2f >= $%.2f: no new trades until 06:00 MYT "
+                            "tomorrow (00:00 server); open positions keep their own exits", dt_pnl, InpDayTarget));
+      return true;
    }
    return false;
 }
