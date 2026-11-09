@@ -47,7 +47,9 @@
 //| (1.08, the owner's frequency override). See CLAUDE.md.            |
 //| Events go to MQL5\Files\spk_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpSpkOn        = false;   // OFF since 8 Nov (owner)
+input bool   InpSpkOn        = true;    // v2.12 (9 Nov): back ON in raw mode, round 74 (owner: frequent scalper judged on 3 months)
+input bool   InpSpkConfirm   = false;   // v2.12: false = RAW mode, buy right after the spike bar (no RSI, no rejection candle)
+input double InpSpkRawSl     = 0.2;     // RAW mode: SL this many ATR under the spike bar's low; no TP
 input string InpSpkSymbol    = "XAUUSD";
 input double InpSpkLot       = 0.01;
 input long   InpSpkMagic     = 260320;
@@ -107,6 +109,11 @@ void SpkInit()
    if(sp_rsi == INVALID_HANDLE) SpkEvent(StringFormat("ERROR | M1 spike fade: RSI handle failed (%d)", GetLastError()));
    ulong t;
    if(SpkPosition(t)) { int m = ArraySize(sp_known); ArrayResize(sp_known, m + 1); sp_known[m] = t; }
+   if(!InpSpkConfirm)
+      SpkEvent(StringFormat("SPIKE ONLINE | %s M1, raw: BUY right after a down bar of %.1f x ATR(M1) when ATR >= %.0f x the "
+                            "spread; SL %.1f ATR under the spike's low, no TP, out after %d min, lot %.2f | %d open position(s)",
+                            sp_sym, InpSpkAtr, InpSpkAtrSpread, InpSpkRawSl, InpSpkHoldMin, InpSpkLot, ArraySize(sp_known)));
+   else
    SpkEvent(StringFormat("SPIKE ONLINE | %s M1, with confirmation: a down bar of %.1f x ATR(M1), ATR >= %.0f x the spread "
                          "and RSI < %.0f arms the setup; BUY only after a rejection candle (lower wick >= %.0f%% of its "
                          "range, close in the upper half) within %d bars. SL %.1f ATR under the wick, TP back at the "
@@ -209,6 +216,31 @@ void SpkOnTimer()
    }
    double spread = tk.ask - tk.bid;
    double rng = r[j].high - r[j].low;
+   // ---- RAW mode (v2.12, round 74): buy right away after the spike bar, SL under its low, no TP
+   if(!InpSpkConfirm)
+   {
+      if(inPos || atr <= 0 || spread <= 0 || atr < InpSpkAtrSpread * spread || r[j].close >= r[j].open || rng < InpSpkAtr * atr
+         || st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;
+      if(DayPaused()) return;                                                   // daily target reached
+      int dg0 = (int)SymbolInfoInteger(sp_sym, SYMBOL_DIGITS);
+      double sl0 = NormalizeDouble(r[j].low - InpSpkRawSl * atr, dg0);
+      if(tk.bid <= sl0) return;
+      double mn0 = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_MIN), sv0 = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_STEP);
+      double lot0 = NormalizeDouble(MathMax(mn0, MathFloor(InpSpkLot / sv0 + 1e-9) * sv0), 2);
+      trade.SetExpertMagicNumber(InpSpkMagic); trade.SetTypeFillingBySymbol(sp_sym);
+      bool ok0 = trade.Buy(lot0, sp_sym, 0, sl0, 0, "SPIKE");
+      if(!ok0) SpkEvent(StringFormat("ERROR | spike %s order failed: %d %s", sp_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+      trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+      if(!ok0) return;
+      double lv0[2]; color lc0[2]; string lb0[2];
+      lv0[0] = tk.ask; lc0[0] = clrBlue; lb0[0] = "entry"; lv0[1] = sl0; lc0[1] = clrIndianRed; lb0[1] = "SL";
+      string fn0 = Snap(sp_sym, PERIOD_M1, "SPF", lv0, lc0, lb0, 0, 0, 0, 0, false);
+      SpkEvent(StringFormat("SPIKE BUY %s | a down M1 bar of %.2f (%.1f x ATR, gate %.0f x spread) | BUY %.2f lot at %s, "
+                            "SL %s under the spike, no TP, out after %d min", sp_sym, rng, rng / atr, atr / spread, lot0,
+                            PriceStr(sp_sym, tk.ask), PriceStr(sp_sym, sl0), InpSpkHoldMin) + Img(fn0));
+      if(SpkPosition(pt)) { int m0 = ArraySize(sp_known); ArrayResize(sp_known, m0 + 1); sp_known[m0] = pt; }
+      return;
+   }
    if(!confirmed && atr > 0 && spread > 0 && atr >= InpSpkAtrSpread * spread && r[j].close < r[j].open
       && rng >= InpSpkAtr * atr && rv[0] < InpSpkRsi
       && st.day_of_week != 0 && st.day_of_week != 6 && hm >= 90 && hm < 1320)
