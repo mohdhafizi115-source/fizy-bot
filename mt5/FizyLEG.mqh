@@ -50,6 +50,7 @@ input bool   InpLegEmaSide = false;   // v2.05: entries no longer need the EMA o
 input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when price touches this EMA(M1); 0 = fixed TP
 input int    InpLegMax    = 5;        // most positions open at once
 input double InpLegMinDist = 5.0;     // v2.13 (10 Nov, owner): $5 on the closed M1 bar. v2.11 off, v2.10 $8: fade only when the last close is at least this $ beyond EMA 50 (0 = off)
+input bool   InpLegDistExt = true;    // v2.14 (owner): measure InpLegMinDist from the leg's last peak (up leg) / trough (down leg), not the firing close
 input string InpLegMult   = "1,1,2,2,3"; // v2.06: lot of entry 1..5 = InpLegLot x this (owner: bigger lots from entry 3 to cover the floating ones)
 
 string   lg_sym = "";
@@ -254,7 +255,8 @@ void LegOnTimer()
    if(InpLegTpEma > 0 && InpLegMinDist > 0)                                     // v2.10: EMA far enough away to pay
    {
       double ev = LegEma();
-      double dist = d_ == 1 ? r[j].close - ev : ev - r[j].close;               // up leg -> sell above the EMA, down leg -> buy below
+      double ref = InpLegDistExt ? (d_ == 1 ? r[ext].high : r[ext].low) : r[j].close;   // v2.14: the leg's peak / trough
+      double dist = d_ == 1 ? ref - ev : ev - ref;                              // up leg -> sell above the EMA, down leg -> buy below
       if(ev <= 0 || dist < InpLegMinDist) return;
    }
    double pivPx = d_ == 1 ? r[piv].low : r[piv].high;

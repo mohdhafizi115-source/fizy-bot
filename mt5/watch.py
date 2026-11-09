@@ -202,7 +202,7 @@ def status_block(kind, text):
                 f"▫️ SL 0.2 ATR under the spike, no TP, out after 45 min · Lot {lot} · open {opened}"]
     if kind == "LEG ONLINE":
         return ["🌊 M1 LEG FADE · XAUUSD · no SL (owner's rule)",
-                "▫️ A 0.10% leg 20 candles old is faded if the M1 close is $5+ beyond EMA 50; +1 entry every 0.10% further, max 5, lots 1/1/2/2/3",
+                "▫️ A 0.10% leg 20 candles old is faded if its peak / trough is $5+ beyond EMA 50; +1 entry every 0.10% further, max 5, lots 1/1/2/2/3",
                 f"▫️ TP when price touches EMA 50, no SL, no time exit · Lot {lot} · open {opened}"]
     if kind == "HA ONLINE":
         return ["🕯️ M1 HEIKIN ASHI · XAUUSD (owner's rule)",
