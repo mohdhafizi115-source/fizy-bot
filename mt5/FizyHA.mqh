@@ -19,7 +19,7 @@
 //| Respects the $25 daily target (DayPaused).                       |
 //| Events go to MQL5\Files\ha_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpHaOn       = true;
+input bool   InpHaOn       = false;   // OFF since 9 Nov (owner: lost twice, "aku tak nak")
 input string InpHaSymbol   = "XAUUSD";
 input double InpHaLot      = 0.01;
 input long   InpHaMagic    = 260322;
