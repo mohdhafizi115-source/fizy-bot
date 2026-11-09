@@ -3,25 +3,28 @@
 XAUUSD M1 2025-10-02 .. 2026-11-06, 388,049 bars
 
 --- M1 GOLD HEDGE as sold (3-bar breakout + H1 EMA 21/50, zone 2 ATR, lots 0.01-0.12, TP +$10, freeze -$30) ---
-baskets 956 (3.4 a day), win 94.6%, PF 1.30, 13 months net $+2,920, avg win $14.08 vs avg loss $-188.57, biggest lot 0.12, baskets reaching the last level 3.9%
+baskets 957 (3.4 a day), win 94.5%, PF 1.25, 13 months net $+2,585, avg win $14.08 vs avg loss $-191.34, biggest lot 0.12, baskets reaching the last level 3.9%
+!! a basket opened 2026-10-02 15:35 is STILL OPEN at the end (3 positions), floating $-335 (counted as closed now)
 ACCOUNT $100 BLOWN 52 times in 13 months; worst day $-1003
-last month: 0 baskets, win 0%, net $+0, blown 0x
+last month: 1 baskets, win 0%, net $-335, blown 0x
 month before: 35 baskets, win 100%, net $+560, blown 0x
-last 12 months: 781 baskets, win 95%, net $+2549, blown 36x
+last 12 months: 782 baskets, win 95%, net $+2214, blown 36x
 
 --- same, RANDOM entries (control) ---
-baskets 1,321 (4.7 a day), win 89.4%, PF 0.69, 13 months net $-7,213, avg win $13.80 vs avg loss $-167.96, biggest lot 0.12, baskets reaching the last level 4.2%
+baskets 1,322 (4.7 a day), win 89.4%, PF 0.69, 13 months net $-7,203, avg win $13.80 vs avg loss $-167.96, biggest lot 0.12, baskets reaching the last level 4.2%
+!! a basket opened 2026-11-06 22:26 is STILL OPEN at the end (1 positions), floating $+10 (counted as closed now)
 ACCOUNT $100 BLOWN 140 times in 13 months; worst day $-1704
-last month: 52 baskets, win 85%, net $-2025, blown 8x
+last month: 53 baskets, win 85%, net $-2015, blown 8x
 month before: 50 baskets, win 100%, net $+692, blown 0x
-last 12 months: 1170 baskets, win 90%, net $-5812, blown 117x
+last 12 months: 1171 baskets, win 90%, net $-5802, blown 117x
 
 --- same with TP +$3 ---
-baskets 2,467 (8.7 a day), win 98.8%, PF 1.79, 13 months net $+6,816, avg win $6.35 vs avg loss $-288.28, biggest lot 0.12, baskets reaching the last level 1.8%
+baskets 2,468 (8.7 a day), win 98.7%, PF 1.72, 13 months net $+6,481, avg win $6.35 vs avg loss $-289.80, biggest lot 0.12, baskets reaching the last level 1.8%
+!! a basket opened 2026-10-02 15:35 is STILL OPEN at the end (3 positions), floating $-335 (counted as closed now)
 ACCOUNT $100 BLOWN 30 times in 13 months; worst day $-1501
-last month: 0 baskets, win 0%, net $+0, blown 0x
+last month: 1 baskets, win 0%, net $-335, blown 0x
 month before: 62 baskets, win 100%, net $+323, blown 0x
-last 12 months: 2066 baskets, win 99%, net $+5764, blown 19x
+last 12 months: 2067 baskets, win 99%, net $+5429, blown 19x
 
 --- ZONE RECOVERY classic, zone $3, TP $3, basket +$1, max 6 levels, random entries ---
 baskets 8,751 (30.8 a day), win 86.9%, PF 0.40, 13 months net $-32,928, avg win $2.85 vs avg loss $-47.53, biggest lot 0.65, baskets reaching the last level 0.1%
@@ -52,10 +55,11 @@ month before: 753 baskets, win 88%, net $-4277, blown 89x
 last 12 months: 8770 baskets, win 90%, net $-40098, blown 855x
 
 --- ZONE RECOVERY classic, zone $3, TP $3, max 4 levels only, random entries ---
-baskets 8,039 (28.3 a day), win 90.3%, PF 0.57, 13 months net $-15,683, avg win $2.85 vs avg loss $-46.66, biggest lot 0.22, baskets reaching the last level 13.3%
+baskets 8,040 (28.3 a day), win 90.3%, PF 0.57, 13 months net $-15,790, avg win $2.85 vs avg loss $-46.74, biggest lot 0.22, baskets reaching the last level 13.3%
+!! a basket opened 2026-11-06 21:59 is STILL OPEN at the end (4 positions), floating $-107 (counted as closed now)
 ACCOUNT $100 BLOWN 387 times in 13 months; worst day $-1313
-last month: 561 baskets, win 95%, net $-96, blown 12x
+last month: 562 baskets, win 95%, net $-203, blown 12x
 month before: 625 baskets, win 89%, net $-2379, blown 55x
-last 12 months: 7307 baskets, win 90%, net $-15007, blown 368x
+last 12 months: 7308 baskets, win 90%, net $-15114, blown 368x
 
-done in 14 s
+done in 15 s
