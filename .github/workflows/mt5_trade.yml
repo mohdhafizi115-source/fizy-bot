@@ -58,6 +58,7 @@ jobs:
           tlot=$(sed -n 11p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           klot2=$(sed -n 12p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           llot=$(sed -n 13p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
+          hlot=$(sed -n 14p mt5_trade.txt 2>/dev/null | tr -dc 0-9.)
           echo "mode=${mode:-off}" >> "$GITHUB_OUTPUT"
           echo "lot=${lot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "nlot=${nlot:-0.01}" >> "$GITHUB_OUTPUT"
@@ -71,6 +72,7 @@ jobs:
           echo "tlot=${tlot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "slot=${klot2:-0.01}" >> "$GITHUB_OUTPUT"
           echo "llot=${llot:-0.01}" >> "$GITHUB_OUTPUT"
+          echo "hlot=${hlot:-0.01}" >> "$GITHUB_OUTPUT"
           echo "auto trade: ${mode:-off}, London lot ${lot:-0.01}, NR7 lot ${nlot:-0.01}, Gotobi lot ${glot:-0.01}, gold auction lot ${alot:-0.01}"
 
       - name: Install packages
@@ -94,6 +96,7 @@ jobs:
           TLOT: ${{ steps.sw.outputs.tlot }}
           SLOT: ${{ steps.sw.outputs.slot }}
           LLOT: ${{ steps.sw.outputs.llot }}
+          HLOT: ${{ steps.sw.outputs.hlot }}
         run: |
           $ErrorActionPreference = "Continue"
           Invoke-WebRequest -Uri "https://download.mql5.com/cdn/web/just.global.markets/mt5/justmarkets5setup.exe" -OutFile jm.exe
@@ -128,6 +131,7 @@ jobs:
           (Get-Content mt5\FizyTK.mqh) -replace '^input double InpTkLot\s*=.*;', "input double InpTkLot     = $env:TLOT;" | Set-Content "$dir\MQL5\Experts\FizyTK.mqh" -Encoding utf8
           (Get-Content mt5\FizySPK.mqh) -replace '^input double InpSpkLot\s*=.*;', "input double InpSpkLot       = $env:SLOT;" | Set-Content "$dir\MQL5\Experts\FizySPK.mqh" -Encoding utf8
           (Get-Content mt5\FizyLEG.mqh) -replace '^input double InpLegLot\s*=.*;', "input double InpLegLot    = $env:LLOT;" | Set-Content "$dir\MQL5\Experts\FizyLEG.mqh" -Encoding utf8
+          (Get-Content mt5\FizyHA.mqh) -replace '^input double InpHaLot\s*=.*;', "input double InpHaLot      = $env:HLOT;" | Set-Content "$dir\MQL5\Experts\FizyHA.mqh" -Encoding utf8
           (Get-Content mt5\FizyDTJ.mqh) -replace '^input double InpDtjLot\s*=.*;', "input double InpDtjLot      = $env:DLOT;" | Set-Content "$dir\MQL5\Experts\FizyDTJ.mqh" -Encoding utf8
           (Get-Content mt5\FizySR.mqh) -replace '^input bool   InpSrOn\s*=.*;', "input bool   InpSrOn          = $srOn;" -replace '^input bool   InpSrMapOnStart\s*=.*;', "input bool   InpSrMapOnStart  = $srMap;" | Set-Content "$dir\MQL5\Experts\FizySR.mqh" -Encoding utf8
           $m = "${{ github.event.inputs.minutes }}"

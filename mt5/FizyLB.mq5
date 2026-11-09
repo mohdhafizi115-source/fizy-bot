@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.07"
+#property version "2.08"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -56,6 +56,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyKUMO.mqh"                // gold H1 Ichimoku cloud breakout
 #include "FizyTK.mqh"                  // gold H1 Ichimoku Tenkan / Kijun cross, day trade
 #include "FizySPK.mqh"                 // gold M1 spike fade (buy a sharp drop when ATR dwarfs the spread)
+#include "FizyHA.mqh"                  // gold M1 Heikin Ashi + EMA 10/30 + Stochastic, the owner's rule, TP 1:1 (v2.08)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
 //--- helpers -------------------------------------------------------
@@ -386,6 +387,7 @@ void OnTimer()
    TkOnTimer();
    SpkOnTimer();
    LegOnTimer();
+   HaOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
    DayPaused();                                                             // daily $ target check (reports once when hit)
