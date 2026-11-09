@@ -44,7 +44,6 @@ MODS = [  # kind prefix, emoji, title
     ("LEG", "🌊", "M1 LEG FADE · XAUUSD · no SL"),
     ("HA ", "🕯️", "M1 HEIKIN ASHI · XAUUSD · TP 1:1"),
     ("DAILY TARGET", "🎯", "DAILY TARGET · all modules"),
-    ("DAILY LOSS", "🛑", "DAILY LOSS LIMIT · all modules"),
     ("SR ", "🧱", "S/R ZONES · XAUUSD M15 · alerts only"),
     ("STARTED", "🤖", "FIZY BOT · all modules"), ("STOPPED", "🤖", "FIZY BOT · all modules"),
     ("CLEANUP", "🧹", "SWITCHED-OFF MODULE · cleanup"),
@@ -161,7 +160,6 @@ def status_block(kind, text):
         return ["🤖 FIZY BOT · EA shell",
                 "▫️ OFF: breakouts (London · NR7 · Williams · USDJPY) · TK cross · M1 spike fade · M1 Heikin Ashi",
                 "🎯 Daily target $25 closed profit, then no new trades until 06:00 MYT",
-                "🛑 Daily loss limit $25 (closed + open): close everything, no trades until 06:00 MYT",
                 f"▫️ Open {opened} · pending {pend}"]
     if kind == "NR7 ONLINE":
         syms = _num(r"\(([A-Z,]+)\)", t).replace(",", " · ")
