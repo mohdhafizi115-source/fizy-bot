@@ -123,6 +123,9 @@ def main():
                 e = min(O[k], lo3[k]) if entry == "bo" else O[k]
                 D = e; U = D + z
             bk = [[dr, e, u]]; k_open = k; maxu = max(maxu, u)
+        openfl = 0.0
+        if bk:                                                       # a basket still open at the end: mark it to market
+            openfl = net(C[-1], sp[-1]); res.append((n - 1, openfl, k_open, len(bk)))
         R = pd.DataFrame(res, columns=["k", "net", "k0", "npos"])
         R["t"] = B.index[R.k.values]
         g = R.net[R.net > 0].sum(); l_ = -R.net[R.net < 0].sum()
@@ -130,6 +133,7 @@ def main():
         say(f"baskets {len(R):,} ({len(R) / len(np.unique(day)):.1f} a day), win {100 * (R.net > 0).mean():.1f}%, PF {g / l_ if l_ else 0:.2f}, "
             f"13 months net ${R.net.sum():+,.0f}, avg win ${R.net[R.net > 0].mean():.2f} vs avg loss ${R.net[R.net < 0].mean():.2f}, "
             f"biggest lot {maxu / 100:.2f}, baskets reaching the last level {100 * (R.npos >= (len(seq) if seq else maxlv)).mean():.1f}%")
+        if bk: say(f"!! a basket opened {B.index[k_open]:%Y-%m-%d %H:%M} is STILL OPEN at the end ({len(bk)} positions), floating ${openfl:+.0f} (counted as closed now)")
         say(f"ACCOUNT $100 BLOWN {blow} times in 13 months; worst day ${R.groupby(R.t.dt.normalize()).net.sum().min():+.0f}")
         for nm, a, b in (("last month", end - pd.Timedelta(days=30), end + pd.Timedelta(minutes=1)),
                          ("month before", end - pd.Timedelta(days=60), end - pd.Timedelta(days=30)),
