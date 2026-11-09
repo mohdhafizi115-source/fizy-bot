@@ -1,0 +1,8 @@
+XAUUSD, month 1 07 Sep..07 Oct, month 2 07 Oct..06 Nov 2026
+
+=== M1: 75,562 bars ===
+                         variant |    month 1: tr win% PF net worst-day |    month 2: tr win% PF net worst-day | 2 months net | random dir PF
+             body<=0.3 TP 1:1 SL |          717  49% 0.87   -223    -57 |          686  48% 0.82   -276    -71 |    -499 | 0.97
+      body<=0.3 TP 1:1 SL +slope |          700  49% 0.87   -219    -64 |          662  49% 0.85   -235    -64 |    -454 | 0.82
+             body<=0.5 TP 1:1 SL |          858  49% 0.84   -337    -81 |          820  50% 0.91   -166    -73 |    -503 | 0.84
+      body<=0.5 TP 1:1 SL +slope |          841  49% 0.85   -330    -88 |          797  50% 0.92   -142    -69 |    -472 | 0.92
