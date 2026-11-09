@@ -1,0 +1,68 @@
+/home/runner/work/fizy-bot/fizy-bot/research/leghedge71.py:63: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = B.index.dayofweek.values
+XAUUSD M1 2020-03-30 .. 2026-11-06, 2,339,516 bars, $ per 1.0 move at 0.01 lot = 1.00
+
+--- A LIVE (no hedge): zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,376 (30.10 a day), win 56.9%, PF 0.81, net $-12,929 (swap included), avg win $1.84, avg loss $-3.01
+ACCOUNT $100 BLOWN (stop-out) 166 times in 7 years; worst day $-486.12; worst floating loss $-733.74; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-580, blown 6x  2021: net $-1225, blown 16x  2022: net $-1926, blown 18x  2023: net $-2234, blown 26x  2024: net $-2964, blown 35x  2025: net $-1664, blown 35x  2026: net $-2337, blown 30x
+last month: 724 closes, win 61%, net $+92, stop-outs 0, worst day $-246
+month before: 733 closes, win 59%, net $+311, stop-outs 0, worst day $-235
+last 12 months: 7294 trades, net $-1464, blown 34x
+first stop-out on 2020-05-11, 42 days after the start; median days between stop-outs 4.0
+
+--- B LOCK hedge 100% at step 6, exit all at +$1 combined or EMA: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,901 (30.40 a day), win 56.5%, PF 0.82, net $-14,185 (swap included), avg win $2.18, avg loss $-3.46
+ACCOUNT $100 BLOWN (stop-out) 169 times in 7 years; worst day $-322.57; worst floating loss $-130.39; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-836, blown 9x  2021: net $-1141, blown 15x  2022: net $-2242, blown 23x  2023: net $-2296, blown 26x  2024: net $-3055, blown 35x  2025: net $-1951, blown 29x  2026: net $-2664, blown 32x
+last month: 734 closes, win 61%, net $-86, stop-outs 0, worst day $-86
+month before: 746 closes, win 58%, net $-279, stop-outs 0, worst day $-199
+last 12 months: 7419 trades, net $-2476, blown 35x
+first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 6.0
+
+--- C LOCK hedge 50% at step 6, exit all at +$1 combined or EMA: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 51,956 (30.44 a day), win 56.7%, PF 0.82, net $-12,756 (swap included), avg win $2.04, avg loss $-3.23
+ACCOUNT $100 BLOWN (stop-out) 163 times in 7 years; worst day $-388.05; worst floating loss $-423.35; hold median 0 h, p90 1 h, max 6 h
+by year: 2020: net $-736, blown 8x  2021: net $-1255, blown 17x  2022: net $-1997, blown 20x  2023: net $-2187, blown 25x  2024: net $-2852, blown 34x  2025: net $-1680, blown 32x  2026: net $-2049, blown 27x
+last month: 734 closes, win 61%, net $+3, stop-outs 0, worst day $-160
+month before: 746 closes, win 58%, net $+16, stop-outs 0, worst day $-187
+last 12 months: 7431 trades, net $-1506, blown 30x
+first stop-out on 2020-05-11, 42 days after the start; median days between stop-outs 5.0
+
+--- D TREND hedge 100%, own TP 1 step / SL 1 step, re-opens: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 54,750 (32.07 a day), win 56.2%, PF 0.88, net $-13,458 (swap included), avg win $3.20, avg loss $-4.67
+ACCOUNT $100 BLOWN (stop-out) 165 times in 7 years; worst day $-633.81; worst floating loss $-810.09; hold median 0 h, p90 1 h, max 4 h
+by year: 2020: net $-1070, blown 12x  2021: net $-1235, blown 16x  2022: net $-2181, blown 23x  2023: net $-2059, blown 24x  2024: net $-3167, blown 37x  2025: net $-1298, blown 23x  2026: net $-2449, blown 30x
+last month: 790 closes, win 60%, net $-42, stop-outs 0, worst day $-183
+month before: 803 closes, win 57%, net $-383, stop-outs 0, worst day $-388
+last 12 months: 8177 trades, net $-2138, blown 33x
+first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 6.0
+
+--- E TREND hedge 100%, own TP 2 steps / SL 1 step, re-opens: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 53,384 (31.27 a day), win 55.8%, PF 0.87, net $-13,476 (swap included), avg win $2.90, avg loss $-4.24
+ACCOUNT $100 BLOWN (stop-out) 163 times in 7 years; worst day $-438.81; worst floating loss $-810.09; hold median 0 h, p90 1 h, max 4 h
+by year: 2020: net $-1199, blown 13x  2021: net $-1365, blown 18x  2022: net $-2117, blown 21x  2023: net $-2416, blown 28x  2024: net $-2612, blown 31x  2025: net $-1279, blown 22x  2026: net $-2488, blown 30x
+last month: 767 closes, win 59%, net $-89, stop-outs 0, worst day $-175
+month before: 768 closes, win 57%, net $-272, stop-outs 0, worst day $-386
+last 12 months: 7810 trades, net $-2151, blown 32x
+first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 6.0
+
+--- F TREND hedge 50%, own TP 1 step / SL 1 step, re-opens: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 54,516 (31.94 a day), win 56.4%, PF 0.86, net $-12,544 (swap included), avg win $2.45, avg loss $-3.69
+ACCOUNT $100 BLOWN (stop-out) 158 times in 7 years; worst day $-495.35; worst floating loss $-636.99; hold median 0 h, p90 1 h, max 5 h
+by year: 2020: net $-898, blown 9x  2021: net $-1163, blown 16x  2022: net $-2235, blown 22x  2023: net $-2283, blown 27x  2024: net $-2579, blown 31x  2025: net $-1421, blown 30x  2026: net $-1965, blown 23x
+last month: 790 closes, win 60%, net $+25, stop-outs 0, worst day $-214
+month before: 803 closes, win 57%, net $-36, stop-outs 0, worst day $-311
+last 12 months: 8131 trades, net $-1257, blown 25x
+first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 5.0
+
+--- G TREND hedge 150%, own TP 1 step / SL 1 step, re-opens: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 54,938 (32.18 a day), win 56.1%, PF 0.90, net $-14,229 (swap included), avg win $4.01, avg loss $-5.73
+ACCOUNT $100 BLOWN (stop-out) 170 times in 7 years; worst day $-612.46; worst floating loss $-810.90; hold median 0 h, p90 1 h, max 4 h
+by year: 2020: net $-1516, blown 16x  2021: net $-1435, blown 18x  2022: net $-1875, blown 21x  2023: net $-2186, blown 25x  2024: net $-2858, blown 31x  2025: net $-1668, blown 26x  2026: net $-2692, blown 33x
+last month: 764 closes, win 59%, net $-363, stop-outs 4, worst day $-179
+month before: 804 closes, win 57%, net $-772, stop-outs 2, worst day $-464
+last 12 months: 8126 trades, net $-2793, blown 39x
+first stop-out on 2020-04-01, 2 days after the start; median days between stop-outs 4.0
+
+done in 19 s
