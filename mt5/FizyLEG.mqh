@@ -1,6 +1,9 @@
 //+------------------------------------------------------------------+
 //| FizyLEG.mqh - gold M1 LEG FADE, the owner's own rule, demo only, |
-//| included by FizyLB.mq5.  v2.06: lots 1/1/2/2/3 x base by entry   |
+//| included by FizyLB.mq5.  v2.10 (9 Nov): the first entry needs the|
+//| price at least InpLegMinDist ($8) beyond EMA 50 (owner chose     |
+//| round 69 row 3: "jarak ema terlalu dekat").                      |
+//| v2.06: lots 1/1/2/2/3 x base by entry   |
 //| number (owner's order; round 56f).  v2.05: no EMA side filter.   |
 //| v2.04 (6 Nov 2026): TP = price touches                           |
 //| EMA 50 (whole basket, closed by the EA), owner's order. v2.03:    |
@@ -46,6 +49,7 @@ input double InpLegTpPct  = 0.35;     // fixed TP distance, % of price (only whe
 input bool   InpLegEmaSide = false;   // v2.05: entries no longer need the EMA on the far side (owner: the EMA is only the TP)
 input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when price touches this EMA(M1); 0 = fixed TP
 input int    InpLegMax    = 5;        // most positions open at once
+input double InpLegMinDist = 8.0;     // v2.10: fade only when the last close is at least this $ beyond EMA 50 (0 = off)
 input string InpLegMult   = "1,1,2,2,3"; // v2.06: lot of entry 1..5 = InpLegLot x this (owner: bigger lots from entry 3 to cover the floating ones)
 
 string   lg_sym = "";
@@ -95,7 +99,7 @@ void LegInit()
    LegEvent(StringFormat("LEG ONLINE | %s M1: a %.2f%% zigzag leg %d candles old is faded at market; another entry "
                          "every %.2f%% further, up to %d; %s; NO stop loss (owner's rule), "
                          "lot %.2f | %d open position(s)", lg_sym, InpLegPct, InpLegAge, InpLegPct, InpLegMax,
-                         InpLegTpEma > 0 ? StringFormat("TP when price touches EMA %d", InpLegTpEma) : StringFormat("TP %.2f%% back per position", InpLegTpPct),
+                         InpLegTpEma > 0 ? StringFormat("only when price is at least $%.2f beyond EMA %d; TP when price touches the EMA", InpLegMinDist, InpLegTpEma) : StringFormat("TP %.2f%% back per position", InpLegTpPct),
                          InpLegLot, n));
 }
 
@@ -246,6 +250,12 @@ void LegOnTimer()
    {
       double ev = LegEma();
       if(ev <= 0 || (d_ == 1 && r[j].close <= ev) || (d_ == -1 && r[j].close >= ev)) return;
+   }
+   if(InpLegTpEma > 0 && InpLegMinDist > 0)                                     // v2.10: EMA far enough away to pay
+   {
+      double ev = LegEma();
+      double dist = d_ == 1 ? r[j].close - ev : ev - r[j].close;               // up leg -> sell above the EMA, down leg -> buy below
+      if(ev <= 0 || dist < InpLegMinDist) return;
    }
    double pivPx = d_ == 1 ? r[piv].low : r[piv].high;
    double move = MathAbs(r[j].close - pivPx);
