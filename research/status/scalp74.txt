@@ -1,0 +1,95 @@
+XAUUSD 2026-04-20 .. 2026-11-06; last 3 months from 08 Aug, repeat check from 10 May
+/home/runner/work/fizy-bot/fizy-bot/research/scalp74.py:68: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = T.dayofweek.values
+/home/runner/work/fizy-bot/fizy-bot/research/scalp74.py:68: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = T.dayofweek.values
+
+variant                                                         /day  win%  PF3m |  month1  month2  month3 |  3 mths  prev 3m  worst d rand PF
+M1 spike fade BUY k2.0 gate8 SL 0.2ATR TP none 45bar             5.5    14  1.34 |     +30    +104     +54 |    +189     +151      -26    0.67 PASS
+M1 spike fade BUY k2.5 gate8 SL 0.2ATR TP none 45bar             2.6    16  1.47 |     +35     +88      +4 |    +126     +132      -17    0.78 
+M5 BB(20,2) + RSI7 fade gate0 SL1 TP mid                         9.6    32  1.05 |     -74      +9    +182 |    +117     -299      -61    0.87 
+M5 BB(20,2) + RSI7 fade gate8 SL1 TP mid                         9.3    32  1.05 |     -60      -4    +174 |    +110     -282      -61    0.94 
+M1 spike fade BUY k1.5 gate8 SL 0.2ATR TP none 45bar            15.4    11  1.03 |     +81     -79     +51 |     +52      -56      -51    0.84 
+M1 spike fade BUY k2.0 gate6 SL 0.2ATR TP none 45bar            10.7    12  1.05 |     +14     +49     -14 |     +50     +198      -37    0.85 
+M1 spike fade BUY k2.5 gate4 SL 0.2ATR TP none 45bar             6.4    13  1.07 |     +54     +41     -47 |     +48     +296      -24    0.75 
+M1 spike fade BUY k2.5 gate6 SL 0.2ATR TP none 45bar             4.0    14  1.00 |     -26     +51     -24 |      +0     +188      -23    1.23 
+M1 spike fade BUY k2.5 gate8 SL 0.2ATR TP 1ATR                   2.8    36  0.96 |     +20     -19      -9 |      -8      -21      -17    0.54 
+M1 spike fade BUY k2.0 gate4 SL 0.2ATR TP none 45bar            17.3    11  0.98 |     +37     -28     -32 |     -23     +174      -41    0.75 
+M1 spike fade BUY k2.5 gate6 SL 0.2ATR TP 1ATR                   4.2    37  0.84 |      +8     -41     -16 |     -48      -24      -16    0.76 
+M1 spike fade BUY k2.0 gate8 SL 0.2ATR TP 1ATR                   6.1    34  0.87 |      -3     -27     -30 |     -60     -100      -24    0.66 
+M1 spike fade BOTH k2.5 gate8 SL 0.2ATR TP 1ATR                  4.6    37  0.84 |      -1     -10     -50 |     -61      -91      -30    0.62 
+M5 spike fade BUY k1.5 gate8 SL 0.2ATR TP none 45bar            11.6    19  0.96 |      -7     +79    -134 |     -62     +335      -51    0.78 
+M5 spike fade BUY k2.5 gate4 SL 0.2ATR TP 1ATR                   2.0    37  0.74 |     -51      +1     -18 |     -69      +39      -34    0.74 
+M5 spike fade BUY k2.5 gate6 SL 0.2ATR TP 1ATR                   2.0    37  0.74 |     -51      +1     -18 |     -69      +39      -34    0.74 
+M5 spike fade BUY k2.5 gate8 SL 0.2ATR TP 1ATR                   2.0    36  0.69 |     -62      -4     -18 |     -84      +41      -34    1.23 
+M5 Stoch 5,3,3 cross out of OB/OS gate0 SL1 TP1                 18.7    52  0.97 |     +35     -30    -102 |     -97     -158      -38    0.86 
+M5 Stoch 5,3,3 cross out of OB/OS gate8 SL1 TP1                 18.4    52  0.97 |     +38     -33    -104 |    -100     -157      -38    0.81 
+M1 spike fade BUY k2.5 gate4 SL 0.2ATR TP 1ATR                   6.8    37  0.77 |     -12     -65     -25 |    -102      -58      -13    0.76 
+M5 EMA 9/21 cross + EMA50 side gate0 SL1 TP1.5                   8.5    42  0.92 |     -21     -61     -36 |    -118      +34      -38    0.97 
+M5 spike fade BUY k2.5 gate8 SL 0.2ATR TP none 45bar             2.0    17  0.66 |     -75     -14     -30 |    -120     +191      -34    0.80 
+M5 EMA 9/21 cross + EMA50 side gate8 SL1 TP1.5                   8.4    41  0.92 |     -24     -59     -40 |    -123      +41      -38    0.97 
+M5 RSI2 <5 / >95 fade gate8 SL1 TP1                             19.4    52  0.96 |     -75     -41     -12 |    -128     -327      -47    0.93 
+M5 spike fade BUY k2.0 gate8 SL 0.2ATR TP none 45bar             4.4    18  0.83 |     +14      +7    -151 |    -131     +335      -35    0.69 
+M5 spike fade BUY k1.5 gate4 SL 0.2ATR TP none 45bar            11.8    19  0.92 |     -77     +78    -132 |    -131     +343      -51    0.91 
+M5 spike fade BUY k1.5 gate6 SL 0.2ATR TP none 45bar            11.8    19  0.92 |     -77     +78    -132 |    -131     +343      -51    0.91 
+M5 spike fade BUY k2.5 gate4 SL 0.2ATR TP none 45bar             2.0    17  0.63 |     -94     -15     -30 |    -140     +191      -34    0.76 
+M5 spike fade BUY k2.5 gate6 SL 0.2ATR TP none 45bar             2.0    17  0.63 |     -94     -15     -30 |    -140     +191      -34    0.76 
+M5 RSI2 <5 / >95 fade gate0 SL1 TP1                             19.8    51  0.95 |     -93     -41     -23 |    -156     -340      -47    0.80 
+M5 EMA 9/21 cross follow gate0 SL1 TP1.5 ATR                    10.2    41  0.92 |     -37     -75     -47 |    -158      +68      -48    0.95 
+M1 spike fade BUY k2.0 gate6 SL 0.2ATR TP 1ATR                  11.7    34  0.79 |     -29     -89     -47 |    -165     -188      -24    0.66 
+M5 EMA 9/21 cross follow gate8 SL1 TP1.5 ATR                    10.0    41  0.91 |     -40     -73     -54 |    -166      +79      -48    0.88 
+M1 spike fade BOTH k2.5 gate6 SL 0.2ATR TP 1ATR                  8.7    35  0.75 |     -41     -62     -64 |    -167     -132      -29    0.85 
+M5 spike fade BUY k2.0 gate4 SL 0.2ATR TP 1ATR                   4.7    33  0.74 |     -55     -44     -73 |    -171      +18      -27    1.06 
+M5 spike fade BUY k2.0 gate6 SL 0.2ATR TP 1ATR                   4.7    33  0.74 |     -55     -44     -73 |    -171      +18      -27    1.06 
+M5 spike fade BOTH k2.5 gate4 SL 0.2ATR TP 1ATR                  4.0    34  0.70 |     -25     -66     -81 |    -172      -50      -41    0.68 
+M5 spike fade BOTH k2.5 gate6 SL 0.2ATR TP 1ATR                  4.0    34  0.70 |     -25     -66     -81 |    -172      -50      -41    0.68 
+M5 spike fade BUY k2.0 gate8 SL 0.2ATR TP 1ATR                   4.6    32  0.72 |     -64     -48     -73 |    -185      +26      -27    0.78 
+M5 spike fade BOTH k2.5 gate8 SL 0.2ATR TP 1ATR                  3.9    33  0.67 |     -35     -70     -80 |    -186      -46      -41    0.80 
+M1 spike fade BOTH k2.0 gate8 SL 0.2ATR TP 1ATR                 11.4    34  0.79 |     -61     -26    -105 |    -192     -181      -31    0.75 
+M5 spike fade BUY k2.0 gate4 SL 0.2ATR TP none 45bar             4.5    18  0.74 |     -56      +6    -151 |    -202     +329      -35    0.77 
+M5 spike fade BUY k2.0 gate6 SL 0.2ATR TP none 45bar             4.5    18  0.74 |     -56      +6    -151 |    -202     +329      -35    0.77 
+M1 RSI2 <5 / >95 fade gate8 SL1 TP1                             31.6    53  0.93 |      +3     -73    -144 |    -214     -398      -47    0.84 
+M5 20-bar breakout follow gate8 SL1 TP2 ATR                     14.8    35  0.93 |    -138      -7     -69 |    -215     -374      -67    0.95 
+M5 spike fade BUY k1.5 gate4 SL 0.2ATR TP 1ATR                  13.2    33  0.85 |     -48     -27    -146 |    -220      -85      -38    0.83 
+M5 spike fade BUY k1.5 gate6 SL 0.2ATR TP 1ATR                  13.2    33  0.85 |     -48     -27    -146 |    -220      -85      -38    0.83 
+M1 spike fade BOTH k2.5 gate4 SL 0.2ATR TP 1ATR                 14.6    38  0.76 |     -46     -97     -81 |    -224     -158      -30    0.62 
+M5 spike fade BUY k1.5 gate8 SL 0.2ATR TP 1ATR                  12.9    33  0.85 |     -57     -30    -140 |    -227      -76      -38    0.89 
+M5 20-bar breakout follow gate0 SL1 TP2 ATR                     15.1    35  0.93 |    -151     -14     -67 |    -232     -359      -67    0.91 
+M5 pullback to EMA21 in EMA50/200 trend gate8 SL1 TP1.5         13.0    41  0.91 |    -131     -95      -9 |    -234      +63      -67    0.94 
+M5 pullback to EMA21 in EMA50/200 trend gate0 SL1 TP1.5         13.2    42  0.91 |    -139    -102      +3 |    -238      +69      -78    1.04 
+M1 spike fade BUY k1.5 gate6 SL 0.2ATR TP none 45bar            29.9    10  0.89 |     -17    -209     -58 |    -284      +88      -76    0.79 
+M5 spike fade BOTH k2.0 gate4 SL 0.2ATR TP 1ATR                  9.5    33  0.76 |     -40     -68    -188 |    -297      -95      -36    0.67 
+M5 spike fade BOTH k2.0 gate6 SL 0.2ATR TP 1ATR                  9.5    33  0.76 |     -40     -68    -188 |    -297      -95      -36    0.67 
+M5 spike fade BOTH k2.0 gate8 SL 0.2ATR TP 1ATR                  9.2    33  0.75 |     -41     -75    -185 |    -301      -88      -36    0.76 
+M1 spike fade BUY k1.5 gate8 SL 0.2ATR TP 1ATR                  19.3    32  0.78 |     -46    -129    -135 |    -310     -274      -30    0.81 
+M1 spike fade BUY k2.0 gate4 SL 0.2ATR TP 1ATR                  19.3    34  0.72 |     -81    -139     -99 |    -318     -332      -24    0.70 
+M1 BB(20,2) + RSI7 fade gate8 SL1 TP mid                        14.6    26  0.85 |     -47    -182    -101 |    -330     -323      -38    0.78 
+M1 EMA 9/21 cross + EMA50 side gate8 SL1 TP1.5                  13.0    38  0.78 |     -93    -156    -116 |    -365     -411      -27    0.75 
+M5 momentum bar (>=1.5 ATR) follow SL1 TP1                      22.0    51  0.89 |    -119    -223     -28 |    -371     -317      -89    0.89 
+M5 spike fade BOTH k1.5 gate8 SL 0.2ATR TP 1ATR                 23.1    33  0.86 |      +4    -140    -236 |    -372     -381      -55    0.96 
+M1 spike fade BOTH k2.0 gate6 SL 0.2ATR TP 1ATR                 23.9    34  0.74 |    -126    -155    -124 |    -406     -351      -31    0.72 
+M5 spike fade BOTH k1.5 gate4 SL 0.2ATR TP 1ATR                 23.6    33  0.85 |     -14    -135    -257 |    -407     -383      -55    0.99 
+M5 spike fade BOTH k1.5 gate6 SL 0.2ATR TP 1ATR                 23.6    33  0.85 |     -14    -135    -257 |    -407     -383      -55    0.99 
+M1 EMA 9/21 cross follow gate8 SL1 TP1.5 ATR                    15.7    38  0.78 |    -166    -197     -67 |    -431     -402      -37    0.91 
+M1 Stoch 5,3,3 cross out of OB/OS gate8 SL1 TP1                 33.0    51  0.87 |    -227    -151     -70 |    -448     -604      -47    0.83 
+M1 pullback to EMA21 in EMA50/200 trend gate8 SL1 TP1.5         24.2    39  0.84 |    -157    -246     -84 |    -487     -348      -57    0.88 
+M1 20-bar breakout follow gate8 SL1 TP2 ATR                     25.4    33  0.85 |    -137    -314     -60 |    -512     -755      -58    0.87 
+M1 spike fade BOTH k1.5 gate8 SL 0.2ATR TP 1ATR                 34.9    32  0.78 |    -111    -142    -300 |    -554     -392      -63    0.79 
+M5 momentum bar (>=1.5 ATR) fade SL1 TP1                        22.0    48  0.84 |    -255     -76    -240 |    -572     -579      -73    0.89 
+M1 spike fade BOTH k2.0 gate4 SL 0.2ATR TP 1ATR                 38.6    35  0.72 |    -168    -247    -190 |    -604     -565      -33    0.73 
+M1 BB(20,2) + RSI7 fade gate0 SL1 TP mid                        45.7    28  0.87 |     -81    -372    -161 |    -614     -506      -75    0.81 
+M1 spike fade BUY k1.5 gate4 SL 0.2ATR TP none 45bar            45.7     9  0.82 |    -124    -365    -126 |    -615      -45      -83    0.84 
+M1 spike fade BUY k1.5 gate6 SL 0.2ATR TP 1ATR                  37.9    32  0.72 |    -155    -276    -227 |    -658     -517      -38    0.76 
+M1 EMA 9/21 cross + EMA50 side gate0 SL1 TP1.5                  40.7    40  0.79 |    -167    -292    -287 |    -747     -929      -48    0.83 
+M1 EMA 9/21 cross follow gate0 SL1 TP1.5 ATR                    47.7    40  0.78 |    -260    -392    -254 |    -906     -982      -65    0.77 
+M1 spike fade BUY k1.5 gate4 SL 0.2ATR TP 1ATR                  60.4    32  0.68 |    -275    -394    -372 |   -1041     -834      -57    0.74 
+M1 spike fade BOTH k1.5 gate6 SL 0.2ATR TP 1ATR                 69.0    32  0.73 |    -295    -413    -420 |   -1128     -820      -69    0.78 
+M1 pullback to EMA21 in EMA50/200 trend gate0 SL1 TP1.5         69.2    40  0.81 |    -260    -508    -377 |   -1144    -1161      -72    0.79 
+M1 RSI2 <5 / >95 fade gate0 SL1 TP1                             96.0    51  0.80 |    -366    -491    -488 |   -1345    -1123      -79    0.74 
+M1 20-bar breakout follow gate0 SL1 TP2 ATR                     77.0    34  0.82 |    -487    -444    -431 |   -1362    -1750      -84    0.84 
+M1 Stoch 5,3,3 cross out of OB/OS gate0 SL1 TP1                 94.1    49  0.77 |    -521    -537    -524 |   -1581    -1580      -82    0.79 
+M1 spike fade BOTH k1.5 gate4 SL 0.2ATR TP 1ATR                108.2    33  0.71 |    -454    -592    -643 |   -1690    -1338      -73    0.78 
+M1 momentum bar (>=1.5 ATR) fade SL1 TP1                       109.0    50  0.77 |    -545    -599    -700 |   -1844    -1569      -86    0.76 
+M1 momentum bar (>=1.5 ATR) follow SL1 TP1                     109.0    49  0.74 |    -814    -710    -602 |   -2126    -2564      -92    0.76 
+
+1 of 86 pass. done in 21 s
