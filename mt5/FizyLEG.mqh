@@ -49,7 +49,7 @@ input double InpLegTpPct  = 0.35;     // fixed TP distance, % of price (only whe
 input bool   InpLegEmaSide = false;   // v2.05: entries no longer need the EMA on the far side (owner: the EMA is only the TP)
 input int    InpLegTpEma  = 50;       // v2.04: close the whole basket when price touches this EMA(M1); 0 = fixed TP
 input int    InpLegMax    = 5;        // most positions open at once
-input double InpLegMinDist = 8.0;     // v2.10: fade only when the last close is at least this $ beyond EMA 50 (0 = off)
+input double InpLegMinDist = 0.0;     // v2.11: OFF again (owner: too few trades). v2.10: fade only when the last close is at least this $ beyond EMA 50 (0 = off)
 input string InpLegMult   = "1,1,2,2,3"; // v2.06: lot of entry 1..5 = InpLegLot x this (owner: bigger lots from entry 3 to cover the floating ones)
 
 string   lg_sym = "";
