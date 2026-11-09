@@ -1,12 +1,50 @@
 /home/runner/work/fizy-bot/fizy-bot/research/legtp68.py:49: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
   wd = B.index.dayofweek.values
 XAUUSD M1 2025-10-02 .. 2026-11-06, 388,049 bars, $ per 1.0 move at 0.01 lot = 1.00
-Traceback (most recent call last):
-  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 201, in <module>
-    main()
-  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 195, in main
-    run(N=20, wick=True, emaP=50, side=False, maxn=5, lots=(1, 1, 2, 2, 3), mintp=mt_,
-  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 159, in run
-    if not pos and k + 1 < n and not newd[k + 1] and 90 <= hm[k] < 1320 and wd[k] < 5:
-                                                                            ^^
-UnboundLocalError: cannot access local variable 'wd' where it is not associated with a value
+
+--- LIVE v2.06 (TP = EMA 50 touch, any result): zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 7,899 (27.81 a day), win 60.6%, PF 0.88, net $-2,675 (swap included), avg win $4.25, avg loss $-7.40
+ACCOUNT $100 BLOWN (stop-out) 47 times in 2 years; worst day $-486.12; worst floating loss $-733.74; hold median 0 h, p90 1 h, max 3 h
+by year: 2025: net $-338, blown 17x  2026: net $-2337, blown 30x
+last month: 724 closes, win 61%, net $+92, stop-outs 0, worst day $-246
+month before: 733 closes, win 59%, net $+311, stop-outs 0, worst day $-235
+last 12 months: 7294 trades, net $-1464, blown 34x
+first stop-out on 2025-10-06, 3 days after the start; median days between stop-outs 1.0
+
+--- MOVING TP: EMA 50 touch only if basket >= +$0.00: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 6,606 (23.26 a day), win 62.6%, PF 0.77, net $-5,785 (swap included), avg win $4.61, avg loss $-14.49
+ACCOUNT $100 BLOWN (stop-out) 82 times in 2 years; worst day $-1655.61; worst floating loss $-1665.47; hold median 0 h, p90 1 h, max 425 h
+by year: 2025: net $-1746, blown 28x  2026: net $-4039, blown 54x
+last month: 343 closes, win 63%, net $-1691, stop-outs 3, worst day $-1649
+month before: 383 closes, win 63%, net $+786, stop-outs 0, worst day $+7
+last 12 months: 6028 trades, net $-4400, blown 65x
+first stop-out on 2025-10-06, 3 days after the start; median days between stop-outs 1.0
+
+--- MOVING TP: EMA 50 touch only if basket >= +$0.50: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 6,573 (23.14 a day), win 62.5%, PF 0.77, net $-5,650 (swap included), avg win $4.58, avg loss $-9.91
+ACCOUNT $100 BLOWN (stop-out) 79 times in 2 years; worst day $-1638.09; worst floating loss $-1653.95; hold median 0 h, p90 1 h, max 424 h
+by year: 2025: net $-1660, blown 26x  2026: net $-3989, blown 53x
+last month: 340 closes, win 63%, net $-1698, stop-outs 3, worst day $-1638
+month before: 391 closes, win 63%, net $+779, stop-outs 0, worst day $+6
+last 12 months: 6003 trades, net $-4362, blown 64x
+first stop-out on 2025-10-06, 3 days after the start; median days between stop-outs 1.0
+
+--- MOVING TP: EMA 50 touch only if basket >= +$1.00: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 6,584 (23.18 a day), win 62.5%, PF 0.77, net $-5,737 (swap included), avg win $4.55, avg loss $-9.91
+ACCOUNT $100 BLOWN (stop-out) 80 times in 2 years; worst day $-1638.59; worst floating loss $-1653.95; hold median 0 h, p90 1 h, max 424 h
+by year: 2025: net $-1685, blown 27x  2026: net $-4053, blown 53x
+last month: 340 closes, win 63%, net $-1705, stop-outs 3, worst day $-1639
+month before: 391 closes, win 63%, net $+771, stop-outs 0, worst day $+6
+last 12 months: 6005 trades, net $-4430, blown 64x
+first stop-out on 2025-10-06, 3 days after the start; median days between stop-outs 1.0
+
+--- MOVING TP: EMA 50 touch only if basket >= +$2.00: zigzag 0.10%, leg age 20, TP EMA50, max 5 entries ---
+closed trades 6,596 (23.23 a day), win 62.5%, PF 0.77, net $-5,650 (swap included), avg win $4.52, avg loss $-9.83
+ACCOUNT $100 BLOWN (stop-out) 79 times in 2 years; worst day $-1604.58; worst floating loss $-1619.57; hold median 0 h, p90 1 h, max 424 h
+by year: 2025: net $-1702, blown 27x  2026: net $-3949, blown 52x
+last month: 340 closes, win 63%, net $-1683, stop-outs 3, worst day $-1605
+month before: 390 closes, win 63%, net $+757, stop-outs 0, worst day $+6
+last 12 months: 6017 trades, net $-4332, blown 63x
+first stop-out on 2025-10-06, 3 days after the start; median days between stop-outs 1.0
+
+done in 4 s
