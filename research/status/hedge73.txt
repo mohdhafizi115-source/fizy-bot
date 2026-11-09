@@ -1,0 +1,53 @@
+/home/runner/work/fizy-bot/fizy-bot/research/hedge73.py:47: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = B.index.dayofweek.values
+XAUUSD M1 2025-10-02 .. 2026-11-06, 388,049 bars
+
+--- M1 GOLD HEDGE as sold (TP +$10) ---
+baskets 957 (3.4 a day), win 94.5%, PF 1.25, 13 months net $+2,585, avg win $14.08 vs avg loss $-191.34, biggest lot 0.12, baskets reaching the last level 3.9%
+!! a basket opened 2026-10-02 15:35 is STILL OPEN at the end (3 positions), floating $-335 (counted as closed now)
+a real $100 account would have ended on 2025-10-03, 0 days after the start
+days >= +$25: 89 of 129; days <= -$25: 23; days <= -$100: 16
+ACCOUNT $100 BLOWN 52 times in 13 months; worst day $-1003
+last month: 1 baskets, win 0%, net $-335, blown 0x
+month before: 35 baskets, win 100%, net $+560, blown 0x
+last 12 months: 782 baskets, win 95%, net $+2214, blown 36x
+
+--- M1 GOLD HEDGE with TP +$3 ---
+baskets 2,468 (8.7 a day), win 98.7%, PF 1.72, 13 months net $+6,481, avg win $6.35 vs avg loss $-289.80, biggest lot 0.12, baskets reaching the last level 1.8%
+!! a basket opened 2026-10-02 15:35 is STILL OPEN at the end (3 positions), floating $-335 (counted as closed now)
+a real $100 account would have ended on 2025-10-03, 0 days after the start
+days >= +$25: 111 of 141; days <= -$25: 17; days <= -$100: 11
+ACCOUNT $100 BLOWN 30 times in 13 months; worst day $-1501
+last month: 1 baskets, win 0%, net $-335, blown 0x
+month before: 62 baskets, win 100%, net $+323, blown 0x
+last 12 months: 2067 baskets, win 99%, net $+5429, blown 19x
+
+--- M1 GOLD HEDGE as sold (TP +$10) + DAILY TARGET $25 ---
+baskets 686 (2.4 a day), win 94.8%, PF 1.58, 13 months net $+3,482, avg win $14.56 vs avg loss $-166.25, biggest lot 0.12, baskets reaching the last level 8.3%
+!! a basket opened 2026-10-19 10:00 is STILL OPEN at the end (5 positions), floating $-601 (counted as closed now)
+a real $100 account would have ended on 2025-10-03, 0 days after the start
+days >= +$25: 198 of 241; days <= -$25: 17; days <= -$100: 13
+ACCOUNT $100 BLOWN 35 times in 13 months; worst day $-881
+last month: 19 baskets, win 95%, net $-348, blown 0x
+month before: 46 baskets, win 100%, net $+734, blown 0x
+last 12 months: 586 baskets, win 96%, net $+4127, blown 23x
+
+--- M1 GOLD HEDGE with TP +$3 + DAILY TARGET $25 ---
+baskets 1,398 (4.9 a day), win 96.9%, PF 0.89, 13 months net $-920, avg win $5.37 vs avg loss $-190.52, biggest lot 0.12, baskets reaching the last level 2.9%
+a real $100 account would have ended on 2025-10-07, 4 days after the start
+days >= +$25: 168 of 210; days <= -$25: 23; days <= -$100: 15
+ACCOUNT $100 BLOWN 43 times in 13 months; worst day $-2456
+last month: 55 baskets, win 87%, net $-2793, blown 7x
+month before: 52 baskets, win 100%, net $+267, blown 0x
+last 12 months: 1220 baskets, win 97%, net $-743, blown 36x
+
+--- M1 GOLD HEDGE as sold + DAILY TARGET $25, RANDOM entries (control) ---
+baskets 612 (2.2 a day), win 89.2%, PF 0.75, 13 months net $-2,477, avg win $13.80 vs avg loss $-151.71, biggest lot 0.12, baskets reaching the last level 5.7%
+a real $100 account would have ended on 2025-10-03, 0 days after the start
+days >= +$25: 160 of 208; days <= -$25: 31; days <= -$100: 21
+ACCOUNT $100 BLOWN 66 times in 13 months; worst day $-2258
+last month: 24 baskets, win 75%, net $-2319, blown 6x
+month before: 14 baskets, win 100%, net $+246, blown 0x
+last 12 months: 514 baskets, win 90%, net $-1537, blown 50x
+
+done in 7 s
