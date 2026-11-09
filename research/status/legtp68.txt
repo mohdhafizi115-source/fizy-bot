@@ -1,0 +1,12 @@
+/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py:49: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  wd = B.index.dayofweek.values
+XAUUSD M1 2025-10-02 .. 2026-11-06, 388,049 bars, $ per 1.0 move at 0.01 lot = 1.00
+Traceback (most recent call last):
+  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 201, in <module>
+    main()
+  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 195, in main
+    run(N=20, wick=True, emaP=50, side=False, maxn=5, lots=(1, 1, 2, 2, 3), mintp=mt_,
+  File "/home/runner/work/fizy-bot/fizy-bot/research/legtp68.py", line 159, in run
+    if not pos and k + 1 < n and not newd[k + 1] and 90 <= hm[k] < 1320 and wd[k] < 5:
+                                                                            ^^
+UnboundLocalError: cannot access local variable 'wd' where it is not associated with a value
