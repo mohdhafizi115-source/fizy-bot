@@ -181,9 +181,9 @@ def main():
                          ("month before", e_ - pd.Timedelta(days=60), e_ - pd.Timedelta(days=30))):
             x = T[(T.t >= a) & (T.t < b)]
             bl = sum(1 for q in blow_t if a <= B.index[q] < b)
-            wd = x.groupby(x.t.dt.normalize()).net.sum().min() if len(x) else 0
+            wdy = x.groupby(x.t.dt.normalize()).net.sum().min() if len(x) else 0
             say(f"{nm}: {len(x)} closes, win {100 * (x.net > 0).mean() if len(x) else 0:.0f}%, net ${x.net.sum():+.0f}, "
-                f"stop-outs {bl}, worst day ${wd:+.0f}")
+                f"stop-outs {bl}, worst day ${wdy:+.0f}")
         l12 = T[T.t >= B.index[-1] - pd.Timedelta(days=365)]
         say(f"last 12 months: {len(l12)} trades, net ${l12.net.sum():+.0f}, blown {sum(1 for q in blow_t if B.index[q] >= B.index[-1] - pd.Timedelta(days=365))}x")
         if blow_t:
