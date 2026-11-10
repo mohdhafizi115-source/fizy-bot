@@ -192,7 +192,7 @@ def status_block(kind, text):
     if kind == "KUMO ONLINE":
         return ["☁️ ICHIMOKU CLOUD BREAKOUT · XAUUSD H1",
                 "▫️ Any hour 01:30-22:00 broker: H1 close breaks out of the cloud",
-                f"▫️ Exit: close back inside the cloud or 48 h · Lot {lot} · open {opened}"]
+                f"▫️ TP 200 pips ($20); else exit on a close back inside the cloud or 48 h · Lot {lot} · open {opened}"]
     if kind == "TK ONLINE":
         return ["🌤️ ICHIMOKU TK CROSS · XAUUSD H1 + M15 · day trade",
                 f"▫️ bars 01:30-21:00 broker ({myt('02:00', 'Europe/Athens')}-{myt('20:00', 'Europe/Athens')} MYT): Tenkan crosses Kijun beyond the cloud",

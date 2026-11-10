@@ -8,12 +8,17 @@
 //|   (SELL mirrored). Signal bars 01:30-22:00 server. Entry at the   |
 //|   next bar open. SL 0.2 ATR(H1) beyond the far cloud edge, at     |
 //|   least 0.5 ATR away. Exit when an H1 close is back inside the    |
-//|   cloud, or after 48 H1 bars. No TP. One trade at a time.          |
+//|   cloud, or after 48 H1 bars. One trade at a time.                |
+//|   v2.17 (10 Nov, owner): TP $20 (200 pips) from the entry price; |
+//|   round 81 (research/kumo81.py): 6.6 y PF 1.04 / +$214 vs 1.23 /  |
+//|   +$1,433 without, last 12 months +$132 vs +$1,071, worst trade   |
+//|   -$90 vs -$206; the owner chose it after seeing these numbers.   |
 //| Events go to MQL5\Files\kumo_events.txt (forwarded to Telegram).  |
 //+------------------------------------------------------------------+
 input bool   InpKumoOn      = true;
 input string InpKumoSymbol  = "XAUUSD";
 input double InpKumoLot     = 0.01;
+input double InpKumoTpUsd   = 20.0;     // v2.17: TP this many $ of price from the entry (200 pips); 0 = no TP
 input long   InpKumoMagic   = 260317;
 
 string   km_sym = "";
@@ -67,8 +72,8 @@ void KumoInit()
    ulong t;
    if(KumoPosition(t)) { int m = ArraySize(km_known); ArrayResize(km_known, m + 1); km_known[m] = t; }
    KumoEvent(StringFormat("KUMO ONLINE | %s H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, "
-                          "SL beyond the cloud, exit on a close back inside the cloud or after 48 hours, lot %.2f | %d open position(s)",
-                          km_sym, InpKumoLot, ArraySize(km_known)));
+                          "SL beyond the cloud, TP $%.0f, exit on a close back inside the cloud or after 48 hours, lot %.2f | %d open position(s)",
+                          km_sym, InpKumoTpUsd, InpKumoLot, ArraySize(km_known)));
 }
 
 void KumoReportClosed(ulong pos)
@@ -84,8 +89,8 @@ void KumoReportClosed(ulong pos)
       if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_OUT) { outPx = HistoryDealGetDouble(d, DEAL_PRICE); reason = HistoryDealGetInteger(d, DEAL_REASON); }
    }
    if(outPx == 0) return;
-   string what = reason == DEAL_REASON_SL ? "KUMO SL HIT" : "KUMO CLOSED";
-   string why = reason == DEAL_REASON_SL ? "stop loss beyond the cloud" : (reason == DEAL_REASON_EXPERT ? "H1 close back inside the cloud or 48 hours" : "closed outside the EA");
+   string what = reason == DEAL_REASON_SL ? "KUMO SL HIT" : (reason == DEAL_REASON_TP ? "KUMO TP HIT" : "KUMO CLOSED");
+   string why = reason == DEAL_REASON_SL ? "stop loss beyond the cloud" : reason == DEAL_REASON_TP ? StringFormat("take profit, +$%.0f from the entry", InpKumoTpUsd) : (reason == DEAL_REASON_EXPERT ? "H1 close back inside the cloud or 48 hours" : "closed outside the EA");
    double lv[2]; color lc[2]; string lb[2];
    lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
    string fn = Snap(km_sym, PERIOD_H1, "KMX", lv, lc, lb, 0, 0, 0, 0, false);
@@ -131,6 +136,16 @@ void KumoOnTimer()
       bool buy = PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY;
       int held = iBarShift(km_sym, PERIOD_H1, (datetime)PositionGetInteger(POSITION_TIME), false);
       bool inside = buy ? (c < top) : (c > bot);
+      double op = PositionGetDouble(POSITION_PRICE_OPEN), ctp = PositionGetDouble(POSITION_TP);
+      if(InpKumoTpUsd > 0 && ctp == 0 && !inside && held < 48)                // v2.17: a position without the TP gets it
+      {
+         double ntp = NormalizeDouble(buy ? op + InpKumoTpUsd : op - InpKumoTpUsd, dg);
+         trade.SetExpertMagicNumber(InpKumoMagic); trade.SetTypeFillingBySymbol(km_sym);
+         if((buy && tk.bid >= ntp) || (!buy && tk.ask <= ntp)) trade.PositionClose(pt);   // already beyond it: take it
+         else if(trade.PositionModify(pt, PositionGetDouble(POSITION_SL), ntp))
+            KumoEvent(StringFormat("KUMO TP SET %s | TP %s ($%.0f from the entry %s)", km_sym, PriceStr(km_sym, ntp), InpKumoTpUsd, PriceStr(km_sym, op)));
+         trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+      }
       if(inside || held >= 48)
       {
          trade.SetExpertMagicNumber(InpKumoMagic); trade.SetTypeFillingBySymbol(km_sym);
@@ -154,7 +169,8 @@ void KumoOnTimer()
    double lot = NormalizeDouble(MathMax(mn, MathFloor(InpKumoLot / sv + 1e-9) * sv), 2);
    if(DayPaused()) return;                                              // daily target reached
    trade.SetExpertMagicNumber(InpKumoMagic); trade.SetTypeFillingBySymbol(km_sym);
-   bool ok = dr > 0 ? trade.Buy(lot, km_sym, 0, sl, 0, "KUMO") : trade.Sell(lot, km_sym, 0, sl, 0, "KUMO");
+   double tp = InpKumoTpUsd > 0 ? NormalizeDouble(px + dr * InpKumoTpUsd, dg) : 0;
+   bool ok = dr > 0 ? trade.Buy(lot, km_sym, 0, sl, tp, "KUMO") : trade.Sell(lot, km_sym, 0, sl, tp, "KUMO");
    if(!ok) KumoEvent(StringFormat("ERROR | Kumo %s order failed: %d %s", km_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) return;
@@ -162,10 +178,11 @@ void KumoOnTimer()
    lv[0] = px; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
    lv[2] = top; lc[2] = clrSeaGreen; lb[2] = "cloud top"; lv[3] = bot; lc[3] = clrIndianRed; lb[3] = "cloud bottom";
    string fn = Snap(km_sym, PERIOD_H1, "KMF", lv, lc, lb, 0, 0, 0, 0, false);
-   KumoEvent(StringFormat("KUMO %s %s | H1 close %s broke %s the cloud (%s - %s), Tenkan %s Kijun | %s %.2f lot at %s, SL %s, no TP: "
-                          "exit on an H1 close back inside the cloud or after 48 hours", dr > 0 ? "BUY" : "SELL", km_sym, PriceStr(km_sym, c),
+   KumoEvent(StringFormat("KUMO %s %s | H1 close %s broke %s the cloud (%s - %s), Tenkan %s Kijun | %s %.2f lot at %s, SL %s, %s; "
+                          "else exit on an H1 close back inside the cloud or after 48 hours", dr > 0 ? "BUY" : "SELL", km_sym, PriceStr(km_sym, c),
                           dr > 0 ? "above" : "below", PriceStr(km_sym, bot), PriceStr(km_sym, top), dr > 0 ? "above" : "below",
-                          dr > 0 ? "BUY" : "SELL", lot, PriceStr(km_sym, px), PriceStr(km_sym, sl)) + Img(fn));
+                          dr > 0 ? "BUY" : "SELL", lot, PriceStr(km_sym, px), PriceStr(km_sym, sl),
+                          tp > 0 ? StringFormat("TP %s (+$%.0f)", PriceStr(km_sym, tp), InpKumoTpUsd) : "no TP") + Img(fn));
    int m = ArraySize(km_known);
    if(KumoPosition(pt)) { ArrayResize(km_known, m + 1); km_known[m] = pt; }
 }
