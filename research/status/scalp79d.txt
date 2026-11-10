@@ -1,0 +1,18 @@
+XAUUSD M1 2020-03-30 .. 2026-11-10, 2,341,003 bars
+
+--- KELT centred exclusion (79c, uses 5 future bars) + BE $3 ---
+1,498 trades (0.88 a day), win 19%, PF 1.50, halves 0.91 / 1.69, stress 1.40, net $+1,049
+last 3 months $+156, 3 before $+108, last 12 months $+781; max DD $-112, worst day $-21, months positive 42 of 78, longest losing run 23
+by year PF: 2020:0.87(-12) 2021:0.69(-41) 2022:1.05(+8) 2023:1.09(+16) 2024:0.80(-35) 2025:1.60(+349) 2026:1.95(+765)
+
+--- KELT CAUSAL exclusion (LIVE signal now or in the 5 bars before) + BE $3 ---
+1,665 trades (0.97 a day), win 17%, PF 1.25, halves 0.84 / 1.37, stress 1.18, net $+641
+last 3 months $+136, 3 before $+40, last 12 months $+558; max DD $-208, worst day $-24, months positive 35 of 78, longest losing run 27
+by year PF: 2020:0.79(-21) 2021:0.75(-35) 2022:0.85(-27) 2023:1.03(+6) 2024:0.70(-61) 2025:1.27(+199) 2026:1.59(+581)
+
+--- KELT no exclusion + BE $3 ---
+3,151 trades (1.84 a day), win 16%, PF 1.10, halves 0.80 / 1.16, stress 1.04, net $+540
+last 3 months $+172, 3 before $+69, last 12 months $+824; max DD $-461, worst day $-121, months positive 32 of 80, longest losing run 69
+by year PF: 2020:0.64(-77) 2021:0.70(-74) 2022:0.93(-19) 2023:1.03(+9) 2024:0.62(-137) 2025:1.07(+114) 2026:1.32(+723)
+
+done in 1 s
