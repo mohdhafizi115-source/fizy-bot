@@ -1,0 +1,117 @@
+XAUUSD M1 2020-03-30 .. 2026-11-10, 2,341,003 bars
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- OWNER'S RULE: D1 trend + yesterday's candle, trap under open AND Asian low, M15 close back, SL $2.5, BE at 1:1, target yesterday's high, out 22:00 server ---
+635 trades (1.9 a week; buys 356, sells 279), win 34%, PF 0.71, halves 0.96 / 0.58, net $-706, avg risk $8.32, median planned reward 1.9R, max DD $-812, worst trade $-60
+   exits: SL 289, TP 159, BE 107, time 80
+   last month 8 trades $+37 | month before 7 $-66 | last 3 months 25 $-79 (PF 0.63) | 3 before $+2 | last 12 months 76 $-382 (PF 0.49)
+   by year: 2020:0.89(-24) 2021:1.30(+58) 2022:1.00(+0) 2023:0.76(-61) 2024:0.70(-103) 2025:0.44(-306) 2026:0.56(-270)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- same, BUY days only ---
+356 trades (1.1 a week; buys 356, sells 0), win 35%, PF 0.62, halves 0.84 / 0.52, net $-558, avg risk $8.66, median planned reward 1.6R, max DD $-622, worst trade $-59
+   exits: SL 170, TP 101, BE 47, time 38
+   last month 1 trades $+16 | month before 1 $-8 | last 3 months 9 $-27 (PF 0.75) | 3 before $+24 | last 12 months 36 $-279 (PF 0.39)
+   by year: 2020:0.94(-8) 2021:1.32(+28) 2022:0.82(-20) 2023:0.45(-92) 2024:0.79(-41) 2025:0.43(-230) 2026:0.45(-195)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- SL $2 under the trap ---
+635 trades (1.9 a week; buys 356, sells 279), win 32%, PF 0.72, halves 0.97 / 0.59, net $-631, avg risk $7.82, median planned reward 2.1R, max DD $-737, worst trade $-60
+   exits: SL 293, TP 152, BE 114, time 76
+   last month 8 trades $+39 | month before 7 $-56 | last 3 months 25 $-65 (PF 0.68) | 3 before $+7 | last 12 months 76 $-354 (PF 0.51)
+   by year: 2020:0.86(-29) 2021:1.29(+52) 2022:1.14(+29) 2023:0.74(-60) 2024:0.65(-112) 2025:0.47(-265) 2026:0.59(-246)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- SL $3 under the trap ---
+635 trades (1.9 a week; buys 356, sells 279), win 35%, PF 0.70, halves 0.97 / 0.56, net $-771, avg risk $8.82, median planned reward 1.7R, max DD $-868, worst trade $-61
+   exits: SL 291, TP 166, BE 94, time 84
+   last month 8 trades $+36 | month before 7 $-69 | last 3 months 25 $-87 (PF 0.61) | 3 before $-3 | last 12 months 76 $-390 (PF 0.48)
+   by year: 2020:0.84(-35) 2021:1.24(+54) 2022:0.96(-10) 2023:0.87(-36) 2024:0.63(-138) 2025:0.43(-333) 2026:0.56(-275)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- no breakeven ---
+635 trades (1.9 a week; buys 356, sells 279), win 40%, PF 0.78, halves 1.01 / 0.67, net $-593, avg risk $8.32, median planned reward 1.9R, max DD $-746, worst trade $-60
+   exits: SL 356, TP 179, time 100
+   last month 8 trades $+37 | month before 7 $-66 | last 3 months 25 $-52 (PF 0.77) | 3 before $-24 | last 12 months 76 $-297 (PF 0.63)
+   by year: 2020:0.86(-34) 2021:1.35(+86) 2022:1.08(+23) 2023:0.80(-59) 2024:0.67(-127) 2025:0.58(-258) 2026:0.67(-224)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- Asian session 02:00-10:00 server ---
+595 trades (1.8 a week; buys 333, sells 262), win 35%, PF 0.80, halves 1.05 / 0.67, net $-429, avg risk $8.32, median planned reward 1.9R, max DD $-520, worst trade $-49
+   exits: SL 269, TP 147, time 91, BE 88
+   last month 8 trades $+37 | month before 7 $-60 | last 3 months 24 $-59 (PF 0.70) | 3 before $+18 | last 12 months 73 $-234 (PF 0.61)
+   by year: 2020:0.95(-11) 2021:1.05(+11) 2022:1.09(+19) 2023:0.93(-17) 2024:0.75(-77) 2025:0.60(-180) 2026:0.66(-175)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- entries only until 16:00 server (London morning) ---
+505 trades (1.5 a week; buys 274, sells 231), win 31%, PF 0.72, halves 0.97 / 0.57, net $-497, avg risk $7.11, median planned reward 2.1R, max DD $-577, worst trade $-60
+   exits: SL 243, TP 123, BE 103, time 36
+   last month 5 trades $+28 | month before 6 $-70 | last 3 months 17 $-84 (PF 0.38) | 3 before $+4 | last 12 months 52 $-256 (PF 0.46)
+   by year: 2020:0.79(-34) 2021:1.33(+57) 2022:1.00(+0) 2023:0.81(-36) 2024:0.77(-61) 2025:0.36(-245) 2026:0.55(-178)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- out at 23:30 server instead of 22:00 ---
+635 trades (1.9 a week; buys 356, sells 279), win 33%, PF 0.71, halves 0.96 / 0.59, net $-687, avg risk $8.32, median planned reward 1.9R, max DD $-804, worst trade $-60
+   exits: SL 290, TP 161, BE 108, time 76
+   last month 8 trades $+24 | month before 7 $-73 | last 3 months 25 $-92 (PF 0.60) | 3 before $+1 | last 12 months 76 $-398 (PF 0.47)
+   by year: 2020:0.94(-13) 2021:1.33(+63) 2022:0.99(-2) 2023:0.71(-76) 2024:0.72(-93) 2025:0.51(-264) 2026:0.53(-302)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- trap only needs the Asian level (not also today's open) ---
+635 trades (1.9 a week; buys 356, sells 279), win 34%, PF 0.71, halves 0.96 / 0.58, net $-706, avg risk $8.32, median planned reward 1.9R, max DD $-812, worst trade $-60
+   exits: SL 289, TP 159, BE 107, time 80
+   last month 8 trades $+37 | month before 7 $-66 | last 3 months 25 $-79 (PF 0.63) | 3 before $+2 | last 12 months 76 $-382 (PF 0.49)
+   by year: 2020:0.89(-24) 2021:1.30(+58) 2022:1.00(+0) 2023:0.76(-61) 2024:0.70(-103) 2025:0.44(-306) 2026:0.56(-270)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- NO D1 FILTER (trade whichever side traps first) ---
+1491 trades (4.4 a week; buys 952, sells 539), win 24%, PF 0.58, halves 0.68 / 0.52, net $-2,563, avg risk $8.33, median planned reward 3.0R, max DD $-2588, worst trade $-62
+   exits: SL 761, BE 288, time 239, TP 203
+   last month 17 trades $-52 | month before 17 $-85 | last 3 months 54 $-282 (PF 0.31) | 3 before $-239 | last 12 months 206 $-946 (PF 0.47)
+   by year: 2020:0.64(-173) 2021:0.70(-185) 2022:0.67(-241) 2023:0.59(-288) 2024:0.64(-281) 2025:0.52(-557) 2026:0.47(-838)
+
+===== CONTROLS =====
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- CONTROL: same entries, direction FLIPPED ---
+651 trades (1.9 a week; buys 369, sells 282), win 34%, PF 1.16, halves 0.90 / 1.38, net $+328, avg risk $8.53, median planned reward 1.9R, max DD $-198, worst trade $-50
+   exits: SL 273, TP 181, BE 120, time 77
+   last month 8 trades $-19 | month before 7 $+23 | last 3 months 25 $+27 (PF 1.18) | 3 before $+79 | last 12 months 79 $+234 (PF 1.53)
+   by year: 2020:0.83(-38) 2021:0.67(-96) 2022:1.03(+8) 2023:0.82(-42) 2024:1.43(+111) 2025:1.82(+270) 2026:1.28(+115)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- CONTROL: same trend days, entry at a RANDOM M15 close after Asia (no trap), SL under the low so far ---
+743 trades (2.2 a week; buys 407, sells 336), win 42%, PF 0.81, halves 0.92 / 0.76, net $-499, avg risk $11.34, median planned reward 1.6R, max DD $-625, worst trade $-153
+   exits: SL 246, time 233, TP 184, BE 80
+   last month 9 trades $-40 | month before 10 $-65 | last 3 months 31 $-105 (PF 0.51) | 3 before $+30 | last 12 months 118 $-256 (PF 0.73)
+   by year: 2020:0.62(-101) 2021:1.20(+45) 2022:0.95(-13) 2023:0.83(-38) 2024:0.97(-8) 2025:0.68(-179) 2026:0.75(-205)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- CONTROL: FAKE Asian level shifted -1 x the Asian range ---
+242 trades (0.7 a week; buys 136, sells 106), win 45%, PF 1.01, halves 0.71 / 1.33, net $+5, avg risk $12.69, median planned reward 1.3R, max DD $-247, worst trade $-40
+   exits: SL 84, TP 71, time 61, BE 26
+   last month 1 trades $+14 | month before 0 $+0 | last 3 months 5 $+16 (PF 1.95) | 3 before $+34 | last 12 months 20 $+187 (PF 2.82)
+   by year: 2020:1.13(+10) 2021:0.60(-58) 2022:0.47(-78) 2023:0.98(-2) 2024:0.71(-43) 2025:0.78(-27) 2026:3.31(+202)
+/home/runner/work/fizy-bot/fizy-bot/research/po3_80.py:111: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if day.dayofweek >= 5: continue
+
+--- CONTROL: FAKE Asian level shifted +1 x the Asian range ---
+198 trades (0.6 a week; buys 108, sells 90), win 53%, PF 0.88, halves 0.91 / 0.86, net $-72, avg risk $12.14, median planned reward 0.9R, max DD $-129, worst trade $-43
+   exits: time 65, TP 65, SL 54, BE 14
+   last month 1 trades $-13 | month before 1 $+9 | last 3 months 4 $-34 (PF 0.39) | 3 before $+30 | last 12 months 16 $-50 (PF 0.65)
+   by year: 2020:1.82(+32) 2021:0.86(-10) 2022:0.77(-20) 2023:0.55(-54) 2024:1.01(+1) 2025:1.32(+20) 2026:0.69(-42)
+
+done in 13 s
