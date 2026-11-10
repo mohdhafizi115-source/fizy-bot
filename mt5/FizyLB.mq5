@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.15"
+#property version "2.16"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -56,6 +56,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyKUMO.mqh"                // gold H1 Ichimoku cloud breakout
 #include "FizyTK.mqh"                  // gold H1 Ichimoku Tenkan / Kijun cross, day trade
 #include "FizySPK.mqh"                 // gold M1 spike fade (buy a sharp drop when ATR dwarfs the spread)
+#include "FizyKLT.mqh"                 // gold M1 Keltner re-entry scalp with a 30-pip breakeven (v2.16, rounds 79-79d)
 #include "FizyHA.mqh"                  // gold M1 Heikin Ashi + EMA 10/30 + Stochastic, the owner's rule, TP 1:1 (v2.08)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
@@ -309,6 +310,7 @@ void SweepOff()
    if(!InpTkOn) { int m = ArraySize(off); ArrayResize(off, m + 2); off[m] = InpTkMagic; off[m + 1] = InpTkMagic15; }
    if(!InpSpkOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpSpkMagic; }
    if(!InpHaOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpHaMagic; }
+   if(!InpKltOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKltMagic; }
    if(!InpDtjOn)
    {
       int m = ArraySize(off); ArrayResize(off, m + 2); off[m] = InpPdhlMagic; off[m + 1] = InpNycMagic;
@@ -387,6 +389,7 @@ void OnTimer()
    KumoOnTimer();
    TkOnTimer();
    SpkOnTimer();
+   KltOnTimer();
    LegOnTimer();
    HaOnTimer();
    CloseLeftovers();

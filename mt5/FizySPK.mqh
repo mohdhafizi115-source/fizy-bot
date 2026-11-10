@@ -50,6 +50,7 @@
 input bool   InpSpkOn        = true;    // v2.12 (9 Nov): back ON in raw mode, round 74 (owner: frequent scalper judged on 3 months)
 input bool   InpSpkConfirm   = false;   // v2.12: false = RAW mode, buy right after the spike bar (no RSI, no rejection candle)
 input double InpSpkRawSl     = 0.2;     // RAW mode: SL this many ATR under the spike bar's low; no TP
+input double InpSpkBeAtr     = 1.0;     // v2.16 (round 79b): RAW mode, SL to entry once price is this many ATR (of the entry) in profit; 0 = off
 input string InpSpkSymbol    = "XAUUSD";
 input double InpSpkLot       = 0.01;
 input long   InpSpkMagic     = 260320;
@@ -136,7 +137,7 @@ void SpkReportClosed(ulong pos)
    }
    if(outPx == 0) return;
    string what = reason == DEAL_REASON_SL ? "SPIKE SL HIT" : (reason == DEAL_REASON_TP ? "SPIKE TP HIT" : "SPIKE CLOSED");
-   string why = reason == DEAL_REASON_SL ? "stop loss under the wick"
+   string why = reason == DEAL_REASON_SL ? (outPx >= inPx - 0.10 ? "stopped at the entry price (breakeven)" : "stop loss under the spike")
               : (reason == DEAL_REASON_TP ? "take profit, back at the spike's open"
               : (reason == DEAL_REASON_EXPERT ? StringFormat("%d minutes up", InpSpkHoldMin) : "closed outside the EA"));
    double lv[2]; color lc[2]; string lb[2];
@@ -166,10 +167,21 @@ void SpkOnTimer()
       if(!known) { int m = ArraySize(sp_known); ArrayResize(sp_known, m + 1); sp_known[m] = pt; }
       PositionSelectByTicket(pt);
       long held = (long)(now - (datetime)PositionGetInteger(POSITION_TIME));
+      double op = PositionGetDouble(POSITION_PRICE_OPEN), cs = PositionGetDouble(POSITION_SL), ea = 0;
+      string cp[];                                                              // comment "SPIKE <ATR at entry>"
+      if(StringSplit(PositionGetString(POSITION_COMMENT), ' ', cp) >= 2) ea = StringToDouble(cp[1]);
       if(held >= (long)InpSpkHoldMin * 60 || ns.hour * 60 + ns.min >= 1350)    // time exit, and never past 22:30
       {
          trade.SetExpertMagicNumber(InpSpkMagic); trade.SetTypeFillingBySymbol(sp_sym);
          if(!trade.PositionClose(pt)) SpkEvent(StringFormat("ERROR | spike close %s failed: %d %s", sp_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+         trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+      }
+      else if(!InpSpkConfirm && InpSpkBeAtr > 0 && ea > 0 && cs < op - 0.5 * _Point && tk.bid >= op + InpSpkBeAtr * ea)
+      {
+         trade.SetExpertMagicNumber(InpSpkMagic); trade.SetTypeFillingBySymbol(sp_sym);
+         if(trade.PositionModify(pt, NormalizeDouble(op, (int)SymbolInfoInteger(sp_sym, SYMBOL_DIGITS)), 0))
+            SpkEvent(StringFormat("SPIKE SL MOVED %s | price is $%.2f in profit (%.1f ATR): SL moved to the entry %s (no loss from here)",
+                                  sp_sym, tk.bid - op, InpSpkBeAtr, PriceStr(sp_sym, op)));
          trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
       }
    }
@@ -228,7 +240,7 @@ void SpkOnTimer()
       double mn0 = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_MIN), sv0 = SymbolInfoDouble(sp_sym, SYMBOL_VOLUME_STEP);
       double lot0 = NormalizeDouble(MathMax(mn0, MathFloor(InpSpkLot / sv0 + 1e-9) * sv0), 2);
       trade.SetExpertMagicNumber(InpSpkMagic); trade.SetTypeFillingBySymbol(sp_sym);
-      bool ok0 = trade.Buy(lot0, sp_sym, 0, sl0, 0, "SPIKE");
+      bool ok0 = trade.Buy(lot0, sp_sym, 0, sl0, 0, "SPIKE " + DoubleToString(atr, 2));
       if(!ok0) SpkEvent(StringFormat("ERROR | spike %s order failed: %d %s", sp_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
       trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
       if(!ok0) return;
@@ -236,8 +248,8 @@ void SpkOnTimer()
       lv0[0] = tk.ask; lc0[0] = clrBlue; lb0[0] = "entry"; lv0[1] = sl0; lc0[1] = clrIndianRed; lb0[1] = "SL";
       string fn0 = Snap(sp_sym, PERIOD_M1, "SPF", lv0, lc0, lb0, 0, 0, 0, 0, false);
       SpkEvent(StringFormat("SPIKE BUY %s | a down M1 bar of %.2f (%.1f x ATR, gate %.0f x spread) | BUY %.2f lot at %s, "
-                            "SL %s under the spike, no TP, out after %d min", sp_sym, rng, rng / atr, atr / spread, lot0,
-                            PriceStr(sp_sym, tk.ask), PriceStr(sp_sym, sl0), InpSpkHoldMin) + Img(fn0));
+                            "SL %s under the spike, no TP, SL to entry after +$%.2f (%.1f ATR), out after %d min", sp_sym, rng, rng / atr, atr / spread, lot0,
+                            PriceStr(sp_sym, tk.ask), PriceStr(sp_sym, sl0), InpSpkBeAtr * atr, InpSpkBeAtr, InpSpkHoldMin) + Img(fn0));
       if(SpkPosition(pt)) { int m0 = ArraySize(sp_known); ArrayResize(sp_known, m0 + 1); sp_known[m0] = pt; }
       return;
    }

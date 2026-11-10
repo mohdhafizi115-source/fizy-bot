@@ -21,11 +21,11 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt")]
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt")]
 # Only the modules that are switched on announce themselves, so only those may be listed here: the daily status waits
 # for every kind in this tuple and otherwise falls back to a 120 s timeout, which truncates it. Since 5 Nov the owner
 # keeps six modules, so NR7, VOLBO, PDHL, NYCONT (switched off) and SR (alerts off since 2 Nov) are out of the list.
-STATUS_KINDS = ("| STARTED |", "| GOTOBI ONLINE |", "| MONTHEND ONLINE |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| LEG ONLINE |", "| SPIKE ONLINE |")
+STATUS_KINDS = ("| STARTED |", "| GOTOBI ONLINE |", "| MONTHEND ONLINE |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| LEG ONLINE |", "| SPIKE ONLINE |", "| KELT ONLINE |")
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -41,6 +41,7 @@ MODS = [  # kind prefix, emoji, title
     ("KUMO", "☁️", "ICHIMOKU CLOUD BREAKOUT · XAUUSD H1"),
     ("TK ", "🌤️", "ICHIMOKU TK CROSS · XAUUSD H1 + M15 · day trade"),
     ("SPIKE", "⚡", "M1 SPIKE FADE · XAUUSD · scalp"),
+    ("KELT", "🎯", "M1 KELTNER RE-ENTRY · XAUUSD · scalp"),
     ("LEG", "🌊", "M1 LEG FADE · XAUUSD · no SL"),
     ("HA ", "🕯️", "M1 HEIKIN ASHI · XAUUSD · TP 1:1"),
     ("DAILY TARGET", "🎯", "DAILY TARGET · all modules"),
@@ -199,7 +200,11 @@ def status_block(kind, text):
     if kind == "SPIKE ONLINE":
         return ["⚡ M1 SPIKE FADE · XAUUSD · scalp",
                 "▫️ BUY right after a down M1 bar of 2x ATR when ATR >= 8x the spread",
-                f"▫️ SL 0.2 ATR under the spike, no TP, out after 45 min · Lot {lot} · open {opened}"]
+                f"▫️ SL 0.2 ATR under the spike, no TP, SL to entry after +1 ATR, out after 45 min · Lot {lot} · open {opened}"]
+    if kind == "KELT ONLINE":
+        return ["🎯 M1 KELTNER RE-ENTRY · XAUUSD · scalp",
+                "▫️ BUY when a bar closes back above EMA 20 - 3 ATR after a close below it, ATR >= 8x the spread",
+                f"▫️ SL 0.2 ATR under the bar, no TP, SL to entry after +30 pips, out after 45 min · Lot {lot} · open {opened}"]
     if kind == "LEG ONLINE":
         return ["🌊 M1 LEG FADE · XAUUSD · no SL (owner's rule)",
                 "▫️ A 0.10% leg 20 candles old is faded if its peak / trough is $5+ beyond EMA 50; +1 entry every 0.10% further, max 5, lots 1/1/2/2/3",
@@ -226,7 +231,7 @@ def send_status(lines):
     day = lines[0].split("|")[0].strip().split(" ")[0]
     if online_sent_today(day):
         print("status message already sent today", flush=True); return
-    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE"))}
+    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE", "KELT ONLINE"))}
     blocks = []
     for l in sorted(lines, key=lambda x: order.get(x.split("|")[1].strip(), 99)):
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]

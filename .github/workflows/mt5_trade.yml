@@ -130,6 +130,7 @@ jobs:
           (Get-Content mt5\FizyKUMO.mqh) -replace '^input double InpKumoLot\s*=.*;', "input double InpKumoLot     = $env:KLOT;" | Set-Content "$dir\MQL5\Experts\FizyKUMO.mqh" -Encoding utf8
           (Get-Content mt5\FizyTK.mqh) -replace '^input double InpTkLot\s*=.*;', "input double InpTkLot     = $env:TLOT;" | Set-Content "$dir\MQL5\Experts\FizyTK.mqh" -Encoding utf8
           (Get-Content mt5\FizySPK.mqh) -replace '^input double InpSpkLot\s*=.*;', "input double InpSpkLot       = $env:SLOT;" | Set-Content "$dir\MQL5\Experts\FizySPK.mqh" -Encoding utf8
+          Copy-Item mt5\FizyKLT.mqh "$dir\MQL5\Experts\FizyKLT.mqh" -Force
           (Get-Content mt5\FizyLEG.mqh) -replace '^input double InpLegLot\s*=.*;', "input double InpLegLot    = $env:LLOT;" | Set-Content "$dir\MQL5\Experts\FizyLEG.mqh" -Encoding utf8
           (Get-Content mt5\FizyHA.mqh) -replace '^input double InpHaLot\s*=.*;', "input double InpHaLot      = $env:HLOT;" | Set-Content "$dir\MQL5\Experts\FizyHA.mqh" -Encoding utf8
           (Get-Content mt5\FizyDTJ.mqh) -replace '^input double InpDtjLot\s*=.*;', "input double InpDtjLot      = $env:DLOT;" | Set-Content "$dir\MQL5\Experts\FizyDTJ.mqh" -Encoding utf8
