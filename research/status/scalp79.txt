@@ -1,0 +1,98 @@
+/home/runner/work/fizy-bot/fizy-bot/research/scalp79.py:44: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  hm = T.hour.values * 60 + T.minute.values; wd = T.dayofweek.values
+XAUUSD M1 2025-10-06 .. 2026-11-10; last 3 months from 12 Aug, repeat check from 14 May
+
+149 variants, sorted by the last 3 months' net. /day counts every trading day of the 3 months.
+variant                                                                                 /day win%  PF3m |     m1     m2     m3 |  3 mths prev 3m worst d  12 mths
+B spike fade k2 gate8 hold 90 min                                                        4.9   13  1.40 |    +15   +157    +51 |    +223     +18     -26     +277 PASS
+B spike fade k2 gate8 + breakeven after +2.0 ATR, 45 min                                 5.2   13  1.46 |   +106    +78    +38 |    +222    +125     -26    +1001 PASS
+A 3-bar drop >= 2.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           6.3   12  1.38 |   +138    +67     +9 |    +214     -86     -25     +608 
+F Keltner 3.0 ATR re-entry BUY gate8 SL under the bar, no TP, 45 min                     3.4   28  1.32 |    +82     +4   +116 |    +202     +44     -30     +553 PASS
+B LIVE spike fade k2 gate8 SL 0.2 ATR, no TP, 45 min (reference)                         5.1   14  1.35 |    +32    +87    +73 |    +192    +140     -26     +629 PASS
+B spike fade k2 gate8 hold 20 min                                                        5.3   18  1.37 |   +101    +49    +38 |    +188     +71     -26     +371 PASS
+A 3-bar drop >= 3.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           1.3   14  2.41 |    +85   +129    -28 |    +187    +171     -10     +722 
+F Keltner 3.0 ATR re-entry BUY no gate SL under the bar, no TP, 45 min                   9.6   21  1.15 |    +35   +107    +42 |    +184     -13     -40     +536 
+A 2-bar drop >= 3.0 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           1.2   14  2.55 |   +140    +75    -31 |    +183    +130      -9     +744 
+A 2-bar drop >= 3.5 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           1.0   17  2.47 |   +108    +72     -3 |    +176     +77     -13     +448 
+A 3-bar drop >= 4.0 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           0.6   17  3.15 |    +96    +89    -15 |    +170     +38      -8     +403 
+A 2-bar drop >= 3.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           0.7   16  3.27 |    +93    +89    -17 |    +166     +59      -7     +479 
+B spike fade k2 gate8 hold 180 min                                                       4.7   11  1.30 |     +9   +136    +20 |    +166      +3     -33       +4 PASS
+A 2-bar drop >= 2.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           2.9   13  1.58 |   +104    +77    -18 |    +164     +50     -19    +1087 
+A 2-bar drop >= 3.0 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           2.1   11  1.78 |   +140    +48    -31 |    +158    +164     -15     +732 
+A 2-bar drop >= 4.0 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           0.4   17  4.95 |    +86    +80    -10 |    +157      -4      -6     +350 
+A 3-bar drop >= 3.5 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           2.1   11  1.64 |    +77    +92    -21 |    +147    +194     -25     +613 
+L down spike k1.5 gate6 with RSI14 < 30, 45 min                                          6.0   14  1.25 |    -36   +116    +60 |    +139    +211     -26     +175 
+B spike fade k2 gate8 + breakeven after +0.5 ATR, 45 min                                 5.4    8  1.37 |    +62    +57    +19 |    +139     +48     -21     +726 PASS
+A 3-bar drop >= 2.5 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min          10.7   10  1.16 |    +57    +79     +0 |    +137     -31     -28     +495 
+A 3-bar drop >= 4.0 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           1.1   13  1.87 |   +111    +56    -32 |    +134     +30     -25     +344 
+L down spike k1.5 gate8 with RSI14 < 30, 45 min                                          3.4   14  1.38 |    -16    +97    +52 |    +133     +78     -18     +123 
+L down spike k1.5 gate8 with RSI14 < 35, 45 min                                          5.4   12  1.24 |    +20    +30    +84 |    +133    -142     -26       +9 
+A 3-bar drop >= 3.0 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min           2.7   10  1.48 |    +52    +93    -14 |    +132    +122     -16     +614 
+A 2-bar drop >= 4.0 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           0.5   16  2.66 |    +85    +66    -20 |    +130      -5     -13     +296 
+B spike fade k2 gate8 + breakeven after +1.0 ATR, 45 min                                 5.3    9  1.29 |    +51    +57    +19 |    +127     +56     -22     +892 PASS
+L down spike k2.0 gate8 with RSI14 < 35, 45 min                                          2.4   14  1.43 |    +54    +81    -14 |    +121      -7     -15     +367 
+L down spike k1.5 gate6 with RSI14 < 35, 45 min                                          9.9   12  1.13 |    -55    +94    +80 |    +119    -118     -38      -62 
+A 2-bar drop >= 2.5 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           4.8   10  1.25 |    +56    +90    -40 |    +107     +36     -21    +1023 
+L down spike k2.0 gate8 with RSI14 < 30, 45 min                                          1.6   15  1.50 |    +15    +76     +6 |     +96     +57     -13     +409 
+B spike fade k2 gate8 SL 0.5 ATR under the bar, 45 min                                   4.9   17  1.11 |    -40    +87    +37 |     +84    +145     -39     +501 
+B spike fade k1.75 gate8 H1 uptrend only, 45 min                                         3.8   12  1.20 |    +56    -30    +53 |     +79     -24     -26     +520 
+B spike fade k2.0 gate8 NY session only, 45 min                                          2.5   13  1.26 |    +31    +30    +15 |     +77     +93     -25     +169 
+L down spike k2.0 gate6 with RSI14 < 35, 45 min                                          4.4   12  1.16 |     +8   +100    -35 |     +73     +20     -22     +271 
+D RSI7 < 10 in an H1 uptrend (mirror) gate8 SL 2 ATR, no TP, 45 min                      0.6   46  1.50 |    +21    +33    +11 |     +65    +127     -22     +336 
+B spike fade k1.5 gate8 H1 uptrend only, 45 min                                          6.0   11  1.11 |    +98    -60    +25 |     +63    -132     -30     +234 
+B spike fade k2.0 gate8 H1 uptrend only, 45 min                                          2.1   13  1.27 |    +13     +4    +45 |     +63     +42     -22     +614 
+D RSI7 < 10 in an H1 uptrend (mirror) gate8 SL 1 ATR, TP 2 ATR, 45 min                   0.6   49  1.84 |    +30    +19     +7 |     +55     +23      -6     +123 
+D RSI7 < 10 BUY only, H1 uptrend gate8 SL 1 ATR, TP 2 ATR, 45 min                        0.2   75  6.96 |    +27     +7    +18 |     +53      +0      -6     +110 
+B spike fade k2 gate8 SL 1.0 ATR under the bar, 45 min                                   4.6   24  1.05 |    -48    +60    +41 |     +53     +88     -61     +306 
+L down spike k2.0 gate6 with RSI14 < 30, 45 min                                          2.9   12  1.16 |     -5    +85    -29 |     +52    +102     -15     +319 
+D RSI14 < 25 BUY only, H1 uptrend gate8 SL 1 ATR, TP 2 ATR, 45 min                       0.8   42  1.45 |    +42     +5     -0 |     +47     +33     -10      +66 
+D RSI14 < 20 in an H1 uptrend (mirror) gate8 SL 2 ATR, no TP, 45 min                     0.7   38  1.27 |     -5    +40    +11 |     +46    +134     -25     +847 
+D RSI7 < 10 in an H1 uptrend (mirror) no gate SL 1 ATR, TP 2 ATR, 45 min                 1.8   43  1.29 |    +16     +8    +22 |     +45     +15     -11      +69 
+B spike fade k1.75 gate8 NY session only, 45 min                                         4.5   10  1.09 |    +53    -23    +14 |     +44     +48     -40      -74 
+C up spike k2.5 gate8 FOLLOW buy, SL under the bar, no TP, 45 min                        2.1   35  1.07 |    -77    -19   +139 |     +43    +167     -41     +569 
+D RSI7 < 10 BUY only, H1 uptrend no gate SL 1 ATR, TP 2 ATR, 45 min                      0.7   46  1.76 |    +17     +3    +22 |     +42      +7     -11      +90 
+A 3-bar drop >= 3.0 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min           4.7    8  1.09 |     +2    +40     -3 |     +40    +169     -26     +433 
+A 3-bar drop >= 3.5 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      1.3   48  1.21 |    +23    +23     -9 |     +37     +25     -18     +152 
+B spike fade k1.5 gate8 NY session only, 45 min                                          7.4   11  1.04 |   +129    -76    -19 |     +34     -32     -37     -367 
+D RSI14 < 20 BUY only, H1 uptrend gate8 SL 1 ATR, TP 2 ATR, 45 min                       0.2   67  3.54 |    +19    +13     +1 |     +33     +39      -8     +178 
+D RSI14 < 25 in an H1 uptrend (mirror) gate8 SL 1 ATR, TP 2 ATR, 45 min                  2.1   37  1.10 |    +67    -32     -6 |     +29     +54     -18      +61 
+J the same, BUY only gate8 SL under the bar, no TP, 45 min                               6.6   26  1.02 |    -28    +69    -13 |     +28    -120     -38     -813 
+D RSI14 < 20 in an H1 uptrend (mirror) gate8 SL 1 ATR, TP 2 ATR, 45 min                  0.8   42  1.26 |    +14    +17     -7 |     +24     +56     -13     +170 
+A 2-bar drop >= 4.0 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      0.4   52  1.45 |     +3    +19     +2 |     +24     -22      -8      +19 
+A 3-bar drop >= 4.0 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      0.7   45  1.22 |    +35     +2    -14 |     +23     -15     -13      -47 
+D RSI14 < 25 BUY only, H1 uptrend no gate SL 1 ATR, TP 2 ATR, 45 min                     2.5   37  1.09 |    +28     -2     -5 |     +21      -2     -18       -3 
+D RSI14 < 20 BUY only, H1 uptrend no gate SL 1 ATR, TP 2 ATR, 45 min                     0.7   40  1.33 |     +9     +7     +2 |     +18     +41     -11     +154 
+A 2-bar drop >= 3.5 ATR fade BUY gate6 SL 1 ATR, TP 1.5 ATR, 30 min                      1.0   48  1.14 |     -6    +20     +4 |     +17     +20      -8      +51 
+A 3-bar drop >= 3.5 ATR fade BUY gate6 SL 1 ATR, TP 1.5 ATR, 30 min                      2.1   46  1.07 |    +11     +4     +2 |     +17     +34     -21     +131 
+A 2-bar drop >= 3.5 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      0.7   44  1.17 |     -5    +31    -10 |     +16      +4      -8      +63 
+D RSI7 < 10 in an H1 uptrend (mirror) no gate SL 2 ATR, no TP, 45 min                    1.7   33  1.05 |    -25    +46     -6 |     +15    +105     -19     +224 
+A 2-bar move >= 4.0 ATR fade BOTH gate8 SL 1 ATR, TP 1.5 ATR, 30 min                     0.8   44  1.12 |    +11    -16    +18 |     +13     -59     -11      -35 
+A 2-bar drop >= 3.0 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      1.2   41  1.06 |     -3    +34    -21 |     +10     -26     -10     +185 
+A 3-bar drop >= 2.5 ATR fade BUY gate8 SL 1 ATR, TP 1.5 ATR, 30 min                      6.2   44  1.01 |    -10     +5    +14 |      +9     -14     -39      -18 
+H quiet (ATR14/ATR100 < 0.6) then a 2 ATR bar: FOLLOW, SL 1 ATR, TP 2 ATR, 30 min        0.2   54  1.82 |    +13     -0     -6 |      +7      -6      -2       +5 
+A 2-bar drop >= 4.0 ATR fade BUY gate6 SL 1 ATR, TP 1.5 ATR, 30 min                      0.5   47  1.09 |     -0     +4     +3 |      +7     -12      -8      -20 
+D RSI14 < 20 in an H1 uptrend (mirror) no gate SL 2 ATR, no TP, 45 min                   1.8   34  1.02 |    -64    +37    +33 |      +6    +156     -27     +841 
+A 2-bar move >= 3.5 ATR fade BOTH gate6 SL 1 ATR, TP 1.5 ATR, 30 min                     2.3   44  1.02 |     -5    +12     -2 |      +5     -34     -11       +2 
+C down spike k2.5 gate8 FOLLOW sell in an H1 downtrend, SL 1 ATR, TP 2 ATR, 45 min       1.3   35  1.01 |    -14     -1    +17 |      +2    -141     -15     -304 
+A 2-bar drop >= 3.0 ATR fade BUY gate6 SL 1 ATR, TP 1.5 ATR, 30 min                      2.1   43  1.01 |     -9    +26    -15 |      +1     +14      -9     +205 
+... and 78 variants that lost over the last 3 months (worst -1217).
+
+8 of 149 PASS (>= 3 a day, 3 months each positive, PF >= 1.15, previous 3 months positive).
+positive last 3 months AND previous 3 months, any trade rate: 49 of 149
+
+RANDOM-TIME CONTROL (20 draws: the same number of entries and directions at random eligible bars, same exit):
+  B spike fade k2 gate8 hold 90 min                                                real   +223 | random mean    -72, best    +67,   0% of draws as good
+  B spike fade k2 gate8 + breakeven after +2.0 ATR, 45 min                         real   +222 | random mean   -126, best    +88,   0% of draws as good
+  F Keltner 3.0 ATR re-entry BUY gate8 SL under the bar, no TP, 45 min             real   +202 | random mean    -77, best    +16,   0% of draws as good
+  B LIVE spike fade k2 gate8 SL 0.2 ATR, no TP, 45 min (reference)                 real   +192 | random mean   -153, best     +9,   0% of draws as good
+  B spike fade k2 gate8 hold 20 min                                                real   +188 | random mean   -155, best    +71,   0% of draws as good
+  B spike fade k2 gate8 hold 180 min                                               real   +166 | random mean   -156, best   +230,   5% of draws as good
+  B spike fade k2 gate8 + breakeven after +0.5 ATR, 45 min                         real   +139 | random mean   -122, best    +35,   0% of draws as good
+  B spike fade k2 gate8 + breakeven after +1.0 ATR, 45 min                         real   +127 | random mean   -145, best     -5,   0% of draws as good
+  A 3-bar drop >= 2.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min   real   +214 | random mean   -147, best   +258,   5% of draws as good
+  A 3-bar drop >= 3.5 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min   real   +187 | random mean    -34, best    +68,   0% of draws as good
+  F Keltner 3.0 ATR re-entry BUY no gate SL under the bar, no TP, 45 min           real   +184 | random mean    -98, best    +62,   0% of draws as good
+  A 2-bar drop >= 3.0 ATR fade BUY gate8 SL 0.2 ATR under the bar, no TP, 45 min   real   +183 | random mean    -47, best   +136,   0% of draws as good
+  A 2-bar drop >= 3.5 ATR fade BUY gate6 SL 0.2 ATR under the bar, no TP, 45 min   real   +176 | random mean    -33, best   +104,   0% of draws as good
+
+done in 22 s
