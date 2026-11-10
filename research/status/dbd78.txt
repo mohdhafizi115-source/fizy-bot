@@ -1,0 +1,144 @@
+XAUUSD M1 2020-03-30 .. 2026-11-10, 2,341,003 bars
+
+=== M1, swings n=3, entry at the zone edge: 12485 setups ===
+avg SL $1.27 (median 0.85), TP $10; median hold 4 min, longest 1.0 days
+  last month        116 trades (5.52/day) win  14% PF 0.74 net $     -57 worst day $   -17
+  month before      127 trades (6.05/day) win   8% PF 0.39 net $    -158 worst day $   -20
+  last 12 months   1561 trades (5.98/day) win  16% PF 0.78 net $    -746 worst day $   -49
+  all 6.6 years    8805 trades (5.10/day) win   8% PF 0.78 net $   -2090 worst day $   -49
+  random direction, all years: 8673 trades, PF 0.79, net $-1993
+  halves PF 0.70 / 0.82; by year: 2020:-181 2021:-411 2022:-295 2023:-104 2024:-367 2025:-88 2026:-643
+
+=== M1, swings n=3, entry at the zone mid: 12485 setups ===
+avg SL $0.72 (median 0.52), TP $10; median hold 1 min, longest 1.0 days
+  last month        109 trades (5.19/day) win   8% PF 0.75 net $     -30 worst day $   -12
+  month before      123 trades (5.86/day) win   4% PF 0.34 net $     -96 worst day $   -11
+  last 12 months   1473 trades (5.64/day) win  10% PF 0.83 net $    -316 worst day $   -31
+  all 6.6 years    8553 trades (4.96/day) win   5% PF 0.70 net $   -1699 worst day $   -31
+  random direction, all years: 8536 trades, PF 0.61, net $-2234
+  halves PF 0.57 / 0.77; by year: 2020:-137 2021:-354 2022:-230 2023:-260 2024:-312 2025:-66 2026:-339
+   [4 s]
+
+=== M1, swings n=5, entry at the zone edge: 9931 setups ===
+avg SL $1.29 (median 0.87), TP $10; median hold 4 min, longest 1.0 days
+  last month        111 trades (5.29/day) win  12% PF 0.65 net $     -71 worst day $   -17
+  month before      121 trades (5.76/day) win  12% PF 0.66 net $     -78 worst day $   -15
+  last 12 months   1300 trades (4.98/day) win  17% PF 0.84 net $    -412 worst day $   -41
+  all 6.6 years    7094 trades (4.11/day) win   9% PF 0.81 net $   -1414 worst day $   -41
+  random direction, all years: 7019 trades, PF 0.81, net $-1448
+  halves PF 0.69 / 0.88; by year: 2020:-38 2021:-349 2022:-281 2023:-210 2024:-216 2025:+3 2026:-324
+
+=== M1, swings n=5, entry at the zone mid: 9931 setups ===
+avg SL $0.74 (median 0.53), TP $10; median hold 1 min, longest 1.0 days
+  last month        107 trades (5.10/day) win  10% PF 1.00 net $      +0 worst day $    -8
+  month before      117 trades (5.57/day) win   9% PF 0.86 net $     -18 worst day $    -9
+  last 12 months   1221 trades (4.68/day) win  11% PF 0.88 net $    -181 worst day $   -26
+  all 6.6 years    6784 trades (3.93/day) win   5% PF 0.75 net $   -1106 worst day $   -26
+  random direction, all years: 6774 trades, PF 0.59, net $-1911
+  halves PF 0.55 / 0.86; by year: 2020:-101 2021:-242 2022:-217 2023:-229 2024:-157 2025:+29 2026:-188
+   [7 s]
+
+=== M5, swings n=3, entry at the zone edge: 2412 setups ===
+avg SL $2.90 (median 1.87), TP $10; median hold 20 min, longest 2.3 days
+  last month         25 trades (1.19/day) win  36% PF 1.00 net $      -0 worst day $   -17
+  month before       28 trades (1.33/day) win  21% PF 0.61 net $     -38 worst day $   -16
+  last 12 months    300 trades (1.15/day) win  32% PF 0.74 net $    -338 worst day $   -55
+  all 6.6 years    1859 trades (1.08/day) win  17% PF 0.81 net $    -741 worst day $   -55
+  random direction, all years: 1844 trades, PF 0.90, net $-370
+  halves PF 0.84 / 0.80; by year: 2020:-124 2021:-41 2022:+8 2023:-107 2024:-145 2025:-32 2026:-300
+
+=== M5, swings n=3, entry at the zone mid: 2412 setups ===
+avg SL $1.55 (median 1.01), TP $10; median hold 5 min, longest 2.3 days
+  last month         20 trades (0.95/day) win  10% PF 0.43 net $     -26 worst day $    -9
+  month before       28 trades (1.33/day) win  11% PF 0.47 net $     -34 worst day $    -9
+  last 12 months    280 trades (1.07/day) win  22% PF 0.86 net $    -102 worst day $   -47
+  all 6.6 years    1745 trades (1.01/day) win  10% PF 0.80 net $    -431 worst day $   -47
+  random direction, all years: 1739 trades, PF 0.81, net $-427
+  halves PF 0.71 / 0.85; by year: 2020:-63 2021:-71 2022:-32 2023:-73 2024:-63 2025:-35 2026:-94
+   [8 s]
+
+=== M5, swings n=5, entry at the zone edge: 1936 setups ===
+avg SL $2.88 (median 1.88), TP $10; median hold 21 min, longest 1.5 days
+  last month         20 trades (0.95/day) win  45% PF 1.42 net $     +26 worst day $   -14
+  month before       21 trades (1.00/day) win  19% PF 0.47 net $     -45 worst day $   -16
+  last 12 months    215 trades (0.82/day) win  35% PF 0.87 net $    -109 worst day $   -37
+  all 6.6 years    1492 trades (0.86/day) win  17% PF 0.86 net $    -424 worst day $   -37
+  random direction, all years: 1487 trades, PF 0.98, net $-72
+  halves PF 0.85 / 0.86; by year: 2020:-47 2021:-19 2022:-56 2023:-121 2024:-75 2025:+10 2026:-116
+
+=== M5, swings n=5, entry at the zone mid: 1936 setups ===
+avg SL $1.52 (median 1.00), TP $10; median hold 6 min, longest 0.9 days
+  last month         17 trades (0.81/day) win  29% PF 1.49 net $     +16 worst day $    -7
+  month before       21 trades (1.00/day) win  10% PF 0.37 net $     -34 worst day $    -8
+  last 12 months    199 trades (0.76/day) win  20% PF 0.68 net $    -189 worst day $   -47
+  all 6.6 years    1381 trades (0.80/day) win  10% PF 0.77 net $    -405 worst day $   -47
+  random direction, all years: 1378 trades, PF 0.79, net $-373
+  halves PF 0.80 / 0.75; by year: 2020:-18 2021:-57 2022:-20 2023:-64 2024:-49 2025:-16 2026:-181
+   [9 s]
+
+=== M15, swings n=3, entry at the zone edge: 838 setups ===
+avg SL $5.13 (median 3.44), TP $10; median hold 53 min, longest 2.8 days
+  last month         10 trades (0.48/day) win  30% PF 0.28 net $     -75 worst day $   -27
+  month before        5 trades (0.24/day) win   0% PF 0.00 net $     -44 worst day $   -15
+  last 12 months    104 trades (0.40/day) win  52% PF 1.06 net $     +33 worst day $   -27
+  all 6.6 years     652 trades (0.38/day) win  27% PF 0.93 net $    -130 worst day $   -27
+  random direction, all years: 656 trades, PF 0.88, net $-236
+  halves PF 0.87 / 0.97; by year: 2020:+24 2021:-62 2022:-37 2023:-64 2024:-8 2025:+18 2026:-1
+
+=== M15, swings n=3, entry at the zone mid: 838 setups ===
+avg SL $2.63 (median 1.73), TP $10; median hold 16 min, longest 1.7 days
+  last month          9 trades (0.43/day) win  11% PF 0.17 net $     -48 worst day $   -13
+  month before        5 trades (0.24/day) win  40% PF 1.66 net $      +8 worst day $    -5
+  last 12 months     97 trades (0.37/day) win  31% PF 0.85 net $     -54 worst day $   -16
+  all 6.6 years     605 trades (0.35/day) win  18% PF 0.99 net $     -13 worst day $   -16
+  random direction, all years: 602 trades, PF 0.89, net $-129
+  halves PF 1.03 / 0.97; by year: 2020:+21 2021:+15 2022:-52 2023:+12 2024:+15 2025:+15 2026:-39
+   [10 s]
+
+=== M15, swings n=5, entry at the zone edge: 654 setups ===
+avg SL $5.52 (median 3.53), TP $10; median hold 65 min, longest 2.8 days
+  last month         12 trades (0.57/day) win  25% PF 0.31 net $     -67 worst day $   -24
+  month before        3 trades (0.14/day) win   0% PF 0.00 net $     -32 worst day $   -18
+  last 12 months     92 trades (0.35/day) win  40% PF 0.62 net $    -223 worst day $   -35
+  all 6.6 years     505 trades (0.29/day) win  25% PF 0.74 net $    -455 worst day $   -35
+  random direction, all years: 507 trades, PF 0.84, net $-261
+  halves PF 0.77 / 0.72; by year: 2020:-12 2021:-56 2022:-24 2023:-19 2024:-55 2025:-31 2026:-257
+
+=== M15, swings n=5, entry at the zone mid: 654 setups ===
+avg SL $2.83 (median 1.83), TP $10; median hold 17 min, longest 1.7 days
+  last month         11 trades (0.52/day) win   9% PF 0.18 net $     -44 worst day $   -13
+  month before        3 trades (0.14/day) win  67% PF 3.53 net $     +14 worst day $    +4
+  last 12 months     88 trades (0.34/day) win  28% PF 0.72 net $     -98 worst day $   -16
+  all 6.6 years     473 trades (0.27/day) win  18% PF 0.90 net $     -98 worst day $   -16
+  random direction, all years: 469 trades, PF 1.10, net $+83
+  halves PF 0.85 / 0.92; by year: 2020:-25 2021:-5 2022:-24 2023:+34 2024:+24 2025:-12 2026:-89
+   [10 s]
+
+=== CONTROL: every DBD / RBR zone on M1, no trend / break conditions, zone edge: 41473 zones ===
+avg SL $1.39 (median 0.92), TP $10; median hold 4 min, longest 1.2 days
+  last month        356 trades (16.95/day) win  17% PF 1.02 net $     +13 worst day $   -37
+  month before      361 trades (17.19/day) win  14% PF 0.73 net $    -185 worst day $   -49
+  last 12 months   4460 trades (17.09/day) win  18% PF 0.87 net $   -1274 worst day $   -64
+  all 6.6 years   22532 trades (13.05/day) win   9% PF 0.83 net $   -4309 worst day $   -64
+  random direction, all years: 22074 trades, PF 0.78, net $-5895
+  halves PF 0.73 / 0.88; by year: 2020:-623 2021:-634 2022:-641 2023:-485 2024:-567 2025:-160 2026:-1199
+
+=== CONTROL: every DBD / RBR zone on M5, no trend / break conditions, zone edge: 7469 zones ===
+avg SL $3.09 (median 2.04), TP $10; median hold 22 min, longest 1.5 days
+  last month         73 trades (3.48/day) win  25% PF 0.76 net $     -54 worst day $   -30
+  month before       82 trades (3.90/day) win  32% PF 1.04 net $     +11 worst day $   -17
+  last 12 months    896 trades (3.43/day) win  36% PF 0.94 net $    -216 worst day $   -81
+  all 6.6 years    5015 trades (2.91/day) win  19% PF 0.92 net $    -827 worst day $   -81
+  random direction, all years: 5017 trades, PF 0.95, net $-507
+  halves PF 0.84 / 0.97; by year: 2020:-193 2021:-94 2022:-228 2023:-85 2024:-31 2025:+80 2026:-276
+
+=== CONTROL: every DBD / RBR zone on M15, no trend / break conditions, zone edge: 2455 zones ===
+avg SL $5.52 (median 3.67), TP $10; median hold 54 min, longest 2.8 days
+  last month         24 trades (1.14/day) win  33% PF 0.41 net $    -115 worst day $   -23
+  month before       19 trades (0.90/day) win  32% PF 0.49 net $     -63 worst day $   -26
+  last 12 months    295 trades (1.13/day) win  51% PF 0.94 net $    -103 worst day $   -35
+  all 6.6 years    1747 trades (1.01/day) win  29% PF 0.94 net $    -323 worst day $   -35
+  random direction, all years: 1752 trades, PF 0.87, net $-714
+  halves PF 0.90 / 0.96; by year: 2020:+52 2021:-164 2022:-49 2023:-100 2024:-33 2025:+128 2026:-158
+
+done in 15 s
