@@ -1,0 +1,88 @@
+XAUUSD M1 2020-03-30 .. 2026-11-10, 2,341,003 bars
+
+--- LIVE spike fade (k 2.0, gate 8, 45 min) ---
+4,775 trades (2.79 a day), win 14%, PF 1.12, halves 1.05 / 1.13, stress 1.05, net $+947
+last 3 months $+192, 3 before $+140, last 12 months $+629; max DD $-459, worst day $-142, months positive 42 of 80, longest losing run 72
+by year PF: 2020:0.70(-72) 2021:1.29(+38) 2022:1.24(+52) 2023:0.97(-8) 2024:0.93(-17) 2025:1.09(+201) 2026:1.16(+752)
+
+--- LIVE + breakeven after +0.5 ATR ---
+5,023 trades (2.94 a day), win 8%, PF 1.17, halves 1.10 / 1.17, stress 1.06, net $+854
+last 3 months $+139, 3 before $+48, last 12 months $+726; max DD $-311, worst day $-109, months positive 36 of 80, longest losing run 72
+by year PF: 2020:0.91(-12) 2021:1.36(+27) 2022:1.19(+24) 2023:0.92(-13) 2024:0.95(-9) 2025:1.07(+110) 2026:1.25(+727)
+
+--- LIVE + breakeven after +1.0 ATR ---
+4,960 trades (2.90 a day), win 9%, PF 1.21, halves 1.06 / 1.22, stress 1.11, net $+1,198
+last 3 months $+127, 3 before $+56, last 12 months $+892; max DD $-303, worst day $-115, months positive 40 of 80, longest losing run 72
+by year PF: 2020:0.86(-22) 2021:1.45(+38) 2022:1.16(+23) 2023:0.85(-28) 2024:0.90(-18) 2025:1.18(+295) 2026:1.27(+909)
+
+--- LIVE + breakeven after +2.0 ATR ---
+4,857 trades (2.84 a day), win 12%, PF 1.18, halves 1.03 / 1.20, stress 1.10, net $+1,236
+last 3 months $+222, 3 before $+125, last 12 months $+1001; max DD $-361, worst day $-123, months positive 41 of 80, longest losing run 72
+by year PF: 2020:0.77(-48) 2021:1.27(+30) 2022:1.03(+6) 2023:1.04(+9) 2024:0.91(-19) 2025:1.09(+184) 2026:1.27(+1074)
+
+--- LIVE + breakeven after +3.0 ATR ---
+4,804 trades (2.81 a day), win 13%, PF 1.14, halves 1.05 / 1.15, stress 1.06, net $+1,019
+last 3 months $+202, 3 before $+112, last 12 months $+698; max DD $-391, worst day $-123, months positive 42 of 80, longest losing run 72
+by year PF: 2020:0.66(-79) 2021:1.22(+27) 2022:1.26(+55) 2023:1.03(+7) 2024:0.90(-23) 2025:1.11(+238) 2026:1.19(+796)
+
+--- LIVE with hold 20 min ---
+4,960 trades (2.90 a day), win 19%, PF 1.07, halves 1.12 / 1.07, stress 1.00, net $+546
+last 3 months $+188, 3 before $+71, last 12 months $+371; max DD $-325, worst day $-129, months positive 44 of 80, longest losing run 39
+by year PF: 2020:0.77(-50) 2021:1.51(+61) 2022:1.16(+33) 2023:1.09(+21) 2024:0.86(-34) 2025:1.00(-2) 2026:1.12(+517)
+
+--- LIVE with hold 90 min ---
+4,573 trades (2.68 a day), win 11%, PF 1.10, halves 1.09 / 1.10, stress 1.04, net $+804
+last 3 months $+223, 3 before $+18, last 12 months $+277; max DD $-655, worst day $-159, months positive 37 of 80, longest losing run 72
+by year PF: 2020:0.72(-68) 2021:1.34(+45) 2022:1.38(+86) 2023:0.90(-25) 2024:1.02(+5) 2025:1.15(+341) 2026:1.09(+419)
+
+--- KELT re-entry buy (EMA20 - 3 ATR), gate 8 ---
+3,144 trades (1.84 a day), win 26%, PF 1.05, halves 0.86 / 1.08, stress 1.01, net $+434
+last 3 months $+202, 3 before $+44, last 12 months $+553; max DD $-484, worst day $-196, months positive 39 of 80, longest losing run 21
+by year PF: 2020:0.65(-102) 2021:0.65(-101) 2022:1.04(+12) 2023:1.17(+47) 2024:0.72(-133) 2025:1.12(+318) 2026:1.08(+394)
+
+--- KELT neighbour 2.0 ATR ---
+8,032 trades (4.70 a day), win 22%, PF 0.90, halves 0.80 / 0.91, net $-2,243
+last 3 months $-52, 3 before $-239, last 12 months $-1173; max DD $-2393, worst day $-187, months positive 31 of 81, longest losing run 31
+by year PF: 2020:0.54(-265) 2021:0.84(-72) 2022:0.98(-12) 2023:0.90(-62) 2024:0.75(-241) 2025:0.91(-578) 2026:0.91(-1013)
+
+--- KELT neighbour 2.5 ATR ---
+5,194 trades (3.04 a day), win 24%, PF 0.94, halves 0.92 / 0.94, net $-872
+last 3 months $+73, 3 before $-192, last 12 months $-207; max DD $-1097, worst day $-244, months positive 29 of 81, longest losing run 32
+by year PF: 2020:0.66(-134) 2021:0.88(-41) 2022:1.07(+30) 2023:1.00(+2) 2024:0.71(-222) 2025:0.95(-202) 2026:0.96(-305)
+
+--- KELT neighbour 3.5 ATR ---
+1,710 trades (1.00 a day), win 29%, PF 1.19, halves 0.88 / 1.25, net $+925
+last 3 months $+154, 3 before $+156, last 12 months $+967; max DD $-362, worst day $-89, months positive 37 of 79, longest losing run 19
+by year PF: 2020:0.77(-51) 2021:0.68(-66) 2022:1.14(+27) 2023:1.01(+2) 2024:0.77(-63) 2025:1.12(+166) 2026:1.37(+909)
+
+--- KELT neighbour 4.0 ATR ---
+929 trades (0.54 a day), win 30%, PF 1.27, halves 0.76 / 1.38, net $+721
+last 3 months $+136, 3 before $+50, last 12 months $+740; max DD $-277, worst day $-82, months positive 33 of 76, longest losing run 16
+by year PF: 2020:0.72(-38) 2021:0.49(-70) 2022:1.11(+15) 2023:0.81(-21) 2024:0.77(-36) 2025:1.30(+212) 2026:1.51(+660)
+
+--- KELT only where LIVE has no signal within 5 bars ---
+1,498 trades (0.88 a day), win 28%, PF 1.32, halves 0.94 / 1.40, stress 1.26, net $+1,030
+last 3 months $+146, 3 before $+77, last 12 months $+716; max DD $-193, worst day $-45, months positive 39 of 78, longest losing run 16
+by year PF: 2020:0.88(-16) 2021:0.63(-61) 2022:1.06(+10) 2023:1.23(+43) 2024:0.97(-8) 2025:1.41(+367) 2026:1.47(+694)
+
+--- DROP2 (2-bar drop >= 2.5 ATR), gate 8 ---
+2,660 trades (1.56 a day), win 13%, PF 1.28, halves 0.94 / 1.33, stress 1.20, net $+1,088
+last 3 months $+164, 3 before $+50, last 12 months $+1087; max DD $-147, worst day $-48, months positive 33 of 78, longest losing run 46
+by year PF: 2020:0.77(-31) 2021:0.81(-16) 2022:1.35(+47) 2023:0.75(-34) 2024:0.83(-20) 2025:1.05(+59) 2026:1.49(+1084)
+
+--- DROP2 only where LIVE has no signal within 5 bars ---
+604 trades (0.35 a day), win 11%, PF 1.16, halves 0.93 / 1.22, stress 1.06, net $+100
+last 3 months $+33, 3 before $+14, last 12 months $+116; max DD $-78, worst day $-13, months positive 23 of 70, longest losing run 53
+by year PF: 2020:0.71(-9) 2021:0.74(-7) 2022:1.64(+20) 2023:0.79(-8) 2024:0.93(-2) 2025:0.80(-33) 2026:1.46(+139)
+
+--- LIVE+BE2 and KELT(no overlap), two modules ---
+6,355 trades (3.72 a day), win 15%, PF 1.22, halves 0.99 / 1.26, net $+2,266
+last 3 months $+368, 3 before $+202, last 12 months $+1717; max DD $-232, worst day $-103, months positive 46 of 81, longest losing run 58
+by year PF: 2020:0.81(-64) 2021:0.89(-31) 2022:1.05(+16) 2023:1.13(+52) 2024:0.94(-27) 2025:1.19(+551) 2026:1.33(+1768)
+
+--- LIVE+BE2, KELT(no overlap), DROP2(no overlap), three modules ---
+6,959 trades (4.07 a day), win 15%, PF 1.22, halves 0.98 / 1.26, net $+2,366
+last 3 months $+401, 3 before $+216, last 12 months $+1833; max DD $-254, worst day $-106, months positive 47 of 81, longest losing run 62
+by year PF: 2020:0.80(-73) 2021:0.87(-38) 2022:1.09(+37) 2023:1.10(+44) 2024:0.94(-29) 2025:1.17(+518) 2026:1.33(+1907)
+
+done in 4 s
