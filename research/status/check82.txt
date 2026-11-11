@@ -1,0 +1,41 @@
+XAUUSD M1 2026-11-02 09:01:00 .. 2026-11-11 09:01:00 (server time), 9640 bars
+
+LEG signals per server day (leg 20 candles old): all / in 01:30-22:00 / passing the $5 peak-trough filter
+            signals  in_hours  would_enter
+day                                       
+2026-11-02       16        15            2
+2026-11-03       26        24            6
+2026-11-04       24        20            8
+2026-11-05       19        17            5
+2026-11-06       19        16            8
+2026-11-09       27        26            8
+2026-11-10       30        26            6
+2026-11-11       14        14            0
+
+every LEG signal on 2026-11-11 (server time; MYT = +6 h):
+                  t fade  peak_dist_to_ema50  in_hours  would_enter        day
+2026-11-11 01:34:00 SELL                3.77      True        False 2026-11-11
+2026-11-11 01:48:00  BUY                1.00      True        False 2026-11-11
+2026-11-11 02:07:00 SELL                4.15      True        False 2026-11-11
+2026-11-11 02:33:00  BUY                4.58      True        False 2026-11-11
+2026-11-11 04:04:00  BUY               -0.82      True        False 2026-11-11
+2026-11-11 04:56:00  BUY                3.15      True        False 2026-11-11
+2026-11-11 05:15:00 SELL                4.14      True        False 2026-11-11
+2026-11-11 05:37:00  BUY                1.05      True        False 2026-11-11
+2026-11-11 05:52:00 SELL                2.53      True        False 2026-11-11
+2026-11-11 06:24:00  BUY                3.50      True        False 2026-11-11
+2026-11-11 06:59:00 SELL                2.28      True        False 2026-11-11
+2026-11-11 08:18:00  BUY                2.92      True        False 2026-11-11
+2026-11-11 08:23:00 SELL                2.53      True        False 2026-11-11
+2026-11-11 08:42:00  BUY                2.28      True        False 2026-11-11
+
+per server day: spike-fade signals, Keltner signals, bars with ATR >= 8x spread, median ATR/spread
+            spike  keltner  gate>=8 bars  median gate
+2026-11-02      1        0           150          5.7
+2026-11-03      7        1           294          5.6
+2026-11-04     11        0           783          8.6
+2026-11-05     14        4           731          8.6
+2026-11-06      5        3           614          7.5
+2026-11-09      3        0           339          6.6
+2026-11-10      6        9           371          6.2
+2026-11-11      1        0            53          5.3
