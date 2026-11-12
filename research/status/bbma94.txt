@@ -1,0 +1,502 @@
+XAUUSD: 1205 CSAKs [2 s]
+BTCUSD: 1813 CSAKs [5 s]
+EURUSD: 1313 CSAKs [7 s]
+GBPUSD: 1473 CSAKs [9 s]
+AUDUSD: 1349 CSAKs [11 s]
+NZDUSD: 1280 CSAKs [13 s]
+USDJPY: 1249 CSAKs [15 s]
+USDCHF: 1330 CSAKs [17 s]
+USDCAD: 1417 CSAKs [19 s]
+EURGBP: 1731 CSAKs [21 s]
+EURJPY: 1370 CSAKs [23 s]
+EURCHF: 1767 CSAKs [25 s]
+EURAUD: 1387 CSAKs [27 s]
+EURCAD: 1462 CSAKs [29 s]
+EURNZD: 1390 CSAKs [31 s]
+GBPJPY: 1442 CSAKs [33 s]
+GBPCHF: 1548 CSAKs [35 s]
+GBPAUD: 1487 CSAKs [37 s]
+GBPCAD: 1536 CSAKs [39 s]
+GBPNZD: 1359 CSAKs [41 s]
+AUDJPY: 1287 CSAKs [43 s]
+AUDCHF: 1366 CSAKs [45 s]
+AUDCAD: 1492 CSAKs [47 s]
+AUDNZD: 1361 CSAKs [49 s]
+NZDJPY: 1284 CSAKs [51 s]
+NZDCHF: 1303 CSAKs [53 s]
+NZDCAD: 1407 CSAKs [55 s]
+CADJPY: 1358 CSAKs [57 s]
+CADCHF: 1532 CSAKs [59 s]
+CHFJPY: 1408 CSAKs [61 s]
+
+===== PART A: 42,706 M15 CSAKs on 30 instruments, 2024-11-12 .. 2026-11-12 =====
+forward move IN the CSAK direction, in ATR(M15); a real validator shifts f8 up in BOTH years.  Spread/ATR is the cost of one trade in the same unit.
+ALL CSAKs: f1 -0.008  f4 +0.001  f8 +0.011  f16 +0.013  | year1 f8 +0.006  year2 f8 +0.016 | mean spread/ATR 0.296
+
+feature                       bucket      n      f1      f4      f8     f16  t(f8) |  yr1 f8  yr2 f8 |   spr  f8-spr
+body/ATR                  -inf..0.57   8683  +0.004  +0.013  +0.030  +0.034   +1.4 |  +0.001  +0.059 | 0.326  -0.296
+body/ATR                  0.57..0.80   8537  -0.010  -0.009  -0.011  +0.004   -0.5 |  -0.007  -0.016 | 0.304  -0.315
+body/ATR                  0.80..1.02   8356  -0.022  -0.013  +0.012  -0.003   +0.5 |  +0.006  +0.019 | 0.292  -0.280
+body/ATR                  1.02..1.33   8439  +0.004  +0.010  +0.012  +0.020   +0.5 |  -0.012  +0.038 | 0.286  -0.274
+body/ATR                   1.33..inf   8691  -0.016  +0.005  +0.010  +0.007   +0.4 |  +0.040  -0.019 | 0.271  -0.261
+
+range/ATR                 -inf..0.94   8708  +0.001  +0.014  +0.037  +0.038   +1.8 |  +0.043  +0.031 | 0.334  -0.297
+range/ATR                 0.94..1.18   8561  -0.007  -0.002  +0.009  +0.019   +0.4 |  +0.040  -0.023 | 0.298  -0.289
+range/ATR                 1.18..1.42   8284  -0.001  -0.006  -0.004  +0.003   -0.1 |  -0.065  +0.063 | 0.287  -0.291
+range/ATR                 1.42..1.76   8519  -0.024  -0.034  -0.033  -0.033   -1.3 |  -0.044  -0.022 | 0.288  -0.321
+range/ATR                  1.76..inf   8634  -0.009  +0.033  +0.043  +0.035   +1.6 |  +0.054  +0.032 | 0.271  -0.228
+
+close loc %              -inf..72.73   8467  -0.003  +0.014  +0.046  +0.077   +1.8 |  +0.005  +0.089 | 0.300  -0.254
+close loc %             72.73..83.54   8498  -0.010  +0.001  -0.009  -0.032   -0.4 |  -0.035  +0.017 | 0.298  -0.308
+close loc %             83.54..90.48   8499  -0.004  +0.009  +0.015  +0.056   +0.6 |  +0.052  -0.022 | 0.291  -0.276
+close loc %             90.48..96.00   8600  -0.006  -0.005  -0.012  -0.020   -0.5 |  +0.001  -0.026 | 0.295  -0.307
+close loc %               96.00..inf   8642  -0.017  -0.012  +0.015  -0.017   +0.6 |  +0.007  +0.023 | 0.295  -0.280
+
+wick against %            -inf..4.00   8645  -0.017  -0.012  +0.015  -0.017   +0.6 |  +0.007  +0.023 | 0.295  -0.280
+wick against %            4.00..9.52   8601  -0.007  -0.005  -0.013  -0.020   -0.5 |  +0.000  -0.026 | 0.295  -0.308
+wick against %           9.52..16.46   8504  -0.003  +0.008  +0.015  +0.056   +0.6 |  +0.052  -0.023 | 0.291  -0.276
+wick against %          16.46..27.27   8491  -0.010  +0.001  -0.009  -0.032   -0.4 |  -0.035  +0.018 | 0.298  -0.307
+wick against %            27.27..inf   8465  -0.003  +0.014  +0.046  +0.077   +1.8 |  +0.005  +0.089 | 0.300  -0.254
+
+tickvol/avg20             -inf..0.83   8376  -0.011  -0.004  +0.006  +0.001   +0.3 |  +0.035  -0.026 | 0.333  -0.328
+tickvol/avg20             0.83..1.06   8386  -0.008  -0.017  +0.024  +0.011   +1.0 |  +0.012  +0.036 | 0.288  -0.264
+tickvol/avg20             1.06..1.31   8637  -0.013  -0.026  -0.021  -0.028   -0.9 |  -0.043  +0.001 | 0.286  -0.307
+tickvol/avg20             1.31..1.68   8476  -0.001  +0.040  +0.032  +0.058   +1.3 |  +0.003  +0.063 | 0.285  -0.252
+tickvol/avg20              1.68..inf   8831  -0.007  +0.013  +0.014  +0.022   +0.5 |  +0.022  +0.006 | 0.287  -0.274
+
+BBwidth/med100            -inf..0.58   8385  +0.009  +0.012  +0.013  +0.039   +0.5 |  -0.005  +0.032 | 0.346  -0.333
+BBwidth/med100            0.58..0.75   8554  -0.009  +0.015  +0.013  +0.004   +0.5 |  -0.005  +0.031 | 0.308  -0.296
+BBwidth/med100            0.75..0.92   8150  -0.004  -0.010  +0.007  +0.013   +0.3 |  -0.001  +0.017 | 0.293  -0.286
+BBwidth/med100            0.92..1.13   8703  -0.022  -0.003  +0.032  +0.011   +1.3 |  +0.051  +0.013 | 0.280  -0.248
+BBwidth/med100             1.13..inf   8914  -0.012  -0.007  -0.011  -0.002   -0.5 |  -0.010  -0.011 | 0.253  -0.264
+
+dist EMA50 ATR            -inf..0.15   8665  -0.006  +0.008  +0.010  +0.064   +0.4 |  +0.010  +0.009 | 0.311  -0.301
+dist EMA50 ATR            0.15..0.31   8588  -0.010  -0.016  +0.001  -0.003   +0.0 |  +0.001  +0.001 | 0.305  -0.304
+dist EMA50 ATR            0.31..0.50   8558  -0.005  -0.002  +0.002  +0.029   +0.1 |  -0.020  +0.025 | 0.297  -0.295
+dist EMA50 ATR            0.50..0.77   8440  -0.020  -0.027  -0.024  -0.041   -1.0 |  -0.070  +0.024 | 0.290  -0.314
+dist EMA50 ATR             0.77..inf   8455  -0.000  +0.044  +0.065  +0.013   +2.5 |  +0.108  +0.021 | 0.276  -0.210
+
+EMA50 slope4 ATR         -inf..-0.09   8587  -0.023  +0.008  +0.032  +0.084   +1.2 |  +0.038  +0.025 | 0.277  -0.246
+EMA50 slope4 ATR        -0.09..-0.04   8569  -0.006  -0.033  -0.046  -0.059   -1.9 |  -0.073  -0.018 | 0.300  -0.346
+EMA50 slope4 ATR        -0.04..-0.01   8574  -0.011  -0.026  -0.000  +0.035   -0.0 |  -0.014  +0.013 | 0.305  -0.306
+EMA50 slope4 ATR         -0.01..0.03   8527  +0.006  +0.025  +0.019  -0.010   +0.8 |  +0.042  -0.006 | 0.306  -0.287
+EMA50 slope4 ATR           0.03..inf   8449  -0.006  +0.033  +0.050  +0.013   +2.0 |  +0.035  +0.066 | 0.290  -0.240
+
+move prior8 ATR          -inf..-1.21   8656  -0.005  +0.041  +0.065  +0.049   +2.6 |  +0.047  +0.083 | 0.279  -0.214
+move prior8 ATR         -1.21..-0.70   8473  +0.005  +0.013  +0.018  +0.028   +0.7 |  -0.002  +0.039 | 0.300  -0.282
+move prior8 ATR         -0.70..-0.28   8465  -0.008  +0.004  +0.014  +0.045   +0.6 |  +0.016  +0.012 | 0.303  -0.289
+move prior8 ATR          -0.28..0.23   8554  -0.005  +0.006  +0.019  -0.004   +0.8 |  +0.009  +0.030 | 0.304  -0.285
+move prior8 ATR            0.23..inf   8558  -0.027  -0.058  -0.063  -0.054   -2.7 |  -0.042  -0.085 | 0.293  -0.356
+
+H1 vs EMA50                     = -1  22621  -0.004  +0.032  +0.044  +0.061   +2.9 |  +0.030  +0.058 | 0.294  -0.250
+H1 vs EMA50                      = 1  20085  -0.012  -0.033  -0.026  -0.042   -1.7 |  -0.022  -0.031 | 0.298  -0.324
+
+H4 EMA50vs90                    = -1  21526  -0.004  +0.023  +0.042  +0.076   +2.7 |  +0.046  +0.038 | 0.295  -0.253
+H4 EMA50vs90                     = 1  21180  -0.012  -0.020  -0.021  -0.052   -1.4 |  -0.035  -0.006 | 0.297  -0.318
+
+ADX14                    -inf..12.65   8215  +0.001  -0.012  -0.001  +0.008   -0.1 |  +0.004  -0.007 | 0.318  -0.319
+ADX14                   12.65..15.09   8392  -0.009  +0.010  +0.016  -0.030   +0.7 |  +0.011  +0.022 | 0.299  -0.283
+ADX14                   15.09..17.58   8288  -0.014  +0.013  +0.029  +0.055   +1.2 |  +0.007  +0.052 | 0.289  -0.261
+ADX14                   17.58..21.24   8698  -0.006  -0.004  +0.010  -0.001   +0.4 |  -0.004  +0.023 | 0.283  -0.273
+ADX14                     21.24..inf   9113  -0.011  -0.000  +0.001  +0.030   +0.1 |  +0.011  -0.007 | 0.291  -0.290
+
+RSI14                    -inf..51.77   8564  -0.017  -0.035  -0.013  -0.060   -0.6 |  -0.015  -0.011 | 0.311  -0.324
+RSI14                   51.77..52.99   8702  +0.004  +0.009  +0.022  +0.027   +0.9 |  -0.005  +0.048 | 0.305  -0.283
+RSI14                   52.99..54.19   8446  -0.012  +0.009  +0.041  +0.027   +1.7 |  -0.012  +0.098 | 0.293  -0.252
+RSI14                   54.19..55.86   8483  -0.002  +0.031  -0.001  +0.038   -0.0 |  -0.005  +0.003 | 0.288  -0.289
+RSI14                     55.86..inf   8511  -0.012  -0.008  +0.004  +0.032   +0.2 |  +0.066  -0.059 | 0.282  -0.277
+
+spread/ATR                -inf..0.11   6199  -0.002  +0.001  +0.005  +0.013   +0.2 |  -0.006  +0.029 | 0.071  -0.066
+spread/ATR                0.11..0.16   6101  -0.016  -0.010  +0.000  +0.005   +0.0 |  +0.013  -0.031 | 0.137  -0.137
+spread/ATR                0.16..0.23   8128  -0.002  +0.004  -0.004  +0.008   -0.2 |  +0.011  -0.021 | 0.198  -0.202
+spread/ATR                0.23..0.36  10157  +0.001  +0.028  +0.054  +0.058   +2.4 |  +0.043  +0.062 | 0.290  -0.236
+spread/ATR                 0.36..inf  12121  -0.019  -0.018  -0.007  -0.018   -0.3 |  -0.032  +0.007 | 0.561  -0.568
+
+session                          = 0  15162  -0.004  +0.003  +0.004  +0.020   +0.2 |  -0.030  +0.040 | 0.346  -0.341
+session                          = 1  15215  -0.010  +0.016  +0.043  +0.044   +2.2 |  +0.036  +0.049 | 0.293  -0.251
+session                          = 2  12329  -0.011  -0.019  -0.021  -0.035   -1.1 |  +0.012  -0.053 | 0.237  -0.258
+
+=== best bucket of each feature, chosen on YEAR 1; YEAR 2 is out of sample ===
+dist EMA50 ATR     (0.77, inf]  year1 f8 +0.108 (base +0.006)  ->  year2 f8 +0.021 (base +0.016)  
+RSI14              (55.86, inf]  year1 f8 +0.066 (base +0.006)  ->  year2 f8 -0.059 (base +0.016)  
+range/ATR          (1.76, inf]  year1 f8 +0.054 (base +0.006)  ->  year2 f8 +0.032 (base +0.016)  
+close loc %        (83.54, 90.48]  year1 f8 +0.052 (base +0.006)  ->  year2 f8 -0.022 (base +0.016)  
+wick against %     (9.52, 16.46]  year1 f8 +0.052 (base +0.006)  ->  year2 f8 -0.023 (base +0.016)  
+BBwidth/med100     (0.92, 1.13]  year1 f8 +0.051 (base +0.006)  ->  year2 f8 +0.013 (base +0.016)  
+move prior8 ATR    (-inf, -1.21]  year1 f8 +0.047 (base +0.006)  ->  year2 f8 +0.083 (base +0.016)  HOLDS
+H4 EMA50vs90       (-1.00, -1.00]  year1 f8 +0.046 (base +0.006)  ->  year2 f8 +0.038 (base +0.016)  HOLDS
+spread/ATR         (0.23, 0.36]  year1 f8 +0.043 (base +0.006)  ->  year2 f8 +0.062 (base +0.016)  HOLDS
+EMA50 slope4 ATR   (-0.01, 0.03]  year1 f8 +0.042 (base +0.006)  ->  year2 f8 -0.006 (base +0.016)  
+body/ATR           (1.33, inf]  year1 f8 +0.040 (base +0.006)  ->  year2 f8 -0.019 (base +0.016)  
+session            (1.00, 1.00]  year1 f8 +0.036 (base +0.006)  ->  year2 f8 +0.049 (base +0.016)  HOLDS
+tickvol/avg20      (-inf, 0.83]  year1 f8 +0.035 (base +0.006)  ->  year2 f8 -0.026 (base +0.016)  
+H1 vs EMA50        (-1.00, -1.00]  year1 f8 +0.030 (base +0.006)  ->  year2 f8 +0.058 (base +0.016)  HOLDS
+ADX14              (12.65, 15.09]  year1 f8 +0.011 (base +0.006)  ->  year2 f8 +0.022 (base +0.016)  
+part B entry next done [397 s]
+part B entry follow done [714 s]
+part B entry retest done [886 s]
+
+===== PART B: trading the year-1 choices (year 2 out of sample).  R pooled over 30 symbols.  PASS = >=150 trades, PF >= 1.15, both years >= 1.05, stress >= 1.05, last 12 months > 0, PF >= RAND + 0.10 =====
+entry | context | pop | filter | TP                                    side     n win%    PF   yr1   yr2  strs |  12m R  3m R  p3m R |  RAND
+next | M30 | ANY | none | 1R                                           BUY   1302   39  0.61  0.59  0.64  0.53 | -144.2 -43.2  -15.8 |  0.62 
+next | M30 | ANY | none | 1R                                           SELL  1222   40  0.68  0.64  0.72  0.56 |  -91.2  -4.1  -22.5 |  0.72 
+next | M30 | ANY | none | 1R                                           ALL   2524   40  0.64  0.62  0.68  0.54 | -235.4 -47.2  -38.3 |  0.68 
+next | M30 | ANY | none | 2R                                           BUY   1264   26  0.64  0.62  0.67  0.58 | -157.7 -43.3  -14.0 |  0.65 
+next | M30 | ANY | none | 2R                                           SELL  1192   27  0.70  0.73  0.67  0.61 | -139.5 -25.0  -44.7 |  0.72 
+next | M30 | ANY | none | 2R                                           ALL   2456   26  0.67  0.67  0.67  0.59 | -297.1 -68.3  -58.7 |  0.68 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                     BUY    418   41  0.68  0.68  0.68  0.61 |  -35.2 -15.0   -1.6 |  0.63 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                     SELL   366   46  0.83  0.73  0.94  0.73 |   -5.7  -6.7   +0.2 |  0.77 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                     ALL    784   43  0.75  0.71  0.80  0.66 |  -40.9 -21.7   -1.4 |  0.70 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                     BUY    415   29  0.77  0.81  0.72  0.70 |  -38.0  -8.2   +6.3 |  0.67 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                     SELL   363   31  0.81  0.66  1.00  0.74 |   -0.3  -4.0   -1.0 |  0.80 
+next | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                     ALL    778   30  0.79  0.74  0.85  0.72 |  -38.3 -12.3   +5.3 |  0.72 
+next | M30 | ANY | RSI14 in yr1 best | 1R                              BUY    344   40  0.66  0.61  0.72  0.58 |  -27.1 -11.0   -3.6 |  0.56 
+next | M30 | ANY | RSI14 in yr1 best | 1R                              SELL   379   47  0.87  0.73  1.05  0.76 |   +4.1  -4.8   -1.8 |  0.69 
+next | M30 | ANY | RSI14 in yr1 best | 1R                              ALL    723   44  0.76  0.67  0.88  0.67 |  -23.0 -15.8   -5.4 |  0.62 
+next | M30 | ANY | RSI14 in yr1 best | 2R                              BUY    342   29  0.78  0.78  0.77  0.71 |  -26.8  -7.3   +0.2 |  0.61 
+next | M30 | ANY | RSI14 in yr1 best | 2R                              SELL   376   32  0.88  0.75  1.05  0.79 |   +5.2  -5.0   -2.3 |  0.60 
+next | M30 | ANY | RSI14 in yr1 best | 2R                              ALL    718   31  0.83  0.76  0.91  0.75 |  -21.6 -12.3   -2.1 |  0.61 
+next | M30 | ANY | range/ATR in yr1 best | 1R                          BUY    323   40  0.63  0.65  0.61  0.57 |  -36.3 -18.6   -6.6 |  0.71 
+next | M30 | ANY | range/ATR in yr1 best | 1R                          SELL   335   45  0.82  0.78  0.88  0.73 |   -8.9  +0.8   -1.7 |  0.87 
+next | M30 | ANY | range/ATR in yr1 best | 1R                          ALL    658   43  0.72  0.71  0.74  0.65 |  -45.3 -17.9   -8.2 |  0.79 
+next | M30 | ANY | range/ATR in yr1 best | 2R                          BUY    319   28  0.71  0.73  0.68  0.65 |  -35.4 -20.6   +1.3 |  0.70 
+next | M30 | ANY | range/ATR in yr1 best | 2R                          SELL   331   31  0.85  0.79  0.92  0.78 |   -7.6  +7.9  -10.0 |  0.78 
+next | M30 | ANY | range/ATR in yr1 best | 2R                          ALL    650   30  0.78  0.76  0.79  0.71 |  -42.9 -12.7   -8.7 |  0.74 
+next | M30 | ANY | close loc % in yr1 best | 1R                        BUY    411   40  0.67  0.65  0.69  0.58 |  -37.3 -16.9   -0.8 |  0.65 
+next | M30 | ANY | close loc % in yr1 best | 1R                        SELL   389   39  0.63  0.58  0.70  0.52 |  -29.8  -2.7   -8.6 |  0.68 
+next | M30 | ANY | close loc % in yr1 best | 1R                        ALL    800   40  0.65  0.61  0.69  0.55 |  -67.1 -19.6   -9.4 |  0.67 
+next | M30 | ANY | close loc % in yr1 best | 2R                        BUY    405   27  0.72  0.77  0.66  0.64 |  -50.8 -12.2   -8.9 |  0.66 
+next | M30 | ANY | close loc % in yr1 best | 2R                        SELL   384   27  0.72  0.70  0.75  0.62 |  -30.3  -9.1   -2.8 |  0.74 
+next | M30 | ANY | close loc % in yr1 best | 2R                        ALL    789   27  0.72  0.73  0.70  0.63 |  -81.1 -21.4  -11.7 |  0.70 
+next | M30 | ANY | wick against % in yr1 best | 1R                     BUY    410   40  0.66  0.64  0.69  0.57 |  -37.3 -16.9   -0.8 |  0.62 
+next | M30 | ANY | wick against % in yr1 best | 1R                     SELL   389   39  0.63  0.58  0.70  0.52 |  -29.8  -2.7   -8.6 |  0.69 
+next | M30 | ANY | wick against % in yr1 best | 1R                     ALL    799   39  0.65  0.61  0.69  0.55 |  -67.1 -19.6   -9.4 |  0.66 
+next | M30 | ANY | wick against % in yr1 best | 2R                     BUY    404   27  0.71  0.75  0.66  0.64 |  -50.8 -12.2   -8.9 |  0.79 
+next | M30 | ANY | wick against % in yr1 best | 2R                     SELL   384   27  0.72  0.70  0.75  0.62 |  -30.3  -9.1   -2.8 |  0.97 
+next | M30 | ANY | wick against % in yr1 best | 2R                     ALL    788   27  0.71  0.72  0.70  0.63 |  -81.1 -21.4  -11.7 |  0.88 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 1R                     BUY    364   38  0.58  0.56  0.59  0.50 |  -50.4 -15.3   -0.2 |  0.55 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 1R                     SELL   333   42  0.72  0.70  0.75  0.60 |  -21.5  +0.9   -3.7 |  0.72 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 1R                     ALL    697   40  0.64  0.63  0.66  0.54 |  -71.9 -14.4   -3.9 |  0.64 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 2R                     BUY    359   24  0.57  0.49  0.64  0.51 |  -52.8  -7.0   +0.3 |  0.68 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 2R                     SELL   329   30  0.78  0.88  0.67  0.68 |  -39.1 -21.2   +3.6 |  0.85 
+next | M30 | ANY | BBwidth/med100 in yr1 best | 2R                     ALL    688   27  0.66  0.67  0.66  0.59 |  -91.8 -28.2   +3.9 |  0.77 
+next | M30 | ANY | move prior8 ATR in yr1 best | 1R                    BUY    418   36  0.53  0.64  0.42  0.46 |  -82.8 -28.0   -9.7 |  0.60 
+next | M30 | ANY | move prior8 ATR in yr1 best | 1R                    SELL   379   38  0.60  0.60  0.59  0.51 |  -45.2 -15.1  -12.2 |  0.71 
+next | M30 | ANY | move prior8 ATR in yr1 best | 1R                    ALL    797   37  0.56  0.62  0.49  0.49 | -128.0 -43.1  -22.0 |  0.65 
+next | M30 | ANY | move prior8 ATR in yr1 best | 2R                    BUY    411   25  0.59  0.59  0.60  0.54 |  -61.0 -24.7   -5.3 |  0.60 
+next | M30 | ANY | move prior8 ATR in yr1 best | 2R                    SELL   376   26  0.65  0.62  0.68  0.58 |  -40.9 -15.9  -11.7 |  0.67 
+next | M30 | ANY | move prior8 ATR in yr1 best | 2R                    ALL    787   25  0.62  0.60  0.63  0.56 | -101.9 -40.6  -17.0 |  0.64 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                       BUY    736   39  0.61  0.64  0.58  0.52 |  -99.9 -45.9   -4.1 |  0.58 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                       SELL  1006   42  0.73  0.75  0.70  0.60 |  -79.4 -15.3  -13.7 |  0.74 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                       ALL   1742   41  0.67  0.70  0.64  0.57 | -179.3 -61.3  -17.7 |  0.66 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                       BUY    727   28  0.70  0.72  0.68  0.63 |  -86.9 -36.7   -7.3 |  0.67 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                       SELL   982   28  0.77  0.80  0.72  0.66 |  -90.0 -11.8  -17.2 |  0.72 
+next | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                       ALL   1709   28  0.74  0.77  0.70  0.65 | -176.9 -48.5  -24.5 |  0.69 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                         BUY    275   41  0.68  0.71  0.65  0.60 |  -26.4  -7.4   -2.6 |  0.57 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                         SELL   276   46  0.85  0.74  0.99  0.76 |   -0.7  -7.6   +0.2 |  0.69 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                         ALL    551   44  0.76  0.72  0.81  0.68 |  -27.1 -15.1   -2.4 |  0.63 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                         BUY    275   30  0.80  0.87  0.72  0.74 |  -25.0  -5.7   +4.3 |  0.71 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                         SELL   274   33  0.92  0.73  1.15  0.83 |  +12.2  -7.6   +2.0 |  0.80 
+next | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                         ALL    549   32  0.86  0.80  0.93  0.78 |  -12.8 -13.2   +6.3 |  0.76 
+next | NOREJ | ANY | none | 1R                                         BUY  14119   41  0.69  0.72  0.66  0.59 | -1465.1 -308.1 -374.0 |  0.68 
+next | NOREJ | ANY | none | 1R                                         SELL 12712   40  0.67  0.71  0.63  0.56 | -1376.1 -238.7 -317.4 |  0.68 
+next | NOREJ | ANY | none | 1R                                         ALL  26831   41  0.68  0.72  0.64  0.58 | -2841.2 -546.7 -691.4 |  0.68 
+next | NOREJ | ANY | none | 2R                                         BUY  12579   27  0.69  0.73  0.65  0.62 | -1639.6 -353.5 -399.2 |  0.67 
+next | NOREJ | ANY | none | 2R                                         SELL 11112   27  0.70  0.73  0.67  0.61 | -1305.5 -212.7 -303.9 |  0.70 
+next | NOREJ | ANY | none | 2R                                         ALL  23691   27  0.70  0.73  0.66  0.62 | -2945.1 -566.2 -703.1 |  0.68 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                   BUY   4082   41  0.69  0.73  0.65  0.62 | -421.4 -118.7  -99.4 |  0.67 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                   SELL  3854   44  0.76  0.80  0.72  0.66 | -312.6 -47.8  -48.7 |  0.74 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                   ALL   7936   43  0.72  0.76  0.68  0.64 | -733.9 -166.5 -148.1 |  0.70 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                   BUY   3926   27  0.69  0.75  0.63  0.63 | -536.3 -140.4 -121.2 |  0.72 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                   SELL  3705   29  0.76  0.81  0.72  0.69 | -369.8 -54.5  -50.6 |  0.79 
+next | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                   ALL   7631   28  0.73  0.78  0.68  0.66 | -906.1 -194.9 -171.8 |  0.75 
+next | NOREJ | ANY | RSI14 in yr1 best | 1R                            BUY   3993   42  0.71  0.75  0.67  0.63 | -393.6 -70.6 -109.0 |  0.69 
+next | NOREJ | ANY | RSI14 in yr1 best | 1R                            SELL  3992   43  0.75  0.84  0.67  0.65 | -394.3 -69.8  -95.1 |  0.73 
+next | NOREJ | ANY | RSI14 in yr1 best | 1R                            ALL   7985   42  0.73  0.79  0.67  0.64 | -787.9 -140.5 -204.1 |  0.71 
+next | NOREJ | ANY | RSI14 in yr1 best | 2R                            BUY   3822   27  0.70  0.75  0.64  0.64 | -510.2 -95.6 -126.6 |  0.68 
+next | NOREJ | ANY | RSI14 in yr1 best | 2R                            SELL  3818   28  0.74  0.79  0.69  0.66 | -434.3 -96.2  -88.7 |  0.75 
+next | NOREJ | ANY | RSI14 in yr1 best | 2R                            ALL   7640   28  0.72  0.77  0.66  0.65 | -944.5 -191.8 -215.3 |  0.71 
+next | NOREJ | ANY | range/ATR in yr1 best | 1R                        BUY   3799   43  0.75  0.77  0.74  0.68 | -292.5 -85.8  -77.7 |  0.73 
+next | NOREJ | ANY | range/ATR in yr1 best | 1R                        SELL  3922   44  0.79  0.85  0.73  0.70 | -298.6 -59.0  -60.9 |  0.78 
+next | NOREJ | ANY | range/ATR in yr1 best | 1R                        ALL   7721   44  0.77  0.81  0.73  0.69 | -591.1 -144.8 -138.6 |  0.76 
+next | NOREJ | ANY | range/ATR in yr1 best | 2R                        BUY   3588   28  0.74  0.76  0.71  0.68 | -377.4 -113.4  -79.6 |  0.73 
+next | NOREJ | ANY | range/ATR in yr1 best | 2R                        SELL  3684   30  0.80  0.83  0.77  0.73 | -297.8 -58.4  -63.6 |  0.82 
+next | NOREJ | ANY | range/ATR in yr1 best | 2R                        ALL   7272   29  0.77  0.80  0.74  0.71 | -675.2 -171.9 -143.2 |  0.78 
+next | NOREJ | ANY | close loc % in yr1 best | 1R                      BUY   3917   40  0.66  0.69  0.62  0.57 | -459.5 -49.4 -150.1 |  0.67 
+next | NOREJ | ANY | close loc % in yr1 best | 1R                      SELL  3664   38  0.61  0.68  0.54  0.50 | -539.8 -102.0  -99.9 |  0.66 
+next | NOREJ | ANY | close loc % in yr1 best | 1R                      ALL   7581   39  0.63  0.69  0.58  0.53 | -999.3 -151.4 -250.0 |  0.66 
+next | NOREJ | ANY | close loc % in yr1 best | 2R                      BUY   3778   26  0.68  0.72  0.64  0.61 | -524.9 -66.6 -143.4 |  0.70 
+next | NOREJ | ANY | close loc % in yr1 best | 2R                      SELL  3549   25  0.64  0.71  0.58  0.56 | -573.9 -117.4 -101.6 |  0.67 
+next | NOREJ | ANY | close loc % in yr1 best | 2R                      ALL   7327   26  0.66  0.71  0.61  0.58 | -1098.8 -184.1 -244.9 |  0.68 
+next | NOREJ | ANY | wick against % in yr1 best | 1R                   BUY   3919   40  0.66  0.69  0.62  0.57 | -459.5 -49.4 -150.1 |  0.65 
+next | NOREJ | ANY | wick against % in yr1 best | 1R                   SELL  3668   38  0.61  0.68  0.54  0.50 | -539.8 -102.0 -100.9 |  0.66 
+next | NOREJ | ANY | wick against % in yr1 best | 1R                   ALL   7587   39  0.63  0.69  0.58  0.53 | -999.3 -151.4 -251.0 |  0.66 
+next | NOREJ | ANY | wick against % in yr1 best | 2R                   BUY   3780   26  0.68  0.71  0.64  0.61 | -523.9 -66.6 -143.4 |  0.68 
+next | NOREJ | ANY | wick against % in yr1 best | 2R                   SELL  3552   25  0.65  0.71  0.58  0.56 | -572.9 -117.4 -102.6 |  0.67 
+next | NOREJ | ANY | wick against % in yr1 best | 2R                   ALL   7332   26  0.66  0.71  0.61  0.58 | -1096.8 -184.1 -245.9 |  0.68 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                   BUY   3548   40  0.65  0.68  0.62  0.56 | -434.7 -95.4 -123.6 |  0.64 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                   SELL  3246   40  0.67  0.72  0.62  0.56 | -383.1 -81.3  -77.2 |  0.70 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                   ALL   6794   40  0.66  0.70  0.62  0.56 | -817.8 -176.7 -200.7 |  0.67 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                   BUY   3436   26  0.67  0.69  0.64  0.60 | -479.9 -103.0 -146.1 |  0.64 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                   SELL  3104   28  0.73  0.78  0.67  0.64 | -380.1 -102.7  -46.1 |  0.73 
+next | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                   ALL   6540   27  0.70  0.74  0.66  0.62 | -859.9 -205.7 -192.2 |  0.68 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                  BUY   3793   42  0.71  0.76  0.66  0.62 | -390.0 -93.6 -103.9 |  0.70 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                  SELL  3964   40  0.67  0.73  0.62  0.57 | -470.1 -114.4  -94.4 |  0.73 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                  ALL   7757   41  0.69  0.74  0.64  0.59 | -860.1 -208.0 -198.3 |  0.71 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                  BUY   3634   28  0.74  0.76  0.71  0.67 | -386.8 -80.4  -94.0 |  0.68 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                  SELL  3793   28  0.73  0.77  0.69  0.64 | -444.9 -93.5  -81.3 |  0.71 
+next | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                  ALL   7427   28  0.73  0.77  0.70  0.65 | -831.6 -173.9 -175.3 |  0.70 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                     BUY   8128   41  0.68  0.73  0.64  0.59 | -897.7 -239.4 -255.3 |  0.63 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                     SELL  9989   40  0.66  0.73  0.60  0.54 | -1232.1 -228.2 -278.1 |  0.66 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                     ALL  18117   40  0.67  0.73  0.62  0.56 | -2129.8 -467.6 -533.4 |  0.65 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                     BUY   7483   27  0.71  0.77  0.66  0.64 | -972.5 -275.9 -237.6 |  0.68 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                     SELL  9416   27  0.72  0.77  0.66  0.62 | -1191.7 -232.0 -227.3 |  0.72 
+next | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                     ALL  16899   27  0.72  0.77  0.66  0.63 | -2164.2 -507.9 -464.9 |  0.70 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                       BUY   2572   41  0.69  0.72  0.65  0.61 | -264.4 -62.4  -64.7 |  0.68 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                       SELL  2443   44  0.77  0.84  0.69  0.67 | -222.2 -32.8  -48.2 |  0.74 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                       ALL   5015   42  0.72  0.78  0.67  0.64 | -486.5 -95.2 -112.8 |  0.71 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                       BUY   2515   27  0.68  0.72  0.63  0.62 | -342.4 -72.8  -75.7 |  0.67 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                       SELL  2375   29  0.76  0.82  0.71  0.69 | -257.5 -63.5  -38.1 |  0.78 
+next | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                       ALL   4890   28  0.72  0.77  0.67  0.65 | -599.8 -136.4 -113.8 |  0.73 
+follow | M30 | ANY | none | 1R                                         BUY    826   41  0.66  0.65  0.66  0.59 |  -85.7 -24.4  -23.6 |  0.66 
+follow | M30 | ANY | none | 1R                                         SELL   873   41  0.66  0.67  0.66  0.58 |  -88.9 -26.6  -27.3 |  0.68 
+follow | M30 | ANY | none | 1R                                         ALL   1699   41  0.66  0.66  0.66  0.58 | -174.6 -51.0  -50.9 |  0.67 
+follow | M30 | ANY | none | 2R                                         BUY    798   28  0.68  0.74  0.63  0.63 | -111.5 -25.4  -29.7 |  0.67 
+follow | M30 | ANY | none | 2R                                         SELL   858   29  0.74  0.80  0.67  0.67 | -101.8 -28.4  -33.0 |  0.72 
+follow | M30 | ANY | none | 2R                                         ALL   1656   28  0.71  0.77  0.65  0.65 | -213.3 -53.8  -62.7 |  0.70 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   BUY    215   42  0.73  0.66  0.82  0.66 |   -9.7  +3.5   +2.5 |  0.69 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   SELL   213   44  0.76  0.79  0.73  0.69 |  -16.0  -5.7   -6.1 |  0.65 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   ALL    428   43  0.74  0.72  0.77  0.67 |  -25.7  -2.2   -3.6 |  0.68 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   BUY    213   31  0.82  0.74  0.93  0.77 |   -4.5  +4.7   +6.2 |  1.00 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   SELL   212   31  0.78  0.81  0.75  0.72 |  -17.8  -2.3   -3.2 |  0.82 
+follow | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   ALL    425   31  0.80  0.77  0.83  0.75 |  -22.4  +2.4   +3.0 |  0.92 
+follow | M30 | ANY | RSI14 in yr1 best | 1R                            BUY    175   41  0.68  0.60  0.78  0.62 |  -11.2  +1.5   -1.6 |  0.71 
+follow | M30 | ANY | RSI14 in yr1 best | 1R                            SELL   203   46  0.83  0.85  0.80  0.75 |  -10.6  -9.6   -1.1 |  0.86 
+follow | M30 | ANY | RSI14 in yr1 best | 1R                            ALL    378   44  0.76  0.72  0.79  0.69 |  -21.8  -8.1   -2.7 |  0.77 
+follow | M30 | ANY | RSI14 in yr1 best | 2R                            BUY    174   29  0.73  0.66  0.81  0.68 |  -11.4  +5.7   -0.6 |  0.69 
+follow | M30 | ANY | RSI14 in yr1 best | 2R                            SELL   203   35  0.92  0.99  0.84  0.85 |  -10.3  -1.1   -1.0 |  0.76 
+follow | M30 | ANY | RSI14 in yr1 best | 2R                            ALL    377   32  0.83  0.83  0.83  0.77 |  -21.8  +4.6   -1.6 |  0.72 
+follow | M30 | ANY | range/ATR in yr1 best | 1R                        BUY    152   45  0.80  0.72  0.89  0.74 |   -4.1  -4.6   -1.0 |  0.79 
+follow | M30 | ANY | range/ATR in yr1 best | 1R                        SELL   165   47  0.89  0.90  0.87  0.82 |   -4.8  +3.0   -5.0 |  0.89 
+follow | M30 | ANY | range/ATR in yr1 best | 1R                        ALL    317   46  0.84  0.82  0.88  0.78 |   -9.0  -1.6   -6.1 |  0.85 
+follow | M30 | ANY | range/ATR in yr1 best | 2R                        BUY    151   29  0.71  0.61  0.84  0.67 |   -7.9  -5.0   +2.2 |  0.94 
+follow | M30 | ANY | range/ATR in yr1 best | 2R                        SELL   165   38  1.10  1.22  0.95  1.03 |   -2.0  +8.8   -6.5 |  1.09 
+follow | M30 | ANY | range/ATR in yr1 best | 2R                        ALL    316   34  0.90  0.91  0.89  0.85 |   -9.9  +3.8   -4.3 |  1.01 
+follow | M30 | ANY | close loc % in yr1 best | 1R                      BUY    220   44  0.79  0.75  0.84  0.71 |   -9.2  +1.6   -5.9 |  0.68 
+follow | M30 | ANY | close loc % in yr1 best | 1R                      SELL   214   39  0.63  0.63  0.64  0.55 |  -19.3  -3.6   -7.4 |  0.70 
+follow | M30 | ANY | close loc % in yr1 best | 1R                      ALL    434   42  0.71  0.69  0.74  0.63 |  -28.5  -2.0  -13.3 |  0.69 
+follow | M30 | ANY | close loc % in yr1 best | 2R                      BUY    216   31  0.84  0.71  1.00  0.77 |   +0.3 +11.6   -8.8 |  0.75 
+follow | M30 | ANY | close loc % in yr1 best | 2R                      SELL   214   28  0.73  0.75  0.69  0.66 |  -20.4  -7.8   -7.4 |  0.72 
+follow | M30 | ANY | close loc % in yr1 best | 2R                      ALL    430   29  0.78  0.73  0.85  0.71 |  -20.1  +3.9  -16.2 |  0.74 
+follow | M30 | ANY | wick against % in yr1 best | 1R                   BUY    219   44  0.78  0.74  0.84  0.70 |   -9.2  +1.6   -5.9 |  0.66 
+follow | M30 | ANY | wick against % in yr1 best | 1R                   SELL   214   39  0.63  0.63  0.64  0.55 |  -19.3  -3.6   -7.4 |  0.54 
+follow | M30 | ANY | wick against % in yr1 best | 1R                   ALL    433   42  0.71  0.68  0.74  0.62 |  -28.5  -2.0  -13.3 |  0.60 
+follow | M30 | ANY | wick against % in yr1 best | 2R                   BUY    215   31  0.83  0.69  1.00  0.76 |   +0.3 +11.6   -8.8 |  0.68 
+follow | M30 | ANY | wick against % in yr1 best | 2R                   SELL   214   28  0.73  0.75  0.69  0.66 |  -20.4  -7.8   -7.4 |  0.63 
+follow | M30 | ANY | wick against % in yr1 best | 2R                   ALL    429   29  0.78  0.72  0.85  0.71 |  -20.1  +3.9  -16.2 |  0.65 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   BUY    209   37  0.54  0.59  0.50  0.48 |  -37.1  -6.0   -7.9 |  0.45 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   SELL   221   48  0.87  1.11  0.67  0.77 |  -21.5 -11.2   +7.7 |  0.77 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   ALL    430   43  0.69  0.83  0.58  0.62 |  -58.6 -17.1   -0.2 |  0.61 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   BUY    206   25  0.55  0.58  0.52  0.50 |  -41.8  -0.9   -8.9 |  0.71 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   SELL   219   31  0.77  1.06  0.53  0.71 |  -41.0 -17.3   +9.1 |  0.84 
+follow | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   ALL    425   28  0.66  0.82  0.52  0.61 |  -82.7 -18.3   +0.2 |  0.77 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 1R                  BUY    216   38  0.61  0.62  0.59  0.56 |  -26.9 -10.7   -0.2 |  0.67 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 1R                  SELL   205   41  0.68  0.82  0.55  0.61 |  -28.8  -8.1  -10.6 |  0.91 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 1R                  ALL    421   39  0.64  0.71  0.57  0.58 |  -55.6 -18.8  -10.9 |  0.79 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 2R                  BUY    216   25  0.58  0.52  0.65  0.54 |  -25.9 -13.1   -6.4 |  0.67 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 2R                  SELL   205   27  0.66  0.69  0.62  0.61 |  -28.0 -13.2  -10.7 |  0.68 
+follow | M30 | ANY | move prior8 ATR in yr1 best | 2R                  ALL    421   26  0.62  0.60  0.64  0.57 |  -53.8 -26.3  -17.2 |  0.68 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     BUY    405   41  0.65  0.65  0.66  0.58 |  -43.1 -15.1   -9.6 |  0.59 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     SELL   574   41  0.69  0.81  0.56  0.60 |  -74.7 -16.4  -13.4 |  0.62 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     ALL    979   41  0.67  0.74  0.60  0.59 | -117.8 -31.5  -23.0 |  0.60 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     BUY    402   30  0.75  0.79  0.71  0.69 |  -42.6 -13.7   -6.9 |  0.68 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     SELL   562   30  0.77  0.96  0.59  0.70 |  -82.9 -19.1  -13.0 |  0.66 
+follow | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     ALL    964   30  0.76  0.89  0.64  0.69 | -125.5 -32.9  -19.9 |  0.67 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       BUY    139   41  0.69  0.63  0.77  0.64 |   -8.3  +2.5   +0.5 |  0.84 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       SELL   150   43  0.70  0.77  0.63  0.64 |  -16.3  -9.3   -4.1 |  0.82 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       ALL    289   42  0.70  0.70  0.69  0.64 |  -24.7  -6.9   -3.6 |  0.83 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       BUY    139   29  0.76  0.66  0.89  0.71 |   -4.5  +5.7   +2.0 |  0.76 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       SELL   150   33  0.82  0.90  0.75  0.77 |  -12.6  -4.8   -1.7 |  0.83 
+follow | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       ALL    289   31  0.79  0.78  0.82  0.74 |  -17.1  +0.8   +0.2 |  0.79 
+follow | NOREJ | ANY | none | 1R                                       BUY   7914   42  0.71  0.75  0.66  0.63 | -793.0 -179.2 -177.9 |  0.70 
+follow | NOREJ | ANY | none | 1R                                       SELL  7439   42  0.70  0.75  0.65  0.62 | -761.1 -170.1 -164.2 |  0.72 
+follow | NOREJ | ANY | none | 1R                                       ALL  15353   42  0.70  0.75  0.66  0.62 | -1554.1 -349.3 -342.1 |  0.71 
+follow | NOREJ | ANY | none | 2R                                       BUY   7167   29  0.73  0.77  0.69  0.67 | -810.5 -191.9 -196.5 |  0.73 
+follow | NOREJ | ANY | none | 2R                                       SELL  6766   28  0.72  0.78  0.67  0.65 | -827.7 -179.6 -161.0 |  0.72 
+follow | NOREJ | ANY | none | 2R                                       ALL  13933   28  0.73  0.77  0.68  0.66 | -1638.2 -371.5 -357.5 |  0.72 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 BUY   2121   41  0.67  0.75  0.60  0.61 | -259.0 -65.2  -70.9 |  0.71 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 SELL  1976   43  0.73  0.80  0.66  0.65 | -195.7 -36.0  -41.9 |  0.79 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 ALL   4097   42  0.70  0.77  0.63  0.63 | -454.7 -101.2 -112.8 |  0.75 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 BUY   2050   28  0.68  0.73  0.63  0.64 | -268.8 -87.0  -63.7 |  0.70 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 SELL  1919   29  0.73  0.81  0.65  0.68 | -239.1 -56.8  -39.7 |  0.80 
+follow | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 ALL   3969   28  0.71  0.77  0.64  0.66 | -507.9 -143.8 -103.4 |  0.75 
+follow | NOREJ | ANY | RSI14 in yr1 best | 1R                          BUY   2013   41  0.70  0.77  0.62  0.63 | -223.1 -32.4  -50.9 |  0.71 
+follow | NOREJ | ANY | RSI14 in yr1 best | 1R                          SELL  1960   43  0.74  0.82  0.66  0.67 | -191.0 -52.9  -44.8 |  0.73 
+follow | NOREJ | ANY | RSI14 in yr1 best | 1R                          ALL   3973   42  0.72  0.80  0.64  0.65 | -414.1 -85.3  -95.7 |  0.72 
+follow | NOREJ | ANY | RSI14 in yr1 best | 2R                          BUY   1940   29  0.73  0.79  0.67  0.68 | -226.2 -43.9  -42.9 |  0.73 
+follow | NOREJ | ANY | RSI14 in yr1 best | 2R                          SELL  1889   30  0.77  0.87  0.67  0.71 | -220.3 -65.6  -35.6 |  0.74 
+follow | NOREJ | ANY | RSI14 in yr1 best | 2R                          ALL   3829   30  0.75  0.83  0.67  0.69 | -446.5 -109.5  -78.5 |  0.73 
+follow | NOREJ | ANY | range/ATR in yr1 best | 1R                      BUY   1776   44  0.77  0.79  0.75  0.71 | -124.4 -26.1  -31.7 |  0.79 
+follow | NOREJ | ANY | range/ATR in yr1 best | 1R                      SELL  1865   45  0.79  0.81  0.76  0.72 | -119.6 -41.3  -23.1 |  0.81 
+follow | NOREJ | ANY | range/ATR in yr1 best | 1R                      ALL   3641   44  0.78  0.80  0.75  0.72 | -244.0 -67.5  -54.8 |  0.80 
+follow | NOREJ | ANY | range/ATR in yr1 best | 2R                      BUY   1698   31  0.78  0.82  0.74  0.73 | -144.4 -28.8  -42.3 |  0.84 
+follow | NOREJ | ANY | range/ATR in yr1 best | 2R                      SELL  1796   32  0.82  0.84  0.79  0.76 | -126.8 -38.0   -5.8 |  0.79 
+follow | NOREJ | ANY | range/ATR in yr1 best | 2R                      ALL   3494   32  0.80  0.83  0.77  0.75 | -271.3 -66.8  -48.1 |  0.81 
+follow | NOREJ | ANY | close loc % in yr1 best | 1R                    BUY   2101   42  0.71  0.76  0.65  0.63 | -219.2 -28.1  -66.9 |  0.68 
+follow | NOREJ | ANY | close loc % in yr1 best | 1R                    SELL  1925   40  0.65  0.74  0.57  0.57 | -260.3 -44.9  -54.1 |  0.65 
+follow | NOREJ | ANY | close loc % in yr1 best | 1R                    ALL   4026   41  0.68  0.75  0.61  0.60 | -479.5 -73.0 -121.0 |  0.67 
+follow | NOREJ | ANY | close loc % in yr1 best | 2R                    BUY   2062   28  0.72  0.77  0.67  0.66 | -251.2 -44.4  -51.9 |  0.68 
+follow | NOREJ | ANY | close loc % in yr1 best | 2R                    SELL  1885   28  0.70  0.78  0.63  0.63 | -261.3 -49.0  -49.5 |  0.68 
+follow | NOREJ | ANY | close loc % in yr1 best | 2R                    ALL   3947   28  0.71  0.77  0.65  0.65 | -512.6 -93.4 -101.4 |  0.68 
+follow | NOREJ | ANY | wick against % in yr1 best | 1R                 BUY   2100   42  0.70  0.75  0.65  0.63 | -219.2 -28.1  -66.9 |  0.70 
+follow | NOREJ | ANY | wick against % in yr1 best | 1R                 SELL  1927   40  0.65  0.74  0.57  0.57 | -259.3 -44.9  -54.1 |  0.70 
+follow | NOREJ | ANY | wick against % in yr1 best | 1R                 ALL   4027   41  0.68  0.75  0.61  0.60 | -478.5 -73.0 -121.0 |  0.70 
+follow | NOREJ | ANY | wick against % in yr1 best | 2R                 BUY   2061   28  0.72  0.76  0.67  0.66 | -251.2 -44.4  -51.9 |  0.68 
+follow | NOREJ | ANY | wick against % in yr1 best | 2R                 SELL  1886   28  0.70  0.78  0.63  0.63 | -259.3 -49.0  -49.5 |  0.73 
+follow | NOREJ | ANY | wick against % in yr1 best | 2R                 ALL   3947   28  0.71  0.77  0.65  0.65 | -510.6 -93.4 -101.4 |  0.70 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 BUY   1947   40  0.66  0.72  0.60  0.59 | -246.6 -50.9  -70.5 |  0.64 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 SELL  1813   44  0.75  0.82  0.68  0.66 | -170.5 -48.8  -19.2 |  0.75 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 ALL   3760   42  0.70  0.76  0.64  0.62 | -417.1 -99.7  -89.6 |  0.69 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 BUY   1892   28  0.70  0.71  0.68  0.64 | -231.4 -33.9  -68.3 |  0.69 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 SELL  1773   31  0.80  0.86  0.74  0.72 | -169.0 -50.7  -17.5 |  0.81 
+follow | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 ALL   3665   29  0.74  0.78  0.71  0.68 | -400.4 -84.6  -85.9 |  0.74 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                BUY   1905   44  0.76  0.79  0.73  0.69 | -145.4 -29.1  -44.5 |  0.73 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                SELL  1977   41  0.69  0.74  0.64  0.61 | -221.9 -49.8  -41.4 |  0.67 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                ALL   3882   43  0.72  0.77  0.68  0.65 | -367.3 -79.0  -85.9 |  0.70 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                BUY   1856   30  0.74  0.72  0.78  0.69 | -144.9 -26.8  -37.5 |  0.72 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                SELL  1917   27  0.69  0.74  0.64  0.63 | -261.7 -63.7  -42.1 |  0.64 
+follow | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                ALL   3773   29  0.72  0.73  0.70  0.66 | -406.7 -90.5  -79.6 |  0.68 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   BUY   4302   42  0.70  0.76  0.64  0.62 | -476.7 -124.0 -114.8 |  0.67 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   SELL  4963   42  0.72  0.81  0.64  0.63 | -535.2 -105.9  -99.8 |  0.71 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   ALL   9265   42  0.71  0.79  0.64  0.63 | -1011.9 -229.9 -214.6 |  0.69 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   BUY   4039   29  0.76  0.79  0.72  0.69 | -411.8 -108.2  -88.7 |  0.68 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   SELL  4706   29  0.76  0.86  0.68  0.69 | -558.3 -125.7  -75.4 |  0.71 
+follow | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   ALL   8745   29  0.76  0.83  0.70  0.69 | -970.1 -233.9 -164.2 |  0.69 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     BUY   1308   40  0.65  0.73  0.58  0.59 | -165.2 -29.2  -41.9 |  0.69 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     SELL  1223   43  0.73  0.82  0.64  0.66 | -125.5 -29.9  -28.2 |  0.75 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     ALL   2531   41  0.69  0.77  0.61  0.63 | -290.8 -59.0  -70.2 |  0.72 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     BUY   1278   27  0.65  0.70  0.60  0.60 | -182.5 -46.0  -40.6 |  0.72 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     SELL  1193   30  0.75  0.83  0.67  0.69 | -139.8 -40.9  -25.3 |  0.78 
+follow | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     ALL   2471   28  0.69  0.76  0.63  0.65 | -322.3 -86.9  -66.0 |  0.75 
+retest | M30 | ANY | none | 1R                                         BUY    856   36  0.56  0.53  0.60  0.43 |  -95.4 -27.2  -15.4 |  0.75 
+retest | M30 | ANY | none | 1R                                         SELL  1033   34  0.54  0.53  0.54  0.40 | -142.1 -34.9  -33.0 |  0.71 
+retest | M30 | ANY | none | 1R                                         ALL   1889   35  0.55  0.53  0.57  0.42 | -237.5 -62.1  -48.4 |  0.73 
+retest | M30 | ANY | none | 2R                                         BUY    825   24  0.61  0.56  0.68  0.51 |  -87.8 -27.7   -6.1 |  0.73 
+retest | M30 | ANY | none | 2R                                         SELL  1017   24  0.62  0.59  0.65  0.50 | -127.6 -24.6  -28.2 |  0.76 
+retest | M30 | ANY | none | 2R                                         ALL   1842   24  0.62  0.58  0.66  0.50 | -215.4 -52.3  -34.3 |  0.74 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   BUY    218   42  0.71  0.69  0.76  0.58 |  -12.0  -8.0   -2.0 |  0.61 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   SELL   221   38  0.62  0.65  0.60  0.50 |  -26.2 -15.0   -4.0 |  0.55 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 1R                   ALL    439   40  0.67  0.67  0.67  0.54 |  -38.2 -23.0   -6.0 |  0.58 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   BUY    218   27  0.73  0.76  0.67  0.63 |  -21.2 -19.0   -2.2 |  0.71 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   SELL   221   24  0.62  0.54  0.72  0.53 |  -22.0 -13.0   -9.5 |  0.66 
+retest | M30 | ANY | dist EMA50 ATR in yr1 best | 2R                   ALL    439   26  0.67  0.65  0.70  0.58 |  -43.2 -32.0  -11.7 |  0.69 
+retest | M30 | ANY | RSI14 in yr1 best | 1R                            BUY    178   40  0.67  0.66  0.69  0.55 |  -13.0 -10.0   +0.0 |  0.76 
+retest | M30 | ANY | RSI14 in yr1 best | 1R                            SELL   238   40  0.66  0.58  0.78  0.53 |  -13.2  -9.0   -4.0 |  0.76 
+retest | M30 | ANY | RSI14 in yr1 best | 1R                            ALL    416   40  0.67  0.62  0.74  0.54 |  -26.2 -19.0   -4.0 |  0.76 
+retest | M30 | ANY | RSI14 in yr1 best | 2R                            BUY    178   28  0.75  0.73  0.78  0.65 |  -11.2 -12.0   +0.8 |  0.76 
+retest | M30 | ANY | RSI14 in yr1 best | 2R                            SELL   238   28  0.76  0.60  0.97  0.64 |   -2.2  -7.0   -6.5 |  0.69 
+retest | M30 | ANY | RSI14 in yr1 best | 2R                            ALL    416   28  0.75  0.66  0.89  0.65 |  -13.4 -19.0   -5.7 |  0.73 
+retest | M30 | ANY | range/ATR in yr1 best | 1R                        BUY    186   40  0.65  0.56  0.78  0.55 |  -10.0  -2.0   -4.0 |  0.85 
+retest | M30 | ANY | range/ATR in yr1 best | 1R                        SELL   220   44  0.77  0.78  0.76  0.64 |  -13.0  +1.0   -2.0 |  0.97 
+retest | M30 | ANY | range/ATR in yr1 best | 1R                        ALL    406   42  0.71  0.67  0.77  0.60 |  -23.0  -1.0   -6.0 |  0.91 
+retest | M30 | ANY | range/ATR in yr1 best | 2R                        BUY    186   24  0.62  0.45  0.88  0.54 |   -6.9  -9.7   +1.8 |  0.77 
+retest | M30 | ANY | range/ATR in yr1 best | 2R                        SELL   217   25  0.67  0.57  0.81  0.59 |  -12.5  +4.9   -9.5 |  0.89 
+retest | M30 | ANY | range/ATR in yr1 best | 2R                        ALL    403   25  0.65  0.51  0.84  0.57 |  -19.4  -4.8   -7.7 |  0.83 
+retest | M30 | ANY | close loc % in yr1 best | 1R                      BUY    244   36  0.59  0.53  0.66  0.46 |  -22.8  -8.1   -6.0 |  0.62 
+retest | M30 | ANY | close loc % in yr1 best | 1R                      SELL   277   36  0.56  0.49  0.68  0.42 |  -23.0  -6.0   -7.0 |  0.63 
+retest | M30 | ANY | close loc % in yr1 best | 1R                      ALL    521   36  0.57  0.51  0.67  0.44 |  -45.8 -14.1  -13.0 |  0.63 
+retest | M30 | ANY | close loc % in yr1 best | 2R                      BUY    241   25  0.67  0.67  0.66  0.56 |  -27.1 -12.1   -4.0 |  0.85 
+retest | M30 | ANY | close loc % in yr1 best | 2R                      SELL   276   22  0.57  0.50  0.67  0.46 |  -30.7  -8.1   -7.0 |  0.75 
+retest | M30 | ANY | close loc % in yr1 best | 2R                      ALL    517   24  0.62  0.58  0.66  0.50 |  -57.8 -20.2  -11.0 |  0.80 
+retest | M30 | ANY | wick against % in yr1 best | 1R                   BUY    244   36  0.59  0.53  0.66  0.46 |  -22.8  -8.1   -6.0 |  0.60 
+retest | M30 | ANY | wick against % in yr1 best | 1R                   SELL   277   36  0.56  0.49  0.68  0.42 |  -23.0  -6.0   -7.0 |  0.52 
+retest | M30 | ANY | wick against % in yr1 best | 1R                   ALL    521   36  0.57  0.51  0.67  0.44 |  -45.8 -14.1  -13.0 |  0.56 
+retest | M30 | ANY | wick against % in yr1 best | 2R                   BUY    241   25  0.67  0.67  0.66  0.56 |  -27.1 -12.1   -4.0 |  0.78 
+retest | M30 | ANY | wick against % in yr1 best | 2R                   SELL   276   22  0.57  0.50  0.67  0.46 |  -30.7  -8.1   -7.0 |  0.74 
+retest | M30 | ANY | wick against % in yr1 best | 2R                   ALL    517   24  0.62  0.58  0.66  0.50 |  -57.8 -20.2  -11.0 |  0.76 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   BUY    215   33  0.50  0.50  0.50  0.39 |  -31.0 -10.0   -7.0 |  0.72 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   SELL   252   32  0.47  0.47  0.46  0.35 |  -40.8  -9.0  -10.0 |  0.66 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 1R                   ALL    467   33  0.48  0.48  0.48  0.37 |  -71.8 -19.0  -17.0 |  0.69 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   BUY    211   22  0.57  0.51  0.65  0.48 |  -24.2 -13.0   -6.2 |  0.89 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   SELL   253   23  0.60  0.66  0.53  0.49 |  -42.6 -10.0   -9.2 |  0.91 
+retest | M30 | ANY | BBwidth/med100 in yr1 best | 2R                   ALL    464   23  0.59  0.59  0.58  0.48 |  -66.7 -23.0  -15.4 |  0.90 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 1R                  BUY    244   34  0.50  0.63  0.33  0.40 |  -49.0 -14.0  -12.0 |  0.76 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 1R                  SELL   265   31  0.46  0.45  0.47  0.36 |  -41.7 -13.0   -8.0 |  0.71 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 1R                  ALL    509   32  0.48  0.54  0.40  0.38 |  -90.7 -27.0  -20.0 |  0.73 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 2R                  BUY    241   23  0.59  0.76  0.37  0.50 |  -51.3 -17.3   -7.0 |  0.89 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 2R                  SELL   263   19  0.45  0.46  0.43  0.38 |  -54.4 -14.1  -16.2 |  0.77 
+retest | M30 | ANY | move prior8 ATR in yr1 best | 2R                  ALL    504   21  0.52  0.60  0.40  0.43 | -105.7 -31.4  -23.2 |  0.83 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     BUY    460   31  0.44  0.43  0.46  0.34 |  -77.5 -33.1  -11.0 |  0.66 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     SELL   768   37  0.61  0.69  0.53  0.47 | -103.8 -25.9  -29.0 |  0.71 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 1R                     ALL   1228   35  0.55  0.58  0.50  0.42 | -181.3 -59.0  -40.0 |  0.69 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     BUY    454   22  0.55  0.57  0.53  0.45 |  -77.7 -45.9   -4.1 |  0.66 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     SELL   750   25  0.66  0.70  0.62  0.54 |  -96.7 -15.0  -26.5 |  0.87 
+retest | M30 | ANY | H4 EMA50vs90 in yr1 best | 2R                     ALL   1204   24  0.62  0.65  0.58  0.51 | -174.4 -60.9  -30.6 |  0.77 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       BUY    142   43  0.75  0.76  0.73  0.61 |   -9.0  -8.0   +0.0 |  0.63 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       SELL   167   41  0.68  0.70  0.66  0.56 |  -15.2 -11.0   -1.0 |  0.71 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 1R                       ALL    309   42  0.71  0.73  0.69  0.58 |  -24.2 -19.0   -1.0 |  0.67 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       BUY    142   30  0.85  0.95  0.71  0.73 |  -12.2 -11.0   -0.2 |  0.86 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       SELL   167   27  0.72  0.66  0.80  0.63 |  -11.0 -11.0   -5.5 |  0.70 
+retest | M30 | ANY | dist EMA50 ATR + RSI14 | 2R                       ALL    309   28  0.78  0.79  0.76  0.67 |  -23.2 -22.0   -5.7 |  0.77 
+retest | NOREJ | ANY | none | 1R                                       BUY   9590   37  0.58  0.61  0.56  0.45 | -1285.6 -322.8 -301.5 |  0.73 
+retest | NOREJ | ANY | none | 1R                                       SELL 11791   34  0.53  0.55  0.50  0.40 | -1928.1 -366.1 -500.5 |  0.64 
+retest | NOREJ | ANY | none | 1R                                       ALL  21381   35  0.55  0.58  0.53  0.42 | -3213.7 -688.9 -801.9 |  0.69 
+retest | NOREJ | ANY | none | 2R                                       BUY   8903   24  0.61  0.64  0.58  0.51 | -1387.0 -371.9 -339.2 |  0.76 
+retest | NOREJ | ANY | none | 2R                                       SELL 11001   23  0.59  0.61  0.57  0.48 | -1828.6 -278.0 -510.1 |  0.68 
+retest | NOREJ | ANY | none | 2R                                       ALL  19904   23  0.60  0.62  0.57  0.49 | -3215.6 -649.9 -849.3 |  0.72 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 BUY   2164   40  0.68  0.67  0.69  0.55 | -184.2 -70.9  -48.0 |  0.73 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 SELL  2535   39  0.65  0.70  0.60  0.52 | -308.9 -51.9  -70.0 |  0.71 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 1R                 ALL   4699   40  0.67  0.69  0.64  0.54 | -493.1 -122.8 -118.0 |  0.72 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 BUY   2133   26  0.68  0.71  0.66  0.59 | -264.1 -112.1  -61.6 |  0.73 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 SELL  2504   26  0.70  0.75  0.65  0.60 | -330.6 -45.6  -83.0 |  0.72 
+retest | NOREJ | ANY | dist EMA50 ATR in yr1 best | 2R                 ALL   4637   26  0.69  0.73  0.65  0.59 | -594.7 -157.8 -144.6 |  0.73 
+retest | NOREJ | ANY | RSI14 in yr1 best | 1R                          BUY   2078   39  0.64  0.61  0.66  0.52 | -201.0 -54.6  -57.4 |  0.71 
+retest | NOREJ | ANY | RSI14 in yr1 best | 1R                          SELL  2703   39  0.63  0.70  0.57  0.51 | -369.6 -41.6 -111.6 |  0.68 
+retest | NOREJ | ANY | RSI14 in yr1 best | 1R                          ALL   4781   39  0.64  0.66  0.61  0.51 | -570.7 -96.1 -169.0 |  0.70 
+retest | NOREJ | ANY | RSI14 in yr1 best | 2R                          BUY   2051   24  0.62  0.62  0.62  0.53 | -290.0 -88.4 -100.3 |  0.69 
+retest | NOREJ | ANY | RSI14 in yr1 best | 2R                          SELL  2666   26  0.68  0.71  0.65  0.58 | -354.0 -35.3 -116.6 |  0.72 
+retest | NOREJ | ANY | RSI14 in yr1 best | 2R                          ALL   4717   25  0.65  0.67  0.64  0.56 | -644.0 -123.7 -216.9 |  0.70 
+retest | NOREJ | ANY | range/ATR in yr1 best | 1R                      BUY   2082   43  0.74  0.70  0.78  0.62 | -125.9 -52.6  -28.7 |  0.79 
+retest | NOREJ | ANY | range/ATR in yr1 best | 1R                      SELL  2689   42  0.71  0.76  0.67  0.59 | -265.1 -22.1  -83.2 |  0.78 
+retest | NOREJ | ANY | range/ATR in yr1 best | 1R                      ALL   4771   42  0.73  0.73  0.72  0.61 | -391.0 -74.7 -111.9 |  0.78 
+retest | NOREJ | ANY | range/ATR in yr1 best | 2R                      BUY   2039   27  0.72  0.68  0.76  0.63 | -173.6 -83.6  -43.9 |  0.78 
+retest | NOREJ | ANY | range/ATR in yr1 best | 2R                      SELL  2613   28  0.74  0.76  0.72  0.65 | -268.9 -14.7  -97.4 |  0.74 
+retest | NOREJ | ANY | range/ATR in yr1 best | 2R                      ALL   4652   27  0.73  0.72  0.74  0.64 | -442.5 -98.3 -141.4 |  0.76 
+retest | NOREJ | ANY | close loc % in yr1 best | 1R                    BUY   2198   37  0.60  0.60  0.59  0.46 | -272.9 -49.5  -97.5 |  0.75 
+retest | NOREJ | ANY | close loc % in yr1 best | 1R                    SELL  2805   35  0.53  0.58  0.48  0.40 | -478.7 -82.3 -112.9 |  0.61 
+retest | NOREJ | ANY | close loc % in yr1 best | 1R                    ALL   5003   36  0.56  0.59  0.53  0.43 | -751.7 -131.8 -210.3 |  0.68 
+retest | NOREJ | ANY | close loc % in yr1 best | 2R                    BUY   2150   24  0.61  0.65  0.57  0.51 | -352.0 -64.2 -110.1 |  0.74 
+retest | NOREJ | ANY | close loc % in yr1 best | 2R                    SELL  2765   23  0.58  0.63  0.52  0.47 | -523.3 -106.6 -109.9 |  0.65 
+retest | NOREJ | ANY | close loc % in yr1 best | 2R                    ALL   4915   23  0.59  0.64  0.54  0.48 | -875.3 -170.8 -220.0 |  0.70 
+retest | NOREJ | ANY | wick against % in yr1 best | 1R                 BUY   2201   37  0.60  0.60  0.59  0.46 | -272.9 -49.5  -97.5 |  0.74 
+retest | NOREJ | ANY | wick against % in yr1 best | 1R                 SELL  2808   35  0.53  0.58  0.48  0.40 | -479.7 -82.3 -113.9 |  0.63 
+retest | NOREJ | ANY | wick against % in yr1 best | 1R                 ALL   5009   36  0.56  0.59  0.53  0.43 | -752.7 -131.8 -211.3 |  0.68 
+retest | NOREJ | ANY | wick against % in yr1 best | 2R                 BUY   2153   24  0.61  0.65  0.57  0.51 | -351.0 -64.2 -110.1 |  0.73 
+retest | NOREJ | ANY | wick against % in yr1 best | 2R                 SELL  2768   23  0.58  0.64  0.52  0.47 | -524.3 -106.6 -110.9 |  0.64 
+retest | NOREJ | ANY | wick against % in yr1 best | 2R                 ALL   4921   23  0.59  0.64  0.54  0.48 | -875.3 -170.8 -221.0 |  0.68 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 BUY   2088   36  0.57  0.58  0.57  0.45 | -278.0 -78.1  -87.5 |  0.75 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 SELL  2600   36  0.55  0.59  0.51  0.42 | -425.8 -104.3  -79.0 |  0.70 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 1R                 ALL   4688   36  0.56  0.59  0.53  0.43 | -703.7 -182.5 -166.5 |  0.72 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 BUY   2026   23  0.59  0.59  0.59  0.49 | -311.3 -82.7 -114.6 |  0.68 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 SELL  2531   24  0.63  0.69  0.58  0.52 | -417.3 -107.3  -77.5 |  0.72 
+retest | NOREJ | ANY | BBwidth/med100 in yr1 best | 2R                 ALL   4557   24  0.61  0.64  0.58  0.51 | -728.5 -190.0 -192.0 |  0.70 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                BUY   2155   40  0.66  0.69  0.64  0.53 | -227.6 -81.3  -68.8 |  0.75 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                SELL  2943   38  0.60  0.65  0.55  0.46 | -428.9 -88.5 -109.8 |  0.67 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 1R                ALL   5098   38  0.63  0.67  0.59  0.49 | -656.4 -169.8 -178.5 |  0.71 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                BUY   2092   26  0.71  0.71  0.70  0.60 | -221.7 -81.4  -57.4 |  0.76 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                SELL  2888   24  0.62  0.67  0.57  0.51 | -495.6 -107.7 -147.7 |  0.71 
+retest | NOREJ | ANY | move prior8 ATR in yr1 best | 2R                ALL   4980   25  0.66  0.69  0.62  0.55 | -717.3 -189.0 -205.0 |  0.74 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   BUY   5277   36  0.57  0.61  0.53  0.44 | -777.6 -236.0 -195.6 |  0.74 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   SELL  7877   35  0.55  0.61  0.50  0.42 | -1302.9 -231.0 -334.1 |  0.65 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 1R                   ALL  13154   36  0.56  0.61  0.51  0.43 | -2080.5 -467.0 -529.8 |  0.69 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   BUY   5035   23  0.59  0.66  0.53  0.49 | -917.6 -292.6 -231.8 |  0.72 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   SELL  7574   24  0.62  0.67  0.57  0.51 | -1246.5 -199.6 -324.2 |  0.70 
+retest | NOREJ | ANY | H4 EMA50vs90 in yr1 best | 2R                   ALL  12609   24  0.61  0.67  0.56  0.50 | -2164.1 -492.2 -556.0 |  0.71 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     BUY   1291   41  0.69  0.67  0.72  0.57 |  -98.4 -42.6  -24.9 |  0.75 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     SELL  1558   40  0.65  0.73  0.58  0.53 | -211.1 -32.6  -54.5 |  0.73 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 1R                     ALL   2849   40  0.67  0.70  0.64  0.55 | -309.5 -75.2  -79.4 |  0.74 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     BUY   1279   26  0.69  0.71  0.66  0.59 | -155.3 -64.5  -39.2 |  0.70 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     SELL  1546   26  0.69  0.73  0.65  0.59 | -211.2 -15.2  -63.4 |  0.73 
+retest | NOREJ | ANY | dist EMA50 ATR + RSI14 | 2R                     ALL   2825   26  0.69  0.72  0.65  0.59 | -366.5 -79.7 -102.6 |  0.72 
+
+done in 887 s
