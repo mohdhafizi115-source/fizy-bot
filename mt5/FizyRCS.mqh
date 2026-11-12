@@ -15,8 +15,13 @@
 //|          (0.20) x Wilder ATR(14, M15)                             |
 //|  time    CSAK bar opens 01:30-21:45 server, weekdays              |
 //|  entry   market right after the CSAK closes, one position per     |
-//|          symbol; SL beyond the InpRcsSwing (12)-candle swing ±    |
-//|          the spread; NO TP; closed after InpRcsHoldH (8) hours    |
+//|          symbol; SL InpRcsSlAtr (2.0) x ATR(14, M15) from the     |
+//|          entry (v2.21; 0 = the old swing SL); NO TP; closed after |
+//|          InpRcsHoldH (8) hours                                    |
+//| v2.21 (13 Nov, round 99, owner "sl 2 atr ... buatkan"): live 29   |
+//| symbols, last 2 years: swing SL PF 1.20, last 6 months 1.10,      |
+//| worst day -$60; SL 2 ATR PF 1.22, last 6 months 1.25, worst day   |
+//| -$33 (+$655 vs +$717 in $). BE / trailing / near TPs all worse.   |
 //| TEST (research/bbma97.py, bbma98.py, last 2 years, 30 symbols):   |
 //| 940 trades, PF 1.15 (in R), years 1.13 / 1.20, stress 1.10, last  |
 //| 12 months +26R, random direction 0.89 - PASS.  $ per 0.01 lot:    |
@@ -33,7 +38,8 @@ input string InpRcsSymbols = "XAUUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,U
 input double InpRcsH4Pos   = 0.5;     // H4 close at least this far into the opposite half of the H4 band (in band half-widths)
 input int    InpRcsExtLb   = 8;       // M15 Extreme against the CSAK within this many candles before it
 input double InpRcsSprAtr  = 0.20;    // cost gate: spread <= this x ATR(14, M15)
-input int    InpRcsSwing   = 12;      // SL beyond the lowest low / highest high of this many M15 candles up to the CSAK
+input double InpRcsSlAtr   = 2.0;     // SL this many ATR(14, M15) from the entry (v2.21); 0 = beyond the swing below
+input int    InpRcsSwing   = 12;      // (InpRcsSlAtr = 0 only) SL beyond the lowest low / highest high of this many M15 candles
 input int    InpRcsHoldH   = 8;       // close at market after this many hours
 
 string   rc_sym[];
@@ -67,6 +73,11 @@ void RcsRemember(ulong t)
    int m = ArraySize(rc_known); ArrayResize(rc_known, m + 1); rc_known[m] = t;
 }
 
+string RcsSlText()
+{
+   return InpRcsSlAtr > 0 ? StringFormat("%.1f ATR(M15) from the entry", InpRcsSlAtr) : StringFormat("beyond the %d-candle swing", InpRcsSwing);
+}
+
 void RcsInit()
 {
    rc_ready = true;
@@ -97,8 +108,8 @@ void RcsInit()
    }
    RcsEvent(StringFormat("RCS ONLINE | M15 reversal CSAK on %d symbols (forex + XAUUSD): a CSAK after an M15 Extreme the other way in "
                          "the last %d candles, with the last H4 close in the opposite half of its band (<= -%.1f), spread <= %.2f ATR; "
-                         "SL beyond the %d-candle swing, no TP, out after %d h, lot %.2f%s | %d open position(s)",
-                         ArraySize(rc_sym), InpRcsExtLb, InpRcsH4Pos, InpRcsSprAtr, InpRcsSwing, InpRcsHoldH, InpRcsLot,
+                         "SL %s, no TP, out after %d h, lot %.2f%s | %d open position(s)",
+                         ArraySize(rc_sym), InpRcsExtLb, InpRcsH4Pos, InpRcsSprAtr, RcsSlText(), InpRcsHoldH, InpRcsLot,
                          missing == "" ? "" : " | not at this broker: " + missing, open));
 }
 
@@ -244,7 +255,8 @@ void RcsSymbol(int si, datetime now)
    double swl = r[j].low, swh = r[j].high;
    for(int i = j - InpRcsSwing + 1; i <= j; i++) { swl = MathMin(swl, r[i].low); swh = MathMax(swh, r[i].high); }
    double entry = dir == 1 ? tk.ask : tk.bid;
-   double sl = NormalizeDouble(dir == 1 ? swl - now_spr : swh + now_spr, dg);
+   double sl = InpRcsSlAtr > 0 ? NormalizeDouble(entry - dir * InpRcsSlAtr * atr[j], dg)      // v2.21: ATR stop from the entry
+                               : NormalizeDouble(dir == 1 ? swl - now_spr : swh + now_spr, dg);
    double risk = (entry - sl) * dir;
    if(risk <= now_spr) return;
    double stopLv = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL) * pnt;
@@ -264,10 +276,10 @@ void RcsSymbol(int si, datetime now)
    lv[2] = mid[j]; lc[2] = clrGoldenrod; lb[2] = "mid BB"; lv[3] = e50[j]; lc[3] = clrDarkViolet; lb[3] = "EMA 50";
    string fn = Snap(sym, PERIOD_M15, "RCE", lv, lc, lb, 0, 0, 0, 0, false);
    RcsEvent(StringFormat("RCS %s %s | M15 CSAK %s through mid BB %s and EMA 50 %s after an Extreme %s, H4 close in the %s half of its band "
-                         "(%.2f), spread %.2f ATR | %s %.2f lot at %s, SL %s beyond the %d-candle swing (risk $%.2f), no TP, out after %d h",
+                         "(%.2f), spread %.2f ATR | %s %.2f lot at %s, SL %s (%s, risk $%.2f), no TP, out after %d h",
                          side, sym, dir == 1 ? "up" : "down", PriceStr(sym, mid[j]), PriceStr(sym, e50[j]), dir == 1 ? "down" : "up",
                          dir == 1 ? "lower" : "upper", pos * dir, spr / atr[j], side, lot, PriceStr(sym, entry), PriceStr(sym, sl),
-                         InpRcsSwing, riskUsd, InpRcsHoldH) + Img(fn));
+                         RcsSlText(), riskUsd, InpRcsHoldH) + Img(fn));
    if(RcsPosition(sym, pt)) RcsRemember(pt);
 }
 

@@ -206,7 +206,7 @@ def status_block(kind, text):
         nsym = _num(r"on (\d+) symbols", t)
         return ["🔄 M15 REVERSAL CSAK · forex + gold",
                 f"▫️ {nsym} symbols · CSAK after an M15 Extreme the other way, H4 close in the opposite half of its band",
-                f"▫️ Spread <= 0.20 ATR · SL beyond the 12-candle swing, no TP, out after 8 h · Lot {lot} · open {opened}"]
+                f"▫️ Spread <= 0.20 ATR · SL 2 ATR from the entry, no TP, out after 8 h · Lot {lot} · open {opened}"]
     if kind == "KELT ONLINE":
         return ["🎯 M1 KELTNER RE-ENTRY · XAUUSD · scalp",
                 "▫️ BUY when a bar closes back above EMA 20 - 3 ATR after a close below it, ATR >= 8x the spread",
