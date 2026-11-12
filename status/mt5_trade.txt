@@ -1,33 +1,16 @@
-shift ended (UTC): 2026-11-11 18:46
+shift ended (UTC): 2026-11-12 00:23
 open
-2026.11.11 20:45:57
+2026.11.12 02:23:21
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 3760 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 5828 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 2, gold auction 1
-  QQ	0	14:37:25.461	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG BUY XAUUSD.m | entry 5 of 5 | price ran another 0.10% beyond the last entry 4016.92 | BUY 0.03 lot at 4012.74, TP at fib 50.0% (4028.16) or the EMA 50 touch (now 4030.31), whichever comes first, no SL | IMG:snap_LGE_XAUUSD_m_<num>_<num>_984.png
-  RI	0	14:39:02.736	FizyLB (XAUUSD.m,M15)	KELT EVENT KELT BUY XAUUSD.m | closed back above the band (EMA 20 - 3.0 ATR = 4017.33) after a close below it, gate 9 x spread | BUY 0.01 lot at 4017.89, SL 4013.72 under the bar, no TP, SL to entry after +$x out after 45 min | IMG:snap_KLE_XAUUSD_m_<num>_<num>_250.png
-  JL	0	14:40:09.947	FizyLB (XAUUSD.m,M15)	KELT EVENT KELT SL MOVED XAUUSD.m | price is $x in profit: SL moved to the entry 4017.99 (no loss from here)
-  CI	0	14:42:37.777	FizyLB (XAUUSD.m,M15)	KELT EVENT KELT BREAKEVEN XAUUSD.m | BUY from 4017.99 closed at 4017.99 (stopped at the entry price), profit $x | IMG:snap_KLX_XAUUSD_m_<num>_<num>_296.png
-  GM	0	15:31:46.868	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG CLOSED XAUUSD.m | BUY from 4012.38 closed at 4001.62 (closed outside the EA), profit $x | IMG:snap_LGX_XAUUSD_m_<num>_<num>_343.png
-  JE	0	15:31:48.911	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG CLOSED XAUUSD.m | BUY from 4016.92 closed at 4001.62 (closed outside the EA), profit $x | IMG:snap_LGX_XAUUSD_m_<num>_<num>_390.png
-  JM	0	15:31:50.942	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG STOP OUT XAUUSD.m | BUY from 4020.98 closed at 4001.62 (broker stop-out, margin gone), profit $x | IMG:snap_LGX_XAUUSD_m_<num>_<num>_421.png
-  GK	0	15:31:52.977	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG CLOSED XAUUSD.m | BUY from 4025.06 closed at 4001.62 (closed outside the EA), profit $x | IMG:snap_LGX_XAUUSD_m_<num>_<num>_453.png
-  LR	0	15:31:55.012	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG CLOSED XAUUSD.m | BUY from 4029.18 closed at 4001.62 (closed outside the EA), profit $x | IMG:snap_LGX_XAUUSD_m_<num>_<num>_484.png
-  RJ	0	15:32:03.271	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE BUY XAUUSD.m | a down M1 bar of 6.05 (2.6 x ATR, gate 9 x spread) | BUY 0.01 lot at 4001.81, SL 4000.40 under the spike, no TP, SL to entry after +$x (1.0 ATR), out after 45 min | IMG:snap_SPF_XAUUSD_m_<num>_<num>_750.png
-  RN	0	15:32:35.471	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE SL MOVED XAUUSD.m | price is $x in profit (1.0 ATR): SL moved to the entry 4001.53 (no loss from here)
-  FQ	0	15:50:11.345	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE SL HIT XAUUSD.m | BUY from 4001.53 closed at 4001.53 (stopped at the entry price (breakeven)), profit $x | IMG:snap_SPX_XAUUSD_m_<num>_<num>_796.png
-  w: telegram ok: LEG BUY XAUUSD.m
-  w: telegram ok: LEG BUY XAUUSD.m
-  w: telegram ok: LEG BUY XAUUSD.m
-  w: telegram ok: KELT BUY XAUUSD.m
-  w: telegram ok: KELT SL MOVED XAUUSD.m
-  w: telegram ok: KELT BREAKEVEN XAUUSD.m
-  w: telegram ok: LEG CLOSED XAUUSD.m
-  w: telegram ok: LEG CLOSED XAUUSD.m
-  w: telegram ok: LEG STOP OUT XAUUSD.m
-  w: telegram ok: LEG CLOSED XAUUSD.m
-  w: telegram ok: LEG CLOSED XAUUSD.m
-  w: telegram ok: SPIKE BUY XAUUSD.m
-  w: telegram ok: SPIKE SL MOVED XAUUSD.m
-  w: telegram ok: SPIKE SL HIT XAUUSD.m
-  w: shift end: done=False, state=2026.11.11 20:45:57|0|0
+  DS	0	18:48:02.892	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.11 20:48, 0 open position(s), 0 pending order(s), lot 0.01
+  RS	0	18:48:02.893	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.13 | 0 open position(s)
+  OJ	0	18:48:02.894	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
+  QD	0	18:48:02.977	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  CM	0	18:48:03.006	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  GK	0	18:48:03.101	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE ONLINE | XAUUSD.m M1, raw: BUY right after a down bar of 2.0 x ATR(M1) when ATR >= 8 x the spread; SL 0.2 ATR under the spike's low, no TP, out after 45 min, lot 0.01 | 0 open position(s)
+  EL	0	18:48:03.102	FizyLB (XAUUSD.m,M15)	KELT EVENT KELT ONLINE | XAUUSD.m M1: BUY when a bar closes back above EMA 20 - 3.0 x ATR after a close below it, ATR >= 8 x the spread, no spike-fade signal in the last 5 bars; SL 0.2 ATR under the bar, no TP, SL to entry after +$x out after 45 min, lot 0.01 | 0 open position(s)
+  ML	0	18:48:03.209	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG ONLINE | XAUUSD.m M1: a 0.10% zigzag leg 20 candles old is faded at market; another entry every 0.10% further, up to 5; only when the leg's peak / trough is at least $x beyond EMA 50; TP at the 50.0% fib retracement of the leg or the EMA touch, whichever first; NO stop loss (owner's rule), lot 0.01 | 0 open position(s)
+  w: status message already sent today
+  w: shift end: done=False, state=2026.11.12 02:23:21|0|0
