@@ -33,6 +33,8 @@ say = lambda s="": print(s, flush=True)
 SYMS = ("XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,"
         "GBPJPY,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDJPY,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY").split(",")
 MIDDAY = pd.Timestamp("2023-07-01")
+FEAT = None         # optional f(X15) -> {name: (array over M15 bars, "osc" | "sym")}, set by later rounds (bbma90)
+RAND_EXTRA = True
 EXTRA = None        # optional list of (name, f(F)) filters on a feature dict, set by later rounds (bbma89)
 FILTS = (("none", lambda r, c: np.ones_like(r, bool)), ("RSI>55", lambda r, c: r > 55), ("RSI>60", lambda r, c: r > 60),
          ("CCI>0", lambda r, c: c > 0), ("CCI>100", lambda r, c: c > 100), ("RSI>55+CCI>0", lambda r, c: (r > 55) & (c > 0)))
@@ -72,6 +74,7 @@ def run_symbol(sym, mt, sw):
     cci15, rsi15 = I15.cci.values, I15.rsi.values
     sk15, sd15 = I15.sk.values, I15.sd.values
     kmin5, kmax5 = pd.Series(sk15).rolling(5).min().values, pd.Series(sk15).rolling(5).max().values
+    feats = FEAT(X15) if FEAT else {}
     lo_, hi_ = np.minimum(mid15, e15), np.maximum(mid15, e15)
     csak_b = (o15 < lo_) & (c15 > hi_) & (c15 <= top15)
     csak_s = (o15 > hi_) & (c15 < lo_) & (c15 >= bot15)
@@ -148,6 +151,9 @@ def run_symbol(sym, mt, sw):
         ix, dd = SU[:, 0], SU[:, 1]
         sg = lambda a: np.where(dd == 1, a, 100 - a)                 # signed in the CSAK direction (sell mirrored)
         F = dict(r=sr, c=sc, k=sg(sk15[ix]), d=sg(sd15[ix]), kp=sg(sk15[ix - 1]), km=np.where(dd == 1, kmin5[ix], 100 - kmax5[ix]))
+        for nm, (arr, kind) in feats.items():
+            F[nm] = sg(arr[ix]) if kind == "osc" else arr[ix] * dd
+            F[nm + "_p"] = sg(arr[ix - 1]) if kind == "osc" else arr[ix - 1] * dd
         if EXTRA:
             for pop in ("ANY", "WITH", "AGAINST"):
                 pm = np.ones(len(SU), bool) if pop == "ANY" else (SU[:, 1] == SU[:, 2]) if pop == "WITH" else (SU[:, 1] != SU[:, 2])
@@ -155,7 +161,7 @@ def run_symbol(sym, mt, sw):
                     m = pm & np.nan_to_num(f(F)).astype(bool)
                     for tpR in (1, 2):
                         out[(rn, pop, fn, tpR)] = sim(SU[m], tpR)
-                        out[(rn, pop, fn + " RANDOM dir", tpR)] = sim(SU[m], tpR, rand=True)
+                        if RAND_EXTRA: out[(rn, pop, fn + " RANDOM dir", tpR)] = sim(SU[m], tpR, rand=True)
             continue
         for pop in ("ANY", "WITH", "AGAINST"):
             pm = np.ones(len(SU), bool) if pop == "ANY" else (SU[:, 1] == SU[:, 2]) if pop == "WITH" else (SU[:, 1] != SU[:, 2])
