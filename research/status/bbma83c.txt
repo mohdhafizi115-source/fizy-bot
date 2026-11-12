@@ -1,0 +1,36 @@
+
+===== MOM window 8 M15 bars (2 h), REJ window 6 M5 bars (30 min) =====
+FUNNEL per trading day (1711 days): M15 momentum candles 11.7 (buy 6.1, sell 5.6); M5 EMA 50 rejection candles (any) 24.5; M1 CSAK candles (any) 39.2; CSAK bars that complete the full chain 1.62; distinct rejections with a CSAK 1.21
+variant                                                                        trades  /day win%    PF half1 half2 | last mo mo before   3 mo   12 mo worst d
+BBMA MOM-REJ-CSAK, TP 1R                                                         1843  1.08   42  0.84  0.73  0.91 |      +8        +2     -3      -3     -40
+BBMA MOM-REJ-CSAK, TP 2R                                                         1798  1.05   32  0.86  0.76  0.92 |      +4       -14    -27     -78     -50
+BBMA MOM-REJ-CSAK, TP BB                                                         1818  1.06   45  0.81  0.72  0.86 |     -22       -30    -69    -111     -40
+CONTROL: same, random direction, TP 2R                                           1760  1.03   32  0.90  0.76  0.98 |     -47        +1    -33     -39     -40
+CONTROL: CSAK on M1 alone (no MOM / REJ), SL under the bar, TP 2R               31585 18.46   27  0.80  0.68  0.87 |    -119       +65   +131   -1081    -104
+
+===== MOM window 16 M15 bars (4 h), REJ window 12 M5 bars (60 min) =====
+FUNNEL per trading day (1711 days): M15 momentum candles 11.7 (buy 6.1, sell 5.6); M5 EMA 50 rejection candles (any) 24.5; M1 CSAK candles (any) 39.2; CSAK bars that complete the full chain 4.22; distinct rejections with a CSAK 2.78
+variant                                                                        trades  /day win%    PF half1 half2 | last mo mo before   3 mo   12 mo worst d
+BBMA MOM-REJ-CSAK, TP 1R                                                         4011  2.34   41  0.82  0.73  0.88 |      -1       -12     -1    -165     -75
+BBMA MOM-REJ-CSAK, TP 2R                                                         3835  2.24   30  0.83  0.74  0.88 |      +7       -21    -86    -303     -89
+BBMA MOM-REJ-CSAK, TP BB                                                         3905  2.28   37  0.83  0.72  0.89 |     -17       -31    -81    -170     -58
+CONTROL: same, random direction, TP 2R                                           3977  2.32   29  0.90  0.72  1.00 |     -61       -73   -156     -27     -48
+CONTROL: CSAK on M1 alone (no MOM / REJ), SL under the bar, TP 2R               31585 18.46   27  0.80  0.68  0.87 |    -119       +65   +131   -1081    -104
+
+===== MOM window 32 M15 bars (8 h), REJ window 24 M5 bars (120 min) =====
+FUNNEL per trading day (1711 days): M15 momentum candles 11.7 (buy 6.1, sell 5.6); M5 EMA 50 rejection candles (any) 24.5; M1 CSAK candles (any) 39.2; CSAK bars that complete the full chain 8.04; distinct rejections with a CSAK 4.63
+variant                                                                        trades  /day win%    PF half1 half2 | last mo mo before   3 mo   12 mo worst d
+BBMA MOM-REJ-CSAK, TP 1R                                                         6270  3.66   40  0.84  0.70  0.91 |     -40       +13    +23    -169     -83
+BBMA MOM-REJ-CSAK, TP 2R                                                         6014  3.51   29  0.85  0.70  0.93 |     -29       +12     -9    -280     -96
+BBMA MOM-REJ-CSAK, TP BB                                                         6128  3.58   35  0.84  0.68  0.93 |     -44        -9     +2    -111     -66
+CONTROL: same, random direction, TP 2R                                           6650  3.89   29  0.87  0.77  0.92 |     +24       +23    -22    -369     -48
+CONTROL: CSAK on M1 alone (no MOM / REJ), SL under the bar, TP 2R               31585 18.46   27  0.80  0.68  0.87 |    -119       +65   +131   -1081    -104
+
+===== MOM window 96 M15 bars (24 h), REJ window 48 M5 bars (240 min) =====
+FUNNEL per trading day (1711 days): M15 momentum candles 11.7 (buy 6.1, sell 5.6); M5 EMA 50 rejection candles (any) 24.5; M1 CSAK candles (any) 39.2; CSAK bars that complete the full chain 10.34; distinct rejections with a CSAK 5.35
+variant                                                                        trades  /day win%    PF half1 half2 | last mo mo before   3 mo   12 mo worst d
+BBMA MOM-REJ-CSAK, TP 1R                                                         7128  4.17   39  0.84  0.69  0.93 |     -37       +66    +80     -24     -83
+BBMA MOM-REJ-CSAK, TP 2R                                                         6855  4.01   29  0.86  0.69  0.96 |     -54       +62    +15     -30     -96
+BBMA MOM-REJ-CSAK, TP BB                                                         6988  4.08   35  0.83  0.66  0.92 |     -52        +7    +14    -113     -66
+CONTROL: same, random direction, TP 2R                                           7725  4.51   29  0.89  0.76  0.97 |     +71       -57    -17     -88    -115
+CONTROL: CSAK on M1 alone (no MOM / REJ), SL under the bar, TP 2R               31585 18.46   27  0.80  0.68  0.87 |    -119       +65   +131   -1081    -104
