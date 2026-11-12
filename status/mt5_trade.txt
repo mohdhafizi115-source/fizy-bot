@@ -1,15 +1,14 @@
-shift ended (UTC): 2026-11-12 13:20
+shift ended (UTC): 2026-11-12 22:19
 open
-2026.11.12 15:20:39
+2026.11.13 00:19:31
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 4489 ms elapsed, cpu='X64 Regular'
-events: London 1 lines, NR7 0, Gotobi 0, gold auction 3
-  RS	0	07:45:17.258	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.12 09:45, 0 open position(s), 0 pending order(s), lot 0.01
-  FQ	0	07:45:17.258	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  DI	0	07:45:17.353	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  FF	0	10:15:02.652	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 3946.36, SL 3954.35, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_31.png
-  KG	0	10:30:30.761	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION STOP HIT XAUUSD.m | SELL from 3946.36 closed at 3946.59 (stop: the M1 trailing stop after 10:30, or the 2 ATR stop loss), -0.23, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_125.png
+  Result: 0 errors, 0 warnings, 6573 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 1
+  IS	0	16:44:10.436	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.12 18:44, 0 open position(s), 0 pending order(s), lot 0.01
+  MQ	0	16:44:10.437	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  FI	0	16:44:10.463	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  FG	0	16:44:25.151	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (forex + XAUUSD): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
+  NK	0	16:45:02.635	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS SELL USDJPY.m | M15 CSAK down through mid BB 159.761 and EMA 50 159.738 after an Extreme up, H4 close in the upper half of its band (0.61), spread 0.11 ATR | SELL 0.01 lot at 159.653, SL 159.922 (2.0 ATR(M15) from the entry, risk $x), no TP, out after 8 h | IMG:snap_RCE_USDJPY_m_<num>_<num>_625.png
   w: telegram ok: daily status
-  w: telegram ok: AUCTION SELL XAUUSD.m
-  w: telegram ok: AUCTION STOP HIT XAUUSD.m
-  w: shift end: done=False, state=2026.11.12 15:20:39|0|0
+  w: telegram ok: RCS SELL USDJPY.m
+  w: shift end: done=False, state=2026.11.13 00:19:31|0|0
