@@ -1,16 +1,15 @@
-shift ended (UTC): 2026-11-12 00:23
+shift ended (UTC): 2026-11-12 13:20
 open
-2026.11.12 02:23:21
+2026.11.12 15:20:39
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 5828 ms elapsed, cpu='X64 Regular'
-events: London 1 lines, NR7 0, Gotobi 2, gold auction 1
-  DS	0	18:48:02.892	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.11 20:48, 0 open position(s), 0 pending order(s), lot 0.01
-  RS	0	18:48:02.893	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT GOTOBI ONLINE | USDJPY.m, EURJPY.m, GBPJPY.m: SELL at the Tokyo fix 09:55 JST on Gotobi days, close 10:15 JST, SL 1.0 ATR(H1), lot 0.01 | next Gotobi day 2026.11.13 | 0 open position(s)
-  OJ	0	18:48:02.894	FizyLB (XAUUSD.m,M15)	GOTOBI EVENT MONTHEND ONLINE | last business day of each month, 09:40 -> 09:55 JST (Tokyo fix): SELL CADCHF.m, SELL NZDCHF.m, BUY USDCAD.m, BUY GBPNZD.m, SL 1.0 ATR(H1), lot 0.01 | next 2026.11.30
-  QD	0	18:48:02.977	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  CM	0	18:48:03.006	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  GK	0	18:48:03.101	FizyLB (XAUUSD.m,M15)	SPIKE EVENT SPIKE ONLINE | XAUUSD.m M1, raw: BUY right after a down bar of 2.0 x ATR(M1) when ATR >= 8 x the spread; SL 0.2 ATR under the spike's low, no TP, out after 45 min, lot 0.01 | 0 open position(s)
-  EL	0	18:48:03.102	FizyLB (XAUUSD.m,M15)	KELT EVENT KELT ONLINE | XAUUSD.m M1: BUY when a bar closes back above EMA 20 - 3.0 x ATR after a close below it, ATR >= 8 x the spread, no spike-fade signal in the last 5 bars; SL 0.2 ATR under the bar, no TP, SL to entry after +$x out after 45 min, lot 0.01 | 0 open position(s)
-  ML	0	18:48:03.209	FizyLB (XAUUSD.m,M15)	LEG EVENT LEG ONLINE | XAUUSD.m M1: a 0.10% zigzag leg 20 candles old is faded at market; another entry every 0.10% further, up to 5; only when the leg's peak / trough is at least $x beyond EMA 50; TP at the 50.0% fib retracement of the leg or the EMA touch, whichever first; NO stop loss (owner's rule), lot 0.01 | 0 open position(s)
-  w: status message already sent today
-  w: shift end: done=False, state=2026.11.12 02:23:21|0|0
+  Result: 0 errors, 0 warnings, 4489 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 3
+  RS	0	07:45:17.258	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.12 09:45, 0 open position(s), 0 pending order(s), lot 0.01
+  FQ	0	07:45:17.258	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  DI	0	07:45:17.353	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  FF	0	10:15:02.652	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 3946.36, SL 3954.35, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_31.png
+  KG	0	10:30:30.761	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION STOP HIT XAUUSD.m | SELL from 3946.36 closed at 3946.59 (stop: the M1 trailing stop after 10:30, or the 2 ATR stop loss), -0.23, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_125.png
+  w: telegram ok: daily status
+  w: telegram ok: AUCTION SELL XAUUSD.m
+  w: telegram ok: AUCTION STOP HIT XAUUSD.m
+  w: shift end: done=False, state=2026.11.12 15:20:39|0|0
