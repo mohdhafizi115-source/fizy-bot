@@ -55,7 +55,7 @@ def run_symbol(sym, mt, sw):
     T = B.index; n = len(B)
     O, H, L, C, S = (B[x].values.astype(float) for x in ("o", "h", "l", "c", "s"))
     ts = T.values.astype("datetime64[s]").astype(np.int64)
-    day = T.normalize().values; wd = T.dayofweek.values
+    day = T.normalize().values; wd = T.day_of_week.values
 
     def tf(m):
         g = B.resample(f"{m}min", label="left", closed="left")
@@ -130,9 +130,9 @@ def run_symbol(sym, mt, sw):
             swp = (sw["long"] if d_ == 1 else sw["short"]) * mt["point"] * nights * usd if sw and sw["mode"] == 1 else 0.0
             net = (x - e) * d_ * usd + swp
             rk = risk * usd
-            res.append((T[i], net, net / rk, (net - 0.5 * S[i] * usd) / rk, rk))
+            res.append((T[i], net, net / rk, (net - 0.5 * S[i] * usd) / rk, rk, d_))
             busy = z; used.add(q)
-        return pd.DataFrame(res, columns=["t", "net", "r", "rs", "risk"])
+        return pd.DataFrame(res, columns=["t", "net", "r", "rs", "risk", "d"])
 
     out = {}
     for rtf, rn, rbars in ((30, "M30", 8), (60, "H1", 4)):
