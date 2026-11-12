@@ -28,6 +28,7 @@ DATA = sys.argv[1] if len(sys.argv) > 1 else "m5data"
 say = lambda s="": print(s, flush=True)
 T0 = time.time()
 pf = lambda v: v[v > 0].sum() / max(-v[v < 0].sum(), 1e-9) if len(v) else 0.0
+CTX_ONLY = False     # round 98 uses run() for its context only
 
 
 def run(sym, mt, sw, rg):
@@ -82,14 +83,15 @@ def run(sym, mt, sw, rg):
     csl = l[ks]; csh = h[ks]
     swl = np.array([l[max(0, k - 11):k + 1].min() for k in ks]); swh = np.array([h[max(0, k - 11):k + 1].max() for k in ks])
 
-    def sim(mask, slm, tpR, hold_h, rand):
+    def sim(mask, slm, tpR, hold_h, rand, sw_l=None, sw_h=None):
+        sw_l = swl if sw_l is None else sw_l; sw_h = swh if sw_h is None else sw_h
         res = []; busy = -1
         for idx in np.where(mask)[0]:
             k, cd = ks[idx], dr[idx]; i = at[k]
             if i >= n or i <= busy: continue
             e0 = O[i] + (S[i] if cd == 1 else 0)
             if slm == "csak": sl0 = csl[idx] - S[i] if cd == 1 else csh[idx] + S[i]
-            else: sl0 = swl[idx] - S[i] if cd == 1 else swh[idx] + S[i]
+            else: sl0 = sw_l[idx] - S[i] if cd == 1 else sw_h[idx] + S[i]
             risk = (e0 - sl0) * cd
             if risk <= S[i]: continue
             d_ = cd if not rand else (1 if rg.random() < 0.5 else -1)
@@ -110,10 +112,11 @@ def run(sym, mt, sw, rg):
             if x is None: break
             swp = (sw["long"] if d_ == 1 else sw["short"]) * mt["point"] * nights * usd if sw and sw["mode"] == 1 else 0.0
             net = (x - e) * d_ * usd + swp; rk = risk * usd
-            res.append((T[i], net, net / rk, (net - 0.5 * S[i] * usd) / rk, d_, worst * usd))
+            res.append((T[i], net, net / rk, (net - 0.5 * S[i] * usd) / rk, d_, worst * usd, T[min(z, n - 1)], rk))
             busy = z
-        return pd.DataFrame(res, columns=["t", "net", "r", "rs", "d", "mae"])
+        return pd.DataFrame(res, columns=["t", "net", "r", "rs", "d", "mae", "tx", "risk"])
 
+    if CTX_ONLY: return dict(ks=ks, dr=dr, roll=roll, exd=exd, exu=exu, h4pos=h4pos, spr=spr, l=l, h=h, at=at, sim=sim, end=end, swl=swl, swh=swh)
     exits = [("SL csak", "csak", tp, 24) for tp in (1, 2, 3)] + [("SL swing", "swing", tp, 24) for tp in (1, 2, 3)] + \
             [("SL swing, time 8h", "swing", 0, 8), ("SL swing, time 24h", "swing", 0, 24)]
     out = {}
