@@ -33,6 +33,7 @@ say = lambda s="": print(s, flush=True)
 SYMS = ("XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,"
         "GBPJPY,GBPCHF,GBPAUD,GBPCAD,GBPNZD,AUDJPY,AUDCHF,AUDCAD,AUDNZD,NZDJPY,NZDCHF,NZDCAD,CADJPY,CADCHF,CHFJPY").split(",")
 MIDDAY = pd.Timestamp("2023-07-01")
+EXTRA = None        # optional list of (name, f(F)) filters on a feature dict, set by later rounds (bbma89)
 FILTS = (("none", lambda r, c: np.ones_like(r, bool)), ("RSI>55", lambda r, c: r > 55), ("RSI>60", lambda r, c: r > 60),
          ("CCI>0", lambda r, c: c > 0), ("CCI>100", lambda r, c: c > 100), ("RSI>55+CCI>0", lambda r, c: (r > 55) & (c > 0)))
 
@@ -42,10 +43,12 @@ def ind(X):
     mid = c.rolling(20).mean(); sd = c.rolling(20).std(ddof=0)
     tp = (X.h + X.l + X.c) / 3; sm = tp.rolling(20).mean()
     md = tp.rolling(20).apply(lambda a: np.abs(a - a.mean()).mean(), raw=True)
+    ll = X.l.rolling(14).min(); hh = X.h.rolling(14).max()
+    sk = (100 * (c - ll) / (hh - ll).replace(0, np.nan)).rolling(3).mean()          # Stochastic 14,3,3: slow %K
     dl = c.diff(); up = dl.clip(lower=0).ewm(alpha=1 / 14, adjust=False).mean(); dn = (-dl.clip(upper=0)).ewm(alpha=1 / 14, adjust=False).mean()
     return pd.DataFrame({"mid": mid, "top": mid + 2 * sd, "bot": mid - 2 * sd, "e50": c.ewm(span=50, adjust=False).mean(),
                          "e90": c.ewm(span=90, adjust=False).mean(), "cci": (tp - sm) / (0.015 * md),
-                         "rsi": 100 - 100 / (1 + up / dn.replace(0, np.nan))}, index=X.index)
+                         "rsi": 100 - 100 / (1 + up / dn.replace(0, np.nan)), "sk": sk, "sd": sk.rolling(3).mean()}, index=X.index)
 
 
 def run_symbol(sym, mt, sw):
@@ -67,6 +70,8 @@ def run_symbol(sym, mt, sw):
     o15, h15, l15, c15 = (X15[x].values for x in ("o", "h", "l", "c"))
     mid15, top15, bot15, e15 = I15.mid.values, I15.top.values, I15.bot.values, I15.e50.values
     cci15, rsi15 = I15.cci.values, I15.rsi.values
+    sk15, sd15 = I15.sk.values, I15.sd.values
+    kmin5, kmax5 = pd.Series(sk15).rolling(5).min().values, pd.Series(sk15).rolling(5).max().values
     lo_, hi_ = np.minimum(mid15, e15), np.maximum(mid15, e15)
     csak_b = (o15 < lo_) & (c15 > hi_) & (c15 <= top15)
     csak_s = (o15 > hi_) & (c15 < lo_) & (c15 >= bot15)
@@ -140,6 +145,18 @@ def run_symbol(sym, mt, sw):
         if len(SU) == 0: continue
         sr = np.where(SU[:, 1] == 1, rsi15[SU[:, 0]], 100 - rsi15[SU[:, 0]])
         sc = cci15[SU[:, 0]] * SU[:, 1]
+        ix, dd = SU[:, 0], SU[:, 1]
+        sg = lambda a: np.where(dd == 1, a, 100 - a)                 # signed in the CSAK direction (sell mirrored)
+        F = dict(r=sr, c=sc, k=sg(sk15[ix]), d=sg(sd15[ix]), kp=sg(sk15[ix - 1]), km=np.where(dd == 1, kmin5[ix], 100 - kmax5[ix]))
+        if EXTRA:
+            for pop in ("ANY", "WITH", "AGAINST"):
+                pm = np.ones(len(SU), bool) if pop == "ANY" else (SU[:, 1] == SU[:, 2]) if pop == "WITH" else (SU[:, 1] != SU[:, 2])
+                for fn, f in EXTRA:
+                    m = pm & np.nan_to_num(f(F)).astype(bool)
+                    for tpR in (1, 2):
+                        out[(rn, pop, fn, tpR)] = sim(SU[m], tpR)
+                        out[(rn, pop, fn + " RANDOM dir", tpR)] = sim(SU[m], tpR, rand=True)
+            continue
         for pop in ("ANY", "WITH", "AGAINST"):
             pm = np.ones(len(SU), bool) if pop == "ANY" else (SU[:, 1] == SU[:, 2]) if pop == "WITH" else (SU[:, 1] != SU[:, 2])
             for fn, f in FILTS:
@@ -155,6 +172,7 @@ def run_symbol(sym, mt, sw):
                         mm = pm & (rg.random(len(SU)) < share)
                         for tpR in (1, 2):
                             out.setdefault((rn, pop, fn + " RANDOM mask x3", tpR), []).append(sim(SU[mm], tpR))
+    if EXTRA: return out, T[-1], T[0]
     # context control: every M15 CSAK in the window, no H4 / rejection
     allk = np.where((csak_b | csak_s) & (hm15 >= 90) & (hm15 < 1320))[0]
     cdir = np.where(csak_b[allk], 1, -1)
