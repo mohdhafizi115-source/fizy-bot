@@ -36,10 +36,12 @@ MIDDAY = pd.Timestamp("2023-07-01")
 FEAT = None         # optional f(X15) -> {name: (array over M15 bars, "osc" | "sym")}, set by later rounds (bbma90)
 RAND_EXTRA = True
 CSAK_MODE = "basic"  # "basic": mid BB + EMA 50; "all": + LWMA 5 / 10 of highs and lows; "all90": + EMA 90 too (bbma91)
-RTFS = ((30, "M30", 8), (60, "H1", 4))
+RTFS = ((30, "M30", 8), (60, "H1", 4))   # rejection TFs; (0, "NOREJ", 0) = CSAK + H4 direction only (bbma91)
 EXIT_MODE = "sl"     # "sl": SL beyond the CSAK, TP tpR x risk, 48 h cap; "fib": NO SL, cut on an opposite M15 momentum close,
                      # TP at the Fibonacci extension tpR (1.618 = 161.8) of the leg from the 8-bar M15 swing to the CSAK extreme (bbma93)
-TPS = (1, 2)   # rejection TFs; (0, "NOREJ", 0) = CSAK + H4 direction only (bbma91)
+TPS = (1, 2)
+ENTRY_MODE = "next"  # "next": next M5 open after the CSAK; "follow": wait up to 2 M15 candles for a close beyond the CSAK's
+                     # extreme, enter after it; "retest": limit at the CSAK's 50% within 4 M15 candles (bbma94).  SL beyond the CSAK.
 
 
 def lwma(a, n):
@@ -78,6 +80,7 @@ def run_symbol(sym, mt, sw):
         g = B.resample(f"{m}min", label="left", closed="left")
         X = pd.DataFrame({"o": g.o.first(), "h": g.h.max(), "l": g.l.min(), "c": g.c.last()}).dropna()
         X["v"] = g.v.sum().reindex(X.index).fillna(0).values           # tick volume (for MFI, bbma92)
+        X["s"] = g.s.median().reindex(X.index).values                     # median spread (bbma94)
         return X, ind(X), (X.index + pd.Timedelta(minutes=m)).values
     X4, I4, cl4 = tf(240); X15, I15, cl15 = tf(15)
     c4, top4, bot4, e50_4, e90_4 = X4.c.values, I4.top.values, I4.bot.values, I4.e50.values, I4.e90.values
@@ -173,11 +176,24 @@ def run_symbol(sym, mt, sw):
             i = at[k]
             if i >= n or i <= busy: continue
             d_ = cd if not rand else (1 if rg.random() < 0.5 else -1)
-            e = O[i] + (S[i] if cd == 1 else 0)
+            lim = None
+            if ENTRY_MODE == "follow":
+                js = [j for j in (k + 1, k + 2) if j < len(c15) and ((cd == 1 and c15[j] > h15[k]) or (cd == -1 and c15[j] < l15[k]))]
+                if not js: continue
+                i = at[js[0]]
+                if i >= n: continue
+            elif ENTRY_MODE == "retest":
+                lim = (h15[k] + l15[k]) / 2; zmax = at[min(k + 4, len(c15) - 1)]; z = i; i = None
+                while z < min(zmax, n):
+                    if (cd == 1 and L[z] + S[z] <= lim) or (cd == -1 and H[z] >= lim): i = z; break
+                    z += 1
+                if i is None: continue
+            e = (min(O[i] + S[i], lim) if cd == 1 else max(O[i], lim)) if lim is not None else O[i] + (S[i] if cd == 1 else 0)
             sl = l15[k] - S[i] if cd == 1 else h15[k] + S[i]
             risk = (e - sl) * cd
             if risk <= S[i]: continue
-            e = O[i] + (S[i] if d_ == 1 else 0); sl = e - d_ * risk; tp = e + d_ * tpR * risk
+            if lim is None: e = O[i] + (S[i] if d_ == 1 else 0)
+            sl = e - d_ * risk; tp = e + d_ * tpR * risk
             x = None; z = i; nights = 0
             while z < n:
                 if z > i and day[z] != day[z - 1]:
@@ -212,6 +228,9 @@ def run_symbol(sym, mt, sw):
         sg = lambda a: np.where(dd == 1, a, 100 - a)                 # signed in the CSAK direction (sell mirrored)
         F = dict(r=sr, c=sc, k=sg(sk15[ix]), d=sg(sd15[ix]), kp=sg(sk15[ix - 1]), km=np.where(dd == 1, kmin5[ix], 100 - kmax5[ix]))
         for nm, (arr, kind) in feats.items():
+            if kind == "pair":                                         # (buy version, sell version)
+                F[nm] = np.where(dd == 1, arr[0][ix], arr[1][ix]); F[nm + "_p"] = np.where(dd == 1, arr[0][ix - 1], arr[1][ix - 1]); continue
+            if kind == "raw": F[nm] = arr[ix]; F[nm + "_p"] = arr[ix - 1]; continue
             F[nm] = sg(arr[ix]) if kind == "osc" else arr[ix] * dd
             F[nm + "_p"] = sg(arr[ix - 1]) if kind == "osc" else arr[ix - 1] * dd
         if EXTRA:
