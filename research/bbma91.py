@@ -1,8 +1,7 @@
 """Round 91 (12 Nov 2026): the CSAK as ONE candle that breaks EVERY line, last 2 years, all 30 instruments.
 
 Owner: "csak tu sebatang yang break semua".  Rounds 83-90 used open beyond min / max(mid BB, EMA 50) and close beyond
-both.  Now the lines are mid BB (20), EMA 50 and the BBMA LWMA 5 / 10 of the highs and of the lows ("all"); a BUY CSAK
-same plus the M15 EMA 90 ("all90"); a BUY CSAK opens below every line and closes above every line, not above the top
+both.  Now the lines are mid BB (20), EMA 50 and the BBMA LWMA 5 / 10 of the highs and of the lows ("all"; the owner: "ema90 tak perlu untuk csak"); a BUY CSAK opens below every line and closes above every line, not above the top
 BB (sell mirrored).  "basic" (the old definition) is kept for comparison.
 Contexts: the SOP (H4 EMA 50/90 + H4 momentum in 8 + M30 (8) / H1 (4) EMA 50 rejection with H4), and NOREJ = the CSAK
 with only the H4 EMA 50/90 direction known (WITH = CSAK in the H4 direction).  Filters none / RSI14 > 55 / CCI20 > 0 /
