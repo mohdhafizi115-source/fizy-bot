@@ -1,0 +1,395 @@
+symbol   from       to          M30-ANY trades by filter (TP 1R):         none       RSI>55       RSI>60        CCI>0      CCI>100 RSI>55+CCI>0
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+XAUUSD   2020-03-30 2026-11-12    254 PF1.06   102 PF1.73    10 PF3.97   210 PF1.18    15 PF0.32    92 PF1.71   [2 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+BTCUSD   2020-04-06 2026-11-12    360 PF0.35   146 PF0.38    18 PF0.34   302 PF0.38    25 PF0.34   139 PF0.37   [5 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURUSD   2020-03-30 2026-11-12    251 PF0.70   109 PF0.95     6 PF0.98   210 PF0.70    15 PF1.79   101 PF0.90   [7 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPUSD   2020-03-30 2026-11-12    277 PF0.68   120 PF0.57    11 PF1.28   247 PF0.65    23 PF1.55   114 PF0.55   [9 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+AUDUSD   2020-03-30 2026-11-12    268 PF0.86   115 PF0.87     5 PF0.62   237 PF0.89    16 PF0.63   106 PF0.83   [10 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+NZDUSD   2020-03-30 2026-11-12    273 PF0.69   120 PF0.66     9 PF0.51   233 PF0.76     9 PF0.65   112 PF0.68   [12 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+USDJPY   2020-03-30 2026-11-12    240 PF0.76    90 PF1.33    3 PF3320863400.00   200 PF0.84    16 PF1.83    85 PF1.36   [14 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+USDCHF   2020-03-30 2026-11-12    266 PF0.64   109 PF0.72     8 PF0.47   223 PF0.70    11 PF0.18   102 PF0.70   [16 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+USDCAD   2020-03-30 2026-11-12    268 PF0.83   124 PF0.98     6 PF0.63   212 PF1.07    14 PF0.63   112 PF0.97   [18 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURGBP   2020-03-30 2026-11-12    286 PF0.50   128 PF0.53     8 PF0.87   246 PF0.55    10 PF1.30   123 PF0.54   [20 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURJPY   2020-03-30 2026-11-12    265 PF0.76   100 PF0.92     7 PF0.91   215 PF0.71    11 PF0.15    97 PF0.85   [22 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURCHF   2020-03-30 2026-11-12    258 PF0.48    98 PF0.51     8 PF0.72   220 PF0.55    16 PF0.77    93 PF0.54   [24 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURAUD   2020-03-30 2026-11-12    284 PF0.87   112 PF0.84     8 PF1.05   234 PF0.81    15 PF0.99   106 PF0.86   [26 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURCAD   2020-03-30 2026-11-12    274 PF0.69   111 PF0.89    11 PF1.04   229 PF0.80    11 PF1.27   104 PF0.90   [28 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+EURNZD   2020-03-30 2026-11-12    298 PF0.47   126 PF0.52    17 PF0.32   260 PF0.48    21 PF0.38   121 PF0.50   [29 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPJPY   2020-03-30 2026-11-12    280 PF0.72   110 PF0.85     8 PF1.36   251 PF0.85    12 PF5.12   101 PF1.00   [31 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPCHF   2020-03-30 2026-11-12    244 PF0.54    99 PF0.63     6 PF0.68   199 PF0.54    10 PF0.69    94 PF0.64   [33 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPAUD   2020-03-30 2026-11-12    310 PF0.79   119 PF0.77    18 PF0.86   262 PF0.75    22 PF0.67   110 PF0.75   [35 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPCAD   2020-03-30 2026-11-12    279 PF0.65   118 PF0.55    10 PF0.49   234 PF0.65    13 PF0.36   110 PF0.57   [37 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+GBPNZD   2020-03-30 2026-11-12    270 PF0.64   106 PF0.72     6 PF0.17   221 PF0.72    12 PF0.21   101 PF0.66   [39 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+AUDJPY   2020-03-30 2026-11-12    293 PF0.89   111 PF0.82     7 PF1.59   249 PF0.90     7 PF0.32   105 PF0.79   [40 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+AUDCHF   2020-03-30 2026-11-12    279 PF0.70   105 PF0.75     4 PF0.17   232 PF0.64     9 PF0.36    98 PF0.78   [42 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+AUDCAD   2020-03-30 2026-11-12    296 PF0.68   110 PF0.90     7 PF0.85   236 PF0.69    18 PF0.91   101 PF0.85   [44 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+AUDNZD   2020-03-30 2026-11-12    323 PF0.60   127 PF0.55     7 PF0.76   268 PF0.55    13 PF0.15   117 PF0.54   [46 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+NZDJPY   2020-03-30 2026-11-12    273 PF0.68    98 PF0.71     6 PF0.13   233 PF0.72    14 PF1.19    95 PF0.73   [48 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+NZDCHF   2020-03-30 2026-11-12    272 PF0.57   108 PF0.64     3 PF2.65   223 PF0.65     9 PF1.50   101 PF0.74   [50 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+NZDCAD   2020-03-30 2026-11-12    288 PF0.45   126 PF0.60     7 PF2.07   249 PF0.47    12 PF2.15   118 PF0.59   [52 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+CADJPY   2020-03-30 2026-11-12    256 PF0.64   101 PF0.75     5 PF0.62   217 PF0.63     9 PF0.40    90 PF0.70   [54 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+CADCHF   2020-03-30 2026-11-12    278 PF0.59   112 PF0.75     5 PF0.44   232 PF0.63    14 PF0.72   105 PF0.81   [56 s]
+/home/runner/work/fizy-bot/fizy-bot/research/bbma87.py:58: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  day = T.normalize().values; wd = T.dayofweek.values
+CHFJPY   2020-03-30 2026-11-12    316 PF0.77   112 PF0.82    10 PF2.05   259 PF0.71    11 PF0.80   101 PF0.80   [58 s]
+
+===== POOLED over all symbols, in R (1R = the risk of each trade). half split 2023-07-01. 'sym>1' = symbols with PF($) > 1 among those with >= 10 trades; '12m+' = symbols positive in the last 12 months =====
+variant                                      trades   /wk win%  PF R half1 half2 stress |  R 12m  R 3m  R all |   sym>1    12m+
+M30 | ANY | none | TP 1R                       8379  24.4   39  0.64  0.63  0.64   0.54 |   -235   -47  -1877 |   1/30    3/30 
+M30 | ANY | none RANDOM dir | TP 1R            8228  24.0   40  0.67  0.65  0.68   0.56 |   -255   -42  -1666 |   1/30    5/30 
+M30 | ANY | none | TP 2R                       8098  23.6   26  0.66  0.66  0.67   0.58 |   -297   -68  -2070 |   0/30    6/30 
+M30 | ANY | none RANDOM dir | TP 2R            7720  22.5   27  0.70  0.70  0.70   0.62 |   -323  -121  -1715 |   2/30    4/30 
+M30 | ANY | RSI>55 | TP 1R                     3372   9.8   41  0.70  0.66  0.74   0.61 |    -26   -21   -591 |   2/30   17/30 
+M30 | ANY | RSI>55 RANDOM dir | TP 1R          3339   9.7   41  0.70  0.71  0.70   0.61 |    -76   -27   -585 |   3/30    7/30 
+M30 | ANY | RSI>55 | TP 2R                     3322   9.7   28  0.72  0.69  0.75   0.65 |    -21    -8   -679 |   6/30   13/30 
+M30 | ANY | RSI>55 RANDOM dir | TP 2R          3212   9.4   29  0.76  0.79  0.73   0.68 |    -71   -22   -562 |   7/30   15/30 
+M30 | ANY | RSI>60 | TP 1R                      244   0.7   43  0.73  0.72  0.74   0.67 |     +5    -1    -38 |   4/8     4/8  
+M30 | ANY | RSI>60 RANDOM dir | TP 1R           244   0.7   47  0.86  0.98  0.75   0.79 |     +3    +3    -17 |   2/8     4/8  
+M30 | ANY | RSI>60 | TP 2R                      243   0.7   33  0.93  1.06  0.79   0.87 |     +7    -2    -11 |   3/8     4/8  
+M30 | ANY | RSI>60 RANDOM dir | TP 2R           244   0.7   31  0.88  0.96  0.80   0.82 |     -0    +1    -19 |   2/8     2/8  
+M30 | ANY | CCI>0 | TP 1R                      7043  20.5   40  0.65  0.64  0.66   0.55 |   -190   -36  -1494 |   2/30   10/30 
+M30 | ANY | CCI>0 | TP 2R                      6832  19.9   26  0.67  0.65  0.69   0.59 |   -209   -46  -1711 |   3/30    9/30 
+M30 | ANY | CCI>100 | TP 1R                     413   1.2   39  0.63  0.61  0.64   0.54 |     -4    -2    -95 |   8/25   10/25 
+M30 | ANY | CCI>100 | TP 2R                     413   1.2   27  0.70  0.63  0.77   0.63 |    +11    +1    -91 |   9/25   13/25 
+M30 | ANY | RSI>55+CCI>0 | TP 1R               3154   9.2   42  0.70  0.66  0.74   0.61 |    -27   -19   -551 |   3/30   17/30 
+M30 | ANY | RSI>55+CCI>0 | TP 2R               3116   9.1   27  0.72  0.68  0.75   0.65 |    -27    -7   -648 |   6/30   14/30 
+M30 | ANY | RSI>55 RANDOM mask x3 | TP 1R      9423  27.5   39  0.62  0.60  0.64   0.52 |   -104   -27   -743 |   0/30    6/30 
+M30 | ANY | RSI>55 RANDOM mask x3 | TP 2R      9298  27.1   25  0.64  0.62  0.66   0.56 |   -134   -32   -846 |   0/30    5/30 
+M30 | ANY | RSI>60 RANDOM mask x3 | TP 1R       738   2.2   36  0.58  0.60  0.57   0.49 |    -12    -0    -67 |   3/28    8/28 
+M30 | ANY | RSI>60 RANDOM mask x3 | TP 2R       738   2.2   24  0.60  0.55  0.63   0.53 |    -10    +1    -79 |   6/28    7/28 
+M30 | WITH | none | TP 1R                      6256  18.2   39  0.63  0.61  0.65   0.53 |   -183   -24  -1431 |   1/30    6/30 
+M30 | WITH | none | TP 2R                      6098  17.8   25  0.64  0.64  0.65   0.57 |   -255   -58  -1657 |   0/30    5/30 
+M30 | WITH | RSI>55 | TP 1R                    1649   4.8   42  0.71  0.66  0.75   0.62 |    -17    +5   -284 |   5/30   10/30 
+M30 | WITH | RSI>55 | TP 2R                    1637   4.8   26  0.68  0.69  0.67   0.62 |    -55    +4   -390 |   4/30    8/30 
+M30 | WITH | RSI>60 | TP 1R                      92   0.3   41  0.71  0.92  0.52   0.64 |     -3    -1    -16 |   0/0     0/0  
+M30 | WITH | RSI>60 | TP 2R                      92   0.3   28  0.79  1.25  0.40   0.73 |     -6    -0    -14 |   0/0     0/0  
+M30 | WITH | CCI>0 | TP 1R                     4700  13.7   40  0.65  0.62  0.67   0.54 |   -108   -13  -1022 |   2/30    9/30 
+M30 | WITH | CCI>0 | TP 2R                     4627  13.5   26  0.65  0.64  0.66   0.57 |   -158   -34  -1235 |   0/30   11/30 
+M30 | WITH | CCI>100 | TP 1R                    216   0.6   40  0.66  0.55  0.74   0.56 |     -5    -2    -45 |   4/8     4/8  
+M30 | WITH | CCI>100 | TP 2R                    216   0.6   26  0.67  0.47  0.83   0.60 |     +1    -2    -54 |   2/8     5/8  
+M30 | WITH | RSI>55+CCI>0 | TP 1R              1549   4.5   42  0.71  0.67  0.75   0.62 |    -15    +6   -265 |   6/30   13/30 
+M30 | WITH | RSI>55+CCI>0 | TP 2R              1538   4.5   26  0.68  0.69  0.67   0.61 |    -53    +4   -372 |   4/30   10/30 
+M30 | AGAINST | none | TP 1R                   5780  16.8   40  0.65  0.65  0.65   0.55 |   -179   -61  -1223 |   3/30    7/30 
+M30 | AGAINST | none | TP 2R                   5658  16.5   26  0.68  0.67  0.69   0.60 |   -177   -49  -1347 |   3/30   11/30 
+M30 | AGAINST | RSI>55 | TP 1R                 2006   5.8   42  0.70  0.66  0.75   0.61 |    -10   -27   -349 |   6/30   19/30 
+M30 | AGAINST | RSI>55 | TP 2R                 1995   5.8   29  0.76  0.69  0.84   0.69 |    +24   -17   -340 |  10/30   20/30 
+M30 | AGAINST | RSI>60 | TP 1R                  153   0.4   44  0.76  0.63  0.94   0.69 |     +8    +0    -21 |   1/3     1/3  
+M30 | AGAINST | RSI>60 | TP 2R                  153   0.4   36  1.06  0.96  1.20   0.99 |    +13    -2     +6 |   0/3     1/3  
+M30 | AGAINST | CCI>0 | TP 1R                  4319  12.6   40  0.66  0.66  0.67   0.55 |   -125   -47   -883 |   3/30   12/30 
+M30 | AGAINST | CCI>0 | TP 2R                  4268  12.4   27  0.69  0.68  0.71   0.61 |   -101   -34   -978 |   5/30   12/30 
+M30 | AGAINST | CCI>100 | TP 1R                 203   0.6   37  0.60  0.69  0.52   0.52 |     +1    +0    -50 |   0/4     1/4  
+M30 | AGAINST | CCI>100 | TP 2R                 203   0.6   27  0.73  0.82  0.64   0.66 |    +10    +3    -39 |   0/4     1/4  
+M30 | AGAINST | RSI>55+CCI>0 | TP 1R           1842   5.4   42  0.71  0.65  0.77   0.61 |     -6   -25   -317 |   6/30   18/30 
+M30 | AGAINST | RSI>55+CCI>0 | TP 2R           1837   5.4   29  0.76  0.67  0.85   0.68 |    +23   -15   -317 |  10/30   21/30 
+H1 | ANY | none | TP 1R                        3116   9.1   39  0.63  0.63  0.63   0.54 |   -102    -9   -704 |   2/30    9/30 
+H1 | ANY | none RANDOM dir | TP 1R             3081   9.0   40  0.66  0.64  0.68   0.56 |   -134   -35   -635 |   2/30    6/30 
+H1 | ANY | none | TP 2R                        3048   8.9   26  0.66  0.64  0.68   0.58 |   -104   -15   -782 |   0/30    9/30 
+H1 | ANY | none RANDOM dir | TP 2R             2952   8.6   26  0.66  0.67  0.64   0.58 |   -151   -35   -767 |   5/30    6/30 
+H1 | ANY | RSI>55 | TP 1R                      1243   3.6   42  0.70  0.65  0.75   0.61 |    -17    -3   -217 |   9/30   12/30 
+H1 | ANY | RSI>55 RANDOM dir | TP 1R           1234   3.6   43  0.74  0.72  0.76   0.65 |    -27    +3   -183 |  10/30   14/30 
+H1 | ANY | RSI>55 | TP 2R                      1233   3.6   27  0.70  0.67  0.73   0.63 |    -25    -9   -273 |   6/30   11/30 
+H1 | ANY | RSI>55 RANDOM dir | TP 2R           1218   3.5   26  0.66  0.63  0.68   0.59 |    -53   -20   -311 |   4/30    9/30 
+H1 | ANY | RSI>60 | TP 1R                        99   0.3   40  0.68  0.74  0.63   0.62 |     -0    +2    -19 |   0/0     0/0  
+H1 | ANY | RSI>60 RANDOM dir | TP 1R             99   0.3   44  0.81  0.95  0.68   0.73 |     -2    -2    -10 |   0/0     0/0  
+H1 | ANY | RSI>60 | TP 2R                        99   0.3   30  0.78  0.73  0.83   0.73 |     +5    +4    -15 |   0/0     0/0  
+H1 | ANY | RSI>60 RANDOM dir | TP 2R             99   0.3   37  1.04  1.12  0.96   0.97 |     +5    +1     +2 |   0/0     0/0  
+H1 | ANY | CCI>0 | TP 1R                       2615   7.6   40  0.64  0.61  0.67   0.54 |    -76    -3   -569 |   4/30    8/30 
+H1 | ANY | CCI>0 | TP 2R                       2568   7.5   26  0.65  0.62  0.69   0.58 |    -91    -9   -674 |   1/30    6/30 
+H1 | ANY | CCI>100 | TP 1R                      141   0.4   43  0.73  0.78  0.70   0.63 |     -4    -1    -22 |   0/2     0/2  
+H1 | ANY | CCI>100 | TP 2R                      141   0.4   28  0.73  0.69  0.76   0.65 |     -1    -3    -27 |   0/2     0/2  
+H1 | ANY | RSI>55+CCI>0 | TP 1R                1145   3.3   42  0.70  0.63  0.78   0.62 |     -9    +1   -198 |   8/30   14/30 
+H1 | ANY | RSI>55+CCI>0 | TP 2R                1135   3.3   27  0.71  0.66  0.76   0.64 |    -20    -5   -242 |   5/30   12/30 
+H1 | ANY | RSI>55 RANDOM mask x3 | TP 1R       3601  10.5   40  0.66  0.65  0.66   0.56 |    -39   -13   -249 |   1/30   11/30 
+H1 | ANY | RSI>55 RANDOM mask x3 | TP 2R       3573  10.4   26  0.67  0.66  0.68   0.59 |    -48   -21   -295 |   2/30    9/30 
+H1 | ANY | RSI>60 RANDOM mask x3 | TP 1R        228   0.7   43  0.73  0.78  0.69   0.62 |     -0    +1    -12 |   1/9     3/9  
+H1 | ANY | RSI>60 RANDOM mask x3 | TP 2R        227   0.7   29  0.78  0.83  0.73   0.69 |     -1    -1    -13 |   4/9     1/9  
+H1 | WITH | none | TP 1R                       2316   6.7   40  0.65  0.66  0.64   0.55 |    -55    +5   -495 |   2/30    8/30 
+H1 | WITH | none | TP 2R                       2290   6.7   26  0.68  0.68  0.68   0.60 |    -69    +5   -547 |   3/30    9/30 
+H1 | WITH | RSI>55 | TP 1R                      704   2.1   41  0.69  0.60  0.78   0.60 |     -4    +4   -131 |  11/30   15/30 
+H1 | WITH | RSI>55 | TP 2R                      702   2.0   26  0.68  0.65  0.71   0.62 |    -19    +4   -164 |   9/30   11/30 
+H1 | WITH | RSI>60 | TP 1R                       39   0.1   36  0.59  0.96  0.39   0.54 |     -1    +2    -10 |   0/0     0/0  
+H1 | WITH | RSI>60 | TP 2R                       39   0.1   23  0.56  0.73  0.46   0.52 |     +1    +4    -13 |   0/0     0/0  
+H1 | WITH | CCI>0 | TP 1R                      1876   5.5   40  0.65  0.64  0.66   0.55 |    -40    +4   -401 |   6/30   13/30 
+H1 | WITH | CCI>0 | TP 2R                      1860   5.4   26  0.68  0.67  0.69   0.60 |    -47    +8   -447 |   3/30   12/30 
+H1 | WITH | CCI>100 | TP 1R                      98   0.3   47  0.85  0.93  0.81   0.73 |     -2    +0     -8 |   0/0     0/0  
+H1 | WITH | CCI>100 | TP 2R                      98   0.3   30  0.79  0.68  0.84   0.70 |     +1    -2    -15 |   0/0     0/0  
+H1 | WITH | RSI>55+CCI>0 | TP 1R                671   2.0   41  0.68  0.59  0.78   0.60 |     -1    +5   -127 |  10/30   15/30 
+H1 | WITH | RSI>55+CCI>0 | TP 2R                669   1.9   26  0.67  0.63  0.71   0.61 |    -14    +5   -163 |   9/30   11/30 
+H1 | AGAINST | none | TP 1R                    2056   6.0   39  0.63  0.61  0.65   0.53 |    -97   -23   -467 |   4/30    8/30 
+H1 | AGAINST | none | TP 2R                    2029   5.9   26  0.66  0.64  0.68   0.58 |   -101   -33   -518 |   3/30    9/30 
+H1 | AGAINST | RSI>55 | TP 1R                   619   1.8   42  0.71  0.66  0.75   0.62 |    -15    -8   -104 |   7/30   10/30 
+H1 | AGAINST | RSI>55 | TP 2R                   616   1.8   28  0.71  0.64  0.77   0.64 |    -10   -13   -131 |   7/30   11/30 
+H1 | AGAINST | RSI>60 | TP 1R                    60   0.2   43  0.74  0.64  0.88   0.68 |     +1    +0     -9 |   0/0     0/0  
+H1 | AGAINST | RSI>60 | TP 2R                    60   0.2   35  0.94  0.73  1.23   0.88 |     +4    +0     -2 |   0/0     0/0  
+H1 | AGAINST | CCI>0 | TP 1R                   1386   4.0   40  0.66  0.60  0.71   0.55 |    -52   -10   -287 |   5/30   13/30 
+H1 | AGAINST | CCI>0 | TP 2R                   1375   4.0   27  0.68  0.62  0.73   0.60 |    -55   -21   -330 |   6/30    8/30 
+H1 | AGAINST | CCI>100 | TP 1R                   43   0.1   33  0.50  0.58  0.42   0.43 |     -2    -1    -14 |   0/0     0/0  
+H1 | AGAINST | CCI>100 | TP 2R                   43   0.1   23  0.61  0.69  0.52   0.54 |     -2    -1    -12 |   0/0     0/0  
+H1 | AGAINST | RSI>55+CCI>0 | TP 1R             538   1.6   43  0.74  0.64  0.83   0.64 |     -8    -4    -81 |  10/30   13/30 
+H1 | AGAINST | RSI>55+CCI>0 | TP 2R             535   1.6   29  0.76  0.67  0.86   0.69 |     -5    -9    -91 |  11/30   12/30 
+ALL | CSAK only | none | TP 1R                90355 263.3   40  0.67  0.67  0.68   0.57 |  -2841  -547 -17765 |   0/30    2/30 
+ALL | CSAK only | RSI>55 | TP 1R              38119 111.1   42  0.72  0.72  0.72   0.63 |  -1061  -217  -6250 |   1/30    1/30 
+ALL | CSAK only | RSI>60 | TP 1R               2676   7.8   43  0.74  0.74  0.73   0.67 |    -89   -36   -404 |   7/30   10/30 
+
+--- per symbol: M30 | ANY | RSI>55 | 1R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD    102  1.73  0.93  2.41     +203    +209    -18     -18      7.37
+BTCUSD    146  0.38  0.19  0.76     -354     +28     -6     -22      5.50
+EURUSD    109  0.95  1.26  0.70       -4      -4     -3      -3      1.33
+GBPUSD    120  0.57  0.33  1.02      -55      +5     +2      -6      1.74
+AUDUSD    115  0.87  0.85  0.89       -9      +3     +2      -2      1.13
+NZDUSD    120  0.66  0.41  0.98      -29      +2     -1      -2      1.18
+USDJPY     90  1.33  0.90  1.70      +14      +0     -2      -3      1.09
+USDCHF    109  0.72  0.66  0.79      -27      +0     -1      -4      1.56
+USDCAD    124  0.98  0.92  1.06       -1      +1     +0      -3      1.04
+EURGBP    128  0.53  0.57  0.47      -53      -4     -1      -4      1.37
+EURJPY    100  0.92  1.19  0.75       -5      -8     -2      -3      1.14
+EURCHF     98  0.51  0.47  0.54      -39      +0     +1      -5      1.20
+EURAUD    112  0.84  0.66  1.10      -13      -4     -0      -3      1.36
+EURCAD    111  0.89  0.85  0.93       -8      -5     -1      -4      1.29
+EURNZD    126  0.52  0.41  0.66      -57      +3     -0      -4      1.41
+GBPJPY    110  0.85  0.81  0.90      -14      +3     +3      -4      1.57
+GBPCHF     99  0.63  0.84  0.46      -38      -4     -1      -4      1.71
+GBPAUD    119  0.77  0.73  0.82      -27      +9     +0     -12      1.74
+GBPCAD    118  0.55  0.55  0.55      -50      -2     +1      -4      1.49
+GBPNZD    106  0.72  0.56  0.90      -26      -3     +4      -4      1.50
+AUDJPY    111  0.82  0.89  0.76      -11      -4     -0      -2      1.00
+AUDCHF    105  0.75  0.66  0.90      -17      +1     -1      -3      1.16
+AUDCAD    110  0.90  0.79  1.02       -5      +3     +1      -2      0.90
+AUDNZD    127  0.55  0.74  0.39      -23      -5     -2      -2      0.61
+NZDJPY     98  0.71  0.83  0.58      -16     -11     -3      -2      0.93
+NZDCHF    108  0.64  0.57  0.80      -29      +2     +2      -2      1.20
+NZDCAD    126  0.60  0.53  0.71      -25      +1     -0      -2      0.81
+CADJPY    101  0.75  1.75  0.41      -14      -8     -3      -2      1.00
+CADCHF    112  0.75  0.73  0.78      -18      +1     -1      -2      1.20
+CHFJPY    112  0.82  1.02  0.63      -14      -1     -1      -5      1.33
+by year (pooled R): 2020:0.81(-39) 2021:0.62(-118) 2022:0.58(-139) 2023:0.76(-71) 2024:0.67(-102) 2025:0.67(-104) 2026:0.92(-18)
+
+--- per symbol: M30 | ANY | RSI>60 | 1R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD     10  3.97  2.10  4.57     +119    +120     +0     -18     19.85
+BTCUSD     18  0.34  0.35  0.33      -70      +0     +0     -22      7.99
+EURUSD      6  0.98  1.75  0.00       -0      -2     +0      -2      1.89
+GBPUSD     11  1.28  0.18 14173600000.00       +4      +0     +0      -6      2.68
+AUDUSD      5  0.62  0.00  1.81       -2      +4     +0      -2      1.98
+NZDUSD      9  0.51  0.00  1.61       -5      +2     -2      -2      1.51
+USDJPY      3 3320863400.00 3320863400.00  0.00       +3      +0     +0      +1      1.11
+USDCHF      8  0.47  0.52  0.00       -7      +0     +0      -4      2.47
+USDCAD      6  0.63  0.00  1.08       -2      +2     +0      -2      1.27
+EURGBP      8  0.87  1.40  0.29       -1      +0     +0      -2      1.67
+EURJPY      7  0.91  3.65  0.00       -0      -2     +0      -2      1.37
+EURCHF      8  0.72  1.35  0.00       -2      +0     +0      -2      1.46
+EURAUD      8  1.05  1.30  0.69       +0      +1     +0      -2      1.74
+EURCAD     11  1.04  1.12  0.92       +0      +3     +1      -2      1.94
+EURNZD     17  0.32  0.09  0.74      -14      -0     +0      -3      1.61
+GBPJPY      8  1.36  0.94  1.85       +3      +2     +0      -4      2.20
+GBPCHF      6  0.68 4262761270.00  0.21       -3      +0     +0      -4      2.42
+GBPAUD     18  0.86  0.90  0.79       -3      +2     +0      -4      2.42
+GBPCAD     10  0.49  0.66  0.19       -7      +0     +0      -3      2.00
+GBPNZD      6  0.17  0.00  0.61      -10      -1     -1      -3      2.24
+AUDJPY      7  1.59  0.73  4.18       +2      +2     +2      -1      1.32
+AUDCHF      4  0.17  0.00  0.80       -4      +1     +0      -2      1.38
+AUDCAD      7  0.85  0.00  1.08       -1      +2     +0      -2      1.30
+AUDNZD      7  0.76  2.64  0.23       -1      -2     -1      -1      0.78
+NZDJPY      6  0.13  0.33  0.00       -5      -2     +0      -2      1.18
+NZDCHF      3  2.65  2.65  0.00       +3      +0     +0      -2      2.34
+NZDCAD      7  2.07  0.83  6.12       +3      +1     +0      -1      1.37
+CADJPY      5  0.62  0.00  0.62       -1      +1     +0      -2      1.20
+CADCHF      5  0.44  0.53  0.00       -2      -1     +0      -2      1.76
+CHFJPY     10  2.05  1.66  2.89       +6      +2     +0      -2      1.61
+by year (pooled R): 2020:1.02(+0) 2021:0.42(-12) 2022:0.72(-7) 2023:0.54(-12) 2024:0.80(-4) 2025:0.46(-10) 2026:1.70(+8)
+
+--- per symbol: M30 | ANY | RSI>55 | 2R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD     98  1.42  0.78  1.84     +178    +235    -18     -41      7.35
+BTCUSD    144  0.50  0.25  0.92     -306     +50     +8     -22      5.44
+EURUSD    106  1.10  1.66  0.66       +9      -3     -2      -3      1.34
+GBPUSD    118  0.62  0.43  0.92      -58      -2     +4      -6      1.74
+AUDUSD    114  0.84  1.02  0.64      -14      -2     +2      -2      1.12
+NZDUSD    120  0.48  0.45  0.51      -57      -1     +1      -3      1.18
+USDJPY     88  1.15  0.58  1.68       +9      +4     -2      -3      1.08
+USDCHF    106  0.76  0.87  0.65      -28      -1     -7      -4      1.56
+USDCAD    124  0.82  0.72  0.94      -16      +3     +1      -3      1.04
+EURGBP    126  0.43  0.36  0.53      -80      -6     -1      -6      1.38
+EURJPY     98  1.16  1.18  1.14      +11      -3     +0      -3      1.12
+EURCHF     98  0.55  0.56  0.55      -43      -4     +2      -5      1.20
+EURAUD    110  1.14  0.86  1.55      +13      +6     +2      -3      1.35
+EURCAD    109  0.94  0.95  0.92       -6      -6     +1      -4      1.29
+EURNZD    124  0.73  0.59  0.89      -34      +3     +0      -4      1.41
+GBPJPY    109  0.78  0.70  0.89      -26      +8     +8      -4      1.57
+GBPCHF     96  0.50  0.59  0.42      -65      -5     +1      -4      1.71
+GBPAUD    117  0.61  0.66  0.55      -61     +17     -3     -12      1.74
+GBPCAD    116  0.58  0.64  0.51      -55      -9     -0      -4      1.49
+GBPNZD    104  0.62  0.46  0.79      -44      -7     +3      -4      1.51
+AUDJPY    111  0.88  1.17  0.63       -9      -5     -3      -2      1.00
+AUDCHF    104  0.86  0.94  0.74      -12      +0     -2      -3      1.17
+AUDCAD    107  1.10  0.78  1.56       +6      +8     +2      -2      0.89
+AUDNZD    125  0.45  0.45  0.46      -35      -2     -2      -2      0.61
+NZDJPY     97  0.63  0.78  0.47      -25     -12     -3      -2      0.91
+NZDCHF    108  0.74  0.64  0.98      -24      +2     +1      -2      1.20
+NZDCAD    123  0.66  0.53  0.84      -26      +1     +1      -2      0.81
+CADJPY     98  0.65  1.10  0.44      -25      -5     -3      -2      0.99
+CADCHF    112  0.79  0.75  0.83      -19      +2     +1      -2      1.20
+CHFJPY    112  0.82  0.99  0.64      -18      -1     -1      -5      1.33
+by year (pooled R): 2020:0.84(-42) 2021:0.58(-156) 2022:0.63(-141) 2023:0.76(-87) 2024:0.63(-139) 2025:0.70(-116) 2026:1.01(+2)
+
+--- per symbol: M30 | AGAINST | none | 1R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD    174  1.19  0.75  1.53      +82    +159    -21     -22      5.41
+BTCUSD    254  0.37  0.23  0.64     -544     -14     -9     -22      4.74
+EURUSD    162  0.83  0.77  0.92      -15      +2     -4      -3      1.02
+GBPUSD    195  0.79  0.64  1.13      -33      +6     +2      -6      1.44
+AUDUSD    164  0.69  0.55  0.87      -29      +0     +1      -2      0.95
+NZDUSD    188  0.70  0.67  0.75      -32      -3     -1      -2      0.97
+USDJPY    153  0.75  0.69  0.80      -17      -1     -2      -4      0.80
+USDCHF    181  0.69  0.72  0.66      -39      -3     -3      -3      1.17
+USDCAD    183  0.97  1.04  0.89       -2      -3     +1      -3      0.88
+EURGBP    209  0.59  0.68  0.50      -59     -10     -3      -4      1.11
+EURJPY    185  0.88  0.94  0.85      -11      +2     -2      -3      0.91
+EURCHF    182  0.60  0.53  0.67      -49     -12     -2      -4      1.03
+EURAUD    193  0.84  0.87  0.81      -19      -6     -2      -3      1.15
+EURCAD    176  0.59  0.58  0.60      -43     -10     -4      -5      0.98
+EURNZD    221  0.58  0.62  0.54      -67      -8     +0      -4      1.15
+GBPJPY    191  1.01  0.81  1.27       +1      -8     -7      -4      1.18
+GBPCHF    173  0.76  0.79  0.72      -34      -2     -8      -3      1.40
+GBPAUD    213  1.01  0.96  1.07       +2      -5     -1      -4      1.33
+GBPCAD    195  0.74  0.93  0.53      -35      -3     +2      -4      1.19
+GBPNZD    181  0.76  0.78  0.74      -29      -8     -1      -4      1.19
+AUDJPY    195  0.97  0.97  0.96       -2      +1     +2      -3      0.76
+AUDCHF    195  0.53  0.40  0.73      -55      -2     -1      -3      0.93
+AUDCAD    211  0.65  0.75  0.57      -30      -0     +3      -2      0.68
+AUDNZD    240  0.55  0.67  0.42      -36      -4     -3      -2      0.51
+NZDJPY    184  0.65  0.77  0.54      -30     -16     -5      -3      0.75
+NZDCHF    194  0.70  0.63  0.85      -34      +2     +0      -3      0.99
+NZDCAD    205  0.50  0.56  0.43      -50      -3     -2      -2      0.70
+CADJPY    170  0.69  0.95  0.50      -24      -6     -2      -2      0.80
+CADCHF    187  0.64  0.66  0.61      -38      -5     -3      -2      0.91
+CHFJPY    226  0.85  1.07  0.71      -18      -4     -2      -4      1.00
+by year (pooled R): 2020:0.68(-113) 2021:0.60(-213) 2022:0.73(-150) 2023:0.59(-236) 2024:0.62(-204) 2025:0.72(-153) 2026:0.64(-154)
+
+--- per symbol: M30 | AGAINST | RSI>55 | 1R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD     71  1.61  0.76  2.26     +130    +157    -18     -18      7.77
+BTCUSD     92  0.38  0.28  0.53     -242     +12     -7     -22      6.10
+EURUSD     60  0.85  1.14  0.55       -6      -1     -3      -2      1.28
+GBPUSD     67  0.59  0.31  1.39      -31      +1     +2      -6      1.79
+AUDUSD     63  0.85  0.67  1.10       -6      +4     +1      -2      1.12
+NZDUSD     73  0.60  0.38  0.85      -22      +2     -0      -2      1.20
+USDJPY     53  1.22  0.95  1.52       +5      +1     -2      -3      0.96
+USDCHF     53  0.61  0.79  0.46      -20      +1     -2      -3      1.54
+USDCAD     75  1.09  1.07  1.11       +3      +2     +0      -3      1.09
+EURGBP     85  0.62  0.65  0.59      -28      -2     -0      -4      1.47
+EURJPY     65  0.86  1.22  0.68       -6      -6     -2      -3      1.10
+EURCHF     51  0.73  0.78  0.69      -11      +2     -0      -5      1.27
+EURAUD     56  0.82  0.72  0.97       -8      -1     -1      -3      1.45
+EURCAD     65  0.63  0.47  0.80      -17      -3     -2      -2      1.19
+EURNZD     80  0.60  0.58  0.61      -28      +1     +0      -4      1.39
+GBPJPY     65  1.35  1.02  1.84      +15      +7     -2      -4      1.51
+GBPCHF     53  1.16  1.33  1.01       +6      +3     -2      -3      1.52
+GBPAUD     69  0.88  0.55  1.36       -7      +2     -1      -4      1.61
+GBPCAD     77  0.69  0.81  0.57      -20      +2     +3      -4      1.45
+GBPNZD     66  0.54  0.44  0.71      -29      -3     -1      -4      1.48
+AUDJPY     62  0.99  0.85  1.12       -0      -0     -0      -1      0.98
+AUDCHF     63  0.54  0.43  0.78      -21      +2     -1      -3      1.14
+AUDCAD     62  0.92  0.86  0.97       -2      +3     +1      -2      0.82
+AUDNZD     79  0.50  0.65  0.38      -16      -2     -2      -2      0.58
+NZDJPY     65  0.58  0.79  0.41      -16      -8     -3      -2      0.91
+NZDCHF     64  0.71  0.48  1.29      -12      +1     +2      -3      1.16
+NZDCAD     86  0.67  0.54  0.89      -14      +1     -0      -2      0.80
+CADJPY     65  0.70  1.12  0.49      -10      -3     -2      -2      0.91
+CADCHF     58  0.74  0.63  0.88      -10      -1     -1      -2      1.17
+CHFJPY     63  1.25  1.53  0.98       +9      +1     +0      -3      1.30
+by year (pooled R): 2020:0.76(-30) 2021:0.63(-67) 2022:0.58(-81) 2023:0.76(-44) 2024:0.63(-72) 2025:0.74(-47) 2026:0.94(-8)
+
+--- per symbol: H1 | ANY | RSI>55 | 1R  ($ per 0.01 lot) ---
+sym         n   PF$ half1 half2     net$    12m$    3m$  worst$ avg risk$
+XAUUSD     25  1.60  1.66  1.56      +38     +25     +9     -17      6.40
+BTCUSD     63  0.57  0.31  0.94      -89      +2     -6     -17      5.17
+EURUSD     33  0.55  0.89  0.27      -16      -1     -1      -6      1.63
+GBPUSD     41  0.38  0.21  0.64      -33      -6     +1      -5      1.89
+AUDUSD     45  0.85  0.71  1.02       -4      +2     +1      -3      1.16
+NZDUSD     37  0.75  0.67  0.92       -6      +1     +0      -2      1.16
+USDJPY     37  1.01  1.33  0.87       +0      -4     -3      -3      1.40
+USDCHF     29  1.02  0.87  1.37       +0      +2     +0      -3      1.69
+USDCAD     42  0.70  0.92  0.57       -9      -4     -1      -3      1.14
+EURGBP     49  0.86  1.16  0.58       -6      -4     -2      -3      1.52
+EURJPY     28  1.17  1.18  1.16       +3      -0     -1      -2      1.42
+EURCHF     40  0.38  0.33  0.46      -22      +1     +1      -3      1.25
+EURAUD     38  1.33  1.26  1.43       +7      +3     +0      -2      1.48
+EURCAD     44  0.81  0.37  1.74       -6      +4     +1      -3      1.32
+EURNZD     52  0.73  0.49  1.05      -10      -2     +1      -2      1.26
+GBPJPY     47  0.83  0.66  0.99       -7      +6     -1      -4      1.80
+GBPCHF     41  0.29  0.46  0.16      -46      -1     -2      -5      2.06
+GBPAUD     48  0.65  0.93  0.37      -18      -4     -0      -4      1.76
+GBPCAD     36  0.71  0.26  1.57      -10      +5     +1      -3      1.74
+GBPNZD     47  0.52  0.26  1.08      -28      +8     +9     -13      1.88
+AUDJPY     40  1.12  1.93  0.60       +2      -2     +0      -2      1.11
+AUDCHF     37  0.57  0.56  0.58      -12      -1     +0      -3      1.19
+AUDCAD     46  1.03  1.45  0.70       +1      -2     +1      -2      0.92
+AUDNZD     54  0.40  0.42  0.39      -15      -4     +0      -1      0.63
+NZDJPY     28  0.64  0.22  1.12       -7      -4     -1      -2      1.12
+NZDCHF     53  0.79  0.89  0.65       -8      +1     +1      -2      1.23
+NZDCAD     46  0.54  0.41  0.75      -11      -2     -1      -1      0.79
+CADJPY     37  1.24  0.51  2.20       +5      -1     -1      -2      1.19
+CADCHF     42  1.11  1.20  1.03       +3      -1     -1      -2      1.39
+CHFJPY     38  0.94  1.35  0.56       -2      -4     -2      -5      1.43
+by year (pooled R): 2020:0.88(-8) 2021:0.57(-47) 2022:0.60(-49) 2023:0.66(-38) 2024:0.71(-37) 2025:0.77(-24) 2026:0.84(-13)
+
+done in 58 s
