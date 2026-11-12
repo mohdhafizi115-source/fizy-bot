@@ -35,6 +35,15 @@ SYMS = ("XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,E
 MIDDAY = pd.Timestamp("2023-07-01")
 FEAT = None         # optional f(X15) -> {name: (array over M15 bars, "osc" | "sym")}, set by later rounds (bbma90)
 RAND_EXTRA = True
+CSAK_MODE = "basic"  # "basic": mid BB + EMA 50; "all": + LWMA 5 / 10 of highs and lows; "all90": + EMA 90 too (bbma91)
+RTFS = ((30, "M30", 8), (60, "H1", 4))   # rejection TFs; (0, "NOREJ", 0) = CSAK + H4 direction only (bbma91)
+
+
+def lwma(a, n):
+    w = np.arange(1, n + 1, dtype=float)
+    out = np.full(len(a), np.nan)
+    if len(a) >= n: out[n - 1:] = np.convolve(a, w[::-1], mode="valid") / w.sum()
+    return out
 EXTRA = None        # optional list of (name, f(F)) filters on a feature dict, set by later rounds (bbma89)
 FILTS = (("none", lambda r, c: np.ones_like(r, bool)), ("RSI>55", lambda r, c: r > 55), ("RSI>60", lambda r, c: r > 60),
          ("CCI>0", lambda r, c: c > 0), ("CCI>100", lambda r, c: c > 100), ("RSI>55+CCI>0", lambda r, c: (r > 55) & (c > 0)))
@@ -76,6 +85,9 @@ def run_symbol(sym, mt, sw):
     kmin5, kmax5 = pd.Series(sk15).rolling(5).min().values, pd.Series(sk15).rolling(5).max().values
     feats = FEAT(X15) if FEAT else {}
     lo_, hi_ = np.minimum(mid15, e15), np.maximum(mid15, e15)
+    if CSAK_MODE in ("all", "all90"):
+        lines = [mid15, e15, lwma(h15, 5), lwma(h15, 10), lwma(l15, 5), lwma(l15, 10)] + ([I15.e90.values] if CSAK_MODE == "all90" else [])
+        lo_, hi_ = np.min(np.vstack(lines), 0), np.max(np.vstack(lines), 0)
     csak_b = (o15 < lo_) & (c15 > hi_) & (c15 <= top15)
     csak_s = (o15 > hi_) & (c15 < lo_) & (c15 >= bot15)
     at = np.searchsorted(T.values, cl15)
@@ -143,8 +155,12 @@ def run_symbol(sym, mt, sw):
         return pd.DataFrame(res, columns=["t", "net", "r", "rs", "risk", "d"])
 
     out = {}
-    for rtf, rn, rbars in ((30, "M30", 8), (60, "H1", 4)):
-        SU = setups(rtf, rbars)
+    for rtf, rn, rbars in RTFS:
+        if rtf == 0:                                                   # CSAK + H4 EMA 50/90 direction only
+            ks = np.where((csak_b | csak_s) & (hm15 >= 90) & (hm15 < 1320) & (k4 >= 100))[0]
+            SU = np.c_[ks, np.where(csak_b[ks], 1, -1), np.where(e50_4[k4[ks]] > e90_4[k4[ks]], 1, -1), ks].astype(np.int64)
+        else:
+            SU = setups(rtf, rbars)
         if len(SU) == 0: continue
         sr = np.where(SU[:, 1] == 1, rsi15[SU[:, 0]], 100 - rsi15[SU[:, 0]])
         sc = cci15[SU[:, 0]] * SU[:, 1]
