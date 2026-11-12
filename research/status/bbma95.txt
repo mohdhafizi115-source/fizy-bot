@@ -1,0 +1,96 @@
+XAUUSD: CSAK candidates 1019, in H4 trend order 413, with H4 momentum 135, not cancelled 75, after the MA5/10 retrace = SIGNALS 53  [2 s]
+BTCUSD: CSAK candidates 1452, in H4 trend order 632, with H4 momentum 202, not cancelled 132, after the MA5/10 retrace = SIGNALS 73  [5 s]
+EURUSD: CSAK candidates 1037, in H4 trend order 393, with H4 momentum 124, not cancelled 75, after the MA5/10 retrace = SIGNALS 47  [7 s]
+GBPUSD: CSAK candidates 1178, in H4 trend order 467, with H4 momentum 126, not cancelled 80, after the MA5/10 retrace = SIGNALS 47  [8 s]
+AUDUSD: CSAK candidates 1088, in H4 trend order 466, with H4 momentum 166, not cancelled 89, after the MA5/10 retrace = SIGNALS 46  [10 s]
+NZDUSD: CSAK candidates 1082, in H4 trend order 413, with H4 momentum 116, not cancelled 66, after the MA5/10 retrace = SIGNALS 42  [12 s]
+USDJPY: CSAK candidates 987, in H4 trend order 419, with H4 momentum 105, not cancelled 60, after the MA5/10 retrace = SIGNALS 42  [14 s]
+USDCHF: CSAK candidates 1075, in H4 trend order 411, with H4 momentum 122, not cancelled 75, after the MA5/10 retrace = SIGNALS 56  [16 s]
+USDCAD: CSAK candidates 1136, in H4 trend order 455, with H4 momentum 144, not cancelled 87, after the MA5/10 retrace = SIGNALS 57  [18 s]
+EURGBP: CSAK candidates 1296, in H4 trend order 523, with H4 momentum 151, not cancelled 74, after the MA5/10 retrace = SIGNALS 51  [20 s]
+EURJPY: CSAK candidates 1061, in H4 trend order 418, with H4 momentum 122, not cancelled 76, after the MA5/10 retrace = SIGNALS 49  [22 s]
+EURCHF: CSAK candidates 1341, in H4 trend order 572, with H4 momentum 181, not cancelled 86, after the MA5/10 retrace = SIGNALS 63  [24 s]
+EURAUD: CSAK candidates 1126, in H4 trend order 428, with H4 momentum 114, not cancelled 74, after the MA5/10 retrace = SIGNALS 47  [26 s]
+EURCAD: CSAK candidates 1129, in H4 trend order 471, with H4 momentum 122, not cancelled 75, after the MA5/10 retrace = SIGNALS 50  [28 s]
+EURNZD: CSAK candidates 1123, in H4 trend order 438, with H4 momentum 136, not cancelled 70, after the MA5/10 retrace = SIGNALS 54  [30 s]
+GBPJPY: CSAK candidates 1133, in H4 trend order 452, with H4 momentum 148, not cancelled 79, after the MA5/10 retrace = SIGNALS 54  [32 s]
+GBPCHF: CSAK candidates 1262, in H4 trend order 502, with H4 momentum 112, not cancelled 51, after the MA5/10 retrace = SIGNALS 38  [34 s]
+GBPAUD: CSAK candidates 1147, in H4 trend order 480, with H4 momentum 133, not cancelled 77, after the MA5/10 retrace = SIGNALS 54  [36 s]
+GBPCAD: CSAK candidates 1169, in H4 trend order 477, with H4 momentum 135, not cancelled 73, after the MA5/10 retrace = SIGNALS 44  [38 s]
+GBPNZD: CSAK candidates 1098, in H4 trend order 476, with H4 momentum 152, not cancelled 78, after the MA5/10 retrace = SIGNALS 58  [39 s]
+AUDJPY: CSAK candidates 1035, in H4 trend order 401, with H4 momentum 141, not cancelled 70, after the MA5/10 retrace = SIGNALS 45  [41 s]
+AUDCHF: CSAK candidates 1065, in H4 trend order 456, with H4 momentum 122, not cancelled 63, after the MA5/10 retrace = SIGNALS 51  [43 s]
+AUDCAD: CSAK candidates 1173, in H4 trend order 475, with H4 momentum 131, not cancelled 73, after the MA5/10 retrace = SIGNALS 50  [45 s]
+AUDNZD: CSAK candidates 1051, in H4 trend order 413, with H4 momentum 146, not cancelled 75, after the MA5/10 retrace = SIGNALS 53  [47 s]
+NZDJPY: CSAK candidates 1080, in H4 trend order 435, with H4 momentum 113, not cancelled 62, after the MA5/10 retrace = SIGNALS 45  [49 s]
+NZDCHF: CSAK candidates 1077, in H4 trend order 433, with H4 momentum 129, not cancelled 64, after the MA5/10 retrace = SIGNALS 49  [51 s]
+NZDCAD: CSAK candidates 1165, in H4 trend order 481, with H4 momentum 154, not cancelled 79, after the MA5/10 retrace = SIGNALS 53  [53 s]
+CADJPY: CSAK candidates 1077, in H4 trend order 402, with H4 momentum 116, not cancelled 69, after the MA5/10 retrace = SIGNALS 49  [55 s]
+CADCHF: CSAK candidates 1197, in H4 trend order 491, with H4 momentum 156, not cancelled 78, after the MA5/10 retrace = SIGNALS 56  [57 s]
+CHFJPY: CSAK candidates 1143, in H4 trend order 421, with H4 momentum 118, not cancelled 73, after the MA5/10 retrace = SIGNALS 49  [59 s]
+
+FUNNEL, 30 instruments, 2 years: 34,002 M15/M30 CSAK candles -> 13,714 in the H4 EMA90/EMA50/mid order -> 4,072 with H4 momentum -> 2,258 not cancelled -> 1,525 after the H4 MA5/10 retrace (one per momentum)
+
+PASS = >=150 trades, PF >= 1.15, both years >= 1.05, stress >= 1.05, last 12 months > 0, PF >= RAND + 0.10.  R pooled; $ per 0.01 lot
+exit                                       set        side    n win%    PF   yr1   yr2  strs |  12m R  3m R  p3m R |   net $  worst$  float$ hold h |  RAND
+SL CSAK, TP 1R                             all 30     BUY   850   41  0.70  0.70  0.70  0.61 |  -75.0  -7.3  -17.4 |     -84     -25     -24    1.4 |  0.62 
+SL CSAK, TP 1R                             all 30     SELL  673   44  0.75  0.68  0.84  0.64 |  -30.7  -2.7  -13.0 |     +48     -17     -17    0.9 |  0.73 
+SL CSAK, TP 1R                             all 30     ALL  1523   42  0.72  0.69  0.76  0.62 | -105.7 -10.0  -30.4 |     -36     -25     -24    1.2 |  0.67 
+SL CSAK, TP 1R                             gold only  BUY    32   53  1.12  0.91  2.00  1.09 |   +3.0  +1.0   -1.0 |    +102     -25     -24    1.5 |  0.76 
+SL CSAK, TP 1R                             gold only  SELL   21   57  1.32  0.33  1.82  1.28 |   +4.9  +2.9   -2.0 |    +131     -17     -16    1.2 |  0.76 
+SL CSAK, TP 1R                             gold only  ALL    53   55  1.20  0.79  1.88  1.16 |   +7.9  +3.9   -3.0 |    +233     -25     -24    1.2 |  0.76 
+SL CSAK, TP 1R                             forex      BUY   779   40  0.67  0.66  0.68  0.58 |  -74.0  -3.3  -16.4 |    -188     -11     -11    1.5 |  0.61 
+SL CSAK, TP 1R                             forex      SELL  618   43  0.72  0.66  0.78  0.60 |  -37.6  -6.6  -12.0 |     -80      -7      -6    0.9 |  0.72 
+SL CSAK, TP 1R                             forex      ALL  1397   41  0.69  0.66  0.72  0.59 | -111.6  -9.9  -28.4 |    -268     -11     -11    1.2 |  0.66 
+
+SL CSAK, TP 2R                             all 30     BUY   849   27  0.68  0.66  0.70  0.61 |  -94.2 -15.5  -22.2 |    -113     -25     -24    2.2 |  0.65 
+SL CSAK, TP 2R                             all 30     SELL  673   27  0.70  0.76  0.65  0.62 |  -93.2 -31.3  -29.0 |    -259     -68     -64    1.7 |  0.77 
+SL CSAK, TP 2R                             all 30     ALL  1522   27  0.69  0.70  0.68  0.62 | -187.4 -46.8  -51.2 |    -372     -68     -64    2.0 |  0.71 
+SL CSAK, TP 2R                             gold only  BUY    32   31  0.90  0.42  4.00  0.88 |   +9.0  +2.0   -1.0 |    +169     -25     -24    2.0 |  1.19 
+SL CSAK, TP 2R                             gold only  SELL   21   19  0.41  0.67  0.35  0.40 |   -9.1  -5.1   -6.0 |    -140     -68     -64    2.1 |  0.47 
+SL CSAK, TP 2R                             gold only  ALL    53   26  0.69  0.45  1.00  0.67 |   -0.1  -3.1   -7.0 |     +29     -68     -64    2.1 |  0.75 
+SL CSAK, TP 2R                             forex      BUY   778   26  0.66  0.65  0.67  0.59 |  -97.2 -12.5  -19.2 |    -247     -11     -11    2.3 |  0.64 
+SL CSAK, TP 2R                             forex      SELL  618   27  0.69  0.76  0.63  0.61 |  -89.1 -30.2  -24.0 |    -106      -7      -6    1.6 |  0.75 
+SL CSAK, TP 2R                             forex      ALL  1396   27  0.68  0.70  0.65  0.60 | -186.3 -42.7  -43.2 |    -353     -11     -11    2.0 |  0.69 
+
+SL retrace, TP 1R                          all 30     BUY   847   41  0.69  0.71  0.66  0.64 |  -79.4 -15.8  -21.3 |     -72     -48     -45    7.2 |  0.69 
+SL retrace, TP 1R                          all 30     SELL  671   43  0.70  0.84  0.59  0.65 |  -84.9 -12.8  -27.5 |    -376    -136    -134    5.6 |  0.75 
+SL retrace, TP 1R                          all 30     ALL  1518   42  0.69  0.76  0.63  0.65 | -164.3 -28.6  -48.7 |    -447    -136    -134    6.5 |  0.72 
+SL retrace, TP 1R                          gold only  BUY    32   59  1.40  1.21  1.97  1.38 |   +3.0  +1.0   -1.0 |    +305     -48     -45    7.2 |  1.59 
+SL retrace, TP 1R                          gold only  SELL   21   33  0.46  0.33  0.49  0.45 |   -5.4  -3.8   -1.6 |    -234    -136    -134    4.8 |  0.55 
+SL retrace, TP 1R                          gold only  ALL    53   49  0.91  1.00  0.82  0.90 |   -2.4  -2.8   -2.6 |     +70    -136    -134    6.7 |  0.99 
+SL retrace, TP 1R                          forex      BUY   777   40  0.65  0.65  0.66  0.61 |  -75.6 -12.3  -18.1 |    -420     -26     -24    7.3 |  0.65 
+SL retrace, TP 1R                          forex      SELL  617   43  0.70  0.83  0.58  0.64 |  -76.5  -7.7  -26.9 |    -139     -11     -18    5.7 |  0.75 
+SL retrace, TP 1R                          forex      ALL  1394   41  0.67  0.72  0.62  0.62 | -152.1 -20.0  -45.0 |    -559     -26     -24    6.5 |  0.70 
+
+SL retrace, TP 2R                          all 30     BUY   830   30  0.67  0.72  0.63  0.64 | -100.9 -18.3  -32.4 |    -288     -70     -65   13.2 |  0.69 
+SL retrace, TP 2R                          all 30     SELL  662   31  0.73  0.82  0.65  0.69 |  -80.6  -5.2  -33.6 |    -375    -136    -134    8.8 |  0.81 
+SL retrace, TP 2R                          all 30     ALL  1492   31  0.70  0.77  0.64  0.66 | -181.5 -23.5  -66.0 |    -663    -136    -134   11.0 |  0.74 
+SL retrace, TP 2R                          gold only  BUY    32   38  0.83  0.53  1.94  0.82 |   +3.8  +2.0   -1.0 |    +192     -70     -65   16.5 |  0.69 
+SL retrace, TP 2R                          gold only  SELL   21   24  0.56  0.00  0.71  0.55 |   -3.4  -2.8   -2.6 |    -184    -136    -134    9.2 |  0.54 
+SL retrace, TP 2R                          gold only  ALL    53   32  0.71  0.44  1.03  0.70 |   +0.4  -0.8   -3.6 |      +7    -136    -134   13.9 |  0.62 
+SL retrace, TP 2R                          forex      BUY   760   30  0.64  0.69  0.60  0.61 | -102.7 -15.8  -29.2 |    -468     -26     -24   12.9 |  0.65 
+SL retrace, TP 2R                          forex      SELL  609   31  0.72  0.81  0.63  0.67 |  -77.1  -3.1  -29.0 |    -215     -11     -18    8.8 |  0.79 
+SL retrace, TP 2R                          forex      ALL  1369   30  0.68  0.74  0.61  0.64 | -179.8 -19.0  -58.2 |    -683     -26     -24   10.8 |  0.72 
+
+SL retrace, TP last high                   all 30     BUY   842   47  0.67  0.71  0.61  0.62 |  -79.8  -9.7  -26.3 |     -78     -48     -45    5.7 |  0.67 
+SL retrace, TP last high                   all 30     SELL  672   42  0.74  0.85  0.64  0.69 |  -75.6  -1.4  -28.9 |    -356    -136    -134    5.8 |  0.86 
+SL retrace, TP last high                   all 30     ALL  1514   45  0.70  0.78  0.63  0.65 | -155.5 -11.1  -55.2 |    -434    -136    -134    5.7 |  0.76 
+SL retrace, TP last high                   gold only  BUY    32   50  0.87  0.80  1.07  0.86 |   +0.3  +1.1   -1.0 |    +196     -48     -45    7.9 |  1.04 
+SL retrace, TP last high                   gold only  SELL   21   29  0.41  0.27  0.43  0.40 |   -6.6  -4.4   -2.0 |    -293    -136    -134    8.4 |  0.92 
+SL retrace, TP last high                   gold only  ALL    53   42  0.65  0.71  0.60  0.64 |   -6.3  -3.3   -3.0 |     -97    -136    -134    8.1 |  0.98 
+SL retrace, TP last high                   forex      BUY   771   47  0.62  0.65  0.60  0.57 |  -77.5  -7.7  -23.2 |    -358     -18     -23    5.5 |  0.64 
+SL retrace, TP last high                   forex      SELL  617   41  0.72  0.83  0.62  0.67 |  -71.5  +3.4  -28.5 |    -116     -10     -11    5.8 |  0.83 
+SL retrace, TP last high                   forex      ALL  1388   44  0.67  0.73  0.61  0.62 | -149.0  -4.3  -51.6 |    -474     -18     -23    5.7 |  0.73 
+
+no SL, cut opp. M15 mom, TP fib 161.8      all 30     BUY   851   45  0.62  0.67  0.58  0.56 |  -74.8 -17.6  -28.8 |    -262     -84     -85    4.0 |  0.64 
+no SL, cut opp. M15 mom, TP fib 161.8      all 30     SELL  673   48  0.70  0.75  0.67  0.63 |  -53.4 -12.7  -18.1 |    -228     -42     -45    3.3 |  0.76 
+no SL, cut opp. M15 mom, TP fib 161.8      all 30     ALL  1524   46  0.66  0.70  0.62  0.59 | -128.2 -30.2  -46.9 |    -490     -84     -85    3.7 |  0.70 
+no SL, cut opp. M15 mom, TP fib 161.8      gold only  BUY    32   59  1.20  1.28  1.05  1.18 |   +0.2  +0.6   -0.8 |     +73     -84     -85    5.1 |  1.93 
+no SL, cut opp. M15 mom, TP fib 161.8      gold only  SELL   21   38  0.55  0.40  0.58  0.54 |   -2.9  -3.3   -1.5 |     -45     -42     -45    3.8 |  0.91 
+no SL, cut opp. M15 mom, TP fib 161.8      gold only  ALL    53   51  0.90  1.11  0.73  0.89 |   -2.8  -2.7   -2.4 |     +28     -84     -85    4.2 |  1.22 
+no SL, cut opp. M15 mom, TP fib 161.8      forex      BUY   780   45  0.60  0.62  0.57  0.53 |  -71.4 -15.5  -28.0 |    -299     -14     -17    3.9 |  0.61 
+no SL, cut opp. M15 mom, TP fib 161.8      forex      SELL  618   48  0.70  0.75  0.65  0.62 |  -51.1  -8.5  -18.3 |    -161      -8      -8    3.3 |  0.74 
+no SL, cut opp. M15 mom, TP fib 161.8      forex      ALL  1398   46  0.64  0.68  0.61  0.57 | -122.5 -24.1  -46.3 |    -460     -14     -17    3.6 |  0.67 
+
+done in 59 s
