@@ -1,0 +1,674 @@
+XAUUSD done [9 s]
+BTCUSD done [25 s]
+EURUSD done [35 s]
+GBPUSD done [46 s]
+AUDUSD done [55 s]
+NZDUSD done [62 s]
+USDJPY done [72 s]
+USDCHF done [80 s]
+USDCAD done [89 s]
+EURGBP done [98 s]
+EURJPY done [107 s]
+EURCHF done [116 s]
+EURAUD done [125 s]
+EURCAD done [133 s]
+EURNZD done [142 s]
+GBPJPY done [152 s]
+GBPCHF done [160 s]
+GBPAUD done [169 s]
+GBPCAD done [178 s]
+GBPNZD done [187 s]
+AUDJPY done [196 s]
+AUDCHF done [204 s]
+AUDCAD done [212 s]
+AUDNZD done [220 s]
+NZDJPY done [228 s]
+NZDCHF done [235 s]
+NZDCAD done [243 s]
+CADJPY done [252 s]
+CADCHF done [260 s]
+CHFJPY done [270 s]
+
+window 2024-11-12 .. 2026-11-12.  PASS = >=150 trades, PF >= 1.15, both years >= 1.05, stress >= 1.05, last 12 months > 0, PF >= RAND + 0.10.  R pooled over 30 symbols; $ per 0.01 lot
+set | cost | exit                                                              side     n win%    PF   yr1   yr2  strs |  12m R  3m R  p3m R |  sym>1   net $  float$ |  RAND
+S0 every CSAK | any spread | SL csak, TP 1R                                    BUY  14192   41  0.69  0.72  0.65  0.59 | -1473.8 -308.5 -376.9 |  0/30    -2628     -51 |  0.69 
+S0 every CSAK | any spread | SL csak, TP 1R                                    SELL 12751   40  0.67  0.71  0.63  0.56 | -1370.9 -241.1 -317.4 |  1/30    -1727     -63 |  0.69 
+S0 every CSAK | any spread | SL csak, TP 1R                                    ALL  26943   41  0.68  0.72  0.64  0.58 | -2844.7 -549.6 -694.3 |  1/30    -4355     -63 |  0.69 
+
+S0 every CSAK | any spread | SL csak, TP 2R                                    BUY  12792   27  0.69  0.72  0.65  0.61 | -1675.2 -343.9 -415.4 |  0/30    -3034     -51 |  0.68 
+S0 every CSAK | any spread | SL csak, TP 2R                                    SELL 11276   27  0.70  0.73  0.67  0.61 | -1327.8 -219.2 -309.9 |  1/30    -1735     -63 |  0.71 
+S0 every CSAK | any spread | SL csak, TP 2R                                    ALL  24068   27  0.69  0.73  0.66  0.61 | -3003.1 -563.1 -725.3 |  1/30    -4769     -63 |  0.69 
+
+S0 every CSAK | any spread | SL csak, TP 3R                                    BUY  12143   22  0.69  0.71  0.66  0.62 | -1644.8 -373.8 -451.2 |  1/30    -3366     -44 |  0.69 
+S0 every CSAK | any spread | SL csak, TP 3R                                    SELL 10700   21  0.72  0.76  0.67  0.64 | -1346.2 -237.7 -310.0 |  1/30    -1510     -63 |  0.72 
+S0 every CSAK | any spread | SL csak, TP 3R                                    ALL  22843   21  0.70  0.73  0.67  0.63 | -2991.0 -611.5 -761.2 |  2/30    -4876     -63 |  0.70 
+
+S0 every CSAK | any spread | SL swing, TP 1R                                   BUY   8946   43  0.72  0.76  0.68  0.66 | -801.6 -203.7 -201.2 |  2/30    -2482     -55 |  0.72 
+S0 every CSAK | any spread | SL swing, TP 1R                                   SELL  8496   43  0.73  0.73  0.73  0.65 | -626.2 -113.7 -140.4 |  2/30    -1706    -126 |  0.74 
+S0 every CSAK | any spread | SL swing, TP 1R                                   ALL  17442   43  0.73  0.75  0.71  0.65 | -1427.8 -317.3 -341.6 |  1/30    -4188    -126 |  0.73 
+
+S0 every CSAK | any spread | SL swing, TP 2R                                   BUY   7904   32  0.73  0.75  0.71  0.68 | -763.6 -193.1 -176.6 |  4/30    -2275     -55 |  0.75 
+S0 every CSAK | any spread | SL swing, TP 2R                                   SELL  7674   30  0.73  0.74  0.73  0.67 | -694.4 -128.3 -163.4 |  1/30    -1608    -126 |  0.74 
+S0 every CSAK | any spread | SL swing, TP 2R                                   ALL  15578   31  0.73  0.74  0.72  0.67 | -1458.0 -321.4 -340.0 |  1/30    -3883    -126 |  0.75 
+
+S0 every CSAK | any spread | SL swing, TP 3R                                   BUY   7577   29  0.72  0.75  0.70  0.67 | -799.2 -220.2 -192.8 |  2/30    -2019     -55 |  0.71 
+S0 every CSAK | any spread | SL swing, TP 3R                                   SELL  7431   26  0.72  0.74  0.71  0.67 | -780.8 -148.6 -196.8 |  1/30    -1448    -126 |  0.72 
+S0 every CSAK | any spread | SL swing, TP 3R                                   ALL  15008   27  0.72  0.75  0.70  0.67 | -1579.9 -368.8 -389.6 |  1/30    -3467    -126 |  0.72 
+
+S0 every CSAK | any spread | SL swing, time 8h                                 BUY   9464   36  0.75  0.78  0.71  0.68 | -747.9 -198.6 -199.9 |  2/30    -1845     -45 |  0.76 
+S0 every CSAK | any spread | SL swing, time 8h                                 SELL  9228   32  0.74  0.78  0.70  0.67 | -844.0 -187.8 -120.9 |  3/30     -993    -109 |  0.73 
+S0 every CSAK | any spread | SL swing, time 8h                                 ALL  18692   34  0.74  0.78  0.70  0.67 | -1591.9 -386.3 -320.8 |  2/30    -2837    -109 |  0.74 
+
+S0 every CSAK | any spread | SL swing, time 24h                                BUY   7376   27  0.72  0.74  0.69  0.67 | -806.8 -214.4 -214.6 |  3/30    -1684     -55 |  0.70 
+S0 every CSAK | any spread | SL swing, time 24h                                SELL  7205   23  0.73  0.74  0.72  0.68 | -750.5 -63.9 -153.7 |  2/30    -1298    -126 |  0.71 
+S0 every CSAK | any spread | SL swing, time 24h                                ALL  14581   25  0.72  0.74  0.71  0.67 | -1557.2 -278.2 -368.4 |  2/30    -2983    -126 |  0.70 
+
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 1R                              BUY   5971   44  0.79  0.81  0.75  0.72 | -287.0 -107.9  -30.0 |  1/30     -824     -51 |  0.80 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 1R                              SELL  5634   45  0.82  0.84  0.79  0.74 | -217.8 -42.9  -17.6 |  5/30     -325     -63 |  0.82 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 1R                              ALL  11605   44  0.80  0.82  0.77  0.73 | -504.7 -150.8  -47.6 |  3/30    -1149     -63 |  0.81 
+
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 2R                              BUY   5399   30  0.79  0.82  0.73  0.74 | -361.7 -100.5  -45.0 |  3/30     -948     -51 |  0.80 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 2R                              SELL  5046   31  0.84  0.84  0.84  0.78 | -184.3 -31.3  -13.7 |  6/30     -333     -63 |  0.84 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 2R                              ALL  10445   30  0.81  0.83  0.78  0.76 | -546.1 -131.8  -58.7 |  5/30    -1281     -63 |  0.82 
+
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 3R                              BUY   5148   23  0.78  0.79  0.75  0.73 | -338.3 -114.3  -61.3 |  1/30    -1270     -44 |  0.81 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 3R                              SELL  4812   25  0.86  0.87  0.83  0.80 | -209.3 -53.2  -21.9 |  7/30     -183     -63 |  0.83 
+S0 every CSAK | spread<=0.20 ATR | SL csak, TP 3R                              ALL   9960   24  0.81  0.83  0.79  0.76 | -547.6 -167.5  -83.2 |  5/30    -1453     -63 |  0.82 
+
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 1R                             BUY   3964   45  0.81  0.84  0.74  0.77 | -186.4 -90.3  -21.7 |  5/30     -985     -55 |  0.79 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 1R                             SELL  3728   46  0.85  0.81  0.92  0.80 |  -48.2  +5.7   +0.0 |  6/30     -563    -126 |  0.83 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 1R                             ALL   7692   46  0.83  0.83  0.83  0.79 | -234.6 -84.6  -21.6 |  5/30    -1548    -126 |  0.81 
+
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 2R                             BUY   3546   34  0.81  0.84  0.76  0.78 | -184.2 -95.7  -26.6 |  2/30     -722     -55 |  0.87 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 2R                             SELL  3373   33  0.84  0.81  0.89  0.80 |  -80.9  -2.9   -1.2 |  6/30     -378    -126 |  0.85 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 2R                             ALL   6919   33  0.83  0.83  0.82  0.79 | -265.1 -98.7  -27.8 |  2/30    -1099    -126 |  0.86 
+
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 3R                             BUY   3407   31  0.80  0.82  0.77  0.77 | -177.1 -95.9  -29.5 |  6/30     -450     -55 |  0.86 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 3R                             SELL  3267   29  0.84  0.82  0.89  0.81 |  -85.5 -14.3  -14.4 |  5/30     -144    -126 |  0.86 
+S0 every CSAK | spread<=0.20 ATR | SL swing, TP 3R                             ALL   6674   30  0.82  0.82  0.83  0.79 | -262.6 -110.2  -43.9 |  3/30     -594    -126 |  0.86 
+
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 8h                           BUY   4019   37  0.81  0.84  0.74  0.77 | -188.6 -93.0  -41.7 |  5/30     -479     -45 |  0.80 
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 8h                           SELL  3860   35  0.85  0.85  0.84  0.81 | -115.3 -60.8  +12.7 |  8/30     +266    -109 |  0.80 
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 8h                           ALL   7879   36  0.83  0.85  0.79  0.79 | -303.9 -153.8  -29.0 |  4/30     -213    -109 |  0.80 
+
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 24h                          BUY   3307   29  0.83  0.83  0.81  0.80 | -143.5 -92.6  -35.5 |  8/30      -10     -55 |  0.89 
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 24h                          SELL  3153   27  0.88  0.84  0.96  0.85 |  -28.2 +40.0   +2.8 |  8/30     +125    -126 |  0.88 
+S0 every CSAK | spread<=0.20 ATR | SL swing, time 24h                          ALL   6460   28  0.85  0.84  0.89  0.82 | -171.7 -52.6  -32.7 |  4/30     +115    -126 |  0.88 
+
+S1 MHV against | any spread | SL csak, TP 1R                                   BUY   1344   43  0.73  0.72  0.73  0.62 |  -96.9 -30.4  -14.6 |  6/30      -30     -51 |  0.69 
+S1 MHV against | any spread | SL csak, TP 1R                                   SELL  1055   40  0.66  0.74  0.59  0.55 | -139.9 -10.6  -24.8 |  8/30     -119     -27 |  0.69 
+S1 MHV against | any spread | SL csak, TP 1R                                   ALL   2399   41  0.70  0.73  0.66  0.59 | -236.8 -41.0  -39.4 |  4/30     -150     -51 |  0.69 
+
+S1 MHV against | any spread | SL csak, TP 2R                                   BUY   1325   29  0.74  0.73  0.76  0.66 | -107.0 -16.5  -19.7 |  6/30      -45     -51 |  0.65 
+S1 MHV against | any spread | SL csak, TP 2R                                   SELL  1041   29  0.79  0.85  0.73  0.69 | -104.3 -11.3   +3.9 |  9/30      -54     -27 |  0.72 
+S1 MHV against | any spread | SL csak, TP 2R                                   ALL   2366   29  0.76  0.78  0.74  0.67 | -211.2 -27.8  -15.7 |  6/30      -99     -51 |  0.69 
+
+S1 MHV against | any spread | SL csak, TP 3R                                   BUY   1318   23  0.75  0.78  0.72  0.68 | -137.1 -37.3  -21.9 |  6/30      +22     -51 |  0.69 
+S1 MHV against | any spread | SL csak, TP 3R                                   SELL  1033   23  0.82  0.84  0.81  0.73 |  -76.7  +1.6   +4.1 | 11/30      +12     -27 |  0.74 
+S1 MHV against | any spread | SL csak, TP 3R                                   ALL   2351   23  0.78  0.80  0.76  0.70 | -213.9 -35.7  -17.8 |  4/30      +34     -51 |  0.72 
+
+S1 MHV against | any spread | SL swing, TP 1R                                  BUY   1227   43  0.75  0.76  0.74  0.68 |  -81.5 -23.0  -11.3 |  8/30     -111     -51 |  0.68 
+S1 MHV against | any spread | SL swing, TP 1R                                  SELL   952   45  0.81  0.86  0.76  0.73 |  -63.2 -18.3   -4.0 | 10/30      -92     -37 |  0.72 
+S1 MHV against | any spread | SL swing, TP 1R                                  ALL   2179   44  0.78  0.80  0.75  0.70 | -144.8 -41.2  -15.3 |  6/30     -203     -51 |  0.70 
+
+S1 MHV against | any spread | SL swing, TP 2R                                  BUY   1202   33  0.77  0.83  0.70  0.71 | -111.1 -19.8   -7.5 |  8/30       -4     -51 |  0.79 
+S1 MHV against | any spread | SL swing, TP 2R                                  SELL   928   34  0.88  0.88  0.89  0.81 |  -32.9 -17.0  +15.8 | 11/30      +24     -37 |  0.80 
+S1 MHV against | any spread | SL swing, TP 2R                                  ALL   2130   33  0.82  0.85  0.78  0.76 | -144.0 -36.9   +8.4 |  7/30      +21     -51 |  0.80 
+
+S1 MHV against | any spread | SL swing, TP 3R                                  BUY   1196   30  0.80  0.87  0.72  0.74 | -106.6 -25.6   -5.5 | 10/30      +57     -51 |  0.74 
+S1 MHV against | any spread | SL swing, TP 3R                                  SELL   922   29  0.84  0.80  0.88  0.77 |  -39.1 -13.4   +9.6 | 11/30      +48     -37 |  0.65 
+S1 MHV against | any spread | SL swing, TP 3R                                  ALL   2118   30  0.82  0.84  0.79  0.76 | -145.7 -39.0   +4.1 |  8/30     +105     -51 |  0.70 
+
+S1 MHV against | any spread | SL swing, time 8h                                BUY   1230   38  0.82  0.88  0.75  0.75 |  -73.7 -27.2   -1.2 | 10/30       +8     -51 |  0.75 
+S1 MHV against | any spread | SL swing, time 8h                                SELL   956   37  0.97  1.06  0.88  0.88 |  -33.2  +1.4  +14.4 | 16/30     +231     -35 |  0.82 
+S1 MHV against | any spread | SL swing, time 8h                                ALL   2186   38  0.89  0.96  0.81  0.81 | -107.0 -25.8  +13.2 |  6/30     +239     -51 |  0.78 
+
+S1 MHV against | any spread | SL swing, time 24h                               BUY   1192   28  0.79  0.89  0.67  0.73 | -127.8 -24.3   -3.7 |  9/30      +68     -51 |  0.68 
+S1 MHV against | any spread | SL swing, time 24h                               SELL   919   27  0.82  0.90  0.74  0.76 |  -86.7 -24.7   +9.0 | 12/30      +63     -37 |  0.63 
+S1 MHV against | any spread | SL swing, time 24h                               ALL   2111   27  0.80  0.89  0.70  0.75 | -214.5 -49.0   +5.3 |  5/30     +131     -51 |  0.65 
+
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 1R                             BUY    557   47  0.90  0.89  0.94  0.83 |   -5.5 -10.8   +4.4 |  9/21     +162     -51 |  0.89 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 1R                             SELL   455   42  0.74  0.73  0.76  0.67 |  -23.1  -3.0   +3.0 |  7/18       -4     -27 |  0.77 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 1R                             ALL   1012   45  0.83  0.82  0.85  0.75 |  -28.6 -13.8   +7.4 |  6/24     +158     -51 |  0.82 
+
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 2R                             BUY    551   32  0.88  0.82  1.00  0.82 |   -0.5  -2.9   +9.2 |  9/21     +158     -51 |  0.82 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 2R                             SELL   451   32  0.90  0.81  1.05  0.83 |   +5.7  -0.0  +17.1 |  5/18      +37     -27 |  0.85 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 2R                             ALL   1002   32  0.89  0.82  1.02  0.83 |   +5.1  -2.9  +26.3 |  8/24     +196     -51 |  0.83 
+
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 3R                             BUY    549   26  0.91  0.90  0.94  0.86 |   -7.7  -4.8   +1.4 |  7/21     +257     -51 |  0.89 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 3R                             SELL   445   26  0.94  0.82  1.15  0.87 |  +16.8  +1.9   +8.8 |  7/18      +91     -27 |  0.73 
+S1 MHV against | spread<=0.20 ATR | SL csak, TP 3R                             ALL    994   26  0.92  0.87  1.04  0.87 |   +9.1  -2.9  +10.1 |  8/24     +348     -51 |  0.81 
+
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 1R                            BUY    512   48  0.94  0.90  1.04  0.89 |   +2.7  -3.7   +5.3 |  9/20     +128     -51 |  0.82 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 1R                            SELL   413   46  0.84  0.76  0.98  0.79 |   -1.3  -3.2   +9.3 |  7/18       -5     -37 |  0.77 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 1R                            ALL    925   47  0.89  0.84  1.01  0.85 |   +1.4  -6.9  +14.5 | 10/24     +122     -51 |  0.80 
+
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 2R                            BUY    502   37  0.97  1.00  0.92  0.93 |   -7.9  -4.2   +9.0 |  8/20     +267     -51 |  0.86 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 2R                            SELL   401   36  0.93  0.82  1.15  0.89 |  +11.7  -4.5  +13.8 |  7/18     +110     -37 |  0.76 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 2R                            ALL    903   36  0.95  0.92  1.02  0.91 |   +3.8  -8.7  +22.8 | 10/24     +377     -51 |  0.81 
+
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 3R                            BUY    500   32  0.97  0.99  0.92  0.93 |   -7.5  -6.2   +4.3 | 10/20     +314     -51 |  0.91 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 3R                            SELL   399   32  0.90  0.77  1.18  0.87 |  +15.2  -3.7   +7.9 |  7/18     +164     -37 |  0.80 
+S1 MHV against | spread<=0.20 ATR | SL swing, TP 3R                            ALL    899   32  0.94  0.89  1.04  0.90 |   +7.6  -9.9  +12.3 | 10/24     +478     -51 |  0.85 
+
+S1 MHV against | spread<=0.20 ATR | SL swing, time 8h                          BUY    509   40  1.00  1.05  0.89  0.95 |   -8.3  -9.4   +1.4 |  9/20     +198     -51 |  0.78 
+S1 MHV against | spread<=0.20 ATR | SL swing, time 8h                          SELL   407   39  0.96  0.90  1.09  0.92 |   +6.3  -5.4  +11.7 |  6/18     +249     -35 |  0.76 
+S1 MHV against | spread<=0.20 ATR | SL swing, time 8h                          ALL    916   40  0.98  0.98  0.99  0.94 |   -2.1 -14.8  +13.2 | 11/24     +447     -51 |  0.77 
+
+S1 MHV against | spread<=0.20 ATR | SL swing, time 24h                         BUY    498   30  1.01  1.09  0.85  0.98 |  -15.7  -5.3   +3.7 |  9/20     +363     -51 |  1.11 
+S1 MHV against | spread<=0.20 ATR | SL swing, time 24h                         SELL   398   28  0.83  0.80  0.89  0.80 |  -10.3  -8.3   +3.8 |  6/18     +172     -37 |  0.80 
+S1 MHV against | spread<=0.20 ATR | SL swing, time 24h                         ALL    896   29  0.93  0.96  0.87  0.89 |  -26.0 -13.6   +7.5 | 10/24     +536     -51 |  0.95 
+
+S2 H4 Extreme against | any spread | SL csak, TP 1R                            BUY   1575   41  0.67  0.69  0.66  0.58 | -175.3 -55.4  -25.4 |  8/30     -368     -51 |  0.69 
+S2 H4 Extreme against | any spread | SL csak, TP 1R                            SELL  1281   40  0.67  0.71  0.63  0.55 | -138.0 -39.9  -39.0 |  5/30     -255     -26 |  0.70 
+S2 H4 Extreme against | any spread | SL csak, TP 1R                            ALL   2856   41  0.67  0.70  0.65  0.57 | -313.2 -95.3  -64.4 |  2/30     -623     -51 |  0.70 
+
+S2 H4 Extreme against | any spread | SL csak, TP 2R                            BUY   1509   27  0.67  0.72  0.63  0.60 | -231.0 -75.9  -28.6 |  7/30     -298     -51 |  0.72 
+S2 H4 Extreme against | any spread | SL csak, TP 2R                            SELL  1255   28  0.73  0.74  0.71  0.63 | -123.1 -28.2  -32.3 |  7/30     -219     -26 |  0.77 
+S2 H4 Extreme against | any spread | SL csak, TP 2R                            ALL   2764   27  0.70  0.73  0.67  0.61 | -354.0 -104.1  -60.9 |  4/30     -518     -51 |  0.74 
+
+S2 H4 Extreme against | any spread | SL csak, TP 3R                            BUY   1497   22  0.68  0.74  0.63  0.62 | -245.4 -70.2  -46.0 |  9/30     -380     -51 |  0.61 
+S2 H4 Extreme against | any spread | SL csak, TP 3R                            SELL  1245   22  0.74  0.76  0.71  0.65 | -136.6 -38.0  -41.9 |  9/30     -172     -26 |  0.69 
+S2 H4 Extreme against | any spread | SL csak, TP 3R                            ALL   2742   22  0.71  0.75  0.66  0.63 | -382.0 -108.2  -87.9 |  8/30     -552     -51 |  0.65 
+
+S2 H4 Extreme against | any spread | SL swing, TP 1R                           BUY   1300   43  0.72  0.76  0.69  0.65 | -127.4 -50.0   -3.5 |  7/30     -288     -80 |  0.75 
+S2 H4 Extreme against | any spread | SL swing, TP 1R                           SELL  1082   44  0.75  0.77  0.72  0.66 |  -81.2 -30.8  -28.4 | 14/30     -134     -37 |  0.76 
+S2 H4 Extreme against | any spread | SL swing, TP 1R                           ALL   2382   43  0.73  0.77  0.70  0.66 | -208.6 -80.8  -32.0 |  6/30     -422     -80 |  0.76 
+
+S2 H4 Extreme against | any spread | SL swing, TP 2R                           BUY   1253   31  0.73  0.81  0.67  0.68 | -160.7 -59.6   -5.9 | 11/30     -373     -80 |  0.75 
+S2 H4 Extreme against | any spread | SL swing, TP 2R                           SELL  1046   31  0.80  0.85  0.75  0.73 |  -86.0 -30.9  -27.4 | 10/30      -61     -37 |  0.71 
+S2 H4 Extreme against | any spread | SL swing, TP 2R                           ALL   2299   31  0.76  0.83  0.70  0.70 | -246.8 -90.5  -33.4 |  5/30     -433     -80 |  0.73 
+
+S2 H4 Extreme against | any spread | SL swing, TP 3R                           BUY   1244   28  0.72  0.77  0.67  0.67 | -160.1 -51.9   +0.3 |  9/30     -437     -80 |  0.66 
+S2 H4 Extreme against | any spread | SL swing, TP 3R                           SELL  1036   27  0.80  0.81  0.78  0.73 |  -78.6 -37.6  -26.7 | 13/30      -39     -37 |  0.63 
+S2 H4 Extreme against | any spread | SL swing, TP 3R                           ALL   2280   28  0.76  0.79  0.72  0.70 | -238.6 -89.4  -26.4 |  8/30     -476     -80 |  0.64 
+
+S2 H4 Extreme against | any spread | SL swing, time 8h                         BUY   1330   36  0.75  0.76  0.74  0.68 | -104.1 -49.0   -0.6 | 10/30     -241     -80 |  0.83 
+S2 H4 Extreme against | any spread | SL swing, time 8h                         SELL  1072   34  0.90  0.90  0.89  0.81 |  -34.8 -30.6   -6.1 | 15/30     +123     -37 |  0.86 
+S2 H4 Extreme against | any spread | SL swing, time 8h                         ALL   2402   35  0.82  0.83  0.81  0.74 | -138.9 -79.6   -6.7 |  7/30     -119     -80 |  0.85 
+
+S2 H4 Extreme against | any spread | SL swing, time 24h                        BUY   1236   26  0.75  0.80  0.70  0.69 | -150.3 -53.2   +4.4 | 11/30     -374     -80 |  0.73 
+S2 H4 Extreme against | any spread | SL swing, time 24h                        SELL  1027   25  0.92  1.02  0.81  0.85 |  -69.6 -35.6  -16.3 | 14/30     +159     -37 |  0.73 
+S2 H4 Extreme against | any spread | SL swing, time 24h                        ALL   2263   26  0.83  0.91  0.75  0.76 | -219.9 -88.8  -11.9 | 11/30     -214     -80 |  0.73 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                      BUY    677   46  0.83  0.88  0.78  0.76 |  -36.3 -14.1   -7.4 | 10/22     -127     -51 |  0.83 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                      SELL   520   46  0.84  0.83  0.86  0.76 |  -13.0  -3.9   -3.2 |  7/22     -128     -26 |  0.83 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                      ALL   1197   46  0.84  0.85  0.81  0.76 |  -49.3 -18.0  -10.6 |  9/27     -255     -51 |  0.83 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                      BUY    643   32  0.87  0.94  0.78  0.81 |  -42.7 -23.2   -7.5 |  9/22       -4     -51 |  0.75 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                      SELL   509   32  0.90  0.86  0.98  0.83 |   -2.7  +1.2   -1.2 |  9/22     -100     -26 |  0.73 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                      ALL   1152   32  0.88  0.90  0.85  0.82 |  -45.4 -22.1   -8.7 | 10/27     -104     -51 |  0.74 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                      BUY    637   25  0.85  0.92  0.76  0.80 |  -50.1 -19.4  -15.1 |  9/22      -80     -51 |  0.80 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                      SELL   507   26  0.91  0.90  0.93  0.85 |   -8.4  -0.6   -5.2 | 10/22      -56     -26 |  0.82 
+S2 H4 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                      ALL   1144   26  0.88  0.91  0.82  0.82 |  -58.6 -20.0  -20.3 | 11/27     -135     -51 |  0.81 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                     BUY    574   47  0.88  0.93  0.82  0.84 |  -22.8 -16.5   -2.3 | 11/21      -12     -80 |  0.83 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                     SELL   451   47  0.88  0.81  1.05  0.83 |   +3.5  -6.9   -2.7 | 12/22      -25     -37 |  0.80 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                     ALL   1025   47  0.88  0.87  0.90  0.83 |  -19.3 -23.4   -5.0 | 10/26      -37     -80 |  0.82 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                     BUY    549   36  0.92  0.94  0.90  0.89 |  -14.9 -22.1   +2.8 | 12/21      -53     -80 |  0.93 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                     SELL   441   34  0.91  0.91  0.92  0.87 |   -7.6  -9.5   -4.9 |  9/21      +33     -37 |  0.86 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                     ALL    990   35  0.92  0.93  0.90  0.88 |  -22.4 -31.6   -2.1 | 11/26      -19     -80 |  0.89 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                     BUY    545   31  0.84  0.82  0.87  0.81 |  -19.8 -24.2   +5.6 |  8/21     -133     -80 |  0.82 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                     SELL   435   30  0.91  0.89  0.94  0.86 |   -5.6 -17.1   -7.9 |  7/20      +70     -37 |  0.85 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                     ALL    980   31  0.87  0.85  0.90  0.83 |  -25.4 -41.3   -2.3 | 10/26      -63     -80 |  0.83 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 8h                   BUY    572   38  0.84  0.85  0.83  0.80 |  -21.4 -26.1   +2.4 |  8/21      -48     -80 |  0.82 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 8h                   SELL   446   39  1.15  1.03  1.39  1.09 |  +31.1  +0.3   -7.4 | 10/20     +184     -37 |  0.91 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 8h                   ALL   1018   39  0.98  0.94  1.05  0.93 |   +9.7 -25.8   -4.9 |  7/26     +137     -80 |  0.86 
+
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 24h                  BUY    541   30  0.91  0.92  0.89  0.88 |  -16.0 -25.2  +10.8 |  7/21      -57     -80 |  0.77 
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 24h                  SELL   431   29  1.26  1.31  1.15  1.21 |  +14.7  -5.5   -7.9 | 10/20     +288     -37 |  0.87 PASS
+S2 H4 Extreme against | spread<=0.20 ATR | SL swing, time 24h                  ALL    972   29  1.07  1.11  0.99  1.03 |   -1.3 -30.7   +2.9 | 10/26     +232     -80 |  0.82 
+
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 1R                     BUY   1429   43  0.75  0.74  0.75  0.65 | -103.0 -20.2  -22.2 |  9/30     -183     -29 |  0.69 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 1R                     SELL  1212   43  0.73  0.79  0.67  0.62 | -113.9 -24.4  -21.0 | 10/30     -114     -35 |  0.69 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 1R                     ALL   2641   43  0.74  0.77  0.71  0.64 | -216.9 -44.6  -43.2 |  8/30     -297     -35 |  0.69 
+
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 2R                     BUY   1412   28  0.69  0.73  0.66  0.62 | -177.4 -37.9  -32.8 | 10/30     -269     -29 |  0.63 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 2R                     SELL  1205   30  0.80  0.83  0.77  0.71 |  -93.8  -5.3  -12.4 | 10/30      +41     -35 |  0.74 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 2R                     ALL   2617   29  0.74  0.77  0.71  0.66 | -271.2 -43.1  -45.2 |  8/30     -228     -35 |  0.69 
+
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 3R                     BUY   1412   23  0.70  0.71  0.69  0.64 | -168.7 -23.0  -38.4 |  8/30     -271     -29 |  0.68 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 3R                     SELL  1202   24  0.82  0.84  0.80  0.73 |  -90.1  -6.4   +4.0 | 10/30     +164     -35 |  0.78 
+S3 H4 far band + M15 Extreme | any spread | SL csak, TP 3R                     ALL   2614   24  0.76  0.77  0.74  0.68 | -258.8 -29.4  -34.4 |  6/30     -107     -35 |  0.73 
+
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 1R                    BUY   1293   45  0.78  0.77  0.79  0.72 |  -70.6 -18.0   -1.9 |  8/30     -108     -55 |  0.68 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 1R                    SELL  1098   49  0.92  0.97  0.88  0.84 |  -33.2 -12.5   -4.4 | 16/30      +53     -40 |  0.74 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 1R                    ALL   2391   47  0.84  0.86  0.83  0.77 | -103.9 -30.5   -6.3 | 12/30      -55     -55 |  0.71 
+
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 2R                    BUY   1281   35  0.74  0.75  0.72  0.69 | -105.6 -14.5   +1.3 | 10/30     -201     -55 |  0.75 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 2R                    SELL  1086   36  0.89  0.88  0.90  0.83 |  -33.2  -1.6   -0.5 | 16/30     +344     -40 |  0.74 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 2R                    ALL   2367   35  0.81  0.81  0.80  0.75 | -138.8 -16.1   +0.8 | 12/30     +142     -55 |  0.74 
+
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 3R                    BUY   1280   32  0.75  0.76  0.74  0.70 | -102.2 -15.2   -6.4 | 11/30     -298     -55 |  0.74 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 3R                    SELL  1085   34  0.87  0.88  0.85  0.81 |  -51.4  -5.4   -7.9 | 14/30     +369     -40 |  0.75 
+S3 H4 far band + M15 Extreme | any spread | SL swing, TP 3R                    ALL   2365   33  0.80  0.82  0.79  0.75 | -153.6 -20.6  -14.2 | 11/30      +71     -55 |  0.75 
+
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 8h                  BUY   1322   42  0.87  0.88  0.87  0.80 |  -37.7  -5.2   +0.9 | 16/30      -27     -33 |  0.76 
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 8h                  SELL  1107   42  1.03  0.99  1.07  0.94 |  +18.5  -5.6  +16.6 | 17/30     +475     -39 |  0.81 
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 8h                  ALL   2429   42  0.95  0.93  0.97  0.87 |  -19.2 -10.8  +17.5 | 14/30     +447     -39 |  0.78 
+
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 24h                 BUY   1277   31  0.73  0.72  0.74  0.68 | -101.2 -18.9   -4.5 | 10/30     -390     -55 |  0.57 
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 24h                 SELL  1084   32  0.90  0.86  0.94  0.84 |  -19.9 +11.8   +4.9 | 12/30     +259     -40 |  0.75 
+S3 H4 far band + M15 Extreme | any spread | SL swing, time 24h                 ALL   2361   32  0.81  0.78  0.84  0.76 | -121.1  -7.0   +0.4 | 10/30     -132     -55 |  0.66 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 1R               BUY    638   50  1.00  0.94  1.14  0.93 |  +14.3 +10.5   +2.5 | 11/23      +21     -29 |  0.84 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 1R               SELL   563   47  0.89  0.89  0.89  0.81 |  -10.1  +5.5   -3.9 | 11/19      +11     -35 |  0.76 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 1R               ALL   1201   49  0.95  0.91  1.02  0.87 |   +4.2 +16.0   -1.4 | 17/27      +33     -35 |  0.80 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 2R               BUY    631   34  0.95  0.90  1.04  0.89 |   +5.6  +1.9   +1.3 | 13/23      +30     -29 |  0.79 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 2R               SELL   558   34  0.97  0.94  1.06  0.91 |   +6.8 +11.8   +0.2 | 11/19     +166     -35 |  0.79 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 2R               ALL   1189   34  0.96  0.92  1.05  0.90 |  +12.4 +13.7   +1.5 | 16/27     +196     -35 |  0.79 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 3R               BUY    631   29  0.96  0.94  1.02  0.91 |   +2.7  +6.6   +0.1 | 12/23      +59     -29 |  0.77 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 3R               SELL   557   28  0.99  0.93  1.14  0.93 |  +16.7 +16.2   +1.4 | 11/19     +280     -35 |  0.78 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL csak, TP 3R               ALL   1188   28  0.98  0.93  1.07  0.92 |  +19.4 +22.8   +1.4 | 15/27     +339     -35 |  0.77 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 1R              BUY    587   49  0.95  0.94  0.97  0.91 |   -2.9  -1.9   +2.3 | 12/23     +131     -55 |  0.81 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 1R              SELL   517   52  1.07  1.09  1.04  1.02 |   +2.7  +6.6   -3.8 | 12/19     +145     -40 |  0.85 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 1R              ALL   1104   50  1.01  1.01  1.00  0.96 |   -0.2  +4.7   -1.4 | 15/27     +276     -55 |  0.83 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 2R              BUY    583   40  1.00  0.98  1.05  0.96 |   +5.0  +1.5   +8.9 | 10/23     +168     -55 |  0.89 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 2R              SELL   512   39  1.00  1.00  1.01  0.96 |   +1.0 +11.5   -4.1 | 10/19     +449     -40 |  0.85 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 2R              ALL   1095   39  1.00  0.99  1.03  0.96 |   +6.0 +13.0   +4.9 | 16/27     +617     -55 |  0.87 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 3R              BUY    583   37  1.01  0.98  1.05  0.97 |   +5.8  +2.7   +5.2 | 12/23      +69     -55 |  0.82 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 3R              SELL   512   36  0.97  0.96  1.01  0.94 |   +1.1 +17.0  -10.3 | 10/19     +503     -40 |  0.76 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, TP 3R              ALL   1095   36  0.99  0.97  1.03  0.96 |   +6.9 +19.7   -5.1 | 15/27     +572     -55 |  0.79 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 8h            BUY    596   45  1.11  1.11  1.10  1.06 |   +8.5  +2.7   +0.6 | 15/23     +160     -33 |  0.80 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 8h            SELL   520   47  1.17  1.14  1.22  1.11 |  +16.1  -1.7   -2.6 | 11/19     +520     -39 |  0.85 PASS
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 8h            ALL   1116   46  1.13  1.13  1.15  1.08 |  +24.6  +1.0   -2.1 | 16/27     +680     -39 |  0.83 
+
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 24h           BUY    581   35  1.00  0.95  1.09  0.96 |  +10.4  +2.6  +11.6 | 10/23       +1     -55 |  0.74 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 24h           SELL   511   35  0.96  0.88  1.14  0.93 |  +13.4 +12.2   -7.4 | 11/19     +368     -40 |  0.76 
+S3 H4 far band + M15 Extreme | spread<=0.20 ATR | SL swing, time 24h           ALL   1092   35  0.98  0.91  1.11  0.95 |  +23.8 +14.8   +4.3 | 12/27     +369     -55 |  0.75 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 1R                       BUY   2278   42  0.72  0.73  0.70  0.62 | -202.8 -43.5  -33.5 |  5/30     -291     -29 |  0.65 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 1R                       SELL  2042   42  0.71  0.75  0.67  0.60 | -199.5 -30.6  -35.1 |  7/30     -304     -35 |  0.69 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 1R                       ALL   4320   42  0.71  0.74  0.68  0.61 | -402.3 -74.1  -68.6 |  6/30     -595     -35 |  0.67 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 2R                       BUY   2243   28  0.69  0.72  0.66  0.62 | -284.6 -68.9  -32.1 |  8/30     -359     -29 |  0.69 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 2R                       SELL  2015   29  0.77  0.75  0.78  0.68 | -153.7  -4.1  -19.7 |  7/30     -222     -35 |  0.74 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 2R                       ALL   4258   28  0.73  0.74  0.72  0.64 | -438.2 -73.0  -51.8 |  7/30     -581     -35 |  0.71 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 3R                       BUY   2239   23  0.70  0.69  0.70  0.63 | -264.2 -55.2  -30.3 |  7/30     -370     -29 |  0.67 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 3R                       SELL  1999   23  0.79  0.75  0.83  0.70 | -129.6 +13.9   +2.0 |  9/30      -92     -35 |  0.79 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL csak, TP 3R                       ALL   4238   23  0.74  0.72  0.76  0.66 | -393.8 -41.2  -28.3 |  8/30     -463     -35 |  0.73 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 1R                      BUY   2001   43  0.73  0.73  0.73  0.67 | -144.5 -33.2   -6.3 |  9/30     -347     -55 |  0.72 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 1R                      SELL  1788   47  0.86  0.88  0.85  0.79 |  -70.0 -15.1  -15.3 | 13/30     -288     -40 |  0.80 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 1R                      ALL   3789   45  0.79  0.80  0.79  0.72 | -214.5 -48.3  -21.6 |  8/30     -635     -55 |  0.76 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 2R                      BUY   1964   34  0.72  0.72  0.73  0.67 | -165.0 -23.9   -3.4 |  5/30     -521     -55 |  0.74 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 2R                      SELL  1745   34  0.83  0.79  0.87  0.77 |  -72.5  -4.7   -6.4 | 13/30       -7     -40 |  0.85 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 2R                      ALL   3709   34  0.77  0.75  0.79  0.72 | -237.5 -28.6   -9.8 |  7/30     -528     -55 |  0.80 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 3R                      BUY   1960   31  0.73  0.73  0.74  0.69 | -163.1 -29.6   -5.4 |  7/30     -614     -55 |  0.66 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 3R                      SELL  1733   31  0.82  0.80  0.85  0.76 |  -89.2  -8.4  -10.8 |  8/30      +12     -40 |  0.75 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, TP 3R                      ALL   3693   31  0.78  0.76  0.79  0.72 | -252.3 -38.0  -16.2 |  7/30     -602     -55 |  0.71 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 8h                    BUY   2080   40  0.80  0.79  0.80  0.73 |  -94.8 -23.6   +0.0 |  9/30     -144     -39 |  0.70 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 8h                    SELL  1826   40  0.92  0.88  0.97  0.84 |  -14.6 -15.2  +32.4 | 16/30     +207     -39 |  0.84 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 8h                    ALL   3906   40  0.86  0.83  0.89  0.78 | -109.4 -38.9  +32.4 | 13/30      +63     -39 |  0.77 
+
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 24h                   BUY   1952   30  0.72  0.73  0.70  0.67 | -185.7 -36.2   -7.7 |  6/30     -661     -55 |  0.67 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 24h                   SELL  1727   30  0.84  0.80  0.89  0.78 |  -67.4 +20.9   +3.2 |  9/30      -74     -40 |  0.75 
+S3a H4 pos<=-0.3 + M15 Ext | any spread | SL swing, time 24h                   ALL   3679   30  0.78  0.76  0.79  0.72 | -253.1 -15.3   -4.4 |  6/30     -735     -55 |  0.71 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 BUY    997   48  0.92  0.92  0.91  0.84 |  -15.8  -3.8   +3.2 |  8/26      +23     -29 |  0.80 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 SELL   922   47  0.90  0.90  0.89  0.82 |  -17.1 +10.5   +0.1 | 14/23      -66     -35 |  0.78 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 ALL   1919   47  0.91  0.91  0.90  0.83 |  -32.9  +6.7   +3.3 | 14/29      -43     -35 |  0.79 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 BUY    982   32  0.87  0.88  0.85  0.81 |  -35.0 -26.5   +5.9 |  9/26      +44     -29 |  0.80 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 SELL   911   33  0.93  0.88  1.04  0.86 |   +8.4 +12.3   +2.5 | 12/23      +21     -35 |  0.81 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 ALL   1893   33  0.90  0.88  0.94  0.84 |  -26.6 -14.2   +8.5 | 13/29      +65     -35 |  0.81 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 BUY    981   26  0.85  0.85  0.83  0.80 |  -43.8 -23.8   +5.4 |  8/26      +43     -29 |  0.71 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 SELL   902   26  0.93  0.87  1.06  0.87 |  +13.1 +25.6   -1.7 | 12/23     +143     -35 |  0.82 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 ALL   1883   26  0.89  0.86  0.93  0.83 |  -30.7  +1.8   +3.6 | 11/29     +186     -35 |  0.76 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                BUY    892   47  0.88  0.87  0.89  0.84 |  -17.3  -9.8   +2.1 |  9/26      +44     -55 |  0.82 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                SELL   822   50  1.03  1.00  1.09  0.98 |  +12.0  +7.9   +3.1 | 13/23      -74     -40 |  0.91 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                ALL   1714   49  0.95  0.93  0.98  0.91 |   -5.3  -1.9   +5.2 | 13/29      -29     -55 |  0.86 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                BUY    878   38  0.91  0.88  0.96  0.88 |   -6.0  -5.4   +9.4 |  7/26      -20     -55 |  0.78 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                SELL   803   38  0.99  0.94  1.10  0.96 |  +15.8 +11.0   +3.2 | 12/23     +271     -40 |  0.87 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                ALL   1681   38  0.95  0.91  1.03  0.91 |   +9.8  +5.6  +12.6 | 13/29     +251     -55 |  0.83 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                BUY    875   35  0.94  0.92  0.97  0.90 |   -4.9  -3.7   +6.3 | 10/26      -82     -55 |  0.79 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                SELL   795   35  0.98  0.91  1.14  0.95 |  +21.7 +19.5   -1.0 | 11/22     +311     -40 |  0.85 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                ALL   1670   35  0.96  0.91  1.05  0.92 |  +16.8 +15.8   +5.3 | 12/29     +229     -55 |  0.82 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              BUY    915   43  0.98  0.96  1.01  0.94 |   +2.0  -9.7   +1.7 | 11/26     +168     -39 |  0.81 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              SELL   832   44  1.12  1.07  1.21  1.06 |  +26.7  +0.5  +12.9 | 15/23     +377     -39 |  0.80 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              ALL   1747   44  1.05  1.01  1.11  1.00 |  +28.7  -9.2  +14.7 | 17/29     +545     -39 |  0.81 
+
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             BUY    869   33  0.95  0.95  0.97  0.92 |   -6.2  -2.8  +12.9 | 11/25      -81     -55 |  0.76 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             SELL   792   34  1.00  0.86  1.27  0.96 |  +43.0 +20.5   +3.9 | 10/22     +218     -40 |  0.88 
+S3a H4 pos<=-0.3 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             ALL   1661   33  0.97  0.91  1.11  0.94 |  +36.8 +17.7  +16.8 | 12/29     +137     -55 |  0.82 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 1R                       BUY    569   47  0.86  0.83  0.89  0.75 |  -16.8  +9.6   -0.4 | 11/29      -23     -28 |  0.75 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 1R                       SELL   496   42  0.72  0.74  0.70  0.62 |  -44.2 -11.0   +0.4 | 11/28     -108     -35 |  0.61 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 1R                       ALL   1065   45  0.79  0.79  0.80  0.69 |  -61.0  -1.4   -0.0 | 12/30     -131     -35 |  0.68 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 2R                       BUY    565   30  0.74  0.79  0.69  0.66 |  -65.9 -12.9   -2.5 |  7/29      -49     -28 |  0.70 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 2R                       SELL   493   31  0.81  0.73  0.89  0.72 |  -18.3  -1.5   +7.4 | 12/28      -31     -35 |  0.73 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 2R                       ALL   1058   30  0.77  0.76  0.78  0.69 |  -84.2 -14.4   +5.0 |  7/30      -80     -35 |  0.71 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 3R                       BUY    565   25  0.76  0.81  0.72  0.70 |  -62.0 -14.5   -3.4 |  8/29      -30     -28 |  0.74 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 3R                       SELL   492   26  0.89  0.80  0.98  0.80 |   -3.8  +0.1  +22.9 | 12/28      +74     -35 |  0.73 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL csak, TP 3R                       ALL   1057   26  0.82  0.81  0.84  0.74 |  -65.8 -14.4  +19.5 |  9/30      +44     -35 |  0.74 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 1R                      BUY    541   45  0.79  0.72  0.86  0.73 |  -17.9  -3.7  +12.4 | 11/29     -141     -55 |  0.76 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 1R                      SELL   460   48  0.89  0.91  0.88  0.82 |  -14.3  -3.4   +0.6 | 15/27      -27     -35 |  0.78 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 1R                      ALL   1001   46  0.84  0.81  0.87  0.77 |  -32.1  -7.1  +13.0 | 13/30     -168     -55 |  0.77 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 2R                      BUY    540   36  0.75  0.75  0.74  0.70 |  -39.3  -6.7   +9.4 |  7/29     -160     -55 |  0.69 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 2R                      SELL   460   37  0.90  0.91  0.89  0.84 |  -16.3  +0.1   +9.6 | 16/27     +106     -35 |  0.72 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 2R                      ALL   1000   36  0.82  0.83  0.81  0.76 |  -55.6  -6.7  +19.0 | 10/30      -54     -55 |  0.70 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 3R                      BUY    540   35  0.78  0.77  0.79  0.73 |  -33.3  -7.0   +7.0 |  8/29     -175     -55 |  0.71 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 3R                      SELL   459   35  0.90  0.95  0.86  0.85 |  -20.0  +1.7   +9.7 | 13/27     +109     -35 |  0.77 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, TP 3R                      ALL    999   35  0.84  0.85  0.82  0.78 |  -53.4  -5.3  +16.7 | 12/30      -66     -55 |  0.74 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 8h                    BUY    546   43  0.86  0.82  0.90  0.79 |  -10.6  +0.9   +9.9 | 10/29      -42     -27 |  0.67 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 8h                    SELL   460   42  1.04  0.88  1.18  0.96 |  +20.9  -4.8  +28.7 | 16/27      +82     -35 |  0.70 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 8h                    ALL   1006   43  0.95  0.85  1.05  0.87 |  +10.3  -4.0  +38.6 | 13/30      +40     -35 |  0.68 
+
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 24h                   BUY    540   34  0.71  0.68  0.73  0.66 |  -41.7 -13.4   +8.1 |  9/29     -260     -55 |  0.62 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 24h                   SELL   459   34  0.90  0.90  0.89  0.84 |  -16.2  -2.9  +20.1 | 13/27      +40     -35 |  0.68 
+S3b H4 pos<=-0.7 + M15 Ext | any spread | SL swing, time 24h                   ALL    999   34  0.80  0.79  0.81  0.75 |  -57.9 -16.4  +28.2 |  9/30     -220     -55 |  0.65 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 BUY    259   51  1.03  0.94  1.21  0.95 |   +8.9 +12.1   +3.2 |  7/9       +32     -28 |  0.78 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 SELL   246   46  0.89  0.83  1.00  0.81 |   -0.2  +5.3   +0.9 |  6/14      -51     -35 |  0.73 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 1R                 ALL    505   49  0.96  0.88  1.10  0.88 |   +8.7 +17.4   +4.1 | 11/22      -20     -35 |  0.75 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 BUY    256   33  0.86  0.83  0.91  0.81 |   -5.7  -0.3   +4.4 |  5/9       +44     -28 |  0.87 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 SELL   243   33  0.92  0.78  1.22  0.86 |  +11.2 +10.8   +2.1 |  7/13       +6     -35 |  0.76 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 2R                 ALL    499   33  0.89  0.80  1.05  0.83 |   +5.6 +10.6   +6.5 |  9/21      +49     -35 |  0.82 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 BUY    256   29  0.97  0.93  1.03  0.92 |   +2.1  +1.2   +7.7 |  5/9       +77     -28 |  1.01 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 SELL   242   28  0.96  0.76  1.39  0.90 |  +21.2 +12.4   +7.1 |  7/13      +89     -35 |  0.90 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL csak, TP 3R                 ALL    498   29  0.96  0.84  1.20  0.91 |  +23.3 +13.6  +14.8 | 10/21     +167     -35 |  0.95 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                BUY    247   45  0.79  0.68  1.00  0.76 |   +0.2  -1.6   +5.2 |  4/8       -67     -55 |  0.67 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                SELL   231   51  1.03  0.98  1.12  0.98 |   +4.3  +6.0   -1.0 |  8/11      +22     -35 |  0.92 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 1R                ALL    478   48  0.90  0.82  1.06  0.86 |   +4.5  +4.4   +4.2 | 10/21      -45     -55 |  0.79 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                BUY    246   37  0.84  0.76  0.99  0.81 |   -0.3  -3.0   +8.7 |  3/8       -50     -55 |  0.74 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                SELL   231   40  1.03  0.99  1.12  1.00 |   +5.2  +8.1   +0.8 |  6/11     +156     -35 |  0.75 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 2R                ALL    477   39  0.93  0.87  1.06  0.90 |   +4.9  +5.2   +9.5 |  8/21     +106     -55 |  0.75 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                BUY    246   37  0.92  0.84  1.08  0.89 |   +3.6  -1.2   +8.5 |  3/8       -65     -55 |  0.78 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                SELL   231   38  0.98  0.94  1.05  0.94 |   +2.2 +10.1   -2.4 |  5/11     +157     -35 |  0.85 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, TP 3R                ALL    477   37  0.95  0.89  1.06  0.92 |   +5.8  +8.9   +6.1 |  8/21      +92     -55 |  0.81 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              BUY    250   45  0.97  0.93  1.05  0.93 |   +2.0  +2.1   +7.1 |  3/8       +21     -27 |  0.86 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              SELL   231   47  1.11  1.00  1.30  1.06 |  +10.2  +2.8   +2.6 |  7/11      +87     -35 |  0.99 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 8h              ALL    481   46  1.03  0.96  1.17  0.99 |  +12.3  +4.9   +9.7 | 12/22     +108     -35 |  0.92 
+
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             BUY    246   35  0.84  0.76  0.99  0.81 |   -0.4  -6.8  +10.5 |  3/8      -127     -55 |  0.82 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             SELL   231   37  0.96  0.87  1.13  0.93 |   +5.9  +5.2   +0.5 |  5/11      +97     -35 |  0.85 
+S3b H4 pos<=-0.7 + M15 Ext | spread<=0.20 ATR | SL swing, time 24h             ALL    477   36  0.90  0.81  1.06  0.87 |   +5.5  -1.6  +11.0 |  7/21      -30     -55 |  0.84 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 1R                     BUY   1170   43  0.74  0.74  0.75  0.65 |  -86.3 -11.6  -26.1 | 11/30     -120     -29 |  0.66 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 1R                     SELL  1009   44  0.77  0.82  0.71  0.65 |  -81.7 -20.1  -13.8 | 10/30      -78     -35 |  0.69 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 1R                     ALL   2179   44  0.75  0.78  0.73  0.65 | -168.0 -31.7  -40.0 |  8/30     -198     -35 |  0.67 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 2R                     BUY   1164   28  0.68  0.72  0.64  0.61 | -158.6 -30.2  -35.4 |  9/30     -221     -29 |  0.57 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 2R                     SELL  1005   31  0.82  0.84  0.80  0.72 |  -68.2  -3.8   -7.5 | 11/30      +95     -35 |  0.72 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 2R                     ALL   2169   29  0.74  0.77  0.71  0.66 | -226.8 -34.0  -42.9 |  6/30     -125     -35 |  0.65 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 3R                     BUY   1164   23  0.69  0.72  0.66  0.63 | -156.4 -20.8  -33.5 |  9/30     -196     -29 |  0.64 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 3R                     SELL  1003   25  0.82  0.83  0.81  0.74 |  -68.0  -7.6   +1.9 | 14/30     +194     -35 |  0.69 
+S3c H4 far band + M15 Ext(8) | any spread | SL csak, TP 3R                     ALL   2167   24  0.75  0.77  0.73  0.68 | -224.4 -28.3  -31.6 |  6/30       -2     -35 |  0.67 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 1R                    BUY   1089   44  0.77  0.76  0.78  0.71 |  -62.6 -17.5   -2.1 |  9/30      -85     -33 |  0.62 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 1R                    SELL   932   49  0.94  0.96  0.92  0.86 |  -17.7 -10.1   -0.5 | 14/30      +93     -39 |  0.72 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 1R                    ALL   2021   47  0.84  0.85  0.84  0.77 |  -80.3 -27.6   -2.6 |  9/30       +8     -39 |  0.67 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 2R                    BUY   1083   34  0.71  0.74  0.68  0.66 | -105.1 -21.2   +1.3 |  8/30     -190     -33 |  0.62 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 2R                    SELL   924   36  0.88  0.84  0.93  0.82 |  -18.5  -4.5   +5.5 | 15/30     +327     -39 |  0.82 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 2R                    ALL   2007   35  0.79  0.79  0.80  0.74 | -123.6 -25.7   +6.8 |  9/30     +137     -39 |  0.72 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 3R                    BUY   1083   32  0.71  0.74  0.69  0.67 | -104.9 -25.1   -2.0 | 11/30     -303     -33 |  0.73 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 3R                    SELL   924   34  0.88  0.83  0.93  0.82 |  -19.9  -5.5   +8.8 | 15/30     +387     -39 |  0.81 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, TP 3R                    ALL   2007   33  0.79  0.78  0.80  0.74 | -124.7 -30.6   +6.9 | 10/30      +84     -39 |  0.77 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 8h                  BUY   1111   42  0.85  0.86  0.83  0.78 |  -41.3 -11.0   +3.9 | 14/30      -46     -33 |  0.70 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 8h                  SELL   937   43  1.07  0.99  1.14  0.98 |  +31.3 -12.7  +29.7 | 17/30     +499     -37 |  0.79 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 8h                  ALL   2048   42  0.95  0.92  0.98  0.87 |  -10.0 -23.8  +33.6 | 17/30     +453     -37 |  0.74 
+
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 24h                 BUY   1080   31  0.68  0.67  0.70  0.64 | -102.4 -19.4   -0.0 | 10/30     -385     -33 |  0.70 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 24h                 SELL   923   33  0.91  0.81  1.03  0.85 |   +7.8  +7.3  +21.6 | 14/30     +284     -39 |  0.73 
+S3c H4 far band + M15 Ext(8) | any spread | SL swing, time 24h                 ALL   2003   32  0.79  0.73  0.85  0.74 |  -94.6 -12.1  +21.5 |  9/30     -101     -39 |  0.71 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 1R               BUY    528   50  0.99  0.92  1.13  0.92 |  +11.3 +11.5   -0.5 | 11/21      +32     -29 |  0.78 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 1R               SELL   467   48  0.92  0.94  0.88  0.84 |   -9.4  -0.5   -4.1 | 12/18      +11     -35 |  0.70 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 1R               ALL    995   49  0.96  0.93  1.01  0.88 |   +2.0 +11.0   -4.6 | 14/25      +43     -35 |  0.74 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 2R               BUY    524   34  0.94  0.90  1.01  0.88 |   +1.5  +4.9   -2.7 |  9/21      +28     -29 |  0.73 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 2R               SELL   463   35  0.98  0.96  1.03  0.92 |   +2.8  +6.0   -3.0 | 10/18     +185     -35 |  0.73 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 2R               ALL    987   34  0.96  0.93  1.02  0.90 |   +4.3 +10.9   -5.6 | 13/25     +213     -35 |  0.73 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 3R               BUY    524   29  0.99  0.97  1.01  0.93 |   +1.7  +9.2   -0.4 |  9/21      +86     -29 |  0.65 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 3R               SELL   462   27  0.97  0.91  1.11  0.91 |  +11.0 +10.7   -4.9 |  8/18     +271     -35 |  0.80 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL csak, TP 3R               ALL    986   28  0.98  0.94  1.05  0.92 |  +12.6 +19.9   -5.2 | 15/25     +357     -35 |  0.73 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 1R              BUY    498   49  0.93  0.91  0.96  0.89 |   -3.4  +1.1   +1.1 |  8/21     +118     -33 |  0.80 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 1R              SELL   435   52  1.08  1.09  1.06  1.03 |   +3.5  +1.7   -4.1 |  8/17     +155     -39 |  0.87 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 1R              ALL    933   50  1.00  0.99  1.00  0.95 |   +0.1  +2.8   -3.0 | 12/24     +273     -39 |  0.83 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 2R              BUY    495   39  0.98  0.97  1.01  0.95 |   +1.0  +2.2   +8.3 |  7/21     +147     -33 |  0.77 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 2R              SELL   431   38  0.95  0.91  1.03  0.91 |   +2.7  +4.9   -4.4 |  7/17     +388     -39 |  0.82 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 2R              ALL    926   38  0.96  0.94  1.02  0.93 |   +3.7  +7.1   +3.9 | 10/24     +535     -39 |  0.79 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 3R              BUY    495   36  0.96  0.97  0.96  0.93 |   -3.6  +0.4   +4.6 | 11/21      +24     -33 |  0.72 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 3R              SELL   431   35  0.94  0.88  1.07  0.90 |   +5.8  +7.4   -4.6 |  7/17     +465     -39 |  0.81 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, TP 3R              ALL    926   36  0.95  0.92  1.01  0.92 |   +2.3  +7.8   -0.0 | 11/24     +490     -39 |  0.76 
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 8h            BUY    504   45  1.10  1.11  1.10  1.06 |   +7.4  +1.9   +1.8 | 14/21     +128     -33 |  0.83 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 8h            SELL   436   47  1.21  1.16  1.30  1.15 |  +18.9  -5.2   +0.4 | 11/17     +512     -37 |  0.76 PASS
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 8h            ALL    940   46  1.15  1.13  1.20  1.10 |  +26.3  -3.3   +2.2 | 15/24     +640     -37 |  0.80 PASS
+
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 24h           BUY    493   34  0.94  0.88  1.06  0.91 |   +6.0  +5.6  +11.1 |  7/21      -33     -33 |  0.73 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 24h           SELL   430   34  0.92  0.77  1.26  0.89 |  +21.1  +5.7   -1.7 |  8/17     +340     -39 |  0.71 
+S3c H4 far band + M15 Ext(8) | spread<=0.20 ATR | SL swing, time 24h           ALL    923   34  0.93  0.82  1.15  0.90 |  +27.1 +11.2   +9.4 |  9/24     +307     -39 |  0.72 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 1R                    BUY   1596   43  0.73  0.75  0.71  0.63 | -138.3 -31.7  -25.2 |  9/30     -188     -51 |  0.69 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 1R                    SELL  1370   42  0.72  0.80  0.64  0.61 | -141.7 -27.4  -31.8 |  9/30     -125     -35 |  0.72 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 1R                    ALL   2966   42  0.72  0.77  0.68  0.62 | -280.0 -59.1  -57.0 |  7/30     -314     -51 |  0.70 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 2R                    BUY   1572   28  0.69  0.75  0.64  0.62 | -211.7 -45.2  -38.8 |  9/30     -203     -51 |  0.64 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 2R                    SELL  1358   30  0.79  0.85  0.72  0.70 | -132.1  -8.6  -29.3 |  9/30       +9     -35 |  0.65 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 2R                    ALL   2930   29  0.74  0.80  0.68  0.66 | -343.8 -53.7  -68.2 |  6/30     -194     -51 |  0.65 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 3R                    BUY   1570   23  0.69  0.73  0.66  0.63 | -211.6 -30.8  -51.5 |  8/30     -192     -51 |  0.65 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 3R                    SELL  1353   24  0.81  0.87  0.75  0.73 | -125.6  -6.7  -13.0 | 10/30     +155     -35 |  0.72 
+S3d H4 far band + M15 Ext(16) | any spread | SL csak, TP 3R                    ALL   2923   24  0.75  0.80  0.70  0.67 | -337.2 -37.5  -64.5 |  6/30      -37     -51 |  0.68 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 1R                   BUY   1420   44  0.77  0.78  0.76  0.70 |  -91.8 -25.2   -1.9 |  8/30      -96     -55 |  0.67 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 1R                   SELL  1229   48  0.88  0.94  0.82  0.81 |  -54.5 -17.3  -15.5 | 16/30       -8     -40 |  0.76 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 1R                   ALL   2649   46  0.82  0.85  0.79  0.75 | -146.3 -42.5  -17.3 | 10/30     -104     -55 |  0.71 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 2R                   BUY   1405   34  0.72  0.76  0.69  0.67 | -135.5 -19.7   -8.4 |  9/30     -132     -55 |  0.69 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 2R                   SELL  1213   36  0.86  0.88  0.85  0.80 |  -57.4  -6.4  -13.5 | 15/30     +309     -40 |  0.73 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 2R                   ALL   2618   35  0.79  0.82  0.76  0.73 | -192.8 -26.1  -21.9 |  9/30     +177     -55 |  0.71 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 3R                   BUY   1404   31  0.73  0.74  0.71  0.68 | -127.0 -18.8  -16.6 | 11/30     -184     -55 |  0.70 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 3R                   SELL  1212   33  0.83  0.86  0.81  0.78 |  -75.0  -8.5  -20.9 |  9/30     +313     -40 |  0.75 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, TP 3R                   ALL   2616   32  0.78  0.80  0.76  0.72 | -202.0 -27.3  -37.5 |  8/30     +129     -55 |  0.72 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 8h                 BUY   1453   41  0.84  0.87  0.81  0.77 |  -63.6 -10.7   -4.2 | 13/30      -14     -51 |  0.75 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 8h                 SELL  1238   41  0.98  0.99  0.98  0.90 |   -7.5  -7.4   +3.7 | 16/30     +435     -39 |  0.72 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 8h                 ALL   2691   41  0.91  0.92  0.89  0.83 |  -71.0 -18.0   -0.5 | 11/30     +422     -51 |  0.74 
+
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 24h                BUY   1401   30  0.72  0.71  0.72  0.67 | -124.0 -17.9  -14.6 |  9/30     -259     -55 |  0.67 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 24h                SELL  1210   31  0.84  0.82  0.87  0.79 |  -52.9  +6.7   -8.1 | 13/30     +179     -40 |  0.73 
+S3d H4 far band + M15 Ext(16) | any spread | SL swing, time 24h                ALL   2611   31  0.78  0.76  0.79  0.72 | -176.9 -11.2  -22.8 |  7/30      -80     -55 |  0.70 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 1R              BUY    707   50  0.97  0.94  1.04  0.90 |   +4.7  +4.0   +3.5 | 14/23      +53     -51 |  0.88 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 1R              SELL   630   46  0.85  0.85  0.85  0.77 |  -15.1  +4.5   -4.9 | 12/22      +12     -35 |  0.78 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 1R              ALL   1337   48  0.91  0.89  0.95  0.84 |  -10.4  +8.5   -1.4 | 15/27      +65     -51 |  0.82 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 2R              BUY    696   35  0.96  0.93  1.01  0.90 |   +1.4  -1.1   +4.3 | 12/23     +141     -51 |  0.83 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 2R              SELL   623   34  0.94  0.91  1.00  0.87 |   +0.1 +11.8   -2.9 | 12/22     +149     -35 |  0.76 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 2R              ALL   1319   34  0.95  0.92  1.01  0.89 |   +1.5 +10.7   +1.3 | 13/27     +290     -51 |  0.79 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 3R              BUY    695   29  0.97  0.97  0.97  0.92 |   -5.1  +4.1   +0.9 | 13/23     +186     -51 |  0.71 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 3R              SELL   620   28  0.98  0.94  1.09  0.92 |  +12.0 +16.2   -1.8 | 13/22     +291     -35 |  0.72 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL csak, TP 3R              ALL   1315   28  0.98  0.95  1.02  0.92 |   +6.9 +20.3   -0.9 | 13/27     +477     -51 |  0.72 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 1R             BUY    639   49  0.93  0.93  0.91  0.89 |   -9.1  -5.9   +3.3 | 11/23     +167     -55 |  0.83 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 1R             SELL   571   50  1.01  1.01  1.00  0.96 |   +0.2  +5.6   -6.2 | 15/22     +104     -40 |  0.79 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 1R             ALL   1210   50  0.97  0.97  0.95  0.92 |   -8.9  -0.3   -2.9 | 13/27     +270     -55 |  0.81 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 2R             BUY    633   39  0.98  0.97  0.98  0.94 |   -2.2  -0.5   +9.2 | 10/23     +278     -55 |  0.98 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 2R             SELL   564   38  0.98  0.98  1.00  0.95 |   +0.1 +11.5   -6.5 | 13/21     +441     -40 |  0.91 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 2R             ALL   1197   39  0.98  0.98  0.99  0.94 |   -2.1 +11.0   +2.7 | 14/27     +718     -55 |  0.94 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 3R             BUY    633   36  0.97  0.96  0.98  0.93 |   -2.6  -1.5   +5.5 | 13/23     +222     -55 |  0.75 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 3R             SELL   564   35  0.95  0.93  1.00  0.91 |   -0.4 +17.0  -12.7 | 11/21     +477     -40 |  0.71 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, TP 3R             ALL   1197   36  0.96  0.94  0.99  0.92 |   -2.9 +15.5   -7.3 | 11/27     +699     -55 |  0.73 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 8h           BUY    647   44  1.07  1.10  1.01  1.02 |   +1.0  -1.0   +0.9 | 14/23     +214     -51 |  0.88 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 8h           SELL   574   45  1.14  1.13  1.16  1.09 |  +12.5  -1.7   -5.1 | 14/21     +508     -39 |  0.85 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 8h           ALL   1221   45  1.10  1.11  1.08  1.05 |  +13.5  -2.7   -4.3 | 16/27     +722     -51 |  0.87 
+
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 24h          BUY    631   35  0.96  0.94  1.02  0.93 |   +2.3  -1.5  +11.9 | 10/23     +170     -55 |  0.77 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 24h          SELL   563   34  0.92  0.86  1.07  0.89 |   +7.9 +12.2   -9.9 | 12/21     +335     -40 |  0.85 
+S3d H4 far band + M15 Ext(16) | spread<=0.20 ATR | SL swing, time 24h          ALL   1194   34  0.94  0.90  1.04  0.91 |  +10.2 +10.7   +2.1 |  9/27     +505     -55 |  0.81 
+
+S4 against H4 + prior move against | any spread | SL csak, TP 1R               BUY   1971   43  0.73  0.82  0.66  0.64 | -206.7 -46.3  -86.4 | 10/30     -166     -16 |  0.69 
+S4 against H4 + prior move against | any spread | SL csak, TP 1R               SELL  2299   42  0.73  0.83  0.63  0.61 | -256.4 -59.4  -52.0 |  9/30     -271     -35 |  0.73 
+S4 against H4 + prior move against | any spread | SL csak, TP 1R               ALL   4270   43  0.73  0.82  0.64  0.63 | -463.1 -105.7 -138.3 | 10/30     -437     -35 |  0.71 
+
+S4 against H4 + prior move against | any spread | SL csak, TP 2R               BUY   1923   31  0.81  0.84  0.78  0.73 | -152.2  -6.4  -68.7 | 12/30      +45     -20 |  0.69 
+S4 against H4 + prior move against | any spread | SL csak, TP 2R               SELL  2268   30  0.81  0.90  0.71  0.71 | -233.9 -43.9  -42.8 | 17/30     -110     -35 |  0.75 
+S4 against H4 + prior move against | any spread | SL csak, TP 2R               ALL   4191   30  0.81  0.88  0.74  0.72 | -386.0 -50.3 -111.5 | 13/30      -65     -35 |  0.72 
+
+S4 against H4 + prior move against | any spread | SL csak, TP 3R               BUY   1888   26  0.82  0.86  0.77  0.74 | -167.0  -6.4  -72.6 | 12/30      -95     -20 |  0.73 
+S4 against H4 + prior move against | any spread | SL csak, TP 3R               SELL  2240   24  0.83  0.94  0.73  0.74 | -233.7 -49.2  -39.2 | 18/30      +78     -35 |  0.84 
+S4 against H4 + prior move against | any spread | SL csak, TP 3R               ALL   4128   25  0.82  0.90  0.75  0.74 | -400.7 -55.5 -111.8 | 16/30      -17     -35 |  0.78 
+
+S4 against H4 + prior move against | any spread | SL swing, TP 1R              BUY   1885   44  0.77  0.87  0.68  0.70 | -176.9 -42.5  -61.1 | 11/30     -115     -33 |  0.71 
+S4 against H4 + prior move against | any spread | SL swing, TP 1R              SELL  2223   45  0.79  0.87  0.71  0.70 | -182.1 -35.2  -39.4 |  9/30      -48     -39 |  0.72 
+S4 against H4 + prior move against | any spread | SL swing, TP 1R              ALL   4108   44  0.78  0.87  0.70  0.70 | -359.0 -77.7 -100.5 | 12/30     -164     -39 |  0.72 
+
+S4 against H4 + prior move against | any spread | SL swing, TP 2R              BUY   1820   33  0.83  0.89  0.78  0.77 | -134.9 -15.9  -49.6 | 11/30       +8     -33 |  0.74 
+S4 against H4 + prior move against | any spread | SL swing, TP 2R              SELL  2168   32  0.84  0.93  0.75  0.76 | -187.5 -29.1  -35.3 | 13/30      +94     -39 |  0.71 
+S4 against H4 + prior move against | any spread | SL swing, TP 2R              ALL   3988   33  0.84  0.91  0.76  0.76 | -322.4 -45.0  -84.9 | 13/30     +102     -39 |  0.72 
+
+S4 against H4 + prior move against | any spread | SL swing, TP 3R              BUY   1795   29  0.78  0.84  0.72  0.72 | -183.6 -19.2  -79.6 |  9/30     -266     -33 |  0.73 
+S4 against H4 + prior move against | any spread | SL swing, TP 3R              SELL  2146   27  0.82  0.92  0.73  0.75 | -214.0 -44.6  -47.1 | 11/30      +24     -39 |  0.79 
+S4 against H4 + prior move against | any spread | SL swing, TP 3R              ALL   3941   28  0.80  0.88  0.72  0.74 | -397.6 -63.8 -126.6 | 12/30     -242     -39 |  0.76 
+
+S4 against H4 + prior move against | any spread | SL swing, time 8h            BUY   1915   36  0.81  0.86  0.75  0.73 | -138.6  -9.5  -66.2 | 11/30     -153     -28 |  0.71 
+S4 against H4 + prior move against | any spread | SL swing, time 8h            SELL  2217   32  0.82  0.92  0.73  0.74 | -190.8 -44.7  -31.7 | 13/30      +65     -37 |  0.69 
+S4 against H4 + prior move against | any spread | SL swing, time 8h            ALL   4132   34  0.82  0.89  0.74  0.74 | -329.4 -54.2  -97.8 | 13/30      -87     -37 |  0.70 
+
+S4 against H4 + prior move against | any spread | SL swing, time 24h           BUY   1780   26  0.72  0.74  0.70  0.67 | -196.9 -37.1  -99.4 |  7/30     -264     -33 |  0.65 
+S4 against H4 + prior move against | any spread | SL swing, time 24h           SELL  2117   24  0.81  0.95  0.68  0.74 | -268.6 -47.2  -62.1 | 13/30      -85     -39 |  0.70 
+S4 against H4 + prior move against | any spread | SL swing, time 24h           ALL   3897   25  0.77  0.85  0.69  0.71 | -465.5 -84.4 -161.5 |  9/30     -349     -39 |  0.67 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 1R         BUY    802   47  0.90  0.98  0.77  0.83 |  -37.7 -17.4  -15.5 | 13/24      +89     -16 |  0.79 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 1R         SELL   959   49  0.96  1.03  0.83  0.88 |  -28.6 -14.1   -6.0 | 16/24       -1     -35 |  0.89 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 1R         ALL   1761   48  0.93  1.01  0.80  0.86 |  -66.3 -31.5  -21.5 | 16/27      +87     -35 |  0.84 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 2R         BUY    789   35  1.02  1.10  0.89  0.96 |  -21.8  -1.5  -12.0 | 15/24     +322     -20 |  0.79 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 2R         SELL   952   35  1.01  1.08  0.86  0.94 |  -29.4 -13.1   -4.0 | 18/24     +119     -35 |  0.86 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 2R         ALL   1741   35  1.01  1.09  0.87  0.95 |  -51.2 -14.6  -16.0 | 18/27     +441     -35 |  0.83 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 3R         BUY    778   30  1.02  1.13  0.84  0.97 |  -32.8 -12.5  -16.2 | 15/24     +187     -20 |  0.74 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 3R         SELL   940   30  1.08  1.16  0.93  1.02 |  -15.4 -17.1   -0.0 | 21/24     +328     -35 |  0.81 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL csak, TP 3R         ALL   1718   30  1.06  1.15  0.89  1.00 |  -48.2 -29.7  -16.2 | 22/27     +515     -35 |  0.77 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 1R        BUY    780   48  0.93  1.04  0.77  0.88 |  -36.8  -9.7  -17.3 | 15/24     +151     -33 |  0.89 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 1R        SELL   929   50  0.96  0.97  0.95  0.91 |   -7.1  -6.5   -3.3 | 13/24     +211     -39 |  0.94 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 1R        ALL   1709   49  0.95  1.00  0.86  0.89 |  -43.9 -16.3  -20.5 | 17/27     +362     -39 |  0.91 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 2R        BUY    762   38  1.05  1.13  0.92  1.01 |  -14.3  +2.8  -11.0 | 15/24     +302     -33 |  0.86 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 2R        SELL   913   37  1.00  1.04  0.92  0.95 |  -15.8  -8.2   -2.4 | 16/24     +335     -39 |  0.87 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 2R        ALL   1675   37  1.02  1.08  0.92  0.98 |  -30.1  -5.4  -13.4 | 17/27     +638     -39 |  0.87 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 3R        BUY    752   32  0.95  1.07  0.75  0.91 |  -45.8  -2.4  -19.0 | 11/24      +66     -33 |  0.87 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 3R        SELL   899   32  0.99  1.03  0.91  0.95 |  -17.4 -16.2   -6.6 | 15/24     +278     -39 |  0.84 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, TP 3R        ALL   1651   32  0.97  1.05  0.84  0.93 |  -63.2 -18.6  -25.6 | 17/27     +345     -39 |  0.86 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 8h      BUY    786   39  0.95  1.03  0.81  0.90 |  -31.1  -8.7  -12.7 | 10/24     +105     -28 |  0.78 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 8h      SELL   923   37  0.96  1.02  0.83  0.91 |  -27.4 -28.6   -4.2 | 13/24     +272     -37 |  0.82 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 8h      ALL   1709   38  0.95  1.02  0.82  0.90 |  -58.5 -37.3  -16.9 | 13/27     +377     -37 |  0.80 
+
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 24h     BUY    745   29  0.83  0.88  0.75  0.80 |  -47.8 -11.8  -20.4 | 10/24      +82     -33 |  0.75 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 24h     SELL   887   29  1.01  1.10  0.85  0.97 |  -32.0 -23.9   -7.4 | 14/24     +178     -39 |  0.70 
+S4 against H4 + prior move against | spread<=0.20 ATR | SL swing, time 24h     ALL   1632   29  0.93  1.00  0.80  0.89 |  -79.8 -35.6  -27.8 | 13/27     +260     -39 |  0.73 
+
+S5 M15 Extreme against | any spread | SL csak, TP 1R                           BUY   6981   42  0.71  0.76  0.66  0.61 | -738.4 -126.1 -192.1 |  3/30    -1105     -29 |  0.67 
+S5 M15 Extreme against | any spread | SL csak, TP 1R                           SELL  5226   41  0.69  0.77  0.62  0.58 | -595.0 -93.7 -109.5 |  5/30     -743     -42 |  0.67 
+S5 M15 Extreme against | any spread | SL csak, TP 1R                           ALL  12207   41  0.70  0.76  0.64  0.60 | -1333.4 -219.8 -301.6 |  2/30    -1848     -42 |  0.67 
+
+S5 M15 Extreme against | any spread | SL csak, TP 2R                           BUY   6671   27  0.70  0.77  0.63  0.62 | -941.3 -181.6 -202.3 |  1/30    -1359     -28 |  0.70 
+S5 M15 Extreme against | any spread | SL csak, TP 2R                           SELL  4899   28  0.73  0.78  0.68  0.64 | -556.6 -68.2  -97.8 |  6/30     -809     -42 |  0.70 
+S5 M15 Extreme against | any spread | SL csak, TP 2R                           ALL  11570   28  0.71  0.78  0.65  0.63 | -1498.0 -249.8 -300.1 |  1/30    -2168     -42 |  0.70 
+
+S5 M15 Extreme against | any spread | SL csak, TP 3R                           BUY   6500   22  0.69  0.74  0.65  0.62 | -939.5 -230.6 -174.8 |  2/30    -1489     -28 |  0.68 
+S5 M15 Extreme against | any spread | SL csak, TP 3R                           SELL  4785   22  0.75  0.80  0.70  0.67 | -560.6 -63.4  -73.9 |  6/30     -862     -42 |  0.70 
+S5 M15 Extreme against | any spread | SL csak, TP 3R                           ALL  11285   22  0.72  0.76  0.67  0.64 | -1500.2 -294.0 -248.7 |  2/30    -2350     -42 |  0.69 
+
+S5 M15 Extreme against | any spread | SL swing, TP 1R                          BUY   5570   43  0.74  0.80  0.68  0.68 | -503.8 -102.8 -130.3 |  3/30    -1527     -55 |  0.72 
+S5 M15 Extreme against | any spread | SL swing, TP 1R                          SELL  4021   45  0.78  0.82  0.74  0.71 | -286.2 -62.1  -58.0 |  4/30    -1033     -42 |  0.77 
+S5 M15 Extreme against | any spread | SL swing, TP 1R                          ALL   9591   44  0.75  0.81  0.70  0.69 | -790.0 -165.0 -188.3 |  1/30    -2560     -55 |  0.74 
+
+S5 M15 Extreme against | any spread | SL swing, TP 2R                          BUY   5189   33  0.74  0.81  0.68  0.69 | -556.5 -135.6  -91.7 |  3/30    -1755     -55 |  0.71 
+S5 M15 Extreme against | any spread | SL swing, TP 2R                          SELL  3736   33  0.80  0.82  0.77  0.74 | -274.7 -60.7  -41.4 |  7/30     -731     -42 |  0.75 
+S5 M15 Extreme against | any spread | SL swing, TP 2R                          ALL   8925   33  0.76  0.81  0.72  0.71 | -831.2 -196.4 -133.1 |  2/30    -2486     -55 |  0.73 
+
+S5 M15 Extreme against | any spread | SL swing, TP 3R                          BUY   5082   30  0.73  0.80  0.66  0.68 | -597.9 -153.9  -88.1 |  3/30    -1621     -55 |  0.72 
+S5 M15 Extreme against | any spread | SL swing, TP 3R                          SELL  3676   29  0.78  0.80  0.77  0.73 | -289.8 -66.9  -41.3 |  5/30     -837     -42 |  0.73 
+S5 M15 Extreme against | any spread | SL swing, TP 3R                          ALL   8758   30  0.75  0.80  0.70  0.70 | -887.7 -220.8 -129.4 |  2/30    -2457     -55 |  0.73 
+
+S5 M15 Extreme against | any spread | SL swing, time 8h                        BUY   5890   38  0.73  0.78  0.68  0.66 | -485.1 -136.9  -86.0 |  3/30    -1222     -45 |  0.74 
+S5 M15 Extreme against | any spread | SL swing, time 8h                        SELL  4284   36  0.82  0.83  0.82  0.75 | -217.8 -77.5  +15.8 |  7/30     -412     -39 |  0.78 
+S5 M15 Extreme against | any spread | SL swing, time 8h                        ALL  10174   37  0.77  0.80  0.74  0.70 | -702.9 -214.4  -70.3 |  3/30    -1634     -45 |  0.76 
+
+S5 M15 Extreme against | any spread | SL swing, time 24h                       BUY   5016   29  0.73  0.80  0.66  0.68 | -596.5 -127.5  -88.3 |  4/30    -1224     -55 |  0.71 
+S5 M15 Extreme against | any spread | SL swing, time 24h                       SELL  3621   28  0.78  0.77  0.80  0.73 | -247.0 -57.5  -20.6 |  6/30     -968     -42 |  0.75 
+S5 M15 Extreme against | any spread | SL swing, time 24h                       ALL   8637   29  0.75  0.78  0.72  0.70 | -843.5 -185.0 -108.9 |  3/30    -2192     -55 |  0.73 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                     BUY   2855   44  0.81  0.87  0.71  0.74 | -165.1 -40.2  -18.1 |  6/29     -247     -29 |  0.79 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                     SELL  2324   46  0.86  0.91  0.77  0.78 | -101.2 -15.3   -6.0 |  9/28     -128     -42 |  0.84 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 1R                     ALL   5179   45  0.83  0.89  0.74  0.76 | -266.3 -55.5  -24.1 |  6/30     -375     -42 |  0.82 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                     BUY   2746   30  0.80  0.86  0.70  0.75 | -206.5 -61.3  -15.4 |  8/29     -300     -28 |  0.82 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                     SELL  2220   32  0.90  0.92  0.88  0.84 |  -63.1  -4.7   -4.2 | 11/28     -163     -42 |  0.85 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 2R                     ALL   4966   31  0.85  0.89  0.78  0.79 | -269.6 -66.0  -19.6 |  6/30     -463     -42 |  0.83 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                     BUY   2691   23  0.75  0.81  0.66  0.71 | -248.9 -89.6  -23.0 |  4/29     -418     -28 |  0.78 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                     SELL  2162   26  0.93  0.96  0.87  0.87 |  -70.1 -10.9   -9.2 | 12/28     -211     -42 |  0.78 
+S5 M15 Extreme against | spread<=0.20 ATR | SL csak, TP 3R                     ALL   4853   25  0.83  0.87  0.75  0.78 | -319.0 -100.5  -32.2 |  7/30     -629     -42 |  0.78 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                    BUY   2325   45  0.82  0.85  0.75  0.78 | -105.0 -37.9  -16.9 |  5/29     -558     -55 |  0.82 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                    SELL  1879   47  0.87  0.87  0.88  0.83 |  -39.6  -2.8   +2.5 | 10/28     -503     -42 |  0.84 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 1R                    ALL   4204   46  0.84  0.86  0.81  0.80 | -144.5 -40.7  -14.5 |  4/30    -1061     -55 |  0.83 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                    BUY   2197   35  0.84  0.86  0.79  0.81 |  -96.1 -34.9   -1.6 |  8/29     -673     -55 |  0.78 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                    SELL  1748   36  0.93  0.93  0.95  0.90 |  -19.2  -6.1  +11.5 | 11/28     -120     -42 |  0.85 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 2R                    ALL   3945   36  0.88  0.89  0.86  0.85 | -115.3 -40.9   +9.8 |  7/30     -793     -55 |  0.82 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                    BUY   2152   32  0.83  0.84  0.83  0.80 |  -78.5 -21.7   -1.8 |  5/29     -445     -55 |  0.84 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                    SELL  1718   33  0.93  0.90  0.99  0.90 |   -5.0  -3.9   +8.8 | 12/28     -173     -42 |  0.88 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, TP 3R                    ALL   3870   33  0.88  0.87  0.90  0.85 |  -83.4 -25.6   +7.1 |  6/30     -618     -55 |  0.86 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 8h                  BUY   2380   40  0.80  0.80  0.78  0.76 |  -83.0 -42.1   -4.9 |  8/29     -355     -45 |  0.87 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 8h                  SELL  1939   40  0.96  0.93  1.01  0.91 |   +3.3 -25.7  +39.3 | 12/28     +139     -39 |  0.82 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 8h                  ALL   4319   40  0.87  0.86  0.89  0.83 |  -79.8 -67.8  +34.4 |  5/30     -216     -45 |  0.85 
+
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 24h                 BUY   2119   31  0.87  0.87  0.87  0.84 |  -58.4 -13.1  +12.1 |  5/29      +22     -55 |  0.77 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 24h                 SELL  1687   31  0.92  0.83  1.10  0.89 |  +38.9 -11.1  +24.4 | 10/28     -293     -42 |  0.82 
+S5 M15 Extreme against | spread<=0.20 ATR | SL swing, time 24h                 ALL   3806   31  0.90  0.86  0.98  0.87 |  -19.4 -24.2  +36.5 | 10/30     -271     -55 |  0.79 
+
+done in 272 s
