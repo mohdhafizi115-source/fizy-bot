@@ -1,102 +1,102 @@
-XAUUSD done [12 s]
-BTCUSD done [57 s]
-EURUSD done [72 s]
-GBPUSD done [87 s]
-AUDUSD done [102 s]
-NZDUSD done [119 s]
-USDJPY done [134 s]
-USDCHF done [149 s]
-USDCAD done [167 s]
-EURGBP done [189 s]
-EURJPY done [203 s]
-EURCHF done [224 s]
-EURAUD done [239 s]
-EURCAD done [258 s]
-EURNZD done [277 s]
-GBPJPY done [294 s]
-GBPCHF done [309 s]
-GBPAUD done [325 s]
-GBPCAD done [341 s]
-GBPNZD done [358 s]
-AUDJPY done [374 s]
-AUDCHF done [392 s]
-AUDCAD done [410 s]
-AUDNZD done [433 s]
-NZDJPY done [449 s]
-NZDCHF done [469 s]
-NZDCAD done [486 s]
-CADJPY done [502 s]
-CADCHF done [520 s]
-CHFJPY done [540 s]
+XAUUSD done [17 s]
+BTCUSD done [78 s]
+EURUSD done [99 s]
+GBPUSD done [120 s]
+AUDUSD done [141 s]
+NZDUSD done [164 s]
+USDJPY done [185 s]
+USDCHF done [208 s]
+USDCAD done [233 s]
+EURGBP done [262 s]
+EURJPY done [282 s]
+EURCHF done [310 s]
+EURAUD done [332 s]
+EURCAD done [358 s]
+EURNZD done [385 s]
+GBPJPY done [407 s]
+GBPCHF done [430 s]
+GBPAUD done [452 s]
+GBPCAD done [473 s]
+GBPNZD done [498 s]
+AUDJPY done [520 s]
+AUDCHF done [545 s]
+AUDCAD done [569 s]
+AUDNZD done [601 s]
+NZDJPY done [624 s]
+NZDCHF done [651 s]
+NZDCAD done [674 s]
+CADJPY done [696 s]
+CADCHF done [722 s]
+CHFJPY done [749 s]
 
-data end 2026-11-12. IN SAMPLE = start .. 2026-05-14; OUT OF SAMPLE = 2026-05-14 .. 2026-08-13 (OOS-1) and 2026-08-13 .. end (OOS-2)
-3060 variant x side rows.  In-sample PF over all rows: median 0.66, best 3970853391.68
+data end 2026-11-12. IN SAMPLE = 2024-11-12 .. 2026-05-14; OUT OF SAMPLE = 2026-05-14 .. 2026-08-13 (OOS-1) and 2026-08-13 .. end (OOS-2)
+3048 variant x side rows.  In-sample PF over all rows: median 0.66, best 3986141732.28
 
-=== TOP 25 BY IN-SAMPLE PF (>= 300 in-sample trades pooled), then what they did out of sample ===
+=== TOP 25 BY IN-SAMPLE PF (>= 150 in-sample trades pooled), then what they did out of sample ===
 variant                                      side |  IS n    PF    h1    h2 sym+ | OOS-1 n    PF      R | OOS-2 n    PF      R | random R1     R2
-M30 | AGAINST | CCI14>100 | TP 2R            SELL |   382  0.95  1.01  0.90   17 |      13  1.35   +2.3 |      12  1.39   +2.8 |      +1.8   -6.1
-H1 | AGAINST | CCI14>50 | TP 2R              SELL |   358  0.88  0.75  1.00   15 |       9  6.55  +11.1 |      14  0.77   -2.3 |      +3.3   -1.0
-H1 | AGAINST | CCI14>50 | TP 1R              SELL |   359  0.86  0.75  0.97   14 |       9  3.47   +4.9 |      14  1.00   +0.0 |      -3.8   -4.1
-M30 | AGAINST | CCI14>100 | TP 1R            SELL |   382  0.83  0.81  0.86   13 |      13  0.90   -0.7 |      12  0.98   -0.1 |      -2.8   -2.1
-M30 | AGAINST | CCI20>50 | TP 2R             SELL |   720  0.83  0.89  0.78   10 |      24  1.09   +1.4 |      21  0.92   -1.2 |      -7.5   -2.1
-M30 | AGAINST | CCI14>50 | TP 2R             SELL |  1174  0.83  0.84  0.81   11 |      31  0.94   -1.3 |      35  0.66   -9.3 |     -14.6  -17.7
-M30 | AGAINST | CCI20>50 | TP 1R             SELL |   722  0.82  0.81  0.82   11 |      24  0.73   -3.7 |      21  0.74   -3.1 |      -3.7   -5.1
-M30 | ANY | CCI30>100 | TP 2R                ALL  |   380  0.81  0.72  0.89    8 |       9  1.59   +3.0 |      10  0.50   -4.0 |      -3.0   -1.1
-M30 | AGAINST | RSI21>55 | TP 2R             SELL |   386  0.80  0.76  0.84   13 |      17  2.52  +10.2 |      15  0.49   -6.2 |      +4.9   -7.1
-H1 | AGAINST | RSI5>65 | TP 2R               SELL |   373  0.80  0.68  0.90   13 |      10  2.70   +6.9 |      16  0.90   -1.1 |      +7.0   -1.2
-M30 | ANY | CCI14>100 | TP 2R                SELL |   817  0.79  0.71  0.88   10 |      31  0.71   -6.2 |      22  0.46  -13.9 |     -11.1  -21.1
-M30 | AGAINST | RSI5>65 | TP 2R              SELL |  1183  0.79  0.73  0.85   10 |      34  0.91   -2.2 |      41  0.86   -4.1 |      -8.4  -17.6
-H1 | AGAINST | CCI30>50 | TP 2R              ALL  |   378  0.79  0.68  0.90   14 |      15  2.21   +8.2 |      13  0.93   -0.6 |      +1.0   -4.4
-M30 | AGAINST | RSI7>65 | TP 2R              SELL |   354  0.79  0.75  0.82   12 |      12  2.53   +7.7 |      14  0.32   -8.4 |      +1.7   -4.1
-M30 | AGAINST | CCI14>50 | TP 1R             SELL |  1176  0.79  0.80  0.78   10 |      31  0.84   -2.6 |      35  0.74   -5.1 |     -13.1   -2.7
-M30 | AGAINST | CCI30>50 | TP 2R             SELL |   891  0.79  0.78  0.79   12 |      28  1.11   +1.9 |      28  0.90   -2.1 |      +3.6   -0.8
-M30 | AGAINST | RSI14>55 | TP 2R             BUY  |   777  0.78  0.71  0.87   11 |      19  1.83   +7.2 |      40  0.69   -9.2 |     -13.8   -7.3
-M30 | AGAINST | RSI9>60 | TP 2R              SELL |   583  0.78  0.75  0.81   12 |      19  1.47   +4.8 |      23  0.53   -8.7 |      -2.1   -3.4
-M30 | AGAINST | CCI30>50 | TP 1R             SELL |   896  0.78  0.76  0.80   13 |      29  0.93   -1.1 |      28  0.74   -4.1 |      -3.1   +2.0
-H1 | AGAINST | RSI7>60 | TP 2R               SELL |   368  0.78  0.72  0.83   12 |      11  2.06   +5.7 |      16  0.66   -4.1 |      -4.1   -9.3
-M30 | AGAINST | RSI21>55 | TP 1R             SELL |   387  0.78  0.70  0.85   14 |      17  1.48   +3.2 |      15  0.36   -7.0 |      -0.1   -8.0
-M30 | AGAINST | RSI7>65 | TP 1R              SELL |   354  0.78  0.69  0.87   15 |      12  1.38   +1.9 |      14  0.39   -6.1 |      -2.1   +0.0
-H1 | ANY | CCI30>50 | TP 1R                  SELL |   427  0.78  0.72  0.83   13 |      14  1.76   +3.9 |      13  1.17   +1.0 |      -1.1   -2.2
-M30 | AGAINST | RSI7>60 | TP 2R              SELL |  1213  0.78  0.75  0.80   10 |      35  0.99   -0.1 |      44  0.87   -4.1 |     -10.3   -6.7
-M30 | AGAINST | CCI14>100 | TP 2R            ALL  |   683  0.77  0.84  0.71   14 |      23  1.85   +8.7 |      22  1.19   +2.6 |      -0.5  -11.1
+M30 | ANY | RSI7>65 | TP 1R                  SELL |   156  1.06  1.18  0.93   18 |      30  0.87   -2.1 |      20  0.65   -4.2 |      -7.3   +4.0
+M30 | ANY | CCI14>100 | TP 2R                SELL |   206  1.05  1.21  0.88   12 |      31  0.71   -6.2 |      22  0.46  -13.9 |     -11.1  -21.1
+M30 | ANY | RSI7>65 | TP 2R                  SELL |   155  1.00  1.10  0.89   12 |      30  1.07   +1.2 |      20  0.34  -11.6 |      -5.4  -12.7
+M30 | AGAINST | RSI14>55 | TP 2R             BUY  |   197  0.97  0.94  1.00   18 |      19  1.83   +7.2 |      40  0.69   -9.2 |     -13.8   -7.3
+H1 | AGAINST | ST21,3 K>D | TP 2R            SELL |   218  0.96  1.26  0.76   12 |      28  1.28   +4.5 |      30  0.86   -3.0 |      -5.6   -7.6
+H1 | AGAINST | ST21,3 K>D&K<80 | TP 2R       SELL |   218  0.96  1.26  0.76   12 |      28  1.28   +4.5 |      30  0.86   -3.0 |      +2.5   -2.3
+M30 | AGAINST | RSI21>55 | TP 2R             ALL  |   167  0.96  0.89  1.05   14 |      27  2.60  +16.5 |      24  0.57   -7.8 |      +4.5  -12.1
+H1 | AGAINST | CCI20 rising >0 | TP 2R       SELL |   186  0.95  1.17  0.81   14 |      25  1.60   +7.9 |      24  0.64   -6.6 |      +3.1  -12.7
+M30 | AGAINST | CCI20>50 | TP 1R             SELL |   175  0.94  1.01  0.86   17 |      24  0.73   -3.7 |      21  0.74   -3.1 |      -3.7   -5.1
+M30 | AGAINST | RSI5>65 | TP 2R              SELL |   299  0.92  0.87  0.97   14 |      34  0.91   -2.2 |      41  0.86   -4.1 |      -8.4  -17.6
+M30 | AGAINST | RSI14>55 | TP 2R             ALL  |   460  0.92  0.86  0.97   17 |      52  1.47  +13.0 |      80  0.71  -17.0 |     -14.0  -21.5
+M30 | ANY | RSI9>60 | TP 2R                  SELL |   242  0.91  0.93  0.89   11 |      35  1.02   +0.4 |      37  0.62  -11.0 |      -6.8   -1.8
+M30 | AGAINST | RSI9>60 | TP 2R              ALL  |   238  0.91  0.75  1.09   15 |      34  2.21  +18.0 |      40  0.50  -15.9 |      +3.4   -6.4
+H1 | AGAINST | ST14,3 K>D&K<80 | TP 2R       SELL |   223  0.91  1.18  0.75   12 |      30  1.51   +8.4 |      32  0.67   -8.0 |      +1.0  -12.1
+H1 | AGAINST | ST14,3 K>D | TP 2R            SELL |   223  0.91  1.18  0.75   12 |      30  1.51   +8.4 |      32  0.67   -8.0 |      +6.3   -7.8
+H1 | AGAINST | ST14,3 K rising | TP 2R       SELL |   248  0.91  1.13  0.74   13 |      33  1.43   +8.1 |      32  0.67   -8.0 |      +1.9   -6.7
+H1 | AGAINST | ST5,3 K>D&K<80 | TP 2R        SELL |   218  0.91  1.14  0.72   14 |      29  1.18   +3.1 |      24  0.41  -11.7 |      -1.1  -15.2
+H1 | AGAINST | RSI5>60 | TP 2R               SELL |   182  0.91  1.17  0.74   14 |      23  1.01   +0.1 |      26  0.58   -8.6 |      -3.9  -16.3
+M30 | ANY | RSI9>60 | TP 1R                  SELL |   244  0.91  0.94  0.87   11 |      35  0.94   -1.1 |      37  0.84   -3.2 |      -1.7   -3.2
+H1 | AGAINST | CCI14>50 | TP 2R              ALL  |   156  0.90  1.17  0.64   12 |      18  3.51  +16.4 |      23  0.58   -7.5 |      +2.2   -4.5
+M30 | AGAINST | CCI14>100 | TP 2R            ALL  |   171  0.90  0.97  0.81   14 |      23  1.85   +8.7 |      22  1.19   +2.6 |      -0.5  -11.1
+H1 | AGAINST | CCI14>50 | TP 1R              ALL  |   157  0.90  1.27  0.60   17 |      18  1.83   +5.4 |      23  0.74   -3.6 |      -7.8  -11.7
+H1 | AGAINST | RSI5>60 | TP 2R               ALL  |   299  0.90  1.09  0.73   15 |      35  1.59  +11.5 |      43  0.63  -12.1 |      -3.2  -21.7
+H1 | AGAINST | CCI20>0 | TP 2R               SELL |   190  0.90  1.18  0.71   13 |      27  1.39   +5.9 |      27  0.55   -9.6 |      -6.4  -13.6
+H1 | AGAINST | ST5,3 K>D | TP 2R             SELL |   244  0.89  1.13  0.72   12 |      32  1.16   +3.1 |      27  0.57   -8.8 |      +7.4   -5.3
 
-=== in-sample PF >= 1 in BOTH in-sample halves (>= 300 trades): 0 rows ===
+=== in-sample PF >= 1 in BOTH in-sample halves (>= 150 trades): 0 rows ===
 
-Does in-sample rank predict out of sample?  2434 rows with >= 20 trades in each OOS window: Spearman(IS PF, OOS-1 PF) +0.20, (IS PF, OOS-2 PF) -0.10
-positive in BOTH OOS windows: top 10% by IS PF 3% of 243, all rows 2% of 2434; mean OOS R per row: top -3.5 / -10.0, all -11.7 / -15.5
+Does in-sample rank predict out of sample?  2414 rows with >= 20 trades in each OOS window: Spearman(IS PF, OOS-1 PF) +0.41, (IS PF, OOS-2 PF) -0.11
+positive in BOTH OOS windows: top 10% by IS PF 2% of 241, all rows 2% of 2414; mean OOS R per row: top -0.6 / -12.1, all -11.8 / -15.6
 
-=== best variant per PAIR chosen in sample (>= 40 in-sample trades for that pair), out-of-sample $ per 0.01 lot ===
+=== best variant per PAIR chosen in sample (>= 15 in-sample trades for that pair), out-of-sample $ per 0.01 lot ===
 sym      chosen in sample                                     IS PF |  OOS-1 $  OOS-2 $    n
-XAUUSD   M30 | ANY | CCI20>50 | 1                              1.22 |    +42.2    -17.7    5
-BTCUSD   H1 | AGAINST | ST5,3 K>D&K>50 | 2                     0.96 |     +2.4     -8.1    5
-EURUSD   M30 | WITH | CCI20>50 | 1                             1.35 |     +1.6     +0.3    6
-GBPUSD   M30 | AGAINST | ST21,3 K>D&K>50 | 2                   1.27 |     +0.0     +2.2    1
-AUDUSD   M30 | WITH | CCI20>50 | 1                             1.39 |     -0.6     -0.1    3
-NZDUSD   H1 | AGAINST | ST5,3 K>D | 2                          1.46 |     -0.7     +0.0    1
-USDJPY   M30 | ANY | RSI9>60 | 2                               1.85 |     -0.6     -1.1    2
-USDCHF   H1 | ANY | RSI5>65 | 2                                1.28 |     +5.0     +1.7    3
-USDCAD   H1 | WITH | ST9,1 K>D&K<80 | 2                        1.49 |     -0.7     +2.2    2
-EURGBP   H1 | WITH | ST5,1 K>D&K<80 | 1                        1.08 |     +0.0     -0.2    2
-EURJPY   M30 | AGAINST | RSI14>55 | 2                          1.31 |     -0.7     -2.2    4
-EURCHF   M30 | AGAINST | RSI7>60 | 1                           0.92 |     +1.0     -1.4    4
-EURAUD   H1 | AGAINST | RSI9>55 | 1                            1.84 |     +1.5     +0.0    1
-EURCAD   M30 | ANY | CCI14>100 | 2                             1.30 |     -1.0     -1.1    6
-EURNZD   H1 | AGAINST | ST9,3 K>50 | 2                         1.16 |     -0.4     +0.0    1
-GBPJPY   M30 | AGAINST | RSI7>60 | 1                           1.72 |     +1.7     +0.5    5
-GBPCHF   M30 | AGAINST | RSI14>55 | 1                          1.20 |     +2.8     -2.4    4
-GBPAUD   M30 | AGAINST | RSI7>60 | 1                           1.21 |     +2.1     -1.3    4
-GBPCAD   M30 | AGAINST | CCI50>50 | 2                          1.06 |     -1.0     +0.6    7
-GBPNZD   H1 | AGAINST | CCI14 rising >0 | 1                    1.05 |     +2.2     -2.7    4
-AUDJPY   H1 | ANY | ST21,3 K>50 | 1                            1.29 |     +0.0     +0.0    0
-AUDCHF   M30 | WITH | CCI20>50 | 2                             1.58 |     -0.5     +0.0    1
-AUDCAD   M30 | ANY | CCI20>50 | 2                              1.35 |     +0.0     +0.1    6
-AUDNZD   H1 | AGAINST | ST9,1 K>D&K<80 | 2                     0.99 |     +0.0     -0.6    1
-NZDJPY   M30 | AGAINST | ST21,3 K>D&K>50 | 1                   1.29 |     -3.7     -1.4    7
-NZDCHF   M30 | AGAINST | CCI30>50 | 2                          1.24 |     +0.0     -0.8    3
-NZDCAD   M30 | AGAINST | RSI9>60 | 2                           1.02 |     +0.0     +1.6    1
-CADJPY   H1 | ANY | RSI7>60 | 1                                1.23 |     -0.9     -1.0    2
-CADCHF   M30 | WITH | CCI14>100 | 2                            1.18 |     -0.5     +0.9    3
-CHFJPY   H1 | WITH | ST14,1 K>D&K<80 | 1                       1.57 |     -1.7     +1.4    2
-TOTAL tuned per pair: OOS-1 $+49, OOS-2 $-31  |  a RANDOM variant per pair (200 draws): mean $-11 / $-20, share of draws beating tuned 12%
+XAUUSD   M30 | WITH | ST21,3 K>D&K>50 | 1                      2.97 |    -10.0     +3.4    2
+BTCUSD   M30 | AGAINST | CCI10>100 | 2                         4.27 |     -6.9     +5.1    7
+EURUSD   M30 | WITH | ST21,3 K>D&K>50 | 1                      2.09 |     -0.2     +0.5    8
+GBPUSD   M30 | WITH | ST14,3 K>D&K>50 | 1                      1.57 |     +1.9     -0.5    4
+AUDUSD   M30 | ANY | CCI14>100 | 1                             1.53 |     +0.4     +1.2    4
+NZDUSD   M30 | WITH | ST21,3 K>50 | 1                          1.41 |     +0.1     +1.0    3
+USDJPY   M30 | ANY | CCI10>100 | 1                             3.17 |     +1.3     -2.2    7
+USDCHF   M30 | AGAINST | ST5,1 K>D&K<80 | 2                    2.48 |     -2.2     -4.0    9
+USDCAD   H1 | WITH | RSI9>55 | 2                               2.79 |     -3.9     -0.5    5
+EURGBP   M30 | AGAINST | CCI30>50 | 1                          0.88 |     +0.0     -1.5    2
+EURJPY   M30 | ANY | CCI30 rising >0 | 2                       1.67 |     -1.4     +0.4   15
+EURCHF   M30 | WITH | CCI30>50 | 2                             1.08 |     +0.0     +0.0    0
+EURAUD   H1 | ANY | ST5,3 K>D&K<80 | 1                         7.12 |     -0.5     +0.0    1
+EURCAD   M30 | ANY | RSI9>60 | 2                               2.87 |     -4.7     -0.3    9
+EURNZD   H1 | AGAINST | ST14,1 K>D | 1                         2.23 |     -0.2     +1.8    4
+GBPJPY   M30 | AGAINST | CCI14>50 | 1                          3.67 |     +1.7     -0.1    7
+GBPCHF   M30 | AGAINST | ST14,3 K>D&K>50 | 2                   1.75 |     +1.7     -2.3    5
+GBPAUD   M30 | WITH | ST21,3 K>D&K>50 | 1                      2.34 |     -0.8     +2.0    4
+GBPCAD   M30 | ANY | CCI14>100 | 2                             1.58 |     -1.5     +0.6    3
+GBPNZD   M30 | AGAINST | CCI50>0 | 1                           1.52 |     -1.9     -1.4   10
+AUDJPY   M30 | AGAINST | RSI7>60 | 1                           2.00 |     -0.0     -0.0    5
+AUDCHF   H1 | AGAINST | CCI20>0 | 1                            2.77 |     +0.0     -0.3    1
+AUDCAD   M30 | ANY | CCI20>50 | 2                              2.04 |     +0.0     +0.1    6
+AUDNZD   H1 | WITH | ST14,3 K>D&K<80 | 2                       0.92 |     +0.9     -1.5    4
+NZDJPY   H1 | ANY | ST9,3 K>50 | 2                             2.57 |     -0.3     -1.7    7
+NZDCHF   M30 | AGAINST | ST9,3 K>50 | 1                        2.33 |     -0.3     -0.2    7
+NZDCAD   M30 | ANY | RSI21>55 | 2                              1.97 |     +0.0     +0.0    0
+CADJPY   M30 | AGAINST | ST5,3 K>D&K>50 | 2                    1.19 |     -0.5     -2.2    4
+CADCHF   H1 | AGAINST | CCI50>0 | 1                            1.57 |     +0.1     -2.1    6
+CHFJPY   H1 | WITH | ST21,1 K>D&K<80 | 1                       4.00 |     -1.7     +1.4    2
+TOTAL tuned per pair: OOS-1 $-29, OOS-2 $-3  |  a RANDOM variant per pair (200 draws): mean $-20 / $-30, share of draws beating tuned 32%
 
-done in 574 s
+done in 797 s
