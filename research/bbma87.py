@@ -36,7 +36,10 @@ MIDDAY = pd.Timestamp("2023-07-01")
 FEAT = None         # optional f(X15) -> {name: (array over M15 bars, "osc" | "sym")}, set by later rounds (bbma90)
 RAND_EXTRA = True
 CSAK_MODE = "basic"  # "basic": mid BB + EMA 50; "all": + LWMA 5 / 10 of highs and lows; "all90": + EMA 90 too (bbma91)
-RTFS = ((30, "M30", 8), (60, "H1", 4))   # rejection TFs; (0, "NOREJ", 0) = CSAK + H4 direction only (bbma91)
+RTFS = ((30, "M30", 8), (60, "H1", 4))
+EXIT_MODE = "sl"     # "sl": SL beyond the CSAK, TP tpR x risk, 48 h cap; "fib": NO SL, cut on an opposite M15 momentum close,
+                     # TP at the Fibonacci extension tpR (1.618 = 161.8) of the leg from the 8-bar M15 swing to the CSAK extreme (bbma93)
+TPS = (1, 2)   # rejection TFs; (0, "NOREJ", 0) = CSAK + H4 direction only (bbma91)
 
 
 def lwma(a, n):
@@ -123,7 +126,47 @@ def run_symbol(sym, mt, sw):
 
     rg = np.random.default_rng(87)
 
+    cutB = np.zeros(n + 1, bool); cutS = np.zeros(n + 1, bool)
+    ib = at[np.nan_to_num(c15 < bot15).astype(bool)]; cutB[ib[ib < n]] = True        # bearish M15 momentum close -> cut buys
+    is_ = at[np.nan_to_num(c15 > top15).astype(bool)]; cutS[is_[is_ < n]] = True      # bullish M15 momentum close -> cut sells
+
+    def sim_fib(SU, ext, rand=False):
+        res = []; busy = -1; used = set()
+        for k, cd, dr, q in SU:
+            if q in used: continue
+            i = at[k]
+            if i >= n or i <= busy: continue
+            a = max(0, k - 7)
+            if cd == 1: st = l15[a:k + 1].min(); leg = h15[k] - st; tp0 = st + ext * leg
+            else: st = h15[a:k + 1].max(); leg = st - l15[k]; tp0 = st - ext * leg
+            e0 = O[i] + (S[i] if cd == 1 else 0)
+            dist = (tp0 - e0) * cd
+            if leg <= S[i] or dist <= 0: continue
+            d_ = cd if not rand else (1 if rg.random() < 0.5 else -1)
+            e = O[i] + (S[i] if d_ == 1 else 0); tp = e + d_ * dist
+            x = None; z = i; nights = 0; worst = 0.0
+            while z < n:
+                if z > i and day[z] != day[z - 1]:
+                    nights += 3 if (1 <= sw["d3"] <= 5 and wd[z - 1] == sw["d3"] - 1) else 1
+                if d_ == 1:
+                    if z > i and cutB[z]: x = O[z]; break
+                    if z > i and H[z] >= tp: x = max(O[z], tp); break
+                    worst = min(worst, L[z] - e)
+                else:
+                    if z > i and cutS[z]: x = O[z] + S[z]; break
+                    if z > i and L[z] + S[z] <= tp: x = min(O[z] + S[z], tp); break
+                    worst = min(worst, e - H[z] - S[z])
+                z += 1
+            if x is None: break
+            swp = (sw["long"] if d_ == 1 else sw["short"]) * mt["point"] * nights * usd if sw and sw["mode"] == 1 else 0.0
+            net = (x - e) * d_ * usd + swp
+            rk = leg * usd
+            res.append((T[i], net, net / rk, (net - 0.5 * S[i] * usd) / rk, rk, d_, (ts[z] - ts[i]) / 3600, worst * usd, x == tp))
+            busy = z; used.add(q)
+        return pd.DataFrame(res, columns=["t", "net", "r", "rs", "risk", "d", "hours", "mae", "tp"])
+
     def sim(SU, tpR, rand=False):
+        if EXIT_MODE == "fib": return sim_fib(SU, tpR, rand)
         res = []; busy = -1; used = set()
         for k, cd, dr, q in SU:
             if q in used: continue
@@ -176,7 +219,7 @@ def run_symbol(sym, mt, sw):
                 pm = np.ones(len(SU), bool) if pop == "ANY" else (SU[:, 1] == SU[:, 2]) if pop == "WITH" else (SU[:, 1] != SU[:, 2])
                 for fn, f in EXTRA:
                     m = pm & np.nan_to_num(f(F)).astype(bool)
-                    for tpR in (1, 2):
+                    for tpR in TPS:
                         out[(rn, pop, fn, tpR)] = sim(SU[m], tpR)
                         if RAND_EXTRA: out[(rn, pop, fn + " RANDOM dir", tpR)] = sim(SU[m], tpR, rand=True)
             continue
