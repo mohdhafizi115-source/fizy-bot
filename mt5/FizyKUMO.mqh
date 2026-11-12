@@ -15,7 +15,7 @@
 //|   -$90 vs -$206; the owner chose it after seeing these numbers.   |
 //| Events go to MQL5\Files\kumo_events.txt (forwarded to Telegram).  |
 //+------------------------------------------------------------------+
-input bool   InpKumoOn      = true;
+input bool   InpKumoOn      = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input string InpKumoSymbol  = "XAUUSD";
 input double InpKumoLot     = 0.01;
 input double InpKumoTpUsd   = 20.0;     // v2.17: TP this many $ of price from the entry (200 pips); 0 = no TP

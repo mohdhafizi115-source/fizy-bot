@@ -9,7 +9,7 @@
 //| Events go to MQL5\Files\gtb_events.txt with the MONTHEND prefix.   |
 //+------------------------------------------------------------------+
 input string InpMefTrades   = "CADCHF:-1,NZDCHF:-1,USDCAD:1,GBPNZD:1";
-input bool   InpMefOn       = true;
+input bool   InpMefOn       = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input double InpMefLot      = 0.01;
 input long   InpMefMagic    = 260313;
 input double InpMefSlAtr    = 1.0;

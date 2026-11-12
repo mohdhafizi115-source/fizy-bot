@@ -47,7 +47,7 @@
 //| (1.08, the owner's frequency override). See CLAUDE.md.            |
 //| Events go to MQL5\Files\spk_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpSpkOn        = true;    // v2.12 (9 Nov): back ON in raw mode, round 74 (owner: frequent scalper judged on 3 months)
+input bool   InpSpkOn        = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input bool   InpSpkConfirm   = false;   // v2.12: false = RAW mode, buy right after the spike bar (no RSI, no rejection candle)
 input double InpSpkRawSl     = 0.2;     // RAW mode: SL this many ATR under the spike bar's low; no TP
 input double InpSpkBeAtr     = 1.0;     // v2.16 (round 79b): RAW mode, SL to entry once price is this many ATR (of the entry) in profit; 0 = off

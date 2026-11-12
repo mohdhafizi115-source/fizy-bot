@@ -23,7 +23,7 @@
 //| the project's pass rule; live on the owner's 3-month frame.       |
 //| Events go to MQL5\Files\klt_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpKltOn      = true;
+input bool   InpKltOn      = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input string InpKltSymbol  = "XAUUSD";
 input double InpKltLot     = 0.01;
 input long   InpKltMagic   = 260323;

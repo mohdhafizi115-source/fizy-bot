@@ -12,7 +12,7 @@
 //| Events go to MQL5\Files\gtb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input string InpGtbSymbols   = "USDJPY,EURJPY,GBPJPY";
-input bool   InpGtbOn        = true;
+input bool   InpGtbOn        = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input double InpGtbLot       = 0.01;
 input long   InpGtbMagic     = 260311;
 input double InpGtbSlAtr     = 1.0;

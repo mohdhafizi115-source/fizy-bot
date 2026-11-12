@@ -41,7 +41,7 @@
 //|          pays swap. Only the broker's stop-out limits the loss.   |
 //| Events go to MQL5\Files\leg_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpLegOn     = true;
+input bool   InpLegOn     = false;   // OFF since 12 Nov (owner, after a stop-out: only the gold auction stays)
 input string InpLegSymbol = "XAUUSD";
 input double InpLegLot    = 0.01;
 input long   InpLegMagic  = 260321;
