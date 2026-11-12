@@ -65,7 +65,7 @@ def ind(X):
 def run_symbol(sym, mt, sw):
     usd = mt["tick_value"] / mt["tick_size"] * 0.01
     d = SA.load(os.path.join(DATA, sym + ".csv"), mt["point"])
-    B = d[["o", "h", "l", "c", "s"]].copy(); del d
+    B = d[["o", "h", "l", "c", "s", "v"]].copy(); del d
     T = B.index; n = len(B)
     O, H, L, C, S = (B[x].values.astype(float) for x in ("o", "h", "l", "c", "s"))
     ts = T.values.astype("datetime64[s]").astype(np.int64)
@@ -74,6 +74,7 @@ def run_symbol(sym, mt, sw):
     def tf(m):
         g = B.resample(f"{m}min", label="left", closed="left")
         X = pd.DataFrame({"o": g.o.first(), "h": g.h.max(), "l": g.l.min(), "c": g.c.last()}).dropna()
+        X["v"] = g.v.sum().reindex(X.index).fillna(0).values           # tick volume (for MFI, bbma92)
         return X, ind(X), (X.index + pd.Timedelta(minutes=m)).values
     X4, I4, cl4 = tf(240); X15, I15, cl15 = tf(15)
     c4, top4, bot4, e50_4, e90_4 = X4.c.values, I4.top.values, I4.bot.values, I4.e50.values, I4.e90.values
