@@ -2,7 +2,7 @@
 
 ## Working with the owner
 - Reply in **Malay** (Bahasa Malaysia), casual and short. Code, comments, commit messages and Telegram texts stay in **English**.
-- The owner wants only setups that pass a backtest on the broker's own data ("aku tak perlukan trade yang rugi").
+- The owner wants only setups that pass a backtest on the broker's own data ("aku tak perlukan trade yang rugi"). **Test on the last 1-2 years only, never 6 years** (see Research).
   - Test first. Add a setup only if it passes. Remove anything that loses.
   - Say plainly when nothing works.
 - Realistic expectations: $100 capital, demo first, then a cent account. Weekly 50% returns are not possible; never build martingale or grid EAs (the owner asked for a gold grid on 2 Nov; it was tested and failed, see the findings).
@@ -67,7 +67,8 @@
   - Input `tf=M1` exports M1 instead of M5 (use with `symbols=XAUUSD`; gold M1 from 2020 is about 2.3 M bars; latest export run 43178601381, 12 Nov (42730517413, 42511147535 and 42355999555 were deleted) — earlier M1 runs 41663561048, 41872821553 and 42152985627 were deleted).
   - Exports: 12 instruments (XAUUSD, EURUSD, GBPUSD, USDJPY, AUDUSD, USDCAD, USDCHF, NZDUSD, EURJPY, GBPJPY, EURGBP, BTCUSD), 2020-03 → 2026-11-03, in run 41667343723. **The 30-instrument run 41443785106 was deleted (with its artifact) on 3 Nov, like 41277285458 before it: workflow runs are being deleted outside this session, so re-export when an artifact is missing.** WTI, Brent and XNG in run 41330505649. The older 30-instrument export (run 41277285458) was deleted on 2 Nov.
 - **Economic calendar:** `mt5/ExportCal.mq5` + `.github/workflows/mt5_cal.yml` → `data/calendar.csv`. Past times are stored at today's server offset (+2 h): treat them as UTC+2, then convert to Europe/Athens.
-- **Pass rule used so far:** ≥ 150 trades, PF ≥ 1.15 after spread, both halves ≥ 1.05, stress (1.5× spread) ≥ 1.05, last 12 months positive.
+- **TEST WINDOW: the last 1-2 years only (owner, 12 Nov 2026: "tak perlu uji sampai 6 tahun ... nak uji pun cukup dalam 1-2 tahun! ingat pesan aku ni").** Do not run or quote 6.6-year results any more; the older findings below that use 6.6 years are history. Default: the last 2 years, its two years as the halves, plus the last 3 months with the 3 months before as a repeat check. When tuning settings, choose them on the earlier part of that window and judge them on the last 6 months.
+- **Pass rule (on that window):** ≥ 150 trades, PF ≥ 1.15 after spread, both years (halves) ≥ 1.05, stress (1.5× spread) ≥ 1.05, last 12 months positive.
   - Always compare against a random-entry baseline or fake event times.
   - Drop trades in the 23:45–01:30 server rollover; the bid is distorted there.
 - **Findings, short version:**

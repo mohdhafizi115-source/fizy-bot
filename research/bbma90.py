@@ -7,7 +7,8 @@ Grid on the CSAK candle, signed in the CSAK direction: RSI 5 / 7 / 9 / 14 / 21 a
 above 50; Stochastic %K 5 / 9 / 14 / 21 with smoothing 1 / 3 (%D = 3-bar mean): K>D, K>50, K>D & K>50, K rising,
 K>D & K<80; CCI 10 / 14 / 20 / 30 / 50 above 0 / 50 / 100 and rising above 0.  86 filters x 2 rejection TF x 3
 populations x 2 TP = 1,032 variants, each also with a random direction.
-HONEST TUNING: the settings are chosen on the IN-SAMPLE period only (start .. 6 months before the end of the data),
+WINDOW: the last 2 years only (owner, 12 Nov: "cukup dalam 1-2 tahun").
+HONEST TUNING: the settings are chosen on the IN-SAMPLE period only (2 years before the end .. 6 months before the end),
 then judged on the 6 months the choice never saw (the 3 months before the last 3, and the last 3).  Also per pair:
 the best variant of each pair chosen in sample, its out-of-sample result summed over the pairs, against picking a
 variant at random for each pair.
@@ -74,10 +75,11 @@ def main():
         if sym not in meta or not os.path.exists(os.path.join(DATA, sym + ".csv")): continue
         res, end, _ = B87.run_symbol(sym, meta[sym], SW.get(sym)); ends.append(end)
         for k, df in res.items():
+            df = df[df.t >= end - pd.Timedelta(days=730)]
             if len(df): ALL.setdefault(k, []).append(df.assign(sym=sym))
         say(f"{sym} done [{time.time() - T0:.0f} s]")
     END = max(ends); a3, a6 = END - pd.Timedelta(days=91), END - pd.Timedelta(days=182)
-    say(f"\ndata end {END:%Y-%m-%d}. IN SAMPLE = start .. {a6:%Y-%m-%d}; OUT OF SAMPLE = {a6:%Y-%m-%d} .. {a3:%Y-%m-%d} (OOS-1) and {a3:%Y-%m-%d} .. end (OOS-2)")
+    say(f"\ndata end {END:%Y-%m-%d}. IN SAMPLE = {END - pd.Timedelta(days=730):%Y-%m-%d} .. {a6:%Y-%m-%d}; OUT OF SAMPLE = {a6:%Y-%m-%d} .. {a3:%Y-%m-%d} (OOS-1) and {a3:%Y-%m-%d} .. end (OOS-2)")
     rows = []
     for key, L in ALL.items():
         if key[2].endswith("RANDOM dir"): continue
@@ -98,26 +100,26 @@ def main():
         say(hdr)
         for _, r in T.iterrows():
             say(f"{r['name']:44s} {r.side:4s} | {r.n:5d} {r.pf:5.2f} {r.h1:5.2f} {r.h2:5.2f} {r.sym:4d} | {r.n1:7d} {r.pf1:5.2f} {r.R1:+6.1f} | {r.n2:7d} {r.pf2:5.2f} {r.R2:+6.1f} | {r.rR1:+9.1f} {r.rR2:+6.1f}")
-    ok = D[(D.n >= 300)]
-    say(f"\n=== TOP 25 BY IN-SAMPLE PF (>= 300 in-sample trades pooled), then what they did out of sample ===")
+    ok = D[(D.n >= 150)]
+    say(f"\n=== TOP 25 BY IN-SAMPLE PF (>= 150 in-sample trades pooled), then what they did out of sample ===")
     show(ok.sort_values("pf", ascending=False).head(25))
-    ok2 = D[(D.n >= 300) & (D.h1 >= 1) & (D.h2 >= 1)]
-    say(f"\n=== in-sample PF >= 1 in BOTH in-sample halves (>= 300 trades): {len(ok2)} rows ===")
+    ok2 = D[(D.n >= 150) & (D.h1 >= 1) & (D.h2 >= 1)]
+    say(f"\n=== in-sample PF >= 1 in BOTH in-sample halves (>= 150 trades): {len(ok2)} rows ===")
     if len(ok2): show(ok2.sort_values("pf", ascending=False).head(25))
-    E = D[(D.n >= 300) & (D.n1 >= 20) & (D.n2 >= 20)]
+    E = D[(D.n >= 150) & (D.n1 >= 20) & (D.n2 >= 20)]
     if len(E) > 10:
         say(f"\nDoes in-sample rank predict out of sample?  {len(E)} rows with >= 20 trades in each OOS window: "
             f"Spearman(IS PF, OOS-1 PF) {E.pf.corr(E.pf1, method='spearman'):+.2f}, (IS PF, OOS-2 PF) {E.pf.corr(E.pf2, method='spearman'):+.2f}")
         top = E.sort_values("pf", ascending=False).head(max(10, len(E) // 10))
         say(f"positive in BOTH OOS windows: top 10% by IS PF {((top.R1 > 0) & (top.R2 > 0)).mean() * 100:.0f}% of {len(top)}, all rows {((E.R1 > 0) & (E.R2 > 0)).mean() * 100:.0f}% of {len(E)}; "
             f"mean OOS R per row: top {top.R1.mean():+.1f} / {top.R2.mean():+.1f}, all {E.R1.mean():+.1f} / {E.R2.mean():+.1f}")
-    say(f"\n=== best variant per PAIR chosen in sample (>= 40 in-sample trades for that pair), out-of-sample $ per 0.01 lot ===")
+    say(f"\n=== best variant per PAIR chosen in sample (>= 15 in-sample trades for that pair), out-of-sample $ per 0.01 lot ===")
     per = {}
     for key, L in ALL.items():
         if key[2].endswith("RANDOM dir"): continue
         for x in L:
             s = x.sym.iloc[0]; ins = x[x.t < a6]
-            if len(ins) < 40: continue
+            if len(ins) < 15: continue
             per.setdefault(s, []).append((pf(ins.r.values), key, x[(x.t >= a6) & (x.t < a3)].net.sum(), x[x.t >= a3].net.sum(), len(x[x.t >= a6])))
     rg = np.random.default_rng(90); tot = [0.0, 0.0]; rnd = []
     say(f"{'sym':8s} {'chosen in sample':52s} {'IS PF':>5} | {'OOS-1 $':>8} {'OOS-2 $':>8} {'n':>4}")
