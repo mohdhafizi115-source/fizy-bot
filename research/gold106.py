@@ -104,7 +104,7 @@ def main():
     bk = M.Book(Bw[["o", "h", "l", "c", "s"]], usd, 0.0, 0.0, start, mid, end)
     O, H, L, C, S = bk.O, bk.H, bk.L, bk.C, bk.S
     V = np.maximum(Bw.v.values.astype(float), 1.0)
-    T = Bw.index; ns = T.asi8; n = len(Bw)
+    T = Bw.index; ns = T.values.astype("datetime64[ns]").astype(np.int64); n = len(Bw)
     day = T.normalize()
     a1 = M.atr(Bw).values
     M5 = M.resample(Bw, 5); a5f = M.atr(M5)
@@ -163,14 +163,54 @@ def main():
                     if mode == "fade" and exitm == "vwap": sg = sg[sg.tp > 0]
                     go(f"F1 VWAP {mode} {K}sd gate {gg} exit {exitm}", sg)
 
+    # robustness of the F1 follow cell: K, gate, hold, band on its own, session, side
+    say("\n-- F1b VWAP follow robustness (centre: close crosses beyond +-3.0 sd, gate 8, out after 60 min, SL at the VWAP)"); say(M.HDR)
+    raw = np.r_[a_l.dropna().values, a_n.dropna().values].astype("datetime64[ns]")
+    knd = np.r_[np.zeros(a_l.notna().sum(), int), np.ones(a_n.notna().sum(), int)][np.argsort(raw, kind="stable")]
+    kind = np.where(seg >= 0, knd[np.maximum(seg, 0)], -1)
+    zsc = (C - vw) / np.where(sd > 0, sd, np.nan)
+
+    def vfol(name, K, gg=8, hold=60, kmax=None, sess=None, side=None, tpr=None):
+        az = np.abs(zsc)
+        cr = (az > K) & ~np.r_[False, (az > K)[:-1]] & np.isfinite(az)
+        if kmax is not None: cr &= az <= kmax
+        if sess is not None: cr &= kind == sess
+        j = np.where(cr & (seg >= 0))[0]; j = j[gate(j, gg)]
+        ii = j + 1; ii = ii[ii < n - 1]; j = ii - 1
+        dr = np.sign(zsc[j]).astype(int)
+        if side is not None: keep = dr == side; ii, j, dr = ii[keep], j[keep], dr[keep]
+        e = mk_entry(ii, dr); sl = np.abs(e - vw[j])
+        x = np.maximum(np.minimum(np.minimum(ii + hold, segend[j]), exb(ii)), ii + 1)
+        sg = pd.DataFrame({"i": ii, "d": dr, "ep": np.nan, "sl": sl, "tp": sl * tpr if tpr else np.nan, "x": x})
+        go(name, sg)
+
+    for K in (2.5, 2.75, 3.0, 3.25, 3.5, 4.0): vfol(f"F1b follow K {K} gate 8 60m", K)
+    for lo_, hi_ in ((2.5, 3.0), (3.0, 3.5), (3.5, 4.0), (4.0, 99)): vfol(f"F1b follow band {lo_}-{hi_} sd only, gate 8 60m", lo_, kmax=hi_)
+    for gg in (0, 4, 6, 10, 12, 16): vfol(f"F1b follow K 3.0 gate {gg} 60m", 3.0, gg=gg)
+    for hold in (15, 30, 45, 90, 120, 240): vfol(f"F1b follow K 3.0 gate 8 {hold}m", 3.0, hold=hold)
+    for tpr in (1.0, 2.0, 3.0): vfol(f"F1b follow K 3.0 gate 8 60m TP {tpr}R", 3.0, tpr=tpr)
+    vfol("F1b follow K 3.0 gate 8 60m LONDON session only", 3.0, sess=0)
+    vfol("F1b follow K 3.0 gate 8 60m NEW YORK session only", 3.0, sess=1)
+    vfol("F1b follow K 3.0 gate 8 60m BUYS only", 3.0, side=1)
+    vfol("F1b follow K 3.0 gate 8 60m SELLS only", 3.0, side=-1)
+    # control: the same with a fake anchor (VWAP of the 120 minutes before each bar, no session)
+    say("   control: rolling 120-bar VWAP / sd instead of the session anchor")
+    rv = pd.Series(V * tp_).rolling(120).sum().values / pd.Series(V).rolling(120).sum().values
+    rv2 = pd.Series(V * tp_ * tp_).rolling(120).sum().values / pd.Series(V).rolling(120).sum().values
+    rsd = np.sqrt(np.maximum(rv2 - rv * rv, 0))
+    zs0, vw0, seg0, se0 = zsc, vw, seg, segend
+    zsc = (C - rv) / np.where(rsd > 0, rsd, np.nan); vw = rv; seg = np.zeros(n, int); segend = np.full(n, n - 1)
+    for K in (2.5, 3.0, 3.5): vfol(f"F1b CONTROL rolling-120 VWAP follow K {K} gate 8 60m", K)
+    zsc, vw, seg, segend = zs0, vw0, seg0, se0
+
     # ---------------------------------------------------------------- F2 absorption
-    say("\n-- F2 absorption: tick volume >= m x its 60-bar mean, range <= 0.5 ATR(M1), at a 20-bar high / low"); say(M.HDR)
+    say("\n-- F2 absorption: tick volume >= m x its 60-bar mean, body <= 0.25 ATR(M1), at a 20-bar high / low, gate 8"); say(M.HDR)
     vm = pd.Series(V).shift(1).rolling(60).mean().values
     hh20 = pd.Series(H).shift(1).rolling(20).max().values; ll20 = pd.Series(L).shift(1).rolling(20).min().values
-    for mult in (3, 5):
+    for mult in (2.0, 3.0):
         for mode in ("fade", "follow"):
             for slm, tpm in ((1.0, 1.0), (2.0, 2.0), (1.0, np.nan)):
-                cond = (V >= mult * vm) & ((H - L) <= 0.5 * a1) & (a1 >= 8 * S)
+                cond = (V >= mult * vm) & (np.abs(C - O) <= 0.25 * a1) & (a1 >= 8 * S)
                 hi = cond & (H >= hh20); lo = cond & (L <= ll20) & ~hi
                 j = np.where(hi | lo)[0]; ii = j + 1; ii = ii[ii < n - 1]; j = ii - 1
                 dr = np.where(hi[j], -1, 1) * (1 if mode == "fade" else -1)
