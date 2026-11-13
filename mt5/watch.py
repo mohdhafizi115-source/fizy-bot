@@ -21,11 +21,11 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt")]
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt", "btc_events.txt")]
 # Only the modules that are switched on announce themselves, so only those may be listed here: the daily status waits
 # for every kind in this tuple and otherwise falls back to a 120 s timeout, which truncates it. Since 5 Nov the owner
 # keeps six modules, so NR7, VOLBO, PDHL, NYCONT (switched off) and SR (alerts off since 2 Nov) are out of the list.
-STATUS_KINDS = ("| STARTED |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| RCS ONLINE |", "| SMC ONLINE |")   # v2.23 (13 Nov): + gold M15 SMC
+STATUS_KINDS = ("| STARTED |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| RCS ONLINE |", "| SMC ONLINE |", "| BTC ONLINE |")   # v2.25 (13 Nov): + BTCUSD 24/7
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -44,6 +44,7 @@ MODS = [  # kind prefix, emoji, title
     ("KELT", "🎯", "M1 KELTNER RE-ENTRY · XAUUSD · scalp"),
     ("RCS", "🔄", "M15 REVERSAL CSAK · forex + gold"),
     ("SMC", "🧠", "M15 SMART MONEY · XAUUSD"),
+    ("BTC", "₿", "BTCUSD 24/7 · follow + SMC"),
     ("LEG", "🌊", "M1 LEG FADE · XAUUSD · no SL"),
     ("HA ", "🕯️", "M1 HEIKIN ASHI · XAUUSD · TP 1:1"),
     ("DAILY TARGET", "🎯", "DAILY TARGET · all modules"),
@@ -208,6 +209,11 @@ def status_block(kind, text):
         return ["🔄 M15 REVERSAL CSAK · forex + gold",
                 f"▫️ {nsym} symbols · CSAK after an M15 Extreme the other way, H4 close in the opposite half of its band",
                 f"▫️ Spread <= 0.20 ATR · SL 2 ATR from the entry, no TP, out after 8 h · Lot {lot} · open {opened}"]
+    if kind == "BTC ONLINE":
+        return ["₿ BTCUSD 24/7 · follow + SMC",
+                "▫️ FOL: M5 candle >= 2.5 ATR (ATR >= 8x spread), follow it, SL 0.3 ATR beyond, out after 60 min · any hour, any day",
+                f"▫️ SMC: M20 BOS, limit at OTE 0.705, {myt('09:00', 'Europe/Athens')}-{myt('12:00', 'Europe/Athens')} / "
+                f"{myt('14:00', 'Europe/Athens')}-{myt('17:00', 'Europe/Athens')} MYT weekdays, TP 3R, out after 16 h · Lot {lot} · open {opened}"]
     if kind == "SMC ONLINE":
         return ["🧠 M15 SMART MONEY · XAUUSD",
                 f"▫️ BOS (swing 5), then a limit at the order block, filled only {myt('09:00', 'Europe/Athens')}-{myt('12:00', 'Europe/Athens')} "
@@ -243,7 +249,7 @@ def send_status(lines):
     day = lines[0].split("|")[0].strip().split(" ")[0]
     if online_sent_today(day):
         print("status message already sent today", flush=True); return
-    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE", "KELT ONLINE", "RCS ONLINE", "SMC ONLINE"))}
+    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE", "KELT ONLINE", "RCS ONLINE", "SMC ONLINE", "BTC ONLINE"))}
     blocks = []
     for l in sorted(lines, key=lambda x: order.get(x.split("|")[1].strip(), 99)):
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]

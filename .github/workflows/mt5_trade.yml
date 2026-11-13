@@ -133,6 +133,7 @@ jobs:
           Copy-Item mt5\FizyKLT.mqh "$dir\MQL5\Experts\FizyKLT.mqh" -Force
           Copy-Item mt5\FizyRCS.mqh "$dir\MQL5\Experts\FizyRCS.mqh" -Force
           Copy-Item mt5\FizySMC.mqh "$dir\MQL5\Experts\FizySMC.mqh" -Force
+          Copy-Item mt5\FizyBTC.mqh "$dir\MQL5\Experts\FizyBTC.mqh" -Force
           (Get-Content mt5\FizyLEG.mqh) -replace '^input double InpLegLot\s*=.*;', "input double InpLegLot    = $env:LLOT;" | Set-Content "$dir\MQL5\Experts\FizyLEG.mqh" -Encoding utf8
           (Get-Content mt5\FizyHA.mqh) -replace '^input double InpHaLot\s*=.*;', "input double InpHaLot      = $env:HLOT;" | Set-Content "$dir\MQL5\Experts\FizyHA.mqh" -Encoding utf8
           (Get-Content mt5\FizyDTJ.mqh) -replace '^input double InpDtjLot\s*=.*;', "input double InpDtjLot      = $env:DLOT;" | Set-Content "$dir\MQL5\Experts\FizyDTJ.mqh" -Encoding utf8
