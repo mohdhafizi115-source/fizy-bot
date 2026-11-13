@@ -1,0 +1,24 @@
+window 2024-11-13 .. 2026-11-13; 931 signals; $ per 0.01 lot; worst day and days <= -$20 counted on exit days
+
+rule                                        n win%    PF   yr1   yr2   OOS |   net$   12m$   3m$ | maxDD  wDay d<-20 |  gold    fx flip
+LIVE (all signals)                        849   40  1.59  1.31  1.97  2.03 |   +658   +452  +161 |   -87   -33    4 |  +520  +138    0 PASS
+STOP after 2 SL today                     751   40  1.57  1.26  1.98  1.90 |   +572   +426  +128 |   -76   -33    3 |  +429  +144    0 PASS
+STOP after 3 SL today                     805   41  1.64  1.35  2.03  2.04 |   +675   +465  +162 |   -83   -33    3 |  +535  +140    0 PASS
+STOP after 4 SL today                     824   41  1.61  1.33  1.99  2.04 |   +662   +455  +162 |   -85   -33    3 |  +526  +136    0 PASS
+CCY COOL (no repeat of a losing side)     689   41  1.63  1.46  1.84  1.89 |   +581   +352  +171 |   -78   -33    2 |  +409  +171    0 PASS
+FLIP after 1 SL today                     842   36  1.22  0.91  1.66  1.47 |   +268   +336  +113 |  -149   -42    8 |  +296   -29  305 
+FLIP after 2 SL today                     846   39  1.35  1.11  1.69  1.58 |   +430   +356   +94 |  -108   -36    7 |  +341   +89   97 PASS
+FLIP after 3 SL today                     848   40  1.57  1.27  2.02  2.03 |   +645   +465  +162 |   -96   -33    5 |  +526  +119   43 PASS
+TREND skip if day moved >= 0.3 ATR against  757   40  1.68  1.39  2.08  2.21 |   +685   +456  +160 |   -91   -33    4 |  +525  +159    0 PASS
+TREND skip if day moved >= 0.5 ATR against  816   40  1.61  1.34  1.97  2.01 |   +650   +436  +159 |   -92   -33    5 |  +510  +140    0 PASS
+TREND skip if day moved >= 0.75 ATR against  839   40  1.58  1.31  1.97  2.02 |   +648   +450  +160 |   -87   -33    4 |  +520  +128    0 PASS
+TREND skip if day moved >= 1.0 ATR against  844   40  1.59  1.32  1.97  2.03 |   +658   +452  +161 |   -87   -33    4 |  +520  +138    0 PASS
+TFLIP flip if day moved >= 0.5 ATR against  848   40  1.50  1.32  1.72  1.95 |   +583   +371  +156 |  -129   -35    6 |  +462  +122   32 PASS
+TFLIP flip if day moved >= 0.75 ATR against  848   40  1.57  1.30  1.96  1.99 |   +644   +447  +158 |   -87   -33    4 |  +520  +124    9 PASS
+TFLIP flip if day moved >= 1.0 ATR against  849   40  1.58  1.31  1.97  2.01 |   +652   +450  +161 |   -87   -33    4 |  +520  +132    5 PASS
+TFLIP flip if day moved >= 1.5 ATR against  849   40  1.59  1.31  1.97  2.03 |   +658   +452  +161 |   -87   -33    4 |  +520  +138    0 PASS
+ALL FLIPPED (control)                     825   28  0.54  0.42  0.68  0.82 |   -703   -216   -98 |  -707   -42   15 |  -288  -415  825 
+
+LIVE: 355 trading days with an exit, worst 5 days: 2026-03-03 -33, 2025-04-04 -32, 2026-02-20 -31, 2025-08-12 -22, 2026-04-29 -20
+days with >= 4 SL hits: 22
+done in 34 s
