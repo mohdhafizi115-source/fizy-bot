@@ -117,7 +117,7 @@ def run(sym, mt, sw, rg):
         return pd.DataFrame(res, columns=["t", "net", "r", "rs", "d", "mae", "tx", "risk"])
 
     if CTX_ONLY: return dict(ks=ks, dr=dr, roll=roll, exd=exd, exu=exu, h4pos=h4pos, spr=spr, l=l, h=h, at=at, sim=sim, end=end, swl=swl, swh=swh,
-                             top=top, bot=bot, atr15=Fm["_atr"], O=O, H=H, L=L, S=S, T=T, ts=ts, day=day, wd=wd, n=n, usd=usd)   # bars for round 99
+                             top=top, bot=bot, atr15=Fm["_atr"], O=O, H=H, L=L, S=S, T=T, ts=ts, day=day, wd=wd, n=n, usd=usd, c15=c)   # bars for round 99 (c15 for 99c)
     exits = [("SL csak", "csak", tp, 24) for tp in (1, 2, 3)] + [("SL swing", "swing", tp, 24) for tp in (1, 2, 3)] + \
             [("SL swing, time 8h", "swing", 0, 8), ("SL swing, time 24h", "swing", 0, 24)]
     out = {}
