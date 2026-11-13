@@ -124,7 +124,7 @@ jobs:
       - name: Run the research script
         run: |
           git pull -q origin main || true          # use the newest research script
-          pip install -q pandas numpy scikit-learn requests
+          pip install -q pandas numpy scikit-learn requests numba
           mkdir -p research/status status
           { echo "export run: ${{ github.event.inputs.data_run || github.run_id }}"; cat m5data/meta.txt; } > status/m5_export.txt
           S="${{ github.event.inputs.script }}"; S="${S:-research/scalp_all.py}"
