@@ -40,6 +40,8 @@ SYMS = [s for s in B87.SYMS if s != "BTCUSD"]
 PAIRS = ((5, 60), (15, 240), (60, 1440))
 NS = (3, 5)
 WAIT, HOLD = 30, 48
+HOLD_H = None                         # round 102c: hold in hours (overrides HOLD), and the SL buffer in ATR
+SLBUF = 0.1
 ENTRIES = ("OB top", "OB 50%", "FVG top", "FVG 50%", "OTE 0.705")
 TPS = ("2R", "3R", "liquidity")
 BUY_CTRL = False                      # round 102b: also an always-BUY twin at the same fill time
@@ -146,6 +148,7 @@ def run(sym, mt, sw):
     d3 = int(sw["d3"]) if sw else 3
     rows = []
     for m, hm_ in PAIRS:
+        hold = HOLD if HOLD_H is None else max(2, int(HOLD_H * 60 / m))
         X = bars(B, m); X = X[X.index >= start - pd.Timedelta(minutes=m * 3000)]
         HX = bars(B, hm_)
         O, H, L, C, S = (X[k].values.astype(float) for k in ("o", "h", "l", "c", "s"))
@@ -183,7 +186,7 @@ def run(sym, mt, sw):
                 fv = -1
                 for i in range(ex + 2, t + 1):
                     if (dr == 1 and L[i] > H[i - 2]) or (dr == -1 and H[i] < L[i - 2]): fv = i; break
-                buf = 0.1 * atr[t] + S[t]
+                buf = SLBUF * atr[t] + S[t]
                 slp = prot - buf if dr == 1 else prot + buf
                 ent = {"OB top": obt, "OB 50%": (obt + obb) / 2, "OTE 0.705": legx - dr * 0.705 * abs(legx - prot)}
                 if fv > 0:
@@ -201,8 +204,8 @@ def run(sym, mt, sw):
             liqR = np.array([abs(s[5] - s[2]) / abs(s[2] - s[3]) for s in setups])
             tpp = np.column_stack([np.full(len(setups), 2.0), np.full(len(setups), 3.0), liqR])
             rdir = np.where(np.random.default_rng(zlib.crc32(f"{sym}{m}{n}".encode())).random(len(setups)) < 0.5, 1, -1).astype(np.int64)
-            fill, fp, Rm, RRm, Xm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, rdir, WAIT, HOLD, swl, sws, d3)
-            RBm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, np.ones(len(setups), np.int64), WAIT, HOLD, swl, sws, d3)[3] \
+            fill, fp, Rm, RRm, Xm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, rdir, WAIT, hold, swl, sws, d3)
+            RBm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, np.ones(len(setups), np.int64), WAIT, hold, swl, sws, d3)[3] \
                 if BUY_CTRL else np.full_like(RRm, np.nan)
             for i, s in enumerate(setups):
                 f = fill[i]
@@ -212,9 +215,9 @@ def run(sym, mt, sw):
                 risk_usd = abs(fp[i] - ss[i]) * usd
                 for k, tpn in enumerate(TPS):
                     if np.isnan(Rm[i, k]): continue
-                    rows.append((m, n, s[1], s[6], tpn, s[7], s[8], s[9], s[10], s[11], kz, T[f], f, Xm[i, k], Rm[i, k], RRm[i, k],
+                    rows.append((m, n, s[1], s[6], tpn, s[7], s[8], s[9], s[10], s[11], kz, hr, T[f], f, Xm[i, k], Rm[i, k], RRm[i, k],
                                  RBm[i, k], risk_usd, S[f] / abs(fp[i] - ss[i])))
-    df = pd.DataFrame(rows, columns=["tf", "n", "d", "entry", "tp", "typ", "sweep", "htf", "disc", "fvg", "kz", "t", "fb", "xb", "r", "rr", "rb", "risk", "sp"])
+    df = pd.DataFrame(rows, columns=["tf", "n", "d", "entry", "tp", "typ", "sweep", "htf", "disc", "fvg", "kz", "hr", "t", "fb", "xb", "r", "rr", "rb", "risk", "sp"])
     for c in ("entry", "tp", "typ"): df[c] = df[c].astype("category")
     for c in ("r", "rr", "rb", "risk", "sp"): df[c] = df[c].astype("float32")
     df["sym"] = sym; df["sym"] = df["sym"].astype("category")
