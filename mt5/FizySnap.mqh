@@ -91,10 +91,10 @@ void SnapBBMA(long cid, string sym, ENUM_TIMEFRAMES tf)
    ObjectCreate(cid, "bbma_legend", OBJ_LABEL, 0, 0, 0);
    ObjectSetInteger(cid, "bbma_legend", OBJPROP_CORNER, CORNER_LEFT_UPPER);
    ObjectSetInteger(cid, "bbma_legend", OBJPROP_XDISTANCE, 8);
-   ObjectSetInteger(cid, "bbma_legend", OBJPROP_YDISTANCE, 22);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_YDISTANCE, 24);   // an object text holds at most 63 characters
    ObjectSetInteger(cid, "bbma_legend", OBJPROP_COLOR, clrBlack);
    ObjectSetInteger(cid, "bbma_legend", OBJPROP_FONTSIZE, 8);
-   ObjectSetString(cid, "bbma_legend", OBJPROP_TEXT, "BBMA: BB 20,2 grey | MA5/10 high purple | MA5/10 low teal | EMA 50 blue | EMA 90 orange | ATR 14 below");
+   ObjectSetString(cid, "bbma_legend", OBJPROP_TEXT, "BBMA: BB20 grey, MA5/10 purple/teal, EMA50 blue, EMA90 orange");
 }
 
 // levels[] / colors[] / labels[]: horizontal lines; r0..r1 / rhi..rlo: shaded box (0 = none);
