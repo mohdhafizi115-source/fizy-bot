@@ -1,0 +1,172 @@
+XAUUSD done [23 s]
+EURUSD done [47 s]
+GBPUSD done [70 s]
+AUDUSD done [94 s]
+NZDUSD done [118 s]
+USDJPY done [142 s]
+USDCHF done [166 s]
+USDCAD done [191 s]
+EURGBP done [215 s]
+EURJPY done [240 s]
+EURCHF done [265 s]
+EURAUD done [288 s]
+EURCAD done [313 s]
+EURNZD done [337 s]
+GBPJPY done [361 s]
+GBPCHF done [386 s]
+GBPAUD done [409 s]
+GBPCAD done [435 s]
+GBPNZD done [459 s]
+AUDJPY done [483 s]
+AUDCHF done [507 s]
+AUDCAD done [531 s]
+AUDNZD done [556 s]
+NZDJPY done [581 s]
+NZDCHF done [607 s]
+NZDCAD done [631 s]
+CADJPY done [655 s]
+CADCHF done [677 s]
+CHFJPY done [703 s]
+
+window 2024-11-12 .. 2026-11-12; 28 forex + XAUUSD; 1116 variants with >= 30 trades; R pooled.
+PASS: 2 of 1107 variants with >= 150 trades
+
+median PF by timeframe x oscillator x type (variants with >= 150 trades) | random twin median
+  H1  AO     HID  rows  24  PF median 0.72  max 0.83  rand median 0.74
+  H1  AO     REG  rows  24  PF median 0.75  max 0.82  rand median 0.75
+  H1  CCI    HID  rows  24  PF median 0.70  max 0.78  rand median 0.75
+  H1  CCI    REG  rows  24  PF median 0.81  max 0.89  rand median 0.77
+  H1  MACD   HID  rows  24  PF median 0.72  max 0.85  rand median 0.74
+  H1  MACD   REG  rows  24  PF median 0.76  max 0.83  rand median 0.72
+  H1  MACDh  HID  rows  24  PF median 0.70  max 0.76  rand median 0.73
+  H1  MACDh  REG  rows  24  PF median 0.80  max 0.93  rand median 0.75
+  H1  MFI    HID  rows  24  PF median 0.70  max 0.79  rand median 0.73
+  H1  MFI    REG  rows  24  PF median 0.80  max 0.88  rand median 0.75
+  H1  OBV    HID  rows  24  PF median 0.70  max 0.77  rand median 0.74
+  H1  OBV    REG  rows  12  PF median 0.80  max 0.88  rand median 0.77
+  H1  RSI    HID  rows  24  PF median 0.70  max 0.81  rand median 0.75
+  H1  RSI    REG  rows  24  PF median 0.78  max 0.88  rand median 0.75
+  H1  STOCH  HID  rows  24  PF median 0.70  max 0.79  rand median 0.74
+  H1  STOCH  REG  rows  24  PF median 0.76  max 0.87  rand median 0.74
+  H4  AO     HID  rows  24  PF median 0.70  max 0.79  rand median 0.80
+  H4  AO     REG  rows  24  PF median 0.89  max 1.05  rand median 0.79
+  H4  CCI    HID  rows  24  PF median 0.71  max 0.86  rand median 0.81
+  H4  CCI    REG  rows  24  PF median 0.84  max 0.95  rand median 0.75
+  H4  MACD   HID  rows  24  PF median 0.70  max 0.83  rand median 0.80
+  H4  MACD   REG  rows  24  PF median 0.89  max 1.08  rand median 0.77
+  H4  MACDh  HID  rows  24  PF median 0.70  max 0.79  rand median 0.78
+  H4  MACDh  REG  rows  24  PF median 0.89  max 0.97  rand median 0.77
+  H4  MFI    HID  rows  24  PF median 0.71  max 0.85  rand median 0.79
+  H4  MFI    REG  rows  18  PF median 0.81  max 1.06  rand median 0.81
+  H4  OBV    HID  rows  24  PF median 0.75  max 0.87  rand median 0.80
+  H4  OBV    REG  rows  12  PF median 0.84  max 0.94  rand median 0.79
+  H4  RSI    HID  rows  24  PF median 0.69  max 0.79  rand median 0.75
+  H4  RSI    REG  rows  21  PF median 0.88  max 1.24  rand median 0.78
+  H4  STOCH  HID  rows  24  PF median 0.71  max 0.80  rand median 0.76
+  H4  STOCH  REG  rows  24  PF median 0.90  max 1.04  rand median 0.76
+  M15 AO     HID  rows  24  PF median 0.58  max 0.65  rand median 0.61
+  M15 AO     REG  rows  24  PF median 0.69  max 0.79  rand median 0.65
+  M15 CCI    HID  rows  24  PF median 0.58  max 0.64  rand median 0.61
+  M15 CCI    REG  rows  24  PF median 0.63  max 0.69  rand median 0.64
+  M15 MACD   HID  rows  24  PF median 0.58  max 0.66  rand median 0.60
+  M15 MACD   REG  rows  24  PF median 0.68  max 0.79  rand median 0.65
+  M15 MACDh  HID  rows  24  PF median 0.59  max 0.67  rand median 0.62
+  M15 MACDh  REG  rows  24  PF median 0.63  max 0.73  rand median 0.63
+  M15 MFI    HID  rows  24  PF median 0.61  max 0.64  rand median 0.62
+  M15 MFI    REG  rows  24  PF median 0.66  max 0.74  rand median 0.65
+  M15 OBV    HID  rows  24  PF median 0.60  max 0.67  rand median 0.62
+  M15 OBV    REG  rows  12  PF median 0.67  max 0.74  rand median 0.67
+  M15 RSI    HID  rows  24  PF median 0.59  max 0.66  rand median 0.62
+  M15 RSI    REG  rows  24  PF median 0.66  max 0.73  rand median 0.65
+  M15 STOCH  HID  rows  24  PF median 0.61  max 0.66  rand median 0.62
+  M15 STOCH  REG  rows  24  PF median 0.66  max 0.75  rand median 0.65
+
+TOP 40 by PF (>= 150 trades)
+variant                                                  n  win    PF   yr1   yr2  strs    12mR    3mR   p3mR    net$  gold$   gPF sym+  RAND
+H4 n3 RSI REG zone E1 TP 3R                            159   47  1.24  1.12  1.43  1.22   +13.7   +3.3   +4.1    +668   +574  5.13   15  0.79 PASS
+H4 n3 RSI REG zone E1 TP 1R                            160   57  1.19  1.24  1.12  1.16    +3.3   +4.4   +1.9    +448   +374  3.23   15  0.88 PASS
+H4 n3 RSI REG zone E1 TP 2R                            159   47  1.14  1.04  1.28  1.11    +9.0   +1.3   +4.0    +614   +558  5.03   15  0.70 
+H4 n3 RSI REG zone E0 TP 2R                            423   41  1.11  1.38  0.89  1.06   -16.0  -13.1  +15.8    +206    -71  0.72   18  0.79 
+H4 n3 RSI REG zone E0 TP 3R                            423   35  1.08  1.32  0.88  1.04   -18.9  -10.0  +13.0    +117   -166  0.34   19  0.69 
+H4 n5 MACD REG zone E1 TP 1R                           290   53  1.08  1.13  1.04  1.05    +2.7   -0.0   -1.9    -196   -239  0.67   16  0.76 
+H4 n5 MACD REG no filter E1 TP 1R                      304   53  1.07  1.06  1.08  1.04    +5.4   +1.0   -1.6    -198   -239  0.67   17  0.70 
+H4 n3 MFI REG zone E0 TP 2R                            286   38  1.06  1.08  1.03  1.01    +2.9   -5.3   +9.2    +786   +644  1.90   14  1.03 
+H4 n5 AO REG no filter E1 TP 1R                        346   53  1.05  1.02  1.08  1.03    +6.0   -4.6   -2.5    -382   -456  0.50   15  0.88 
+H4 n3 STOCH REG zone E1 TP 3R                          456   41  1.04  0.94  1.19  1.02   +20.2   +0.1   -1.7    +462   +449  1.78   13  0.75 
+H4 n5 STOCH REG zone E1 TP 3R                          341   43  1.03  0.91  1.18  1.01   +14.5   -4.2   +4.2    -790   -729  0.24   15  0.90 
+H4 n3 RSI REG zone E0 TP 1R                            428   52  1.02  1.09  0.96  0.97    -4.6   -9.5  +10.7    +157    +37  0.69   17  0.94 
+H4 n3 STOCH REG no filter E1 TP 3R                     593   41  1.01  0.99  1.04  0.99    +5.9   -9.3   -4.3     +15    +75  0.99   13  0.74 
+H4 n3 STOCH REG zone E1 TP 2R                          465   43  1.01  0.91  1.16  0.99   +17.0   +5.3   -5.3    +428   +444  1.80   13  0.74 
+H4 n5 AO REG zone E1 TP 1R                             331   52  1.01  1.00  1.01  0.98    +0.6   -5.6   -2.7    -410   -456  0.50   12  0.80 
+H4 n3 MFI REG zone E0 TP 3R                            286   32  1.00  0.92  1.09  0.96    +8.9   +2.0   +1.6    +781   +668  1.02   14  1.03 
+H4 n3 STOCH REG no filter E1 TP 2R                     604   42  0.98  0.95  1.02  0.96    +3.5   -4.1   -9.5    +248   +351  1.37   13  0.92 
+H4 n5 STOCH REG zone E1 TP 2R                          341   43  0.98  0.86  1.12  0.96    +9.9   -3.3   +6.2    -844   -729  0.24   15  0.60 
+H4 n5 MACD REG zone E1 TP 2R                           286   43  0.97  0.90  1.02  0.95    +1.3   -3.3   +0.8    -278   -164  0.76   14  0.66 
+H4 n3 MACDh REG zone E1 TP 3R                          639   40  0.97  0.87  1.08  0.94   +13.5   +6.2   +2.8     -71    +79  0.81   15  0.68 
+H4 n5 STOCH REG no filter E1 TP 3R                     424   42  0.96  0.88  1.05  0.94    +5.6   -4.1   +0.6   -1077   -834  0.20   12  0.74 
+H4 n3 MACDh REG no filter E1 TP 3R                     669   39  0.96  0.87  1.06  0.94   +11.6   +7.1   -4.1    -212    +13  0.73   14  0.77 
+H4 n5 AO REG no filter E1 TP 2R                        340   44  0.96  0.88  1.03  0.93    +2.2   -8.2   +0.0    -483   -381  0.57   15  0.79 
+H4 n3 CCI REG zone E0 TP 3R                           1398   31  0.95  1.04  0.87  0.92   -66.8  -33.5   +1.2    +285   +399  1.10   14  0.79 
+H4 n5 MACD REG no filter E1 TP 2R                      300   43  0.95  0.84  1.03  0.93    +2.9   -3.8   +1.1    -299   -164  0.76   13  0.55 
+H4 n3 AO REG zone E1 TP 1R                             502   51  0.95  1.00  0.89  0.92   -12.6   -1.3   +1.3    -204   -145  0.52   12  0.92 
+H4 n3 AO REG no filter E1 TP 1R                        555   51  0.95  0.97  0.92  0.92   -11.0   -0.9   +0.8    -262   -233  0.46   13  0.84 
+H4 n3 CCI REG zone E0 TP 2R                           1451   36  0.95  1.04  0.86  0.90   -71.5  -42.7   +8.0    +602   +667  1.47   11  0.77 
+H4 n5 RSI REG no filter E1 TP 1R                       363   50  0.94  0.94  0.94  0.92    -4.6   -1.2   -0.9    -769   -666  0.23   14  0.76 
+H4 n5 OBV REG no filter E1 TP 2R                       382   43  0.94  0.79  1.13  0.92   +11.7   -8.2  +14.2    -722   -423  0.33   12  0.83 
+H4 n5 STOCH REG no filter E1 TP 2R                     427   43  0.94  0.86  1.03  0.92    +3.3   -2.8   +5.7    -939   -666  0.41   13  0.70 
+H4 n3 MACDh REG no filter E0 TP 2R                    1821   36  0.94  0.95  0.93  0.90   -41.4  -49.7   +4.0     +99   +220  1.00    9  0.78 
+H4 n3 AO REG zone E1 TP 3R                             482   38  0.94  0.85  1.04  0.92    +6.0   +0.9   +7.8    -186    +54  0.72   12  0.72 
+H4 n5 AO REG zone E1 TP 2R                             325   43  0.94  0.89  0.99  0.92    -1.1   -7.8   -0.2    -482   -381  0.57   15  0.77 
+H4 n3 RSI REG no filter E1 TP 3R                       542   39  0.93  0.89  0.99  0.91    -1.1  -22.9  +11.1    -160    +91  0.84   12  0.68 
+H4 n3 MACDh REG zone E0 TP 2R                         1765   36  0.93  0.97  0.90  0.89   -58.4  -53.0   +6.9    +170   +270  1.02   11  0.79 
+H4 n3 AO REG no filter E1 TP 3R                        531   38  0.93  0.85  1.02  0.91    +3.1   -2.3   +7.3    -260    -33  0.63   13  0.70 
+H4 n3 STOCH REG zone E0 TP 2R                         1244   36  0.93  0.98  0.88  0.89   -48.2  -28.2   -4.5    +477   +538  1.28   11  0.75 
+H4 n5 OBV REG no filter E1 TP 1R                       393   51  0.93  0.93  0.93  0.91    -6.0   -7.6   +3.1    -521   -384  0.36   14  0.88 
+H4 n3 MACD REG zone E1 TP 1R                           429   51  0.93  0.98  0.88  0.90   -12.7   -3.6   -5.2     -52    -48  0.76   12  0.89 
+
+ALL PASSES
+variant                                                  n  win    PF   yr1   yr2  strs    12mR    3mR   p3mR    net$  gold$   gPF sym+  RAND
+H4 n3 RSI REG zone E1 TP 3R                            159   47  1.24  1.12  1.43  1.22   +13.7   +3.3   +4.1    +668   +574  5.13   15  0.79 PASS
+H4 n3 RSI REG zone E1 TP 1R                            160   57  1.19  1.24  1.12  1.16    +3.3   +4.4   +1.9    +448   +374  3.23   15  0.88 PASS
+
+chosen on YEAR 1 only (top 20 by year-1 PF, >= 75 year-1 trades) -> their year 2:
+  H4 n3 RSI REG zone E0 TP 2R                          yr1  1.38 -> yr2  0.89  (all 1.11, rand 0.79)
+  H4 n3 RSI REG zone E0 TP 3R                          yr1  1.32 -> yr2  0.88  (all 1.08, rand 0.69)
+  H4 n3 RSI REG zone E1 TP 1R                          yr1  1.24 -> yr2  1.12  (all 1.19, rand 0.88)
+  H4 n5 MACD REG zone E1 TP 1R                         yr1  1.13 -> yr2  1.04  (all 1.08, rand 0.76)
+  H1 n5 MACD REG zone E1 TP 3R                         yr1  1.12 -> yr2  0.60  (all 0.83, rand 0.83)
+  H4 n3 RSI REG zone E1 TP 3R                          yr1  1.12 -> yr2  1.43  (all 1.24, rand 0.79)
+  H1 n5 MACD REG no filter E1 TP 3R                    yr1  1.10 -> yr2  0.60  (all 0.82, rand 0.73)
+  H4 n3 RSI REG zone E0 TP 1R                          yr1  1.09 -> yr2  0.96  (all 1.02, rand 0.94)
+  H4 n3 MFI REG zone E0 TP 2R                          yr1  1.08 -> yr2  1.03  (all 1.06, rand 1.03)
+  H1 n5 MACD REG zone E1 TP 2R                         yr1  1.08 -> yr2  0.56  (all 0.80, rand 0.88)
+  H4 n5 MACD REG no filter E1 TP 1R                    yr1  1.06 -> yr2  1.08  (all 1.07, rand 0.70)
+  H1 n5 MACD REG zone E1 TP 1R                         yr1  1.05 -> yr2  0.63  (all 0.82, rand 0.69)
+  H1 n5 MACD REG no filter E1 TP 2R                    yr1  1.05 -> yr2  0.56  (all 0.78, rand 0.87)
+  H4 n3 CCI REG zone E0 TP 2R                          yr1  1.04 -> yr2  0.86  (all 0.95, rand 0.77)
+  H4 n3 CCI REG zone E0 TP 3R                          yr1  1.04 -> yr2  0.87  (all 0.95, rand 0.79)
+  H4 n3 RSI REG zone E1 TP 2R                          yr1  1.04 -> yr2  1.28  (all 1.14, rand 0.70)
+  H1 n5 MACD REG no filter E1 TP 1R                    yr1  1.04 -> yr2  0.62  (all 0.81, rand 0.85)
+  H1 n5 AO REG zone E1 TP 3R                           yr1  1.04 -> yr2  0.62  (all 0.82, rand 0.85)
+  H1 n5 AO REG no filter E1 TP 3R                      yr1  1.03 -> yr2  0.63  (all 0.82, rand 0.87)
+  H4 n5 AO REG no filter E1 TP 1R                      yr1  1.02 -> yr2  1.08  (all 1.05, rand 0.88)
+  median year-2 PF of those 20: 0.87; median year-2 PF of all: 0.69
+
+GOLD alone, top 15 by gold PF (>= 60 gold trades)
+  H1 n5 CCI HID no filter E1 TP 3R                     gold n   60 PF  2.11 $ +1501   (all symbols PF 0.75)
+  H1 n3 CCI HID no filter E1 TP 3R                     gold n   89 PF  2.09 $ +1715   (all symbols PF 0.69)
+  H1 n5 CCI HID no filter E1 TP 2R                     gold n   62 PF  2.00 $ +1605   (all symbols PF 0.78)
+  H1 n3 CCI HID no filter E1 TP 2R                     gold n   93 PF  1.80 $ +1253   (all symbols PF 0.70)
+  H1 n5 MFI HID no filter E1 TP 2R                     gold n   68 PF  1.79 $ +1338   (all symbols PF 0.79)
+  H1 n5 MFI HID no filter E1 TP 3R                     gold n   64 PF  1.73 $ +1330   (all symbols PF 0.76)
+  H1 n3 CCI HID EMA200 trend E1 TP 3R                  gold n   68 PF  1.69 $  +825   (all symbols PF 0.71)
+  H1 n3 RSI HID no filter E1 TP 3R                     gold n   78 PF  1.65 $  +845   (all symbols PF 0.70)
+  H4 n3 MACDh HID no filter E0 TP 3R                   gold n   60 PF  1.64 $  +608   (all symbols PF 0.71)
+  H1 n3 AO HID EMA200 trend E1 TP 3R                   gold n   72 PF  1.56 $ +1101   (all symbols PF 0.73)
+  H1 n5 CCI HID no filter E1 TP 1R                     gold n   68 PF  1.54 $ +1023   (all symbols PF 0.76)
+  H1 n3 CCI HID EMA200 trend E1 TP 2R                  gold n   70 PF  1.52 $  +549   (all symbols PF 0.70)
+  H1 n3 RSI HID EMA200 trend E1 TP 3R                  gold n   65 PF  1.52 $  +312   (all symbols PF 0.71)
+  H1 n5 RSI HID no filter E1 TP 1R                     gold n   65 PF  1.49 $  +793   (all symbols PF 0.78)
+  H1 n5 MACDh HID no filter E1 TP 2R                   gold n   80 PF  1.47 $  +947   (all symbols PF 0.76)
+
+done in 720 s
