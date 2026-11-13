@@ -129,6 +129,7 @@ jobs:
           Copy-Item mt5\FizyRCS.mqh "$dir\MQL5\Experts\FizyRCS.mqh" -Force
           Copy-Item mt5\FizySMC.mqh "$dir\MQL5\Experts\FizySMC.mqh" -Force
           Copy-Item mt5\FizyBTC.mqh "$dir\MQL5\Experts\FizyBTC.mqh" -Force
+          Copy-Item mt5\FizyATB.mqh "$dir\MQL5\Experts\FizyATB.mqh" -Force
           Copy-Item mt5\FizyLEG.mqh "$dir\MQL5\Experts\FizyLEG.mqh" -Force
           Copy-Item mt5\FizyHA.mqh "$dir\MQL5\Experts\FizyHA.mqh" -Force
           New-Item -ItemType Directory -Force -Path "$dir\MQL5\Indicators" | Out-Null
