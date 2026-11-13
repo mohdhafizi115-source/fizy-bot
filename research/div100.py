@@ -37,6 +37,10 @@ TFS = (15, 60, 240)
 OSC = ("RSI", "MACDh", "MACD", "STOCH", "CCI", "AO", "OBV", "MFI")
 ZONE = {"RSI": (30, 70), "STOCH": (20, 80), "CCI": (-100, 100), "MFI": (20, 80), "MACDh": (0, 0), "MACD": (0, 0), "AO": (0, 0)}
 HOLD = 48
+RSI_N = 14        # round 100b varies these
+NS = (3, 5)
+GAP = (5, 60)
+CONFW = 3
 
 
 def ema(a, n): return pd.Series(a).ewm(span=n, adjust=False).mean().values
@@ -45,8 +49,8 @@ def ema(a, n): return pd.Series(a).ewm(span=n, adjust=False).mean().values
 def oscs(X):
     o, h, l, c, v = (X[k].values.astype(float) for k in ("o", "h", "l", "c", "v"))
     c1 = np.r_[c[0], c[:-1]]
-    d = np.diff(c, prepend=c[0]); up = pd.Series(np.maximum(d, 0)).ewm(alpha=1 / 14, adjust=False).mean().values
-    dn = pd.Series(np.maximum(-d, 0)).ewm(alpha=1 / 14, adjust=False).mean().values
+    d = np.diff(c, prepend=c[0]); up = pd.Series(np.maximum(d, 0)).ewm(alpha=1 / RSI_N, adjust=False).mean().values
+    dn = pd.Series(np.maximum(-d, 0)).ewm(alpha=1 / RSI_N, adjust=False).mean().values
     rsi = 100 - 100 / (1 + up / np.maximum(dn, 1e-12))
     macd = ema(c, 12) - ema(c, 26); mh = macd - ema(macd, 9)
     ll = pd.Series(l).rolling(14).min().values; hh = pd.Series(h).rolling(14).max().values
@@ -122,7 +126,7 @@ def run(sym, mt, sw, rg):
                 busy = z
             return res
 
-        for n in (3, 5):
+        for n in NS:
             pl, ph = pivots(L, n, True), pivots(H, n, False)
             for osn in OSC:
                 o = OS[osn]; zlo, zhi = ZONE.get(osn, (None, None))
@@ -133,7 +137,7 @@ def run(sym, mt, sw, rg):
                         j2 = js[a]; k = j2 + n
                         if k >= N - 1 or not valid[k]: continue
                         j1 = js[a - 1]
-                        if not (5 <= j2 - j1 <= 60) or np.isnan(o[j1]) or np.isnan(o[j2]): continue
+                        if not (GAP[0] <= j2 - j1 <= GAP[1]) or np.isnan(o[j1]) or np.isnan(o[j2]): continue
                         # price / oscillator relation in the "bull" sense (sg flips it for bears)
                         p_lower = (P[j2] - P[j1]) * sg < 0           # bull: lower low; bear: higher high
                         o_lower = (o[j2] - o[j1]) * sg < 0
@@ -146,7 +150,7 @@ def run(sym, mt, sw, rg):
                             filt = (side == 1 and C[k] > e200[k]) or (side == -1 and C[k] < e200[k])
                         # entry E1: a close beyond the swing of bars j2..k within 3 bars
                         lvl = H[j2:k + 1].max() if side == 1 else L[j2:k + 1].min(); k1 = -1
-                        for q in range(k + 1, min(k + 4, N - 1)):
+                        for q in range(k + 1, min(k + 1 + CONFW, N - 1)):
                             if (side == 1 and C[q] > lvl) or (side == -1 and C[q] < lvl): k1 = q; break
                         for f in (False, True):
                             if f and not filt: continue
