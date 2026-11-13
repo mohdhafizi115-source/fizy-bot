@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.22"
+#property version "2.23"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -59,6 +59,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyKLT.mqh"                 // gold M1 Keltner re-entry scalp with a 30-pip breakeven (v2.16, rounds 79-79d)
 #include "FizyHA.mqh"                  // gold M1 Heikin Ashi + EMA 10/30 + Stochastic, the owner's rule, TP 1:1 (v2.08)
 #include "FizyRCS.mqh"                 // M15 reversal CSAK on 28 forex pairs + gold (v2.20, rounds 96-98)
+#include "FizySMC.mqh"                 // gold M15 smart money: BOS + order block in the killzone, TP 3R (v2.23, round 102)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
 //--- helpers -------------------------------------------------------
@@ -314,6 +315,7 @@ void SweepOff()
    if(!InpKltOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKltMagic; }
    if(!InpLegOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpLegMagic; }
    if(!InpRcsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpRcsMagic; }
+   if(!InpSmcOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpSmcMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }
    if(!InpMefOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMefMagic; }
@@ -399,6 +401,7 @@ void OnTimer()
    LegOnTimer();
    HaOnTimer();
    RcsOnTimer();
+   SmcOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
    DayPaused();                                                             // daily $ target check (reports once when hit)
