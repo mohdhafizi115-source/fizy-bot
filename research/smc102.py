@@ -42,6 +42,7 @@ NS = (3, 5)
 WAIT, HOLD = 30, 48
 ENTRIES = ("OB top", "OB 50%", "FVG top", "FVG 50%", "OTE 0.705")
 TPS = ("2R", "3R", "liquidity")
+BUY_CTRL = False                      # round 102b: also an always-BUY twin at the same fill time
 try:
     from numba import njit
 except Exception:
@@ -201,6 +202,8 @@ def run(sym, mt, sw):
             tpp = np.column_stack([np.full(len(setups), 2.0), np.full(len(setups), 3.0), liqR])
             rdir = np.where(np.random.default_rng(zlib.crc32(f"{sym}{m}{n}".encode())).random(len(setups)) < 0.5, 1, -1).astype(np.int64)
             fill, fp, Rm, RRm, Xm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, rdir, WAIT, HOLD, swl, sws, d3)
+            RBm = KER(O, H, L, C, S, day, wd, sa, sd, se, ss, sc, tpp, np.ones(len(setups), np.int64), WAIT, HOLD, swl, sws, d3)[3] \
+                if BUY_CTRL else np.full_like(RRm, np.nan)
             for i, s in enumerate(setups):
                 f = fill[i]
                 if f < 0 or hmin[f] < 90: continue
@@ -210,10 +213,10 @@ def run(sym, mt, sw):
                 for k, tpn in enumerate(TPS):
                     if np.isnan(Rm[i, k]): continue
                     rows.append((m, n, s[1], s[6], tpn, s[7], s[8], s[9], s[10], s[11], kz, T[f], f, Xm[i, k], Rm[i, k], RRm[i, k],
-                                 risk_usd, S[f] / abs(fp[i] - ss[i])))
-    df = pd.DataFrame(rows, columns=["tf", "n", "d", "entry", "tp", "typ", "sweep", "htf", "disc", "fvg", "kz", "t", "fb", "xb", "r", "rr", "risk", "sp"])
+                                 RBm[i, k], risk_usd, S[f] / abs(fp[i] - ss[i])))
+    df = pd.DataFrame(rows, columns=["tf", "n", "d", "entry", "tp", "typ", "sweep", "htf", "disc", "fvg", "kz", "t", "fb", "xb", "r", "rr", "rb", "risk", "sp"])
     for c in ("entry", "tp", "typ"): df[c] = df[c].astype("category")
-    for c in ("r", "rr", "risk", "sp"): df[c] = df[c].astype("float32")
+    for c in ("r", "rr", "rb", "risk", "sp"): df[c] = df[c].astype("float32")
     df["sym"] = sym; df["sym"] = df["sym"].astype("category")
     return df, end
 
