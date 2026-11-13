@@ -1,0 +1,195 @@
+numba: yes
+XAUUSD done, 119004 trade rows [4 s]
+EURUSD done, 109479 trade rows [7 s]
+GBPUSD done, 109679 trade rows [9 s]
+AUDUSD done, 102909 trade rows [12 s]
+NZDUSD done, 83315 trade rows [14 s]
+USDJPY done, 106503 trade rows [16 s]
+USDCHF done, 95281 trade rows [18 s]
+USDCAD done, 97908 trade rows [21 s]
+EURGBP done, 63817 trade rows [23 s]
+EURJPY done, 97204 trade rows [25 s]
+EURCHF done, 58129 trade rows [27 s]
+EURAUD done, 91817 trade rows [29 s]
+EURCAD done, 85609 trade rows [31 s]
+EURNZD done, 80701 trade rows [33 s]
+GBPJPY done, 103293 trade rows [36 s]
+GBPCHF done, 71397 trade rows [38 s]
+GBPAUD done, 99376 trade rows [40 s]
+GBPCAD done, 78912 trade rows [42 s]
+GBPNZD done, 83427 trade rows [45 s]
+AUDJPY done, 94825 trade rows [47 s]
+AUDCHF done, 88817 trade rows [49 s]
+AUDCAD done, 80568 trade rows [51 s]
+AUDNZD done, 69988 trade rows [53 s]
+NZDJPY done, 70541 trade rows [55 s]
+NZDCHF done, 64967 trade rows [57 s]
+NZDCAD done, 87991 trade rows [59 s]
+CADJPY done, 75181 trade rows [61 s]
+CADCHF done, 90205 trade rows [64 s]
+CHFJPY done, 97516 trade rows [66 s]
+
+window 2024-11-12 .. 2026-11-12; 28 forex + XAUUSD; R = profit / initial risk, pooled; 2,558,359 trade rows
+PASS: 3 of 3945 variants with >= 150 trades (4251 with >= 40)
+
+median PF by timeframe x entry (>= 150 trades), random-twin median beside it
+  M5/H1   FVG 50%   rows  280  PF median 0.71  best 0.84  rand median 0.68
+  M5/H1   FVG top   rows  278  PF median 0.71  best 0.87  rand median 0.68
+  M5/H1   OB 50%    rows  284  PF median 0.73  best 0.92  rand median 0.64
+  M5/H1   OB top    rows  286  PF median 0.72  best 0.86  rand median 0.66
+  M5/H1   OTE 0.705 rows  285  PF median 0.70  best 0.82  rand median 0.64
+  M15/H4  FVG 50%   rows  269  PF median 0.76  best 0.98  rand median 0.75
+  M15/H4  FVG top   rows  266  PF median 0.76  best 1.09  rand median 0.72
+  M15/H4  OB 50%    rows  279  PF median 0.81  best 1.19  rand median 0.73
+  M15/H4  OB top    rows  278  PF median 0.78  best 1.05  rand median 0.73
+  M15/H4  OTE 0.705 rows  279  PF median 0.78  best 1.08  rand median 0.74
+  H1/D1   FVG 50%   rows  217  PF median 0.83  best 1.14  rand median 0.78
+  H1/D1   FVG top   rows  216  PF median 0.82  best 1.18  rand median 0.83
+  H1/D1   OB 50%    rows  240  PF median 0.86  best 1.30  rand median 0.80
+  H1/D1   OB top    rows  243  PF median 0.83  best 1.18  rand median 0.80
+  H1/D1   OTE 0.705 rows  245  PF median 0.84  best 1.13  rand median 0.81
+
+median PF by filter (>= 150 trades): with the filter vs the same cell without it
+  typ=BOS     rows 1155  PF median 0.74  rand 0.70
+  typ=CHoCH   rows 1391  PF median 0.77  rand 0.73
+  sweep=Y     rows 1824  PF median 0.76  rand 0.72
+  htf=Y       rows 1871  PF median 0.75  rand 0.71
+  disc=Y      rows 1857  PF median 0.76  rand 0.71
+  kz=Y        rows 1880  PF median 0.79  rand 0.74
+  (all rows       3945  PF median 0.76  rand 0.72)
+
+THE TEXTBOOK MODELS (as the guides teach them)
+variant                                                                                  n  /wk win    PF   yr1   yr2  strs   12mR    3mR   p3mR   net$  maxDD worst risk$  gold$   sym+  RAND
+-- A continuation: BOS + HTF bias + OB top, TP liquidity
+M5/H1 n3 | OB top    | TP liquidity | typ=BOS htf=Y                                   8677 83.4  33  0.71  0.73  0.70  0.59 -720.5 -300.2 -192.0  -1069  -1076   -34   0.9   -269   0/29  0.64 
+M5/H1 n5 | OB top    | TP liquidity | typ=BOS htf=Y                                   8676 83.4  32  0.70  0.77  0.61  0.58 -1018.4 -391.7 -203.0   -852   -856   -31   0.9    +28   0/29  0.64 
+M15/H4 n3 | OB top    | TP liquidity | typ=BOS htf=Y                                  3726 35.8  34  0.74  0.76  0.72  0.65 -318.7  -85.7  -66.4   -373   -430   -59   1.2   +113   2/29  0.66 
+M15/H4 n5 | OB top    | TP liquidity | typ=BOS htf=Y                                  3602 34.6  33  0.74  0.74  0.74  0.65 -292.6 -110.3  -69.7   -520   -524   -59   1.2    +69   2/29  0.72 
+H1/D1 n3 | OB top    | TP liquidity | typ=BOS htf=Y                                   1149 11.0  34  0.80  0.75  0.85  0.73  -56.3   +6.3  -12.3    -93   -302   -54   2.2   +122   4/29  0.85 
+H1/D1 n5 | OB top    | TP liquidity | typ=BOS htf=Y                                   1029  9.9  34  0.85  0.89  0.81  0.79  -62.0  +17.8  -20.9   -125   -307   -54   2.3   +109   8/29  0.82 
+-- A + discount + killzone
+M5/H1 n3 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                        441  4.2  35  0.86  0.97  0.74  0.71  -35.0   -9.2  -15.4    -33    -47    -9   0.8    -19  12/29  0.63 
+M5/H1 n5 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                        479  4.6  34  0.84  0.87  0.81  0.68  -30.7  -14.5  -19.7    +16    -40    -8   0.8    +47  12/29  0.57 
+M15/H4 n3 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                       250  2.4  39  1.05  1.00  1.11  0.89   +7.4   +1.0   +2.9     +4    -20   -13   1.1     +3  15/29  0.65 
+M15/H4 n5 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                       237  2.3  32  0.79  0.71  0.85  0.68  -12.4  -15.9   -1.6    -15    -29    -4   0.8    +31  13/29  0.76 
+H1/D1 n3 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                         81  0.8  23  0.46  0.50  0.39  0.41  -16.0   -7.9   -1.6     -7    -21    -4   1.6    +35   6/28  0.70 
+H1/D1 n5 | OB top    | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                         58  0.6  31  0.82  0.73  0.94  0.76   -1.0   +0.8   -0.5    -22    -26    -4   1.6     +0   8/24  0.67 
+-- A with the OB 50% and TP 3R
+M5/H1 n3 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                            2574 24.8  21  0.67  0.71  0.63  0.55 -336.9  -85.2  -61.3   -262   -266   -11   0.6    +20   0/29  0.58 
+M5/H1 n5 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                            1840 17.7  20  0.63  0.65  0.59  0.52 -273.8  -76.9  -46.7   -244   -247   -17   0.6    +24   2/29  0.59 
+M15/H4 n3 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                           1207 11.6  22  0.69  0.74  0.64  0.60 -165.7  -20.3  -13.4   -228   -291   -26   0.9    -40   4/29  0.66 
+M15/H4 n5 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                            883  8.5  21  0.66  0.58  0.75  0.56  -84.8  -19.0  -11.3   -212   -238   -26   0.9    -58   4/29  0.69 
+H1/D1 n3 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                             391  3.8  20  0.62  0.62  0.62  0.57  -55.9   -9.7  -23.4    -78   -128   -46   1.6    +56   4/29  0.75 
+H1/D1 n5 | OB 50%    | TP 3R        | typ=BOS htf=Y disc=Y                             267  2.6  23  0.72  0.58  0.90  0.66   -9.7   -2.2   -7.9   -112   -149   -46   1.8    -16  10/29  0.86 
+-- B ICT reversal: sweep + CHoCH + FVG 50%, TP 2R
+M5/H1 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                              15453 148.6  29  0.67  0.70  0.64  0.57 -1878.9 -501.1 -509.1  -2075  -2086   -27   1.0    +97   0/29  0.62 
+M5/H1 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                              12867 123.7  30  0.67  0.69  0.64  0.57 -1525.5 -329.3 -428.5  -1841  -1896   -32   1.0    +80   0/29  0.66 
+M15/H4 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                              5655 54.4  31  0.77  0.80  0.74  0.69 -493.8 -111.5 -142.3  -1249  -1308   -50   1.6   -405   2/29  0.72 
+M15/H4 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                              4881 46.9  31  0.75  0.75  0.75  0.67 -400.9 -113.1  -96.7  -1047  -1145   -64   1.7   -199   3/29  0.75 
+H1/D1 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                               1299 12.5  32  0.79  0.71  0.87  0.74  -56.1  +15.9  -25.4   -589   -634  -105   2.8   -122   6/29  0.70 
+H1/D1 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y                               1058 10.2  33  0.78  0.79  0.77  0.74  -80.1   +1.8  -36.0   -499   -652  -105   2.9    -90   6/29  0.88 
+-- B + HTF bias + killzone
+M5/H1 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                    2852 27.4  30  0.75  0.78  0.71  0.63 -265.9  -61.1  -66.9   -380   -390   -17   0.9    -63   5/29  0.69 
+M5/H1 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                    2519 24.2  31  0.80  0.80  0.79  0.68 -156.2  -21.6  -46.4    -95   -176   -24   1.1   +123   7/29  0.72 
+M15/H4 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                   1143 11.0  30  0.84  0.85  0.83  0.74  -62.3   -2.6  -34.8   -251   -272   -39   1.4    -95  10/29  0.77 
+M15/H4 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                   1002  9.6  29  0.73  0.74  0.72  0.65  -93.1  -42.9  -16.7   -258   -277   -30   1.4    -56   5/29  0.82 
+H1/D1 n3 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                     249  2.4  32  0.89  0.80  1.00  0.84   +0.1   +4.2   +1.6   -190   -193   -41   2.5   -124  11/29  0.74 
+H1/D1 n5 | FVG 50%   | TP 2R        | typ=CHoCH sweep=Y htf=Y kz=Y                     208  2.0  33  0.84  0.82  0.87  0.79   -6.9   +6.9   +1.3   -127   -220   -38   3.1    -43   9/29  1.26 
+-- C OTE: HTF bias + discount + OTE 0.705, TP liquidity
+M5/H1 n3 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                    9412 90.5  32  0.67  0.71  0.62  0.53 -1141.0 -324.4 -269.4   -807   -827   -14   0.6    +23   0/29  0.61 
+M5/H1 n5 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                    7398 71.1  31  0.66  0.72  0.59  0.53 -1014.6 -334.2 -244.2   -781   -790   -20   0.7    +15   0/29  0.61 
+M15/H4 n3 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                   3994 38.4  33  0.76  0.79  0.72  0.64 -364.4 -103.1  -90.2   -338   -349   -26   0.9   +127   4/29  0.67 
+M15/H4 n5 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                   2940 28.3  32  0.74  0.73  0.76  0.64 -239.1  -46.1  -59.1   -470   -480   -41   1.0    -67   3/29  0.69 
+H1/D1 n3 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                    1124 10.8  32  0.80  0.82  0.78  0.73  -79.3   -3.4  -37.7   -180   -323   -46   1.5    -23   8/29  0.72 
+H1/D1 n5 | OTE 0.705 | TP liquidity | htf=Y disc=Y                                     803  7.7  29  0.74  0.76  0.71  0.68  -80.4  -11.9  -26.4   -230   -237   -46   1.8    -11   6/29  0.92 
+-- C + sweep + killzone
+M5/H1 n3 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                       1580 15.2  30  0.68  0.76  0.60  0.55 -212.9  -70.6  -51.1   -222   -229    -9   0.7    -62   3/29  0.64 
+M5/H1 n5 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                       1369 13.2  31  0.75  0.84  0.65  0.61 -153.9  -44.6  -51.1   -137   -163   -11   0.8    -14   7/29  0.66 
+M15/H4 n3 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                       680  6.5  32  0.78  0.80  0.76  0.66  -53.2  -18.5  -10.2    -34    -57   -26   1.0    +62   9/29  0.80 
+M15/H4 n5 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                       523  5.0  33  0.84  0.83  0.86  0.72  -23.8  -18.7   -1.1     -9    -46   -26   1.1    +44  12/29  0.79 
+H1/D1 n3 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                        125  1.2  32  0.86  0.86  0.85  0.78   -5.5   +3.1   -4.4    -72    -81   -32   1.8    -61   9/29  0.85 
+H1/D1 n5 | OTE 0.705 | TP liquidity | sweep=Y htf=Y disc=Y kz=Y                         93  0.9  29  0.73  0.69  0.80  0.67   -5.0   -2.5   +1.8   -134   -142   -32   2.7   -109  10/29  0.95 
+
+TOP 30 by PF (>= 150 trades)
+variant                                                                                  n  /wk win    PF   yr1   yr2  strs   12mR    3mR   p3mR   net$  maxDD worst risk$  gold$   sym+  RAND
+H1/D1 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y disc=Y                           164  1.6  37  1.30  1.75  0.87  1.19   -6.9   -6.5   +4.3    -14    -69   -46   2.0    -66  13/29  0.74 
+M15/H4 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y htf=Y kz=Y                      305  2.9  38  1.19  1.17  1.21  1.00  +18.1   -6.7   +4.2    +40    -34   -16   0.8    +25  17/29  0.73 
+H1/D1 n3 | FVG top   | TP 2R        | typ=CHoCH htf=Y disc=Y kz=Y                      193  1.9  39  1.18  1.25  1.09  1.11   +4.6   +3.4   +7.9   +132    -69   -34   3.0    +88  14/29  1.05 PASS
+H1/D1 n3 | OB 50%    | TP 2R        | typ=BOS sweep=Y kz=Y                             210  2.0  39  1.18  1.06  1.31  1.08  +18.4   +7.8   +6.6    +80    -41   -34   2.2    +57  15/29  0.73 PASS
+H1/D1 n3 | OB top    | TP 2R        | typ=BOS sweep=Y htf=Y kz=Y                       153  1.5  41  1.18  1.19  1.16  1.11   +7.6   +6.5   +3.4   -148   -148   -54   3.1   -159  14/29  0.59 PASS
+M15/H4 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y htf=Y disc=Y                    152  1.5  38  1.17  0.86  1.67  0.98  +24.0   +6.9   +4.0    +24    -17   -12   0.9    +13  13/29  0.66 
+H1/D1 n3 | FVG 50%   | TP 2R        | typ=BOS sweep=Y kz=Y                             152  1.5  41  1.14  1.57  0.92  1.07   -4.8   +3.4  +10.1    -13   -132   -67   3.4    -49  12/29  0.86 
+M15/H4 n3 | OB 50%    | TP 2R        | typ=BOS sweep=Y htf=Y disc=Y                    196  1.9  38  1.14  0.86  1.53  0.96  +27.0   +7.2   +3.0    +18    -29   -13   1.1    +12  14/29  0.61 
+H1/D1 n3 | OTE 0.705 | TP 2R        | typ=BOS sweep=Y kz=Y                             207  2.0  36  1.13  1.31  0.95  1.04   -3.5   +0.9   +0.6    +45    -47   -32   1.9    +19  18/29  0.63 
+H1/D1 n3 | FVG top   | TP liquidity | typ=CHoCH htf=Y kz=Y                             188  1.8  41  1.12  1.00  1.36  1.04  +13.7  +10.1   +7.5    +86    -23   -11   2.1    +88  18/29  1.01 
+H1/D1 n3 | OB top    | TP 2R        | typ=BOS sweep=Y kz=Y                             291  2.8  40  1.11  1.17  1.05  1.04   +4.5   +0.8   +6.8   -168   -168   -54   2.8   -179  14/29  0.63 
+H1/D1 n3 | OTE 0.705 | TP 3R        | typ=BOS sweep=Y kz=Y                             207  2.0  29  1.10  1.34  0.87  1.02  -10.3   -7.0   +2.6   -129   -139   -35   1.9   -144  16/29  0.72 
+M15/H4 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y disc=Y kz=Y                     272  2.6  37  1.10  1.29  0.92  0.92   -6.9   -7.0   +0.2    +16    -23    -9   0.8    -10  14/29  0.63 
+H1/D1 n3 | OTE 0.705 | TP 3R        | typ=CHoCH sweep=Y disc=Y kz=Y                    384  3.7  28  1.10  1.11  1.09  1.02  +12.4  +15.0   +7.4    +22   -104   -32   1.8    -36  13/29  0.86 
+H1/D1 n3 | FVG top   | TP liquidity | typ=CHoCH disc=Y kz=Y                            228  2.2  43  1.10  0.96  1.29  1.01  +16.4   +7.5  +10.1    +47    -76   -17   2.1    +31  15/29  0.76 
+H1/D1 n3 | OTE 0.705 | TP 2R        | typ=CHoCH sweep=Y disc=Y kz=Y                    385  3.7  36  1.10  1.03  1.18  1.01  +21.6  +10.1   +5.9    -31   -100   -32   1.8    -74  16/29  0.86 
+H1/D1 n3 | FVG 50%   | TP liquidity | typ=CHoCH htf=Y kz=Y                             231  2.2  40  1.10  1.03  1.21  1.01  +10.8   +8.4   +3.2    +73    -35   -10   1.8    +65  14/29  0.92 
+H1/D1 n3 | OB 50%    | TP 3R        | typ=BOS sweep=Y disc=Y                           233  2.2  30  1.10  1.35  0.84  1.02  -13.6   -4.2   +3.5    -36    -84   -46   2.1    -43  13/29  0.75 
+H1/D1 n3 | FVG 50%   | TP 3R        | typ=BOS sweep=Y kz=Y                             152  1.5  35  1.09  1.33  0.95  1.03   -3.0   +3.6  +16.2    -48   -141   -67   3.4    -87  14/29  0.76 
+H1/D1 n3 | OTE 0.705 | TP liquidity | typ=CHoCH sweep=Y disc=Y kz=Y                    383  3.7  37  1.09  1.06  1.12  0.99  +13.6   +7.0   +3.7    -26   -106   -32   1.8    -68  16/29  0.86 
+M15/H4 n3 | FVG top   | TP liquidity | typ=BOS disc=Y kz=Y                             413  4.0  43  1.09  1.03  1.15  0.94  +16.9   +0.3   -2.0   +114    -37   -18   1.4    +92  17/29  0.87 
+H1/D1 n3 | OB 50%    | TP 3R        | typ=BOS sweep=Y kz=Y                             210  2.0  31  1.09  1.15  1.02  1.01   +1.8   +5.9  +11.5    -48    -76   -34   2.2    -64  14/29  0.73 
+H1/D1 n3 | FVG top   | TP liquidity | typ=CHoCH kz=Y                                   389  3.7  42  1.08  0.93  1.29  1.00  +28.6  +18.0  +14.4   +135    -70   -17   2.1   +130  17/29  0.79 
+H1/D1 n3 | OTE 0.705 | TP liquidity | typ=BOS sweep=Y kz=Y                             206  2.0  37  1.08  1.32  0.85  0.99  -10.2   -4.7   +2.7   -115   -139   -35   1.9   -144  16/29  0.66 
+H1/D1 n3 | OTE 0.705 | TP 2R        | sweep=Y disc=Y kz=Y                              469  4.5  35  1.08  1.08  1.07  0.99  +10.9  +10.1   +1.1    -19   -110   -32   1.8    -65  17/29  0.76 
+H1/D1 n5 | OB 50%    | TP liquidity | typ=CHoCH sweep=Y htf=Y disc=Y                   155  1.5  31  1.08  1.08  1.07  0.99   +3.3   +2.4   -2.3    -44    -69   -23   1.6    -49  11/28  0.71 
+M15/H4 n3 | OTE 0.705 | TP 2R        | typ=BOS sweep=Y htf=Y disc=Y                    208  2.0  35  1.08  0.74  1.47  0.92  +29.5   +4.3   +9.1    +30    -29    -6   1.0    +38  13/29  0.71 
+H1/D1 n3 | OB top    | TP 3R        | typ=CHoCH sweep=Y disc=Y kz=Y                    497  4.8  33  1.08  1.13  1.01  1.01   +1.3   -3.9   +8.9    +97   -193   -35   2.5    -62  13/29  0.73 
+H1/D1 n3 | OTE 0.705 | TP liquidity | typ=CHoCH disc=Y kz=Y                           1019  9.8  37  1.07  1.11  1.02  0.97   +6.6   +3.5   -0.9     +7   -171   -32   1.5    -89  17/29  0.80 
+H1/D1 n3 | FVG 50%   | TP 2R        | typ=CHoCH htf=Y disc=Y kz=Y                      185  1.8  35  1.07  1.18  0.93  0.99   -3.5   -1.6   +3.9    +87    -95   -29   2.5    +88  14/29  0.80 
+
+ALL PASSES, with buys / sells / gold / forex apart
+variant                                                                                  n  /wk win    PF   yr1   yr2  strs   12mR    3mR   p3mR   net$  maxDD worst risk$  gold$   sym+  RAND
+H1/D1 n3 | FVG top   | TP 2R        | typ=CHoCH htf=Y disc=Y kz=Y                      193  1.9  39  1.18  1.25  1.09  1.11   +4.6   +3.4   +7.9   +132    -69   -34   3.0    +88  14/29  1.05 PASS
+      buys 1.13 (110)  sells 1.26 (83)  gold 0.98 (6)  forex 1.19 (187)  last 3m +3.4R  prev 3m +7.9R
+H1/D1 n3 | OB 50%    | TP 2R        | typ=BOS sweep=Y kz=Y                             210  2.0  39  1.18  1.06  1.31  1.08  +18.4   +7.8   +6.6    +80    -41   -34   2.2    +57  15/29  0.73 PASS
+      buys 1.21 (142)  sells 1.12 (68)  gold 1.18 (8)  forex 1.18 (202)  last 3m +7.8R  prev 3m +6.6R
+H1/D1 n3 | OB top    | TP 2R        | typ=BOS sweep=Y htf=Y kz=Y                       153  1.5  41  1.18  1.19  1.16  1.11   +7.6   +6.5   +3.4   -148   -148   -54   3.1   -159  14/29  0.59 PASS
+      buys 1.42 (110)  sells 0.72 (43)  gold 0.00 (6)  forex 1.26 (147)  last 3m +6.5R  prev 3m +3.4R
+
+chosen on YEAR 1 (top 20 by year-1 PF, >= 75 year-1 trades) -> YEAR 2:
+  H1/D1 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y disc=Y                         yr1  1.75 -> yr2  0.87  (n 164, rand 0.74)
+  H1/D1 n3 | OB 50%    | TP 3R        | typ=BOS sweep=Y disc=Y                         yr1  1.35 -> yr2  0.84  (n 233, rand 0.75)
+  H1/D1 n3 | OTE 0.705 | TP 3R        | typ=BOS sweep=Y kz=Y                           yr1  1.34 -> yr2  0.87  (n 207, rand 0.72)
+  H1/D1 n3 | OTE 0.705 | TP liquidity | typ=BOS sweep=Y kz=Y                           yr1  1.32 -> yr2  0.85  (n 206, rand 0.66)
+  H1/D1 n3 | OTE 0.705 | TP 2R        | typ=BOS sweep=Y kz=Y                           yr1  1.31 -> yr2  0.95  (n 207, rand 0.63)
+  H1/D1 n3 | FVG top   | TP 3R        | typ=BOS sweep=Y disc=Y                         yr1  1.30 -> yr2  0.72  (n 155, rand 0.83)
+  M15/H4 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y disc=Y kz=Y                   yr1  1.29 -> yr2  0.92  (n 272, rand 0.63)
+  H1/D1 n3 | FVG top   | TP 2R        | typ=CHoCH htf=Y disc=Y kz=Y                    yr1  1.25 -> yr2  1.09  (n 193, rand 1.05)
+  H1/D1 n3 | FVG top   | TP 2R        | typ=BOS sweep=Y disc=Y                         yr1  1.24 -> yr2  0.71  (n 155, rand 0.84)
+  M15/H4 n3 | OB top    | TP liquidity | typ=BOS sweep=Y htf=Y kz=Y                    yr1  1.24 -> yr2  0.84  (n 225, rand 0.82)
+  M5/H1 n5 | OB 50%    | TP 3R        | typ=BOS sweep=Y htf=Y kz=Y                     yr1  1.21 -> yr2  0.57  (n 521, rand 0.59)
+  M5/H1 n3 | OB 50%    | TP 3R        | typ=BOS sweep=Y htf=Y disc=Y kz=Y              yr1  1.21 -> yr2  0.62  (n 170, rand 0.79)
+  H1/D1 n5 | FVG 50%   | TP 2R        | typ=CHoCH htf=Y disc=Y kz=Y                    yr1  1.20 -> yr2  0.57  (n 181, rand 1.19)
+  H1/D1 n3 | FVG 50%   | TP 2R        | typ=BOS sweep=Y                                yr1  1.20 -> yr2  0.80  (n 388, rand 0.78)
+  H1/D1 n3 | OB 50%    | TP liquidity | typ=BOS sweep=Y                                yr1  1.19 -> yr2  0.92  (n 375, rand 0.80)
+  H1/D1 n3 | OB top    | TP 3R        | sweep=Y disc=Y kz=Y                            yr1  1.19 -> yr2  0.91  (n 594, rand 0.74)
+  M5/H1 n5 | FVG top   | TP liquidity | typ=BOS htf=Y disc=Y kz=Y                      yr1  1.19 -> yr2  0.66  (n 220, rand 0.51)
+  H1/D1 n3 | OTE 0.705 | TP 2R        | typ=BOS sweep=Y disc=Y                         yr1  1.18 -> yr2  0.82  (n 218, rand 0.60)
+  H1/D1 n5 | OB 50%    | TP liquidity | typ=CHoCH htf=Y disc=Y                         yr1  1.18 -> yr2  0.66  (n 426, rand 0.80)
+  H1/D1 n3 | OB 50%    | TP 3R        | sweep=Y disc=Y kz=Y                            yr1  1.18 -> yr2  0.73  (n 442, rand 0.95)
+  median year 2 of those: 0.83; median year 2 of all: 0.72; share of all with year 2 >= 1: 3%
+
+GOLD alone, top 15 by gold PF (>= 60 gold trades)
+  M15/H4 n3 | FVG top   | TP liquidity | htf=Y kz=Y                                    gold n   68 PF  2.34 $  +285  (all symbols 0.87)
+  M15/H4 n5 | OB top    | TP liquidity | typ=BOS htf=Y kz=Y                            gold n   63 PF  1.88 $  +150  (all symbols 0.88)
+  M15/H4 n5 | OB top    | TP 3R        | typ=BOS htf=Y kz=Y                            gold n  100 PF  1.84 $  +324  (all symbols 0.76)
+  M15/H4 n3 | FVG top   | TP liquidity | typ=CHoCH kz=Y                                gold n   76 PF  1.78 $  +155  (all symbols 0.82)
+  M15/H4 n3 | FVG 50%   | TP liquidity | htf=Y kz=Y                                    gold n   88 PF  1.72 $  +186  (all symbols 0.88)
+  M15/H4 n5 | OTE 0.705 | TP 3R        | typ=BOS disc=Y kz=Y                           gold n   62 PF  1.71 $  +219  (all symbols 0.90)
+  M15/H4 n5 | OB 50%    | TP liquidity | typ=BOS htf=Y kz=Y                            gold n   78 PF  1.71 $  +138  (all symbols 0.86)
+  M15/H4 n5 | FVG top   | TP liquidity | htf=Y kz=Y                                    gold n   65 PF  1.70 $  +183  (all symbols 0.85)
+  M15/H4 n5 | OB top    | TP liquidity | typ=BOS kz=Y                                  gold n  126 PF  1.69 $  +316  (all symbols 0.87)
+  M15/H4 n5 | OB top    | TP 3R        | typ=BOS kz=Y                                  gold n  189 PF  1.67 $  +558  (all symbols 0.81)
+  M15/H4 n5 | OTE 0.705 | TP 3R        | typ=BOS htf=Y kz=Y                            gold n   94 PF  1.67 $  +272  (all symbols 0.81)
+  M15/H4 n5 | OB top    | TP liquidity | htf=Y kz=Y                                    gold n  121 PF  1.66 $  +186  (all symbols 0.87)
+  M15/H4 n5 | FVG top   | TP liquidity | typ=BOS kz=Y                                  gold n   75 PF  1.66 $  +251  (all symbols 0.85)
+  M15/H4 n5 | OB top    | TP 3R        | typ=BOS disc=Y kz=Y                           gold n   64 PF  1.65 $  +185  (all symbols 0.85)
+  M15/H4 n5 | FVG 50%   | TP liquidity | typ=BOS kz=Y                                  gold n   82 PF  1.64 $  +227  (all symbols 0.88)
+
+done in 88 s
