@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.27"
+#property version "2.28"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -63,6 +63,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyBTC.mqh"                 // BTCUSD 24/7: M5 big-candle follow + M20 SMC at the OTE (v2.25, round 103)
 #include "FizyATB.mqh"                 // gold ATR open-band breakout, day trade (v2.26, round 107)
 #include "FizyCMX.mqh"                 // gold COMEX-open scalp: follow the 08:20 NY bar for 5 min (v2.27, round 108)
+#include "FizyCRS.mqh"                 // gold M15 Connors RSI < 10 / > 90 on the EMA 200 side, 120 min (v2.28, round 110)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
 //--- helpers -------------------------------------------------------
@@ -323,6 +324,7 @@ void SweepOff()
    if(!InpBsmOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBsmMagic; }
    if(!InpAtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpAtbMagic; }
    if(!InpCmxOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCmxMagic; }
+   if(!InpCrsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCrsMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }
    if(!InpMefOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMefMagic; }
@@ -412,6 +414,7 @@ void OnTimer()
    BtcOnTimer();
    AtbOnTimer();
    CmxOnTimer();
+   CrsOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
    DayPaused();                                                             // daily $ target check (reports once when hit)
