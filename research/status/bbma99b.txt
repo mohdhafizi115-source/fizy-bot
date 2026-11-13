@@ -1,0 +1,34 @@
+live rule = 'SL 2.0 ATR', window 2024-11-13 .. 2026-11-13
+
+variant                                         n win%    PF   yr1   yr2  strs |    IS   OOS |  12m R  3m R   p3m |  net $  gold    fx  maxDD  wDay opn |  RAND
+LIVE (29 symbols, no cap)                     847   40  1.22  1.17  1.33  1.16 |  1.24  1.12 |  +49.0  -2.4 +10.6 |   +653  +527  +126    -87   -33   8 |  0.91 PASS
+  forex only (28)                             788   39  1.17  1.13  1.24  1.10 |  1.20  0.96 |  +32.2 -12.9 +10.1 |   +126    +0  +126    -55   -19   7 |  0.90 PASS
+  gold only                                    59   53  2.08  1.95  2.20  2.05 |  1.89  2.66 |  +16.9 +10.4  +0.4 |   +527  +527    +0    -65   -32   1 |  1.10 
+  max 1 per currency                          643   40  1.21  1.19  1.25  1.15 |  1.21  1.26 |  +31.4  +2.1 +12.0 |   +434  +344   +90    -87   -33   3 |  0.90 PASS
+  max 2 per currency                          805   40  1.23  1.16  1.36  1.16 |  1.24  1.13 |  +51.1  -2.0 +10.6 |   +644  +524  +120    -87   -33   5 |  0.92 PASS
+  max 3 open                                  793   40  1.19  1.12  1.33  1.13 |  1.20  1.10 |  +48.4  -3.5 +10.6 |   +567  +486   +82    -87   -33   4 |  0.93 PASS
+  max 1 open                                  520   39  1.25  1.21  1.31  1.18 |  1.26  1.19 |  +35.6  -1.2 +11.4 |   +529  +464   +65    -59   -31   2 |  0.99 PASS
+  forex max 1 per currency + gold             654   40  1.22  1.17  1.33  1.16 |  1.21  1.31 |  +41.4  +4.5 +12.0 |   +593  +527   +67    -87   -33   4 |  0.91 PASS
+
+losing streaks (by entry time, all symbols together): longest / runs of >= 5 losses / runs of >= 8
+  LIVE (29 symbols, no cap)                    longest  14   >=5:  31   >=8:  10   trades 847
+    forex only (28)                            longest  13   >=5:  29   >=8:  10   trades 788
+    gold only                                  longest   4   >=5:   0   >=8:   0   trades 59
+    max 1 per currency                         longest  11   >=5:  17   >=8:   6   trades 643
+    max 2 per currency                         longest  13   >=5:  30   >=8:  10   trades 805
+    max 3 open                                 longest  13   >=5:  32   >=8:  10   trades 793
+    max 1 open                                 longest  11   >=5:  15   >=8:   4   trades 520
+    forex max 1 per currency + gold            longest  12   >=5:  20   >=8:   6   trades 654
+
+clusters: at each entry, how many trades already open lean the same way on one of its two currencies
+  0-0 same-way trades already open:  623 trades ( 74%), win  39%, PF 1.19, net $+407
+  1-1 same-way trades already open:  167 trades ( 20%), win  42%, PF 1.27, net $+205
+  2-3 same-way trades already open:   55 trades (  6%), win  47%, PF 1.46, net $+41
+  4-99 same-way trades already open:    2 trades (  0%), win  50%, PF 19.01, net $+1
+
+per symbol, net $ (2 years, 0.01 lot):
+  GBPAUD:45/-39  AUDJPY:42/-8  AUDUSD:37/-8  NZDCAD:18/-6  AUDCAD:11/-5  EURCHF:8/-4  NZDCHF:6/-4  GBPCHF:9/-4  NZDJPY:21/-3  AUDNZD:7/-2  CHFJPY:33/-1  USDCAD:30/+2  CADCHF:20/+4  GBPNZD:24/+5  EURNZD:21/+6  GBPCAD:33/+6  USDCHF:27/+9  GBPUSD:87/+9  EURGBP:7/+11  NZDUSD:9/+11  EURAUD:31/+11  USDJPY:51/+13  EURUSD:57/+13  AUDCHF:15/+14  EURJPY:36/+20  CADJPY:21/+22  GBPJPY:59/+27  EURCAD:23/+29  XAUUSD:59/+527
+  symbols positive: 18 of 29
+
+average loss $-2.20, average win $5.19; forex avg loss $-1.57, avg win $2.83; gold avg loss $-12.99, avg win $28.73
+done in 19 s
