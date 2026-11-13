@@ -1,0 +1,36 @@
+GOLD, last 2 years; cells = 5 entries x 3 TPs x n 3/5 with BOS + killzone; centre = OB top TP 3R; (yr1/yr2); $ per 0.01 lot
+
+1. ENTRY TIMEFRAME (bias H4 unless named), hold 48 bars
+  M5/H4                              cells 30  PF median 0.89  pass  0  trades median  396  AB 0.95  RAND 0.97 | n3: 725 PF 0.85 (0.92/0.79) $ -575 sells 0.92 n5: 521 PF 0.99 (1.11/0.84) $  -42 sells 1.00
+  M10/H4                             cells 30  PF median 1.17  pass  9  trades median  237  AB 0.82  RAND 0.94 | n3: 437 PF 1.07 (1.15/0.98) $ +315 sells 1.09 n5: 300 PF 1.14 (1.33/0.98) $  -79 sells 1.27
+  M15/H4                             cells 30  PF median 1.33  pass  8  trades median  149  AB 0.71  RAND 0.88 | n3: 295 PF 1.32 (1.39/1.26) $ +584 sells 1.66 n5: 189 PF 1.67 (1.64/1.72) $ +558 sells 2.40
+  M20/H4                             cells 30  PF median 1.48  pass 10  trades median  113  AB 0.80  RAND 0.91 | n3: 236 PF 1.55 (1.50/1.62) $ +676 sells 2.12 n5: 160 PF 1.30 (1.18/1.44) $ +385 sells 1.61
+  M30/H4                             cells 30  PF median 1.03  pass  0  trades median   74  AB 0.80  RAND 0.95 | n3: 146 PF 0.98 (0.88/1.11) $  -84 sells 0.84 n5:  92 PF 0.83 (1.14/0.49) $ -397 sells 0.55
+  H1/H4                              cells 18  PF median 1.22  pass  0  trades median   43  AB 1.08  RAND 1.03 | n3:  70 PF 1.10 (1.27/0.88) $   +1 sells 0.64 n5:  43 PF 1.76 (2.11/1.48) $ +296 sells 0.80
+
+2. KILLZONE (M15/H4)
+  LDN+NY                             cells 30  PF median 1.33  pass  8  trades median  149  AB 0.71  RAND 0.88 | n3: 295 PF 1.32 (1.39/1.26) $ +584 sells 1.66 n5: 189 PF 1.67 (1.64/1.72) $ +558 sells 2.40
+  LDN                                cells 28  PF median 0.91  pass  0  trades median   64  AB 0.85  RAND 0.95 | n3: 138 PF 1.35 (1.63/1.07) $ +274 sells 1.34 n5:  82 PF 1.39 (1.59/1.09) $ +156 sells 2.09
+  NY                                 cells 30  PF median 1.72  pass  5  trades median   88  AB 0.63  RAND 0.83 | n3: 174 PF 1.38 (1.31/1.46) $ +399 sells 2.15 n5: 112 PF 1.99 (1.75/2.34) $ +479 sells 2.96
+  all day                            cells 30  PF median 1.03  pass  0  trades median  380  AB 0.87  RAND 0.99 | n3: 712 PF 1.09 (1.16/1.01) $ +517 sells 1.17 n5: 482 PF 1.17 (1.22/1.12) $ +391 sells 1.17
+  FAKE                               cells 30  PF median 0.85  pass  0  trades median  105  AB 0.96  RAND 1.07 | n3: 204 PF 0.87 (0.94/0.80) $ +100 sells 0.69 n5: 144 PF 0.85 (1.09/0.64) $ -219 sells 0.57
+  LDN+NY, BOS or CHoCH               cells 30  PF median 1.20  pass 10  trades median  279  AB 0.85  RAND 0.85 | n3: 538 PF 1.20 (1.29/1.12) $ +702 sells 1.41 n5: 372 PF 1.30 (1.28/1.32) $ +291 sells 1.47
+  LDN+NY, CHoCH only                 cells 30  PF median 1.05  pass  0  trades median  142  AB 1.04  RAND 0.80 | n3: 280 PF 1.02 (1.15/0.89) $   -5 sells 1.12 n5: 196 PF 1.01 (1.11/0.92) $ -256 sells 0.99
+
+3. ORDER LIFE / HOLD / SL BUFFER (M15/H4, LDN+NY)
+  order life 10 bars                 cells 30  PF median 1.36  pass  5  trades median  118  AB 0.67  RAND 0.94 | n3: 267 PF 1.33 (1.34/1.33) $ +619 sells 1.67 n5: 151 PF 1.69 (1.66/1.75) $ +488 sells 2.49
+  order life 60 bars                 cells 30  PF median 1.33  pass  9  trades median  152  AB 0.70  RAND 0.88 | n3: 295 PF 1.32 (1.39/1.26) $ +584 sells 1.66 n5: 191 PF 1.65 (1.61/1.69) $ +535 sells 2.40
+  hold 6 h                           cells 30  PF median 1.32  pass  7  trades median  149  AB 0.69  RAND 0.88 | n3: 295 PF 1.30 (1.34/1.26) $ +461 sells 1.67 n5: 189 PF 1.71 (1.68/1.76) $ +594 sells 2.48
+  hold 12 h (= 48 bars, base)        cells 30  PF median 1.33  pass  8  trades median  149  AB 0.71  RAND 0.88 | n3: 295 PF 1.32 (1.39/1.26) $ +584 sells 1.66 n5: 189 PF 1.67 (1.64/1.72) $ +558 sells 2.40
+  hold 24 h                          cells 30  PF median 1.32  pass  7  trades median  149  AB 0.74  RAND 0.88 | n3: 294 PF 1.31 (1.40/1.22) $ +477 sells 1.56 n5: 189 PF 1.64 (1.61/1.69) $ +508 sells 2.37
+  SL buffer 0 ATR                    cells 30  PF median 1.32  pass  8  trades median  149  AB 0.73  RAND 0.94 | n3: 298 PF 1.27 (1.40/1.15) $ +384 sells 1.44 n5: 191 PF 1.52 (1.48/1.58) $ +405 sells 2.15
+  SL buffer 0.25 ATR                 cells 30  PF median 1.35  pass  8  trades median  146  AB 0.70  RAND 0.89 | n3: 292 PF 1.23 (1.36/1.10) $ +463 sells 1.47 n5: 188 PF 1.63 (1.70/1.53) $ +615 sells 2.36
+  SL buffer 0.5 ATR                  cells 30  PF median 1.50  pass  9  trades median  143  AB 0.74  RAND 0.98 | n3: 287 PF 1.21 (1.13/1.29) $ +542 sells 1.41 n5: 184 PF 1.54 (1.50/1.60) $ +624 sells 1.84
+
+4. THE CENTRE RULE M15/H4 BOS + LDN+NY killzone + limit at the OB top + TP 3R, by quarter (R) and month
+  n3: 295 trades, PF 1.32, yr 1.39/1.26, $+584, 12m $+288, buys 1.08, sells 1.66, AB 0.80, RAND 0.92, max DD $-202, worst $-59, avg risk $9.3, months positive 17/25, worst month $-79
+     2024Q4: -6.3R/26.0  2025Q1: +17.5R/34.0  2025Q2: +12.0R/28.0  2025Q3: +10.0R/47.0  2025Q4: +6.5R/33.0  2026Q1: -5.5R/34.0  2026Q2: +17.4R/34.0  2026Q3: +5.3R/40.0  2026Q4: +8.0R/19.0
+     longest losing run 11 trades; trades a week 2.8
+  n5: 189 trades, PF 1.67, yr 1.64/1.72, $+558, 12m $+289, buys 1.25, sells 2.40, AB 0.69, RAND 0.98, max DD $-92, worst $-59, avg risk $8.9, months positive 16/25, worst month $-43
+     2024Q4: +0.6R/11.0  2025Q1: +8.6R/27.0  2025Q2: +8.2R/26.0  2025Q3: +21.3R/34.0  2025Q4: +6.0R/26.0  2026Q1: +10.5R/18.0  2026Q2: +6.6R/19.0  2026Q3: +6.4R/23.0  2026Q4: +10.9R/5.0
+     longest losing run 9 trades; trades a week 1.8
