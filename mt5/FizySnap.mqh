@@ -23,6 +23,80 @@ void SnapLine(long cid, string name, double price, color c, string text)
    ObjectSetString(cid, name, OBJPROP_TEXT, text);
 }
 
+// BBMA template drawn on the snapshot (v2.22, owner: "chart pasangkan template bbma terus"):
+// BB 20,2 (population sd, as MT5's Bands), LWMA 5 / 10 of the highs and of the lows, EMA 50, EMA 90.
+// Drawn as trend-line segments, so the colours are fixed and no .tpl file is needed on the runner.
+bool g_snap_bbma = true;
+
+void SnapSeg(long cid, string name, datetime t0, double v0, datetime t1, double v1, color c, int w, int style)
+{
+   if(v0 <= 0 || v1 <= 0) return;
+   ObjectCreate(cid, name, OBJ_TREND, 0, t0, v0, t1, v1);
+   ObjectSetInteger(cid, name, OBJPROP_COLOR, c);
+   ObjectSetInteger(cid, name, OBJPROP_WIDTH, w);
+   ObjectSetInteger(cid, name, OBJPROP_STYLE, style);
+   ObjectSetInteger(cid, name, OBJPROP_RAY_RIGHT, false);
+   ObjectSetInteger(cid, name, OBJPROP_RAY_LEFT, false);
+   ObjectSetInteger(cid, name, OBJPROP_BACK, true);
+   ObjectSetInteger(cid, name, OBJPROP_SELECTABLE, false);
+}
+
+void SnapBBMA(long cid, string sym, ENUM_TIMEFRAMES tf)
+{
+   MqlRates r[];
+   int n = CopyRates(sym, tf, 0, 500, r);
+   if(n < 120) return;
+   double mid[], top[], bot[], e50[], e90[], h5[], h10[], l5[], l10[];
+   ArrayResize(mid, n); ArrayResize(top, n); ArrayResize(bot, n); ArrayResize(e50, n); ArrayResize(e90, n);
+   ArrayResize(h5, n); ArrayResize(h10, n); ArrayResize(l5, n); ArrayResize(l10, n);
+   ArrayInitialize(mid, 0); ArrayInitialize(top, 0); ArrayInitialize(bot, 0);
+   ArrayInitialize(h5, 0); ArrayInitialize(h10, 0); ArrayInitialize(l5, 0); ArrayInitialize(l10, 0);
+   e50[0] = r[0].close; e90[0] = r[0].close;
+   for(int i = 1; i < n; i++)
+   {
+      e50[i] = e50[i - 1] + 2.0 / 51.0 * (r[i].close - e50[i - 1]);
+      e90[i] = e90[i - 1] + 2.0 / 91.0 * (r[i].close - e90[i - 1]);
+   }
+   for(int i = 19; i < n; i++)
+   {
+      double s = 0, s2 = 0;
+      for(int q = i - 19; q <= i; q++) { s += r[q].close; s2 += r[q].close * r[q].close; }
+      double m = s / 20.0, sd = MathSqrt(MathMax(s2 / 20.0 - m * m, 0));
+      mid[i] = m; top[i] = m + 2 * sd; bot[i] = m - 2 * sd;
+   }
+   for(int i = 9; i < n; i++)
+   {
+      double a5 = 0, b5 = 0, w5 = 0, a10 = 0, b10 = 0, w10 = 0;
+      for(int q = 0; q < 10; q++)
+      {
+         double w = 10 - q; a10 += w * r[i - q].high; b10 += w * r[i - q].low; w10 += w;
+         if(q < 5) { double v = 5 - q; a5 += v * r[i - q].high; b5 += v * r[i - q].low; w5 += v; }
+      }
+      h5[i] = a5 / w5; l5[i] = b5 / w5; h10[i] = a10 / w10; l10[i] = b10 / w10;
+   }
+   int from = MathMax(100, n - 220);
+   for(int i = from; i < n; i++)
+   {
+      datetime t0 = r[i - 1].time, t1 = r[i].time; string k = IntegerToString(i);
+      SnapSeg(cid, "bb_t" + k, t0, top[i - 1], t1, top[i], clrDimGray, 1, STYLE_SOLID);
+      SnapSeg(cid, "bb_b" + k, t0, bot[i - 1], t1, bot[i], clrDimGray, 1, STYLE_SOLID);
+      SnapSeg(cid, "bb_m" + k, t0, mid[i - 1], t1, mid[i], clrDarkGray, 1, STYLE_DOT);
+      SnapSeg(cid, "ma_h5" + k, t0, h5[i - 1], t1, h5[i], clrMediumVioletRed, 1, STYLE_SOLID);
+      SnapSeg(cid, "ma_h10" + k, t0, h10[i - 1], t1, h10[i], clrMediumVioletRed, 1, STYLE_SOLID);
+      SnapSeg(cid, "ma_l5" + k, t0, l5[i - 1], t1, l5[i], clrDarkCyan, 1, STYLE_SOLID);
+      SnapSeg(cid, "ma_l10" + k, t0, l10[i - 1], t1, l10[i], clrDarkCyan, 1, STYLE_SOLID);
+      SnapSeg(cid, "ema50_" + k, t0, e50[i - 1], t1, e50[i], clrRoyalBlue, 2, STYLE_SOLID);
+      SnapSeg(cid, "ema90_" + k, t0, e90[i - 1], t1, e90[i], clrDarkOrange, 2, STYLE_SOLID);
+   }
+   ObjectCreate(cid, "bbma_legend", OBJ_LABEL, 0, 0, 0);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_CORNER, CORNER_LEFT_UPPER);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_XDISTANCE, 8);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_YDISTANCE, 22);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_COLOR, clrBlack);
+   ObjectSetInteger(cid, "bbma_legend", OBJPROP_FONTSIZE, 8);
+   ObjectSetString(cid, "bbma_legend", OBJPROP_TEXT, "BBMA: BB 20,2 grey | MA5/10 high purple | MA5/10 low teal | EMA 50 blue | EMA 90 orange | ATR 14 below");
+}
+
 // levels[] / colors[] / labels[]: horizontal lines; r0..r1 / rhi..rlo: shaded box (0 = none);
 // rsi = add SMA 200, SMA 5 and RSI(2) like the RSI2 rules
 string Snap(string sym, ENUM_TIMEFRAMES tf, string tag, double &levels[], color &colors[], string &labels[],
@@ -54,6 +128,12 @@ string Snap(string sym, ENUM_TIMEFRAMES tf, string tag, double &levels[], color 
       if(h5 != INVALID_HANDLE)   ChartIndicatorAdd(cid, 0, h5);
       if(hr != INVALID_HANDLE)   ChartIndicatorAdd(cid, 1, hr);
    }
+   if(!rsi && g_snap_bbma)
+   {
+      SnapBBMA(cid, sym, tf);
+      int ha = iATR(sym, tf, 14);
+      if(ha != INVALID_HANDLE) ChartIndicatorAdd(cid, 1, ha);
+   }
    if(r1 > r0 && rhi > rlo)
    {
       ObjectCreate(cid, "snap_box", OBJ_RECTANGLE, 0, r0, rhi, r1, rlo);
@@ -64,10 +144,10 @@ string Snap(string sym, ENUM_TIMEFRAMES tf, string tag, double &levels[], color 
    for(int i = 0; i < ArraySize(levels); i++)
       SnapLine(cid, "snap_l" + IntegerToString(i), levels[i], i < ArraySize(colors) ? colors[i] : clrBlue, i < ArraySize(labels) ? labels[i] : "");
    ChartRedraw(cid);
-   Sleep(2000);                                  // let the chart load its bars and indicators
+   Sleep(g_snap_bbma && !rsi ? 3000 : 2000);     // let the chart load its bars, indicators and the BBMA lines
    ChartRedraw(cid);
    string fn = SnapName(tag, sym);
-   bool ok = ChartScreenShot(cid, fn, 1000, 620, ALIGN_RIGHT);
+   bool ok = ChartScreenShot(cid, fn, 1000, g_snap_bbma && !rsi ? 720 : 620, ALIGN_RIGHT);
    if(!ok) Print("snap: ChartScreenShot failed ", GetLastError());
    ChartClose(cid);
    return ok ? fn : "";
