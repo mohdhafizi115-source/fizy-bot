@@ -106,8 +106,11 @@ class Book:
         return r
 
 
+MIN_N = 20
+
+
 def line(name, r, mid, end):
-    if r is None or r["n"] < 20: return None
+    if r is None or r["n"] < MIN_N: return None
     p, t = r["pnl"], r["t"]; y1 = t < mid
     a3, a6 = end - pd.Timedelta(days=91), end - pd.Timedelta(days=182)
     eq = np.cumsum(p); dd = float((eq - np.maximum.accumulate(np.r_[0, eq])[1:]).min())
