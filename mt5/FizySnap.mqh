@@ -130,7 +130,22 @@ string Snap(string sym, ENUM_TIMEFRAMES tf, string tag, double &levels[], color 
    }
    if(!rsi && g_snap_bbma)
    {
-      SnapBBMA(cid, sym, tf);
+      int hb = iCustom(sym, tf, "FizyBBMA");                    // v2.24: the BBMA lines as an indicator (objects did not show live)
+      if(hb == INVALID_HANDLE || !ChartIndicatorAdd(cid, 0, hb))
+      {
+         Print("snap: FizyBBMA indicator unavailable (", GetLastError(), "), drawing the lines as objects");
+         SnapBBMA(cid, sym, tf);
+      }
+      else
+      {
+         ObjectCreate(cid, "bbma_legend", OBJ_LABEL, 0, 0, 0);
+         ObjectSetInteger(cid, "bbma_legend", OBJPROP_CORNER, CORNER_LEFT_UPPER);
+         ObjectSetInteger(cid, "bbma_legend", OBJPROP_XDISTANCE, 8);
+         ObjectSetInteger(cid, "bbma_legend", OBJPROP_YDISTANCE, 24);
+         ObjectSetInteger(cid, "bbma_legend", OBJPROP_COLOR, clrBlack);
+         ObjectSetInteger(cid, "bbma_legend", OBJPROP_FONTSIZE, 8);
+         ObjectSetString(cid, "bbma_legend", OBJPROP_TEXT, "BBMA: BB20 grey, MA5/10 purple/teal, EMA50 blue, EMA90 orange");
+      }
       int ha = iATR(sym, tf, 14);
       if(ha != INVALID_HANDLE) ChartIndicatorAdd(cid, 1, ha);
    }

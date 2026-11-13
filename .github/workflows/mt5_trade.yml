@@ -141,10 +141,16 @@ jobs:
           if ($m -and [int]$m -lt 30) {           # short test shift: screenshot with the start message
             (Get-Content "$dir\MQL5\Experts\FizyLB.mq5") -replace '^input bool   InpSnapTest\s*=.*;', 'input bool   InpSnapTest   = true;' | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
           }
+          New-Item -ItemType Directory -Force -Path "$dir\MQL5\Indicators" | Out-Null
+          Copy-Item mt5\FizyBBMA.mq5 "$dir\MQL5\Indicators\FizyBBMA.mq5" -Force
+          $ci = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Indicators\FizyBBMA.mq5`" /log:`"$dir\compile_ind.log`"" -PassThru
+          for ($i = 0; $i -lt 20 -and -not $ci.HasExited; $i++) { Start-Sleep -Seconds 3 }
+          Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          "BBMA indicator compile: ex5 exists $(Test-Path "$dir\MQL5\Indicators\FizyBBMA.ex5")" | Out-File shift_diag.txt -Encoding utf8
           $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\FizyLB.mq5`" /log:`"$dir\compile.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
-          "EA compile: ex5 exists $(Test-Path "$dir\MQL5\Experts\FizyLB.ex5")" | Out-File shift_diag.txt -Encoding utf8
+          "EA compile: ex5 exists $(Test-Path "$dir\MQL5\Experts\FizyLB.ex5")" | Out-File shift_diag.txt -Append -Encoding utf8
           Get-Content "$dir\compile.log" | Where-Object { $_ -match "error|warning|Result" } | Select-Object -First 15 | ForEach-Object { "  " + $_ } | Out-File shift_diag.txt -Append -Encoding utf8
           if (-not (Test-Path "$dir\MQL5\Experts\FizyLB.ex5")) { Write-Host "EA compile failed"; exit 1 }
 
