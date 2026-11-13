@@ -32,6 +32,13 @@ void OnTimer()
    double bid = SymbolInfoDouble(b, SYMBOL_BID);
    lv2[0] = bid; lc2[0] = clrBlue; lb2[0] = "entry"; lv2[1] = bid * 0.98; lc2[1] = clrIndianRed; lb2[1] = "SL";
    string f2 = Snap(b, PERIOD_H1, "TEST", lv2, lc2, lb2, 0, 0, 0, 0, true);
+   // a forex M15 picture like the live reversal CSAK ones (v2.24: BBMA indicator on a symbol the EA chart is not on)
+   string j = "USDJPY.m"; if(!SymbolExist(j, c)) j = "USDJPY";
+   SymbolSelect(j, true);
+   double jb = SymbolInfoDouble(j, SYMBOL_BID);
+   double lv5[2]; color lc5[2]; string lb5[2];
+   lv5[0] = jb; lc5[0] = clrBlue; lb5[0] = "entry"; lv5[1] = jb + 0.2; lc5[1] = clrIndianRed; lb5[1] = "SL";
+   string f5 = Snap(j, PERIOD_M15, "TEST_JPY", lv5, lc5, lb5, 0, 0, 0, 0, false);
    // S/R zones: the map and an alert picture on the nearest support (pictures only, no events sent)
    for(int w = 0; w < 20 && Bars(g, PERIOD_M15) < 600; w++) Sleep(1000);
    sr_sym = g; sr_ready = true;
@@ -53,6 +60,6 @@ void OnTimer()
    string zs = StringFormat("SR: %d M15 bars, %d zones, ATR %s, price %s, resistance %s, support %s", Bars(g, PERIOD_M15), ArraySize(sr_lo),
                             SrP(sr_atr), SrP(px), SrList(px, true, 2), SrList(px, false, 2));
    int h = FileOpen("snap_test.txt", FILE_WRITE | FILE_TXT | FILE_ANSI);
-   if(h != INVALID_HANDLE) { FileWriteString(h, f1 + "\r\n" + f2 + "\r\n" + f3 + "\r\n" + f4 + "\r\n" + zs + "\r\n"); FileClose(h); }
+   if(h != INVALID_HANDLE) { FileWriteString(h, f1 + "\r\n" + f5 + "\r\n" + f2 + "\r\n" + f3 + "\r\n" + f4 + "\r\n" + zs + "\r\n"); FileClose(h); }
    TerminalClose(0);
 }
