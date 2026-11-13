@@ -1,0 +1,112 @@
+meta: WTI,WTI.m,2,0.01000000,0.01000000,10.000000,1000,0,244360,2023.06.01 01:00,2026.11.13 11:40,4,5,-6.0000,-3.0000,3
+WTI: 244,360 M5 bars 2023-06-01 .. 2026-11-13; $ per 1.00 at 0.01 lot 10.00; swap a night at 0.01 lot: long +0.000, short +0.000 (swap mode 5)
+
+============================== PART 1: HOW WTI MOVES (last 2 years) ==============================
+median H1 range $ (0.01 lot) by MALAYSIA hour (winter): 00:5.6  01:4.6  02:4.2  03:4.3  04:2.5  05:2.2  06:3.5  07:2.3  08:1.7  09:2.9  10:2.9  11:2.1  12:1.8  13:1.9  14:2.6  15:3.5  16:4.6  17:5.0  18:4.4  19:4.2  20:3.9  21:5.0  22:6.7  23:6.3
+median D1 range $ by weekday: Mon 21.4  Tue 19.8  Wed 22.1  Thu 21.7  Fri 19.0
+D1 ATR median $20.7; price 68.41 -> 87.64 (high 113.19, low 54.76)
+
+persistence, year 1 | year 2:
+  H1: lag-1 autocorr +0.001 | -0.026   VR4 1.02 | 0.96   VR12 1.02 | 0.96   VR24 1.00 | 0.92
+  H4: lag-1 autocorr +0.048 | -0.070   VR3 1.05 | 0.91   VR6 1.05 | 0.88   VR12 1.01 | 0.81
+  D1: lag-1 autocorr -0.027 | -0.028   VR5 1.06 | 0.92   VR10 0.88 | 1.03   VR20 0.57 | 0.98
+
+what follows a stretch from the EMA 50 (distance in ATR, signed so + = keeps going AWAY), mean move in ATR, year 1 | year 2:
+  H1 +4 bars  0-1: +0.03 | -0.01   1-2: +0.01 | +0.02   2-3: -0.04 | +0.02   3-+: -0.01 | +0.01
+  H1 +12 bars  0-1: -0.08 | +0.01   1-2: +0.01 | -0.10   2-3: -0.01 | +0.12   3-+: -0.21 | +0.16
+  H4 +3 bars  0-1: -0.00 | +0.01   1-2: -0.07 | +0.00   2-3: -0.01 | +0.05   3-+: -0.06 | +0.06
+  H4 +6 bars  0-1: -0.06 | +0.08   1-2: -0.16 | -0.07   2-3: -0.11 | +0.11   3-+: -0.04 | +0.17
+
+after a big day (|D1 body| >= k ATR): next day's move in its direction, ATR, year 1 | year 2 (n):
+  k 1.0: +0.00 (27) | -0.23 (31)
+  k 1.5: +0.02 (9) | -1.08 (6)
+  k 2.0: +0.72 (4) | -1.58 (4)
+Monday open gap vs Friday close (ATR): median |gap| 0.09
+day after an NR7 day: range 0.89 ATR vs all days 1.01
+
+============================== PART 2: STRATEGIES BY TIMEFRAME ==============================
+
+-- T1 D1 trend-following (holds overnight, pays swap)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+T1 Donchian 20/10 D1, SL 2 ATR                          14  0.1  43  1.33  0.40  1.71  1.31    +92   +142  -104    -9  1.66  0.74  0.36  0.93   -173   -75  50.6     +0 
+T1 Donchian 55/20 D1, SL 2 ATR                           8  0.1  25  0.86  0.05  1.70  0.86    -42   +105   -64   -85  1.76  0.05  3.59  1.69   -155   -85  48.8     +0 
+T1 Donchian 10/5 D1, SL 2 ATR                           27  0.3  37  0.96  0.81  1.03  0.95    -23    +11   -67   +50  1.33  0.56  1.04  1.33   -254  -140  61.2     +0 
+T1 20-day momentum, rebalance every 5 days, SL 3 ATR    53  0.5  53  1.17  1.16  1.17  1.15   +152   +104   -78  -125  1.54  0.71  0.56  1.43   -260   -97  87.4     +0 
+T1 20-day momentum, rebalance every 10 days, SL 3 ATR    30  0.3  40  0.68  0.64  0.70  0.68   -335   -222   -11  -101  0.58  0.82  1.40  0.89   -440  -172  86.1     +0 
+
+-- T2 H4 / H1 Donchian and Ichimoku cloud breakouts
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+T2 H4 Donchian 20, SL 2 ATR, hold 12 bars              148  1.4  47  1.19  0.90  1.39  1.16   +227   +279   -25  +148  1.73  0.73  0.95  1.31   -139   -63  21.7     +0 
+T2 H4 Donchian 20, SL 2 ATR, hold 24 bars              119  1.1  41  1.08  0.96  1.13  1.06    +99   +114  +136   -37  1.14  1.01  0.77  1.01   -271   -76  21.6     +0 
+T2 H4 Donchian 55, SL 2 ATR, hold 12 bars               82  0.8  46  1.20  0.97  1.33  1.18   +159   +168  -162  +149  1.72  0.73  1.75  1.60   -191   -63  21.3     +0 
+T2 H4 Donchian 55, SL 2 ATR, hold 24 bars               72  0.7  35  0.96  0.88  1.01  0.95    -34     +6   -47   +56  0.90  1.06  0.79  1.12   -184   -63  21.5     +0 
+T2 H4 Kumo breakout, SL beyond the cloud, hold 12 bars    66  0.6  41  1.24  0.77  1.57  1.21   +104   +147   +69   +84  0.83  1.58  0.56  0.63   -102   -59  22.0     +0 
+T2 H4 Kumo breakout, SL beyond the cloud, hold 48 bars    59  0.6  32  0.99  0.35  1.49  0.98     -5   +187  +191  +187  1.17  0.82  0.97  0.77   -383   -88  22.1     +0 
+T2 H1 Donchian 20, SL 2 ATR, hold 12 bars              560  5.4  40  0.84  0.88  0.81  0.80   -491   -379  -225    +8  0.89  0.77  0.94  0.98   -617   -70  10.8     +0 
+T2 H1 Donchian 20, SL 2 ATR, hold 24 bars              447  4.3  36  0.87  0.88  0.87  0.84   -344   -236  -189   -35  0.92  0.82  0.87  0.92   -463   -38  10.8     +0 
+T2 H1 Donchian 55, SL 2 ATR, hold 12 bars              326  3.1  38  0.83  0.77  0.86  0.80   -320   -179   +35  -129  0.88  0.77  0.92  0.89   -506   -70  10.7     +0 
+T2 H1 Donchian 55, SL 2 ATR, hold 24 bars              270  2.6  34  0.75  0.85  0.70  0.73   -462   -371   -73  -174  0.76  0.74  0.94  0.82   -556   -70  10.9     +0 
+T2 H1 Kumo breakout, SL beyond the cloud, hold 12 bars   249  2.4  39  0.73  1.17  0.57  0.70   -360   -418   -77  -116  0.64  0.83  0.73  0.77   -458   -53  13.0     +0 
+T2 H1 Kumo breakout, SL beyond the cloud, hold 48 bars   207  2.0  34  1.11  1.14  1.10  1.09   +174   +106   +10  +235  1.55  0.75  0.97  1.27   -439  -104  13.5     +0 
+
+-- T3 D1 patterns (intraday unless stated)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+T3 NR7 breakout next day, SL other side, out 23:30      53  0.5  51  0.53  0.86  0.40  0.51   -166   -152   -75    -9  0.67  0.41  0.61  1.21   -166   -48  16.0     +0 
+T3 inside day breakout next day, SL other side, out 23:30    49  0.5  67  1.65  1.05  2.08  1.60   +133   +129   +18   +29  1.49  1.83  0.45  1.03    -47   -47  19.8     +0 
+T3 big day (>= 1.5 ATR) follow next day                 11  0.1  36  0.64  1.13  0.35  0.62    -39    -44   -68    +0  0.00  1.88  0.44  0.22    -78   -35  35.6     +0 
+T3 big day (>= 1.5 ATR) fade next day                   11  0.1  64  1.19  1.43  1.09  1.16    +16     +6   +67    +0  0.40 67700000000.00  1.20  0.22    -66   -58  35.6     +0 
+T3 D1 RSI(2) pullback < 10 with the EMA 100 trend, hold 3 days    17  0.2  41  0.34  0.66  0.15  0.33   -169   -138   -59   -84  0.16  0.50  4.91  0.76   -194   -78  50.0     +0 
+T3 D1 RSI(2) pullback < 20 with the EMA 100 trend, hold 3 days    46  0.4  52  1.01  0.76  1.19  0.99     +6    +50  -107   -58  0.92  1.17  1.15  0.84   -165   -78  55.3     +0 
+
+-- T4 SMC (round 102 rules) on H1 / H4, killzone and all day
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+T4 SMC H1 n3 OB top TP 2R all day                      169  1.6  28  0.66  0.85  0.57  0.64   -319   -273   +11   -94  0.87  0.44  1.04  0.89   -373   -49   7.8     +0 
+T4 SMC H1 n3 OB top TP 2R killzone                      74  0.7  26  0.66  0.59  0.70  0.64   -143    -86    -7   +41  1.01  0.36  0.88  0.77   -222   -49   7.8     +0 
+T4 SMC H1 n3 OB top TP 3R all day                      157  1.5  23  0.65  0.84  0.57  0.63   -321   -272   +29   -75  0.90  0.40  1.18  0.89   -376   -49   7.9     +0 
+T4 SMC H1 n3 OB top TP 3R killzone                      73  0.7  22  0.67  0.66  0.68  0.65   -141    -94    +6   +83  1.25  0.23  1.10  0.90   -254   -49   7.7     +0 
+T4 SMC H1 n3 OTE 0.705 TP 2R all day                   152  1.5  30  0.88  0.89  0.87  0.83    -61    -43   -22   -34  1.03  0.72  1.46  1.07    -88   -15   4.8     +0 
+T4 SMC H1 n3 OTE 0.705 TP 2R killzone                   58  0.6  34  1.32  1.21  1.39  1.22    +44    +31   +11   +20  1.73  0.99  0.81  1.25    -46   -10   4.0     +0 
+T4 SMC H1 n3 OTE 0.705 TP 3R all day                   148  1.4  26  0.96  0.98  0.95  0.91    -20    -17    -7    +1  1.05  0.86  1.39  1.06    -85   -17   4.9     +0 
+T4 SMC H1 n3 OTE 0.705 TP 3R killzone                   58  0.6  29  1.49  1.09  1.84  1.39    +73    +67   +28   +44  2.00  1.10  0.79  1.18    -46   -10   4.0     +0 
+T4 SMC H1 n5 OB top TP 2R all day                      125  1.2  31  0.91  0.55  1.22  0.88    -58    +78    +8   -32  1.11  0.63  0.93  0.95   -157   -43   8.3     +0 
+T4 SMC H1 n5 OB top TP 2R killzone                      61  0.6  31  1.19  0.57  1.92  1.14    +49   +110   -25    +7  1.92  0.55  0.53  0.89    -99   -26   7.9     +0 
+T4 SMC H1 n5 OB top TP 3R all day                      122  1.2  28  1.04  0.63  1.40  1.01    +29   +141    -7    -7  1.30  0.70  0.84  0.90   -139   -43   8.4     +0 
+T4 SMC H1 n5 OB top TP 3R killzone                      60  0.6  28  1.28  0.71  1.87  1.23    +75   +115   -25   -20  2.33  0.42  0.44  0.83    -85   -26   8.0     +0 
+T4 SMC H1 n5 OTE 0.705 TP 2R all day                   108  1.0  29  1.10  0.50  1.67  1.04    +39   +138    -6   -47  1.64  0.47  0.82  1.09   -142   -14   5.9     +0 
+T4 SMC H1 n5 OTE 0.705 TP 2R killzone                   51  0.5  29  1.24  0.51  2.18  1.17    +45    +98   -20   -29  2.25  0.40  0.69  1.23    -80   -13   6.0     +0 
+T4 SMC H1 n5 OTE 0.705 TP 3R all day                   106  1.0  22  0.79  0.54  0.99  0.76    -97     -3   +25   -32  0.91  0.62  0.73  1.19   -160   -24   5.8     +0 
+T4 SMC H1 n5 OTE 0.705 TP 3R killzone                   50  0.5  20  0.75  0.49  1.02  0.71    -57     +2   -15   -23  1.04  0.44  0.58  1.59    -80   -24   5.8     +0 
+T4 SMC H4 n3 OB top TP 2R all day                       42  0.4  43  2.31  1.21  4.16  2.26   +379   +342   +37  +104  2.55  1.93  1.07  0.91    -65   -48  16.0     +0 
+T4 SMC H4 n3 OB top TP 3R all day                       37  0.4  32  1.45  0.81  2.29  1.42   +157   +195   +74  +142  1.29  1.79  0.80  0.87   -106   -58  16.1     +0 
+T4 SMC H4 n3 OTE 0.705 TP 2R all day                    38  0.4  37  1.16  1.96  0.56  1.13    +34    -53   -18   -21  1.21  1.07  1.58  0.49   -107   -21   8.4     +0 
+T4 SMC H4 n3 OTE 0.705 TP 3R all day                    38  0.4  32  1.32  1.87  0.83  1.28    +71    -20    -3   -21  1.64  0.80  1.19  0.59    -96   -21   8.4     +0 
+T4 SMC H4 n5 OB top TP 2R all day                       31  0.3  45  1.58  0.90  3.10  1.55   +137   +154   +46   +97  2.16  1.13  0.77  1.06    -70   -48  16.0     +0 
+T4 SMC H4 n5 OB top TP 3R all day                       26  0.2  31  1.53  0.38  4.35  1.50   +134   +246   +70  +139  1.81  1.29  0.82  1.23   -146   -48  16.7     +0 
+T4 SMC H4 n5 OTE 0.705 TP 2R all day                    27  0.3  30  0.60  0.71  0.52  0.58    -90    -62    -1   -59  1.04  0.21  1.77  1.34   -147   -32  10.8     +0 
+T4 SMC H4 n5 OTE 0.705 TP 3R all day                    27  0.3  26  0.79  0.80  0.77  0.77    -50    -29   +15   -59  1.56  0.14  1.23  1.72   -145   -32  10.8     +0 
+
+SUMMARY: 0 of 47 pass (9 with >= 150 trades); median PF 0.99, random 0.92, always-buy 0.95
+  T1:   5 rows  PF median 0.96  best 1.33  rand 1.04  trades/wk median 0.3
+  T2:  12 rows  PF median 0.98  best 1.24  rand 0.93  trades/wk median 1.7
+  T3:   6 rows  PF median 0.83  best 1.65  rand 0.88  trades/wk median 0.3
+  T4:  24 rows  PF median 1.07  best 2.31  rand 0.86  trades/wk median 0.6
+
+TOP 15 by PF (>= 60 trades)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+T4 SMC H1 n5 OB top TP 3R killzone                      60  0.6  28  1.28  0.71  1.87  1.23    +75   +115   -25   -20  2.33  0.42  0.44  0.83    -85   -26   8.0     +0 
+T2 H4 Kumo breakout, SL beyond the cloud, hold 12 bars    66  0.6  41  1.24  0.77  1.57  1.21   +104   +147   +69   +84  0.83  1.58  0.56  0.63   -102   -59  22.0     +0 
+T2 H4 Donchian 55, SL 2 ATR, hold 12 bars               82  0.8  46  1.20  0.97  1.33  1.18   +159   +168  -162  +149  1.72  0.73  1.75  1.60   -191   -63  21.3     +0 
+T4 SMC H1 n5 OB top TP 2R killzone                      61  0.6  31  1.19  0.57  1.92  1.14    +49   +110   -25    +7  1.92  0.55  0.53  0.89    -99   -26   7.9     +0 
+T2 H4 Donchian 20, SL 2 ATR, hold 12 bars              148  1.4  47  1.19  0.90  1.39  1.16   +227   +279   -25  +148  1.73  0.73  0.95  1.31   -139   -63  21.7     +0 
+T2 H1 Kumo breakout, SL beyond the cloud, hold 48 bars   207  2.0  34  1.11  1.14  1.10  1.09   +174   +106   +10  +235  1.55  0.75  0.97  1.27   -439  -104  13.5     +0 
+T4 SMC H1 n5 OTE 0.705 TP 2R all day                   108  1.0  29  1.10  0.50  1.67  1.04    +39   +138    -6   -47  1.64  0.47  0.82  1.09   -142   -14   5.9     +0 
+T2 H4 Donchian 20, SL 2 ATR, hold 24 bars              119  1.1  41  1.08  0.96  1.13  1.06    +99   +114  +136   -37  1.14  1.01  0.77  1.01   -271   -76  21.6     +0 
+T4 SMC H1 n5 OB top TP 3R all day                      122  1.2  28  1.04  0.63  1.40  1.01    +29   +141    -7    -7  1.30  0.70  0.84  0.90   -139   -43   8.4     +0 
+T2 H4 Donchian 55, SL 2 ATR, hold 24 bars               72  0.7  35  0.96  0.88  1.01  0.95    -34     +6   -47   +56  0.90  1.06  0.79  1.12   -184   -63  21.5     +0 
+T4 SMC H1 n3 OTE 0.705 TP 3R all day                   148  1.4  26  0.96  0.98  0.95  0.91    -20    -17    -7    +1  1.05  0.86  1.39  1.06    -85   -17   4.9     +0 
+T4 SMC H1 n5 OB top TP 2R all day                      125  1.2  31  0.91  0.55  1.22  0.88    -58    +78    +8   -32  1.11  0.63  0.93  0.95   -157   -43   8.3     +0 
+T4 SMC H1 n3 OTE 0.705 TP 2R all day                   152  1.5  30  0.88  0.89  0.87  0.83    -61    -43   -22   -34  1.03  0.72  1.46  1.07    -88   -15   4.8     +0 
+T2 H1 Donchian 20, SL 2 ATR, hold 24 bars              447  4.3  36  0.87  0.88  0.87  0.84   -344   -236  -189   -35  0.92  0.82  0.87  0.92   -463   -38  10.8     +0 
+T2 H1 Donchian 20, SL 2 ATR, hold 12 bars              560  5.4  40  0.84  0.88  0.81  0.80   -491   -379  -225    +8  0.89  0.77  0.94  0.98   -617   -70  10.8     +0 
+
+done in 3 s
