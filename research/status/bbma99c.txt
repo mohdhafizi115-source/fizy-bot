@@ -1,0 +1,29 @@
+window 2024-11-13 .. 2026-11-13; 28 forex + XAUUSD; entries = the live rule; $ per 0.01 lot
+
+exit                                            n win%    PF   yr1   yr2  strs |    IS   OOS |  12m R  3m R   p3m |  net $  gold    fx  maxDD  wDay opn |  RAND
+LIVE: SL 2 ATR, 8 h                           847   40  1.22  1.17  1.33  1.16 |  1.24  1.12 |  +49.0  -2.4 +10.6 |   +653  +527  +126    -87   -33   8 |  0.84 PASS
+SL 2 ATR + cut on opposite M15 MOM, 8 h       848   40  1.22  1.17  1.33  1.16 |  1.24  1.13 |  +47.7  -3.0 +11.3 |   +637  +513  +124    -89   -33   8 |  1.06 PASS
+SL 3 ATR + cut on MOM, 8 h                    837   44  1.18  1.16  1.24  1.13 |  1.20  1.10 |  +26.0  -6.3 +11.2 |   +707  +530  +176    -99   -47   8 |  0.90 PASS
+swing SL + cut on MOM, 8 h                    840   45  1.19  1.18  1.21  1.13 |  1.22  1.03 |  +22.6  -5.6  +7.2 |   +694  +519  +175    -93   -55   8 |  1.10 
+NO SL (10-ATR disaster) + cut on MOM, 8 h     835   46  1.15  1.11  1.24  1.10 |  1.17  1.04 |  +40.6 -10.3 +13.7 |   +629  +474  +155   -105   -85   8 |  0.93 
+NO SL (10-ATR disaster) + cut on MOM, 24 h    835   39  1.00  0.93  1.15  0.96 |  1.00  1.01 |  +27.1  -4.1  +4.7 |   +500  +494    +6   -138   -77  11 |  0.70 
+NO SL (10-ATR disaster), no cut, 8 h          805   53  1.26  1.31  1.17  1.21 |  1.31  1.00 |  +31.3  -9.2  +9.6 |   +716  +479  +237   -143   -88   9 |  0.86 PASS
+
+how the trades end, average $ by exit reason, worst trade, average worst floating (MAE)
+  LIVE: SL 2 ATR, 8 h                          sl:  51% avg $-2.38  time:  49% avg $+4.00 | worst $-32, avg MAE $-1.73, worst MAE $-33
+  SL 2 ATR + cut on opposite M15 MOM, 8 h      sl:  45% avg $-2.41  mom:  13% avg $-0.41  time:  42% avg $+4.57 | worst $-32, avg MAE $-1.71, worst MAE $-33
+  SL 3 ATR + cut on MOM, 8 h                   sl:  22% avg $-3.52  mom:  26% avg $-1.52  time:  52% avg $+3.90 | worst $-45, avg MAE $-2.17, worst MAE $-37
+  swing SL + cut on MOM, 8 h                   sl:  24% avg $-3.55  mom:  23% avg $-1.30  time:  53% avg $+3.76 | worst $-42, avg MAE $-2.15, worst MAE $-37
+  NO SL (10-ATR disaster) + cut on MOM, 8 h    sl:   0% avg $-4.33  mom:  42% avg $-2.73  time:  58% avg $+3.28 | worst $-76, avg MAE $-2.59, worst MAE $-76
+  NO SL (10-ATR disaster) + cut on MOM, 24 h   sl:   0% avg $-4.33  mom:  81% avg $-0.29  time:  19% avg $+4.43 | worst $-76, avg MAE $-2.71, worst MAE $-76
+  NO SL (10-ATR disaster), no cut, 8 h         sl:   2% avg $-10.61  time:  98% avg $+1.12 | worst $-88, avg MAE $-3.26, worst MAE $-86
+
+gold vs forex PF
+  LIVE: SL 2 ATR, 8 h                          gold  59 PF 2.45 $+527 | forex 788 PF 1.17 $+126
+  SL 2 ATR + cut on opposite M15 MOM, 8 h      gold  59 PF 2.42 $+513 | forex 789 PF 1.17 $+124
+  SL 3 ATR + cut on MOM, 8 h                   gold  59 PF 2.29 $+530 | forex 778 PF 1.22 $+176
+  swing SL + cut on MOM, 8 h                   gold  59 PF 2.23 $+519 | forex 781 PF 1.22 $+175
+  NO SL (10-ATR disaster) + cut on MOM, 8 h    gold  58 PF 2.02 $+474 | forex 777 PF 1.18 $+155
+  NO SL (10-ATR disaster) + cut on MOM, 24 h   gold  58 PF 1.85 $+494 | forex 777 PF 1.01 $+6
+  NO SL (10-ATR disaster), no cut, 8 h         gold  54 PF 2.03 $+479 | forex 751 PF 1.29 $+237
+done in 26 s
