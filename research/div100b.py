@@ -38,7 +38,7 @@ def main():
             if sym not in meta or not os.path.exists(os.path.join(DATA, sym + ".csv")): continue
             out, end = D.run(sym, meta[sym], SW.get(sym), rg); END = end if END is None else max(END, end)
             want = "no filter" if p["zone"][0] > 100 else "zone"
-            for key, (a, b) in out.items():
+            for key, (a, b, *_) in out.items():
                 if key[3] != "REG" or key[4] != want or key[5] != "E1": continue
                 res.setdefault(key[6], [[], []]); res[key[6]][0] += [r + (sym,) for r in a]; res[key[6]][1] += [r + (sym,) for r in b]
         mid = END - pd.Timedelta(days=365); a3, a6 = END - pd.Timedelta(days=91), END - pd.Timedelta(days=182)
@@ -62,7 +62,7 @@ def main():
     for sym in D.SYMS:
         if sym not in meta or not os.path.exists(os.path.join(DATA, sym + ".csv")): continue
         out, end = D.run(sym, meta[sym], SW.get(sym), rg)
-        for key, (a, b) in out.items():
+        for key, (a, b, *_) in out.items():
             if key[3] == "REG" and key[4] == "zone" and key[5] == "E1": det.setdefault(key[6], []).extend(r + (sym,) for r in a)
     for tp in ("TP 1R", "TP 3R"):
         x = pd.DataFrame(det[tp], columns=["t", "net", "r", "rs", "d", "sym"])

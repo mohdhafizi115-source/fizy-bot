@@ -41,6 +41,7 @@ RSI_N = 14        # round 100b varies these
 NS = (3, 5)
 GAP = (5, 60)
 CONFW = 3
+BUY_CTRL = False   # round 100c adds an always-buy twin
 
 
 def ema(a, n): return pd.Series(a).ewm(span=n, adjust=False).mean().values
@@ -106,7 +107,7 @@ def run(sym, mt, sw, rg):
                 sl0 = pext - S[i] if cd == 1 else pext + S[i]
                 risk = (e0 - sl0) * cd
                 if risk <= S[i]: continue
-                d_ = cd if not rand else (1 if rg.random() < 0.5 else -1)
+                d_ = cd if not rand else (1 if rand == "buy" else (1 if rg.random() < 0.5 else -1))   # "buy": always-buy control (round 100c)
                 e = O[i] + (S[i] if d_ == 1 else 0); sl = e - d_ * risk; tp = e + d_ * tpR * risk
                 x = None; z = i; nights = 0
                 while z < N:
@@ -162,7 +163,7 @@ def run(sym, mt, sw, rg):
                     sg_.sort(key=lambda r: r[3])
                     for tpR in (1, 2, 3):
                         key = (f"{'M15' if m == 15 else 'H1' if m == 60 else 'H4'}", f"n{n}", osn, typ, fl, en, f"TP {tpR}R")
-                        out[key] = (sim(sg_, False, tpR), sim(sg_, True, tpR))
+                        out[key] = (sim(sg_, False, tpR), sim(sg_, True, tpR)) + ((sim(sg_, "buy", tpR),) if BUY_CTRL else ())
     return out, end
 
 
@@ -172,7 +173,7 @@ def main():
     for sym in SYMS:
         if sym not in meta or not os.path.exists(os.path.join(DATA, sym + ".csv")): continue
         res, end = run(sym, meta[sym], SW.get(sym), rg); END = end if END is None else max(END, end)
-        for k, (a, b) in res.items():
+        for k, (a, b, *_) in res.items():
             ALL.setdefault(k, [[], []]); ALL[k][0] += [r + (sym,) for r in a]; ALL[k][1] += [r + (sym,) for r in b]
         say(f"{sym} done [{time.time() - T0:.0f} s]")
     mid = END - pd.Timedelta(days=365); a3, a6 = END - pd.Timedelta(days=91), END - pd.Timedelta(days=182)
