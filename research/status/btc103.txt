@@ -1,0 +1,225 @@
+numba: yes
+============================== PART 1: WHY BTC IS HARD (last 2 years) ==============================
+
+BTCUSD: median price 88,346.21, median spread 20.1900 (0.0229% of price) = $0.202 per 0.01 lot
+  median ATR(14) and the spread as a share of it:  M5 $1.38 (14.7%)  M15 $2.53 (8.0%)  H1 $5.27 (3.8%)  H4 $10.83 (1.9%)  D1 $28.75 (0.7%)
+  swap per night at 0.01 lot: long $-0.847, short $-0.555 = 2.9% / 1.9% of a median D1 ATR; a year of nights = 35% / 23% of the price
+  share of M5 bars on Saturday / Sunday: 14.2% / 14.2%
+
+XAUUSD: median price 4,025.68, median spread 0.1800 (0.0045% of price) = $0.180 per 0.01 lot
+  median ATR(14) and the spread as a share of it:  M5 $3.60 (5.0%)  M15 $6.67 (2.7%)  H1 $14.40 (1.3%)  H4 $30.09 (0.6%)  D1 $79.69 (0.2%)
+  swap per night at 0.01 lot: long $-0.710, short $-0.841 = 0.9% / 1.1% of a median D1 ATR; a year of nights = 6% / 8% of the price
+  share of M5 bars on Saturday / Sunday: 0.0% / 0.0%
+
+EURUSD: median price 1.15, median spread 0.0001 (0.0078% of price) = $0.090 per 0.01 lot
+  median ATR(14) and the spread as a share of it:  M5 $0.33 (27.6%)  M15 $0.60 (15.0%)  H1 $1.27 (7.1%)  H4 $2.73 (3.3%)  D1 $7.58 (1.2%)
+  swap per night at 0.01 lot: long $-0.133, short $-0.037 = 1.8% / 0.5% of a median D1 ATR; a year of nights = 4% / 1% of the price
+  share of M5 bars on Saturday / Sunday: 0.0% / 0.1%
+
+BTC spread and move size by server hour (median spread $, median |M5 move| $, spread / M5 ATR) at 0.01 lot
+  00:0.202/0.49/0.12  01:0.202/0.49/0.13  02:0.202/0.48/0.13  03:0.202/0.55/0.13  04:0.202/0.55/0.12  05:0.202/0.48/0.12  06:0.202/0.43/0.13  07:0.202/0.41/0.15  08:0.202/0.41/0.15  09:0.202/0.41/0.15  10:0.202/0.45/0.15  11:0.202/0.45/0.14  12:0.202/0.42/0.15  13:0.202/0.42/0.15  14:0.202/0.44/0.15  15:0.202/0.55/0.13  16:0.202/0.73/0.11  17:0.202/0.84/0.08  18:0.202/0.74/0.08  19:0.202/0.65/0.09  20:0.202/0.60/0.09  21:0.202/0.56/0.10  22:0.202/0.52/0.11  23:0.202/0.48/0.12
+
+BTC signed H1 return by server hour, $ per 0.01 lot per bar, year 1 | year 2 (t-stat)
+  00: +0.47(+2.1) | +0.18(+1.2)   01: +0.12(+0.5) | -0.46(-2.5)   02: -0.30(-1.3) | +0.02(+0.1)   03: -0.05(-0.2) | +0.17(+0.9)
+  04: -0.00(-0.0) | -0.27(-1.4)   05: +0.25(+1.1) | +0.00(+0.0)   06: -0.07(-0.4) | -0.02(-0.2)   07: +0.32(+1.7) | +0.00(+0.0)
+  08: -0.01(-0.1) | -0.27(-1.6)   09: -0.17(-0.9) | +0.14(+1.0)   10: -0.12(-0.6) | -0.03(-0.2)   11: +0.47(+2.6) | +0.19(+1.0)
+  12: +0.03(+0.2) | -0.11(-0.8)   13: +0.07(+0.3) | -0.19(-1.5)   14: -0.27(-1.4) | +0.16(+1.2)   15: +0.07(+0.3) | -0.15(-0.7)
+  16: +0.12(+0.3) | -0.36(-1.3)   17: -0.10(-0.2) | +0.18(+0.6)   18: -0.07(-0.2) | -0.10(-0.4)   19: +0.01(+0.0) | -0.32(-1.6)
+  20: +0.32(+1.0) | -0.07(-0.4)   21: -0.26(-1.0) | -0.11(-0.7)   22: -0.29(-1.1) | +0.07(+0.4)   23: +0.00(+0.0) | +0.41(+2.7)
+
+BTC signed D1 return by weekday ($ per 0.01 lot), year 1 | year 2
+  Mon: +1.3 | +4.4  Tue: -2.0 | -2.0  Wed: +7.6 | +1.2  Thu: -4.5 | -6.6  Fri: +1.9 | -0.9  Sat: -1.6 | -0.2  Sun: +0.2 | -1.4
+
+BTC persistence: variance ratio VR(q) of log returns (> 1 = trends, < 1 = reverts), year 1 | year 2
+  base M5: q3: 0.97 | 0.99   q6: 0.95 | 0.98   q12: 0.92 | 0.97   q48: 0.89 | 0.95
+  base H1: q4: 0.95 | 1.00   q12: 0.92 | 0.98   q24: 0.86 | 0.99
+  base D1: q5: 0.77 | 0.91   q10: 0.64 | 1.00   q20: 0.54 | 1.09
+  daily return autocorrelation lag 1: year 1 -0.112, year 2 -0.038
+  BTC over the window: 88,315 -> 73,428 (high 126,297, low 57,714)
+
+============================== PART 2: STRATEGY FAMILIES ON BTC ==============================
+window 2024-11-12 .. 2026-11-12; swap long -0.847 / short -0.555 $ a night at 0.01 lot
+
+-- S1 session range breakout (stop at the range high / low, first touch, out 23:30, one a day)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S1 Asia 01:30-09:00 SL other side TP none              703  6.8  43  1.04  1.02  1.06  1.02   +131    +97  +128   -62  0.99  1.10  0.90  0.92   -266   -59  13.9     +0 
+S1 Asia 01:30-09:00 SL other side TP 1R                703  6.8  50  1.06  1.03  1.11  1.04   +198   +141   +48   -18  1.00  1.13  1.09  0.90   -213   -59  13.9     +0 
+S1 Asia 01:30-09:00 SL other side TP 2R                703  6.8  44  1.06  1.06  1.05  1.04   +196    +78   +68   -54  1.02  1.09  0.89  0.91   -197   -59  13.9     +0 
+S1 Asia 01:30-09:00 SL half range TP 2R                703  6.8  39  1.11  1.04  1.22  1.09   +298   +230   +72   -14  1.13  1.10  0.81  0.98   -140   -30   7.0     +0 
+S1 pre-NY 09:00-15:30 SL other side TP none            691  6.6  45  0.99  0.92  1.09  0.97    -38   +110  +119   -12  0.94  1.04  1.01  0.96   -288   -38  11.8     +0 
+S1 pre-NY 09:00-15:30 SL other side TP 1R              691  6.6  49  1.01  0.97  1.08  0.99    +31    +85   +68   -30  0.95  1.08  0.91  0.92   -230   -38  11.8     +0 
+S1 pre-NY 09:00-15:30 SL other side TP 2R              691  6.6  46  1.02  1.00  1.04  0.99    +45    +46   +97    -0  1.02  1.01  1.09  0.95   -184   -38  11.8     +0 
+S1 pre-NY 09:00-15:30 SL half range TP 2R              691  6.6  35  0.89  0.83  0.97  0.86   -265    -25    +1   -32  0.75  1.04  0.92  0.90   -308   -24   5.9     +0 
+S1 Asia 01:30-07:00 SL other side TP none              715  6.9  42  1.08  1.07  1.09  1.06   +284   +131   +93   -47  1.04  1.12  0.91  0.94   -287   -56  12.5     +0 
+S1 Asia 01:30-07:00 SL other side TP 1R                715  6.9  51  1.11  1.08  1.16  1.09   +361   +202   +49   -19  1.09  1.14  0.89  0.95   -249   -56  12.5     +0 
+S1 Asia 01:30-07:00 SL other side TP 2R                715  6.9  44  1.08  1.08  1.08  1.06   +274   +110   +51   -19  1.07  1.09  1.00  0.96   -334   -56  12.5     +0 
+S1 Asia 01:30-07:00 SL half range TP 2R                715  6.9  38  1.15  1.13  1.17  1.12   +362   +169   +37   -23  1.16  1.13  1.25  1.08   -120   -28   6.3     +0 
+
+-- S2 H1 Donchian breakout, intraday (enter on the next M5 bar after the H1 close, out 23:30)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S2 Donchian 12 H1 SL 1.5 ATR TP none                   962  9.2  37  0.99  0.88  1.17  0.97    -40   +260  +148   -72  0.91  1.08  0.99  0.84   -454   -26   8.4     +0 
+S2 Donchian 12 H1 SL 1.5 ATR TP 2R                    1155 11.1  40  1.01  0.92  1.16  0.99    +43   +272   +91   -33  0.94  1.07  0.98  0.86   -396   -26   8.6     +0 
+S2 Donchian 12 H1 SL 3.0 ATR TP none                   825  7.9  45  1.01  0.99  1.03  0.99    +22    +48   +76   -51  0.96  1.05  1.05  0.86   -223   -53  16.7     +0 
+S2 Donchian 12 H1 +D1 trend SL 1.5 ATR TP none         504  4.8  37  1.04  0.84  1.40  1.01    +76   +299   +65   -24  0.89  1.18  1.15  0.83   -306   -26   8.5     +0 
+S2 Donchian 12 H1 +D1 trend SL 1.5 ATR TP 2R           614  5.9  40  1.06  0.91  1.33  1.04   +160   +307   +46    +9  0.96  1.16  0.95  0.87   -267   -26   8.7     +0 
+S2 Donchian 12 H1 +D1 trend SL 3.0 ATR TP none         463  4.5  45  0.99  0.82  1.27  0.97    -35   +244   +71    -9  0.89  1.08  0.92  0.85   -353   -53  16.9     +0 
+S2 Donchian 24 H1 SL 1.5 ATR TP none                   676  6.5  36  0.91  0.79  1.11  0.89   -271   +118   +65   -90  0.84  0.98  0.93  0.77   -520   -26   8.6     +0 
+S2 Donchian 24 H1 SL 1.5 ATR TP 2R                     801  7.7  38  0.93  0.86  1.05  0.91   -216    +65   +11   -46  0.87  1.00  1.00  0.84   -415   -26   8.7     +0 
+S2 Donchian 24 H1 SL 3.0 ATR TP none                   625  6.0  44  0.93  0.84  1.09  0.92   -210   +107   +39   -21  0.91  0.96  0.87  0.82   -472   -53  17.2     +0 
+S2 Donchian 24 H1 +D1 trend SL 1.5 ATR TP none         351  3.4  36  0.99  0.78  1.34  0.97    -19   +201   +43   -26  0.80  1.19  1.03  0.72   -304   -26   8.7     +0 
+S2 Donchian 24 H1 +D1 trend SL 1.5 ATR TP 2R           428  4.1  39  1.03  0.89  1.23  1.00    +49   +168   +15   +12  0.91  1.14  1.07  0.81   -204   -26   8.9     +0 
+S2 Donchian 24 H1 +D1 trend SL 3.0 ATR TP none         321  3.1  45  1.01  0.79  1.40  1.00    +23   +253   +52   +16  0.93  1.09  0.90  0.82   -325   -53  17.4     +0 
+S2 Donchian 48 H1 SL 1.5 ATR TP none                   458  4.4  34  0.87  0.68  1.21  0.85   -277   +157   +98   -52  0.86  0.88  0.97  0.81   -509   -26   8.8     +0 
+S2 Donchian 48 H1 SL 1.5 ATR TP 2R                     548  5.3  37  0.93  0.81  1.14  0.91   -169   +121   +40   -31  0.91  0.95  0.98  0.90   -376   -26   9.0     +0 
+S2 Donchian 48 H1 SL 3.0 ATR TP none                   429  4.1  40  0.84  0.70  1.09  0.83   -378    +82   +31   -22  0.82  0.87  0.89  0.82   -511   -53  17.7     +0 
+S2 Donchian 48 H1 +D1 trend SL 1.5 ATR TP none         263  2.5  33  0.94  0.69  1.42  0.92    -77   +186   +99    -3  0.82  1.06  0.95  0.75   -318   -26   9.1     +0 
+S2 Donchian 48 H1 +D1 trend SL 1.5 ATR TP 2R           323  3.1  37  1.00  0.83  1.29  0.98     -5   +160   +58   +22  0.91  1.07  1.14  0.87   -218   -26   9.3     +0 
+S2 Donchian 48 H1 +D1 trend SL 3.0 ATR TP none         246  2.4  40  0.86  0.65  1.27  0.85   -213   +141   +44   +16  0.78  0.94  1.11  0.80   -397   -53  18.2     +0 
+
+-- S3 D1 trend-following swing, holds overnight (pays the swap)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S3 20/10 breakout, SL 2 ATR(D1)                         22  0.2  41  0.56  0.20  1.80  0.56   -341   +141   -21  +135  0.27  1.04  1.10  0.60   -541   -92  57.3   -324 
+
+-- S4 time-of-day: entry at HH:00 server, hold 1/2/4/8 h (no overnight), long / short; picked on year 1, judged on year 2
+  146 cells; top 12 by year-1 t-stat -> year 2:
+  11:00 BUY  hold 1 h: yr1 t +1.2 PF 1.19 $+81 -> yr2 PF 1.06 $+23 (365 days)
+  11:00 BUY  hold 2 h: yr1 t +1.0 PF 1.15 $+91 -> yr2 PF 0.97 $-17 (365 days)
+  21:00 SELL hold 2 h: yr1 t +0.8 PF 1.14 $+116 -> yr2 PF 0.95 $-28 (365 days)
+  05:00 BUY  hold 8 h: yr1 t +0.8 PF 1.12 $+161 -> yr2 PF 0.93 $-77 (365 days)
+  04:00 BUY  hold 8 h: yr1 t +0.7 PF 1.10 $+150 -> yr2 PF 0.88 $-135 (365 days)
+  04:00 BUY  hold 4 h: yr1 t +0.6 PF 1.09 $+93 -> yr2 PF 0.82 $-149 (365 days)
+  05:00 BUY  hold 4 h: yr1 t +0.6 PF 1.09 $+88 -> yr2 PF 0.80 $-149 (365 days)
+  10:00 BUY  hold 4 h: yr1 t +0.5 PF 1.07 $+67 -> yr2 PF 0.87 $-95 (365 days)
+  06:00 BUY  hold 8 h: yr1 t +0.5 PF 1.07 $+94 -> yr2 PF 0.86 $-148 (365 days)
+  07:00 BUY  hold 1 h: yr1 t +0.4 PF 1.07 $+31 -> yr2 PF 0.87 $-45 (365 days)
+  10:00 BUY  hold 2 h: yr1 t +0.3 PF 1.05 $+35 -> yr2 PF 1.03 $+14 (365 days)
+  02:00 SELL hold 2 h: yr1 t +0.3 PF 1.05 $+39 -> yr2 PF 0.80 $-121 (365 days)
+  cells with year-1 t >= 2: 0; of those positive in year 2: 0; all cells positive in year 2: 48 of 146
+
+-- S5 weekday / weekend holds
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S5 Mon 01:30 -> 23:30 BUY                              104  1.0  54  1.31  1.07  1.70  1.29   +217   +187   +77   -14  1.31  0.00  1.34  1.31   -121   -82 10000000.0     +0 
+S5 Mon 01:30 -> 23:30 SELL                             104  1.0  45  0.73  0.88  0.57  0.72   -255   -200   -79   +12  0.00  0.73  0.74  1.31   -359   -61 10000000.0     +0 
+S5 Fri 01:30 -> 23:30 BUY                              104  1.0  49  0.93  1.04  0.79  0.92    -63    -84   +24   -71  0.93  0.00  1.09  0.93   -293   -56 10000000.0     +0 
+S5 Fri 01:30 -> 23:30 SELL                             104  1.0  51  1.03  0.91  1.22  1.02    +25    +71   -26   +68  0.00  1.03  0.72  0.93   -187   -61 10000000.0     +0 
+S5 Sat 01:30 -> Sun 23:30 BUY                          104  1.0  55  0.74  0.84  0.60  0.73   -178   -111   +11   +21  0.74  0.00  0.75  0.74   -227   -71 10000000.0    -88 
+S5 Sat 01:30 -> Sun 23:30 SELL                         104  1.0  40  0.99  0.92  1.11  0.97     -7    +25   -32   -42  0.00  0.99  0.71  0.74   -191   -99 10000000.0    -58 
+
+-- S6 M5 spike fade / follow: |bar| >= k ATR(M5) and ATR >= g x spread; next open, SL 0.3 ATR beyond the bar, out after 6 / 12 bars
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S6 fade k 2.5 gate 4 hold 6                            532  5.1  22  0.68  0.74  0.62  0.62   -176   -100   -24   -23  0.64  0.73  0.90  0.88   -182    -9   1.6     -1 
+S6 fade k 2.5 gate 4 hold 12                           531  5.1  17  0.63  0.65  0.61  0.58   -232   -118   -39   -30  0.58  0.67  0.74  0.81   -244    -9   1.6     -2 
+S6 follow k 2.5 gate 4 hold 6                          499  4.8  47  1.17  1.05  1.34  1.11   +145   +121   +40    +2  1.06  1.31  0.84  0.90    -66   -19   7.0     -4 
+S6 follow k 2.5 gate 4 hold 12                         496  4.8  47  1.21  1.16  1.26  1.16   +214   +123   +71    -2  1.09  1.39  0.90  0.87    -80   -19   7.0     -6 PASS
+S6 fade k 2.5 gate 8 hold 6                            375  3.6  21  0.62  0.63  0.61  0.58   -175    -92   -24   -19  0.52  0.72  1.17  0.91   -180    -9   1.9     -1 
+S6 fade k 2.5 gate 8 hold 12                           375  3.6  16  0.55  0.53  0.57  0.51   -229   -116   -40   -27  0.47  0.62  0.71  0.85   -232    -9   1.9     -1 
+S6 follow k 2.5 gate 8 hold 6                          354  3.4  49  1.25  1.12  1.40  1.20   +170   +124   +40    -5  1.13  1.41  0.66  0.93    -71   -19   8.1     -3 PASS
+S6 follow k 2.5 gate 8 hold 12                         351  3.4  47  1.29  1.28  1.29  1.25   +227   +121   +73   -16  1.17  1.48  0.86  0.90    -77   -19   8.1     -4 PASS
+S6 fade k 3.0 gate 4 hold 6                            234  2.2  21  0.64  0.67  0.60  0.58    -92    -47   -27    -5  0.55  0.73  1.21  0.80    -98    -9   1.6     -1 
+S6 fade k 3.0 gate 4 hold 12                           234  2.2  18  0.62  0.51  0.75  0.57   -105    -31   -33    -3  0.53  0.70  1.13  0.83   -105    -9   1.6     -1 
+S6 follow k 3.0 gate 4 hold 6                          224  2.2  47  1.29  1.02  1.75  1.23   +115   +110   +54    -4  1.09  1.55  0.75  0.83    -71   -19   8.1     -1 
+S6 follow k 3.0 gate 4 hold 12                         223  2.1  45  1.29  1.14  1.49  1.25   +146   +107   +97   -12  1.07  1.64  0.85  0.79    -91   -19   8.1     -2 PASS
+S6 fade k 3.0 gate 8 hold 6                            170  1.6  22  0.60  0.57  0.63  0.56    -84    -40   -26    -3  0.49  0.72  1.12  0.83    -86    -9   1.9     -1 
+S6 fade k 3.0 gate 8 hold 12                           170  1.6  18  0.58  0.45  0.71  0.54    -96    -33   -33    -2  0.52  0.65  1.03  0.90    -96    -9   1.9     -1 
+S6 follow k 3.0 gate 8 hold 6                          165  1.6  49  1.34  1.04  1.75  1.29   +110   +103   +55   -10  1.13  1.59  1.03  0.84    -68   -19   9.2     -1 
+S6 follow k 3.0 gate 8 hold 12                         164  1.6  45  1.32  1.12  1.51  1.28   +125   +103   +97   -19  1.08  1.64  1.02  0.79    -90   -19   9.2     -2 PASS
+S6 fade k 4.0 gate 4 hold 6                             51  0.5  20  0.60  0.81  0.23  0.55    -26    -18    -8    -1  0.47  0.72  1.02  0.93    -32    -4   1.9     +0 
+S6 fade k 4.0 gate 4 hold 12                            51  0.5  14  0.49  0.47  0.52  0.45    -36    -11    -8    -1  0.41  0.57  0.30  0.90    -36    -5   1.9     +0 
+S6 follow k 4.0 gate 4 hold 6                           50  0.5  44  1.02  0.91  1.37  0.98     +2    +10   +14    +2  1.45  0.66  0.82  1.37    -43   -19  11.3     +0 
+S6 follow k 4.0 gate 4 hold 12                          50  0.5  42  0.91  1.01  0.78  0.88    -13    -14   +19    +3  0.88  0.96  1.17  0.86    -74   -17  11.3     +0 
+S6 fade k 4.0 gate 8 hold 6                             42  0.4  19  0.54  0.72  0.24  0.50    -27    -17    -8    -1  0.48  0.60  0.39  0.98    -28    -4   2.1     +0 
+S6 fade k 4.0 gate 8 hold 12                            42  0.4  12  0.45  0.40  0.54  0.42    -35    -10    -8    -1  0.42  0.50  0.35  0.87    -35    -5   2.1     +0 
+S6 follow k 4.0 gate 8 hold 6                           42  0.4  40  0.90  0.81  1.17  0.87    -10     +5   +14    +2  1.46  0.56  0.76  1.46    -50   -19  12.4     +0 
+S6 follow k 4.0 gate 8 hold 12                          42  0.4  43  0.83  0.93  0.70  0.80    -24    -19   +19    +3  0.79  0.87  1.09  0.85    -79   -17  12.4     +0 
+
+-- S7 H1 mean reversion, intraday (out at the exit rule, 12 bars or 23:30)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S7 RSI2 < 10 / > 90 with EMA 200 SL 1.5 ATR(H1)        725  7.0  43  0.93  0.94  0.92  0.91   -202    -94   -25   +26  1.00  0.86  0.93  1.02   -455   -27   8.6     +0 
+S7 RSI2 < 10 / > 90 with EMA 200 SL 3.0 ATR(H1)        617  5.9  51  0.98  1.07  0.86  0.96    -60   -163   -42   +46  1.08  0.88  0.95  1.06   -439   -45  17.2     +0 
+S7 RSI2 < 5 / > 95, no trend filter SL 1.5 ATR(H1)    1132 10.9  43  0.99  1.00  0.98  0.97    -28    -37   +90   +84  1.03  0.95  0.97  0.97   -583   -23   8.6     +0 
+S7 RSI2 < 5 / > 95, no trend filter SL 3.0 ATR(H1)     908  8.7  51  1.01  1.04  0.97  0.99    +42    -47   +40  +103  1.10  0.92  0.92  1.04   -630   -42  17.1     +0 
+S7 BB 20,2 close outside, fade SL 1.5 ATR(H1)         1200 11.5  47  0.96  0.97  0.94  0.93   -186   -116   -57    +2  0.91  1.02  1.04  0.94   -445   -23   8.5     +0 
+S7 BB 20,2 close outside, fade SL 3.0 ATR(H1)          947  9.1  55  0.92  0.96  0.87  0.90   -317   -229  -114   +20  0.88  0.98  0.98  0.94   -506   -39  17.0     +0 
+
+-- S8 Williams volatility breakout from the 01:30 open (stop at open +- k x yesterday's range), SL at the open, out 23:30
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S8 Williams k 0.3 both                                 642  6.2  33  0.97  0.86  1.10  0.95   -100   +131   +64   -16  0.99  0.94  0.97  1.09   -346   -34   8.4     +0 
+S8 Williams k 0.3 buy only                             416  4.0  35  1.06  1.00  1.14  1.04   +101    +98  +127   -17  1.06  0.00  1.03  1.65   -177   -22   7.7     +0 
+S8 Williams k 0.5 both                                 511  4.9  43  1.05  1.02  1.08  1.03   +120    +86    +8    +6  1.09  1.01  0.92  0.94   -226   -49  12.9     +0 
+S8 Williams k 0.5 buy only                             287  2.8  43  1.00  0.96  1.05  0.98     -4    +25   +55    -2  1.00  0.00  0.94  1.67   -200   -25  11.7     +0 
+S8 Williams k 0.7 both                                 387  3.7  42  0.94  0.87  1.04  0.92   -131    +35   +60   -80  0.93  0.95  1.04  0.94   -300   -37  16.7     +0 
+S8 Williams k 0.7 buy only                             211  2.0  41  0.87  0.73  1.12  0.85   -154    +48  +100   -31  0.87  0.00  0.77  1.35   -310   -35  15.6     +0 
+
+-- S9 the live gold SMC rule (round 102c) on BTC
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S9 SMC M10/H4 n3 BOS killzone OB top TP 2R             555  5.3  30  0.93  0.99  0.85  0.88    -69    -63    -4   -30  1.06  0.84  0.91  1.04   -142    -9   2.6     +0 
+S9 SMC M10/H4 n3 BOS killzone OB top TP 3R             542  5.2  24  0.99  1.04  0.93  0.94    -10    -33    -8   -27  1.22  0.83  0.95  1.06   -117    -9   2.6     +0 
+S9 SMC M10/H4 n3 BOS killzone OTE 0.705 TP 2R          493  4.7  32  1.00  1.06  0.91  0.92     -2    -23   +16   -18  1.17  0.87  0.94  1.02    -73    -9   1.8     +0 
+S9 SMC M10/H4 n3 BOS killzone OTE 0.705 TP 3R          484  4.7  24  0.98  1.15  0.76  0.92    -13    -70   -14   -27  1.12  0.88  0.98  0.96   -110    -9   1.8     +0 
+S9 SMC M10/H4 n5 BOS killzone OB top TP 2R             344  3.3  31  0.91  1.01  0.79  0.87    -55    -58   -16   -12  0.95  0.88  0.74  0.86    -96   -13   2.8     +0 
+S9 SMC M10/H4 n5 BOS killzone OB top TP 3R             341  3.3  25  0.95  0.92  0.99  0.90    -38     -3    +9    -6  1.03  0.87  0.69  0.89    -94   -13   2.8     +0 
+S9 SMC M10/H4 n5 BOS killzone OTE 0.705 TP 2R          348  3.3  36  1.16  1.09  1.26  1.09    +77    +52   +32    +6  1.33  1.01  0.81  0.91    -34    -9   2.1     +0 PASS
+S9 SMC M10/H4 n5 BOS killzone OTE 0.705 TP 3R          347  3.3  28  1.23  1.20  1.27  1.16   +120    +60   +21   +14  1.41  1.06  0.79  0.88    -36    -9   2.1     +0 PASS
+S9 SMC M15/H4 n3 BOS killzone OB top TP 2R             368  3.5  35  1.04  0.72  1.67  1.00    +33   +179   +22   +21  1.11  0.98  1.12  1.01   -156   -14   3.3     +0 
+S9 SMC M15/H4 n3 BOS killzone OB top TP 3R             359  3.5  27  1.07  0.78  1.57  1.03    +59   +177   +30   +11  1.15  0.99  1.02  0.95   -134   -14   3.2     +0 
+S9 SMC M15/H4 n3 BOS killzone OTE 0.705 TP 2R          338  3.2  34  1.12  1.14  1.09  1.05    +56    +19   +17   -12  1.10  1.13  0.72  0.85    -37    -9   2.2     +0 
+S9 SMC M15/H4 n3 BOS killzone OTE 0.705 TP 3R          333  3.2  28  1.26  1.32  1.18  1.19   +131    +40   +14    -3  1.29  1.22  0.81  0.92    -31    -9   2.2     +0 PASS
+S9 SMC M15/H4 n5 BOS killzone OB top TP 2R             270  2.6  34  1.02  0.79  1.41  0.97    +10    +89   +20   +35  1.01  1.03  1.09  1.00   -115   -14   3.3     +0 
+S9 SMC M15/H4 n5 BOS killzone OB top TP 3R             267  2.6  27  1.05  0.91  1.27  1.01    +32    +68    +2   +23  1.09  1.01  1.02  0.87    -86   -14   3.4     +0 
+S9 SMC M15/H4 n5 BOS killzone OTE 0.705 TP 2R          263  2.5  35  1.12  1.00  1.28  1.06    +50    +49    +8    -7  1.11  1.12  0.93  0.84    -50    -9   2.6     +0 
+S9 SMC M15/H4 n5 BOS killzone OTE 0.705 TP 3R          261  2.5  28  1.21  1.11  1.36  1.15   +101    +70    -2   +12  1.26  1.15  0.92  0.88    -49    -9   2.6     +0 PASS
+S9 SMC M20/H4 n3 BOS killzone OB top TP 2R             274  2.6  31  0.93  0.87  1.00  0.89    -50     +0   -20   +38  0.95  0.89  0.85  0.82   -109   -13   3.7     +0 
+S9 SMC M20/H4 n3 BOS killzone OB top TP 3R             268  2.6  25  1.00  0.97  1.03  0.96     -2     +9   -30   +39  1.05  0.93  0.93  0.87    -76   -13   3.7     +0 
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 2R          260  2.5  37  1.36  1.26  1.50  1.29   +148    +85   +22   +25  1.66  1.05  0.97  0.96    -25    -8   2.6     +0 PASS
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 3R          257  2.5  28  1.41  1.27  1.60  1.34   +187   +115   +13   +43  1.68  1.11  1.00  0.90    -39    -8   2.6     +0 PASS
+S9 SMC M20/H4 n5 BOS killzone OB top TP 2R             196  1.9  35  1.09  0.90  1.43  1.05    +47    +80   +20   +32  1.09  1.09  1.02  1.01    -92   -13   4.1     +0 
+S9 SMC M20/H4 n5 BOS killzone OB top TP 3R             194  1.9  30  1.23  1.01  1.60  1.19   +122   +118    +9   +56  1.19  1.27  1.10  0.99    -69   -13   4.1     +0 
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 2R          185  1.8  36  1.30  1.12  1.56  1.24   +102    +76    -2   +10  1.41  1.18  1.12  1.02    -30    -7   3.1     +0 PASS
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 3R          185  1.8  29  1.38  1.09  1.84  1.32   +144   +123    +6   +22  1.50  1.25  1.03  1.07    -48    -7   3.1     +0 PASS
+
+SUMMARY: 13 of 97 BTC variants pass (82 with >= 150 trades); median PF 1.00, random twin 0.95, always-buy 0.90
+by family (median PF / best PF / median random twin):
+  S1:  12 rows  PF median 1.06  best 1.15  rand 0.92  buys 1.02  sells 1.10  swap $ median +0
+  S2:  18 rows  PF median 0.99  best 1.06  rand 0.98  buys 0.90  sells 1.06  swap $ median +0
+  S3:   1 rows  PF median 0.56  best 0.56  rand 1.10  buys 0.27  sells 1.04  swap $ median -324
+  S5:   6 rows  PF median 0.96  best 1.31  rand 0.74  buys 0.37  sells 0.36  swap $ median +0
+  S6:  24 rows  PF median 0.76  best 1.34  rand 0.88  buys 0.71  sells 0.72  swap $ median -1
+  S7:   6 rows  PF median 0.97  best 1.01  rand 0.96  buys 1.02  sells 0.94  swap $ median +0
+  S8:   6 rows  PF median 0.98  best 1.06  rand 0.96  buys 1.00  sells 0.47  swap $ median +0
+  S9:  24 rows  PF median 1.08  best 1.41  rand 0.94  buys 1.13  sells 1.02  swap $ median +0
+
+TOP 15 by PF (>= 100 trades)
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 3R          257  2.5  28  1.41  1.27  1.60  1.34   +187   +115   +13   +43  1.68  1.11  1.00  0.90    -39    -8   2.6     +0 PASS
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 3R          185  1.8  29  1.38  1.09  1.84  1.32   +144   +123    +6   +22  1.50  1.25  1.03  1.07    -48    -7   3.1     +0 PASS
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 2R          260  2.5  37  1.36  1.26  1.50  1.29   +148    +85   +22   +25  1.66  1.05  0.97  0.96    -25    -8   2.6     +0 PASS
+S6 follow k 3.0 gate 8 hold 6                          165  1.6  49  1.34  1.04  1.75  1.29   +110   +103   +55   -10  1.13  1.59  1.03  0.84    -68   -19   9.2     -1 
+S6 follow k 3.0 gate 8 hold 12                         164  1.6  45  1.32  1.12  1.51  1.28   +125   +103   +97   -19  1.08  1.64  1.02  0.79    -90   -19   9.2     -2 PASS
+S5 Mon 01:30 -> 23:30 BUY                              104  1.0  54  1.31  1.07  1.70  1.29   +217   +187   +77   -14  1.31  0.00  1.34  1.31   -121   -82 10000000.0     +0 
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 2R          185  1.8  36  1.30  1.12  1.56  1.24   +102    +76    -2   +10  1.41  1.18  1.12  1.02    -30    -7   3.1     +0 PASS
+S6 follow k 3.0 gate 4 hold 12                         223  2.1  45  1.29  1.14  1.49  1.25   +146   +107   +97   -12  1.07  1.64  0.85  0.79    -91   -19   8.1     -2 PASS
+S6 follow k 2.5 gate 8 hold 12                         351  3.4  47  1.29  1.28  1.29  1.25   +227   +121   +73   -16  1.17  1.48  0.86  0.90    -77   -19   8.1     -4 PASS
+S6 follow k 3.0 gate 4 hold 6                          224  2.2  47  1.29  1.02  1.75  1.23   +115   +110   +54    -4  1.09  1.55  0.75  0.83    -71   -19   8.1     -1 
+S9 SMC M15/H4 n3 BOS killzone OTE 0.705 TP 3R          333  3.2  28  1.26  1.32  1.18  1.19   +131    +40   +14    -3  1.29  1.22  0.81  0.92    -31    -9   2.2     +0 PASS
+S6 follow k 2.5 gate 8 hold 6                          354  3.4  49  1.25  1.12  1.40  1.20   +170   +124   +40    -5  1.13  1.41  0.66  0.93    -71   -19   8.1     -3 PASS
+S9 SMC M20/H4 n5 BOS killzone OB top TP 3R             194  1.9  30  1.23  1.01  1.60  1.19   +122   +118    +9   +56  1.19  1.27  1.10  0.99    -69   -13   4.1     +0 
+S9 SMC M10/H4 n5 BOS killzone OTE 0.705 TP 3R          347  3.3  28  1.23  1.20  1.27  1.16   +120    +60   +21   +14  1.41  1.06  0.79  0.88    -36    -9   2.1     +0 PASS
+S9 SMC M15/H4 n5 BOS killzone OTE 0.705 TP 3R          261  2.5  28  1.21  1.11  1.36  1.15   +101    +70    -2   +12  1.26  1.15  0.92  0.88    -49    -9   2.6     +0 PASS
+
+PASSES
+variant                                                  n  /wk win    PF   yr1   yr2  strs   net$   12m$   3m$  p3m$  buys sells  RAND   BUY  maxDD worst  risk  swap$
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 3R          257  2.5  28  1.41  1.27  1.60  1.34   +187   +115   +13   +43  1.68  1.11  1.00  0.90    -39    -8   2.6     +0 PASS
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 3R          185  1.8  29  1.38  1.09  1.84  1.32   +144   +123    +6   +22  1.50  1.25  1.03  1.07    -48    -7   3.1     +0 PASS
+S9 SMC M20/H4 n3 BOS killzone OTE 0.705 TP 2R          260  2.5  37  1.36  1.26  1.50  1.29   +148    +85   +22   +25  1.66  1.05  0.97  0.96    -25    -8   2.6     +0 PASS
+S6 follow k 3.0 gate 8 hold 12                         164  1.6  45  1.32  1.12  1.51  1.28   +125   +103   +97   -19  1.08  1.64  1.02  0.79    -90   -19   9.2     -2 PASS
+S9 SMC M20/H4 n5 BOS killzone OTE 0.705 TP 2R          185  1.8  36  1.30  1.12  1.56  1.24   +102    +76    -2   +10  1.41  1.18  1.12  1.02    -30    -7   3.1     +0 PASS
+S6 follow k 3.0 gate 4 hold 12                         223  2.1  45  1.29  1.14  1.49  1.25   +146   +107   +97   -12  1.07  1.64  0.85  0.79    -91   -19   8.1     -2 PASS
+S6 follow k 2.5 gate 8 hold 12                         351  3.4  47  1.29  1.28  1.29  1.25   +227   +121   +73   -16  1.17  1.48  0.86  0.90    -77   -19   8.1     -4 PASS
+S9 SMC M15/H4 n3 BOS killzone OTE 0.705 TP 3R          333  3.2  28  1.26  1.32  1.18  1.19   +131    +40   +14    -3  1.29  1.22  0.81  0.92    -31    -9   2.2     +0 PASS
+S6 follow k 2.5 gate 8 hold 6                          354  3.4  49  1.25  1.12  1.40  1.20   +170   +124   +40    -5  1.13  1.41  0.66  0.93    -71   -19   8.1     -3 PASS
+S9 SMC M10/H4 n5 BOS killzone OTE 0.705 TP 3R          347  3.3  28  1.23  1.20  1.27  1.16   +120    +60   +21   +14  1.41  1.06  0.79  0.88    -36    -9   2.1     +0 PASS
+S9 SMC M15/H4 n5 BOS killzone OTE 0.705 TP 3R          261  2.5  28  1.21  1.11  1.36  1.15   +101    +70    -2   +12  1.26  1.15  0.92  0.88    -49    -9   2.6     +0 PASS
+S6 follow k 2.5 gate 4 hold 12                         496  4.8  47  1.21  1.16  1.26  1.16   +214   +123   +71    -2  1.09  1.39  0.90  0.87    -80   -19   7.0     -6 PASS
+S9 SMC M10/H4 n5 BOS killzone OTE 0.705 TP 2R          348  3.3  36  1.16  1.09  1.26  1.09    +77    +52   +32    +6  1.33  1.01  0.81  0.91    -34    -9   2.1     +0 PASS
+
+done in 19 s
