@@ -1,0 +1,179 @@
+GOLD FLIP v2.31 day by day: gold M1 2024-11-14 .. 2026-11-13, 516 trading days, $ at 0.01 lot
+
+==== WITH the $25 target (live): 6182 trades, PF 1.19, net +3,585 $, last 12 months +2,159 $, last 3 months +992 $
+
+-- 2 years: 516 days
+   reached +$25 or more :  158 days (30.6%)   average  +67.39 $
+   profit under $25     :  108 days (20.9%)   average  +11.21 $
+   no trade / zero      :    1 days ( 0.2%)
+   loss                 :  249 days (48.3%)   average  -33.23 $
+      loss   0- 10 $ :   61 days
+      loss  10- 20 $ :   54 days
+      loss  20- 30 $ :   36 days
+      loss  30- 50 $ :   45 days
+      loss  50- 75 $ :   25 days
+      loss  75-100 $ :   16 days
+      loss 100-... $ :   12 days
+   best day +480.07 $, worst day -155.18 $, median day +1.10 $, trades a day 12.0
+   longest run of losing days 9, of days without +$25 20
+   weeks: 105, in profit 69 (66%), worst week -385 $, best week +745 $
+
+-- last 12 months: 258 days
+   reached +$25 or more :   97 days (37.6%)   average  +78.67 $
+   profit under $25     :   38 days (14.7%)   average  +10.70 $
+   no trade / zero      :    0 days ( 0.0%)
+   loss                 :  123 days (47.7%)   average  -47.80 $
+      loss   0- 10 $ :   14 days
+      loss  10- 20 $ :   19 days
+      loss  20- 30 $ :   16 days
+      loss  30- 50 $ :   28 days
+      loss  50- 75 $ :   21 days
+      loss  75-100 $ :   14 days
+      loss 100-... $ :   11 days
+   best day +480.07 $, worst day -155.18 $, median day +1.39 $, trades a day 16.9
+   longest run of losing days 7, of days without +$25 12
+   weeks: 53, in profit 34 (64%), worst week -385 $, best week +745 $
+
+-- last 3 months: 65 days
+   reached +$25 or more :   29 days (44.6%)   average  +68.01 $
+   profit under $25     :    6 days ( 9.2%)   average  +10.79 $
+   no trade / zero      :    0 days ( 0.0%)
+   loss                 :   30 days (46.2%)   average  -34.82 $
+      loss   0- 10 $ :    4 days
+      loss  10- 20 $ :    6 days
+      loss  20- 30 $ :    3 days
+      loss  30- 50 $ :   11 days
+      loss  50- 75 $ :    4 days
+      loss  75-100 $ :    2 days
+      loss 100-... $ :    0 days
+   best day +162.30 $, worst day -95.09 $, median day +4.48 $, trades a day 12.3
+   longest run of losing days 5, of days without +$25 6
+   weeks: 13, in profit 10 (77%), worst week -81 $, best week +299 $
+
+   max drawdown -698 $ (low on 2026-04-10); days below the previous peak: 424 of 516
+
+   by month: days / +$25 days / losing days / net $
+   2024-11   12    3    7      +115
+   2024-12   21    1   10        +0
+   2025-01   22    3   10      +103
+   2025-02   20    2   10       -24
+   2025-03   21    2   12        -3
+   2025-04   21    6    9      +306
+   2025-05   22    8    9      +207
+   2025-06   21    7   12       +37
+   2025-07   23    5   12       +63
+   2025-08   21    6   11       -44
+   2025-09   22    6    9      +166
+   2025-10   23   10   10      +396
+   2025-11   20    6   11       -59
+   2025-12   22    5   15      -153
+   2026-01   21   10    9      +770
+   2026-02   20    9   10       +67
+   2026-03   22    7   12      -103
+   2026-04   21    7    9       -29
+   2026-05   21    6   10       -22
+   2026-06   22   10    9      +368
+   2026-07   23    8    8      +253
+   2026-08   21    9    9      +468
+   2026-09   22   10   10      +339
+   2026-10   22    6   13       -97
+   2026-11   10    6    3      +461
+
+   by weekday: days / +$25 days / losing days / net $
+   Mon  104   34   51      +755
+   Tue  104   35   46     +1514
+   Wed  102   26   53      +460
+   Thu  103   29   49       +29
+   Fri  103   34   50      +827
+
+   10 worst days: 2026-05-18 -155, 2026-02-10 -147, 2026-03-24 -145, 2026-02-09 -145, 2026-06-08 -134, 2026-03-09 -130, 2026-02-11 -126, 2025-08-08 -120, 2026-04-10 -118, 2026-07-08 -117
+   10 best days : 2026-01-30 +480, 2025-10-21 +235, 2026-02-03 +225, 2026-01-28 +209, 2025-12-29 +195, 2026-06-10 +175, 2026-03-03 +174, 2026-08-19 +162, 2026-06-05 +153, 2026-08-05 +150
+
+==== WITHOUT the target: 6530 trades, PF 1.24, net +4,777 $, last 12 months +3,350 $, last 3 months +948 $
+
+-- 2 years: 516 days
+   reached +$25 or more :  156 days (30.2%)   average  +76.32 $
+   profit under $25     :  108 days (20.9%)   average  +11.21 $
+   no trade / zero      :    1 days ( 0.2%)
+   loss                 :  251 days (48.6%)   average  -33.23 $
+      loss   0- 10 $ :   61 days
+      loss  10- 20 $ :   55 days
+      loss  20- 30 $ :   36 days
+      loss  30- 50 $ :   45 days
+      loss  50- 75 $ :   26 days
+      loss  75-100 $ :   16 days
+      loss 100-... $ :   12 days
+   best day +763.07 $, worst day -155.18 $, median day +0.90 $, trades a day 12.7
+   longest run of losing days 9, of days without +$25 20
+   weeks: 105, in profit 69 (66%), worst week -385 $, best week +1250 $
+
+-- last 12 months: 258 days
+   reached +$25 or more :   95 days (36.8%)   average  +93.57 $
+   profit under $25     :   38 days (14.7%)   average  +10.70 $
+   no trade / zero      :    0 days ( 0.0%)
+   loss                 :  125 days (48.4%)   average  -47.57 $
+      loss   0- 10 $ :   14 days
+      loss  10- 20 $ :   20 days
+      loss  20- 30 $ :   16 days
+      loss  30- 50 $ :   28 days
+      loss  50- 75 $ :   22 days
+      loss  75-100 $ :   14 days
+      loss 100-... $ :   11 days
+   best day +763.07 $, worst day -155.18 $, median day +0.83 $, trades a day 18.2
+   longest run of losing days 7, of days without +$25 12
+   weeks: 53, in profit 34 (64%), worst week -385 $, best week +1250 $
+
+-- last 3 months: 65 days
+   reached +$25 or more :   28 days (43.1%)   average  +69.34 $
+   profit under $25     :    6 days ( 9.2%)   average  +10.79 $
+   no trade / zero      :    0 days ( 0.0%)
+   loss                 :   31 days (47.7%)   average  -34.14 $
+      loss   0- 10 $ :    4 days
+      loss  10- 20 $ :    7 days
+      loss  20- 30 $ :    3 days
+      loss  30- 50 $ :   11 days
+      loss  50- 75 $ :    4 days
+      loss  75-100 $ :    2 days
+      loss 100-... $ :    0 days
+   best day +162.30 $, worst day -95.09 $, median day +3.93 $, trades a day 12.7
+   longest run of losing days 5, of days without +$25 6
+   weeks: 13, in profit 10 (77%), worst week -84 $, best week +299 $
+
+   max drawdown -777 $ (low on 2026-04-10); days below the previous peak: 429 of 516
+
+   by month: days / +$25 days / losing days / net $
+   2024-11   12    3    7      +115
+   2024-12   21    1   10        +0
+   2025-01   22    3   10      +103
+   2025-02   20    2   10       -24
+   2025-03   21    2   12        -3
+   2025-04   21    6    9      +306
+   2025-05   22    8    9      +207
+   2025-06   21    7   12       +37
+   2025-07   23    5   12       +63
+   2025-08   21    6   11       -44
+   2025-09   22    6    9      +166
+   2025-10   23   10   10      +396
+   2025-11   20    6   11       -59
+   2025-12   22    5   15      -153
+   2026-01   21   10    9     +1170
+   2026-02   20    9   10      +981
+   2026-03   22    7   12      -103
+   2026-04   21    6   10      -108
+   2026-05   21    6   10       -22
+   2026-06   22   10    9      +368
+   2026-07   23    8    8      +253
+   2026-08   21    9    9      +468
+   2026-09   22    9   11      +294
+   2026-10   22    6   13       -97
+   2026-11   10    6    3      +461
+
+   by weekday: days / +$25 days / losing days / net $
+   Mon  104   34   51     +1478
+   Tue  104   35   46     +1514
+   Wed  102   25   54      +416
+   Thu  103   28   50      +351
+   Fri  103   34   50     +1017
+
+   10 worst days: 2026-05-18 -155, 2026-02-10 -147, 2026-03-24 -145, 2026-02-09 -145, 2026-06-08 -134, 2026-03-09 -130, 2026-02-11 -126, 2025-08-08 -120, 2026-04-10 -118, 2026-07-08 -117
+   10 best days : 2026-02-02 +763, 2026-01-30 +480, 2026-01-29 +433, 2026-02-06 +237, 2025-10-21 +235, 2026-02-03 +225, 2026-01-28 +209, 2025-12-29 +195, 2026-06-10 +175, 2026-03-03 +174
