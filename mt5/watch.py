@@ -21,11 +21,11 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt", "btc_events.txt", "atb_events.txt", "cmx_events.txt", "crs_events.txt", "orb_events.txt")]
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt", "btc_events.txt", "atb_events.txt", "cmx_events.txt", "crs_events.txt", "orb_events.txt", "flp_events.txt")]
 # Only the modules that are switched on announce themselves, so only those may be listed here: the daily status waits
 # for every kind in this tuple and otherwise falls back to a 120 s timeout, which truncates it. Since 5 Nov the owner
 # keeps six modules, so NR7, VOLBO, PDHL, NYCONT (switched off) and SR (alerts off since 2 Nov) are out of the list.
-STATUS_KINDS = ("| STARTED |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| RCS ONLINE |", "| SMC ONLINE |", "| BTC ONLINE |", "| ATRBO ONLINE |", "| COMEX ONLINE |", "| CRSI ONLINE |", "| GORB ONLINE |")   # v2.29 (14 Nov): + gold 01:00-04:00 range breakout
+STATUS_KINDS = ("| STARTED |", "| AUCTION ONLINE |", "| KUMO ONLINE |", "| RCS ONLINE |", "| SMC ONLINE |", "| BTC ONLINE |", "| ATRBO ONLINE |", "| COMEX ONLINE |", "| CRSI ONLINE |", "| GORB ONLINE |", "| FLIP ONLINE |")   # v2.29 (14 Nov): + gold 01:00-04:00 range breakout
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -49,6 +49,7 @@ MODS = [  # kind prefix, emoji, title
     ("COMEX", "🔔", "COMEX OPEN SCALP · XAUUSD · 5 min"),
     ("CRSI", "🌀", "M15 CONNORS RSI · XAUUSD · 2 h"),
     ("GORB", "⏰", "GOLD ORB 01-04 · XAUUSD · day trade"),
+    ("FLIP", "🔁", "GOLD FLIP · XAUUSD · stop and reverse"),
     ("LEG", "🌊", "M1 LEG FADE · XAUUSD · no SL"),
     ("HA ", "🕯️", "M1 HEIKIN ASHI · XAUUSD · TP 1:1"),
     ("DAILY TARGET", "🎯", "DAILY TARGET · all modules"),
@@ -222,6 +223,10 @@ def status_block(kind, text):
         return ["🔔 COMEX OPEN SCALP · XAUUSD · 5 min",
                 f"▫️ {myt('08:20', 'America/New_York')} MYT (08:20 New York, COMEX gold open): follow the first 1-minute bar",
                 f"▫️ SL 1 ATR(M1), no TP, out after 5 min, one trade a day · Lot {lot} · open {opened}"]
+    if kind == "FLIP ONLINE":
+        return ["🔁 GOLD FLIP · XAUUSD · stop and reverse",
+                f"▫️ Always in {myt('01:30', 'Europe/Athens')}-{myt('23:30', 'Europe/Athens')} MYT, starts with a BUY; stop $5 behind, trails until +$1 then frozen; when hit it reverses",
+                f"▫️ No TP, stops for the day at +$25 closed profit · Lot {lot} · open {opened}"]
     if kind == "GORB ONLINE":
         return ["⏰ GOLD ORB 01-04 · XAUUSD · day trade",
                 f"▫️ Range of {myt('01:00', 'Europe/Athens')}-{myt('04:00', 'Europe/Athens')} MYT, then a BUY STOP at its high and a SELL STOP at its low (each once a day)",
@@ -269,7 +274,7 @@ def send_status(lines):
     day = lines[0].split("|")[0].strip().split(" ")[0]
     if online_sent_today(day):
         print("status message already sent today", flush=True); return
-    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE", "KELT ONLINE", "RCS ONLINE", "SMC ONLINE", "BTC ONLINE", "ATRBO ONLINE", "COMEX ONLINE", "CRSI ONLINE", "GORB ONLINE"))}
+    order = {k: i for i, k in enumerate(("STARTED", "GOTOBI ONLINE", "MONTHEND ONLINE", "AUCTION ONLINE", "KUMO ONLINE", "LEG ONLINE", "SPIKE ONLINE", "KELT ONLINE", "RCS ONLINE", "SMC ONLINE", "BTC ONLINE", "ATRBO ONLINE", "COMEX ONLINE", "CRSI ONLINE", "GORB ONLINE", "FLIP ONLINE"))}
     blocks = []
     for l in sorted(lines, key=lambda x: order.get(x.split("|")[1].strip(), 99)):
         p = [x.strip() for x in l.split("|") if not x.strip().startswith("IMG:")]
