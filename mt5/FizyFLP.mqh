@@ -33,6 +33,8 @@ input double InpFlpLock     = 1.0;      // freeze the stop once the trade has be
 input double InpFlpTarget   = 25.0;     // this module stops for the day at this closed profit ($)
 input int    InpFlpFromMin  = 90;       // 01:30 server
 input int    InpFlpEndMin   = 1410;     // 23:30 server
+input bool   InpFlpOco      = true;     // v2.31: start the day with a BUY STOP / SELL STOP pair instead of a market BUY
+input double InpFlpOcoDist  = 3.0;      // the pair sits at the 01:30 open +- this ($3 = 30 pips; round 113g plateau $2-5)
 
 string   fp_sym = "";
 bool     fp_ready = false;
@@ -74,6 +76,76 @@ double FlpDay(datetime d0, long &reason, int &dir, double &lastp)
    return s;
 }
 
+// pending FLIP orders of this module; old = one placed before today
+int FlpPending(datetime d0, bool &old)
+{
+   int c = 0; old = false;
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpFlpMagic || OrderGetString(ORDER_SYMBOL) != fp_sym) continue;
+      c++;
+      if((datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0) old = true;
+   }
+   return c;
+}
+
+void FlpDeletePending(string why)
+{
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpFlpMagic || OrderGetString(ORDER_SYMBOL) != fp_sym) continue;
+      string side = OrderGetInteger(ORDER_TYPE) == ORDER_TYPE_BUY_STOP ? "BUY STOP" : "SELL STOP";
+      double pr = OrderGetDouble(ORDER_PRICE_OPEN);
+      trade.SetExpertMagicNumber(InpFlpMagic);
+      if(trade.OrderDelete(t)) FlpEvent(StringFormat("FLIP ORDER DELETED %s | %s %s deleted (%s)", fp_sym, side, PriceStr(fp_sym, pr), why));
+      trade.SetExpertMagicNumber(InpMagic);
+   }
+}
+
+// first trade of the day by an OCO pair at the 01:30 open +- InpFlpOcoDist. Returns +1 / -1 when a level was already
+// passed (late start: enter that way at market now), 0 when the pair is placed / waiting / not ready yet.
+int FlpOco(datetime d0, MqlTick &tk, datetime now)
+{
+   bool old; if(FlpPending(d0, old) > 0) return 0;
+   MqlRates r[];
+   int n = CopyRates(fp_sym, PERIOD_M1, d0 + InpFlpFromMin * 60, now, r);
+   if(n < 1) return 0;                                                      // no M1 bar since 01:30 yet
+   double pt = SymbolInfoDouble(fp_sym, SYMBOL_POINT);
+   int dg = (int)SymbolInfoInteger(fp_sym, SYMBOL_DIGITS);
+   double op = r[0].open, up = NormalizeDouble(op + InpFlpOcoDist, dg), dn = NormalizeDouble(op - InpFlpOcoDist, dg);
+   for(int i = 0; i < n; i++)                                                // a level taken before the pair could be placed
+   {
+      if(r[i].time >= now - now % 60) break;
+      bool hb = r[i].high + r[i].spread * pt >= up, hs = r[i].low <= dn;
+      if(hb && hs) return (up - (r[i].open + r[i].spread * pt) <= r[i].open - dn) ? 1 : -1;
+      if(hb) return 1;
+      if(hs) return -1;
+   }
+   if(tk.ask >= up) return 1;
+   if(tk.bid <= dn) return -1;
+   if(now - fp_try < 5) return 0;
+   fp_try = now;
+   double mn = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_STEP);
+   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpFlpLot / sv + 1e-9) * sv), 2);
+   double spr = tk.ask - tk.bid;
+   int em = (int)SymbolInfoInteger(fp_sym, SYMBOL_EXPIRATION_MODE);
+   ENUM_ORDER_TYPE_TIME tt = ((em & SYMBOL_EXPIRATION_GTC) != 0) ? ORDER_TIME_GTC : ORDER_TIME_SPECIFIED;
+   datetime exp = (tt == ORDER_TIME_SPECIFIED) ? d0 + InpFlpEndMin * 60 + 300 : 0;   // backup: the EA deletes at 23:30
+   trade.SetExpertMagicNumber(InpFlpMagic); trade.SetTypeFillingBySymbol(fp_sym);
+   bool b = trade.BuyStop(lot, up, fp_sym, NormalizeDouble(up - spr - InpFlpGap, dg), 0, tt, exp, "FLIP BS");
+   string eb = b ? "" : StringFormat(" | buy stop error %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+   bool s_ = trade.SellStop(lot, dn, fp_sym, NormalizeDouble(dn + spr + InpFlpGap, dg), 0, tt, exp, "FLIP SS");
+   string es = s_ ? "" : StringFormat(" | sell stop error %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+   trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+   if(!b && !s_) { FlpEvent("ERROR | gold FLIP OCO not placed" + eb + es); FlpDeletePending("half pair"); return 0; }
+   if(!b || !s_) { FlpDeletePending("only one side placed, retrying"); FlpEvent("ERROR | gold FLIP OCO half placed" + eb + es); return 0; }
+   FlpEvent(StringFormat("FLIP OCO PLACED %s | 01:30 open %s: BUY STOP %s, SELL STOP %s (+-$%.0f), lot %.2f; the first to fill starts the day, the other is deleted",
+                         fp_sym, PriceStr(fp_sym, op), PriceStr(fp_sym, up), PriceStr(fp_sym, dn), InpFlpOcoDist, lot));
+   return 0;
+}
+
 ulong FlpPosition()
 {
    for(int i = PositionsTotal() - 1; i >= 0; i--)
@@ -91,10 +163,12 @@ void FlpInit()
    if(fp_sym == "") { FlpEvent("ERROR | gold FLIP: symbol " + InpFlpSymbol + " not found"); return; }
    SymbolSelect(fp_sym, true);
    fp_known = FlpPosition();
-   FlpEvent(StringFormat("FLIP ONLINE | %s: always in %02d:%02d-%02d:%02d server, starts the day with a BUY; stop $%.2f behind the price, trailing on every "
+   FlpEvent(StringFormat("FLIP ONLINE | %s: always in %02d:%02d-%02d:%02d server, starts the day with %s; stop $%.2f behind the price, trailing on every "
                          "closed M1 bar until the trade is +$%.2f, then frozen; when hit it reverses at once; no TP; closed at 23:30 server; stops for the day "
                          "at $%.0f closed profit, lot %.2f | %d open position(s)",
-                         fp_sym, InpFlpFromMin / 60, InpFlpFromMin % 60, InpFlpEndMin / 60, InpFlpEndMin % 60, InpFlpGap, InpFlpLock, InpFlpTarget,
+                         fp_sym, InpFlpFromMin / 60, InpFlpFromMin % 60, InpFlpEndMin / 60, InpFlpEndMin % 60,
+                         InpFlpOco ? StringFormat("a BUY STOP / SELL STOP at the 01:30 open +-$%.0f (first fill wins)", InpFlpOcoDist) : "a market BUY",
+                         InpFlpGap, InpFlpLock, InpFlpTarget,
                          InpFlpLot, fp_known > 0 ? 1 : 0));
 }
 
@@ -132,9 +206,20 @@ void FlpOnTimer()
    double pt = SymbolInfoDouble(fp_sym, SYMBOL_POINT);
    int dg = (int)SymbolInfoInteger(fp_sym, SYMBOL_DIGITS);
 
+   bool oldp; int npend = FlpPending(d0, oldp);
    if(t > 0)
    {
+      if(fp_known != t)
+      {
+         string cm = PositionGetString(POSITION_COMMENT);
+         if(StringFind(cm, "FLIP BS") == 0 || StringFind(cm, "FLIP SS") == 0)
+            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), trails until +$%.0f then frozen | first trade of the day",
+                     PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", fp_sym,
+                     PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY STOP" : "SELL STOP",
+                     PriceStr(fp_sym, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(fp_sym, PositionGetDouble(POSITION_SL)), InpFlpGap, InpFlpLock));
+      }
       fp_known = t;
+      if(npend > 0) { FlpDeletePending("the other side filled"); if(!PositionSelectByTicket(t)) return; }
       if(!live || (datetime)PositionGetInteger(POSITION_TIME) < d0) { FlpClose(t, minute >= InpFlpEndMin ? "23:30 day end" : "outside the window", day); return; }
       if(done) { FlpClose(t, StringFormat("$%.0f target reached", InpFlpTarget), day); return; }
       // trail on each new closed M1 bar until frozen
@@ -176,6 +261,8 @@ void FlpOnTimer()
 
    // no position
    if(fp_known > 0) fp_known = 0;
+   if(npend > 0 && (!live || done || oldp || DayPaused()))
+   { FlpDeletePending(!live ? "23:30, not triggered" : (done ? "daily target reached" : (oldp ? "left from an earlier day" : "EA daily target reached"))); npend = 0; }
    if(done)
    {
       if(fp_doneday != d0 && live)
@@ -188,7 +275,11 @@ void FlpOnTimer()
    if(!live || DayPaused()) return;
    int dir = 0;
    bool any = reason >= 0;                                                 // a position of this module was closed today
-   if(!any) dir = 1;                                                        // first trade of the day: BUY
+   if(!any)                                                                 // first trade of the day
+   {
+      if(!InpFlpOco) dir = 1;
+      else { dir = FlpOco(d0, tk, now); if(dir == 0) return; }
+   }
    else if(reason == DEAL_REASON_SL) dir = -ldir;                           // the stop was hit: reverse
    else return;                                                             // closed some other way: wait for tomorrow
    if(now - fp_try < 5) return;
