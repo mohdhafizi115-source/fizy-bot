@@ -96,7 +96,7 @@ def main():
            f"{'net$':>6} {'12m$':>5} {'3m$':>5} {'pr3m':>5} | {'DD':>5} {'wDay':>5} {'risk':>5}")
 
     def zones(hb, mindz, valid):
-        hh = h1[(h1.index.hour == hb) & (h1.index.dayofweek < 5) & (h1.index >= start)]
+        hh = h1[(h1.index.hour == hb) & (h1.index.day_of_week < 5) & (h1.index >= start)]
         zh, zl, zs, ze, zd = [], [], [], [], []
         for t, r in hh.iterrows():
             dd = t.normalize(); nx = days[days > dd]
