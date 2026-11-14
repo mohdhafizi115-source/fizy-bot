@@ -1,24 +1,20 @@
-shift ended (UTC): 2026-11-14 00:20
-done
-2026.11.13 23:59:58
+shift ended (UTC): 2026-11-14 13:20
+open
+
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 4583 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 5234 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 1
-  IS	0	18:52:26.426	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.13 20:52, 0 open position(s), 0 pending order(s), lot 0.01
-  IQ	0	18:52:26.426	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  NI	0	18:52:26.511	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
-  OG	0	18:52:36.717	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (forex + XAUUSD): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
-  QJ	0	18:52:37.142	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
-  CJ	0	18:52:38.462	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL on (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); lot 0.01 | 0 open position(s)
-  KL	0	18:52:38.462	FizyLB (XAUUSD.m,M15)	ATRBO EVENT ATRBO ONLINE | XAUUSD.m: day trade, at 01:30 server OCO stops at the 01:30 open +- 0.25 x ATR14(D1), SL 50% of the band back toward the open, no TP, one trade a day, orders deleted and the trade closed at 23:30 server, lot 0.01 | 0 open position(s)
-  CK	0	18:52:38.493	FizyLB (XAUUSD.m,M15)	ATRBO EVENT ATRBO SKIPPED XAUUSD.m | a level (3901.57 / 3853.35) was already touched before the orders could be placed
-  PL	0	18:52:38.493	FizyLB (XAUUSD.m,M15)	COMEX EVENT COMEX ONLINE | XAUUSD.m: at the COMEX gold open (08:20 New York) follow the direction of the first 1-minute bar, SL 1.0 ATR(M1), no TP, out after 5 min, one trade a day, lot 0.01 | 0 open position(s)
-  IF	0	18:52:38.493	FizyLB (XAUUSD.m,M15)	CRSI EVENT CRSI ONLINE | XAUUSD.m M15: Connors RSI(3,2,100) below 10 with the close above EMA 200 -> BUY, above 90 below EMA 200 -> SELL, SL 1.5 ATR(M15), no TP, out after 120 min, one position, lot 0.01 | 0 open position(s)
-  LQ	0	18:52:38.493	FizyLB (XAUUSD.m,M15)	GORB EVENT GORB ONLINE | XAUUSD.m: day trade, range of the M1 bars 01:00-04:00 server, at 04:00 a BUY STOP at its high and a SELL STOP at its low (each once a day), SL 0.25 x ATR14(D1), TP 2 x SL, orders deleted and trades closed at 23:30 server, lot 0.01 | 0 open position(s)
-  GK	0	18:52:41.561	FizyLB (XAUUSD.m,M15)	GORB EVENT GORB ORDERS PLACED XAUUSD.m | range 01:00-04:00 server 3875.05 - 3916.66, ATR14(D1) 96.45, SL 0.25 x ATR = 24.11, TP 48.22, lot 0.01, risk about $x a side | BUY skipped: 3916.66 was already taken before the order could be placed | SELL skipped: 3875.05 was already taken before the order could be placed | each side once a day; unfilled at 23:30 server = deleted; trades close at 23:30 server | IMG:snap_ORB_XAUUSD_m_<num>_<num>_531.png
-  w: shift shortened by 7 min to keep the change away from the Tokyo fix
-  w: telegram ok: ATRBO SKIPPED XAUUSD.m
-  w: telegram ok: GORB ORDERS PLACED XAUUSD.m
+  DS	0	07:45:28.856	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.14 09:45, 0 open position(s), 0 pending order(s), lot 0.01
+  NQ	0	07:45:28.856	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  QI	0	07:45:28.886	FizyLB (XAUUSD.m,M15)	KUMO EVENT KUMO ONLINE | XAUUSD.m H1: buy / sell when an H1 close breaks out of the Ichimoku cloud with Tenkan on the same side, SL beyond the cloud, TP $x exit on a close back inside the cloud or after 48 hours, lot 0.01 | 0 open position(s)
+  MG	0	07:45:41.348	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (forex + XAUUSD): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
+  OJ	0	07:45:41.851	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
+  EJ	0	07:45:43.530	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL on (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); lot 0.01 | 0 open position(s)
+  NL	0	07:45:43.531	FizyLB (XAUUSD.m,M15)	ATRBO EVENT ATRBO ONLINE | XAUUSD.m: day trade, at 01:30 server OCO stops at the 01:30 open +- 0.25 x ATR14(D1), SL 50% of the band back toward the open, no TP, one trade a day, orders deleted and the trade closed at 23:30 server, lot 0.01 | 0 open position(s)
+  CH	0	07:45:43.531	FizyLB (XAUUSD.m,M15)	COMEX EVENT COMEX ONLINE | XAUUSD.m: at the COMEX gold open (08:20 New York) follow the direction of the first 1-minute bar, SL 1.0 ATR(M1), no TP, out after 5 min, one trade a day, lot 0.01 | 0 open position(s)
+  NJ	0	07:45:43.531	FizyLB (XAUUSD.m,M15)	CRSI EVENT CRSI ONLINE | XAUUSD.m M15: Connors RSI(3,2,100) below 10 with the close above EMA 200 -> BUY, above 90 below EMA 200 -> SELL, SL 1.5 ATR(M15), no TP, out after 120 min, one position, lot 0.01 | 0 open position(s)
+  GE	0	07:45:43.531	FizyLB (XAUUSD.m,M15)	GORB EVENT GORB ONLINE | XAUUSD.m: day trade, range of the M1 bars 01:00-04:00 server, at 04:00 a BUY STOP at its high and a SELL STOP at its low (each once a day), SL 0.25 x ATR14(D1), TP 2 x SL, orders deleted and trades closed at 23:30 server, lot 0.01 | 0 open position(s)
+  PS	0	07:45:43.531	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP ONLINE | XAUUSD.m: always in 01:30-23:30 server, starts the day with a BUY STOP / SELL STOP at the 01:30 open +-$x (first fill wins); stop $x behind the price, trailing on every closed M1 bar until the trade is +$x then frozen; when hit it reverses at once; no TP; closed at 23:30 server; stops for the day at $x closed profit, lot 0.01 | 0 open position(s)
   w: telegram ok: daily status
-  w: shift end: done=True, state=2026.11.13 23:59:58|0|0
+  w: shift end: done=False, state=none
