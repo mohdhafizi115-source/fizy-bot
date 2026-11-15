@@ -1,5 +1,5 @@
-export run: 43620182422
-connected 1, max bars 10000000, from 2024.09.01, timeframe PERIOD_M1
+export run: 43731672986
+connected 1, max bars 10000000, from 2026.04.01, timeframe PERIOD_M1
 energy symbols on the server: BRENT.m WTI.m XNGUSD.m
 base,symbol,digits,point,tick_size,tick_value,contract,load_code,bars,first,last,median_spread_pts,swap_mode,swap_long,swap_short,swap_3day
-XAUUSD,XAUUSD.m,2,0.01000000,0.01000000,1.000000,100,0,780207,2024.09.02 01:02,2026.11.13 23:57,18,1,-71.0400,-84.1200,3
+BTCUSD,BTCUSD.m,2,0.01000000,0.01000000,0.010000,1,0,327988,2026.04.01 00:05,2026.11.15 17:47,858,1,-8466.6000,-5554.2000,7
