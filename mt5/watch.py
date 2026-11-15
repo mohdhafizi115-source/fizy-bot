@@ -44,7 +44,7 @@ MODS = [  # kind prefix, emoji, title
     ("KELT", "🎯", "M1 KELTNER RE-ENTRY · XAUUSD · scalp"),
     ("RCS", "🔄", "M15 REVERSAL CSAK · forex + gold"),
     ("SMC", "🧠", "M15 SMART MONEY · XAUUSD"),
-    ("BTC", "₿", "BTCUSD 24/7 · follow + SMC"),
+    ("BTC", "₿", "BTCUSD 24/7 · follow + SMC + stoch"),
     ("ATRBO", "📐", "ATR OPEN-BAND BREAKOUT · XAUUSD · day trade"),
     ("COMEX", "🔔", "COMEX OPEN SCALP · XAUUSD · 5 min"),
     ("CRSI", "🌀", "M15 CONNORS RSI · XAUUSD · 2 h"),
@@ -216,10 +216,11 @@ def status_block(kind, text):
                 f"▫️ {nsym} symbols · CSAK after an M15 Extreme the other way, H4 close in the opposite half of its band",
                 f"▫️ Spread <= 0.20 ATR · SL 2 ATR from the entry, no TP, out after 8 h · Lot {lot} · open {opened}"]
     if kind == "BTC ONLINE":
-        return ["₿ BTCUSD 24/7 · follow + SMC",
+        return ["₿ BTCUSD 24/7 · follow + SMC + stoch",
                 "▫️ FOL: M5 candle >= 2.5 ATR (ATR >= 8x spread), follow it, SL 0.3 ATR beyond, out after 60 min · any hour, any day",
                 f"▫️ SMC: M20 BOS, limit at OTE 0.705, {myt('09:00', 'Europe/Athens')}-{myt('12:00', 'Europe/Athens')} / "
-                f"{myt('14:00', 'Europe/Athens')}-{myt('17:00', 'Europe/Athens')} MYT weekdays, TP 3R, out after 16 h · Lot {lot} · open {opened}"]
+                f"{myt('14:00', 'Europe/Athens')}-{myt('17:00', 'Europe/Athens')} MYT weekdays, TP 3R, out after 16 h",
+                f"▫️ STO: H4 EMA 20/50 trend + M5 Stoch cross out of 20/80 + EMA 20 pullback, {myt('07:00', 'Europe/Athens')}-{myt('19:00', 'Europe/Athens')} MYT every day, SL 1.5 ATR, out after 4 h · Lot {lot} · open {opened}"]
     if kind == "COMEX ONLINE":
         return ["🔔 COMEX OPEN SCALP · XAUUSD · 5 min",
                 f"▫️ {myt('08:20', 'America/New_York')} MYT (08:20 New York, COMEX gold open): follow the first 1-minute bar",

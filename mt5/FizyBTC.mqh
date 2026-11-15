@@ -21,6 +21,10 @@
 //| DD -$67, worst day -$21, 17 of 25 months positive.                 |
 //| BTC swap is -$0.85 (buy) / -$0.56 (sell) per 0.01 lot a night, so  |
 //| neither leg holds long. Events in MQL5\Files\btc_events.txt.       |
+//| v2.34 (15 Nov): third leg STO (260334), round 120b: H4 EMA 20/50   |
+//|      trend + M5 Stoch 5,3,3 cross out of 20/80 + EMA 20 pullback,  |
+//|      07-19 server every day, SL 1.5 ATR(M5), no TP, out after 4 h;  |
+//|      last 3 months 295 trades PF 1.33 +$129, the 3 before PF 1.35.  |
 //+------------------------------------------------------------------+
 input bool   InpBflOn      = true;
 input double InpBflLot     = 0.01;
@@ -38,6 +42,14 @@ input double InpBsmOte     = 0.705;   // entry at this retracement of the impuls
 input double InpBsmTpR     = 3.0;
 input double InpBsmBufAtr  = 0.1;
 input int    InpBsmHoldH   = 16;      // 48 M20 bars
+input bool   InpBstOn      = true;    // v2.34: M5 Stochastic pullback with the H4 trend (round 120b)
+input double InpBstLot     = 0.01;
+input long   InpBstMagic   = 260334;
+input double InpBstLevel   = 20;      // %K / %D cross out of this level (100 - it for sells)
+input double InpBstSlAtr   = 1.5;     // SL this many ATR(14, M5) from the entry
+input int    InpBstHoldMin = 240;     // close at market after this many minutes
+input int    InpBstFromH   = 7;       // signal bar from this server hour ...
+input int    InpBstToH     = 19;      // ... to before this one, every day
 
 int bs_open = 0;
 struct BsmSetup { datetime bt; int dir; double e, sl, obh, obl, prot; };
@@ -453,12 +465,151 @@ void BflOnTimer(datetime now, MqlTick &tk)
    if(BflPosition(pt)) BflRemember(pt);
 }
 
-//==================== both legs ====================
+//==================== STO leg (v2.34) ====================
+// M5 Stochastic pullback with the H4 trend (round 120b): last closed H4 bar EMA 20 above (below) EMA 50, the M5 bar that just
+// closed is bullish (bearish), its Stoch (5,3,3) %K crossed above (below) %D out of 20 (80), and the low (high) of the last 3 M5
+// bars touched the M5 EMA 20; signal bar 07:00-18:59 server, any day; SL 1.5 ATR(14, M5) from the entry, no TP, out after 4 h.
+datetime bk_bar = 0;
+ulong    bk_known[];
+
+bool BstPosition(ulong &ticket)
+{
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+   {
+      ulong t = PositionGetTicket(i);
+      if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpBstMagic) { ticket = t; return true; }
+   }
+   return false;
+}
+
+void BstRemember(ulong t)
+{
+   for(int q = 0; q < ArraySize(bk_known); q++) if(bk_known[q] == t) return;
+   int m = ArraySize(bk_known); ArrayResize(bk_known, m + 1); bk_known[m] = t;
+}
+
+void BstReportClosed(ulong pos)
+{
+   if(!HistorySelectByPosition(pos)) return;
+   double profit = 0, outPx = 0, inPx = 0; long reason = -1, typ = -1; string sym = "";
+   for(int i = 0; i < HistoryDealsTotal(); i++)
+   {
+      ulong d = HistoryDealGetTicket(i);
+      if(d == 0) continue;
+      profit += HistoryDealGetDouble(d, DEAL_PROFIT) + HistoryDealGetDouble(d, DEAL_SWAP) + HistoryDealGetDouble(d, DEAL_COMMISSION);
+      if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_IN)
+      {
+         inPx = HistoryDealGetDouble(d, DEAL_PRICE); typ = HistoryDealGetInteger(d, DEAL_TYPE); sym = HistoryDealGetString(d, DEAL_SYMBOL);
+      }
+      if(HistoryDealGetInteger(d, DEAL_ENTRY) == DEAL_ENTRY_OUT) { outPx = HistoryDealGetDouble(d, DEAL_PRICE); reason = HistoryDealGetInteger(d, DEAL_REASON); }
+   }
+   if(outPx == 0 || sym == "") return;
+   string side = typ == DEAL_TYPE_BUY ? "BUY" : "SELL";
+   string what = reason == DEAL_REASON_SL ? "BTC STO SL HIT" : "BTC STO CLOSED";
+   string why = reason == DEAL_REASON_SL ? "stop loss 1.5 ATR"
+              : (reason == DEAL_REASON_EXPERT ? StringFormat("%d h up", InpBstHoldMin / 60) : "closed outside the EA");
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = inPx; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = outPx; lc[1] = profit >= 0 ? clrSeaGreen : clrIndianRed; lb[1] = "exit";
+   string fn = Snap(sym, PERIOD_M5, "BSX", lv, lc, lb, 0, 0, 0, 0, false);
+   BsmEvent(StringFormat("%s %s | %s from %s closed at %s (%s), profit $%.2f", what, sym, side, PriceStr(sym, inPx),
+                         PriceStr(sym, outPx), why, profit) + Img(fn));
+}
+
+void BstOnTimer(datetime now, MqlTick &tk)
+{
+   string sym = bs_sym;
+   for(int q = ArraySize(bk_known) - 1; q >= 0; q--)
+      if(!PositionSelectByTicket(bk_known[q])) { BstReportClosed(bk_known[q]); ArrayRemove(bk_known, q, 1); }
+   ulong pt;
+   bool inPos = BstPosition(pt);
+   if(inPos)
+   {
+      BstRemember(pt);
+      PositionSelectByTicket(pt);
+      if((long)(now - (datetime)PositionGetInteger(POSITION_TIME)) >= (long)InpBstHoldMin * 60)
+      {
+         trade.SetExpertMagicNumber(InpBstMagic); trade.SetTypeFillingBySymbol(sym);
+         if(!trade.PositionClose(pt)) BsmEvent(StringFormat("ERROR | BTC STO close failed: %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+         trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+      }
+   }
+   datetime b0 = iTime(sym, PERIOD_M5, 0);
+   if(b0 == 0 || b0 == bk_bar) return;                                       // once per new M5 bar
+   if(now - b0 > 60) { bk_bar = b0; return; }                                // only right at the bar's open
+   MqlRates r[];
+   int n = CopyRates(sym, PERIOD_M5, 1, 400, r);
+   if(n < 100) return;                                                       // history loading: try again next second
+   MqlRates h4[];
+   int n4 = CopyRates(sym, PERIOD_H4, 1, 300, h4);
+   if(n4 < 100) return;
+   int j = n - 1;
+   bk_bar = b0;
+   if(r[j].time + 300 != b0) return;                                         // a gap: not the bar that just closed
+   MqlDateTime st; TimeToStruct(r[j].time, st);
+   if(st.hour < InpBstFromH || st.hour >= InpBstToH) return;
+   // H4 trend from the last closed H4 bar
+   double ea = h4[0].close, eb = h4[0].close;
+   for(int i = 1; i < n4; i++) { ea += (h4[i].close - ea) * 2.0 / 21.0; eb += (h4[i].close - eb) * 2.0 / 51.0; }
+   int trend = ea > eb ? 1 : (ea < eb ? -1 : 0);
+   if(trend == 0) return;
+   // M5 ATR(14) Wilder, EMA 20, Stochastic (5,3,3)
+   double atr = r[0].high - r[0].low, e20 = r[0].close;
+   double raw[], kk[], dd[];
+   ArrayResize(raw, n); ArrayResize(kk, n); ArrayResize(dd, n);
+   for(int i = 0; i < n; i++)
+   {
+      if(i > 0)
+      {
+         double tr = MathMax(r[i].high - r[i].low, MathMax(MathAbs(r[i].high - r[i - 1].close), MathAbs(r[i].low - r[i - 1].close)));
+         atr += (tr - atr) / 14.0;
+         e20 += (r[i].close - e20) * 2.0 / 21.0;
+      }
+      raw[i] = 50; kk[i] = 50; dd[i] = 50;
+      if(i >= 4)
+      {
+         double hh = r[i].high, ll = r[i].low;
+         for(int q = i - 4; q < i; q++) { hh = MathMax(hh, r[q].high); ll = MathMin(ll, r[q].low); }
+         raw[i] = hh > ll ? (r[i].close - ll) / (hh - ll) * 100.0 : 50;
+      }
+      if(i >= 6) kk[i] = (raw[i] + raw[i - 1] + raw[i - 2]) / 3.0;
+      if(i >= 8) dd[i] = (kk[i] + kk[i - 1] + kk[i - 2]) / 3.0;
+   }
+   int dir = 0;
+   double lo3 = MathMin(r[j].low, MathMin(r[j - 1].low, r[j - 2].low)), hi3 = MathMax(r[j].high, MathMax(r[j - 1].high, r[j - 2].high));
+   if(trend == 1 && r[j].close > r[j].open && kk[j] > dd[j] && kk[j - 1] <= dd[j - 1] && MathMin(kk[j - 1], dd[j - 1]) < InpBstLevel && lo3 <= e20) dir = 1;
+   if(trend == -1 && r[j].close < r[j].open && kk[j] < dd[j] && kk[j - 1] >= dd[j - 1] && MathMax(kk[j - 1], dd[j - 1]) > 100 - InpBstLevel && hi3 >= e20) dir = -1;
+   if(dir == 0 || inPos || DayPaused()) return;
+   double entry = dir == 1 ? tk.ask : tk.bid;
+   int dg = (int)SymbolInfoInteger(sym, SYMBOL_DIGITS);
+   double sl = NormalizeDouble(entry - dir * InpBstSlAtr * atr, dg);
+   double pnt = SymbolInfoDouble(sym, SYMBOL_POINT);
+   double stopLv = SymbolInfoInteger(sym, SYMBOL_TRADE_STOPS_LEVEL) * pnt;
+   if((dir == 1 ? tk.bid - sl : sl - tk.ask) <= stopLv) return;
+   double mn = SymbolInfoDouble(sym, SYMBOL_VOLUME_MIN), vs = SymbolInfoDouble(sym, SYMBOL_VOLUME_STEP);
+   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpBstLot / vs + 1e-9) * vs), 2);
+   trade.SetExpertMagicNumber(InpBstMagic); trade.SetTypeFillingBySymbol(sym);
+   bool ok = dir == 1 ? trade.Buy(lot, sym, 0, sl, 0, "BTC STO") : trade.Sell(lot, sym, 0, sl, 0, "BTC STO");
+   if(!ok) BsmEvent(StringFormat("ERROR | BTC STO order failed: %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+   if(!ok) return;
+   double tv = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_VALUE), ts = SymbolInfoDouble(sym, SYMBOL_TRADE_TICK_SIZE);
+   double riskUsd = ts > 0 ? MathAbs(entry - sl) / ts * tv * lot : 0;
+   string side = dir == 1 ? "BUY" : "SELL";
+   double lv[2]; color lc[2]; string lb[2];
+   lv[0] = entry; lc[0] = clrBlue; lb[0] = "entry"; lv[1] = sl; lc[1] = clrIndianRed; lb[1] = "SL";
+   string fn = Snap(sym, PERIOD_M5, "BSE", lv, lc, lb, 0, 0, 0, 0, false);
+   BsmEvent(StringFormat("BTC STO %s %s | H4 trend %s, M5 Stoch %.0f/%.0f crossed %s out of %.0f, pullback to EMA 20 | %s %.2f lot at %s, "
+                         "SL %s (risk $%.2f), no TP, out after %d h", side, sym, dir == 1 ? "up" : "down", kk[j], dd[j], dir == 1 ? "up" : "down",
+                         dir == 1 ? InpBstLevel : 100 - InpBstLevel, side, lot, PriceStr(sym, entry), PriceStr(sym, sl), riskUsd, InpBstHoldMin / 60) + Img(fn));
+   if(BstPosition(pt)) BstRemember(pt);
+}
+
+//==================== all legs ====================
 bool bt_announced = false;
 
 void BtcOnTimer()
 {
-   if(!InpBflOn && !InpBsmOn) return;
+   if(!InpBflOn && !InpBsmOn && !InpBstOn) return;
    if(!bs_ready) BsmInit();
    if(bs_sym == "") return;
    if(!bt_announced)
@@ -469,19 +620,26 @@ void BtcOnTimer()
       {
          ulong t = PositionGetTicket(i);
          if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpBflMagic) { BflRemember(t); fo++; }
+         if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpBstMagic) { BstRemember(t); fo++; }
       }
       BsmEvent(StringFormat("BTC ONLINE | %s 24/7: FOL %s (M5 candle >= %.1f ATR with ATR >= %.0fx spread, follow it, SL %.1f ATR beyond, "
                             "out after %d min, any hour, any day); SMC %s (M20 BOS, limit at OTE %.3f, killzone 09-12 / 14-17 server on "
-                            "weekdays, TP %.0fR, out after %d h); lot %.2f | %d open position(s)",
+                            "weekdays, TP %.0fR, out after %d h); STO %s (H4 EMA 20/50 trend, M5 Stoch 5,3,3 cross out of %.0f/%.0f + EMA 20 "
+                            "pullback, %02d-%02d server every day, SL %.1f ATR, out after %d h); lot %.2f | %d open position(s)",
                             bs_sym, InpBflOn ? "on" : "off", InpBflK, InpBflGate, InpBflSlAtr, InpBflHoldMin, InpBsmOn ? "on" : "off",
-                            InpBsmOte, InpBsmTpR, InpBsmHoldH, InpBflLot, fo + bs_open));
+                            InpBsmOte, InpBsmTpR, InpBsmHoldH, InpBstOn ? "on" : "off", InpBstLevel, 100 - InpBstLevel, InpBstFromH, InpBstToH,
+                            InpBstSlAtr, InpBstHoldMin / 60, InpBflLot, fo + bs_open));
    }
    if(InpBsmOn) BsmOnTimer();
-   if(InpBflOn)
+   if(InpBflOn || InpBstOn)
    {
       MqlTick tk;
       datetime now = TimeCurrent();
-      if(SymbolInfoTick(bs_sym, tk) && now - tk.time <= 600) BflOnTimer(now, tk);
+      if(SymbolInfoTick(bs_sym, tk) && now - tk.time <= 600)
+      {
+         if(InpBflOn) BflOnTimer(now, tk);
+         if(InpBstOn) BstOnTimer(now, tk);
+      }
    }
 }
 //+------------------------------------------------------------------+
