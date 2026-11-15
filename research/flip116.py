@@ -22,9 +22,10 @@ def hold(O, H, L, S, live, dayid, usd, d, stop):
     n = len(O); xi = np.zeros(n, np.int64); pn = np.zeros(n); m = 0; pos = 0; ent = 0.0; sl = 0.0
     for j in range(n):
         if not live[j]:
-            if pos != 0:
+            if pos == 1 or pos == -1:
                 px = O[j] if pos == 1 else O[j] + S[j]
-                xi[m] = j; pn[m] = (px - ent) * pos * usd; m += 1; pos = 0
+                xi[m] = j; pn[m] = (px - ent) * pos * usd; m += 1
+            pos = 0
             continue
         if (j == 0 or not live[j - 1] or dayid[j] != dayid[j - 1]) and pos == 0:
             pos = d; ent = O[j] + S[j] if d == 1 else O[j]; sl = ent - d * stop
