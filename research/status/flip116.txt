@@ -1,0 +1,18 @@
+GOLD FLIP, LAST 3 MONTHS 2026-08-14 .. 2026-11-13 (repeat check 2026-05-15 .. 2026-08-14), $ at 0.01 lot
+
+variant                            |   trd /day win%    PF  strs   net$    DD  wDay bestD +25d lossD days | prev: trd    PF   net$    DD  wDay
+LIVE v2.31 ($5 gap, $25 target)    |   802 12.3   14  1.41  1.28   +992  -174   -95  +162   29    30   65 |       870  1.25   +620  -163  -155
+no $25 target                      |   827 12.7   15  1.38  1.25   +948  -174   -95  +162   28    31   65 |       870  1.25   +620  -163  -155
+gap $4, $25 target                 |  1094 16.8   15  1.33  1.27   +858  -313  -185  +170   27    28   65 |      1175  1.26   +682  -156  -111
+gap $4, no target                  |  1121 17.2   16  1.30  1.25   +816  -355  -185  +170   26    29   65 |      1175  1.26   +682  -156  -111
+baseline: always BUY 01:30-23:30, SL $5 |   126  1.9   22  0.59  0.59  -1700 -2224  -307  +360   22    39   65 |       126  0.76   -874 -1513  -361
+baseline: always SELL 01:30-23:30, SL $5 |   123  1.9   30  1.21  1.12   +568  -949  -303  +360   29    32   65 |       124  1.38   +976  -679  -216
+
+LIVE v2.31, last 3 months by month and by week:
+   2026-08: 11 days, +$25 days  7, losing days  4, net    +290 $
+   2026-09: 22 days, +$25 days 10, losing days 10, net    +339 $
+   2026-10: 22 days, +$25 days  6, losing days 13, net     -97 $
+   2026-11: 10 days, +$25 days  6, losing days  3, net    +461 $
+   weeks: 17 Aug +299, 24 Aug +78, 31 Aug +84, 07 Sep +74, 14 Sep -39, 21 Sep +6, 28 Sep +58, 05 Oct +66, 12 Oct -17, 19 Oct +3, 26 Oct -81, 02 Nov +194, 09 Nov +268
+   10 worst days: 27 Aug -95, 31 Aug -88, 01 Oct -66, 21 Oct -63, 15 Sep -57, 11 Sep -52, 27 Oct -49, 16 Oct -49, 26 Oct -48, 30 Sep -44
+   10 best days : 19 Aug +162, 28 Sep +148, 22 Oct +111, 10 Nov +111, 01 Sep +107, 04 Nov +104, 02 Nov +99, 28 Aug +94, 21 Aug +74, 10 Sep +74
