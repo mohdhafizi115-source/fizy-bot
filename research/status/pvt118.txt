@@ -1,0 +1,116 @@
+PVT / PIVOTS on XAUUSD, LAST 3 MONTHS 2026-08-14 .. 2026-11-13 (repeat check 2026-05-15 .. 2026-08-14), $ at 0.01 lot
+median spread $0.26
+
+=== (1) PIVOT POINTS (previous server day H / L / C) ===
+variant                                      |  trd win%    PF  strs   net$    DD  wDay  wTrd | prev3m trd    PF   net$
+REAL BIAS mkt SL S1/R1 TP R1/S1              |   65   51  0.66  0.66   -458  -586   -80   -80 |         65  0.66   -512
+REAL BIAS mkt SL S1/R1 no TP                 |   65   43  0.80  0.80   -289  -625   -80   -80 |         65  0.81   -308
+REAL P BOUNCE lim SL S1/R1 TP R1/S1          |   51   39  0.74  0.74   -233  -379   -56   -56 |         50  0.73   -283
+REAL P BOUNCE lim SL S1/R1 no TP             |   51   31  0.60  0.59   -394  -544   -56   -56 |         50  0.80   -216
+REAL P CROSS stop SL S1/R1 TP R1/S1          |   51   61  1.34  1.28   +228  -126   -82   -82 |         50  1.27   +207
+REAL FADE S1/R1 SL S2/R2 TP P                |   53   47  0.79  0.78   -164  -237   -70   -70 |         51  0.61   -340
+REAL FADE S1/R1 SL S2/R2 TP P, bias side     |   26   42  0.65  0.65   -163  -213   -70   -70 |         24  0.65   -135
+REAL FADE S2/R2 SL S3/R3 TP S1/R1            |   19   32  0.41  0.41   -191  -186   -55   -55 |         22  0.69   -116
+REAL BREAK R1/S1 SL P TP R2/S2               |   53   49  1.21  1.15   +134  -273   -56   -56 |         53  1.43   +260
+REAL BREAK R1/S1 SL P no TP                  |   53   45  1.80  1.71   +554  -276   -56   -56 |         53  1.38   +278
+REAL BREAK R1/S1 SL mid(P,R1) TP R2/S2       |   53   34  0.97  0.97    -18  -219   -35   -35 |         53  1.33   +170
+
+FAKE-0.50 BIAS mkt SL S1/R1 TP R1/S1         |   65   55  1.45  1.39    +73   -82   -52   -52 |         65  0.97     -9
+FAKE-0.50 BIAS mkt SL S1/R1 no TP            |   65   43  0.83  0.83   -262  -550  -110  -110 |         65  0.95    -82
+FAKE-0.50 P BOUNCE lim SL S1/R1 TP R1/S1     |   34   50  0.98  0.85     -9  -140   -40   -40 |         30  0.74   -152
+FAKE-0.50 P BOUNCE lim SL S1/R1 no TP        |   34   41  0.76  0.76   -119  -216   -55   -55 |         30  0.94    -39
+FAKE-0.50 P CROSS stop SL S1/R1 TP R1/S1     |   34   50  1.01  1.01     +5  -155   -48   -48 |         30  1.34   +149
+FAKE-0.50 FADE S1/R1 SL S2/R2 TP P           |   73   47  1.08  1.08    +90  -189   -78   -78 |         69  0.82   -247
+FAKE-0.50 FADE S1/R1 SL S2/R2 TP P, bias side |   12   25  0.37  0.37   -145  -134   -42   -42 |         12  1.09    +17
+FAKE-0.50 FADE S2/R2 SL S3/R3 TP S1/R1       |   32   53  0.72  0.71   -132  -171   -73   -73 |         35  1.04    +18
+FAKE-0.50 BREAK R1/S1 SL P TP R2/S2          |   73   52  0.92  0.91   -103  -326   -89   -85 |         72  1.17   +202
+FAKE-0.50 BREAK R1/S1 SL P no TP             |   73   45  1.12  1.12   +172  -420   -89   -85 |         72  1.02    +30
+FAKE-0.50 BREAK R1/S1 SL mid(P,R1) TP R2/S2  |   73   42  1.14  1.14   +126  -180   -63   -48 |         72  0.76   -260
+
+FAKE-0.25 BIAS mkt SL S1/R1 TP R1/S1         |   65   62  0.62  0.62   -428  -594  -108  -108 |         65  0.92    -83
+FAKE-0.25 BIAS mkt SL S1/R1 no TP            |   65   40  0.83  0.82   -280  -805  -108  -108 |         65  0.96    -60
+FAKE-0.25 P BOUNCE lim SL S1/R1 TP R1/S1     |   47   45  0.61  0.61   -342  -489   -56   -56 |         46  1.00     +4
+FAKE-0.25 P BOUNCE lim SL S1/R1 no TP        |   47   36  0.59  0.59   -399  -689   -56   -56 |         46  1.08    +69
+FAKE-0.25 P CROSS stop SL S1/R1 TP R1/S1     |   47   55  1.61  1.60   +331  -183   -55   -55 |         46  0.99     -7
+FAKE-0.25 FADE S1/R1 SL S2/R2 TP P           |   62   50  0.95  0.95    -43  -189   -70   -70 |         63  0.85   -143
+FAKE-0.25 FADE S1/R1 SL S2/R2 TP P, bias side |   24   54  1.14  1.14    +37  -148   -70   -70 |         21  0.45   -191
+FAKE-0.25 FADE S2/R2 SL S3/R3 TP S1/R1       |   21   33  0.42  0.42   -242  -277   -55   -55 |         24  1.29    +84
+FAKE-0.25 BREAK R1/S1 SL P TP R2/S2          |   62   50  1.02  1.02    +20  -331   -94   -56 |         64  1.16   +133
+FAKE-0.25 BREAK R1/S1 SL P no TP             |   62   45  1.38  1.38   +354  -373   -94   -56 |         64  1.25   +219
+FAKE-0.25 BREAK R1/S1 SL mid(P,R1) TP R2/S2  |   62   34  0.83  0.83   -121  -369   -46   -28 |         64  1.13    +92
+
+FAKE+0.25 BIAS mkt SL S1/R1 TP R1/S1         |   65   72  1.10  1.10    +81  -248  -113  -113 |         65  0.97    -26
+FAKE+0.25 BIAS mkt SL S1/R1 no TP            |   65   51  1.52  1.51   +605  -212  -113  -113 |         65  0.93   -120
+FAKE+0.25 P BOUNCE lim SL S1/R1 TP R1/S1     |   42   60  1.56  1.56   +285  -112   -54   -54 |         39  0.71   -199
+FAKE+0.25 P BOUNCE lim SL S1/R1 no TP        |   42   55  1.77  1.77   +437  -256   -54   -54 |         39  0.59   -322
+FAKE+0.25 P CROSS stop SL S1/R1 TP R1/S1     |   42   40  0.64  0.64   -288  -484   -73   -73 |         40  1.25   +140
+FAKE+0.25 FADE S1/R1 SL S2/R2 TP P           |   58   45  0.78  0.78   -231  -212   -70   -70 |         61  1.31   +309
+FAKE+0.25 FADE S1/R1 SL S2/R2 TP P, bias side |   14   43  0.51  0.51   -154   -84   -70   -70 |         15  1.49    +95
+FAKE+0.25 FADE S2/R2 SL S3/R3 TP S1/R1       |   28   54  0.93  0.93    -23  -147   -55   -55 |         25  0.84    -49
+FAKE+0.25 BREAK R1/S1 SL P TP R2/S2          |   58   55  1.28  1.28   +227  -137   -80   -80 |         61  0.76   -315
+FAKE+0.25 BREAK R1/S1 SL P no TP             |   58   50  1.56  1.55   +498  -216   -80   -80 |         61  0.98    -33
+FAKE+0.25 BREAK R1/S1 SL mid(P,R1) TP R2/S2  |   58   43  1.36  1.36   +222  -199   -45   -45 |         61  0.92    -70
+
+FAKE+0.50 BIAS mkt SL S1/R1 TP R1/S1         |   65   68  0.91  0.89    -22  -111   -97   -97 |         65  1.32    +65
+FAKE+0.50 BIAS mkt SL S1/R1 no TP            |   65   51  1.43  1.43   +558  -244  -121  -121 |         65  1.12   +173
+FAKE+0.50 P BOUNCE lim SL S1/R1 TP R1/S1     |   25   56  0.86  0.86    -48  -131   -73   -73 |         27  1.26    +76
+FAKE+0.50 P BOUNCE lim SL S1/R1 no TP        |   25   52  1.03  1.02    +11  -147   -73   -73 |         27  1.67   +198
+FAKE+0.50 P CROSS stop SL S1/R1 TP R1/S1     |   25   44  1.15  1.15    +45  -164   -38   -38 |         27  0.79    -78
+FAKE+0.50 FADE S1/R1 SL S2/R2 TP P           |   68   41  0.84  0.83   -195  -351   -74   -74 |         68  1.13   +143
+FAKE+0.50 FADE S1/R1 SL S2/R2 TP P, bias side |    8   50  0.60  0.60    -51   -55   -61   -61 |          7  1.75    +42
+FAKE+0.50 FADE S2/R2 SL S3/R3 TP S1/R1       |   36   50  0.99  0.86     -6  -137   -40   -40 |         32  0.66   -227
+FAKE+0.50 BREAK R1/S1 SL P TP R2/S2          |   68   57  1.18  1.18   +183  -149   -93   -93 |         68  0.87   -156
+FAKE+0.50 BREAK R1/S1 SL P no TP             |   68   49  1.49  1.49   +565  -179   -93   -93 |         68  0.99    -12
+FAKE+0.50 BREAK R1/S1 SL mid(P,R1) TP R2/S2  |   68   46  1.14  1.14   +116  -108   -54   -54 |         68  1.03    +27
+
+RANDDIR1 BIAS mkt SL S1/R1 TP R1/S1          |   65   38  0.60  0.60   -563  -586   -77   -77 |         64  1.10   +119
+RANDDIR1 BIAS mkt SL S1/R1 no TP             |   65   37  0.94  0.93    -89  -481   -77   -77 |         64  1.26   +322
+RANDDIR2 BIAS mkt SL S1/R1 TP R1/S1          |   65   52  1.05  1.04    +51  -133   -80   -80 |         62  1.54   +516
+RANDDIR2 BIAS mkt SL S1/R1 no TP             |   65   46  1.20  1.19   +238  -287   -80   -80 |         62  1.89   +872
+RANDDIR3 BIAS mkt SL S1/R1 TP R1/S1          |   65   54  1.08  1.07    +85  -318   -76   -76 |         63  1.21   +231
+RANDDIR3 BIAS mkt SL S1/R1 no TP             |   65   45  1.41  1.40   +488  -330   -76   -76 |         63  1.41   +487
+
+=== (2) PRICE VOLUME TREND (tick volume) ===
+variant                                      |  trd win%    PF  strs   net$    DD  wDay  wTrd | prev3m trd    PF   net$
+PVT 15min x SMA13  none   SL 1.5ATR          |  859   27  0.87  0.85   -508  -909  -126   -22 |        823  1.01    +49
+PVT 15min x SMA13  RANDOM SL 1.5ATR          |  859   42  0.89  0.87   -410  -605   -76   -23 |        823  1.06   +210
+PVT 15min x SMA13  none   SL 3.0ATR          |  859   27  0.87  0.84   -544 -1016  -134   -38 |        823  0.97   -115
+PVT 15min x SMA13  ema50  SL 1.5ATR          |  460   26  0.93  0.90   -153  -514   -85   -22 |        443  1.02    +36
+PVT 15min x SMA13  ema50  SL 3.0ATR          |  460   27  0.93  0.90   -167  -645   -93   -38 |        443  0.99    -17
+PVT 15min x SMA13  ema200 SL 1.5ATR          |  444   26  0.85  0.83   -309  -591   -95   -22 |        416  0.92   -161
+PVT 15min x SMA13  ema200 SL 3.0ATR          |  444   27  0.85  0.83   -325  -716  -112   -38 |        416  0.91   -196
+PVT 15min x SMA21  none   SL 1.5ATR          |  667   24  0.90  0.88   -321  -784  -107   -22 |        587  1.02    +76
+PVT 15min x SMA21  RANDOM SL 1.5ATR          |  667   41  0.81  0.79   -597  -888   -70   -22 |        587  0.93   -210
+PVT 15min x SMA21  none   SL 3.0ATR          |  667   24  0.88  0.86   -407  -869  -137   -38 |        587  0.95   -181
+PVT 15min x SMA21  ema50  SL 1.5ATR          |  383   25  1.05  1.02    +91  -417   -72   -22 |        334  1.06   +102
+PVT 15min x SMA21  ema50  SL 3.0ATR          |  383   25  1.02  0.99    +34  -553  -102   -38 |        334  0.99    -14
+PVT 15min x SMA21  ema200 SL 1.5ATR          |  352   23  0.88  0.86   -209  -477   -87   -22 |        294  0.99    -23
+PVT 15min x SMA21  ema200 SL 3.0ATR          |  352   23  0.87  0.85   -244  -593  -105   -38 |        294  0.93   -112
+PVT 15min x SMA50  none   SL 1.5ATR          |  355   23  1.03  1.01    +63  -472   -80   -22 |        318  1.37   +642
+PVT 15min x SMA50  RANDOM SL 1.5ATR          |  355   41  1.06  1.03   +103  -274   -55   -22 |        318  1.23   +408
+PVT 15min x SMA50  none   SL 3.0ATR          |  355   24  1.03  1.01    +70  -516   -98   -38 |        318  1.25   +470
+PVT 15min x SMA50  ema50  SL 1.5ATR          |  257   23  0.99  0.97    -14  -413   -71   -22 |        240  1.66   +844
+PVT 15min x SMA50  ema50  SL 3.0ATR          |  257   24  1.02  1.00    +33  -482   -89   -38 |        240  1.49   +698
+PVT 15min x SMA50  ema200 SL 1.5ATR          |  193   21  0.96  0.94    -44  -389   -62   -22 |        159  1.53   +431
+PVT 15min x SMA50  ema200 SL 3.0ATR          |  193   23  1.05  1.03    +63  -402   -73   -38 |        159  1.40   +357
+PVT 1h    x SMA13  none   SL 1.5ATR          |  191   29  1.08  1.07   +134  -406   -92   -32 |        167  1.12   +180
+PVT 1h    x SMA13  RANDOM SL 1.5ATR          |  191   45  1.11  1.09   +163  -430   -86   -35 |        167  0.87   -216
+PVT 1h    x SMA13  none   SL 3.0ATR          |  191   29  1.04  1.03    +72  -398  -112   -53 |        167  1.01    +12
+PVT 1h    x SMA13  ema50  SL 1.5ATR          |  100   27  1.20  1.18   +164  -190   -85   -29 |         89  1.37   +289
+PVT 1h    x SMA13  ema50  SL 3.0ATR          |  100   27  1.08  1.07    +76  -205  -105   -53 |         89  1.27   +233
+PVT 1h    x SMA13  ema200 SL 1.5ATR          |   91   29  1.23  1.21   +172  -143   -55   -29 |         85  1.22   +175
+PVT 1h    x SMA13  ema200 SL 3.0ATR          |   91   29  1.11  1.09    +92  -183   -66   -53 |         85  1.10    +94
+PVT 1h    x SMA21  none   SL 1.5ATR          |  146   29  1.08  1.06   +103  -400   -83   -36 |        136  1.19   +207
+PVT 1h    x SMA21  RANDOM SL 1.5ATR          |  146   38  0.97  0.96    -39  -400   -62   -35 |        136  1.15   +161
+PVT 1h    x SMA21  none   SL 3.0ATR          |  146   29  0.99  0.98    -13  -473  -115   -55 |        136  1.05    +63
+PVT 1h    x SMA21  ema50  SL 1.5ATR          |   82   29  1.04  1.02    +27  -268   -63   -36 |         78  1.07    +45
+PVT 1h    x SMA21  ema50  SL 3.0ATR          |   82   29  0.94  0.93    -47  -311   -95   -55 |         78  0.91    -73
+PVT 1h    x SMA21  ema200 SL 1.5ATR          |   72   28  1.17  1.16   +107  -212   -46   -29 |         68  1.01     +7
+PVT 1h    x SMA21  ema200 SL 3.0ATR          |   72   28  1.04  1.02    +25  -261   -55   -55 |         68  0.85   -113
+PVT 1h    x SMA50  none   SL 1.5ATR          |   97   37  1.25  1.24   +205  -239   -71   -36 |         79  1.30   +182
+PVT 1h    x SMA50  RANDOM SL 1.5ATR          |   97   51  1.84  1.81   +577  -106   -71   -36 |         79  0.97    -22
+PVT 1h    x SMA50  none   SL 3.0ATR          |   97   37  1.11  1.10   +103  -340   -71   -54 |         79  1.24   +154
+PVT 1h    x SMA50  ema50  SL 1.5ATR          |   70   37  1.52  1.50   +288  -186   -61   -36 |         56  1.26   +115
+PVT 1h    x SMA50  ema50  SL 3.0ATR          |   70   37  1.30  1.28   +195  -246   -61   -54 |         56  1.27   +120
+PVT 1h    x SMA50  ema200 SL 1.5ATR          |   49   41  1.71  1.69   +256  -138   -57   -31 |         40  1.37   +109
+PVT 1h    x SMA50  ema200 SL 3.0ATR          |   49   41  1.52  1.50   +210  -173   -64   -53 |         40  1.36   +107
