@@ -1,0 +1,139 @@
+BASE VALIDATION: gold M1 2024-11-11 .. 2026-11-13, $ at 0.01 lot, red day -> BUY at the base, green -> SELL, TP none
+
+== base H1 23:00, valid 5 d
+variant                                      trades win%    PF   yr1   yr2  strs   buy  sell |   net$  12m$   3m$  pr3m |    DD  wDay
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+LIMIT (115c rule)                               422   22  1.73  1.27  1.95  1.68  1.78  1.69 |  +2089 +1828  +517   -23 |  -266   -69
+   age 1 (the next day):  385 trades, win  22%, PF  1.67 (yr1  1.30 / yr2  1.86), net  +1733 $, 12m +1463 $
+   age 2               :   21 trades, win  19%, PF  1.52 (yr1  0.00 / yr2  2.04), net    +98 $, 12m  +147 $
+   age 3               :    5 trades, win  80%, PF 30.39 (yr1 28.01 / yr2 5160000000.00), net    +64 $, 12m    +5 $
+   age 4-5             :   11 trades, win  18%, PF  2.87 (yr1  0.00 / yr2  3.53), net   +194 $, 12m  +214 $
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+LIMIT + INV-CLOSE                               394   22  1.80  1.28  2.07  1.75  1.72  1.87 |  +2129 +1875  +502    +8 |  -250   -56
+LIMIT + INV-COL                                 400   22  1.67  1.28  1.88  1.64  1.50  1.81 |  +1821 +1564  +486   -23 |  -263   -56
+LIMIT + INV-CLOSE + INV-COL                     386   22  1.72  1.30  1.94  1.68  1.47  1.93 |  +1857 +1587  +502   +15 |  -250   -56
+CONF M5                                         350   26  1.74  1.22  2.03  1.70  1.59  1.89 |  +2014 +1808  +462   -39 |  -260   -69
+   age 1 (the next day):  323 trades, win  25%, PF  1.69 (yr1  1.23 / yr2  1.96), net  +1678 $, 12m +1469 $
+   age 2               :   14 trades, win  29%, PF  1.63 (yr1  0.00 / yr2  2.01), net   +108 $, 12m  +141 $
+   age 4-5             :    9 trades, win  22%, PF  2.62 (yr1  0.00 / yr2  3.30), net   +173 $, 12m  +195 $
+CONF M5 + INV-CLOSE                             331   25  1.82  1.21  2.17  1.77  1.57  2.07 |  +2057 +1863  +462   +16 |  -243   -69
+CONF M5 + INV-COL                               331   25  1.71  1.23  1.99  1.68  1.33  2.10 |  +1792 +1582  +448   -31 |  -260   -69
+CONF M5 + INV-CLOSE + INV-COL                   324   25  1.74  1.23  2.04  1.71  1.33  2.17 |  +1801 +1592  +462   +24 |  -228   -69
+CONF M15                                        312   28  1.79  1.21  2.12  1.72  1.59  1.98 |  +1989 +1793  +442   -49 |  -257   -69
+   age 1 (the next day):  290 trades, win  27%, PF  1.73 (yr1  1.23 / yr2  2.03), net  +1663 $, 12m +1466 $
+   age 2               :   11 trades, win  36%, PF  1.64 (yr1  0.00 / yr2  1.99), net   +109 $, 12m  +138 $
+   age 4-5             :    7 trades, win  14%, PF  3.53 (yr1  0.00 / yr2  5.32), net   +165 $, 12m  +187 $
+CONF M15 + INV-CLOSE                            296   28  1.85  1.21  2.24  1.78  1.58  2.14 |  +2020 +1838  +459   +13 |  -251   -69
+CONF M15 + INV-COL                              297   28  1.74  1.23  2.04  1.70  1.36  2.13 |  +1766 +1563  +449   -60 |  -268   -69
+CONF M15 + INV-CLOSE + INV-COL                  291   27  1.78  1.23  2.12  1.74  1.36  2.21 |  +1785 +1588  +459   +13 |  -236   -69
+control RANDOM H1 bar, LIMIT (seed 1)           343   34  1.48  1.17  1.65  1.45  1.62  1.38 |  +1512 +1322  +538  +159 |  -277   -51
+control RANDOM H1 bar, CONF M5 (seed 1)         305   37  1.40  1.10  1.57  1.38  1.42  1.38 |  +1205 +1095  +444  +139 |  -338   -50
+control RANDOM H1 bar, LIMIT (seed 2)           338   38  1.60  1.46  1.67  1.56  1.69  1.53 |  +1725 +1283  +176  +111 |  -275   -75
+control RANDOM H1 bar, CONF M5 (seed 2)         291   43  1.67  1.52  1.74  1.62  1.79  1.57 |  +1721 +1269  +110  +147 |  -293   -77
+control RANDOM H1 bar, LIMIT (seed 3)           328   35  1.20  1.62  1.04  1.19  1.15  1.24 |   +637   +95  +211  -229 |  -332   -62
+control RANDOM H1 bar, CONF M5 (seed 3)         273   39  1.30  1.62  1.16  1.27  1.28  1.31 |   +787  +286  +201  -207 |  -320   -71
+
+== base H1 23:00, valid 3 d
+variant                                      trades win%    PF   yr1   yr2  strs   buy  sell |   net$  12m$   3m$  pr3m |    DD  wDay
+LIMIT (115c rule)                               411   22  1.68  1.30  1.88  1.63  1.56  1.78 |  +1895 +1614  +486    -1 |  -259   -56
+   age 1 (the next day):  385 trades, win  22%, PF  1.67 (yr1  1.30 / yr2  1.86), net  +1733 $, 12m +1463 $
+   age 2               :   21 trades, win  19%, PF  1.52 (yr1  0.00 / yr2  2.04), net    +98 $, 12m  +147 $
+   age 3               :    5 trades, win  80%, PF 30.39 (yr1 28.01 / yr2 5160000000.00), net    +64 $, 12m    +5 $
+LIMIT + INV-CLOSE                               393   22  1.70  1.28  1.92  1.65  1.50  1.87 |  +1863 +1608  +502    +8 |  -250   -56
+LIMIT + INV-COL                                 400   22  1.67  1.28  1.88  1.64  1.50  1.81 |  +1821 +1564  +486   -23 |  -263   -56
+LIMIT + INV-CLOSE + INV-COL                     386   22  1.72  1.30  1.94  1.68  1.47  1.93 |  +1857 +1587  +502   +15 |  -250   -56
+CONF M5                                         341   26  1.71  1.25  1.97  1.66  1.38  2.03 |  +1841 +1613  +448   -13 |  -234   -69
+   age 1 (the next day):  323 trades, win  25%, PF  1.69 (yr1  1.23 / yr2  1.96), net  +1678 $, 12m +1469 $
+   age 2               :   14 trades, win  29%, PF  1.63 (yr1  0.00 / yr2  2.01), net   +108 $, 12m  +141 $
+CONF M5 + INV-CLOSE                             330   25  1.71  1.21  2.00  1.66  1.36  2.07 |  +1792 +1597  +462   +16 |  -243   -69
+CONF M5 + INV-COL                               331   25  1.71  1.23  1.99  1.68  1.33  2.10 |  +1792 +1582  +448   -31 |  -260   -69
+CONF M5 + INV-CLOSE + INV-COL                   324   25  1.74  1.23  2.04  1.71  1.33  2.17 |  +1801 +1592  +462   +24 |  -228   -69
+CONF M15                                        305   29  1.74  1.24  2.03  1.68  1.41  2.08 |  +1825 +1607  +449   -37 |  -245   -69
+   age 1 (the next day):  290 trades, win  27%, PF  1.73 (yr1  1.23 / yr2  2.03), net  +1663 $, 12m +1466 $
+   age 2               :   11 trades, win  36%, PF  1.64 (yr1  0.00 / yr2  1.99), net   +109 $, 12m  +138 $
+CONF M15 + INV-CLOSE                            295   27  1.76  1.21  2.09  1.69  1.39  2.14 |  +1790 +1608  +459   +13 |  -251   -69
+CONF M15 + INV-COL                              297   28  1.74  1.23  2.04  1.70  1.36  2.13 |  +1766 +1563  +449   -60 |  -268   -69
+CONF M15 + INV-CLOSE + INV-COL                  291   27  1.78  1.23  2.12  1.74  1.36  2.21 |  +1785 +1588  +459   +13 |  -236   -69
+control RANDOM H1 bar, LIMIT (seed 1)           313   33  1.42  1.15  1.57  1.41  1.56  1.32 |  +1247 +1089  +434  +145 |  -388   -66
+control RANDOM H1 bar, CONF M5 (seed 1)         281   35  1.33  1.08  1.47  1.33  1.36  1.31 |   +953  +867  +341  +139 |  -510   -75
+control RANDOM H1 bar, LIMIT (seed 2)           303   35  1.36  1.26  1.42  1.35  1.34  1.38 |   +991  +750   +99  +118 |  -377   -64
+control RANDOM H1 bar, CONF M5 (seed 2)         256   41  1.45  1.35  1.51  1.43  1.43  1.47 |  +1084  +805   +47  +171 |  -390   -65
+control RANDOM H1 bar, LIMIT (seed 3)           301   34  1.12  1.68  0.92  1.10  1.16  1.09 |   +357  -182  +107  -246 |  -465   -63
+control RANDOM H1 bar, CONF M5 (seed 3)         249   39  1.22  1.71  1.02  1.20  1.24  1.21 |   +557   +39  +130  -216 |  -342   -71
+
+== base H1 23:00-23:44, valid 5 d
+variant                                      trades win%    PF   yr1   yr2  strs   buy  sell |   net$  12m$   3m$  pr3m |    DD  wDay
+LIMIT (115c rule)                               419   19  1.62  1.25  1.80  1.60  1.50  1.72 |  +1683 +1470  +434   -37 |  -269   -60
+   age 1 (the next day):  382 trades, win  18%, PF  1.59 (yr1  1.27 / yr2  1.74), net  +1427 $, 12m +1210 $
+   age 2               :   20 trades, win  15%, PF  1.02 (yr1  0.00 / yr2  1.42), net     +3 $, 12m   +49 $
+   age 3               :    6 trades, win  67%, PF  3.60 (yr1 30.07 / yr2  0.32), net    +48 $, 12m   -11 $
+   age 4-5             :   11 trades, win  18%, PF  3.21 (yr1  0.00 / yr2  3.93), net   +205 $, 12m  +222 $
+LIMIT + INV-CLOSE                               393   18  1.66  1.24  1.86  1.64  1.44  1.85 |  +1670 +1470  +418   -36 |  -261   -51
+LIMIT + INV-COL                                 394   18  1.57  1.25  1.73  1.55  1.26  1.83 |  +1433 +1225  +403   -39 |  -277   -51
+LIMIT + INV-CLOSE + INV-COL                     382   18  1.59  1.27  1.74  1.56  1.22  1.90 |  +1427 +1210  +418   -29 |  -261   -51
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+CONF M5                                         341   22  1.63  1.21  1.84  1.61  1.33  1.94 |  +1617 +1438  +390   -76 |  -316   -64
+   age 1 (the next day):  315 trades, win  21%, PF  1.60 (yr1  1.22 / yr2  1.80), net  +1383 $, 12m +1207 $
+   age 2               :   14 trades, win  21%, PF  0.92 (yr1  0.00 / yr2  1.16), net    -14 $, 12m   +21 $
+   age 3               :    5 trades, win  80%, PF  2.26 (yr1 51950000000.00 / yr2  0.13), net    +31 $, 12m   -21 $
+   age 4-5             :    7 trades, win  29%, PF  4.51 (yr1  0.00 / yr2  5.74), net   +217 $, 12m  +231 $
+CONF M5 + INV-CLOSE                             325   21  1.65  1.19  1.88  1.63  1.29  2.02 |  +1583 +1425  +389   -52 |  -279   -64
+CONF M5 + INV-COL                               321   21  1.60  1.22  1.80  1.57  1.12  2.09 |  +1406 +1229  +376   -70 |  -317   -64
+CONF M5 + INV-CLOSE + INV-COL                   315   21  1.60  1.22  1.80  1.58  1.10  2.10 |  +1383 +1207  +389   -45 |  -279   -64
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+CONF M15                                        308   24  1.58  1.19  1.77  1.56  1.28  1.89 |  +1471 +1315  +366   -64 |  -313   -64
+   age 1 (the next day):  286 trades, win  23%, PF  1.58 (yr1  1.19 / yr2  1.80), net  +1317 $, 12m +1168 $
+   age 2               :   11 trades, win  27%, PF  0.83 (yr1  0.00 / yr2  0.98), net    -33 $, 12m    -4 $
+   age 3               :    5 trades, win  80%, PF  1.31 (yr1 49740000000.00 / yr2  0.08), net    +12 $, 12m   -37 $
+   age 4-5             :    6 trades, win  17%, PF  4.16 (yr1  0.00 / yr2  5.47), net   +174 $, 12m  +188 $
+CONF M15 + INV-CLOSE                            294   23  1.60  1.17  1.81  1.57  1.25  1.96 |  +1449 +1316  +383   -44 |  -284   -64
+CONF M15 + INV-COL                              291   23  1.58  1.19  1.79  1.56  1.13  2.03 |  +1341 +1186  +374   -76 |  -326   -64
+CONF M15 + INV-CLOSE + INV-COL                  286   23  1.58  1.19  1.80  1.56  1.12  2.04 |  +1317 +1168  +383   -44 |  -284   -64
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+control RANDOM H1 bar, LIMIT (seed 1)           343   34  1.48  1.17  1.65  1.45  1.62  1.38 |  +1512 +1322  +538  +159 |  -277   -51
+control RANDOM H1 bar, CONF M5 (seed 1)         305   37  1.40  1.10  1.57  1.38  1.42  1.38 |  +1205 +1095  +444  +139 |  -338   -50
+control RANDOM H1 bar, LIMIT (seed 2)           338   38  1.60  1.46  1.67  1.56  1.69  1.53 |  +1725 +1283  +176  +111 |  -275   -75
+control RANDOM H1 bar, CONF M5 (seed 2)         291   43  1.67  1.52  1.74  1.62  1.79  1.57 |  +1721 +1269  +110  +147 |  -293   -77
+control RANDOM H1 bar, LIMIT (seed 3)           328   35  1.20  1.62  1.04  1.19  1.15  1.24 |   +637   +95  +211  -229 |  -332   -62
+control RANDOM H1 bar, CONF M5 (seed 3)         273   39  1.30  1.62  1.16  1.27  1.28  1.31 |   +787  +286  +201  -207 |  -320   -71
+
+== base H1 23:00-23:44, valid 3 d
+variant                                      trades win%    PF   yr1   yr2  strs   buy  sell |   net$  12m$   3m$  pr3m |    DD  wDay
+LIMIT (115c rule)                               408   19  1.57  1.27  1.71  1.54  1.28  1.81 |  +1478 +1247  +403   -16 |  -248   -51
+   age 1 (the next day):  382 trades, win  18%, PF  1.59 (yr1  1.27 / yr2  1.74), net  +1427 $, 12m +1210 $
+   age 2               :   20 trades, win  15%, PF  1.02 (yr1  0.00 / yr2  1.42), net     +3 $, 12m   +49 $
+   age 3               :    6 trades, win  67%, PF  3.60 (yr1 30.07 / yr2  0.32), net    +48 $, 12m   -11 $
+LIMIT + INV-CLOSE                               392   18  1.55  1.24  1.70  1.53  1.21  1.85 |  +1403 +1203  +418   -36 |  -261   -51
+LIMIT + INV-COL                                 394   18  1.57  1.25  1.73  1.55  1.26  1.83 |  +1433 +1225  +403   -39 |  -277   -51
+LIMIT + INV-CLOSE + INV-COL                     382   18  1.59  1.27  1.74  1.56  1.22  1.90 |  +1427 +1210  +418   -29 |  -261   -51
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+CONF M5                                         334   22  1.56  1.23  1.72  1.54  1.12  2.03 |  +1399 +1208  +376   -51 |  -291   -64
+   age 1 (the next day):  315 trades, win  21%, PF  1.60 (yr1  1.22 / yr2  1.80), net  +1383 $, 12m +1207 $
+   age 2               :   14 trades, win  21%, PF  0.92 (yr1  0.00 / yr2  1.16), net    -14 $, 12m   +21 $
+   age 3               :    5 trades, win  80%, PF  2.26 (yr1 51950000000.00 / yr2  0.13), net    +31 $, 12m   -21 $
+CONF M5 + INV-CLOSE                             324   21  1.54  1.19  1.71  1.52  1.08  2.02 |  +1317 +1160  +389   -52 |  -279   -64
+CONF M5 + INV-COL                               321   21  1.60  1.22  1.80  1.57  1.12  2.09 |  +1406 +1229  +376   -70 |  -317   -64
+CONF M5 + INV-CLOSE + INV-COL                   315   21  1.60  1.22  1.80  1.58  1.10  2.10 |  +1383 +1207  +389   -45 |  -279   -64
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+CONF M15                                        302   24  1.52  1.21  1.68  1.50  1.10  1.97 |  +1297 +1127  +374   -53 |  -303   -64
+   age 1 (the next day):  286 trades, win  23%, PF  1.58 (yr1  1.19 / yr2  1.80), net  +1317 $, 12m +1168 $
+   age 2               :   11 trades, win  27%, PF  0.83 (yr1  0.00 / yr2  0.98), net    -33 $, 12m    -4 $
+   age 3               :    5 trades, win  80%, PF  1.31 (yr1 49740000000.00 / yr2  0.08), net    +12 $, 12m   -37 $
+CONF M15 + INV-CLOSE                            293   23  1.50  1.17  1.67  1.48  1.07  1.96 |  +1220 +1086  +383   -44 |  -284   -64
+CONF M15 + INV-COL                              291   23  1.58  1.19  1.79  1.56  1.13  2.03 |  +1341 +1186  +374   -76 |  -326   -64
+CONF M15 + INV-CLOSE + INV-COL                  286   23  1.58  1.19  1.80  1.56  1.12  2.04 |  +1317 +1168  +383   -44 |  -284   -64
+/home/runner/work/fizy-bot/fizy-bot/research/base115e.py:106: Pandas4Warning: Timestamp.dayofweek is deprecated and will be removed in a future version. Use Timestamp.day_of_week instead.
+  if dd < start or dd.dayofweek >= 5 or dd not in dd1.index: continue
+control RANDOM H1 bar, LIMIT (seed 1)           313   33  1.42  1.15  1.57  1.41  1.56  1.32 |  +1247 +1089  +434  +145 |  -388   -66
+control RANDOM H1 bar, CONF M5 (seed 1)         281   35  1.33  1.08  1.47  1.33  1.36  1.31 |   +953  +867  +341  +139 |  -510   -75
+control RANDOM H1 bar, LIMIT (seed 2)           303   35  1.36  1.26  1.42  1.35  1.34  1.38 |   +991  +750   +99  +118 |  -377   -64
+control RANDOM H1 bar, CONF M5 (seed 2)         256   41  1.45  1.35  1.51  1.43  1.43  1.47 |  +1084  +805   +47  +171 |  -390   -65
+control RANDOM H1 bar, LIMIT (seed 3)           301   34  1.12  1.68  0.92  1.10  1.16  1.09 |   +357  -182  +107  -246 |  -465   -63
+control RANDOM H1 bar, CONF M5 (seed 3)         249   39  1.22  1.71  1.02  1.20  1.24  1.21 |   +557   +39  +130  -216 |  -342   -71
