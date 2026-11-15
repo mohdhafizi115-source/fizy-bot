@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.31"
+#property version "2.32"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -64,6 +64,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyATB.mqh"                 // gold ATR open-band breakout, day trade (v2.26, round 107)
 #include "FizyCMX.mqh"                 // gold COMEX-open scalp: follow the 08:20 NY bar for 5 min (v2.27, round 108)
 #include "FizyORB.mqh"                 // gold 01:00-04:00 range breakout (GOLD_ORB), SL 0.25 ATR(D1), TP 2R (v2.29, round 112)
+#include "FizyBAS.mqh"                 // gold H1 23:00 base zone with the D1 colour, validated by D1 closes (v2.32, round 115e)
 #include "FizyFLP.mqh"                 // gold M1 stop-and-reverse, $5 stop frozen after +$1, $25 own daily target (v2.30, round 113d)
 #include "FizyCRS.mqh"                 // gold M15 Connors RSI < 10 / > 90 on the EMA 200 side, 120 min (v2.28, round 110)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
@@ -329,6 +330,7 @@ void SweepOff()
    if(!InpCrsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCrsMagic; }
    if(!InpOrbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpOrbMagic; }
    if(!InpFlpOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpFlpMagic; }
+   if(!InpBasOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBasMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }
    if(!InpMefOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMefMagic; }
@@ -421,6 +423,7 @@ void OnTimer()
    CrsOnTimer();
    OrbOnTimer();
    FlpOnTimer();
+   BasOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
    DayPaused();                                                             // daily $ target check (reports once when hit)
