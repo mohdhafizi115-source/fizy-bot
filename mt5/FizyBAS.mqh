@@ -1,6 +1,7 @@
 //+------------------------------------------------------------------+
 //| FizyBAS.mqh - gold H1 BASE ZONE with the D1 colour, day trade,    |
 //| demo only, included by FizyLB.mq5 (v2.32, 15 Nov 2026, rounds     |
+//| v2.33: bases thinner than 0.4 x ATR(H1) are skipped (round 115g). |
 //| 115c-115e; the owner: "no 1", then "macam mana nak validkan dulu  |
 //| pada area base semalam atau kelmarin").                           |
 //| Rules (research/base115c.py, base115e.py "LIMIT + INV-CLOSE"):    |
@@ -37,6 +38,7 @@ input int    InpBasHour     = 23;       // base = this server H1 bar of the day
 input int    InpBasValid    = 5;        // trading days a base stays valid
 input double InpBasBufH     = 0.1;      // SL buffer = spread + this x the base height
 input bool   InpBasInvClose = true;     // cancel a base after a D1 close beyond its far side
+input double InpBasMinAtr   = 0.4;      // v2.33: skip a base thinner than this x ATR(H1) (mean H1 range of the 14 bars up to it), 0 = off
 input int    InpBasStartMin = 90;       // 01:30 server: first minute for a side / touch / entry
 input int    InpBasLastMin  = 1380;     // 23:00 server: no entries after, pending orders deleted
 input int    InpBasEndMin   = 1410;     // 23:30 server: a trade is closed
@@ -47,7 +49,7 @@ struct BasZ
    double   hi, lo;
    int      dir;                        // +1 buy zone (red day), -1 sell zone (green day), 0 none
    int      state;                      // -1 history not ready, 0 gone, 1 waiting for the side, 2 armed
-   int      why;                        // state 0: 1 returned already, 2 cancelled by a D1 close, 3 no base
+   int      why;                        // state 0: 1 returned already, 2 cancelled by a D1 close, 3 no base, 4 too thin
 };
 
 string   bz_sym = "";
@@ -89,6 +91,17 @@ void BasEval(int s, BasZ &z)
    if(hs < 0 || iTime(bz_sym, PERIOD_H1, hs) != ht) return;               // that H1 bar does not exist (short day)
    z.hi = iHigh(bz_sym, PERIOD_H1, hs); z.lo = iLow(bz_sym, PERIOD_H1, hs);
    if(z.hi <= 0 || z.lo <= 0 || z.hi <= z.lo) return;
+   if(InpBasMinAtr > 0)                                                    // v2.33, round 115g: a thin base puts the SL inside the noise
+   {
+      double rs = 0;
+      for(int k = 0; k < 14; k++)
+      {
+         double h = iHigh(bz_sym, PERIOD_H1, hs + k), l = iLow(bz_sym, PERIOD_H1, hs + k);
+         if(h <= 0 || l <= 0) { z.state = -1; return; }
+         rs += h - l;
+      }
+      if(z.hi - z.lo < InpBasMinAtr * rs / 14.0) { z.why = 4; return; }
+   }
    datetime t0 = iTime(bz_sym, PERIOD_D1, s - 1);
    if(t0 == 0) { z.state = -1; return; }
    MqlRates r[];
@@ -198,9 +211,9 @@ void BasInit()
       if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpBasMagic) { int m = ArraySize(bz_known); ArrayResize(bz_known, m + 1); bz_known[m] = t; }
    }
    BasEvent(StringFormat("BASE ONLINE | %s: the %02d:00 server H1 bar of a red day = BUY zone at its high, of a green day = SELL zone at its low; "
-                         "valid %d trading days, first return only, cancelled by a D1 close beyond its far side; SL beyond the base + spread + %.1f x its height, "
+                         "base at least %.1f x ATR(H1) tall, valid %d trading days, first return only, cancelled by a D1 close beyond its far side; SL beyond the base + spread + %.1f x its height, "
                          "no TP, entries 01:30-23:00 server, closed at 23:30 server, lot %.2f | %d open position(s)",
-                         bz_sym, InpBasHour, InpBasValid, InpBasBufH, InpBasLot, ArraySize(bz_known)));
+                         bz_sym, InpBasHour, InpBasMinAtr, InpBasValid, InpBasBufH, InpBasLot, ArraySize(bz_known)));
 }
 
 void BasReportClosed(ulong pos)

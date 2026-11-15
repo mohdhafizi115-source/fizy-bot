@@ -230,7 +230,7 @@ def status_block(kind, text):
                 f"▫️ No TP, stops for the day at +$25 closed profit · Lot {lot} · open {opened}"]
     if kind == "BASE ONLINE":
         return ["📌 H1 BASE ZONE · XAUUSD · day trade",
-                f"▫️ Base = the {myt('23:00', 'Europe/Athens')} MYT H1 candle: red day → BUY at its high, green day → SELL at its low, on the first return within 5 days",
+                f"▫️ Base = the {myt('23:00', 'Europe/Athens')} MYT H1 candle (at least 0.4 x ATR H1 tall): red day → BUY at its high, green day → SELL at its low, on the first return within 5 days",
                 f"▫️ Cancelled by a D1 close beyond the base · SL beyond the base, no TP, close {myt('23:30', 'Europe/Athens')} MYT · Lot {lot} · open {opened}"]
     if kind == "GORB ONLINE":
         return ["⏰ GOLD ORB 01-04 · XAUUSD · day trade",
