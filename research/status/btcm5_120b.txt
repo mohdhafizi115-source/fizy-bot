@@ -1,0 +1,40 @@
+BTCUSD M5 SCALP MODIFIED, choose on 2026-05-17 .. 2026-08-16, check on 2026-08-16 .. 2026-11-15, $ at 0.01 lot
+REAL: 1440 cells with >= 30 trades in both windows; PF >= 1.15 in both: 18 (1.2%); median PF choose / check 0.91 / 0.90; corr(PF choose, PF check) +0.24
+RAND: 1440 cells with >= 30 trades in both windows; PF >= 1.15 in both: 0 (0.0%); median PF choose / check 0.86 / 0.88; corr(PF choose, PF check) -0.08
+
+chosen on the PREVIOUS 3 months only (top 15 by PF there), then their LAST 3 months:
+cell                                                           | prev n    PF   net$ | last n    PF   net$
+H4 20/50 st30 rsiY pbY 07-19 SL1.0ATR 4h                       |    158  1.59    +71 |    178  0.89    -23
+H4 20/50 st30 rsiY pbN 07-19 SL1.0ATR 4h                       |    173  1.54    +70 |    191  0.84    -36
+H1 50/200 st30 rsiY pbY 07-19 SL1.0ATR 4h                      |    154  1.53    +61 |    176  0.92    -15
+H1 50/200 st20 rsiY pbY 07-19 SL1.0ATR 4h                      |     80  1.49    +30 |     83  1.22    +20
+H1 50/200 st30 rsiY pbN 07-19 SL1.0ATR 4h                      |    169  1.48    +60 |    189  0.87    -28
+H4 20/50 st20 rsiY pbY 07-19 SL1.0ATR 4h                       |     80  1.42    +26 |     82  1.22    +21
+H1 50/200 st20 rsiN pbY 07-19 SL1.5ATR 4h                      |    317  1.39   +130 |    298  1.31   +123
+H1 50/200 st20 rsiN pbN 07-19 SL1.5ATR 4h                      |    321  1.36   +124 |    301  1.28   +114
+H1 50/200 st20 rsiY pbN 07-19 SL1.0ATR 4h                      |     87  1.35    +24 |     88  1.11    +11
+H4 20/50 st20 rsiN pbY 07-19 SL1.5ATR 4h                       |    316  1.35   +117 |    295  1.33   +129
+H4 20/50 st30 rsiY pbY 07-19 SL1.0ATR 2h                       |    174  1.33    +39 |    187  0.72    -54
+H1 50/200 st20 rsiY pbY 07-19 SL1.5ATR 4h                      |     79  1.33    +28 |     77  1.11    +13
+H1 50/200 st20 rsiN pbY 07-19 SL1.0ATR 4h                      |    353  1.33    +93 |    336  1.27    +92
+H4 20/50 st30 rsiY pbY 07-19 SL2.0ATR 4h                       |    136  1.33    +55 |    146  1.00     +0
+H4 20/50 st30 rsiY pbN 07-19 SL2.0ATR 4h                       |    146  1.32    +57 |    155  1.01     +2
+
+best by the WORSE of the two windows (top 15):
+H4 20/50 st20 rsiN pbY 07-19 SL1.5ATR 4h                       |    316  1.35   +117 |    295  1.33   +129
+H1 50/200 st20 rsiN pbY 07-19 SL1.5ATR 4h                      |    317  1.39   +130 |    298  1.31   +123
+H4 20/50 st20 rsiN pbN 07-19 SL1.5ATR 4h                       |    321  1.32   +109 |    298  1.30   +121
+H4 20/50 st20 rsiN pbY 07-19 SL1.0ATR 4h                       |    352  1.30    +84 |    331  1.32   +105
+H1 50/200 st20 rsiN pbN 07-19 SL1.5ATR 4h                      |    321  1.36   +124 |    301  1.28   +114
+H4 20/50 st20 rsiN pbN 07-19 SL1.0ATR 4h                       |    358  1.27    +78 |    335  1.28    +96
+H1 50/200 st20 rsiN pbY 07-19 SL1.0ATR 4h                      |    353  1.33    +93 |    336  1.27    +92
+H1 50/200 st20 rsiN pbN 07-19 SL1.0ATR 4h                      |    359  1.31    +88 |    340  1.24    +83
+H4 20/50 st20 rsiN pbY 07-19 SL2.0ATR 4h                       |    297  1.27   +104 |    275  1.23   +103
+H4 20/50 st20 rsiY pbY 07-19 SL1.0ATR 4h                       |     80  1.42    +26 |     82  1.22    +21
+H1 50/200 st20 rsiY pbY 07-19 SL1.0ATR 4h                      |     80  1.49    +30 |     83  1.22    +20
+H4 20/50 st20 rsiY pbY 07-19 SL2.0ATR 4h                       |     76  1.25    +24 |     73  1.21    +28
+H1 50/200 st20 rsiY pbY 07-19 SL2.0ATR 4h                      |     76  1.31    +29 |     74  1.21    +28
+H4 20/50 st20 rsiN pbN 07-19 SL2.0ATR 4h                       |    301  1.25    +97 |    279  1.21    +94
+H1 20/50 st20 rsiN pbY 07-19 SL1.5ATR 4h                       |    328  1.23    +85 |    315  1.20    +84
+
+best cell detail, last 3 months: 295 trades, win 31%, PF 1.33, stress 1.28, net +129, DD -30, worst day -13, buys 1.49 / sells 1.16
