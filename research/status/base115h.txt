@@ -1,0 +1,14 @@
+BASE ZONE, LAST 3 MONTHS 2026-08-14 .. 2026-11-13 (repeat check: 2026-05-15 .. 2026-08-14), $ at 0.01 lot
+
+variant                                |  trd win%    PF  strs   net$    DD  wDay bestD +days -days | prev3m: trd    PF   net$
+base >= 0.0 ATR(H1)  (LIVE now)        |   54   24  2.29  2.26   +502  -166   -21  +172    13    41 |          51  1.02     +8
+base >= 0.3 ATR(H1)                    |   50   26  2.44  2.41   +526  -153   -21  +172    13    37 |          45  1.01     +4
+base >= 0.4 ATR(H1)                    |   40   30  2.76  2.73   +523  -116   -21  +172    12    28 |          29  1.37   +118
+base >= 0.5 ATR(H1)                    |   25   40  3.65  3.61   +522  -100   -21  +172    10    15 |          19  0.60   -100
+only the thin bases (< 0.4 ATR)        |   14    7  0.78  0.76    -21   -63   -11   +72     1    13 |          22  0.21   -110
+control random H1 bar seed 1           |   45   38  2.64  2.62   +721  -119   -67  +147    17    24 |          35  1.28   +104
+control random H1 bar seed 1, >= 0.4   |   45   38  2.64  2.62   +721  -119   -67  +147    17    24 |          33  1.35   +121
+control random H1 bar seed 2           |   44   32  1.69  1.68   +349  -160   -32  +166    12    30 |          36  1.25   +108
+control random H1 bar seed 2, >= 0.4   |   44   32  1.69  1.68   +349  -160   -32  +166    12    30 |          36  1.25   +108
+control random H1 bar seed 3           |   41   41  2.21  2.19   +487  -139   -43  +148    17    23 |          37  2.73   +428
+control random H1 bar seed 3, >= 0.4   |   41   41  2.21  2.19   +487  -139   -43  +148    17    23 |          37  2.73   +428
