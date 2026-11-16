@@ -56,15 +56,15 @@ input bool   InpFlpOco      = true;     // v2.31: start the day with a BUY STOP 
 input double InpFlpOcoDist  = 3.0;      // the pair sits at the 01:30 open +- this ($3 = 30 pips; round 113g plateau $2-5)
 input bool   InpFlpRealTime = true;     // v2.35: trail the stop every second (true) instead of once per closed M1 bar (round 121)
 input double InpFlpStep     = 0.10;     // real-time trailing: move the stop only when it gains at least this much ($0.10 = 1 pip)
-input bool   InpFlpFixTrail = false;     // v2.36 (owner): fixed stop until +lock, then a real-time trail that never freezes (round 121f)
-input double InpFlpSl       = 4.0;      // v2.36: the fixed stop distance from the entry ($4 = 40 pips)
+input bool   InpFlpFixTrail = true;      // v2.36 (owner): fixed stop until +lock, then a real-time trail that never freezes (round 121f)
+input double InpFlpSl       = 5.0;      // v2.36: the fixed stop distance from the entry ($4 = 40 pips)
 input double InpFlpTrail    = 4.0;      // v2.36: the trail distance behind the price once the trade has been +lock
-input double InpFlpBeOffset = 0.10;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
+input double InpFlpBeOffset = 0.50;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
 input double InpFlpStepLock = 0.5;
 input double InpFlpMartStep = 0.0;      // v2.40 (owner): same-way re-entry after a losing stop adds this lot per losing stop in a row today (0 = off)
 input double InpFlpMartMax  = 0.10;     // v2.40: lot cap of that martingale
 int fp_streak = 0;                      // losing closes in a row today (from the deal history)
-// v2.41 (owner, 16 Nov): back to the v2.35 behaviour; the v2.36-v2.40 switches stay as inputs, all off
+// v2.42 (owner, 16 Nov): fixed $5 stop, at +$1 SL to entry + $0.50, then $0.50 steps; always reverse; no martingale
 input bool   InpFlpSameOnLoss = false;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
 double FlpGap() { return InpFlpFixTrail ? InpFlpSl : InpFlpGap; }
@@ -250,7 +250,7 @@ void FlpOnTimer()
       {
          string cm = PositionGetString(POSITION_COMMENT);
          if(StringFind(cm, "FLIP BS") == 0 || StringFind(cm, "FLIP SS") == 0)
-            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + " | first trade of the day",
+            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.50 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + " | first trade of the day",
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", fp_sym,
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY STOP" : "SELL STOP",
                      PriceStr(fp_sym, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(fp_sym, PositionGetDouble(POSITION_SL)), FlpGap(), InpFlpLock));
@@ -421,7 +421,7 @@ void FlpOnTimer()
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP %s failed: %d %s", dir == 1 ? "buy" : "sell", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
    double e = dir == 1 ? tk.ask : tk.bid;
    string prev = any ? StringFormat(" | previous %s stopped, $%.2f%s", ldir == 1 ? "BUY" : "SELL", lastp, dir == ldir ? StringFormat(" (loss %d in a row: same way again, martingale lot)", fp_streak) : "") : " | first trade of the day";
-   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
+   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.50 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
                          dir == 1 ? "BUY" : "SELL", fp_sym, lot, PriceStr(fp_sym, e),
                          PriceStr(fp_sym, dir == 1 ? tk.bid - FlpGap() : tk.ask + FlpGap()), FlpGap(), InpFlpLock, prev, day));
    fp_bar = iTime(fp_sym, PERIOD_M1, 1);
