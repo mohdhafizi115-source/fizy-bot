@@ -1,34 +1,34 @@
-shift ended (UTC): 2026-11-16 13:13
-open
-2026.11.16 15:13:24
+shift ended (UTC): 2026-11-16 19:56
+done
+2026.11.16 21:56:16
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 7217 ms elapsed, cpu='X64 Regular'
-events: London 1 lines, NR7 0, Gotobi 0, gold auction 3
-  LK	0	09:52:19.849	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3849.20 placed, lot 0.01
-  GG	0	10:15:03.905	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 3861.38, SL 3868.96, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_937.png
-  RP	0	10:30:40.122	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION STOP HIT XAUUSD.m | SELL from 3861.38 closed at 3860.65 (stop: the M1 trailing stop after 10:30, or the 2 ATR stop loss), +0.73, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_171.png
-  RQ	0	12:10:52.281	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3865.76 placed, lot 0.01
-  OP	0	12:11:45.144	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC SMC TP HIT BTCUSD.m | SELL from <num>.21 closed at <num>.71 (take profit 3R), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_265.png
-  OG	0	12:45:52.130	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3865.76, stop 3871.02 ($x), SL to entry + $x at +$x then $x steps
-  CR	0	12:53:43.333	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3867.78 placed, lot 0.01
-  DG	0	12:55:04.390	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 72/83 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.90 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_546.png
-  OJ	0	13:00:02.393	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3867.78, stop 3873.04 ($x), SL to entry + $x at +$x then $x steps
-  LQ	0	13:03:24.597	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3870.30 placed, lot 0.01
-  KO	0	13:08:51.381	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3870.30, stop 3875.56 ($x), SL to entry + $x at +$x then $x steps
-  JJ	0	13:11:05.581	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3866.69 placed, lot 0.01
-  w: telegram ok: ERROR
+  Result: 0 errors, 0 warnings, 9016 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 1
+  RG	0	15:56:01.556	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3860.79, stop 3866.05 ($x), SL to entry + $x at +$x then trailing $x behind the price
+  GP	0	15:58:26.737	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3856.68 placed, lot 0.01
+  FP	0	16:04:05.541	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3856.68, stop 3861.94 ($x), SL to entry + $x at +$x then trailing $x behind the price
+  KG	0	16:09:01.701	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3858.83 placed, lot 0.01
+  MM	0	16:11:12.515	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3858.83, stop 3864.09 ($x), SL to entry + $x at +$x then trailing $x behind the price
+  JJ	0	16:26:15.654	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3855.22 placed, lot 0.01
+  LN	0	16:40:03.696	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 72/79 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.17 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_984.png
+  JN	0	17:15:20.683	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SL HIT BTCUSD.m | SELL from <num>.21 closed at <num>.17 (stop loss 1.5 ATR), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_62.png
+  ME	0	17:53:23.591	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3855.22, stop 3860.48 ($x), SL to entry + $x at +$x then trailing $x behind the price
+  PS	0	18:05:44.732	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3845.29 placed, lot 0.01
+  DF	0	18:09:04.547	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP SELL XAUUSD.m | the SELL STOP filled at 3845.29, stop 3850.55 ($x), SL to entry + $x at +$x then trailing $x behind the price
+  GF	0	18:10:23.711	FizyLB (XAUUSD.m,M15)	FLIP EVENT FLIP WAIT XAUUSD.m | reversal blocked by the D1 filter (yesterday green: sells only); SELL STOP 3838.95 placed, lot 0.01
+  w: telegram ok: BTC SMC SL HIT BTCUSD.m
+  w: telegram ok: BTC FOL CLOSED BTCUSD.m
+  w: telegram ok: FLIP SELL XAUUSD.m
   w: telegram ok: FLIP WAIT XAUUSD.m
-  w: telegram ok: AUCTION SELL XAUUSD.m
-  w: telegram ok: AUCTION STOP HIT XAUUSD.m
+  w: telegram ok: FLIP SELL XAUUSD.m
   w: telegram ok: FLIP WAIT XAUUSD.m
-  w: telegram ok: BTC SMC TP HIT BTCUSD.m
   w: telegram ok: FLIP SELL XAUUSD.m
   w: telegram ok: FLIP WAIT XAUUSD.m
   w: telegram ok: BTC STO SELL BTCUSD.m
+  w: telegram ok: BTC STO SL HIT BTCUSD.m
   w: telegram ok: FLIP SELL XAUUSD.m
   w: telegram ok: FLIP WAIT XAUUSD.m
   w: telegram ok: FLIP SELL XAUUSD.m
   w: telegram ok: FLIP WAIT XAUUSD.m
-  w: telegram ok: FLIP SELL XAUUSD.m
-  w: shift end: done=False, state=2026.11.16 15:13:24|0|0
+  w: shift end: done=True, state=2026.11.16 21:56:16|0|0
