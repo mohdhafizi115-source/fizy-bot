@@ -66,6 +66,10 @@ def sim(O, H, L, C, S, live, dayid, usd, D, lk, K, tgt, order_rand, seed, allow,
                         pos = 1; ent = px; stop = px - s - D; locked = False
                     else:
                         pos = 0; oco = True; bs = px - s + K; ss = px - s - K
+                        if mode > 0 and (p > 0 or not onlyprof):          # same-side re-entry level (D1 filter blocks the reversal)
+                            if mode == 1: ss = px - s - K2
+                            elif mode == 2: ss = min(swLo[j], px - s)
+                            elif mode == 4: ss = px - s
                 if pos == 1:
                     pr = b - ent
                     if eng == 0:
@@ -95,6 +99,10 @@ def sim(O, H, L, C, S, live, dayid, usd, D, lk, K, tgt, order_rand, seed, allow,
                         pos = -1; ent = px; stop = px + s + D; locked = False
                     else:
                         pos = 0; oco = True; bs = px + K; ss = px - K
+                        if mode > 0 and (p > 0 or not onlyprof):
+                            if mode == 1: bs = px + K2
+                            elif mode == 2: bs = max(swHi[j], px + s)
+                            elif mode == 4: bs = px + s
                 if pos == -1:
                     pr = ent - (b + s)
                     if eng == 0:
@@ -147,14 +155,21 @@ def main():
     for eng, en in ((0, "TRAIL v2.35"), (1, "LADDER v2.42 (unreliable)")):
         for onlyprof in ((False,) if eng == 0 else (True, False)):
             say(""); say(f"=== {en}, apply after {'a stop in PROFIT' if onlyprof else 'EVERY stop'} ==="); say(hdr)
-            row("MKT reverse (live)", d1rev, eng)
-            if eng == 1 and onlyprof: row("MKT reverse, no D1 filter", ALL, eng)
+            row("LIVE: D1REV, same side $3 away", d1rev, eng)
+            say("-- with D1REV the reversal is blocked: these change the SAME-side re-entry level (live $3) --")
+            row("same side at MARKET", d1rev, eng, 4, 0.0, 30, onlyprof)
+            for k2 in (1.0, 5.0, 8.0):
+                row(f"same side ${k2:g} beyond the exit", d1rev, eng, 1, k2, 30, onlyprof)
+            for nm in (15, 30, 60):
+                row(f"same side beyond the {nm}-min swing", d1rev, eng, 2, 0.0, nm, onlyprof)
+            say("-- WITHOUT the D1 filter: opposite stop at a level instead of a market reversal --")
+            row("no D1, MKT reverse", ALL, eng, 0, 0.0, 30, onlyprof)
             for k2 in (1.0, 3.0, 5.0):
-                row(f"EXIT -+${k2:g} opposite stop", d1rev, eng, 1, k2, 30, onlyprof)
+                row(f"no D1, opposite stop ${k2:g} from exit", ALL, eng, 1, k2, 30, onlyprof)
             for nm in (15, 30, 60):
-                row(f"SWING {nm} min opposite stop", d1rev, eng, 2, 0.0, nm, onlyprof)
+                row(f"no D1, opposite stop at {nm}-min swing", ALL, eng, 2, 0.0, nm, onlyprof)
             for nm in (15, 30, 60):
-                row(f"OCO SWING {nm} min", d1rev, eng, 3, 0.0, nm, onlyprof)
+                row(f"no D1, OCO both swings {nm} min", ALL, eng, 3, 0.0, nm, onlyprof)
 
 
 if __name__ == "__main__":
