@@ -4,8 +4,8 @@
 typedef struct { double D, lock, K, spm, tgt, minstep, be_at, be_off, pyr_at, minbody, maxbody;
                  int timer_ms, maxn, cut_ms, start_ms, end_ms, tstop_min, pyr_max, re_mode, cool_min, d1, flip_dir, big_mode, rnd_pct, seed, big_maxn; double big_D, big_K; } P;
 #define DAYMS 86400000LL
-#define REC(T, PNL, ET, O) { xt[m] = (T); xp[m] = (PNL); xe[m] = (ET); xo[m] = (O); m++; }
-int sim(const int64_t *t, const int32_t *b, const int32_t *a, int64_t n, const P *p, int64_t *xt, double *xp, int64_t *xe, int32_t *xo)
+#define REC(T, PNL, ET, O) { xt[m] = (T); xp[m] = (PNL); xe[m] = (ET); xo[m] = (O); xq[m] = ((O) >= 100 ? ae[(O) - 100] : ent) * s; m++; }
+int sim(const int64_t *t, const int32_t *b, const int32_t *a, int64_t n, const P *p, int64_t *xt, double *xp, int64_t *xe, int32_t *xo, double *xq)
 {
     int big = 0; int m = 0, s = 0, locked = 0, started = 0, done = 0, allow = 0, have_prev = 0, skip = 0, nent = 0, nadd = 0;
     double ent = 0, sl = 0, pb = 0, ps = 0, dpnl = 0, dopen = 0, dclose = 0, dhi = 0, dlo = 0;

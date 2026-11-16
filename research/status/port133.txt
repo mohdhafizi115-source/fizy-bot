@@ -1,0 +1,78 @@
+last 3 months 17 Aug .. 16 Nov | previous 18 May .. 17 Aug; start $100 each window, 0.01 lot; stop-out = equity <= 40% of margin (1:3000)
+modules                            |   trd    net$   minEq  maxDD   wDay STOPOUT | previous 3 months
+ATB                                |    58    +365     -31   -153    -14  27 Aug |    59    +241      22   -212    -16       -
+BAS                                |    39    +532      81   -183    -21       - |    28    +133      65   -142    -38       -
+BTC-FOL                            |    60     +61     100    -17    -10       - |    63     -15      85    -24     -9       -
+BTC-SMC                            |    25     +15      83    -22     -5       - |    19     +47      99    -11     -3       -
+BTC-STO                            |   287    +134      96    -29    -13       - |   308    +123      92    -50    -13       -
+CMX                                |    65     -42      58    -46     -4       - |    65     +34      98    -21     -4       -
+CRS                                |    60     -69     -10   -114    -22  16 Oct |    71     +44      63   -116    -33       -
+FLIP-A                             |   383    +948     100   -116    -47       - |   368    +611      76   -152    -46       -
+FLIP-B                             |   237    +968      98   -123    -43       - |   238    +574      66   -155    -54       -
+FLIP-C                             |   230    +600      52   -143    -46       - |   233    +170      -2   -123    -50  25 May
+FLIP-D                             |   292    +681      48   -146    -49       - |   416    +221      30   -231    -50       -
+GAU                                |    65    +171     100     -9     -7       - |    65     +69      80    -26     -9       -
+KUMO                               |    29    +235      85    -67    -37       - |    39     +87      25   -124    -36       -
+ORB                                |    92    +213      74   -196    -54       - |    85    +627      90   -130    -59       -
+RCS-fx                             |    84     -15      85    -32     -8       - |    26     +14      91     -9     -3       -
+RCS-gold                           |     9    +156     100    -26    -18       - |     9     +17      58    -42    -15       -
+SMC-gold                           |    18    +145      91    -55    -16       - |    21     +62      61    -61    -20       -
+-- groups --
+FLIP 4 lanes                       |  1142   +3196      32   -453   -108       - |  1255   +1576      -0   -574   -166  19 May
+FLIP A only                        |   383    +948     100   -116    -47       - |   368    +611      76   -152    -46       -
+FLIP A+B                           |   620   +1916      99   -237    -72       - |   606   +1185      43   -306    -94       -
+all except FLIP                    |   891   +1901      30   -295   -112       - |   858   +1484      37   -254    -96       -
+all except FLIP + FLIP A           |  1274   +2849      35   -294   -154       - |  1226   +2096      73   -322   -107       -
+all except FLIP + FLIP A+B         |  1511   +3817      39   -386   -175       - |  1464   +2669      43   -453   -146       -
+ALL LIVE (v2.48)                   |  2033   +5098     -17   -513   -194  18 Aug |  2113   +3061     -13   -717   -178  19 May
+all live without CMX, CRS, RCS-fx  |  1824   +5223      17   -515   -175       - |  1951   +2968     -13   -702   -179  19 May
+same + FLIP A only                 |  1065   +2975      66   -286   -135       - |  1064   +2003      73   -292   -109       -
+
+6 months together (18 May - 16 Nov), worst peak-to-trough drop incl. floating (any start date):
+  ATB        n   117 net   +607 maxDD  -234 worst day   -16
+  BAS        n    67 net   +664 maxDD  -183 worst day   -38
+  BTC-FOL    n   123 net    +46 maxDD   -24 worst day   -10
+  BTC-SMC    n    44 net    +63 maxDD   -27 worst day    -5
+  BTC-STO    n   595 net   +257 maxDD   -50 worst day   -13
+  CMX        n   130 net     -8 maxDD   -62 worst day    -4
+  CRS        n   131 net    -25 maxDD  -146 worst day   -33
+  FLIP-A     n   751 net  +1559 maxDD  -152 worst day   -47
+  FLIP-B     n   475 net  +1542 maxDD  -155 worst day   -54
+  FLIP-C     n   463 net   +770 maxDD  -143 worst day   -50
+  FLIP-D     n   708 net   +902 maxDD  -231 worst day   -50
+  GAU        n   130 net   +240 maxDD   -26 worst day    -9
+  KUMO       n    68 net   +322 maxDD  -124 worst day   -37
+  ORB        n   177 net   +841 maxDD  -196 worst day   -59
+  RCS-fx     n   110 net     -0 maxDD   -32 worst day    -8
+  RCS-gold   n    18 net   +173 maxDD   -42 worst day   -18
+  SMC-gold   n    39 net   +207 maxDD   -61 worst day   -20
+
+GREEDY: add the module that adds the most money while the 6-month max drawdown stays above $-60
+  + BTC-STO    ->  1 modules,   595 trades, net   +257, maxDD   -50, worst day   -13
+  + GAU        ->  2 modules,   725 trades, net   +497, maxDD   -25, worst day   -10
+  + SMC-gold   ->  3 modules,   764 trades, net   +704, maxDD   -56, worst day   -22
+  + RCS-fx     ->  4 modules,   874 trades, net   +704, maxDD   -54, worst day   -22
+  + RCS-gold   ->  5 modules,   892 trades, net   +877, maxDD   -54, worst day   -32
+  + BTC-SMC    ->  6 modules,   936 trades, net   +939, maxDD   -59, worst day   -32
+  left out: ['ATB', 'BAS', 'BTC-FOL', 'CMX', 'CRS', 'FLIP-A', 'FLIP-B', 'FLIP-C', 'FLIP-D', 'KUMO', 'ORB']
+
+GREEDY: add the module that adds the most money while the 6-month max drawdown stays above $-80
+  + BTC-STO    ->  1 modules,   595 trades, net   +257, maxDD   -50, worst day   -13
+  + GAU        ->  2 modules,   725 trades, net   +497, maxDD   -25, worst day   -10
+  + SMC-gold   ->  3 modules,   764 trades, net   +704, maxDD   -56, worst day   -22
+  + RCS-gold   ->  4 modules,   782 trades, net   +877, maxDD   -69, worst day   -24
+  + BTC-SMC    ->  5 modules,   826 trades, net   +939, maxDD   -76, worst day   -24
+  + RCS-fx     ->  6 modules,   936 trades, net   +939, maxDD   -59, worst day   -32
+  + BTC-FOL    ->  7 modules,  1059 trades, net   +985, maxDD   -75, worst day   -40
+  left out: ['ATB', 'BAS', 'CMX', 'CRS', 'FLIP-A', 'FLIP-B', 'FLIP-C', 'FLIP-D', 'KUMO', 'ORB']
+
+GREEDY: add the module that adds the most money while the 6-month max drawdown stays above $-100
+  + BTC-STO    ->  1 modules,   595 trades, net   +257, maxDD   -50, worst day   -13
+  + KUMO       ->  2 modules,   663 trades, net   +579, maxDD   -91, worst day   -44
+  + GAU        ->  3 modules,   793 trades, net   +819, maxDD   -98, worst day   -40
+  + RCS-gold   ->  4 modules,   811 trades, net   +992, maxDD   -98, worst day   -40
+  + BTC-SMC    ->  5 modules,   855 trades, net  +1055, maxDD   -98, worst day   -40
+  + CMX        ->  6 modules,   985 trades, net  +1046, maxDD   -96, worst day   -42
+  left out: ['ATB', 'BAS', 'BTC-FOL', 'CRS', 'FLIP-A', 'FLIP-B', 'FLIP-C', 'FLIP-D', 'ORB', 'RCS-fx', 'SMC-gold']
+
+ALL LIVE 6 months: net +8158, maxDD -717, worst day -194
