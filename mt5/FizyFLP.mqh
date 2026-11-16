@@ -56,15 +56,16 @@ input bool   InpFlpOco      = true;     // v2.31: start the day with a BUY STOP 
 input double InpFlpOcoDist  = 3.0;      // the pair sits at the 01:30 open +- this ($3 = 30 pips; round 113g plateau $2-5)
 input bool   InpFlpRealTime = true;     // v2.35: trail the stop every second (true) instead of once per closed M1 bar (round 121)
 input double InpFlpStep     = 0.10;     // real-time trailing: move the stop only when it gains at least this much ($0.10 = 1 pip)
-input bool   InpFlpFixTrail = true;     // v2.36 (owner): fixed stop until +lock, then a real-time trail that never freezes (round 121f)
+input bool   InpFlpFixTrail = false;     // v2.36 (owner): fixed stop until +lock, then a real-time trail that never freezes (round 121f)
 input double InpFlpSl       = 4.0;      // v2.36: the fixed stop distance from the entry ($4 = 40 pips)
 input double InpFlpTrail    = 4.0;      // v2.36: the trail distance behind the price once the trade has been +lock
 input double InpFlpBeOffset = 0.10;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
 input double InpFlpStepLock = 0.5;
-input double InpFlpMartStep = 0.01;     // v2.40 (owner): same-way re-entry after a losing stop adds this lot per losing stop in a row today (0 = off)
+input double InpFlpMartStep = 0.0;      // v2.40 (owner): same-way re-entry after a losing stop adds this lot per losing stop in a row today (0 = off)
 input double InpFlpMartMax  = 0.10;     // v2.40: lot cap of that martingale
 int fp_streak = 0;                      // losing closes in a row today (from the deal history)
-input bool   InpFlpSameOnLoss = true;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
+// v2.41 (owner, 16 Nov): back to the v2.35 behaviour; the v2.36-v2.40 switches stay as inputs, all off
+input bool   InpFlpSameOnLoss = false;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
 double FlpGap() { return InpFlpFixTrail ? InpFlpSl : InpFlpGap; }
 
