@@ -21,14 +21,14 @@ jit = G.jit
 
 
 @jit
-def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed, fz=-999.0, tp=0.0):
+def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed, fz=-999.0, tp=0.0, maxc=0, mloss=0.0):
     n = len(O); xi = np.zeros(4 * n + 10, np.int64); pn = np.zeros(4 * n + 10); m = 0
     np.random.seed(seed)
     pos = 0; ent = 0.0; stop = 0.0; locked = False; dpnl = 0.0; done = False; oco = False; bs = 0.0; ss = 0.0
-    pts = np.zeros(4)
+    pts = np.zeros(4); cons = 0
     for j in range(n):
         if j > 0 and dayid[j] != dayid[j - 1]:
-            dpnl = 0.0; done = False; oco = False
+            dpnl = 0.0; done = False; oco = False; cons = 0
         s = S[j]
         if pos != 0 and (not live[j] or done):
             px = O[j] if pos == 1 else O[j] + s
@@ -56,6 +56,9 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                     px = max(stop, a + s); p = (ent - px) * usd; xi[m] = j; pn[m] = p; m += 1; dpnl += p
                     if dpnl >= tgt:
                         done = True; pos = 0; break
+                    cons = cons + 1 if p < 0 else 0
+                    if (maxc > 0 and cons >= maxc) or (mloss > 0 and dpnl <= -mloss):
+                        done = True; pos = 0; break
                     pos = 1; ent = px; stop = px - s - D; locked = False
                 if pos == 1 and tp > 0 and b - ent >= tp:
                     px = ent + tp; p = tp * usd; xi[m] = j; pn[m] = p; m += 1; dpnl += p
@@ -73,6 +76,9 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                 if pos == 1 and b <= stop:
                     px = min(stop, a); p = (px - ent) * usd; xi[m] = j; pn[m] = p; m += 1; dpnl += p
                     if dpnl >= tgt:
+                        done = True; pos = 0; break
+                    cons = cons + 1 if p < 0 else 0
+                    if (maxc > 0 and cons >= maxc) or (mloss > 0 and dpnl <= -mloss):
                         done = True; pos = 0; break
                     pos = -1; ent = px; stop = px + s + D; locked = False
                 if pos == -1 and tp > 0 and ent - (b + s) >= tp:
