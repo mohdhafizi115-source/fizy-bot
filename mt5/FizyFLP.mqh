@@ -61,6 +61,9 @@ input double InpFlpSl       = 4.0;      // v2.36: the fixed stop distance from t
 input double InpFlpTrail    = 4.0;      // v2.36: the trail distance behind the price once the trade has been +lock
 input double InpFlpBeOffset = 0.10;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
 input double InpFlpStepLock = 0.5;
+input double InpFlpMartStep = 0.01;     // v2.40 (owner): same-way re-entry after a losing stop adds this lot per losing stop in a row today (0 = off)
+input double InpFlpMartMax  = 0.10;     // v2.40: lot cap of that martingale
+int fp_streak = 0;                      // losing closes in a row today (from the deal history)
 input bool   InpFlpSameOnLoss = true;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
 double FlpGap() { return InpFlpFixTrail ? InpFlpSl : InpFlpGap; }
@@ -85,7 +88,7 @@ void FlpEvent(string msg)
 // today's closed P&L of this module; last closing deal's reason and the closed position's direction (+1 buy, -1 sell, 0 none)
 double FlpDay(datetime d0, long &reason, int &dir, double &lastp)
 {
-   reason = -1; dir = 0; lastp = 0;
+   reason = -1; dir = 0; lastp = 0; fp_streak = 0;
    double s = 0; datetime lt = 0;
    if(!HistorySelect(d0, TimeCurrent() + 60)) return 0;
    for(int i = 0; i < HistoryDealsTotal(); i++)
@@ -95,6 +98,7 @@ double FlpDay(datetime d0, long &reason, int &dir, double &lastp)
       double p = HistoryDealGetDouble(d, DEAL_PROFIT) + HistoryDealGetDouble(d, DEAL_SWAP) + HistoryDealGetDouble(d, DEAL_COMMISSION);
       s += p;
       if(HistoryDealGetInteger(d, DEAL_ENTRY) != DEAL_ENTRY_OUT) continue;
+      fp_streak = p < 0 ? fp_streak + 1 : 0;                               // deals come in time order
       datetime t = (datetime)HistoryDealGetInteger(d, DEAL_TIME);
       if(t >= lt)
       {
@@ -405,14 +409,17 @@ void FlpOnTimer()
    if(now - fp_try < 5) return;
    fp_try = now;
    double mn = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_STEP);
-   double lot = NormalizeDouble(MathMax(mn, MathFloor(InpFlpLot / sv + 1e-9) * sv), 2);
+   double want = InpFlpLot;
+   if(any && dir == ldir && lastp < 0 && InpFlpMartStep > 0)               // v2.40: linear martingale on same-way re-entries after losses
+      want = MathMin(InpFlpMartMax, InpFlpLot + InpFlpMartStep * fp_streak);
+   double lot = NormalizeDouble(MathMax(mn, MathFloor(want / sv + 1e-9) * sv), 2);
    trade.SetExpertMagicNumber(InpFlpMagic); trade.SetTypeFillingBySymbol(fp_sym);
    bool ok = dir == 1 ? trade.Buy(lot, fp_sym, 0, NormalizeDouble(tk.bid - FlpGap(), dg), 0, "FLIP B")
                       : trade.Sell(lot, fp_sym, 0, NormalizeDouble(tk.ask + FlpGap(), dg), 0, "FLIP S");
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP %s failed: %d %s", dir == 1 ? "buy" : "sell", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
    double e = dir == 1 ? tk.ask : tk.bid;
-   string prev = any ? StringFormat(" | previous %s stopped, $%.2f%s", ldir == 1 ? "BUY" : "SELL", lastp, dir == ldir ? " (loss: same way again)" : "") : " | first trade of the day";
+   string prev = any ? StringFormat(" | previous %s stopped, $%.2f%s", ldir == 1 ? "BUY" : "SELL", lastp, dir == ldir ? StringFormat(" (loss %d in a row: same way again, martingale lot)", fp_streak) : "") : " | first trade of the day";
    FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
                          dir == 1 ? "BUY" : "SELL", fp_sym, lot, PriceStr(fp_sym, e),
                          PriceStr(fp_sym, dir == 1 ? tk.bid - FlpGap() : tk.ask + FlpGap()), FlpGap(), InpFlpLock, prev, day));
