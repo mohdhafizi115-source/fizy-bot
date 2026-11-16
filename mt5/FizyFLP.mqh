@@ -36,6 +36,8 @@
 //| 1$ ... alih sl ke area profit"): InpFlpStepLock - SL fixed $4     |
 //| until +$1, then to the ENTRY (breakeven), then up $0.50 for every |
 //| further +$0.50 (SL = entry + floor((profit - 1) / 0.5) x 0.5).     |
+//| v2.38 (owner: "at least profit 0.10$"): the first lock is entry +  |
+//| $0.10 (InpFlpBeOffset), so the ladder is entry + 0.10 + k x 0.50.  |
 //| Events go to MQL5\Files\flp_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input bool   InpFlpOn       = true;
@@ -54,6 +56,7 @@ input double InpFlpStep     = 0.10;     // real-time trailing: move the stop onl
 input bool   InpFlpFixTrail = true;     // v2.36 (owner): fixed stop until +lock, then a real-time trail that never freezes (round 121f)
 input double InpFlpSl       = 4.0;      // v2.36: the fixed stop distance from the entry ($4 = 40 pips)
 input double InpFlpTrail    = 4.0;      // v2.36: the trail distance behind the price once the trade has been +lock
+input double InpFlpBeOffset = 0.10;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
 input double InpFlpStepLock = 0.5;      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
 double FlpGap() { return InpFlpFixTrail ? InpFlpSl : InpFlpGap; }
@@ -187,7 +190,7 @@ void FlpInit()
    fp_known = FlpPosition();
    string how = InpFlpFixTrail
       ? (InpFlpStepLock > 0
-         ? StringFormat("stop fixed $%.2f from the entry; at +$%.2f it moves to the entry (breakeven), then up $%.2f for every further +$%.2f", InpFlpSl, InpFlpLock, InpFlpStepLock, InpFlpStepLock)
+         ? StringFormat("stop fixed $%.2f from the entry; at +$%.2f it moves to entry + $%.2f, then up $%.2f for every further +$%.2f", InpFlpSl, InpFlpLock, InpFlpBeOffset, InpFlpStepLock, InpFlpStepLock)
          : StringFormat("stop fixed $%.2f from the entry until the trade is +$%.2f, then it follows the price in real time $%.2f behind (never frozen)", InpFlpSl, InpFlpLock, InpFlpTrail))
       : StringFormat("stop $%.2f behind the price, trailing until the trade is +$%.2f, then frozen", InpFlpGap, InpFlpLock);
    FlpEvent(StringFormat("FLIP ONLINE | %s: always in %02d:%02d-%02d:%02d server, starts the day with %s; %s; when hit it reverses at once; "
@@ -238,7 +241,7 @@ void FlpOnTimer()
       {
          string cm = PositionGetString(POSITION_COMMENT);
          if(StringFind(cm, "FLIP BS") == 0 || StringFind(cm, "FLIP SS") == 0)
-            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "breakeven at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + " | first trade of the day",
+            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + " | first trade of the day",
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", fp_sym,
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY STOP" : "SELL STOP",
                      PriceStr(fp_sym, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(fp_sym, PositionGetDouble(POSITION_SL)), FlpGap(), InpFlpLock));
@@ -262,7 +265,7 @@ void FlpOnTimer()
                // v2.37: breakeven at +lock, then a ladder of InpFlpStepLock steps
                double pr = tk.bid - ent;
                if(pr < InpFlpLock) return;
-               ns = MathMin(MathMax(sl, ent + MathFloor((pr - InpFlpLock) / InpFlpStepLock + 1e-9) * InpFlpStepLock), tk.bid - lvl - pt);
+               ns = MathMin(MathMax(sl, ent + InpFlpBeOffset + MathFloor((pr - InpFlpLock) / InpFlpStepLock + 1e-9) * InpFlpStepLock), tk.bid - lvl - pt);
                if(ns < sl + pt / 2) return;
             }
             else
@@ -279,7 +282,7 @@ void FlpOnTimer()
             {
                double pr = ent - tk.ask;
                if(pr < InpFlpLock) return;
-               ns = ent - MathFloor((pr - InpFlpLock) / InpFlpStepLock + 1e-9) * InpFlpStepLock;
+               ns = ent - InpFlpBeOffset - MathFloor((pr - InpFlpLock) / InpFlpStepLock + 1e-9) * InpFlpStepLock;
                if(sl > 0) ns = MathMin(sl, ns);
                ns = MathMax(ns, tk.ask + lvl + pt);
                if(sl > 0 && ns > sl - pt / 2) return;
@@ -406,7 +409,7 @@ void FlpOnTimer()
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP %s failed: %d %s", dir == 1 ? "buy" : "sell", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
    double e = dir == 1 ? tk.ask : tk.bid;
    string prev = any ? StringFormat(" | previous %s stopped, $%.2f", ldir == 1 ? "BUY" : "SELL", lastp) : " | first trade of the day";
-   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "breakeven at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
+   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
                          dir == 1 ? "BUY" : "SELL", fp_sym, lot, PriceStr(fp_sym, e),
                          PriceStr(fp_sym, dir == 1 ? tk.bid - FlpGap() : tk.ask + FlpGap()), FlpGap(), InpFlpLock, prev, day));
    fp_bar = iTime(fp_sym, PERIOD_M1, 1);
