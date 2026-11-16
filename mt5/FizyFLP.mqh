@@ -66,6 +66,7 @@ input double InpFlpMartMax  = 0.10;     // v2.40: lot cap of that martingale
 int fp_streak = 0;                      // losing closes in a row today (from the deal history)
 // v2.42 (owner, 16 Nov): fixed $5 stop, at +$1 SL to entry + $0.50, then trailing $1 behind the price; always reverse; no martingale
 input double InpFlpSmooth   = 1.0;      // v2.45 (owner, round 128): >0 = after the +lock breakeven the SL follows the price this far behind in real time (never below entry + InpFlpBeOffset); 0 = the $0.50 ladder
+input double InpFlpTight    = 2.0;      // v2.46 (owner, round 129): >0 = real-time TIGHTENING trail from the entry: the SL follows the price at max(InpFlpSmooth, InpFlpSl - this * profit), no breakeven jump (0 = the v2.45 rule)
 input int    InpFlpResetMin = 5;        // v2.44 (owner, round 127): the waiting stop after a blocked reversal is moved to price +- $3 every this many minutes if not filled (0 = off)
 input bool   InpFlpD1Rev    = true;     // v2.43 (owner, round 122): longs only after a red D1 day, shorts only after a green one (doji: both)
 input bool   InpFlpSameOnLoss = false;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
@@ -265,7 +266,8 @@ void FlpInit()
    fp_known = FlpPosition();
    string how = InpFlpFixTrail
       ? (InpFlpStepLock > 0
-         ? (InpFlpSmooth > 0 ? StringFormat("stop fixed $%.2f from the entry; at +$%.2f it moves to entry + $%.2f, then it follows the price in real time $%.2f behind", InpFlpSl, InpFlpLock, InpFlpBeOffset, InpFlpSmooth)
+         ? (InpFlpTight > 0 ? StringFormat("stop $%.2f behind at the entry, following the price in real time and tightening by $%.2f per $1 of profit down to $%.2f behind (no breakeven jump)", InpFlpSl, InpFlpTight, InpFlpSmooth)
+                              : InpFlpSmooth > 0 ? StringFormat("stop fixed $%.2f from the entry; at +$%.2f it moves to entry + $%.2f, then it follows the price in real time $%.2f behind", InpFlpSl, InpFlpLock, InpFlpBeOffset, InpFlpSmooth)
                               : StringFormat("stop fixed $%.2f from the entry; at +$%.2f it moves to entry + $%.2f, then up $%.2f for every further +$%.2f", InpFlpSl, InpFlpLock, InpFlpBeOffset, InpFlpStepLock, InpFlpStepLock))
          : StringFormat("stop fixed $%.2f from the entry until the trade is +$%.2f, then it follows the price in real time $%.2f behind (never frozen)", InpFlpSl, InpFlpLock, InpFlpTrail))
       : StringFormat("stop $%.2f behind the price, trailing until the trade is +$%.2f, then frozen", InpFlpGap, InpFlpLock);
@@ -318,7 +320,7 @@ void FlpOnTimer()
       {
          string cm = PositionGetString(POSITION_COMMENT);
          if(StringFind(cm, "FLIP BS") == 0 || StringFind(cm, "FLIP SS") == 0)
-            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.50 at +$%.0f, then trailing $1 behind the price" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "",
+            FlpEvent(StringFormat("FLIP %s %s | the %s filled at %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "real-time tightening trail: $3 behind at +$%.0f, $1 behind from +$2" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "",
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY" : "SELL", fp_sym,
                      PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY ? "BUY STOP" : "SELL STOP",
                      PriceStr(fp_sym, PositionGetDouble(POSITION_PRICE_OPEN)), PriceStr(fp_sym, PositionGetDouble(POSITION_SL)), FlpGap(), InpFlpLock));
@@ -337,7 +339,14 @@ void FlpOnTimer()
          double ns;
          if(buy)
          {
-            if(InpFlpStepLock > 0)
+            if(InpFlpTight > 0)
+            {
+               // v2.46: $InpFlpSl behind at the entry, tightening by InpFlpTight per $1 of profit down to InpFlpSmooth behind
+               double d = MathMax(InpFlpSmooth, InpFlpSl - InpFlpTight * MathMax(tk.bid - ent, 0.0));
+               ns = MathMin(MathMax(sl, tk.bid - d), tk.bid - lvl - pt);
+               if(ns < sl + InpFlpStep) return;
+            }
+            else if(InpFlpStepLock > 0)
             {
                // v2.37: breakeven at +lock, then a ladder of InpFlpStepLock steps
                double pr = tk.bid - ent;
@@ -357,7 +366,15 @@ void FlpOnTimer()
          }
          else
          {
-            if(InpFlpStepLock > 0)
+            if(InpFlpTight > 0)
+            {
+               double d = MathMax(InpFlpSmooth, InpFlpSl - InpFlpTight * MathMax(ent - tk.ask, 0.0));
+               ns = tk.ask + d;
+               if(sl > 0) ns = MathMin(sl, ns);
+               ns = MathMax(ns, tk.ask + lvl + pt);
+               if(sl > 0 && ns > sl - InpFlpStep) return;
+            }
+            else if(InpFlpStepLock > 0)
             {
                double pr = ent - tk.ask;
                if(pr < InpFlpLock) return;
@@ -510,7 +527,7 @@ void FlpOnTimer()
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP %s failed: %d %s", dir == 1 ? "buy" : "sell", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
    double e = dir == 1 ? tk.ask : tk.bid;
    string prev = any ? StringFormat(" | previous %s stopped, $%.2f%s", ldir == 1 ? "BUY" : "SELL", lastp, dir == ldir ? StringFormat(" (loss %d in a row: same way again, martingale lot)", fp_streak) : "") : " | first trade of the day";
-   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.50 at +$%.0f, then trailing $1 behind the price" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
+   FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "real-time tightening trail: $3 behind at +$%.0f, $1 behind from +$2" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
                          dir == 1 ? "BUY" : "SELL", fp_sym, lot, PriceStr(fp_sym, e),
                          PriceStr(fp_sym, dir == 1 ? tk.bid - FlpGap() : tk.ask + FlpGap()), FlpGap(), InpFlpLock, prev, day));
    fp_bar = iTime(fp_sym, PERIOD_M1, 1);
