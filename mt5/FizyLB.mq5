@@ -19,7 +19,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.47"
+#property version "2.48"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -329,7 +329,7 @@ void SweepOff()
    if(!InpCmxOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCmxMagic; }
    if(!InpCrsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCrsMagic; }
    if(!InpOrbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpOrbMagic; }
-   if(!InpFlpOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpFlpMagic; }
+   if(!InpFlpOn) { int m = ArraySize(off); ArrayResize(off, m + 4); for(int l = 0; l < 4; l++) off[m + l] = FL_MAGIC[l]; }
    if(!InpBasOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBasMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }

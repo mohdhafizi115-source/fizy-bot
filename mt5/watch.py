@@ -226,9 +226,10 @@ def status_block(kind, text):
                 f"▫️ {myt('08:20', 'America/New_York')} MYT (08:20 New York, COMEX gold open): follow the first 1-minute bar",
                 f"▫️ SL 1 ATR(M1), no TP, out after 5 min, one trade a day · Lot {lot} · open {opened}"]
     if kind == "FLIP ONLINE":
-        return ["🔁 GOLD FLIP · XAUUSD · stop and reverse",
-                f"▫️ Always in {myt('01:30', 'Europe/Athens')}-{myt('23:30', 'Europe/Athens')} MYT, starts with a BUY STOP / SELL STOP at the open ±$3; stop $5 from the entry; at +$1 it moves to entry +$0.50, then it trails $1 behind the price; when hit it reverses, but only AGAINST yesterday's D1 colour (red day buys only, green day sells only)",
-                f"▫️ No TP, stops for the day at +$25 closed profit · Lot {lot} · open {opened}"]
+        return ["🔁 GOLD FLIP · XAUUSD · 4 lanes · stop and reverse",
+                f"▫️ Four lanes, each its own trade: A stop $4 / wait $3, B $6 / $5, C $5 / $8 (from {myt('01:30', 'Europe/Athens')} MYT), D $4 / $3 (from {myt('08:00', 'Europe/Athens')} MYT), until {myt('23:30', 'Europe/Athens')} MYT",
+                "▫️ Only AGAINST yesterday's D1 colour (red day buys only, green day sells only); the stop trails until +$1, then it is frozen and the trade rides to the close",
+                f"▫️ No TP, each lane stops for the day at +$25 closed profit · Lot {lot} each · open {opened}"]
     if kind == "BASE ONLINE":
         return ["📌 H1 BASE ZONE · XAUUSD · day trade",
                 f"▫️ Base = the {myt('23:00', 'Europe/Athens')} MYT H1 candle (at least 0.4 x ATR H1 tall): red day → BUY at its high, green day → SELL at its low, on the first return within 5 days",
