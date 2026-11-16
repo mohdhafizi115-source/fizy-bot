@@ -1,0 +1,41 @@
+FLIP: WAIT FOR A LEVEL AFTER A STOP, LAST 3 MONTHS 2026-08-17 .. 2026-11-16 (repeat 2026-05-18 .. 2026-08-17), gap $5, D1REV on, 0.01 lot
+
+=== TRAIL v2.35, apply after EVERY stop ===
+variant                              |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+MKT reverse (live)                   |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+EXIT -+$1 opposite stop              |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+EXIT -+$3 opposite stop              |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+EXIT -+$5 opposite stop              |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+SWING 15 min opposite stop           |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+SWING 30 min opposite stop           |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+SWING 60 min opposite stop           |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+OCO SWING 15 min                     |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+OCO SWING 30 min                     |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+OCO SWING 60 min                     |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+
+=== LADDER v2.42 (unreliable), apply after a stop in PROFIT ===
+variant                              |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+MKT reverse (live)                   |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+MKT reverse, no D1 filter            |  3260   49  1.59  1.53  +1757    +0   +18    0 |    1.76  +1801    +0    +9 |    2.15  2.28
+EXIT -+$1 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+EXIT -+$3 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+EXIT -+$5 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 15 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 30 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 60 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 15 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 30 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 60 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+
+=== LADDER v2.42 (unreliable), apply after EVERY stop ===
+variant                              |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+MKT reverse (live)                   |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+EXIT -+$1 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+EXIT -+$3 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+EXIT -+$5 opposite stop              |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 15 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 30 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+SWING 60 min opposite stop           |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 15 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 30 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+OCO SWING 60 min                     |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
