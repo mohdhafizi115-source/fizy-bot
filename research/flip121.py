@@ -21,7 +21,7 @@ jit = G.jit
 
 
 @jit
-def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed):
+def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed, fz=-999.0):
     n = len(O); xi = np.zeros(4 * n + 10, np.int64); pn = np.zeros(4 * n + 10); m = 0
     np.random.seed(seed)
     pos = 0; ent = 0.0; stop = 0.0; locked = False; dpnl = 0.0; done = False; oco = False; bs = 0.0; ss = 0.0
@@ -59,7 +59,7 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                     pos = 1; ent = px; stop = px - s - D; locked = False
                 if pos == 1 and tick and not locked:
                     if b - ent >= lk:
-                        stop = max(stop, ent + lk - D); locked = True
+                        stop = max(stop, ent + (lk - D if fz < -900 else fz)); locked = True
                     else:
                         stop = max(stop, b - D)
             else:        # falling bid a -> b
@@ -72,7 +72,7 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                     pos = -1; ent = px; stop = px + s + D; locked = False
                 if pos == -1 and tick and not locked:
                     if ent - (b + s) >= lk:
-                        stop = min(stop, ent - lk + D); locked = True
+                        stop = min(stop, ent - (lk - D if fz < -900 else fz)); locked = True
                     else:
                         stop = min(stop, b + s + D)
         if not tick and pos != 0 and not locked:     # live EA: once per closed M1 bar from its high / low
