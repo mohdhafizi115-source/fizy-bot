@@ -227,7 +227,7 @@ def status_block(kind, text):
                 f"▫️ SL 1 ATR(M1), no TP, out after 5 min, one trade a day · Lot {lot} · open {opened}"]
     if kind == "FLIP ONLINE":
         return ["🔁 GOLD FLIP · XAUUSD · stop and reverse",
-                f"▫️ Always in {myt('01:30', 'Europe/Athens')}-{myt('23:30', 'Europe/Athens')} MYT, starts with a BUY STOP / SELL STOP at the open ±$3; stop $5 from the entry; at +$1 it moves to entry +$0.50, then up $0.50 for every further +$0.50; when hit it reverses, but only AGAINST yesterday's D1 colour (red day buys only, green day sells only)",
+                f"▫️ Always in {myt('01:30', 'Europe/Athens')}-{myt('23:30', 'Europe/Athens')} MYT, starts with a BUY STOP / SELL STOP at the open ±$3; stop $5 from the entry; at +$1 it moves to entry +$0.50, then up $0.50 for every further +$0.50; when hit it reverses, but only AGAINST yesterday's D1 colour (red day buys only, green day sells only; the waiting stop is moved to the price every 5 min if not hit)",
                 f"▫️ No TP, stops for the day at +$25 closed profit · Lot {lot} · open {opened}"]
     if kind == "BASE ONLINE":
         return ["📌 H1 BASE ZONE · XAUUSD · day trade",

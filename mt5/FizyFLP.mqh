@@ -65,6 +65,7 @@ input double InpFlpMartStep = 0.0;      // v2.40 (owner): same-way re-entry afte
 input double InpFlpMartMax  = 0.10;     // v2.40: lot cap of that martingale
 int fp_streak = 0;                      // losing closes in a row today (from the deal history)
 // v2.42 (owner, 16 Nov): fixed $5 stop, at +$1 SL to entry + $0.50, then $0.50 steps; always reverse; no martingale
+input int    InpFlpResetMin = 5;        // v2.44 (owner, round 127): the waiting stop after a blocked reversal is moved to price +- $3 every this many minutes if not filled (0 = off)
 input bool   InpFlpD1Rev    = true;     // v2.43 (owner, round 122): longs only after a red D1 day, shorts only after a green one (doji: both)
 input bool   InpFlpSameOnLoss = false;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
@@ -139,6 +140,34 @@ void FlpDeletePending(string why)
    }
 }
 
+// v2.44: delete the waiting FLIP stop(s) quietly (no Telegram event) for the periodic reset; returns the setup time of the newest one
+datetime FlpPendTime()
+{
+   datetime t0 = 0;
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpFlpMagic || OrderGetString(ORDER_SYMBOL) != fp_sym) continue;
+      datetime ts = (datetime)OrderGetInteger(ORDER_TIME_SETUP);
+      if(ts > t0) t0 = ts;
+   }
+   return t0;
+}
+
+bool FlpDeleteQuiet()
+{
+   bool ok = true;
+   trade.SetExpertMagicNumber(InpFlpMagic);
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpFlpMagic || OrderGetString(ORDER_SYMBOL) != fp_sym) continue;
+      if(!trade.OrderDelete(t)) ok = false;
+   }
+   trade.SetExpertMagicNumber(InpMagic);
+   return ok;
+}
+
 // v2.43: allowed direction from yesterday's D1 candle: +1 longs only (red day), -1 shorts only (green day), 0 both
 int FlpAllow()
 {
@@ -149,7 +178,7 @@ int FlpAllow()
 }
 
 // v2.43: a stop was hit and the reversal is not allowed -> wait flat with one stop order $InpFlpOcoDist away on the allowed side
-void FlpRearm(int al, MqlTick &tk, datetime d0)
+void FlpRearm(int al, MqlTick &tk, datetime d0, bool quiet = false)
 {
    int dg = (int)SymbolInfoInteger(fp_sym, SYMBOL_DIGITS);
    double mn = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(fp_sym, SYMBOL_VOLUME_STEP);
@@ -164,6 +193,7 @@ void FlpRearm(int al, MqlTick &tk, datetime d0)
                      : trade.SellStop(lot, lv, fp_sym, NormalizeDouble(lv + spr + FlpGap(), dg), 0, tt, exp, "FLIP SS");
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP re-arm failed: %d %s", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
+   if(quiet) return;
    FlpEvent(StringFormat("FLIP WAIT %s | reversal blocked by the D1 filter (yesterday %s: %s only); %s %s placed, lot %.2f",
                          fp_sym, al == 1 ? "red" : "green", al == 1 ? "buys" : "sells", al == 1 ? "BUY STOP" : "SELL STOP", PriceStr(fp_sym, lv), lot));
 }
@@ -241,7 +271,7 @@ void FlpInit()
                          "%sno TP; closed at 23:30 server; stops for the day at $%.0f closed profit, lot %.2f | %d open position(s)",
                          fp_sym, InpFlpFromMin / 60, InpFlpFromMin % 60, InpFlpEndMin / 60, InpFlpEndMin % 60,
                          InpFlpOco ? StringFormat("a BUY STOP / SELL STOP at the 01:30 open +-$%.0f (first fill wins)", InpFlpOcoDist) : "a market BUY",
-                         how, InpFlpD1Rev ? "only AGAINST yesterday's D1 colour (red day: buys only, green: sells only; a blocked reversal waits flat with a stop $3 away on the allowed side); " : "",
+                         how, InpFlpD1Rev ? "only AGAINST yesterday's D1 colour (red day: buys only, green: sells only; a blocked reversal waits flat with a stop $3 away on the allowed side, moved to the price every 5 min if not hit); " : "",
                          InpFlpTarget, InpFlpLot, fp_known > 0 ? 1 : 0));
 }
 
@@ -447,7 +477,16 @@ void FlpOnTimer()
       int al = FlpAllow();
       if(al != 0 && dir != al)                                               // v2.43: reversal not allowed -> wait for the allowed side
       {
-         if(npend > 0 || now - fp_try < 5) return;
+         if(now - fp_try < 5) return;
+         if(npend > 0)
+         {
+            datetime ps = FlpPendTime();                                     // v2.44: reset an unfilled waiting stop every InpFlpResetMin
+            if(InpFlpResetMin <= 0 || ps == 0 || TimeCurrent() - ps < InpFlpResetMin * 60) return;
+            fp_try = now;
+            if(!FlpDeleteQuiet()) return;
+            Print(StringFormat("FLIP reset: waiting stop older than %d min moved to price +- $%.0f", InpFlpResetMin, InpFlpOcoDist));
+            FlpRearm(al, tk, d0, true); return;
+         }
          fp_try = now; FlpRearm(al, tk, d0); return;
       }
    }
