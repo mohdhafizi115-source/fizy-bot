@@ -1,0 +1,6 @@
+FLIP v2.38 stop, REVERSE vs SAME-WAY RE-ENTRY after a losing stop, LAST 3 MONTHS 2026-08-17 .. 2026-11-16 (repeat 2026-05-18 .. 2026-08-17), 0.01 lot
+rule                                 |   trd /day win%    PF  strs   net$    DD  wDay <-30 | prev PF   net$  wDay | coin PF  prev   net$  wDay
+v2.38 live: always reverse           |  3803   58   80  1.54  1.35  +1732    -2    -2    0 |    1.57  +1810    +6 |    1.56  1.50  +1729    -8
+OWNER: same way after a loss         |  4280   65   80  1.47  1.27  +1735    -7    -7    0 |    1.43  +1753    -5 |    1.58  1.66  +1786   +25
+same way, reverse after 2 losses     |  4046   61   80  1.50  1.33  +1723   -19   -19    0 |    1.40  +1751   -32 |    1.55  1.63  +1758   +25
+same way, reverse after 3 losses     |  4245   64   79  1.47  1.27  +1766    +0   +12    0 |    1.44  +1802   -16 |    1.60  1.62  +1781   +25
