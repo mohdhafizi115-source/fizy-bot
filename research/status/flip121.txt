@@ -1,0 +1,18 @@
+GOLD FLIP, BAR (live) vs TICK trailing, LAST 3 MONTHS 2026-08-17 .. 2026-11-16 (repeat 2026-05-18 .. 2026-08-17), $ at 0.01 lot
+median spread $0.26; $1 = 10 pips
+variant                            |   trd /day win%    PF  strs   net$    DD  wDay  bDay -days | prev trd    PF   net$
+BAR (live) gap$5 OHLC order        |   714   11   13  1.50  1.45  +1079  -157  -105  +157    31 |      960  1.12   +343
+BAR (live) gap$5 coin order        |   754   11   12  1.37  1.34   +867  -158  -126  +157    32 |     1032  0.99    -21
+TICK gap$5 OHLC order              |   595    9   10  1.38  1.34   +836  -205   -82  +151    35 |      628  1.35   +817
+TICK gap$5 coin order              |   631   10   10  1.29  1.24   +686  -247   -82  +151    35 |      704  1.18   +476
+
+BAR (live) gap$4 OHLC order        |  1029   16   11  1.35  1.28   +850  -288  -201  +148    26 |     1076  1.37   +893
+BAR (live) gap$4 coin order        |  1093   17   11  1.23  1.17   +626  -359  -200  +171    29 |     1200  1.14   +416
+TICK gap$4 OHLC order              |   775   12    8  1.36  1.31   +808  -180   -98  +160    36 |      832  1.31   +749
+TICK gap$4 coin order              |   878   13    7  1.18  1.12   +459  -299  -125  +160    37 |     1003  1.06   +172
+
+BAR (live) gap$6 OHLC order        |   633   10   12  1.35  1.35   +842  -263   -91  +148    33 |      705  1.18   +489
+BAR (live) gap$6 coin order        |   649   10   13  1.30  1.30   +758  -283  -101  +167    33 |      735  1.11   +315
+TICK gap$6 OHLC order              |   501    8   12  1.35  1.33   +791  -300   -77  +155    34 |      537  1.29   +701
+TICK gap$6 coin order              |   521    8   12  1.29  1.27   +687  -343   -80  +155    35 |      576  1.19   +493
+
