@@ -38,6 +38,9 @@
 //| further +$0.50 (SL = entry + floor((profit - 1) / 0.5) x 0.5).     |
 //| v2.38 (owner: "at least profit 0.10$"): the first lock is entry +  |
 //| $0.10 (InpFlpBeOffset), so the ladder is entry + 0.10 + k x 0.50.  |
+//| v2.39 (owner: "bila kena sl tanpa profit ... entry yang sama"): a |
+//| stop hit at a loss re-enters the SAME way (InpFlpSameOnLoss); a   |
+//| stop hit in profit (the ladder) still reverses.                   |
 //| Events go to MQL5\Files\flp_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input bool   InpFlpOn       = true;
@@ -57,7 +60,8 @@ input bool   InpFlpFixTrail = true;     // v2.36 (owner): fixed stop until +lock
 input double InpFlpSl       = 4.0;      // v2.36: the fixed stop distance from the entry ($4 = 40 pips)
 input double InpFlpTrail    = 4.0;      // v2.36: the trail distance behind the price once the trade has been +lock
 input double InpFlpBeOffset = 0.10;     // v2.38 (owner): the first lock is entry + this, not the bare entry ($0.10 = 1 pip of profit)
-input double InpFlpStepLock = 0.5;      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
+input double InpFlpStepLock = 0.5;
+input bool   InpFlpSameOnLoss = true;   // v2.39 (owner): a stop hit at a LOSS re-enters the same way; a stop in profit still reverses      // v2.37 (owner): >0 = at +lock the SL goes to the entry, then up this much per further +this (0 = InpFlpTrail)
 
 double FlpGap() { return InpFlpFixTrail ? InpFlpSl : InpFlpGap; }
 
@@ -396,7 +400,7 @@ void FlpOnTimer()
       if(!InpFlpOco) dir = 1;
       else { dir = FlpOco(d0, tk, now); if(dir == 0) return; }
    }
-   else if(reason == DEAL_REASON_SL) dir = -ldir;                           // the stop was hit: reverse
+   else if(reason == DEAL_REASON_SL) dir = (InpFlpSameOnLoss && lastp < 0) ? ldir : -ldir;   // stop hit: same way after a loss (v2.39), else reverse
    else return;                                                             // closed some other way: wait for tomorrow
    if(now - fp_try < 5) return;
    fp_try = now;
@@ -408,7 +412,7 @@ void FlpOnTimer()
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(!ok) { FlpEvent(StringFormat("ERROR | gold FLIP %s failed: %d %s", dir == 1 ? "buy" : "sell", trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
    double e = dir == 1 ? tk.ask : tk.bid;
-   string prev = any ? StringFormat(" | previous %s stopped, $%.2f", ldir == 1 ? "BUY" : "SELL", lastp) : " | first trade of the day";
+   string prev = any ? StringFormat(" | previous %s stopped, $%.2f%s", ldir == 1 ? "BUY" : "SELL", lastp, dir == ldir ? " (loss: same way again)" : "") : " | first trade of the day";
    FlpEvent(StringFormat("FLIP %s %s | %.2f lot at about %s, stop %s ($%.0f), " + (InpFlpFixTrail ? (InpFlpStepLock > 0 ? "SL to entry + $0.10 at +$%.0f, then $0.50 steps" : "trails from +$%.0f, never frozen") : "trails until +$%.0f then frozen") + "%s, today $%.2f",
                          dir == 1 ? "BUY" : "SELL", fp_sym, lot, PriceStr(fp_sym, e),
                          PriceStr(fp_sym, dir == 1 ? tk.bid - FlpGap() : tk.ask + FlpGap()), FlpGap(), InpFlpLock, prev, day));
