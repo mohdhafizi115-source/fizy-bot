@@ -1,4 +1,5 @@
-"""Round 121f (16 Nov 2026): the owner's own FLIP stop.  Owner: "kau buat je trailing real time bila dah profit 1$. untuk sl 4$ tapi
+"""(also used by round 121g)
+Round 121f (16 Nov 2026): the owner's own FLIP stop.  Owner: "kau buat je trailing real time bila dah profit 1$. untuk sl 4$ tapi
 bila dah profit 1$ baru trailing follow".  FIXED stop $D from the entry (no trail) until the trade is +$1, then the stop follows the
 price in real time $T behind it (never frozen); stop hit -> reverse at market; OCO +-$3 at 01:30, $25 target, out 23:30.
 D 4 / 5 x T 1 / 2 / 3 / 4 / 5 against the live v2.35 rule.  Path engine of round 121, last 3 months and the 3 before, OHLC and coin
@@ -14,7 +15,7 @@ jit = F.jit
 
 
 @jit
-def sim(O, H, L, C, S, live, first, dayid, usd, D, T, lk, K, tgt, order_rand, seed):
+def sim(O, H, L, C, S, live, first, dayid, usd, D, T, lk, K, tgt, order_rand, seed, step=0.0):
     n = len(O); xi = np.zeros(4 * n + 10, np.int64); pn = np.zeros(4 * n + 10); m = 0
     np.random.seed(seed)
     pos = 0; ent = 0.0; stop = 0.0; act = False; dpnl = 0.0; done = False; oco = False; bs = 0.0; ss = 0.0
@@ -52,7 +53,9 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, T, lk, K, tgt, order_rand, se
                     pos = 1; ent = px; stop = px - s - D; act = False
                 if pos == 1:
                     if not act and b - ent >= lk: act = True
-                    if act: stop = max(stop, b - T)
+                    if act:
+                        if step > 0: stop = max(stop, ent + np.floor((b - ent - lk) / step + 1e-9) * step)
+                        else: stop = max(stop, b - T)
             else:
                 if pos == 0 and oco and b <= ss:
                     pos = -1; ent = min(ss, a); stop = ss + D; act = False; oco = False
@@ -63,7 +66,9 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, T, lk, K, tgt, order_rand, se
                     pos = -1; ent = px; stop = px + s + D; act = False
                 if pos == -1:
                     if not act and ent - (b + s) >= lk: act = True
-                    if act: stop = min(stop, b + s + T)
+                    if act:
+                        if step > 0: stop = min(stop, ent - np.floor((ent - (b + s) - lk) / step + 1e-9) * step)
+                        else: stop = min(stop, b + s + T)
     return xi[:m], pn[:m]
 
 
