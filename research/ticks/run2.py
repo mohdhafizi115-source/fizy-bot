@@ -1,15 +1,15 @@
 import ctypes, numpy as np, pandas as pd, sys
 DF = ("D", "lock", "K", "spm", "tgt", "minstep", "be_at", "be_off", "pyr_at", "minbody", "maxbody")
-IF = ("timer_ms", "maxn", "cut_ms", "start_ms", "end_ms", "tstop_min", "pyr_max", "re_mode", "cool_min", "d1", "flip_dir", "big_mode", "rnd_pct", "seed")
+IF = ("timer_ms", "maxn", "cut_ms", "start_ms", "end_ms", "tstop_min", "pyr_max", "re_mode", "cool_min", "d1", "flip_dir", "big_mode", "rnd_pct", "seed", "big_maxn")
 class P(ctypes.Structure):
-    _fields_ = [(k, ctypes.c_double) for k in DF] + [(k, ctypes.c_int) for k in IF]
+    _fields_ = [(k, ctypes.c_double) for k in DF] + [(k, ctypes.c_int) for k in IF] + [(k, ctypes.c_double) for k in ("big_D", "big_K")]
 lib = ctypes.CDLL("./ticksim2.so")
 z = np.load("xau.npz"); t = np.ascontiguousarray(z["t"]); b = np.ascontiguousarray(z["b"]); a = np.ascontiguousarray(z["a"]); n = len(t)
 N = 2_000_000; xt = np.zeros(N, np.int64); xp = np.zeros(N); xe = np.zeros(N, np.int64); xo = np.zeros(N, np.int32)
 lib.sim.restype = ctypes.c_int
 H = 3600000
 BASE = dict(D=4, lock=1, K=3, spm=1.0, tgt=25, minstep=0.10, be_at=0, be_off=0.5, pyr_at=0, minbody=0, maxbody=0, timer_ms=1000, maxn=0,
-            cut_ms=0, start_ms=int(1.5 * H), end_ms=int(23.5 * H), tstop_min=0, pyr_max=0, re_mode=0, cool_min=0, d1=1, flip_dir=0, big_mode=0, rnd_pct=0, seed=0)
+            cut_ms=0, start_ms=int(1.5 * H), end_ms=int(23.5 * H), tstop_min=0, pyr_max=0, re_mode=0, cool_min=0, d1=1, flip_dir=0, big_mode=0, rnd_pct=0, seed=0, big_maxn=0, big_D=4, big_K=3)
 def run(**kw):
     d = dict(BASE); d.update(kw); p = P(**d); v = ctypes.c_void_p
     m = lib.sim(t.ctypes.data_as(v), b.ctypes.data_as(v), a.ctypes.data_as(v), ctypes.c_int64(n), ctypes.byref(p),
