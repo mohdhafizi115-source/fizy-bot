@@ -21,7 +21,7 @@ jit = G.jit
 
 
 @jit
-def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed, fz=-999.0):
+def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand, seed, fz=-999.0, tp=0.0):
     n = len(O); xi = np.zeros(4 * n + 10, np.int64); pn = np.zeros(4 * n + 10); m = 0
     np.random.seed(seed)
     pos = 0; ent = 0.0; stop = 0.0; locked = False; dpnl = 0.0; done = False; oco = False; bs = 0.0; ss = 0.0
@@ -57,6 +57,11 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                     if dpnl >= tgt:
                         done = True; pos = 0; break
                     pos = 1; ent = px; stop = px - s - D; locked = False
+                if pos == 1 and tp > 0 and b - ent >= tp:
+                    px = ent + tp; p = tp * usd; xi[m] = j; pn[m] = p; m += 1; dpnl += p
+                    if dpnl >= tgt:
+                        done = True; pos = 0; break
+                    ent = px + s; stop = px - D; locked = False
                 if pos == 1 and tick and not locked:
                     if b - ent >= lk:
                         stop = max(stop, ent + (lk - D if fz < -900 else fz)); locked = True
@@ -70,6 +75,11 @@ def sim(O, H, L, C, S, live, first, dayid, usd, D, lk, K, tgt, tick, order_rand,
                     if dpnl >= tgt:
                         done = True; pos = 0; break
                     pos = -1; ent = px; stop = px + s + D; locked = False
+                if pos == -1 and tp > 0 and ent - (b + s) >= tp:
+                    px = ent - tp; p = tp * usd; xi[m] = j; pn[m] = p; m += 1; dpnl += p
+                    if dpnl >= tgt:
+                        done = True; pos = 0; break
+                    ent = px - s; stop = px + D; locked = False
                 if pos == -1 and tick and not locked:
                     if ent - (b + s) >= lk:
                         stop = min(stop, ent - (lk - D if fz < -900 else fz)); locked = True
