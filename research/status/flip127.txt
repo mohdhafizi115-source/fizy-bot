@@ -1,0 +1,31 @@
+FLIP v2.43: RESET THE WAITING STOP EVERY R MINUTES, LAST 3 MONTHS 2026-08-17 .. 2026-11-16 (repeat 2026-05-18 .. 2026-08-17), D1 filter on, 0.01 lot
+
+=== TRAIL v2.35 (trustworthy), reset after EVERY stop ===
+variant                                |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+LIVE: stop $3 beyond the exit, no reset |   339    5  1.83  1.82  +1028  -116   -86    7 |    1.51   +648  -102   -54 |    1.66  1.30
+reset every 1 min                      |   461    7  1.71  1.69  +1197  -136   -97   11 |    1.32   +669  -221   -83 |    1.52  1.15
+reset every 2 min                      |   492    7  1.63  1.59  +1137  -172   -75   13 |    1.31   +659  -238   -77 |    1.41  1.11
+reset every 5 min                      |   529    8  1.51  1.47   +994  -230  -117   13 |    1.31   +665  -258   -84 |    1.31  1.15
+reset every 10 min                     |   497    8  1.60  1.57  +1092  -171   -84   11 |    1.28   +602  -266   -81 |    1.39  1.16
+reset every 15 min                     |   522    8  1.50  1.47   +973  -277   -98   12 |    1.36   +726  -161   -71 |    1.34  1.15
+reset every 30 min                     |   473    7  1.63  1.59  +1102  -209   -93    9 |    1.35   +684  -252   -68 |    1.42  1.15
+
+=== LADDER v2.42 = live stop (UNRELIABLE), reset after a close in PROFIT ===
+variant                                |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+LIVE: stop $3 beyond the exit, no reset |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+reset every 1 min                      |  1243   19  1.89  1.73  +1012   -50   -22    0 |    1.64  +1059   -46   -46 |    1.55  1.42
+reset every 2 min                      |  1568   24  1.61  1.52   +938   -60   -30    0 |    1.53   +959   -26   -18 |    1.41  1.36
+reset every 5 min                      |  1505   23  1.55  1.40   +820   -89   -43    1 |    1.61   +929   -28   -28 |    1.39  1.35
+reset every 10 min                     |  1665   25  1.53  1.42   +880   -33   -25    0 |    1.67  +1055   -21   -16 |    1.47  1.33
+reset every 15 min                     |  1637   25  1.58  1.45   +924   -52   -41    1 |    1.70  +1080   -23   -23 |    1.37  1.42
+reset every 30 min                     |  1725   26  1.50  1.41   +894   -52   -25    0 |    1.60   +913   -20   -17 |    1.32  1.44
+
+=== LADDER v2.42 = live stop (UNRELIABLE), reset after EVERY stop ===
+variant                                |   trd /day    PF  strs   net$    DD  wDay <-30 | prev PF   net$    DD  wDay | coin PF  prev
+LIVE: stop $3 beyond the exit, no reset |   728   11  1.89  1.83   +627   -56   -33    1 |    1.88   +646   -27   -27 |    1.88  1.60
+reset every 1 min                      |  1723   26  1.82  1.72  +1319   -27   -17    0 |    1.66  +1300   -22   -22 |    1.57  1.47
+reset every 2 min                      |  2069   31  1.58  1.47  +1204   -53   -38    1 |    1.59  +1334   -22   -22 |    1.37  1.31
+reset every 5 min                      |  2326   35  1.50  1.31  +1140   -50   -43    2 |    1.50  +1268   -37   -30 |    1.31  1.25
+reset every 10 min                     |  2307   35  1.49  1.30  +1124   -43   -43    2 |    1.46  +1149   -97   -55 |    1.27  1.22
+reset every 15 min                     |  2270   34  1.47  1.36  +1074   -44   -44    1 |    1.50  +1218   -39   -35 |    1.21  1.31
+reset every 30 min                     |  1943   29  1.55  1.33  +1050   -37   -37    1 |    1.49  +1066   -31   -28 |    1.39  1.36
