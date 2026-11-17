@@ -45,7 +45,7 @@
 //| (magics 260332 / 260335 / 260336 / 260337), frozen stop, see below. |
 //| Events go to MQL5\Files\flp_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpFlpOn       = true;
+input bool   InpFlpOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpFlpSymbol   = "XAUUSD";
 input double InpFlpLot      = 0.01;
 input long   InpFlpMagic    = 260332;

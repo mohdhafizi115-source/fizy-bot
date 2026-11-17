@@ -19,7 +19,7 @@
 //| with FizyATB 0.52 (both trade most days).                         |
 //| Events go to MQL5\Files\orb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpOrbOn       = true;
+input bool   InpOrbOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpOrbSymbol   = "XAUUSD";
 input double InpOrbLot      = 0.01;
 input long   InpOrbMagic    = 260331;

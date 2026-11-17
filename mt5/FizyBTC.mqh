@@ -26,7 +26,7 @@
 //|      07-19 server every day, SL 1.5 ATR(M5), no TP, out after 4 h;  |
 //|      last 3 months 295 trades PF 1.33 +$129, the 3 before PF 1.35.  |
 //+------------------------------------------------------------------+
-input bool   InpBflOn      = true;
+input bool   InpBflOn      = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input double InpBflLot     = 0.01;
 input long   InpBflMagic   = 260326;
 input double InpBflK       = 2.5;     // body >= this x ATR(14, M5)

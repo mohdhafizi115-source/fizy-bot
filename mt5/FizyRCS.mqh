@@ -41,6 +41,7 @@ input double InpRcsSprAtr  = 0.20;    // cost gate: spread <= this x ATR(14, M15
 input double InpRcsSlAtr   = 2.0;     // SL this many ATR(14, M15) from the entry (v2.21); 0 = beyond the swing below
 input int    InpRcsSwing   = 12;      // (InpRcsSlAtr = 0 only) SL beyond the lowest low / highest high of this many M15 candles
 input int    InpRcsHoldH   = 8;       // close at market after this many hours
+input bool   InpRcsGoldOnly = true;   // v2.49 (17 Nov, round 140): NEW entries on XAUUSD only; open forex positions keep their exits
 
 string   rc_sym[];
 datetime rc_bar[];
@@ -106,10 +107,10 @@ void RcsInit()
       ulong t = PositionGetTicket(i);
       if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpRcsMagic) { RcsRemember(t); open++; }
    }
-   RcsEvent(StringFormat("RCS ONLINE | M15 reversal CSAK on %d symbols (forex + XAUUSD): a CSAK after an M15 Extreme the other way in "
+   RcsEvent(StringFormat("RCS ONLINE | M15 reversal CSAK on %d symbols (%s): a CSAK after an M15 Extreme the other way in "
                          "the last %d candles, with the last H4 close in the opposite half of its band (<= -%.1f), spread <= %.2f ATR; "
                          "SL %s, no TP, out after %d h, lot %.2f%s | %d open position(s)",
-                         ArraySize(rc_sym), InpRcsExtLb, InpRcsH4Pos, InpRcsSprAtr, RcsSlText(), InpRcsHoldH, InpRcsLot,
+                         ArraySize(rc_sym), InpRcsGoldOnly ? "new entries on XAUUSD only, forex only closes open trades" : "forex + XAUUSD", InpRcsExtLb, InpRcsH4Pos, InpRcsSprAtr, RcsSlText(), InpRcsHoldH, InpRcsLot,
                          missing == "" ? "" : " | not at this broker: " + missing, open));
 }
 
@@ -173,6 +174,7 @@ void RcsSymbol(int si, datetime now)
    if(nh < 25) return;
    rc_bar[si] = b0;
    if(inPos) return;
+   if(InpRcsGoldOnly && StringFind(sym, "XAU") != 0) return;                     // v2.49: forex pairs only manage open positions
    MqlDateTime st; TimeToStruct(r[j].time, st);
    int hm = st.hour * 60 + st.min;
    if(st.day_of_week == 0 || st.day_of_week == 6 || hm < 90 || hm >= 1320) return;

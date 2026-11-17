@@ -17,7 +17,7 @@
 //| loses (PF 0.84): live on the owner's order to judge it himself.   |
 //| Events go to MQL5\Files\crs_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpCrsOn       = true;
+input bool   InpCrsOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpCrsSymbol   = "XAUUSD";
 input double InpCrsLot      = 0.01;
 input long   InpCrsMagic    = 260330;

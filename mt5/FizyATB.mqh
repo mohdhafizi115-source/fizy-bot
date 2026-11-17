@@ -17,7 +17,7 @@
 //| 0.6 all PF 1.27-1.41 (a plateau).                                 |
 //| Events go to MQL5\Files\atb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpAtbOn       = true;
+input bool   InpAtbOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpAtbSymbol   = "XAUUSD";
 input double InpAtbLot      = 0.01;
 input long   InpAtbMagic    = 260328;

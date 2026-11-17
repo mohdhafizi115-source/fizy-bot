@@ -30,7 +30,7 @@
 //| colour (a plain 01:30 market order against it scores PF 1.59).    |
 //| Events go to MQL5\Files\bas_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpBasOn       = true;
+input bool   InpBasOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpBasSymbol   = "XAUUSD";
 input double InpBasLot      = 0.01;
 input long   InpBasMagic    = 260333;

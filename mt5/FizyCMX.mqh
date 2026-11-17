@@ -15,7 +15,7 @@
 //| 0.83, only 08:20 >= 1.15 (an event, not NY-morning momentum).     |
 //| Events go to MQL5\Files\cmx_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpCmxOn       = true;
+input bool   InpCmxOn       = false;   // OFF since 17 Nov (v2.49, owner after round 140/141: the $100 no-stop-out set)
 input string InpCmxSymbol   = "XAUUSD";
 input double InpCmxLot      = 0.01;
 input long   InpCmxMagic    = 260329;
