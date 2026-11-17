@@ -1,0 +1,138 @@
+4 lanes plain                                last3 days 66 +36% PFd 2.47 net +3154 worst -108 DD -301 months+ 3/4
+4 lanes plain                                prev3 days 65 +40% PFd 1.62 net +1387 worst -266 DD -328 months+ 3/4
+4 lanes target 10                            last3 days 66 +83% PFd 1.58 net +300 worst -90 DD -91 months+ 3/4
+4 lanes target 10                            prev3 days 65 +85% PFd 2.10 net +367 worst -74 DD -123 months+ 3/4
+4 lanes target 15                            last3 days 66 +77% PFd 1.24 net +191 worst -102 DD -148 months+ 2/4
+4 lanes target 15                            prev3 days 65 +80% PFd 1.55 net +361 worst -266 DD -266 months+ 3/4
+4 lanes target 25                            last3 days 66 +74% PFd 1.68 net +579 worst -102 DD -190 months+ 4/4
+4 lanes target 25                            prev3 days 65 +75% PFd 1.71 net +625 worst -266 DD -370 months+ 3/4
+4 lanes target 40                            last3 days 66 +70% PFd 2.19 net +1119 worst -102 DD -191 months+ 4/4
+4 lanes target 40                            prev3 days 65 +63% PFd 1.39 net +530 worst -266 DD -331 months+ 3/4
+4 lanes target 60                            last3 days 66 +59% PFd 1.88 net +1185 worst -102 DD -311 months+ 3/4
+4 lanes target 60                            prev3 days 65 +58% PFd 1.62 net +921 worst -266 DD -286 months+ 3/4
+4 lanes losscap 10                           last3 days 66 +6% PFd 1.86 net +649 worst -23 DD -372 months+ 3/4
+4 lanes losscap 10                           prev3 days 65 +6% PFd 0.78 net -157 worst -24 DD -358 months+ 2/4
+4 lanes losscap 20                           last3 days 66 +14% PFd 2.01 net +1226 worst -57 DD -354 months+ 4/4
+4 lanes losscap 20                           prev3 days 65 +15% PFd 1.38 net +448 worst -27 DD -426 months+ 3/4
+4 lanes losscap 30                           last3 days 66 +21% PFd 2.24 net +1929 worst -57 DD -269 months+ 4/4
+4 lanes losscap 30                           prev3 days 65 +20% PFd 1.18 net +288 worst -43 DD -375 months+ 3/4
+4 lanes losscap 50                           last3 days 66 +24% PFd 1.64 net +1402 worst -62 DD -320 months+ 3/4
+4 lanes losscap 50                           prev3 days 65 +26% PFd 1.11 net +240 worst -76 DD -631 months+ 2/4
+4 lanes target 25 cap 20                     last3 days 66 +50% PFd 1.33 net +225 worst -27 DD -157 months+ 3/4
+4 lanes target 25 cap 20                     prev3 days 65 +40% PFd 0.91 net -72 worst -27 DD -235 months+ 1/4
+4 lanes target 40 cap 30                     last3 days 66 +50% PFd 1.51 net +487 worst -39 DD -123 months+ 4/4
+4 lanes target 40 cap 30                     prev3 days 65 +42% PFd 1.04 net +49 worst -39 DD -364 months+ 2/4
+4 lanes target 60 cap 30                     last3 days 66 +41% PFd 1.56 net +631 worst -39 DD -150 months+ 4/4
+4 lanes target 60 cap 30                     prev3 days 65 +35% PFd 1.12 net +155 worst -39 DD -279 months+ 1/4
+4 lanes target 25 cap 10                     last3 days 66 +35% PFd 1.27 net +136 worst -20 DD -105 months+ 2/4
+4 lanes target 25 cap 10                     prev3 days 65 +25% PFd 0.82 net -103 worst -24 DD -229 months+ 2/4
+4 lanes trail arm 10 lock 2 give 10          last3 days 66 +76% PFd 1.92 net +488 worst -90 DD -90 months+ 3/4
+4 lanes trail arm 10 lock 2 give 10          prev3 days 65 +75% PFd 2.14 net +403 worst -74 DD -179 months+ 3/4
+4 lanes trail arm 15 lock 5 give 10          last3 days 66 +77% PFd 1.65 net +517 worst -102 DD -157 months+ 3/4
+4 lanes trail arm 15 lock 5 give 10          prev3 days 65 +74% PFd 1.51 net +341 worst -266 DD -266 months+ 2/4
+4 lanes trail arm 20 lock 5 give 15          last3 days 66 +76% PFd 1.60 net +474 worst -102 DD -164 months+ 3/4
+4 lanes trail arm 20 lock 5 give 15          prev3 days 65 +80% PFd 1.96 net +637 worst -266 DD -266 months+ 2/4
+4 lanes trail arm 30 lock 10 give 20         last3 days 66 +71% PFd 1.79 net +679 worst -102 DD -223 months+ 4/4
+4 lanes trail arm 30 lock 10 give 20         prev3 days 65 +72% PFd 1.50 net +495 worst -266 DD -410 months+ 2/4
+4 lanes trail arm 10 lock 0 give 5           last3 days 66 +79% PFd 1.50 net +265 worst -90 DD -108 months+ 3/4
+4 lanes trail arm 10 lock 0 give 5           prev3 days 65 +82% PFd 1.96 net +332 worst -74 DD -155 months+ 3/4
+4 lanes trail arm 50 lock 20 give 25         last3 days 66 +62% PFd 1.66 net +859 worst -102 DD -317 months+ 3/4
+4 lanes trail arm 50 lock 20 give 25         prev3 days 65 +62% PFd 1.31 net +418 worst -266 DD -329 months+ 2/4
+4 lanes trail 15/5/10 cap 30                 last3 days 66 +64% PFd 1.42 net +304 worst -39 DD -150 months+ 3/4
+4 lanes trail 15/5/10 cap 30                 prev3 days 65 +57% PFd 1.01 net +8 worst -39 DD -317 months+ 3/4
+4 lanes trail 20/5/15 cap 30                 last3 days 66 +62% PFd 1.32 net +237 worst -39 DD -141 months+ 3/4
+4 lanes trail 20/5/15 cap 30                 prev3 days 65 +58% PFd 1.13 net +105 worst -39 DD -319 months+ 3/4
+4 lanes trail 30/10/20 cap 40                last3 days 66 +58% PFd 1.10 net +105 worst -48 DD -193 months+ 2/4
+4 lanes trail 30/10/20 cap 40                prev3 days 65 +55% PFd 1.09 net +90 worst -47 DD -466 months+ 3/4
+A plain                                      last3 days 66 +41% PFd 2.39 net +942 worst -47 DD -91 months+ 4/4
+A plain                                      prev3 days 65 +43% PFd 1.86 net +541 worst -84 DD -108 months+ 4/4
+A target 10                                  last3 days 66 +73% PFd 1.68 net +215 worst -47 DD -89 months+ 4/4
+A target 10                                  prev3 days 65 +74% PFd 2.51 net +347 worst -84 DD -84 months+ 3/4
+A target 15                                  last3 days 66 +68% PFd 1.95 net +353 worst -47 DD -69 months+ 4/4
+A target 15                                  prev3 days 65 +65% PFd 2.28 net +419 worst -84 DD -84 months+ 4/4
+A target 25                                  last3 days 66 +55% PFd 1.66 net +357 worst -47 DD -148 months+ 3/4
+A target 25                                  prev3 days 65 +54% PFd 1.88 net +418 worst -84 DD -97 months+ 3/4
+A target 40                                  last3 days 66 +48% PFd 1.88 net +531 worst -47 DD -120 months+ 3/4
+A target 40                                  prev3 days 65 +45% PFd 1.66 net +400 worst -84 DD -84 months+ 3/4
+A target 60                                  last3 days 66 +41% PFd 1.81 net +547 worst -47 DD -93 months+ 3/4
+A target 60                                  prev3 days 65 +43% PFd 1.93 net +580 worst -84 DD -84 months+ 4/4
+A losscap 10                                 last3 days 66 +24% PFd 2.14 net +574 worst -19 DD -73 months+ 4/4
+A losscap 10                                 prev3 days 65 +15% PFd 0.94 net -31 worst -21 DD -258 months+ 2/4
+A losscap 20                                 last3 days 66 +32% PFd 1.62 net +464 worst -24 DD -110 months+ 4/4
+A losscap 20                                 prev3 days 65 +29% PFd 1.23 net +164 worst -32 DD -270 months+ 2/4
+A losscap 30                                 last3 days 66 +39% PFd 1.95 net +737 worst -50 DD -93 months+ 4/4
+A losscap 30                                 prev3 days 65 +38% PFd 1.58 net +406 worst -35 DD -143 months+ 3/4
+A losscap 50                                 last3 days 66 +41% PFd 2.20 net +885 worst -51 DD -107 months+ 4/4
+A losscap 50                                 prev3 days 65 +43% PFd 1.81 net +524 worst -52 DD -108 months+ 4/4
+A target 25 cap 20                           last3 days 66 +44% PFd 1.14 net +87 worst -24 DD -111 months+ 2/4
+A target 25 cap 20                           prev3 days 65 +38% PFd 1.04 net +24 worst -32 DD -193 months+ 1/4
+A target 40 cap 30                           last3 days 66 +45% PFd 1.49 net +345 worst -50 DD -155 months+ 3/4
+A target 40 cap 30                           prev3 days 65 +40% PFd 1.36 net +251 worst -35 DD -108 months+ 2/4
+A target 60 cap 30                           last3 days 66 +39% PFd 1.49 net +383 worst -50 DD -111 months+ 3/4
+A target 60 cap 30                           prev3 days 65 +38% PFd 1.59 net +419 worst -35 DD -96 months+ 3/4
+A target 25 cap 10                           last3 days 66 +36% PFd 1.44 net +180 worst -17 DD -46 months+ 4/4
+A target 25 cap 10                           prev3 days 65 +25% PFd 0.83 net -83 worst -21 DD -205 months+ 1/4
+A trail arm 10 lock 2 give 10                last3 days 66 +68% PFd 1.82 net +273 worst -47 DD -83 months+ 4/4
+A trail arm 10 lock 2 give 10                prev3 days 65 +72% PFd 2.40 net +324 worst -84 DD -84 months+ 3/4
+A trail arm 15 lock 5 give 10                last3 days 66 +67% PFd 2.06 net +393 worst -47 DD -80 months+ 4/4
+A trail arm 15 lock 5 give 10                prev3 days 65 +63% PFd 2.07 net +354 worst -84 DD -84 months+ 3/4
+A trail arm 20 lock 5 give 15                last3 days 66 +64% PFd 2.50 net +652 worst -47 DD -91 months+ 4/4
+A trail arm 20 lock 5 give 15                prev3 days 65 +54% PFd 1.64 net +288 worst -84 DD -120 months+ 3/4
+A trail arm 30 lock 10 give 20               last3 days 66 +50% PFd 1.96 net +570 worst -47 DD -125 months+ 3/4
+A trail arm 30 lock 10 give 20               prev3 days 65 +49% PFd 1.81 net +424 worst -84 DD -84 months+ 3/4
+A trail arm 10 lock 0 give 5                 last3 days 66 +71% PFd 1.63 net +207 worst -47 DD -91 months+ 4/4
+A trail arm 10 lock 0 give 5                 prev3 days 65 +72% PFd 2.47 net +341 worst -84 DD -84 months+ 3/4
+A trail arm 50 lock 20 give 25               last3 days 66 +44% PFd 2.11 net +711 worst -47 DD -118 months+ 3/4
+A trail arm 50 lock 20 give 25               prev3 days 65 +45% PFd 1.81 net +494 worst -84 DD -84 months+ 3/4
+A trail 15/5/10 cap 30                       last3 days 66 +65% PFd 1.57 net +267 worst -50 DD -93 months+ 4/4
+A trail 15/5/10 cap 30                       prev3 days 65 +62% PFd 1.71 net +281 worst -35 DD -59 months+ 3/4
+A trail 20/5/15 cap 30                       last3 days 66 +61% PFd 1.96 net +513 worst -50 DD -91 months+ 4/4
+A trail 20/5/15 cap 30                       prev3 days 65 +51% PFd 1.33 net +179 worst -35 DD -121 months+ 3/4
+A trail 30/10/20 cap 40                      last3 days 66 +48% PFd 1.69 net +465 worst -50 DD -155 months+ 3/4
+A trail 30/10/20 cap 40                      prev3 days 65 +49% PFd 1.79 net +420 worst -43 DD -80 months+ 3/4
+A+B plain                                    last3 days 66 +41% PFd 2.47 net +1904 worst -72 DD -184 months+ 3/4
+A+B plain                                    prev3 days 65 +45% PFd 1.81 net +1045 worst -175 DD -207 months+ 4/4
+A+B target 10                                last3 days 66 +76% PFd 1.37 net +173 worst -67 DD -102 months+ 3/4
+A+B target 10                                prev3 days 65 +78% PFd 2.80 net +404 worst -40 DD -47 months+ 4/4
+A+B target 15                                last3 days 66 +73% PFd 1.44 net +257 worst -71 DD -183 months+ 3/4
+A+B target 15                                prev3 days 65 +77% PFd 3.66 net +674 worst -40 DD -74 months+ 4/4
+A+B target 25                                last3 days 66 +71% PFd 2.16 net +703 worst -71 DD -142 months+ 4/4
+A+B target 25                                prev3 days 65 +68% PFd 2.15 net +679 worst -175 DD -175 months+ 4/4
+A+B target 40                                last3 days 66 +64% PFd 2.19 net +989 worst -71 DD -187 months+ 4/4
+A+B target 40                                prev3 days 65 +55% PFd 1.70 net +670 worst -175 DD -221 months+ 3/4
+A+B target 60                                last3 days 66 +52% PFd 1.82 net +900 worst -72 DD -292 months+ 3/4
+A+B target 60                                prev3 days 65 +51% PFd 1.75 net +808 worst -175 DD -201 months+ 3/4
+A+B losscap 10                               last3 days 66 +9% PFd 1.62 net +410 worst -20 DD -342 months+ 4/4
+A+B losscap 10                               prev3 days 65 +9% PFd 1.10 net +71 worst -36 DD -358 months+ 2/4
+A+B losscap 20                               last3 days 66 +24% PFd 2.31 net +1285 worst -27 DD -129 months+ 4/4
+A+B losscap 20                               prev3 days 65 +18% PFd 1.20 net +210 worst -36 DD -432 months+ 2/4
+A+B losscap 30                               last3 days 66 +27% PFd 1.80 net +1023 worst -37 DD -166 months+ 4/4
+A+B losscap 30                               prev3 days 65 +25% PFd 1.14 net +189 worst -51 DD -469 months+ 2/4
+A+B losscap 50                               last3 days 66 +33% PFd 1.50 net +810 worst -94 DD -215 months+ 4/4
+A+B losscap 50                               prev3 days 65 +37% PFd 1.54 net +747 worst -66 DD -263 months+ 3/4
+A+B target 25 cap 20                         last3 days 66 +53% PFd 1.67 net +382 worst -26 DD -82 months+ 4/4
+A+B target 25 cap 20                         prev3 days 65 +35% PFd 0.79 net -163 worst -36 DD -343 months+ 1/4
+A+B target 40 cap 30                         last3 days 66 +47% PFd 1.40 net +380 worst -37 DD -136 months+ 3/4
+A+B target 40 cap 30                         prev3 days 65 +34% PFd 0.93 net -73 worst -51 DD -387 months+ 1/4
+A+B target 60 cap 30                         last3 days 66 +36% PFd 1.26 net +287 worst -37 DD -192 months+ 3/4
+A+B target 60 cap 30                         prev3 days 65 +31% PFd 1.06 net +76 worst -51 DD -363 months+ 2/4
+A+B target 25 cap 10                         last3 days 66 +33% PFd 1.26 net +123 worst -19 DD -120 months+ 3/4
+A+B target 25 cap 10                         prev3 days 65 +20% PFd 0.58 net -257 worst -36 DD -365 months+ 1/4
+A+B trail arm 10 lock 2 give 10              last3 days 66 +70% PFd 1.40 net +192 worst -67 DD -73 months+ 3/4
+A+B trail arm 10 lock 2 give 10              prev3 days 65 +69% PFd 2.16 net +272 worst -40 DD -93 months+ 3/4
+A+B trail arm 15 lock 5 give 10              last3 days 66 +70% PFd 1.43 net +256 worst -71 DD -175 months+ 3/4
+A+B trail arm 15 lock 5 give 10              prev3 days 65 +77% PFd 3.30 net +581 worst -40 DD -96 months+ 3/4
+A+B trail arm 20 lock 5 give 15              last3 days 66 +71% PFd 1.69 net +406 worst -71 DD -161 months+ 4/4
+A+B trail arm 20 lock 5 give 15              prev3 days 65 +71% PFd 1.99 net +468 worst -175 DD -175 months+ 3/4
+A+B trail arm 30 lock 10 give 20             last3 days 66 +67% PFd 2.12 net +785 worst -71 DD -156 months+ 4/4
+A+B trail arm 30 lock 10 give 20             prev3 days 65 +62% PFd 1.57 net +431 worst -175 DD -223 months+ 3/4
+A+B trail arm 10 lock 0 give 5               last3 days 66 +74% PFd 1.34 net +161 worst -67 DD -111 months+ 3/4
+A+B trail arm 10 lock 0 give 5               prev3 days 65 +77% PFd 2.47 net +331 worst -40 DD -63 months+ 3/4
+A+B trail arm 50 lock 20 give 25             last3 days 66 +55% PFd 2.12 net +1169 worst -72 DD -251 months+ 3/4
+A+B trail arm 50 lock 20 give 25             prev3 days 65 +54% PFd 1.74 net +720 worst -175 DD -233 months+ 3/4
+A+B trail 15/5/10 cap 30                     last3 days 66 +62% PFd 1.22 net +136 worst -37 DD -158 months+ 3/4
+A+B trail 15/5/10 cap 30                     prev3 days 65 +58% PFd 0.94 net -40 worst -41 DD -329 months+ 3/4
+A+B trail 20/5/15 cap 30                     last3 days 66 +61% PFd 1.23 net +153 worst -37 DD -158 months+ 2/4
+A+B trail 20/5/15 cap 30                     prev3 days 65 +52% PFd 0.95 net -36 worst -41 DD -245 months+ 1/4
+A+B trail 30/10/20 cap 40                    last3 days 66 +59% PFd 1.39 net +338 worst -51 DD -129 months+ 4/4
+A+B trail 30/10/20 cap 40                    prev3 days 65 +49% PFd 1.03 net +30 worst -66 DD -331 months+ 2/4
