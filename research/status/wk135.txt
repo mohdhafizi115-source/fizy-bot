@@ -1,0 +1,6 @@
+A                              trades 831 win 9% | days + 41% (worst -84) | weeks + 20/29 (worst -138) | months + 6/7 (worst -74) | net +1379 DD -222
+   months: 2026-05:-74 2026-06:+362 2026-07:+109 2026-08:+405 2026-09:+368 2026-10:+4 2026-11:+205
+A + skip after D1 body > $60   trades 501 win 12% | days + 49% (worst -71) | weeks + 25/29 (worst -138) | months + 7/7 (worst +40) | net +1492 DD -138
+   months: 2026-05:+44 2026-06:+366 2026-07:+89 2026-08:+396 2026-09:+413 2026-10:+40 2026-11:+144
+A + 1 entry after big day      trades 540 win 11% | days + 36% (worst -71) | weeks + 25/29 (worst -138) | months + 7/7 (worst +25) | net +1470 DD -141
+   months: 2026-05:+25 2026-06:+343 2026-07:+70 2026-08:+371 2026-09:+388 2026-10:+33 2026-11:+241
