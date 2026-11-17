@@ -1,0 +1,9 @@
+FLIP 4 lanes (live v2.48)  $100: starts 142, stopped out 90 (63%), days to stop-out min/10%/25%/median 0.3506944444444444 / [0.7, 1.1, 2.3], blown within 7 days 51%, within 30 63%
+FLIP 4 lanes (live v2.48)  $200: starts 142, stopped out 42 (30%), days to stop-out min/10%/25%/median 0.5659722222222222 / [1.6, 3.1, 5.6], blown within 7 days 18%, within 30 29%
+FLIP 4 lanes (live v2.48)  $300: starts 142, stopped out 20 (14%), days to stop-out min/10%/25%/median 0.7666666666666667 / [3.7, 5.7, 7.2], blown within 7 days 6%, within 30 14%
+FLIP lane A only           $100: starts 142, stopped out 17 (12%), days to stop-out min/10%/25%/median 0.7673611111111112 / [2.9, 4.2, 7.4], blown within 7 days 6%, within 30 12%
+FLIP lane A only           $200: starts 142, stopped out 8 (6%), days to stop-out min/10%/25%/median 5.768055555555556 / [7.0, 9.9, 12.0], blown within 7 days 1%, within 30 6%
+FLIP lane A only           $300: starts 142, stopped out 0 (0%), days to stop-out min/10%/25%/median - / [], blown within 7 days 0%, within 30 0%
+FLIP A+B                   $100: starts 142, stopped out 54 (38%), days to stop-out min/10%/25%/median 0.38819444444444445 / [0.8, 1.8, 5.1], blown within 7 days 28%, within 30 38%
+FLIP A+B                   $200: starts 142, stopped out 18 (13%), days to stop-out min/10%/25%/median 0.7673611111111112 / [2.9, 4.8, 7.9], blown within 7 days 6%, within 30 13%
+FLIP A+B                   $300: starts 142, stopped out 10 (7%), days to stop-out min/10%/25%/median 4.534027777777778 / [5.3, 6.7, 10.8], blown within 7 days 2%, within 30 7%
