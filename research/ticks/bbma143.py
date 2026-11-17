@@ -14,6 +14,8 @@ sys.path.insert(0, "/home/claude/fizy-bot/research")
 import numpy as np, pandas as pd
 import scalp_all as SA
 meta = SA.load_meta(os.path.join(DATA, "meta.txt"))
+H4MODES = os.environ.get("H4MODES", "on1,on3,on6,off").split(",")
+RNDM = os.environ.get("RNDM", "on6,off").split(","); CTRL = os.environ.get("CTRL", "on6,off").split(",")
 SYMS = sys.argv[2].split(",") if len(sys.argv) > 2 else ["XAUUSD"]
 
 def lwma(x, n):
@@ -33,6 +35,20 @@ def build(sym):
     m["atr"] = tr.ewm(alpha=1 / 14, adjust=False).mean()
     h4 = d.resample("4h").agg({"o": "first", "h": "max", "l": "min", "c": "last"}).dropna()
     hb = (h4.c > np.maximum(lwma(h4.h, 5), lwma(h4.h, 10))).astype(int) - (h4.c < np.minimum(lwma(h4.l, 5), lwma(h4.l, 10))).astype(int)
+    # round 143b: H4 momentum = an H4 close beyond its BB 20,2 in the last nb closed H4 candles, no opposite one since,
+    # optionally with the H4 trend (EMA 50 above / below EMA 90)
+    hc = h4.c; hm = hc.rolling(20).mean(); hs = hc.rolling(20).std(ddof=0)
+    mu = (hc > hm + 2 * hs).astype(int); md = (hc < hm - 2 * hs).astype(int)
+    last = pd.Series(np.where(mu == 1, 1, np.where(md == 1, -1, np.nan)), index=hc.index).ffill().fillna(0)
+    tr50 = np.sign(hc.ewm(span=50, adjust=False).mean() - hc.ewm(span=90, adjust=False).mean())
+    for nb in (3, 6, 12):
+        ru = mu.rolling(nb).max(); rd = md.rolling(nb).max()
+        for tf, tt in (("m", None), ("mt", tr50)):
+            u = ((ru == 1) & (last == 1)); dn_ = ((rd == 1) & (last == -1))
+            if tt is not None: u = u & (tt > 0); dn_ = dn_ & (tt < 0)
+            for nm, ser in ((f"h4u_{tf}{nb}", u), (f"h4d_{tf}{nb}", dn_)):
+                z = ser.astype(float); z.index = z.index + pd.Timedelta(hours=4)
+                m[nm] = z.reindex(m.index, method="ffill").fillna(0).values
     for nb in (1, 3, 6):                                               # a buy (sell) close in the last nb closed H4 candles
         up_ = (hb == 1).astype(float).rolling(nb).max(); dn_ = (hb == -1).astype(float).rolling(nb).max()
         x = (up_ - dn_); x.index = x.index + pd.Timedelta(hours=4)     # known once the H4 candle has closed
@@ -76,7 +92,8 @@ def simulate(d, m, usd, sig, h4mode, entry, V, slmode, tp, rng=None, extra=0.0):
     res = []; busy = np.datetime64("1970-01-01")
     for i, s_, cb in sig:
         if h4mode != "off":
-            nb = int(h4mode[-1]); ok = m[f"h4u_{nb}"].values[i] if s_ == 1 else m[f"h4d_{nb}"].values[i]
+            key = h4mode[2:]
+            ok = m[f"h4u_{key}"].values[i] if s_ == 1 else m[f"h4d_{key}"].values[i]
             if not ok: continue
         if i + 1 >= len(m): continue
         t_open = mi[i] + np.timedelta64(15, "m")                         # the CSAK has closed
@@ -160,13 +177,13 @@ for sym in SYMS:
         for W in (8, 16):
             sig = signals(m, cbm, W)
             nb = sum(1 for x in sig if x[1] == 1); print(f"-- CB1 {cbm}, CSAK within {W} candles: {len(sig)} signals ({nb} buy / {len(sig)-nb} sell) before the H4 filter")
-            for h4 in ("on1", "on3", "on6", "off"):
+            for h4 in H4MODES:
                 for entry, V in (("ztop", 8), ("zmid", 8), ("mkt", 1)):
                     for tp in ("1", "2", "3", "bb", "none"):
                         if (entry, V) != ("ztop", 8) and tp not in ("2", "none"): continue
-                        row(f"H4 {h4:3s} {entry} {V:2d}c SL swing TP {tp}", sig, h4, entry, V, "swing", tp, rnd=(h4 in ("on6", "off") and entry == "ztop" and V == 8 and tp in ("2", "none")))
+                        row(f"H4 {h4:3s} {entry} {V:2d}c SL swing TP {tp}", sig, h4, entry, V, "swing", tp, rnd=(h4 in RNDM and entry == "ztop" and V == 8 and tp in ("2", "none")))
                 row(f"H4 {h4:3s} ztop 8c SL 1.5ATR TP 2", sig, h4, "ztop", 8, "atr", "2")
     print("-- control: CSAK alone (no CB1)")
     sig0 = signals(m, "any", 8, need_cb1=False)
-    for h4 in ("on6", "off"):
+    for h4 in CTRL:
         for tp in ("2", "none"): row(f"no CB1 H4 {h4} ztop 8c SL swing TP {tp}", sig0, h4, "ztop", 8, "swing", tp)

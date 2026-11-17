@@ -1,0 +1,133 @@
+
+H4 candles closing beyond MA5/10 high / low: 139 / 191 H4 bars of 882
+
+XAUUSD M15  last 3 months 18 Aug-17 Nov | previous 19 May-18 Aug  (0.01 lot)
+-- CB1 soft, CSAK within 8 candles: 25 signals (20 buy / 5 sell) before the H4 filter
+H4 onm3 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win 100% PF 99.00 net    +59 DD    +0 wday  +59
+H4 onm3 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win 100% PF 99.00 net    +49 DD    +0 wday  +49
+H4 onm6 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades | random dir 0.00-0.00 / 0.00-0.00
+H4 onm6 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm6 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades | random dir 0.00-10470000000.00 / 0.00-0.00
+H4 onm6 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win 100% PF 99.00 net    +59 DD    +0 wday  +59
+H4 onm6 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win 100% PF 99.00 net    +49 DD    +0 wday  +49
+H4 onm12 ztop  8c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   1 trades win 100% PF 99.00 net    +10 DD    +0 wday  +10
+H4 onm12 ztop  8c SL swing TP bb               |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   1 trades win 100% PF 99.00 net     +9 DD    +0 wday   +9
+H4 onm12 ztop  8c SL swing TP none             |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5
+H4 onm12 mkt  1c SL swing TP 2                 |   2 trades win  50% PF  8.22 net    +37 DD    -5 wday   -5 stress 7.99 |   2 trades win  50% PF  5.90 net    +49 DD   -10 wday  -10
+H4 onm12 mkt  1c SL swing TP none              |   2 trades win  50% PF  1.16 net     +2 DD   -15 wday  -15 stress 1.14 |   2 trades win  50% PF  4.87 net    +39 DD   -10 wday  -10
+H4 onmt6 ztop  8c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onmt6 ztop  8c SL swing TP bb               |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onmt6 ztop  8c SL swing TP none             |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onmt6 mkt  1c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win 100% PF 99.00 net    +59 DD    +0 wday  +59
+H4 onmt6 mkt  1c SL swing TP none              |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win 100% PF 99.00 net    +49 DD    +0 wday  +49
+H4 onmt12 ztop  8c SL swing TP 2               |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades | random dir 0.00-0.00 / 0.00-0.00
+H4 onmt12 ztop  8c SL swing TP bb              |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onmt12 ztop  8c SL swing TP none            |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades | random dir 0.00-10470000000.00 / 0.00-0.00
+H4 onmt12 mkt  1c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win 100% PF 99.00 net    +59 DD    +0 wday  +59
+H4 onmt12 mkt  1c SL swing TP none             |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win 100% PF 99.00 net    +49 DD    +0 wday  +49
+H4 off ztop  8c SL swing TP 2                  |   8 trades win  25% PF  0.94 net     -4 DD   -38 wday  -22 stress 0.92 |   6 trades win  33% PF  1.01 net     +0 DD   -41 wday  -20
+H4 off ztop  8c SL swing TP bb                 |   9 trades win  44% PF  0.76 net    -17 DD   -35 wday  -22 stress 0.75 |   6 trades win  50% PF  1.08 net     +2 DD   -21 wday  -12
+H4 off ztop  8c SL swing TP none               |   8 trades win  25% PF  0.56 net    -34 DD   -38 wday  -22 stress 0.55 |   6 trades win  50% PF  1.83 net    +21 DD   -12 wday  -12
+H4 off mkt  1c SL swing TP 2                   |   9 trades win  44% PF  1.78 net    +74 DD   -40 wday  -35 stress 1.76 |   9 trades win  56% PF  3.29 net   +175 DD   -28 wday  -28
+H4 off mkt  1c SL swing TP none                |  11 trades win  45% PF  0.91 net    -10 DD   -75 wday  -35 stress 0.90 |   9 trades win  56% PF  4.48 net   +215 DD   -28 wday  -28
+-- CB1 soft, CSAK within 16 candles: 59 signals (38 buy / 21 sell) before the H4 filter
+H4 onm3 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win 100% PF 99.00 net    +59 DD    +0 wday  +59
+H4 onm3 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win 100% PF 99.00 net    +49 DD    +0 wday  +49
+H4 onm6 ztop  8c SL swing TP 2                 |   2 trades win   0% PF  0.00 net    -11 DD   -11 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20 | random dir 0.00-8.71 / 0.00-0.00
+H4 onm6 ztop  8c SL swing TP bb                |   2 trades win  50% PF  2.04 net    +10 DD   -10 wday  -10 stress 2.00 |   1 trades win 100% PF 99.00 net     +6 DD    +0 wday   +6
+H4 onm6 ztop  8c SL swing TP none              |   2 trades win   0% PF  0.00 net    -19 DD   -19 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20 | random dir 0.00-0.84 / 0.00-0.00
+H4 onm6 mkt  1c SL swing TP 2                  |   2 trades win   0% PF  0.00 net    -22 DD   -22 wday  -17 stress 0.00 |   2 trades win  50% PF  2.71 net    +37 DD   -22 wday  -22
+H4 onm6 mkt  1c SL swing TP none               |   2 trades win   0% PF  0.00 net    -32 DD   -32 wday  -17 stress 0.00 |   2 trades win  50% PF  2.24 net    +27 DD   -22 wday  -22
+H4 onm12 ztop  8c SL swing TP 2                |   4 trades win  25% PF  3.60 net    +48 DD   -18 wday  -10 stress 3.52 |   4 trades win  25% PF  0.15 net    -57 DD   -57 wday  -26
+H4 onm12 ztop  8c SL swing TP bb               |   4 trades win  50% PF  4.07 net    +52 DD   -17 wday  -10 stress 4.00 |   4 trades win  75% PF  0.91 net     -2 DD   -21 wday  -21
+H4 onm12 ztop  8c SL swing TP none             |   4 trades win  25% PF  0.23 net    -21 DD   -27 wday  -10 stress 0.22 |   4 trades win  25% PF  0.20 net    -41 DD   -51 wday  -26
+H4 onm12 mkt  1c SL swing TP 2                 |   5 trades win  40% PF  2.26 net    +51 DD   -41 wday  -19 stress 2.23 |   5 trades win  20% PF  0.72 net    -23 DD   -56 wday  -26
+H4 onm12 mkt  1c SL swing TP none              |   5 trades win  40% PF  0.80 net    -10 DD   -50 wday  -19 stress 0.79 |   5 trades win  40% PF  1.04 net     +2 DD   -32 wday  -26
+H4 onmt6 ztop  8c SL swing TP 2                |   2 trades win   0% PF  0.00 net    -11 DD   -11 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20
+H4 onmt6 ztop  8c SL swing TP bb               |   2 trades win  50% PF  2.04 net    +10 DD   -10 wday  -10 stress 2.00 |   1 trades win 100% PF 99.00 net     +6 DD    +0 wday   +6
+H4 onmt6 ztop  8c SL swing TP none             |   2 trades win   0% PF  0.00 net    -19 DD   -19 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20
+H4 onmt6 mkt  1c SL swing TP 2                 |   2 trades win   0% PF  0.00 net    -22 DD   -22 wday  -17 stress 0.00 |   2 trades win  50% PF  2.71 net    +37 DD   -22 wday  -22
+H4 onmt6 mkt  1c SL swing TP none              |   2 trades win   0% PF  0.00 net    -32 DD   -32 wday  -17 stress 0.00 |   2 trades win  50% PF  2.24 net    +27 DD   -22 wday  -22
+H4 onmt12 ztop  8c SL swing TP 2               |   2 trades win   0% PF  0.00 net    -11 DD   -11 wday  -10 stress 0.00 |   3 trades win   0% PF  0.00 net    -67 DD   -67 wday  -26 | random dir 0.00-8.71 / 0.00-0.12
+H4 onmt12 ztop  8c SL swing TP bb              |   2 trades win  50% PF  2.04 net    +10 DD   -10 wday  -10 stress 2.00 |   3 trades win  67% PF  0.50 net    -11 DD   -21 wday  -21
+H4 onmt12 ztop  8c SL swing TP none            |   2 trades win   0% PF  0.00 net    -19 DD   -19 wday  -10 stress 0.00 |   3 trades win  33% PF  0.22 net    -36 DD   -46 wday  -26 | random dir 0.00-0.86 / 0.00-1.43
+H4 onmt12 mkt  1c SL swing TP 2                |   2 trades win   0% PF  0.00 net    -22 DD   -22 wday  -17 stress 0.00 |   4 trades win  25% PF  0.82 net    -13 DD   -46 wday  -26
+H4 onmt12 mkt  1c SL swing TP none             |   2 trades win   0% PF  0.00 net    -32 DD   -32 wday  -17 stress 0.00 |   4 trades win  50% PF  1.26 net    +12 DD   -26 wday  -26
+H4 off ztop  8c SL swing TP 2                  |  18 trades win  39% PF  1.47 net    +99 DD  -102 wday  -60 stress 1.46 |  15 trades win  53% PF  2.04 net   +138 DD   -71 wday  -40
+H4 off ztop  8c SL swing TP bb                 |  21 trades win  57% PF  1.00 net     -1 DD   -87 wday  -60 stress 0.98 |  16 trades win  62% PF  0.83 net    -18 DD   -63 wday  -40
+H4 off ztop  8c SL swing TP none               |  20 trades win  35% PF  0.91 net    -15 DD   -92 wday  -46 stress 0.89 |  17 trades win  53% PF  1.38 net    +37 DD   -47 wday  -26
+H4 off mkt  1c SL swing TP 2                   |  19 trades win  47% PF  1.57 net   +156 DD  -119 wday  -87 stress 1.56 |  19 trades win  53% PF  2.47 net   +264 DD   -62 wday  -28
+H4 off mkt  1c SL swing TP none                |  24 trades win  46% PF  1.41 net    +98 DD  -102 wday  -64 stress 1.39 |  20 trades win  50% PF  2.18 net   +207 DD   -60 wday  -28
+-- CB1 any, CSAK within 8 candles: 26 signals (21 buy / 5 sell) before the H4 filter
+H4 onm3 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   0 trades
+H4 onm6 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades | random dir 0.00-0.00 / 0.00-0.00
+H4 onm6 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm6 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades | random dir 0.00-10470000000.00 / 0.00-0.00
+H4 onm6 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   0 trades
+H4 onm6 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   0 trades
+H4 onm12 ztop  8c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   1 trades win 100% PF 99.00 net    +10 DD    +0 wday  +10
+H4 onm12 ztop  8c SL swing TP bb               |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   1 trades win 100% PF 99.00 net     +9 DD    +0 wday   +9
+H4 onm12 ztop  8c SL swing TP none             |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5
+H4 onm12 mkt  1c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10
+H4 onm12 mkt  1c SL swing TP none              |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10
+H4 onmt6 ztop  8c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onmt6 ztop  8c SL swing TP bb               |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onmt6 ztop  8c SL swing TP none             |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onmt6 mkt  1c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   0 trades
+H4 onmt6 mkt  1c SL swing TP none              |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   0 trades
+H4 onmt12 ztop  8c SL swing TP 2               |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades | random dir 0.00-0.00 / 0.00-0.00
+H4 onmt12 ztop  8c SL swing TP bb              |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onmt12 ztop  8c SL swing TP none            |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades | random dir 0.00-10470000000.00 / 0.00-0.00
+H4 onmt12 mkt  1c SL swing TP 2                |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   0 trades
+H4 onmt12 mkt  1c SL swing TP none             |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   0 trades
+H4 off ztop  8c SL swing TP 2                  |  11 trades win  27% PF  0.56 net    -61 DD   -89 wday  -46 stress 0.55 |   7 trades win  43% PF  1.49 net    +26 DD   -35 wday  -20
+H4 off ztop  8c SL swing TP bb                 |  12 trades win  50% PF  0.77 net    -22 DD   -45 wday  -23 stress 0.75 |   7 trades win  57% PF  1.05 net     +2 DD   -26 wday  -18
+H4 off ztop  8c SL swing TP none               |  11 trades win  27% PF  0.67 net    -44 DD   -83 wday  -46 stress 0.66 |   7 trades win  43% PF  0.79 net     -8 DD   -31 wday  -18
+H4 off mkt  1c SL swing TP 2                   |  12 trades win  17% PF  0.45 net   -107 DD  -111 wday  -42 stress 0.44 |   9 trades win  44% PF  2.73 net   +144 DD   -47 wday  -24
+H4 off mkt  1c SL swing TP none                |  12 trades win  33% PF  0.52 net    -76 DD   -90 wday  -35 stress 0.52 |   9 trades win  33% PF  2.53 net   +119 DD   -47 wday  -22
+-- CB1 any, CSAK within 16 candles: 61 signals (42 buy / 19 sell) before the H4 filter
+H4 onm3 ztop  8c SL swing TP 2                 |   1 trades win   0% PF  0.00 net     -1 DD    -1 wday   -1 stress 0.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP bb                |   1 trades win 100% PF 99.00 net    +20 DD    +0 wday  +20 stress 99.00 |   0 trades
+H4 onm3 ztop  8c SL swing TP none              |   1 trades win   0% PF  0.00 net    -10 DD   -10 wday  -10 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP 2                  |   1 trades win   0% PF  0.00 net     -5 DD    -5 wday   -5 stress 0.00 |   0 trades
+H4 onm3 mkt  1c SL swing TP none               |   1 trades win   0% PF  0.00 net    -15 DD   -15 wday  -15 stress 0.00 |   0 trades
+H4 onm6 ztop  8c SL swing TP 2                 |   3 trades win   0% PF  0.00 net    -37 DD   -37 wday  -24 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20 | random dir 0.00-0.00 / 0.00-0.00
+H4 onm6 ztop  8c SL swing TP bb                |   3 trades win  67% PF  1.22 net     +5 DD   -24 wday  -24 stress 1.20 |   1 trades win 100% PF 99.00 net     +6 DD    +0 wday   +6
+H4 onm6 ztop  8c SL swing TP none              |   3 trades win   0% PF  0.00 net    -45 DD   -45 wday  -24 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20 | random dir 0.00-1.09 / 0.00-0.00
+H4 onm6 mkt  1c SL swing TP 2                  |   3 trades win   0% PF  0.00 net    -48 DD   -48 wday  -25 stress 0.00 |   1 trades win   0% PF  0.00 net    -22 DD   -22 wday  -22
+H4 onm6 mkt  1c SL swing TP none               |   3 trades win   0% PF  0.00 net    -57 DD   -57 wday  -25 stress 0.00 |   1 trades win   0% PF  0.00 net    -22 DD   -22 wday  -22
+H4 onm12 ztop  8c SL swing TP 2                |   3 trades win   0% PF  0.00 net    -37 DD   -37 wday  -24 stress 0.00 |   3 trades win  33% PF  0.23 net    -36 DD   -46 wday  -26
+H4 onm12 ztop  8c SL swing TP bb               |   3 trades win  67% PF  1.22 net     +5 DD   -24 wday  -24 stress 1.20 |   3 trades win 100% PF 99.00 net    +19 DD    +0 wday   +5
+H4 onm12 ztop  8c SL swing TP none             |   3 trades win   0% PF  0.00 net    -45 DD   -45 wday  -24 stress 0.00 |   3 trades win   0% PF  0.00 net    -51 DD   -51 wday  -26
+H4 onm12 mkt  1c SL swing TP 2                 |   4 trades win  25% PF  0.42 net    -28 DD   -43 wday  -25 stress 0.42 |   3 trades win  33% PF  0.15 net    -40 DD   -48 wday  -26
+H4 onm12 mkt  1c SL swing TP none              |   4 trades win  25% PF  0.39 net    -35 DD   -43 wday  -25 stress 0.39 |   4 trades win   0% PF  0.00 net    -57 DD   -57 wday  -26
+H4 onmt6 ztop  8c SL swing TP 2                |   2 trades win   0% PF  0.00 net    -13 DD   -13 wday  -12 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20
+H4 onmt6 ztop  8c SL swing TP bb               |   2 trades win 100% PF 99.00 net    +29 DD    +0 wday   +9 stress 99.00 |   1 trades win 100% PF 99.00 net     +6 DD    +0 wday   +6
+H4 onmt6 ztop  8c SL swing TP none             |   2 trades win   0% PF  0.00 net    -21 DD   -21 wday  -12 stress 0.00 |   1 trades win   0% PF  0.00 net    -20 DD   -20 wday  -20
+H4 onmt6 mkt  1c SL swing TP 2                 |   2 trades win   0% PF  0.00 net    -23 DD   -23 wday  -18 stress 0.00 |   1 trades win   0% PF  0.00 net    -22 DD   -22 wday  -22
+H4 onmt6 mkt  1c SL swing TP none              |   2 trades win   0% PF  0.00 net    -32 DD   -32 wday  -18 stress 0.00 |   1 trades win   0% PF  0.00 net    -22 DD   -22 wday  -22
+H4 onmt12 ztop  8c SL swing TP 2               |   2 trades win   0% PF  0.00 net    -13 DD   -13 wday  -12 stress 0.00 |   2 trades win   0% PF  0.00 net    -46 DD   -46 wday  -26 | random dir 0.00-0.00 / 0.00-0.22
+H4 onmt12 ztop  8c SL swing TP bb              |   2 trades win 100% PF 99.00 net    +29 DD    +0 wday   +9 stress 99.00 |   2 trades win 100% PF 99.00 net    +10 DD    +0 wday   +5
+H4 onmt12 ztop  8c SL swing TP none            |   2 trades win   0% PF  0.00 net    -21 DD   -21 wday  -12 stress 0.00 |   2 trades win   0% PF  0.00 net    -46 DD   -46 wday  -26 | random dir 0.84-1.47 / 0.00-1.04
+H4 onmt12 mkt  1c SL swing TP 2                |   3 trades win  33% PF  0.89 net     -2 DD   -18 wday  -18 stress 0.88 |   2 trades win   0% PF  0.00 net    -48 DD   -48 wday  -26
+H4 onmt12 mkt  1c SL swing TP none             |   3 trades win  33% PF  0.70 net    -10 DD   -18 wday  -18 stress 0.69 |   2 trades win   0% PF  0.00 net    -48 DD   -48 wday  -26
+H4 off ztop  8c SL swing TP 2                  |  21 trades win  29% PF  0.98 net     -5 DD  -125 wday  -46 stress 0.97 |  15 trades win  47% PF  1.20 net    +35 DD   -68 wday  -40
+H4 off ztop  8c SL swing TP bb                 |  25 trades win  52% PF  0.75 net    -44 DD   -68 wday  -46 stress 0.73 |  17 trades win  71% PF  1.07 net     +7 DD   -59 wday  -40
+H4 off ztop  8c SL swing TP none               |  23 trades win  26% PF  0.75 net    -58 DD  -103 wday  -46 stress 0.74 |  16 trades win  44% PF  1.06 net     +8 DD   -52 wday  -30
+H4 off mkt  1c SL swing TP 2                   |  23 trades win  30% PF  0.77 net    -75 DD  -126 wday  -42 stress 0.76 |  18 trades win  50% PF  1.98 net   +191 DD   -60 wday  -32
+H4 off mkt  1c SL swing TP none                |  26 trades win  35% PF  0.63 net   -119 DD  -157 wday  -64 stress 0.62 |  19 trades win  37% PF  1.58 net   +116 DD   -60 wday  -32
+-- control: CSAK alone (no CB1)
+no CB1 H4 onm6 ztop 8c SL swing TP 2           |  10 trades win  20% PF  0.34 net    -63 DD   -72 wday  -28 stress 0.33 |   5 trades win  20% PF  0.76 net    -24 DD  -101 wday  -34
+no CB1 H4 onm6 ztop 8c SL swing TP none        |  10 trades win  20% PF  0.19 net    -84 DD   -91 wday  -28 stress 0.19 |   5 trades win  20% PF  0.59 net    -41 DD  -101 wday  -34
+no CB1 H4 onmt12 ztop 8c SL swing TP 2         |  10 trades win  20% PF  0.47 net    -55 DD  -104 wday  -28 stress 0.47 |   7 trades win  29% PF  0.87 net    -16 DD   -67 wday  -34
+no CB1 H4 onmt12 ztop 8c SL swing TP none      |  13 trades win  15% PF  0.24 net    -99 DD  -130 wday  -28 stress 0.24 |   8 trades win  38% PF  0.67 net    -37 DD   -71 wday  -34
