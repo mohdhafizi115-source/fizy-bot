@@ -2,7 +2,8 @@
 //| FizyLB.mq5 - the EA shell: it loads every module and, when       |
 //| InpLbOn is true, trades the London breakout itself (demo only).  |
 //| SINCE 17 NOV 2026 (v2.49, rounds 140-141) ONLY: gold auction,    |
-//| RCS (new entries on gold only), gold SMC, BTC SMC + STO, NEWS.   |
+//| RCS (new entries on gold only), gold SMC, BTC SMC + STO, NEWS;   |
+//| v2.50 (18 Nov) adds CB1 (BBMA CB1 + CSAK, M15, 30 symbols).       |
 //| ON 5 NOV 2026 THE OWNER KEPT ONLY SIX MODULES: Gotobi, month-end |
 //| fix, gold LBMA auction, Kumo, Tenkan/Kijun and the M1 spike      |
 //| fade. The five breakout modules are switched off: the London     |
@@ -21,7 +22,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.49"
+#property version "2.50"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -65,6 +66,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyBTC.mqh"                 // BTCUSD 24/7: M5 big-candle follow + M20 SMC at the OTE (v2.25, round 103)
 #include "FizyATB.mqh"                 // gold ATR open-band breakout, day trade (v2.26, round 107)
 #include "FizyCMX.mqh"                 // gold COMEX-open scalp: follow the 08:20 NY bar for 5 min (v2.27, round 108)
+#include "FizyCB1.mqh"                 // BBMA CB1 + CSAK on M15, 30 symbols, TP 2R (v2.50, round 143d, owner's order)
 #include "FizyNWS.mqh"                 // gold news straddle at 08:30 / 02:00 New York release times (v2.49, rounds 138-141)
 #include "FizyORB.mqh"                 // gold 01:00-04:00 range breakout (GOLD_ORB), SL 0.25 ATR(D1), TP 2R (v2.29, round 112)
 #include "FizyBAS.mqh"                 // gold H1 23:00 base zone with the D1 colour, validated by D1 closes (v2.32, round 115e)
@@ -331,6 +333,7 @@ void SweepOff()
    if(!InpAtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpAtbMagic; }
    if(!InpCmxOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCmxMagic; }
    if(!InpNwsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpNwsMagic; }
+   if(!InpCb1On) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCb1Magic; }
    if(!InpCrsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpCrsMagic; }
    if(!InpOrbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpOrbMagic; }
    if(!InpFlpOn) { int m = ArraySize(off); ArrayResize(off, m + 4); for(int l = 0; l < 4; l++) off[m + l] = FL_MAGIC[l]; }
@@ -425,6 +428,7 @@ void OnTimer()
    AtbOnTimer();
    CmxOnTimer();
    NwsOnTimer();
+   Cb1OnTimer();
    CrsOnTimer();
    OrbOnTimer();
    FlpOnTimer();
