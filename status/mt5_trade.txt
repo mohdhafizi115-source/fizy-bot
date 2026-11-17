@@ -1,29 +1,33 @@
-shift ended (UTC): 2026-11-17 09:31
+shift ended (UTC): 2026-11-17 15:08
 open
-2026.11.17 11:30:59
+2026.11.17 17:08:36
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 7067 ms elapsed, cpu='X64 Regular'
-events: London 5 lines, NR7 0, Gotobi 0, gold auction 1
-  PI	0	03:55:50.151	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (new entries on XAUUSD only, forex only closes open trades): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
-  FH	0	03:55:50.509	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
-  LK	0	03:55:52.324	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL off (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); STO on (H4 EMA 20/50 trend, M5 Stoch 5,3,3 cross out of 20/80 + EMA 20 pullback, 07-19 server every day, SL 1.5 ATR, out after 4 h); lot 0.01 | 0 open position(s)
-  PD	0	03:55:53.014	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ONLINE | XAUUSD.m: on release days (USD / CAD at 08:30 New York, EUR / GBP at 02:00 New York, moderate or high importance) an OCO pair a few seconds before the release, BUY STOP ask + $x / SELL STOP bid - $x SL $x from the fill, no TP, out after 15 min, unfilled orders deleted after 6 min, lot 0.01 | 0 open position(s)
-  QK	0	03:55:53.223	FizyLB (XAUUSD.m,M15)	EVENT CLEANUP | XAUUSD.m pending order of a switched-off module deleted (magic <num>)
-  OK	0	03:55:53.432	FizyLB (XAUUSD.m,M15)	EVENT CLEANUP | XAUUSD.m pending order of a switched-off module deleted (magic <num>)
-  NK	0	03:55:53.643	FizyLB (XAUUSD.m,M15)	EVENT CLEANUP | XAUUSD.m pending order of a switched-off module deleted (magic <num>)
-  PK	0	03:55:53.852	FizyLB (XAUUSD.m,M15)	EVENT CLEANUP | XAUUSD.m pending order of a switched-off module deleted (magic <num>)
-  CF	0	06:59:57.575	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ORDERS PLACED XAUUSD.m | 02:00 New York release: GBP Average Weekly Earnings, Total Pay y/y; GBP Unemployment Rate; GBP Claimant Count Change; GBP Employment Change 3-months | BUY STOP 3873.56 / SELL STOP 3869.30, SL $x from the fill, deleted after 6 min if not filled, trade closed after 15 min
-  IS	0	07:00:31.840	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS BUY XAUUSD.m | the buy stop filled at 3873.56, the other order deleted | SL 3870.56 ($x), no TP, closes at 09:14 server | IMG:snap_NWSE_XAUUSD_m_<num>_<num>_296.png
-  NN	0	07:14:58.902	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS CLOSED XAUUSD.m | BUY from 3873.56 closed at 3877.61 (15-minute exit), profit $x | IMG:snap_NWS_XAUUSD_m_<num>_<num>_343.png
-  ID	0	07:15:04.166	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 78/83 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.53 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_609.png
-  w: telegram ok: CLEANUP
-  w: telegram ok: CLEANUP
-  w: telegram ok: CLEANUP
-  w: telegram ok: CLEANUP
-  w: telegram ok: daily status
-  w: telegram ok: NEWS ORDERS PLACED XAUUSD.m
-  w: telegram ok: NEWS BUY XAUUSD.m
-  w: telegram ok: NEWS CLOSED XAUUSD.m
+  Result: 0 errors, 0 warnings, 7761 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 3
+  QI	0	10:15:03.865	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION SELL XAUUSD.m | 10:15 London, 15 minutes before the LBMA gold auction: SELL 0.01 lot at 3856.52, SL 3862.45, no TP, closes at 10:30 London | spread 0.26 | IMG:snap_GA_XAUUSD_m_<num>_<num>_234.png
+  MH	0	10:30:06.990	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION STOP HIT XAUUSD.m | SELL from 3856.52 closed at 3857.32 (stop: the M1 trailing stop after 10:30, or the 2 ATR stop loss), -0.80, profit $x | IMG:snap_GAX_XAUUSD_m_<num>_<num>_375.png
+  LK	0	11:15:06.018	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO CLOSED BTCUSD.m | SELL from <num>.21 closed at <num>.79 (4 h up), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_421.png
+  GO	0	12:05:03.526	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 82/91 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.82 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_953.png
+  OO	0	12:27:54.583	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SL HIT BTCUSD.m | SELL from <num>.21 closed at <num>.82 (stop loss 1.5 ATR), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_15.png
+  GJ	0	13:29:58.972	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ORDERS PLACED XAUUSD.m | 08:30 New York release: USD Retail Sales m/m; USD Core Retail Sales m/m; USD Retail Control m/m; USD Import Price Index m/m; USD Export Price Index m/m; CAD Foreign Securities Purchases | BUY STOP 3859.89 / SELL STOP 3855.63, SL $x from the fill, deleted after 6 min if not filled, trade closed after 15 min
+  QH	0	13:30:04.216	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS SELL XAUUSD.m | the sell stop filled at 3855.63, the other order deleted | SL 3858.63 ($x), no TP, closes at 15:44 server | IMG:snap_NWSE_XAUUSD_m_<num>_<num>_671.png
+  JH	0	13:44:59.289	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS CLOSED XAUUSD.m | SELL from 3855.63 closed at 3845.85 (15-minute exit), profit $x | IMG:snap_NWS_XAUUSD_m_<num>_<num>_765.png
+  KR	0	14:22:05.523	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC SELL XAUUSD.m | M15 BOS down closed 15:45, price back to the order block 3863.14 inside the New York killzone | SELL 0.01 lot at 3863.49, SL 3871.86 (risk $x), TP 3838.37 (3R), out after 12 h | IMG:snap_SME_XAUUSD_m_<num>_<num>_0.png
+  OM	0	14:36:10.610	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC SL HIT XAUUSD.m | SELL from 3863.54 closed at 3871.86 (stop loss beyond the protected level), profit $x | IMG:snap_SMX_XAUUSD_m_<num>_<num>_93.png
+  HQ	0	14:47:15.859	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC SMC BUY BTCUSD.m | M20 BOS up closed 16:40, price back to the OTE 0.705 at <num>.57 inside the New York killzone | BUY 0.01 lot at <num>.79, SL <num>.39 (risk $x), TP <num>.99 (3R), out after 16 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_343.png
+  LL	0	15:05:41.921	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC SMC SL HIT BTCUSD.m | BUY from <num>.79 closed at <num>.39 (stop loss beyond the protected level), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_421.png
+  w: status message already sent today
+  w: telegram ok: AUCTION SELL XAUUSD.m
+  w: telegram ok: AUCTION STOP HIT XAUUSD.m
+  w: telegram ok: BTC STO CLOSED BTCUSD.m
   w: telegram ok: BTC STO SELL BTCUSD.m
-  w: shift end: done=False, state=2026.11.17 11:30:59|0|0
+  w: telegram ok: BTC STO SL HIT BTCUSD.m
+  w: telegram ok: NEWS ORDERS PLACED XAUUSD.m
+  w: telegram ok: NEWS SELL XAUUSD.m
+  w: telegram ok: NEWS CLOSED XAUUSD.m
+  w: telegram ok: SMC SELL XAUUSD.m
+  w: telegram ok: SMC SL HIT XAUUSD.m
+  w: telegram ok: BTC SMC BUY BTCUSD.m
+  w: telegram ok: BTC SMC SL HIT BTCUSD.m
+  w: shift end: done=False, state=2026.11.17 17:08:36|0|0
