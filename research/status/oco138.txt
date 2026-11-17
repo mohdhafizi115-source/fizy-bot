@@ -1,0 +1,460 @@
+last 3 months 2026-08-17 .. 2026-11-16 | previous 2026-05-18 .. 2026-08-17; stress = +$0.13 a trade
+== 1. BOX: N-bar M1 range <= cx * ATR(M1), OCO at the box high + spread + buf / low - buf, valid 1 min, SL slm x box (neg = fixed $), TP tpm x SL, out after hold min
+BOX N5 cx1.5 sl1.0 tp0 30m                     |  2546  38.6/d win  25% PF  0.95 str 0.88 net   -232 worst   -60 DD  -413 |  2578  39.1/d win  24% PF  0.91 str 0.86 net   -461 worst   -94 DD  -587
+BOX N5 cx1.5 sl1.0 tp2 30m                     |  2943  44.6/d win  32% PF  0.88 str 0.82 net   -572 worst   -73 DD  -590 |  2912  44.1/d win  31% PF  0.88 str 0.81 net   -674 worst  -100 DD  -768
+BOX N5 cx1.5 sl0.5 tp2 30m                     |  4243  64.3/d win  28% PF  0.81 str 0.70 net   -727 worst   -48 DD  -727 |  4246  64.3/d win  27% PF  0.78 str 0.68 net   -927 worst   -50 DD  -927
+BOX N5 cx1.5 sl-3 tp0 30m                      |  2298  34.8/d win  31% PF  0.95 str 0.89 net   -230 worst   -63 DD  -354 |  2428  36.8/d win  28% PF  0.93 str 0.88 net   -360 worst  -101 DD  -519
+BOX N5 cx2.5 sl1.0 tp0 30m                     |  4076  61.8/d win  30% PF  0.87 str 0.82 net  -1241 worst  -112 DD -1335 |  4050  61.4/d win  30% PF  0.95 str 0.90 net   -460 worst  -190 DD  -513
+BOX N5 cx2.5 sl1.0 tp2 30m                     |  4797  72.7/d win  35% PF  0.85 str 0.80 net  -1631 worst  -118 DD -1669 |  4778  72.4/d win  34% PF  0.90 str 0.85 net  -1144 worst  -141 DD -1144
+BOX N5 cx2.5 sl0.5 tp2 30m                     | 10776 163.3/d win  29% PF  0.81 str 0.73 net  -2560 worst  -131 DD -2560 | 10781 163.3/d win  29% PF  0.82 str 0.75 net  -2593 worst  -155 DD -2593
+BOX N5 cx2.5 sl-3 tp0 30m                      |  4359  66.0/d win  28% PF  0.92 str 0.86 net   -755 worst  -118 DD  -761 |  4521  68.5/d win  26% PF  0.92 str 0.87 net   -798 worst  -157 DD  -798
+BOX N5 cx4.0 sl1.0 tp0 30m                     |  4033  61.1/d win  34% PF  0.90 str 0.86 net   -941 worst  -124 DD  -965 |  4028  61.0/d win  33% PF  0.93 str 0.88 net   -764 worst  -145 DD  -816
+BOX N5 cx4.0 sl1.0 tp2 30m                     |  4585  69.5/d win  37% PF  0.89 str 0.84 net  -1211 worst  -123 DD -1266 |  4642  70.3/d win  36% PF  0.89 str 0.84 net  -1351 worst  -137 DD -1351
+BOX N5 cx4.0 sl0.5 tp2 30m                     | 10597 160.6/d win  30% PF  0.84 str 0.77 net  -2485 worst  -129 DD -2501 | 10769 163.2/d win  29% PF  0.84 str 0.77 net  -2792 worst  -154 DD -2792
+BOX N5 cx4.0 sl-3 tp0 30m                      |  4763  72.2/d win  28% PF  0.92 str 0.86 net   -867 worst  -134 DD  -915 |  4964  75.2/d win  26% PF  0.91 str 0.86 net   -996 worst  -147 DD -1002
+BOX N10 cx1.5 sl1.0 tp0 30m                    |    95   1.8/d win  23% PF  0.74 str 0.68 net    -45 worst    -9 DD   -74 |    72   1.7/d win  28% PF  0.89 str 0.83 net    -16 worst    -8 DD   -72
+BOX N10 cx1.5 sl1.0 tp2 30m                    |    95   1.8/d win  31% PF  0.88 str 0.81 net    -19 worst    -7 DD   -57 |    72   1.7/d win  39% PF  1.30 str 1.22 net    +38 worst    -7 DD   -32
+BOX N10 cx1.5 sl0.5 tp2 30m                    |   102   2.0/d win  28% PF  0.77 str 0.66 net    -21 worst    -6 DD   -50 |    74   1.7/d win  39% PF  1.26 str 1.12 net    +19 worst    -6 DD   -15
+BOX N10 cx1.5 sl-3 tp0 30m                     |    95   1.8/d win  33% PF  0.82 str 0.77 net    -33 worst    -9 DD   -51 |    73   1.7/d win  30% PF  0.90 str 0.85 net    -15 worst    -9 DD   -72
+BOX N10 cx2.5 sl1.0 tp0 30m                    |  2226  33.7/d win  34% PF  0.88 str 0.83 net   -661 worst   -76 DD  -661 |  2222  33.7/d win  34% PF  0.89 str 0.85 net   -633 worst  -116 DD  -658
+BOX N10 cx2.5 sl1.0 tp2 30m                    |  2315  35.1/d win  37% PF  0.89 str 0.84 net   -603 worst   -84 DD  -603 |  2325  35.2/d win  37% PF  0.93 str 0.88 net   -427 worst   -92 DD  -493
+BOX N10 cx2.5 sl0.5 tp2 30m                    |  3776  57.2/d win  30% PF  0.83 str 0.76 net   -928 worst   -78 DD  -928 |  3759  57.0/d win  31% PF  0.90 str 0.83 net   -550 worst   -82 DD  -588
+BOX N10 cx2.5 sl-3 tp0 30m                     |  2530  38.3/d win  29% PF  0.89 str 0.83 net   -611 worst   -84 DD  -611 |  2598  39.4/d win  27% PF  0.91 str 0.85 net   -539 worst   -93 DD  -545
+BOX N10 cx4.0 sl1.0 tp0 30m                    |  3168  48.0/d win  40% PF  0.94 str 0.90 net   -500 worst  -112 DD  -539 |  3131  47.4/d win  39% PF  0.96 str 0.91 net   -393 worst  -111 DD  -552
+BOX N10 cx4.0 sl1.0 tp2 30m                    |  3351  50.8/d win  41% PF  0.94 str 0.90 net   -501 worst  -106 DD  -611 |  3304  50.1/d win  40% PF  0.95 str 0.91 net   -429 worst  -111 DD  -508
+BOX N10 cx4.0 sl0.5 tp2 30m                    |  6335  96.0/d win  31% PF  0.85 str 0.79 net  -1700 worst   -94 DD -1700 |  6243  94.6/d win  31% PF  0.87 str 0.81 net  -1542 worst  -108 DD -1542
+BOX N10 cx4.0 sl-3 tp0 30m                     |  4241  64.3/d win  29% PF  0.90 str 0.85 net   -868 worst  -139 DD  -877 |  4350  65.9/d win  26% PF  0.90 str 0.85 net   -926 worst  -109 DD  -958
+BOX N15 cx1.5 sl1.0 tp0 30m                    |   no trades                                                        |   no trades                                                       
+BOX N15 cx1.5 sl1.0 tp2 30m                    |   no trades                                                        |   no trades                                                       
+BOX N15 cx1.5 sl0.5 tp2 30m                    |   no trades                                                        |   no trades                                                       
+BOX N15 cx1.5 sl-3 tp0 30m                     |   no trades                                                        |   no trades                                                       
+BOX N15 cx2.5 sl1.0 tp0 30m                    |   754  11.4/d win  36% PF  0.89 str 0.85 net   -203 worst   -44 DD  -243 |   718  10.9/d win  34% PF  0.91 str 0.87 net   -169 worst   -46 DD  -301
+BOX N15 cx2.5 sl1.0 tp2 30m                    |   761  11.5/d win  38% PF  0.96 str 0.91 net    -67 worst   -31 DD  -143 |   729  11.0/d win  37% PF  0.93 str 0.89 net   -129 worst   -46 DD  -263
+BOX N15 cx2.5 sl0.5 tp2 30m                    |   945  14.3/d win  31% PF  0.88 str 0.80 net   -174 worst   -28 DD  -198 |   914  13.8/d win  32% PF  0.90 str 0.83 net   -139 worst   -45 DD  -184
+BOX N15 cx2.5 sl-3 tp0 30m                     |   807  12.2/d win  30% PF  0.86 str 0.81 net   -230 worst   -44 DD  -239 |   792  12.0/d win  29% PF  0.97 str 0.91 net    -52 worst   -46 DD  -208
+BOX N15 cx4.0 sl1.0 tp0 30m                    |  2536  38.4/d win  42% PF  0.93 str 0.88 net   -522 worst  -101 DD  -572 |  2510  38.0/d win  41% PF  0.98 str 0.94 net   -123 worst  -104 DD  -359
+BOX N15 cx4.0 sl1.0 tp2 30m                    |  2583  39.1/d win  43% PF  0.91 str 0.87 net   -627 worst   -98 DD  -658 |  2565  38.9/d win  42% PF  0.95 str 0.91 net   -353 worst   -92 DD  -515
+BOX N15 cx4.0 sl0.5 tp2 30m                    |  4228  64.1/d win  32% PF  0.85 str 0.79 net  -1292 worst   -96 DD -1317 |  4152  62.9/d win  32% PF  0.86 str 0.81 net  -1221 worst   -85 DD -1234
+BOX N15 cx4.0 sl-3 tp0 30m                     |  3482  52.8/d win  29% PF  0.86 str 0.81 net  -1002 worst  -125 DD -1051 |  3544  53.7/d win  27% PF  0.93 str 0.88 net   -545 worst  -119 DD  -655
+BOX N30 cx1.5 sl1.0 tp0 30m                    no events
+BOX N30 cx1.5 sl1.0 tp2 30m                    no events
+BOX N30 cx1.5 sl0.5 tp2 30m                    no events
+BOX N30 cx1.5 sl-3 tp0 30m                     no events
+BOX N30 cx2.5 sl1.0 tp0 30m                    |     5   1.0/d win  40% PF  1.00 str 0.96 net     -0 worst    -9 DD   -13 |     4   1.3/d win  25% PF  0.67 str 0.64 net     -4 worst    -6 DD    -8
+BOX N30 cx2.5 sl1.0 tp2 30m                    |     5   1.0/d win  40% PF  1.30 str 1.25 net     +5 worst    -9 DD   -13 |     4   1.3/d win  25% PF  0.67 str 0.64 net     -4 worst    -6 DD    -8
+BOX N30 cx2.5 sl0.5 tp2 30m                    |     5   1.0/d win  40% PF  1.14 str 1.09 net     +2 worst    -9 DD   -11 |     4   1.3/d win   0% PF  0.00 str 0.00 net    -10 worst    -6 DD   -10
+BOX N30 cx2.5 sl-3 tp0 30m                     |     5   1.0/d win  40% PF  1.04 str 1.00 net     +1 worst    -9 DD   -12 |     4   1.3/d win  25% PF  0.03 str 0.01 net     -9 worst    -6 DD   -10
+BOX N30 cx4.0 sl1.0 tp0 30m                    |   806  12.2/d win  42% PF  0.88 str 0.84 net   -279 worst   -49 DD  -391 |   749  11.3/d win  44% PF  0.93 str 0.89 net   -151 worst   -92 DD  -278
+BOX N30 cx4.0 sl1.0 tp2 30m                    |   807  12.2/d win  42% PF  0.88 str 0.84 net   -284 worst   -47 DD  -373 |   749  11.3/d win  45% PF  0.96 str 0.92 net    -88 worst   -92 DD  -218
+BOX N30 cx4.0 sl0.5 tp2 30m                    |  1001  15.2/d win  34% PF  0.90 str 0.84 net   -222 worst   -40 DD  -291 |   918  13.9/d win  32% PF  0.79 str 0.75 net   -450 worst   -68 DD  -450
+BOX N30 cx4.0 sl-3 tp0 30m                     |  1023  15.5/d win  28% PF  0.84 str 0.79 net   -357 worst   -49 DD  -427 |   903  13.7/d win  27% PF  0.86 str 0.81 net   -273 worst   -51 DD  -302
+BOX N10 cx2.5 sl1 60m                          |  1726  26.2/d win  27% PF  0.92 str 0.87 net   -414 worst   -90 DD  -436 |  1711  25.9/d win  27% PF  0.93 str 0.89 net   -339 worst  -119 DD  -425
+BOX N10 cx2.5 sl1 120m                         |  1349  20.4/d win  19% PF  0.85 str 0.82 net   -652 worst   -99 DD  -653 |  1347  20.4/d win  20% PF  0.95 str 0.91 net   -236 worst  -112 DD  -526
+BOX N10 cx2.5 sl1 30m RANDOM                   |  2144  32.5/d win  42% PF  0.91 str 0.87 net   -522 worst   -97 DD  -661 |  2145  32.5/d win  39% PF  0.89 str 0.85 net   -728 worst  -146 DD  -728
+BOX N10 cx2.5 sl1 30m London 10-15             |   551   8.5/d win  33% PF  0.87 str 0.82 net   -155 worst   -39 DD  -166 |   547   8.4/d win  33% PF  0.76 str 0.71 net   -310 worst   -50 DD  -345
+BOX N10 cx2.5 sl1 30m NY 15-19                 |   420   6.4/d win  35% PF  0.78 str 0.74 net   -330 worst   -63 DD  -342 |   428   6.5/d win  36% PF  1.01 str 0.97 net    +11 worst   -60 DD  -182
+BOX N15 cx2.5 sl1 60m                          |   665  10.1/d win  28% PF  0.93 str 0.89 net   -138 worst   -58 DD  -226 |   653   9.9/d win  28% PF  0.94 str 0.90 net   -118 worst   -54 DD  -227
+BOX N15 cx2.5 sl1 120m                         |   592   9.0/d win  21% PF  0.94 str 0.90 net   -114 worst   -60 DD  -309 |   584   8.8/d win  21% PF  0.93 str 0.90 net   -134 worst   -62 DD  -239
+BOX N15 cx2.5 sl1 30m RANDOM                   |   717  10.9/d win  46% PF  0.94 str 0.90 net   -124 worst   -54 DD  -213 |   724  11.0/d win  42% PF  0.81 str 0.77 net   -479 worst   -79 DD  -518
+BOX N15 cx2.5 sl1 30m London 10-15             |   177   2.8/d win  34% PF  0.71 str 0.67 net   -117 worst   -17 DD  -133 |   165   2.7/d win  30% PF  0.61 str 0.58 net   -161 worst   -20 DD  -210
+BOX N15 cx2.5 sl1 30m NY 15-19                 |   146   2.3/d win  34% PF  0.74 str 0.71 net   -136 worst   -29 DD  -223 |   156   2.4/d win  35% PF  0.96 str 0.93 net    -24 worst   -45 DD   -83
+BOX N30 cx4.0 sl1 60m                          |   677  10.3/d win  37% PF  0.84 str 0.81 net   -385 worst   -59 DD  -440 |   632   9.6/d win  38% PF  0.95 str 0.92 net   -117 worst   -73 DD  -298
+BOX N30 cx4.0 sl1 120m                         |   572   8.7/d win  28% PF  0.87 str 0.85 net   -318 worst   -61 DD  -450 |   520   7.9/d win  31% PF  0.89 str 0.87 net   -265 worst  -123 DD  -402
+BOX N30 cx4.0 sl1 30m RANDOM                   |   903  13.7/d win  47% PF  0.90 str 0.86 net   -287 worst  -103 DD  -392 |   852  12.9/d win  47% PF  0.90 str 0.86 net   -309 worst   -82 DD  -341
+BOX N30 cx4.0 sl1 30m London 10-15             |   211   3.3/d win  42% PF  0.75 str 0.71 net   -129 worst   -22 DD  -162 |   204   3.3/d win  40% PF  0.74 str 0.70 net   -141 worst   -28 DD  -185
+BOX N30 cx4.0 sl1 30m NY 15-19                 |   167   2.7/d win  40% PF  0.80 str 0.77 net   -132 worst   -32 DD  -224 |   157   2.7/d win  39% PF  0.76 str 0.73 net   -168 worst   -36 DD  -207
+== 2. STRADDLE at a fixed server time: OCO open +/- K, SL $sl, TP tpm x SL (0 = none), out after hold min
+STR  1.50 K1 sl3 tp0 30m                       |    65   1.0/d win  46% PF  1.40 str 1.29 net    +37 worst    -3 DD   -21 |    65   1.0/d win  34% PF  0.77 str 0.71 net    -29 worst    -3 DD   -52
+STR  1.50 K2 sl4 tp0 60m                       |    55   1.0/d win  33% PF  0.82 str 0.78 net    -26 worst    -5 DD   -52 |    58   1.0/d win  31% PF  1.00 str 0.95 net     -0 worst    -4 DD   -68
+STR  1.50 K3 sl5 tp2 120m                      |    34   1.0/d win  35% PF  1.03 str 0.99 net     +3 worst    -5 DD   -41 |    44   1.0/d win  34% PF  0.95 str 0.91 net     -7 worst    -5 DD   -65
+STR  1.50 K2 sl3 tp2 30m                       |    55   1.0/d win  49% PF  1.29 str 1.18 net    +22 worst    -3 DD   -21 |    58   1.0/d win  38% PF  0.84 str 0.77 net    -15 worst    -3 DD   -30
+STR  3.00 K1 sl3 tp0 30m                       |    65   1.0/d win  25% PF  1.15 str 1.08 net    +21 worst    -3 DD   -75 |    65   1.0/d win  18% PF  0.62 str 0.59 net    -62 worst    -4 DD   -76
+STR  3.00 K2 sl4 tp0 60m                       |    65   1.0/d win  26% PF  1.19 str 1.14 net    +36 worst    -4 DD   -99 |    65   1.0/d win  15% PF  0.86 str 0.83 net    -30 worst    -4 DD   -62
+STR  3.00 K3 sl5 tp2 120m                      |    64   1.0/d win  34% PF  1.04 str 1.01 net     +9 worst    -5 DD   -77 |    63   1.0/d win  29% PF  0.80 str 0.77 net    -47 worst    -6 DD  -122
+STR  3.00 K2 sl3 tp2 30m                       |    65   1.0/d win  29% PF  0.80 str 0.75 net    -28 worst    -3 DD   -58 |    65   1.0/d win  31% PF  0.87 str 0.81 net    -19 worst    -3 DD   -45
+STR  8.00 K1 sl3 tp0 30m                       |    65   1.0/d win  34% PF  0.98 str 0.91 net     -3 worst    -3 DD   -38 |    65   1.0/d win  26% PF  0.59 str 0.55 net    -57 worst    -4 DD   -79
+STR  8.00 K2 sl4 tp0 60m                       |    62   1.0/d win  32% PF  1.25 str 1.20 net    +42 worst    -5 DD   -45 |    65   1.0/d win  22% PF  0.79 str 0.76 net    -44 worst    -5 DD   -97
+STR  8.00 K3 sl5 tp2 120m                      |    55   1.0/d win  40% PF  1.30 str 1.25 net    +49 worst    -6 DD   -47 |    58   1.0/d win  22% PF  0.57 str 0.55 net    -99 worst    -6 DD  -119
+STR  8.00 K2 sl3 tp2 30m                       |    62   1.0/d win  32% PF  0.84 str 0.78 net    -20 worst    -3 DD   -37 |    65   1.0/d win  32% PF  0.74 str 0.68 net    -34 worst    -3 DD   -59
+STR  9.00 K1 sl3 tp0 30m                       |    65   1.0/d win  32% PF  1.14 str 1.07 net    +18 worst    -3 DD   -52 |    65   1.0/d win  40% PF  1.95 str 1.85 net   +114 worst    -3 DD   -21
+STR  9.00 K2 sl4 tp0 60m                       |    64   1.0/d win  31% PF  1.09 str 1.04 net    +15 worst    -4 DD   -67 |    65   1.0/d win  34% PF  1.55 str 1.48 net    +94 worst    -4 DD   -35
+STR  9.00 K3 sl5 tp2 120m                      |    62   1.0/d win  37% PF  1.09 str 1.05 net    +17 worst    -6 DD   -62 |    58   1.0/d win  47% PF  1.73 str 1.66 net   +115 worst    -5 DD   -16
+STR  9.00 K2 sl3 tp2 30m                       |    64   1.0/d win  42% PF  1.21 str 1.13 net    +23 worst    -3 DD   -38 |    65   1.0/d win  40% PF  1.35 str 1.27 net    +42 worst    -3 DD   -16
+STR 10.00 K1 sl3 tp0 30m                       |    65   1.0/d win  28% PF  0.80 str 0.76 net    -28 worst    -3 DD   -83 |    65   1.0/d win  35% PF  0.98 str 0.92 net     -2 worst    -3 DD   -44
+STR 10.00 K2 sl4 tp0 60m                       |    65   1.0/d win  31% PF  1.07 str 1.02 net    +12 worst    -4 DD   -42 |    65   1.0/d win  25% PF  0.51 str 0.48 net    -96 worst    -5 DD  -128
+STR 10.00 K3 sl5 tp2 120m                      |    60   1.0/d win  33% PF  0.95 str 0.91 net    -10 worst    -5 DD   -53 |    58   1.0/d win  29% PF  0.73 str 0.70 net    -56 worst    -6 DD   -92
+STR 10.00 K2 sl3 tp2 30m                       |    65   1.0/d win  34% PF  0.91 str 0.85 net    -12 worst    -4 DD   -39 |    65   1.0/d win  29% PF  0.78 str 0.73 net    -30 worst    -4 DD   -67
+STR 11.00 K1 sl3 tp0 30m                       |    65   1.0/d win  31% PF  1.16 str 1.09 net    +21 worst    -3 DD   -40 |    65   1.0/d win  29% PF  1.05 str 0.99 net     +7 worst    -4 DD   -70
+STR 11.00 K2 sl4 tp0 60m                       |    64   1.0/d win  31% PF  1.02 str 0.97 net     +3 worst    -5 DD   -53 |    65   1.0/d win  34% PF  1.37 str 1.31 net    +63 worst    -4 DD   -53
+STR 11.00 K3 sl5 tp2 120m                      |    61   1.0/d win  30% PF  0.73 str 0.70 net    -58 worst    -5 DD   -84 |    62   1.0/d win  44% PF  1.38 str 1.32 net    +68 worst    -6 DD   -46
+STR 11.00 K2 sl3 tp2 30m                       |    64   1.0/d win  42% PF  1.32 str 1.23 net    +34 worst    -4 DD   -19 |    65   1.0/d win  35% PF  0.97 str 0.91 net     -4 worst    -4 DD   -52
+STR 14.00 K1 sl3 tp0 30m                       |    65   1.0/d win  31% PF  0.73 str 0.68 net    -34 worst    -3 DD   -47 |    65   1.0/d win  31% PF  0.82 str 0.77 net    -23 worst    -4 DD   -34
+STR 14.00 K2 sl4 tp0 60m                       |    65   1.0/d win  26% PF  0.91 str 0.87 net    -16 worst    -4 DD   -63 |    64   1.0/d win  30% PF  1.05 str 1.00 net     +9 worst    -6 DD   -42
+STR 14.00 K3 sl5 tp2 120m                      |    58   1.0/d win  24% PF  0.64 str 0.61 net    -81 worst    -6 DD   -96 |    58   1.0/d win  26% PF  0.69 str 0.66 net    -69 worst    -7 DD   -83
+STR 14.00 K2 sl3 tp2 30m                       |    65   1.0/d win  29% PF  0.69 str 0.64 net    -40 worst    -3 DD   -50 |    64   1.0/d win  41% PF  1.09 str 1.02 net    +10 worst    -4 DD   -40
+STR 15.00 K1 sl3 tp0 30m                       |    65   1.0/d win  23% PF  0.53 str 0.50 net    -73 worst    -4 DD   -75 |    65   1.0/d win  18% PF  0.75 str 0.71 net    -40 worst    -3 DD   -62
+STR 15.00 K2 sl4 tp0 60m                       |    65   1.0/d win  11% PF  0.39 str 0.37 net   -154 worst   -12 DD  -154 |    65   1.0/d win  15% PF  0.65 str 0.63 net    -77 worst    -5 DD   -77
+STR 15.00 K3 sl5 tp2 120m                      |    63   1.0/d win  22% PF  0.54 str 0.52 net   -119 worst   -14 DD  -134 |    64   1.0/d win  30% PF  0.84 str 0.81 net    -37 worst    -6 DD   -67
+STR 15.00 K2 sl3 tp2 30m                       |    65   1.0/d win  28% PF  0.73 str 0.69 net    -38 worst    -4 DD   -44 |    65   1.0/d win  22% PF  0.54 str 0.51 net    -73 worst    -4 DD   -78
+STR 15.50 K1 sl3 tp0 30m                       |    65   1.0/d win  23% PF  1.35 str 1.30 net    +71 worst   -21 DD  -110 |    65   1.0/d win  25% PF  1.24 str 1.19 net    +45 worst   -27 DD   -48
+STR 15.50 K2 sl4 tp0 60m                       |    65   1.0/d win  23% PF  1.33 str 1.29 net    +88 worst   -37 DD   -78 |    65   1.0/d win  23% PF  1.41 str 1.36 net    +83 worst    -5 DD   -54
+STR 15.50 K3 sl5 tp2 120m                      |    64   1.0/d win  39% PF  1.09 str 1.05 net    +22 worst   -37 DD   -69 |    63   1.0/d win  35% PF  1.06 str 1.02 net    +13 worst    -6 DD   -47
+STR 15.50 K2 sl3 tp2 30m                       |    65   1.0/d win  37% PF  0.89 str 0.85 net    -21 worst   -37 DD   -73 |    65   1.0/d win  32% PF  0.89 str 0.83 net    -16 worst    -5 DD   -33
+STR 16.00 K1 sl3 tp0 30m                       |    65   1.0/d win  28% PF  1.32 str 1.25 net    +46 worst    -4 DD   -29 |    65   1.0/d win  18% PF  1.43 str 1.36 net    +69 worst    -4 DD   -31
+STR 16.00 K2 sl4 tp0 60m                       |    65   1.0/d win  25% PF  1.38 str 1.32 net    +75 worst    -5 DD   -46 |    65   1.0/d win  15% PF  0.89 str 0.86 net    -24 worst    -5 DD   -77
+STR 16.00 K3 sl5 tp2 120m                      |    64   1.0/d win  41% PF  1.33 str 1.28 net    +64 worst    -6 DD   -40 |    65   1.0/d win  26% PF  0.69 str 0.67 net    -76 worst    -6 DD   -86
+STR 16.00 K2 sl3 tp2 30m                       |    65   1.0/d win  35% PF  1.08 str 1.01 net    +10 worst    -3 DD   -31 |    65   1.0/d win  25% PF  0.64 str 0.60 net    -55 worst    -4 DD   -67
+STR 16.50 K1 sl3 tp0 30m                       |    65   1.0/d win  17% PF  0.89 str 0.85 net    -19 worst    -5 DD   -35 |    65   1.0/d win  17% PF  0.74 str 0.70 net    -44 worst    -4 DD   -83
+STR 16.50 K2 sl4 tp0 60m                       |    65   1.0/d win  28% PF  1.49 str 1.43 net    +94 worst    -4 DD   -45 |    65   1.0/d win  18% PF  0.87 str 0.84 net    -28 worst    -5 DD   -67
+STR 16.50 K3 sl5 tp2 120m                      |    65   1.0/d win  42% PF  1.41 str 1.36 net    +79 worst    -5 DD   -46 |    65   1.0/d win  26% PF  0.69 str 0.66 net    -77 worst    -6 DD   -81
+STR 16.50 K2 sl3 tp2 30m                       |    65   1.0/d win  32% PF  0.90 str 0.85 net    -13 worst    -3 DD   -65 |    65   1.0/d win  28% PF  0.74 str 0.70 net    -38 worst    -3 DD   -41
+STR 17.00 K1 sl3 tp0 30m                       |    65   1.0/d win  25% PF  1.25 str 1.18 net    +37 worst    -3 DD   -38 |    65   1.0/d win  18% PF  0.89 str 0.85 net    -18 worst    -4 DD  -104
+STR 17.00 K2 sl4 tp0 60m                       |    65   1.0/d win  26% PF  1.11 str 1.06 net    +21 worst    -6 DD   -41 |    65   1.0/d win  18% PF  0.99 str 0.95 net     -2 worst    -4 DD   -93
+STR 17.00 K3 sl5 tp2 120m                      |    64   1.0/d win  34% PF  1.00 str 0.96 net     -1 worst    -7 DD   -46 |    65   1.0/d win  29% PF  0.80 str 0.77 net    -47 worst    -5 DD  -112
+STR 17.00 K2 sl3 tp2 30m                       |    65   1.0/d win  35% PF  0.97 str 0.91 net     -4 worst    -4 DD   -31 |    65   1.0/d win  28% PF  0.72 str 0.67 net    -42 worst    -4 DD   -57
+STR 18.00 K1 sl3 tp0 30m                       |    65   1.0/d win  25% PF  0.95 str 0.90 net     -8 worst    -4 DD   -41 |    65   1.0/d win  17% PF  0.56 str 0.53 net    -74 worst    -4 DD  -107
+STR 18.00 K2 sl4 tp0 60m                       |    65   1.0/d win  29% PF  1.00 str 0.95 net     -0 worst    -5 DD   -89 |    65   1.0/d win  31% PF  1.28 str 1.22 net    +50 worst    -5 DD   -33
+STR 18.00 K3 sl5 tp2 120m                      |    62   1.0/d win  31% PF  0.79 str 0.76 net    -46 worst    -6 DD   -59 |    64   1.0/d win  45% PF  1.60 str 1.54 net   +107 worst    -6 DD   -40
+STR 18.00 K2 sl3 tp2 30m                       |    65   1.0/d win  38% PF  1.11 str 1.04 net    +14 worst    -3 DD   -30 |    65   1.0/d win  31% PF  0.89 str 0.84 net    -15 worst    -3 DD   -56
+STR 20.00 K1 sl3 tp0 30m                       |    65   1.0/d win  34% PF  0.49 str 0.44 net    -61 worst    -3 DD   -66 |    63   1.0/d win  21% PF  0.51 str 0.48 net    -71 worst    -3 DD   -80
+STR 20.00 K2 sl4 tp0 60m                       |    64   1.0/d win  27% PF  0.57 str 0.54 net    -77 worst    -4 DD   -95 |    63   1.0/d win  29% PF  0.72 str 0.69 net    -48 worst    -4 DD   -83
+STR 20.00 K3 sl5 tp2 120m                      |    56   1.0/d win  25% PF  0.65 str 0.62 net    -71 worst    -5 DD   -86 |    55   1.0/d win  29% PF  0.64 str 0.61 net    -72 worst    -6 DD   -90
+STR 20.00 K2 sl3 tp2 30m                       |    64   1.0/d win  27% PF  0.64 str 0.60 net    -46 worst    -3 DD   -56 |    63   1.0/d win  27% PF  0.72 str 0.67 net    -39 worst    -3 DD   -53
+== 3. NEWS: 153 USD high-importance releases in the tick window; OCO placed 1 min before at the price +/- K, expire 5 min after
+NEWS K1 sl3 tp0 15m                            |    63   1.6/d win  32% PF  0.97 str 0.92 net     -5 worst   -19 DD   -53 |    73   1.7/d win  23% PF  1.62 str 1.55 net   +120 worst   -17 DD   -54
+  FAKE times K1 sl3 tp0 15m                    |    73   1.7/d win  33% PF  0.99 str 0.93 net     -1 worst   -12 DD   -30 |    69   1.5/d win  36% PF  1.04 str 0.97 net     +5 worst   -12 DD   -31
+NEWS K2 sl4 tp0 30m                            |    62   1.6/d win  31% PF  0.96 str 0.93 net     -8 worst   -22 DD   -56 |    70   1.6/d win  26% PF  1.85 str 1.78 net   +186 worst   -19 DD   -44
+  FAKE times K2 sl4 tp0 30m                    |    59   1.6/d win  32% PF  0.87 str 0.82 net    -20 worst   -12 DD   -35 |    60   1.4/d win  22% PF  0.54 str 0.52 net    -85 worst   -12 DD   -90
+NEWS K3 sl5 tp0 60m                            |    57   1.5/d win  25% PF  0.85 str 0.83 net    -36 worst   -22 DD   -98 |    65   1.5/d win  34% PF  2.80 str 2.71 net   +396 worst   -20 DD   -31
+  FAKE times K3 sl5 tp0 60m                    |    46   1.4/d win  33% PF  0.89 str 0.85 net    -16 worst   -15 DD   -68 |    48   1.5/d win  27% PF  0.63 str 0.60 net    -66 worst   -15 DD   -85
+NEWS K2 sl4 tp2 30m                            |    64   1.6/d win  38% PF  0.90 str 0.86 net    -21 worst   -22 DD   -49 |    74   1.7/d win  35% PF  1.06 str 1.01 net    +12 worst    -9 DD   -52
+  FAKE times K2 sl4 tp2 30m                    |    59   1.6/d win  34% PF  0.82 str 0.77 net    -28 worst   -12 DD   -38 |    60   1.4/d win  27% PF  0.47 str 0.45 net    -91 worst   -12 DD   -95
+NEWS K5 sl5 tp2 60m                            |    46   1.4/d win  39% PF  1.07 str 1.03 net    +11 worst   -23 DD   -41 |    54   1.5/d win  31% PF  0.95 str 0.91 net    -10 worst   -20 DD   -29
+  FAKE times K5 sl5 tp2 60m                    |    17   1.1/d win  41% PF  1.45 str 1.39 net    +22 worst    -5 DD   -24 |    24   1.3/d win  17% PF  0.39 str 0.38 net    -62 worst   -10 DD   -62
+NEWS K1 sl2 tp2 10m                            |    65   1.7/d win  37% PF  1.14 str 1.05 net    +14 worst    -7 DD   -31 |    75   1.7/d win  28% PF  0.81 str 0.75 net    -25 worst   -15 DD   -45
+  FAKE times K1 sl2 tp2 10m                    |    73   1.7/d win  36% PF  0.78 str 0.70 net    -19 worst    -6 DD   -26 |    69   1.5/d win  33% PF  0.93 str 0.84 net     -7 worst    -8 DD   -28
+== 4. INSIDE BAR: OCO at the mother bar's high / low, SL = mother range, TP tpm x SL, expire 3 bars
+INSIDE 5min tp1 60m                            |  1224  18.5/d win  47% PF  0.88 str 0.84 net   -408 worst   -70 DD  -426 |  1324  20.1/d win  46% PF  0.93 str 0.89 net   -310 worst   -67 DD  -334
+INSIDE 5min tp2 120m                           |   991  15.0/d win  35% PF  0.94 str 0.91 net   -221 worst   -74 DD  -333 |  1028  15.6/d win  34% PF  0.93 str 0.90 net   -309 worst   -90 DD  -399
+INSIDE 5min tp0 60m                            |  1023  15.5/d win  33% PF  0.86 str 0.82 net   -491 worst   -67 DD  -517 |  1091  16.5/d win  32% PF  0.95 str 0.91 net   -214 worst   -83 DD  -311
+INSIDE 5min tp0 240m                           |   670  10.2/d win  19% PF  0.96 str 0.93 net   -111 worst   -71 DD  -382 |   646   9.8/d win  21% PF  1.09 str 1.06 net   +272 worst  -101 DD  -233
+INSIDE 15min tp1 60m                           |   475   7.2/d win  46% PF  0.81 str 0.78 net   -341 worst   -68 DD  -425 |   518   7.8/d win  53% PF  1.10 str 1.06 net   +182 worst   -51 DD  -155
+INSIDE 15min tp2 120m                          |   400   6.1/d win  36% PF  0.82 str 0.80 net   -388 worst   -58 DD  -505 |   419   6.3/d win  45% PF  1.01 str 0.99 net    +27 worst   -65 DD  -291
+INSIDE 15min tp0 60m                           |   455   7.0/d win  43% PF  0.81 str 0.78 net   -339 worst   -62 DD  -463 |   497   7.5/d win  48% PF  1.01 str 0.97 net    +17 worst   -58 DD  -200
+INSIDE 15min tp0 240m                          |   316   4.9/d win  33% PF  0.96 str 0.94 net    -84 worst   -68 DD  -433 |   332   5.0/d win  34% PF  1.01 str 0.99 net    +24 worst   -67 DD  -207
+last 3 months 2026-08-17 .. 2026-11-16 | previous 2026-05-18 .. 2026-08-17
+== 15.5 grid K x SL x hold (no TP)
+STR 15.50 K0.5 sl2 15m                         |    65   1.0/d win  26% PF  2.05 str 1.96 net   +170 worst   -21 DD   -70 |    65   1.0/d win  20% PF  1.66 str 1.57 net    +89 worst   -10 DD   -57
+STR 15.50 K0.5 sl2 30m                         |    65   1.0/d win  22% PF  1.98 str 1.89 net   +165 worst   -21 DD   -73 |    65   1.0/d win  15% PF  1.45 str 1.37 net    +63 worst   -10 DD   -70
+STR 15.50 K0.5 sl2 60m                         |    65   1.0/d win  14% PF  1.68 str 1.61 net   +121 worst   -21 DD   -62 |    65   1.0/d win  14% PF  1.46 str 1.38 net    +67 worst   -10 DD   -70
+STR 15.50 K0.5 sl3 15m                         |    65   1.0/d win  28% PF  1.83 str 1.77 net   +166 worst   -21 DD   -63 |    65   1.0/d win  25% PF  1.22 str 1.17 net    +42 worst   -27 DD   -66
+STR 15.50 K0.5 sl3 30m                         |    65   1.0/d win  26% PF  1.88 str 1.82 net   +178 worst   -21 DD   -63 |    65   1.0/d win  20% PF  1.13 str 1.09 net    +26 worst   -27 DD   -78
+STR 15.50 K0.5 sl3 60m                         |    65   1.0/d win  20% PF  1.86 str 1.80 net   +186 worst   -21 DD   -63 |    65   1.0/d win  18% PF  1.17 str 1.12 net    +35 worst   -27 DD   -79
+STR 15.50 K0.5 sl4 15m                         |    65   1.0/d win  32% PF  1.62 str 1.57 net   +143 worst   -21 DD   -72 |    65   1.0/d win  31% PF  1.26 str 1.21 net    +53 worst   -27 DD   -63
+STR 15.50 K0.5 sl4 30m                         |    65   1.0/d win  31% PF  1.71 str 1.66 net   +167 worst   -21 DD   -72 |    65   1.0/d win  26% PF  1.05 str 1.01 net    +11 worst   -27 DD   -82
+STR 15.50 K0.5 sl4 60m                         |    65   1.0/d win  23% PF  1.69 str 1.64 net   +171 worst   -21 DD   -72 |    65   1.0/d win  23% PF  1.09 str 1.06 net    +22 worst   -27 DD   -91
+STR 15.50 K0.5 sl6 15m                         |    65   1.0/d win  42% PF  1.57 str 1.53 net   +141 worst   -21 DD   -83 |    65   1.0/d win  34% PF  1.09 str 1.05 net    +22 worst   -27 DD   -81
+STR 15.50 K0.5 sl6 30m                         |    65   1.0/d win  37% PF  1.54 str 1.50 net   +151 worst   -21 DD   -89 |    65   1.0/d win  34% PF  0.96 str 0.93 net    -11 worst   -27 DD   -96
+STR 15.50 K0.5 sl6 60m                         |    65   1.0/d win  29% PF  1.50 str 1.46 net   +150 worst   -21 DD   -89 |    65   1.0/d win  29% PF  1.16 str 1.13 net    +51 worst   -27 DD   -72
+STR 15.50 K1 sl2 15m                           |    65   1.0/d win  23% PF  0.88 str 0.84 net    -19 worst   -21 DD   -87 |    65   1.0/d win  23% PF  1.73 str 1.62 net    +87 worst    -9 DD   -44
+STR 15.50 K1 sl2 30m                           |    65   1.0/d win  17% PF  0.97 str 0.93 net     -4 worst   -21 DD  -100 |    65   1.0/d win  18% PF  1.57 str 1.47 net    +71 worst    -9 DD   -41
+STR 15.50 K1 sl2 60m                           |    65   1.0/d win  11% PF  0.96 str 0.92 net     -7 worst   -21 DD  -101 |    65   1.0/d win  11% PF  1.40 str 1.32 net    +53 worst    -9 DD   -57
+STR 15.50 K1 sl3 15m                           |    65   1.0/d win  28% PF  1.32 str 1.27 net    +63 worst   -21 DD   -99 |    65   1.0/d win  31% PF  1.42 str 1.36 net    +72 worst   -27 DD   -39
+STR 15.50 K1 sl3 30m                           |    65   1.0/d win  23% PF  1.35 str 1.30 net    +71 worst   -21 DD  -110 |    65   1.0/d win  25% PF  1.24 str 1.19 net    +45 worst   -27 DD   -48
+STR 15.50 K1 sl3 60m                           |    65   1.0/d win  18% PF  1.29 str 1.25 net    +64 worst   -21 DD  -106 |    65   1.0/d win  17% PF  1.17 str 1.12 net    +34 worst   -27 DD   -70
+STR 15.50 K1 sl4 15m                           |    65   1.0/d win  34% PF  1.49 str 1.44 net   +109 worst   -21 DD   -91 |    65   1.0/d win  34% PF  1.29 str 1.24 net    +56 worst   -27 DD   -46
+STR 15.50 K1 sl4 30m                           |    65   1.0/d win  31% PF  1.59 str 1.53 net   +132 worst   -21 DD   -86 |    65   1.0/d win  26% PF  1.09 str 1.05 net    +19 worst   -27 DD   -61
+STR 15.50 K1 sl4 60m                           |    65   1.0/d win  25% PF  1.51 str 1.47 net   +128 worst   -21 DD   -86 |    65   1.0/d win  18% PF  1.02 str 0.99 net     +6 worst   -27 DD   -88
+STR 15.50 K1 sl6 15m                           |    65   1.0/d win  42% PF  1.38 str 1.34 net    +92 worst   -21 DD  -108 |    65   1.0/d win  40% PF  1.18 str 1.14 net    +42 worst   -27 DD   -45
+STR 15.50 K1 sl6 30m                           |    65   1.0/d win  35% PF  1.39 str 1.36 net   +108 worst   -21 DD  -111 |    65   1.0/d win  32% PF  1.14 str 1.10 net    +37 worst   -27 DD   -46
+STR 15.50 K1 sl6 60m                           |    65   1.0/d win  28% PF  1.29 str 1.26 net    +90 worst   -21 DD  -116 |    65   1.0/d win  26% PF  1.05 str 1.02 net    +14 worst   -27 DD   -55
+STR 15.50 K2 sl2 15m                           |    65   1.0/d win  23% PF  1.28 str 1.21 net    +40 worst   -22 DD   -49 |    65   1.0/d win  28% PF  2.01 str 1.88 net   +107 worst    -5 DD   -33
+STR 15.50 K2 sl2 30m                           |    65   1.0/d win  12% PF  1.14 str 1.08 net    +22 worst   -22 DD   -65 |    65   1.0/d win  22% PF  2.05 str 1.92 net   +119 worst    -5 DD   -41
+STR 15.50 K2 sl2 60m                           |    65   1.0/d win  11% PF  0.94 str 0.90 net     -9 worst   -22 DD   -79 |    65   1.0/d win  11% PF  1.48 str 1.39 net    +62 worst    -5 DD   -49
+STR 15.50 K2 sl3 15m                           |    65   1.0/d win  32% PF  1.37 str 1.32 net    +75 worst   -37 DD   -68 |    65   1.0/d win  35% PF  1.88 str 1.78 net   +118 worst    -5 DD   -39
+STR 15.50 K2 sl3 30m                           |    65   1.0/d win  20% PF  1.21 str 1.17 net    +47 worst   -37 DD  -103 |    65   1.0/d win  26% PF  1.77 str 1.69 net   +117 worst    -5 DD   -33
+STR 15.50 K2 sl3 60m                           |    65   1.0/d win  17% PF  1.14 str 1.10 net    +33 worst   -37 DD   -97 |    65   1.0/d win  18% PF  1.51 str 1.44 net    +85 worst    -5 DD   -42
+STR 15.50 K2 sl4 15m                           |    65   1.0/d win  35% PF  1.50 str 1.45 net   +113 worst   -37 DD   -72 |    65   1.0/d win  43% PF  1.94 str 1.85 net   +135 worst    -5 DD   -27
+STR 15.50 K2 sl4 30m                           |    65   1.0/d win  25% PF  1.35 str 1.31 net    +89 worst   -37 DD   -87 |    65   1.0/d win  32% PF  1.61 str 1.55 net   +110 worst    -5 DD   -36
+STR 15.50 K2 sl4 60m                           |    65   1.0/d win  23% PF  1.33 str 1.29 net    +88 worst   -37 DD   -78 |    65   1.0/d win  23% PF  1.41 str 1.36 net    +83 worst    -5 DD   -54
+STR 15.50 K2 sl6 15m                           |    65   1.0/d win  40% PF  1.31 str 1.28 net    +82 worst   -37 DD   -82 |    65   1.0/d win  51% PF  1.77 str 1.70 net   +131 worst    -7 DD   -33
+STR 15.50 K2 sl6 30m                           |    65   1.0/d win  32% PF  1.27 str 1.24 net    +81 worst   -37 DD   -99 |    65   1.0/d win  43% PF  1.66 str 1.60 net   +139 worst    -7 DD   -42
+STR 15.50 K2 sl6 60m                           |    65   1.0/d win  29% PF  1.32 str 1.29 net   +105 worst   -37 DD   -92 |    65   1.0/d win  31% PF  1.34 str 1.30 net    +88 worst    -7 DD   -50
+STR 15.50 K3 sl2 15m                           |    64   1.0/d win  25% PF  2.09 str 1.96 net   +126 worst   -22 DD   -42 |    63   1.0/d win  25% PF  1.92 str 1.80 net    +95 worst    -4 DD   -27
+STR 15.50 K3 sl2 30m                           |    64   1.0/d win  14% PF  2.16 str 2.04 net   +155 worst   -22 DD   -48 |    63   1.0/d win  17% PF  1.94 str 1.81 net   +106 worst    -4 DD   -38
+STR 15.50 K3 sl2 60m                           |    64   1.0/d win  11% PF  1.93 str 1.82 net   +128 worst   -22 DD   -66 |    63   1.0/d win  13% PF  1.64 str 1.54 net    +78 worst    -4 DD   -47
+STR 15.50 K3 sl3 15m                           |    64   1.0/d win  38% PF  1.92 str 1.85 net   +154 worst   -37 DD   -47 |    63   1.0/d win  35% PF  2.06 str 1.95 net   +130 worst    -4 DD   -37
+STR 15.50 K3 sl3 30m                           |    64   1.0/d win  25% PF  1.72 str 1.66 net   +145 worst   -37 DD   -64 |    63   1.0/d win  25% PF  1.83 str 1.74 net   +119 worst    -4 DD   -33
+STR 15.50 K3 sl3 60m                           |    64   1.0/d win  20% PF  1.64 str 1.58 net   +135 worst   -37 DD   -60 |    63   1.0/d win  14% PF  1.32 str 1.26 net    +54 worst    -4 DD   -43
+STR 15.50 K3 sl4 15m                           |    64   1.0/d win  39% PF  1.65 str 1.59 net   +127 worst   -37 DD   -53 |    63   1.0/d win  38% PF  1.83 str 1.75 net   +121 worst    -5 DD   -33
+STR 15.50 K3 sl4 30m                           |    64   1.0/d win  27% PF  1.49 str 1.44 net   +114 worst   -37 DD   -72 |    63   1.0/d win  29% PF  1.50 str 1.44 net    +89 worst    -5 DD   -41
+STR 15.50 K3 sl4 60m                           |    64   1.0/d win  23% PF  1.43 str 1.39 net   +110 worst   -37 DD   -73 |    63   1.0/d win  21% PF  1.32 str 1.27 net    +64 worst    -5 DD   -41
+STR 15.50 K3 sl6 15m                           |    64   1.0/d win  41% PF  1.40 str 1.36 net    +96 worst   -37 DD   -64 |    63   1.0/d win  51% PF  1.92 str 1.84 net   +140 worst    -7 DD   -28
+STR 15.50 K3 sl6 30m                           |    64   1.0/d win  31% PF  1.31 str 1.28 net    +88 worst   -37 DD   -88 |    63   1.0/d win  40% PF  1.65 str 1.59 net   +135 worst    -7 DD   -38
+STR 15.50 K3 sl6 60m                           |    64   1.0/d win  30% PF  1.37 str 1.33 net   +113 worst   -37 DD   -81 |    63   1.0/d win  33% PF  1.53 str 1.49 net   +129 worst    -7 DD   -39
+== 16.0 grid K x SL x hold (no TP)
+STR 16.00 K0.5 sl2 15m                         |    65   1.0/d win  29% PF  1.39 str 1.28 net    +37 worst    -3 DD   -20 |    65   1.0/d win  17% PF  0.70 str 0.65 net    -35 worst    -2 DD   -60
+STR 16.00 K0.5 sl2 30m                         |    65   1.0/d win  26% PF  2.04 str 1.90 net   +105 worst    -3 DD   -21 |    65   1.0/d win  11% PF  1.19 str 1.11 net    +23 worst    -2 DD   -58
+STR 16.00 K0.5 sl2 60m                         |    65   1.0/d win  18% PF  2.24 str 2.09 net   +136 worst    -3 DD   -21 |    65   1.0/d win  11% PF  1.21 str 1.14 net    +26 worst    -2 DD   -40
+STR 16.00 K0.5 sl3 15m                         |    65   1.0/d win  35% PF  1.20 str 1.13 net    +26 worst    -3 DD   -37 |    65   1.0/d win  20% PF  0.70 str 0.66 net    -48 worst    -3 DD   -67
+STR 16.00 K0.5 sl3 30m                         |    65   1.0/d win  32% PF  1.74 str 1.65 net   +101 worst    -3 DD   -22 |    65   1.0/d win  14% PF  0.95 str 0.90 net     -9 worst    -3 DD   -81
+STR 16.00 K0.5 sl3 60m                         |    65   1.0/d win  23% PF  1.87 str 1.78 net   +134 worst    -3 DD   -23 |    65   1.0/d win  12% PF  0.89 str 0.85 net    -19 worst    -3 DD   -78
+STR 16.00 K0.5 sl4 15m                         |    65   1.0/d win  38% PF  1.02 str 0.96 net     +2 worst    -4 DD   -43 |    65   1.0/d win  29% PF  0.69 str 0.65 net    -57 worst    -6 DD   -74
+STR 16.00 K0.5 sl4 30m                         |    65   1.0/d win  35% PF  1.52 str 1.45 net    +87 worst    -4 DD   -30 |    65   1.0/d win  20% PF  0.85 str 0.82 net    -32 worst    -6 DD  -102
+STR 16.00 K0.5 sl4 60m                         |    65   1.0/d win  25% PF  1.57 str 1.51 net   +112 worst    -4 DD   -31 |    65   1.0/d win  15% PF  0.80 str 0.77 net    -45 worst    -6 DD  -124
+STR 16.00 K0.5 sl6 15m                         |    65   1.0/d win  40% PF  0.81 str 0.77 net    -40 worst    -8 DD   -71 |    65   1.0/d win  35% PF  0.62 str 0.60 net    -87 worst    -7 DD  -122
+STR 16.00 K0.5 sl6 30m                         |    65   1.0/d win  43% PF  1.30 str 1.26 net    +64 worst    -8 DD   -45 |    65   1.0/d win  26% PF  0.77 str 0.75 net    -65 worst    -7 DD  -172
+STR 16.00 K0.5 sl6 60m                         |    65   1.0/d win  32% PF  1.41 str 1.37 net   +107 worst    -8 DD   -44 |    65   1.0/d win  20% PF  0.64 str 0.62 net   -116 worst    -7 DD  -219
+STR 16.00 K1 sl2 15m                           |    65   1.0/d win  22% PF  0.95 str 0.88 net     -5 worst    -2 DD   -36 |    65   1.0/d win  22% PF  1.04 str 0.96 net     +4 worst    -3 DD   -28
+STR 16.00 K1 sl2 30m                           |    65   1.0/d win  22% PF  1.51 str 1.41 net    +54 worst    -2 DD   -28 |    65   1.0/d win  14% PF  1.38 str 1.29 net    +45 worst    -3 DD   -33
+STR 16.00 K1 sl2 60m                           |    65   1.0/d win  14% PF  1.66 str 1.55 net    +77 worst    -2 DD   -53 |    65   1.0/d win  12% PF  1.58 str 1.48 net    +71 worst    -3 DD   -29
+STR 16.00 K1 sl3 15m                           |    65   1.0/d win  31% PF  0.97 str 0.92 net     -3 worst    -4 DD   -44 |    65   1.0/d win  26% PF  1.04 str 0.98 net     +5 worst    -4 DD   -30
+STR 16.00 K1 sl3 30m                           |    65   1.0/d win  28% PF  1.32 str 1.25 net    +46 worst    -4 DD   -29 |    65   1.0/d win  18% PF  1.43 str 1.36 net    +69 worst    -4 DD   -31
+STR 16.00 K1 sl3 60m                           |    65   1.0/d win  18% PF  1.37 str 1.31 net    +61 worst    -4 DD   -55 |    65   1.0/d win  17% PF  1.57 str 1.50 net    +96 worst    -4 DD   -31
+STR 16.00 K1 sl4 15m                           |    65   1.0/d win  42% PF  1.11 str 1.05 net    +17 worst    -4 DD   -43 |    65   1.0/d win  32% PF  0.97 str 0.92 net     -6 worst    -6 DD   -39
+STR 16.00 K1 sl4 30m                           |    65   1.0/d win  32% PF  1.32 str 1.26 net    +55 worst    -4 DD   -51 |    65   1.0/d win  20% PF  1.13 str 1.08 net    +26 worst    -6 DD   -64
+STR 16.00 K1 sl4 60m                           |    65   1.0/d win  22% PF  1.26 str 1.21 net    +54 worst    -4 DD   -80 |    65   1.0/d win  18% PF  1.26 str 1.22 net    +57 worst    -6 DD   -46
+STR 16.00 K1 sl6 15m                           |    65   1.0/d win  43% PF  0.84 str 0.80 net    -33 worst    -8 DD   -73 |    65   1.0/d win  38% PF  0.94 str 0.90 net    -13 worst    -6 DD   -49
+STR 16.00 K1 sl6 30m                           |    65   1.0/d win  38% PF  1.09 str 1.05 net    +20 worst    -8 DD   -77 |    65   1.0/d win  29% PF  0.99 str 0.96 net     -2 worst    -6 DD  -121
+STR 16.00 K1 sl6 60m                           |    65   1.0/d win  23% PF  0.94 str 0.92 net    -17 worst    -8 DD  -100 |    65   1.0/d win  23% PF  1.02 str 0.99 net     +6 worst    -6 DD  -106
+STR 16.00 K2 sl2 15m                           |    65   1.0/d win  23% PF  1.20 str 1.11 net    +21 worst    -2 DD   -39 |    65   1.0/d win  20% PF  0.93 str 0.86 net     -8 worst    -3 DD   -45
+STR 16.00 K2 sl2 30m                           |    65   1.0/d win  23% PF  1.77 str 1.65 net    +79 worst    -2 DD   -35 |    65   1.0/d win  14% PF  1.14 str 1.07 net    +17 worst    -3 DD   -41
+STR 16.00 K2 sl2 60m                           |    65   1.0/d win  15% PF  1.92 str 1.79 net   +105 worst    -2 DD   -40 |    65   1.0/d win  11% PF  1.33 str 1.25 net    +41 worst    -3 DD   -41
+STR 16.00 K2 sl3 15m                           |    65   1.0/d win  32% PF  1.08 str 1.02 net    +11 worst    -3 DD   -36 |    65   1.0/d win  23% PF  0.84 str 0.79 net    -25 worst    -4 DD   -49
+STR 16.00 K2 sl3 30m                           |    65   1.0/d win  29% PF  1.54 str 1.46 net    +77 worst    -3 DD   -34 |    65   1.0/d win  17% PF  1.01 str 0.96 net     +2 worst    -4 DD   -65
+STR 16.00 K2 sl3 60m                           |    65   1.0/d win  20% PF  1.55 str 1.48 net    +88 worst    -3 DD   -37 |    65   1.0/d win  14% PF  1.12 str 1.07 net    +20 worst    -4 DD   -57
+STR 16.00 K2 sl4 15m                           |    65   1.0/d win  42% PF  1.12 str 1.06 net    +18 worst    -5 DD   -28 |    65   1.0/d win  25% PF  0.70 str 0.67 net    -57 worst    -5 DD   -68
+STR 16.00 K2 sl4 30m                           |    65   1.0/d win  35% PF  1.39 str 1.33 net    +67 worst    -5 DD   -41 |    65   1.0/d win  18% PF  0.86 str 0.83 net    -30 worst    -5 DD   -90
+STR 16.00 K2 sl4 60m                           |    65   1.0/d win  25% PF  1.38 str 1.32 net    +75 worst    -5 DD   -46 |    65   1.0/d win  15% PF  0.89 str 0.86 net    -24 worst    -5 DD   -77
+STR 16.00 K2 sl6 15m                           |    65   1.0/d win  49% PF  1.10 str 1.05 net    +17 worst    -6 DD   -50 |    65   1.0/d win  32% PF  0.73 str 0.70 net    -61 worst    -8 DD   -72
+STR 16.00 K2 sl6 30m                           |    65   1.0/d win  45% PF  1.39 str 1.34 net    +79 worst    -6 DD   -64 |    65   1.0/d win  22% PF  0.76 str 0.74 net    -71 worst    -8 DD  -145
+STR 16.00 K2 sl6 60m                           |    65   1.0/d win  31% PF  1.25 str 1.21 net    +67 worst    -6 DD   -53 |    65   1.0/d win  18% PF  0.85 str 0.83 net    -49 worst    -8 DD  -139
+STR 16.00 K3 sl2 15m                           |    64   1.0/d win  23% PF  1.10 str 1.02 net    +10 worst    -3 DD   -37 |    65   1.0/d win  17% PF  0.65 str 0.61 net    -40 worst    -4 DD   -57
+STR 16.00 K3 sl2 30m                           |    64   1.0/d win  23% PF  1.48 str 1.38 net    +49 worst    -3 DD   -25 |    65   1.0/d win  15% PF  1.04 str 0.97 net     +5 worst    -4 DD   -57
+STR 16.00 K3 sl2 60m                           |    64   1.0/d win  14% PF  1.64 str 1.54 net    +74 worst    -3 DD   -31 |    65   1.0/d win  12% PF  1.39 str 1.30 net    +47 worst    -4 DD   -63
+STR 16.00 K3 sl3 15m                           |    64   1.0/d win  28% PF  0.96 str 0.91 net     -5 worst    -3 DD   -54 |    65   1.0/d win  29% PF  0.86 str 0.81 net    -19 worst    -4 DD   -50
+STR 16.00 K3 sl3 30m                           |    64   1.0/d win  30% PF  1.35 str 1.28 net    +49 worst    -3 DD   -46 |    65   1.0/d win  18% PF  0.93 str 0.88 net    -12 worst    -4 DD   -61
+STR 16.00 K3 sl3 60m                           |    64   1.0/d win  16% PF  1.23 str 1.17 net    +37 worst    -3 DD   -52 |    65   1.0/d win  15% PF  1.13 str 1.07 net    +22 worst    -4 DD   -60
+STR 16.00 K3 sl4 15m                           |    64   1.0/d win  33% PF  0.88 str 0.83 net    -19 worst    -4 DD   -60 |    65   1.0/d win  34% PF  1.00 str 0.95 net     -0 worst    -4 DD   -35
+STR 16.00 K3 sl4 30m                           |    64   1.0/d win  36% PF  1.34 str 1.28 net    +56 worst    -4 DD   -41 |    65   1.0/d win  23% PF  1.08 str 1.04 net    +17 worst    -4 DD   -66
+STR 16.00 K3 sl4 60m                           |    64   1.0/d win  22% PF  1.25 str 1.20 net    +50 worst    -4 DD   -44 |    65   1.0/d win  18% PF  1.16 str 1.12 net    +35 worst    -4 DD   -48
+STR 16.00 K3 sl6 15m                           |    64   1.0/d win  50% PF  1.12 str 1.07 net    +19 worst    -6 DD   -40 |    65   1.0/d win  38% PF  0.83 str 0.80 net    -34 worst    -6 DD   -49
+STR 16.00 K3 sl6 30m                           |    64   1.0/d win  47% PF  1.39 str 1.34 net    +77 worst    -6 DD   -51 |    65   1.0/d win  23% PF  0.75 str 0.73 net    -71 worst    -6 DD  -136
+STR 16.00 K3 sl6 60m                           |    64   1.0/d win  33% PF  1.31 str 1.27 net    +79 worst    -6 DD   -63 |    65   1.0/d win  18% PF  0.78 str 0.76 net    -71 worst    -6 DD  -130
+== 9.0 grid K x SL x hold (no TP)
+STR  9.00 K0.5 sl2 15m                         |    65   1.0/d win  26% PF  1.08 str 0.99 net     +8 worst    -2 DD   -40 |    65   1.0/d win  29% PF  1.34 str 1.24 net    +33 worst    -3 DD   -19
+STR  9.00 K0.5 sl2 30m                         |    65   1.0/d win  22% PF  0.93 str 0.86 net     -7 worst    -2 DD   -49 |    65   1.0/d win  28% PF  1.69 str 1.57 net    +68 worst    -3 DD   -21
+STR  9.00 K0.5 sl2 60m                         |    65   1.0/d win  15% PF  0.75 str 0.70 net    -28 worst    -2 DD   -62 |    65   1.0/d win  22% PF  1.81 str 1.68 net    +86 worst    -3 DD   -21
+STR  9.00 K0.5 sl3 15m                         |    65   1.0/d win  42% PF  1.37 str 1.28 net    +40 worst    -3 DD   -51 |    65   1.0/d win  38% PF  1.34 str 1.26 net    +40 worst    -4 DD   -23
+STR  9.00 K0.5 sl3 30m                         |    65   1.0/d win  37% PF  1.24 str 1.16 net    +29 worst    -3 DD   -53 |    65   1.0/d win  38% PF  1.77 str 1.67 net    +96 worst    -4 DD   -23
+STR  9.00 K0.5 sl3 60m                         |    65   1.0/d win  31% PF  1.19 str 1.12 net    +25 worst    -3 DD   -64 |    65   1.0/d win  34% PF  1.89 str 1.80 net   +120 worst    -4 DD   -23
+STR  9.00 K0.5 sl4 15m                         |    65   1.0/d win  46% PF  1.23 str 1.15 net    +29 worst    -4 DD   -62 |    65   1.0/d win  49% PF  1.60 str 1.51 net    +66 worst    -4 DD   -21
+STR  9.00 K0.5 sl4 30m                         |    65   1.0/d win  38% PF  0.99 str 0.94 net     -2 worst    -4 DD   -73 |    65   1.0/d win  46% PF  1.74 str 1.65 net    +99 worst    -4 DD   -19
+STR  9.00 K0.5 sl4 60m                         |    65   1.0/d win  32% PF  0.93 str 0.89 net    -12 worst    -4 DD   -81 |    65   1.0/d win  42% PF  1.80 str 1.73 net   +125 worst    -5 DD   -18
+STR  9.00 K0.5 sl6 15m                         |    65   1.0/d win  48% PF  1.04 str 0.99 net     +6 worst    -7 DD   -65 |    65   1.0/d win  51% PF  1.30 str 1.23 net    +41 worst    -6 DD   -32
+STR  9.00 K0.5 sl6 30m                         |    65   1.0/d win  40% PF  0.78 str 0.74 net    -45 worst    -7 DD   -96 |    65   1.0/d win  48% PF  1.36 str 1.30 net    +62 worst    -6 DD   -31
+STR  9.00 K0.5 sl6 60m                         |    65   1.0/d win  42% PF  0.86 str 0.83 net    -30 worst    -7 DD   -90 |    65   1.0/d win  46% PF  1.44 str 1.39 net    +88 worst    -6 DD   -27
+STR  9.00 K1 sl2 15m                           |    65   1.0/d win  29% PF  1.13 str 1.04 net    +12 worst    -2 DD   -42 |    65   1.0/d win  35% PF  1.62 str 1.50 net    +55 worst    -3 DD   -18
+STR  9.00 K1 sl2 30m                           |    65   1.0/d win  23% PF  0.98 str 0.90 net     -2 worst    -2 DD   -50 |    65   1.0/d win  34% PF  2.11 str 1.96 net   +101 worst    -3 DD   -23
+STR  9.00 K1 sl2 60m                           |    65   1.0/d win  15% PF  1.06 str 0.99 net     +7 worst    -2 DD   -61 |    65   1.0/d win  23% PF  1.92 str 1.79 net    +97 worst    -3 DD   -24
+STR  9.00 K1 sl3 15m                           |    65   1.0/d win  40% PF  1.24 str 1.16 net    +26 worst    -3 DD   -48 |    65   1.0/d win  43% PF  1.39 str 1.30 net    +45 worst    -3 DD   -21
+STR  9.00 K1 sl3 30m                           |    65   1.0/d win  32% PF  1.14 str 1.07 net    +18 worst    -3 DD   -52 |    65   1.0/d win  40% PF  1.95 str 1.85 net   +114 worst    -3 DD   -21
+STR  9.00 K1 sl3 60m                           |    65   1.0/d win  26% PF  1.21 str 1.14 net    +30 worst    -3 DD   -57 |    65   1.0/d win  31% PF  1.86 str 1.77 net   +119 worst    -3 DD   -24
+STR  9.00 K1 sl4 15m                           |    65   1.0/d win  45% PF  1.18 str 1.11 net    +22 worst    -4 DD   -61 |    65   1.0/d win  49% PF  1.45 str 1.37 net    +54 worst    -5 DD   -26
+STR  9.00 K1 sl4 30m                           |    65   1.0/d win  40% PF  1.15 str 1.09 net    +22 worst    -4 DD   -62 |    65   1.0/d win  52% PF  2.12 str 2.02 net   +138 worst    -5 DD   -24
+STR  9.00 K1 sl4 60m                           |    65   1.0/d win  31% PF  1.10 str 1.05 net    +18 worst    -4 DD   -74 |    65   1.0/d win  46% PF  2.15 str 2.06 net   +166 worst    -5 DD   -27
+STR  9.00 K1 sl6 15m                           |    65   1.0/d win  48% PF  1.01 str 0.95 net     +1 worst    -6 DD   -65 |    65   1.0/d win  49% PF  1.30 str 1.22 net    +39 worst    -6 DD   -32
+STR  9.00 K1 sl6 30m                           |    65   1.0/d win  45% PF  0.98 str 0.94 net     -3 worst    -6 DD   -70 |    65   1.0/d win  57% PF  1.86 str 1.78 net   +123 worst    -6 DD   -24
+STR  9.00 K1 sl6 60m                           |    65   1.0/d win  40% PF  0.98 str 0.94 net     -5 worst    -6 DD   -76 |    65   1.0/d win  51% PF  1.75 str 1.69 net   +136 worst    -6 DD   -40
+STR  9.00 K2 sl2 15m                           |    64   1.0/d win  31% PF  1.10 str 1.01 net     +9 worst    -2 DD   -30 |    65   1.0/d win  31% PF  1.27 str 1.16 net    +23 worst    -3 DD   -18
+STR  9.00 K2 sl2 30m                           |    64   1.0/d win  25% PF  1.00 str 0.92 net     -0 worst    -2 DD   -39 |    65   1.0/d win  31% PF  1.80 str 1.66 net    +74 worst    -3 DD   -18
+STR  9.00 K2 sl2 60m                           |    64   1.0/d win  14% PF  0.73 str 0.68 net    -30 worst    -2 DD   -53 |    65   1.0/d win  22% PF  1.63 str 1.52 net    +66 worst    -3 DD   -29
+STR  9.00 K2 sl3 15m                           |    64   1.0/d win  44% PF  1.39 str 1.29 net    +37 worst    -3 DD   -36 |    65   1.0/d win  40% PF  1.39 str 1.30 net    +42 worst    -3 DD   -13
+STR  9.00 K2 sl3 30m                           |    64   1.0/d win  39% PF  1.17 str 1.09 net    +19 worst    -3 DD   -42 |    65   1.0/d win  40% PF  1.69 str 1.59 net    +81 worst    -3 DD   -17
+STR  9.00 K2 sl3 60m                           |    64   1.0/d win  23% PF  1.04 str 0.98 net     +5 worst    -3 DD   -78 |    65   1.0/d win  28% PF  1.48 str 1.41 net    +69 worst    -3 DD   -35
+STR  9.00 K2 sl4 15m                           |    64   1.0/d win  45% PF  1.25 str 1.17 net    +27 worst    -4 DD   -45 |    65   1.0/d win  43% PF  1.22 str 1.15 net    +29 worst    -4 DD   -19
+STR  9.00 K2 sl4 30m                           |    64   1.0/d win  44% PF  1.10 str 1.04 net    +14 worst    -4 DD   -43 |    65   1.0/d win  45% PF  1.58 str 1.50 net    +83 worst    -4 DD   -23
+STR  9.00 K2 sl4 60m                           |    64   1.0/d win  31% PF  1.09 str 1.04 net    +15 worst    -4 DD   -67 |    65   1.0/d win  34% PF  1.55 str 1.48 net    +94 worst    -4 DD   -35
+STR  9.00 K2 sl6 15m                           |    64   1.0/d win  48% PF  1.14 str 1.07 net    +18 worst    -6 DD   -65 |    65   1.0/d win  46% PF  1.19 str 1.13 net    +27 worst    -6 DD   -23
+STR  9.00 K2 sl6 30m                           |    64   1.0/d win  50% PF  1.06 str 1.01 net    +10 worst    -6 DD   -58 |    65   1.0/d win  58% PF  1.76 str 1.68 net   +105 worst    -6 DD   -22
+STR  9.00 K2 sl6 60m                           |    64   1.0/d win  41% PF  1.04 str 1.00 net     +9 worst    -6 DD   -78 |    65   1.0/d win  49% PF  1.60 str 1.54 net   +113 worst    -7 DD   -40
+STR  9.00 K3 sl2 15m                           |    62   1.0/d win  32% PF  1.07 str 0.98 net     +6 worst    -2 DD   -28 |    58   1.0/d win  36% PF  1.29 str 1.18 net    +22 worst    -3 DD   -13
+STR  9.00 K3 sl2 30m                           |    62   1.0/d win  19% PF  0.82 str 0.76 net    -18 worst    -2 DD   -36 |    58   1.0/d win  28% PF  1.50 str 1.39 net    +44 worst    -3 DD   -22
+STR  9.00 K3 sl2 60m                           |    62   1.0/d win  13% PF  0.74 str 0.69 net    -29 worst    -2 DD   -42 |    58   1.0/d win  16% PF  1.35 str 1.25 net    +34 worst    -3 DD   -56
+STR  9.00 K3 sl3 15m                           |    62   1.0/d win  50% PF  1.42 str 1.31 net    +36 worst    -3 DD   -30 |    58   1.0/d win  41% PF  1.13 str 1.05 net    +12 worst    -3 DD   -23
+STR  9.00 K3 sl3 30m                           |    62   1.0/d win  27% PF  0.86 str 0.80 net    -17 worst    -3 DD   -49 |    58   1.0/d win  36% PF  1.47 str 1.38 net    +51 worst    -3 DD   -24
+STR  9.00 K3 sl3 60m                           |    62   1.0/d win  21% PF  0.95 str 0.90 net     -7 worst    -3 DD   -62 |    58   1.0/d win  22% PF  1.22 str 1.15 net    +29 worst    -3 DD   -48
+STR  9.00 K3 sl4 15m                           |    62   1.0/d win  53% PF  1.46 str 1.36 net    +42 worst    -4 DD   -37 |    58   1.0/d win  50% PF  1.39 str 1.30 net    +39 worst    -5 DD   -13
+STR  9.00 K3 sl4 30m                           |    62   1.0/d win  34% PF  0.95 str 0.89 net     -7 worst    -4 DD   -54 |    58   1.0/d win  47% PF  1.63 str 1.55 net    +72 worst    -5 DD   -18
+STR  9.00 K3 sl4 60m                           |    62   1.0/d win  29% PF  0.95 str 0.91 net     -8 worst    -4 DD   -86 |    58   1.0/d win  31% PF  1.32 str 1.26 net    +47 worst    -5 DD   -44
+STR  9.00 K3 sl6 15m                           |    62   1.0/d win  53% PF  1.19 str 1.11 net    +21 worst    -6 DD   -50 |    58   1.0/d win  55% PF  1.33 str 1.26 net    +37 worst    -7 DD   -16
+STR  9.00 K3 sl6 30m                           |    62   1.0/d win  42% PF  1.00 str 0.94 net     -1 worst    -6 DD   -52 |    58   1.0/d win  53% PF  1.72 str 1.64 net    +89 worst    -7 DD   -22
+STR  9.00 K3 sl6 60m                           |    62   1.0/d win  39% PF  1.00 str 0.96 net     +1 worst    -6 DD   -74 |    58   1.0/d win  45% PF  1.60 str 1.54 net    +98 worst    -7 DD   -33
+== fake-minute control around each, K1 sl3 30m and K2 sl4 60m
+FAKE 15.5-20m K1 sl3 30m                       |    65   1.0/d win  18% PF  0.94 str 0.89 net    -11 worst   -12 DD   -60 |    65   1.0/d win  18% PF  0.60 str 0.57 net    -67 worst    -5 DD   -83
+FAKE 15.5-20m K2 sl4 60m                       |    65   1.0/d win  20% PF  0.86 str 0.82 net    -32 worst   -13 DD   -99 |    64   1.0/d win  16% PF  0.67 str 0.64 net    -74 worst    -6 DD  -125
+FAKE 15.5-10m K1 sl3 30m                       |    65   1.0/d win  14% PF  0.84 str 0.81 net    -29 worst   -17 DD   -79 |    65   1.0/d win  22% PF  1.53 str 1.46 net    +84 worst    -4 DD   -37
+FAKE 15.5-10m K2 sl4 60m                       |    65   1.0/d win  17% PF  0.83 str 0.80 net    -41 worst   -18 DD  -131 |    65   1.0/d win  22% PF  1.18 str 1.13 net    +37 worst    -4 DD   -70
+FAKE 15.5-5m K1 sl3 30m                        |    65   1.0/d win  29% PF  1.48 str 1.42 net    +85 worst   -18 DD   -43 |    65   1.0/d win  25% PF  1.43 str 1.36 net    +67 worst    -5 DD   -46
+FAKE 15.5-5m K2 sl4 60m                        |    65   1.0/d win  28% PF  1.13 str 1.09 net    +28 worst   -18 DD   -43 |    65   1.0/d win  29% PF  1.94 str 1.87 net   +181 worst    -6 DD   -35
+FAKE 15.5-2m K1 sl3 30m                        |    65   1.0/d win  25% PF  1.26 str 1.21 net    +45 worst   -19 DD   -52 |    65   1.0/d win  20% PF  0.93 str 0.88 net    -12 worst    -6 DD   -67
+FAKE 15.5-2m K2 sl4 60m                        |    65   1.0/d win  32% PF  1.50 str 1.45 net   +106 worst   -20 DD   -47 |    65   1.0/d win  26% PF  1.20 str 1.15 net    +39 worst    -7 DD   -69
+FAKE 15.5-1m K1 sl3 30m                        |    65   1.0/d win  25% PF  1.14 str 1.09 net    +25 worst   -20 DD   -67 |    65   1.0/d win  25% PF  0.84 str 0.80 net    -28 worst   -18 DD   -75
+FAKE 15.5-1m K2 sl4 60m                        |    65   1.0/d win  28% PF  0.91 str 0.88 net    -21 worst   -21 DD   -58 |    65   1.0/d win  23% PF  1.43 str 1.38 net    +97 worst   -19 DD   -61
+FAKE 15.5+1m K1 sl3 30m                        |    65   1.0/d win  17% PF  1.03 str 0.98 net     +4 worst    -5 DD   -75 |    65   1.0/d win  25% PF  0.92 str 0.87 net    -12 worst    -5 DD   -54
+FAKE 15.5+1m K2 sl4 60m                        |    65   1.0/d win  18% PF  0.94 str 0.91 net    -12 worst    -6 DD  -135 |    65   1.0/d win  23% PF  0.95 str 0.91 net    -11 worst    -6 DD   -80
+FAKE 15.5+2m K1 sl3 30m                        |    65   1.0/d win  15% PF  0.96 str 0.91 net     -7 worst    -4 DD  -101 |    65   1.0/d win  18% PF  1.13 str 1.07 net    +21 worst    -4 DD   -68
+FAKE 15.5+2m K2 sl4 60m                        |    65   1.0/d win  14% PF  0.97 str 0.94 net     -6 worst    -5 DD  -168 |    65   1.0/d win  18% PF  1.02 str 0.98 net     +5 worst    -5 DD  -116
+FAKE 15.5+5m K1 sl3 30m                        |    65   1.0/d win  14% PF  0.67 str 0.64 net    -56 worst    -3 DD  -120 |    65   1.0/d win  18% PF  1.12 str 1.07 net    +20 worst    -4 DD   -44
+FAKE 15.5+5m K2 sl4 60m                        |    65   1.0/d win  18% PF  1.23 str 1.19 net    +50 worst    -4 DD  -114 |    65   1.0/d win  20% PF  0.97 str 0.93 net     -6 worst    -5 DD   -58
+FAKE 15.5+10m K1 sl3 30m                       |    65   1.0/d win  25% PF  1.21 str 1.15 net    +31 worst    -3 DD   -31 |    65   1.0/d win  26% PF  1.63 str 1.55 net    +93 worst    -3 DD   -62
+FAKE 15.5+10m K2 sl4 60m                       |    65   1.0/d win  25% PF  1.24 str 1.19 net    +46 worst    -4 DD   -44 |    65   1.0/d win  15% PF  0.71 str 0.68 net    -64 worst    -4 DD  -124
+FAKE 15.5+20m K1 sl3 30m                       |    64   1.0/d win  23% PF  0.95 str 0.90 net     -7 worst    -3 DD   -60 |    65   1.0/d win  23% PF  0.89 str 0.84 net    -17 worst    -3 DD   -61
+FAKE 15.5+20m K2 sl4 60m                       |    64   1.0/d win  14% PF  0.53 str 0.51 net   -105 worst    -5 DD  -105 |    65   1.0/d win  15% PF  0.84 str 0.80 net    -36 worst    -4 DD  -136
+FAKE 16.0-20m K1 sl3 30m                       |    65   1.0/d win  25% PF  1.21 str 1.15 net    +31 worst    -3 DD   -31 |    65   1.0/d win  26% PF  1.63 str 1.55 net    +93 worst    -3 DD   -62
+FAKE 16.0-20m K2 sl4 60m                       |    65   1.0/d win  25% PF  1.24 str 1.19 net    +46 worst    -4 DD   -44 |    65   1.0/d win  15% PF  0.71 str 0.68 net    -64 worst    -4 DD  -124
+FAKE 16.0-10m K1 sl3 30m                       |    64   1.0/d win  23% PF  0.95 str 0.90 net     -7 worst    -3 DD   -60 |    65   1.0/d win  23% PF  0.89 str 0.84 net    -17 worst    -3 DD   -61
+FAKE 16.0-10m K2 sl4 60m                       |    64   1.0/d win  14% PF  0.53 str 0.51 net   -105 worst    -5 DD  -105 |    65   1.0/d win  15% PF  0.84 str 0.80 net    -36 worst    -4 DD  -136
+FAKE 16.0-5m K1 sl3 30m                        |    65   1.0/d win  31% PF  1.67 str 1.59 net    +92 worst    -4 DD   -21 |    65   1.0/d win  12% PF  0.90 str 0.86 net    -18 worst    -4 DD  -113
+FAKE 16.0-5m K2 sl4 60m                        |    65   1.0/d win  26% PF  1.15 str 1.11 net    +30 worst    -5 DD   -37 |    65   1.0/d win   8% PF  0.54 str 0.52 net   -113 worst    -5 DD  -208
+FAKE 16.0-2m K1 sl3 30m                        |    65   1.0/d win  22% PF  0.81 str 0.76 net    -30 worst    -4 DD   -53 |    65   1.0/d win   9% PF  0.64 str 0.61 net    -66 worst    -3 DD  -122
+FAKE 16.0-2m K2 sl4 60m                        |    65   1.0/d win  20% PF  0.91 str 0.88 net    -19 worst    -4 DD   -71 |    65   1.0/d win   5% PF  0.25 str 0.24 net   -192 worst    -5 DD  -227
+FAKE 16.0-1m K1 sl3 30m                        |    65   1.0/d win  18% PF  0.81 str 0.77 net    -31 worst    -4 DD   -40 |    65   1.0/d win  14% PF  0.73 str 0.69 net    -48 worst    -4 DD  -109
+FAKE 16.0-1m K2 sl4 60m                        |    65   1.0/d win  23% PF  1.20 str 1.15 net    +41 worst    -5 DD   -54 |    65   1.0/d win  14% PF  0.65 str 0.62 net    -81 worst    -5 DD  -110
+FAKE 16.0+1m K1 sl3 30m                        |    65   1.0/d win  20% PF  0.79 str 0.75 net    -34 worst    -4 DD   -62 |    65   1.0/d win  17% PF  0.72 str 0.68 net    -46 worst    -4 DD   -75
+FAKE 16.0+1m K2 sl4 60m                        |    65   1.0/d win  20% PF  1.31 str 1.26 net    +65 worst    -5 DD   -60 |    65   1.0/d win  14% PF  0.88 str 0.84 net    -29 worst    -5 DD  -110
+FAKE 16.0+2m K1 sl3 30m                        |    65   1.0/d win  25% PF  1.22 str 1.16 net    +33 worst    -3 DD   -56 |    65   1.0/d win  15% PF  0.88 str 0.84 net    -20 worst    -4 DD   -84
+FAKE 16.0+2m K2 sl4 60m                        |    65   1.0/d win  25% PF  1.33 str 1.28 net    +67 worst    -4 DD   -45 |    65   1.0/d win  15% PF  1.10 str 1.06 net    +22 worst    -5 DD  -101
+FAKE 16.0+5m K1 sl3 30m                        |    65   1.0/d win  22% PF  0.87 str 0.82 net    -20 worst    -4 DD   -42 |    65   1.0/d win  17% PF  0.66 str 0.63 net    -56 worst    -4 DD   -93
+FAKE 16.0+5m K2 sl4 60m                        |    65   1.0/d win  20% PF  0.68 str 0.65 net    -68 worst    -5 DD   -87 |    65   1.0/d win  14% PF  0.82 str 0.79 net    -40 worst    -5 DD   -51
+FAKE 16.0+10m K1 sl3 30m                       |    65   1.0/d win  23% PF  0.99 str 0.94 net     -1 worst    -5 DD   -51 |    65   1.0/d win  26% PF  1.50 str 1.42 net    +74 worst    -4 DD   -35
+FAKE 16.0+10m K2 sl4 60m                       |    65   1.0/d win  28% PF  1.08 str 1.04 net    +16 worst    -6 DD   -58 |    65   1.0/d win  18% PF  1.08 str 1.04 net    +17 worst    -5 DD   -43
+FAKE 16.0+20m K1 sl3 30m                       |    65   1.0/d win  17% PF  0.63 str 0.60 net    -61 worst    -4 DD   -72 |    65   1.0/d win  29% PF  1.74 str 1.65 net   +104 worst    -4 DD   -24
+FAKE 16.0+20m K2 sl4 60m                       |    65   1.0/d win  25% PF  1.23 str 1.18 net    +46 worst    -4 DD   -40 |    65   1.0/d win  28% PF  1.81 str 1.74 net   +156 worst    -5 DD   -64
+FAKE 9.0-20m K1 sl3 30m                        |    65   1.0/d win  28% PF  0.78 str 0.73 net    -30 worst    -3 DD   -81 |    65   1.0/d win  25% PF  0.79 str 0.74 net    -32 worst    -4 DD   -47
+FAKE 9.0-20m K2 sl4 60m                        |    63   1.0/d win  27% PF  0.92 str 0.88 net    -16 worst    -4 DD   -84 |    65   1.0/d win  20% PF  0.68 str 0.65 net    -67 worst    -5 DD   -85
+FAKE 9.0-10m K1 sl3 30m                        |    65   1.0/d win  29% PF  0.92 str 0.87 net    -11 worst    -3 DD   -48 |    65   1.0/d win  28% PF  1.01 str 0.95 net     +1 worst    -3 DD   -62
+FAKE 9.0-10m K2 sl4 60m                        |    64   1.0/d win  31% PF  1.00 str 0.95 net     -0 worst    -5 DD   -63 |    64   1.0/d win  25% PF  0.68 str 0.65 net    -59 worst    -4 DD   -79
+FAKE 9.0-5m K1 sl3 30m                         |    65   1.0/d win  18% PF  0.52 str 0.49 net    -75 worst    -4 DD  -109 |    65   1.0/d win  31% PF  0.87 str 0.81 net    -17 worst    -3 DD   -55
+FAKE 9.0-5m K2 sl4 60m                         |    63   1.0/d win  19% PF  0.55 str 0.52 net    -88 worst    -4 DD  -119 |    65   1.0/d win  26% PF  0.76 str 0.73 net    -47 worst    -5 DD   -72
+FAKE 9.0-2m K1 sl3 30m                         |    65   1.0/d win  26% PF  0.88 str 0.83 net    -17 worst    -3 DD   -56 |    65   1.0/d win  23% PF  0.60 str 0.56 net    -59 worst    -4 DD   -86
+FAKE 9.0-2m K2 sl4 60m                         |    64   1.0/d win  27% PF  0.89 str 0.85 net    -20 worst    -4 DD   -68 |    65   1.0/d win  29% PF  0.95 str 0.90 net    -10 worst    -5 DD   -58
+FAKE 9.0-1m K1 sl3 30m                         |    65   1.0/d win  32% PF  1.12 str 1.05 net    +16 worst    -3 DD   -51 |    65   1.0/d win  32% PF  1.01 str 0.95 net     +2 worst    -3 DD   -34
+FAKE 9.0-1m K2 sl4 60m                         |    65   1.0/d win  26% PF  0.71 str 0.68 net    -54 worst    -5 DD   -79 |    65   1.0/d win  35% PF  1.45 str 1.39 net    +76 worst    -6 DD   -28
+FAKE 9.0+1m K1 sl3 30m                         |    65   1.0/d win  31% PF  0.89 str 0.83 net    -15 worst    -3 DD   -41 |    65   1.0/d win  23% PF  0.80 str 0.76 net    -31 worst    -4 DD   -61
+FAKE 9.0+1m K2 sl4 60m                         |    65   1.0/d win  23% PF  0.73 str 0.70 net    -53 worst    -4 DD   -91 |    65   1.0/d win  25% PF  0.82 str 0.78 net    -35 worst    -5 DD   -69
+FAKE 9.0+2m K1 sl3 30m                         |    65   1.0/d win  35% PF  0.99 str 0.92 net     -1 worst    -3 DD   -45 |    65   1.0/d win  31% PF  0.94 str 0.88 net     -8 worst    -4 DD   -46
+FAKE 9.0+2m K2 sl4 60m                         |    65   1.0/d win  32% PF  0.98 str 0.93 net     -4 worst    -4 DD   -76 |    65   1.0/d win  29% PF  0.77 str 0.73 net    -44 worst    -5 DD   -79
+FAKE 9.0+5m K1 sl3 30m                         |    65   1.0/d win  28% PF  0.80 str 0.75 net    -28 worst    -3 DD   -52 |    65   1.0/d win  26% PF  1.02 str 0.97 net     +3 worst    -4 DD   -58
+FAKE 9.0+5m K2 sl4 60m                         |    64   1.0/d win  23% PF  0.43 str 0.41 net   -109 worst    -4 DD  -114 |    64   1.0/d win  22% PF  0.76 str 0.73 net    -48 worst    -5 DD   -88
+FAKE 9.0+10m K1 sl3 30m                        |    65   1.0/d win  29% PF  0.58 str 0.54 net    -57 worst    -3 DD   -72 |    65   1.0/d win  26% PF  0.84 str 0.79 net    -23 worst    -6 DD   -74
+FAKE 9.0+10m K2 sl4 60m                        |    64   1.0/d win  33% PF  0.72 str 0.68 net    -47 worst    -4 DD   -59 |    65   1.0/d win  31% PF  0.94 str 0.89 net    -11 worst    -4 DD   -68
+FAKE 9.0+20m K1 sl3 30m                        |    65   1.0/d win  28% PF  0.64 str 0.60 net    -50 worst    -3 DD   -69 |    64   1.0/d win  34% PF  1.36 str 1.28 net    +46 worst    -3 DD   -47
+FAKE 9.0+20m K2 sl4 60m                        |    64   1.0/d win  28% PF  0.71 str 0.68 net    -52 worst    -4 DD   -68 |    64   1.0/d win  28% PF  0.89 str 0.85 net    -21 worst    -4 DD   -64
+== every 15-min slot 01:30-22:00, K2 sl4 60m (the full fake-time distribution)
+SLOT 01:30 K2 sl4 60m                          |    55   1.0/d win  33% PF  0.82 str 0.78 net    -26 worst    -5 DD   -52 |    58   1.0/d win  31% PF  1.00 str 0.95 net     -0 worst    -4 DD   -68
+SLOT 01:45 K2 sl4 60m                          |    55   1.0/d win  29% PF  0.59 str 0.56 net    -60 worst    -5 DD   -62 |    55   1.0/d win  35% PF  1.37 str 1.31 net    +50 worst    -4 DD   -68
+SLOT 02:00 K2 sl4 60m                          |    59   1.0/d win  41% PF  1.51 str 1.44 net    +70 worst    -4 DD   -49 |    61   1.0/d win  28% PF  0.91 str 0.87 net    -14 worst    -4 DD   -71
+SLOT 02:15 K2 sl4 60m                          |    61   1.0/d win  33% PF  1.24 str 1.18 net    +38 worst    -4 DD   -75 |    57   1.0/d win  37% PF  1.13 str 1.08 net    +19 worst    -5 DD   -36
+SLOT 02:30 K2 sl4 60m                          |    60   1.0/d win  37% PF  1.47 str 1.41 net    +72 worst    -5 DD   -35 |    61   1.0/d win  36% PF  1.45 str 1.39 net    +70 worst    -5 DD   -37
+SLOT 02:45 K2 sl4 60m                          |    59   1.0/d win  24% PF  0.72 str 0.68 net    -52 worst    -5 DD   -73 |    62   1.0/d win  24% PF  0.73 str 0.70 net    -51 worst    -4 DD  -101
+SLOT 03:00 K2 sl4 60m                          |    65   1.0/d win  26% PF  1.19 str 1.14 net    +36 worst    -4 DD   -99 |    65   1.0/d win  15% PF  0.86 str 0.83 net    -30 worst    -4 DD   -62
+SLOT 03:15 K2 sl4 60m                          |    64   1.0/d win  28% PF  1.19 str 1.14 net    +35 worst    -4 DD   -89 |    65   1.0/d win  31% PF  1.68 str 1.61 net   +122 worst    -5 DD   -87
+SLOT 03:30 K2 sl4 60m                          |    65   1.0/d win  20% PF  0.72 str 0.69 net    -58 worst    -5 DD   -83 |    65   1.0/d win  17% PF  0.62 str 0.59 net    -82 worst    -5 DD   -94
+SLOT 03:45 K2 sl4 60m                          |    65   1.0/d win  22% PF  0.82 str 0.78 net    -38 worst    -5 DD   -73 |    64   1.0/d win  23% PF  1.34 str 1.29 net    +70 worst    -6 DD   -38
+SLOT 04:00 K2 sl4 60m                          |    65   1.0/d win  28% PF  1.37 str 1.31 net    +68 worst    -5 DD   -40 |    65   1.0/d win  22% PF  1.18 str 1.14 net    +38 worst    -5 DD   -53
+SLOT 04:15 K2 sl4 60m                          |    64   1.0/d win  11% PF  0.45 str 0.43 net   -126 worst    -6 DD  -152 |    65   1.0/d win  23% PF  0.71 str 0.68 net    -60 worst    -4 DD   -87
+SLOT 04:30 K2 sl4 60m                          |    65   1.0/d win  34% PF  1.12 str 1.07 net    +21 worst    -5 DD   -61 |    65   1.0/d win  26% PF  0.85 str 0.81 net    -29 worst    -4 DD   -43
+SLOT 04:45 K2 sl4 60m                          |    65   1.0/d win  34% PF  1.10 str 1.05 net    +17 worst    -4 DD   -61 |    64   1.0/d win  31% PF  1.18 str 1.13 net    +32 worst    -5 DD   -81
+SLOT 05:00 K2 sl4 60m                          |    65   1.0/d win  26% PF  1.15 str 1.10 net    +27 worst    -5 DD   -32 |    65   1.0/d win  15% PF  0.58 str 0.55 net    -94 worst    -5 DD  -109
+SLOT 05:15 K2 sl4 60m                          |    64   1.0/d win  25% PF  0.43 str 0.41 net   -106 worst    -4 DD  -109 |    65   1.0/d win  22% PF  0.71 str 0.68 net    -60 worst    -4 DD   -91
+SLOT 05:30 K2 sl4 60m                          |    65   1.0/d win  34% PF  0.96 str 0.91 net     -7 worst    -4 DD   -42 |    65   1.0/d win  28% PF  1.33 str 1.28 net    +59 worst    -5 DD   -67
+SLOT 05:45 K2 sl4 60m                          |    65   1.0/d win  32% PF  0.97 str 0.92 net     -6 worst    -6 DD   -63 |    65   1.0/d win  40% PF  1.63 str 1.55 net    +99 worst    -5 DD   -49
+SLOT 06:00 K2 sl4 60m                          |    64   1.0/d win  33% PF  1.05 str 1.00 net     +8 worst    -4 DD   -49 |    64   1.0/d win  34% PF  0.91 str 0.86 net    -16 worst    -5 DD   -38
+SLOT 06:15 K2 sl4 60m                          |    63   1.0/d win  21% PF  0.27 str 0.25 net   -148 worst    -5 DD  -155 |    64   1.0/d win  27% PF  0.64 str 0.60 net    -64 worst    -4 DD   -92
+SLOT 06:30 K2 sl4 60m                          |    62   1.0/d win  37% PF  0.93 str 0.89 net    -10 worst    -5 DD   -42 |    64   1.0/d win  34% PF  0.87 str 0.83 net    -21 worst    -4 DD   -61
+SLOT 06:45 K2 sl4 60m                          |    64   1.0/d win  44% PF  1.26 str 1.19 net    +36 worst    -4 DD   -25 |    61   1.0/d win  30% PF  0.83 str 0.79 net    -28 worst    -4 DD   -51
+SLOT 07:00 K2 sl4 60m                          |    56   1.0/d win  32% PF  1.01 str 0.96 net     +2 worst    -4 DD   -30 |    62   1.0/d win  39% PF  1.22 str 1.16 net    +32 worst    -4 DD   -35
+SLOT 07:15 K2 sl4 60m                          |    62   1.0/d win  37% PF  0.76 str 0.72 net    -37 worst    -4 DD   -69 |    62   1.0/d win  29% PF  0.81 str 0.77 net    -33 worst    -5 DD   -62
+SLOT 07:30 K2 sl4 60m                          |    62   1.0/d win  39% PF  1.56 str 1.49 net    +85 worst    -5 DD   -51 |    60   1.0/d win  37% PF  1.03 str 0.98 net     +5 worst    -4 DD   -43
+SLOT 07:45 K2 sl4 60m                          |    54   1.0/d win  39% PF  1.71 str 1.63 net    +91 worst    -4 DD   -32 |    57   1.0/d win  33% PF  1.20 str 1.15 net    +31 worst    -5 DD   -38
+SLOT 08:00 K2 sl4 60m                          |    62   1.0/d win  32% PF  1.25 str 1.20 net    +42 worst    -5 DD   -45 |    65   1.0/d win  22% PF  0.79 str 0.76 net    -44 worst    -5 DD   -97
+SLOT 08:15 K2 sl4 60m                          |    62   1.0/d win  29% PF  0.93 str 0.88 net    -13 worst    -5 DD   -53 |    63   1.0/d win  29% PF  0.95 str 0.91 net     -8 worst    -5 DD   -77
+SLOT 08:30 K2 sl4 60m                          |    65   1.0/d win  29% PF  1.02 str 0.98 net     +4 worst    -4 DD   -66 |    65   1.0/d win  22% PF  0.98 str 0.94 net     -5 worst    -4 DD   -83
+SLOT 08:45 K2 sl4 60m                          |    65   1.0/d win  25% PF  0.56 str 0.53 net    -86 worst    -4 DD   -99 |    65   1.0/d win  20% PF  0.62 str 0.59 net    -81 worst    -4 DD  -118
+SLOT 09:00 K2 sl4 60m                          |    64   1.0/d win  31% PF  1.09 str 1.04 net    +15 worst    -4 DD   -67 |    65   1.0/d win  34% PF  1.55 str 1.48 net    +94 worst    -4 DD   -35
+SLOT 09:15 K2 sl4 60m                          |    64   1.0/d win  28% PF  0.93 str 0.89 net    -12 worst    -4 DD   -58 |    65   1.0/d win  28% PF  0.71 str 0.68 net    -56 worst    -6 DD   -87
+SLOT 09:30 K2 sl4 60m                          |    64   1.0/d win  23% PF  0.52 str 0.50 net    -92 worst    -4 DD  -100 |    64   1.0/d win  28% PF  0.84 str 0.80 net    -29 worst    -4 DD   -56
+SLOT 09:45 K2 sl4 60m                          |    64   1.0/d win  19% PF  0.52 str 0.50 net   -100 worst    -5 DD  -127 |    64   1.0/d win  23% PF  0.60 str 0.57 net    -80 worst    -5 DD  -106
+SLOT 10:00 K2 sl4 60m                          |    65   1.0/d win  31% PF  1.07 str 1.02 net    +12 worst    -4 DD   -42 |    65   1.0/d win  25% PF  0.51 str 0.48 net    -96 worst    -5 DD  -128
+SLOT 10:15 K2 sl4 60m                          |    65   1.0/d win  26% PF  0.72 str 0.69 net    -53 worst    -5 DD  -107 |    65   1.0/d win  31% PF  0.82 str 0.78 net    -33 worst    -5 DD   -52
+SLOT 10:30 K2 sl4 60m                          |    65   1.0/d win  25% PF  0.73 str 0.70 net    -51 worst    -4 DD   -95 |    63   1.0/d win  27% PF  0.90 str 0.86 net    -18 worst    -5 DD   -69
+SLOT 10:45 K2 sl4 60m                          |    65   1.0/d win  23% PF  0.55 str 0.52 net    -89 worst    -4 DD  -128 |    63   1.0/d win  22% PF  0.80 str 0.76 net    -40 worst    -4 DD   -70
+SLOT 11:00 K2 sl4 60m                          |    64   1.0/d win  31% PF  1.02 str 0.97 net     +3 worst    -5 DD   -53 |    65   1.0/d win  34% PF  1.37 str 1.31 net    +63 worst    -4 DD   -53
+SLOT 11:15 K2 sl4 60m                          |    64   1.0/d win  27% PF  0.78 str 0.74 net    -40 worst    -5 DD   -80 |    65   1.0/d win  32% PF  0.76 str 0.72 net    -42 worst    -4 DD   -55
+SLOT 11:30 K2 sl4 60m                          |    63   1.0/d win  29% PF  0.69 str 0.65 net    -54 worst    -4 DD   -67 |    64   1.0/d win  25% PF  0.64 str 0.61 net    -68 worst    -5 DD  -102
+SLOT 11:45 K2 sl4 60m                          |    64   1.0/d win  31% PF  0.69 str 0.66 net    -52 worst    -5 DD   -61 |    63   1.0/d win  24% PF  0.53 str 0.51 net    -89 worst    -4 DD   -97
+SLOT 12:00 K2 sl4 60m                          |    64   1.0/d win  27% PF  0.60 str 0.57 net    -74 worst    -5 DD  -103 |    63   1.0/d win  29% PF  0.82 str 0.78 net    -31 worst    -4 DD   -51
+SLOT 12:15 K2 sl4 60m                          |    64   1.0/d win  38% PF  0.73 str 0.69 net    -41 worst    -5 DD   -54 |    64   1.0/d win  22% PF  0.35 str 0.33 net   -128 worst    -5 DD  -130
+SLOT 12:30 K2 sl4 60m                          |    63   1.0/d win  37% PF  1.07 str 1.02 net    +11 worst    -4 DD   -39 |    64   1.0/d win  25% PF  0.75 str 0.71 net    -48 worst    -6 DD   -61
+SLOT 12:45 K2 sl4 60m                          |    64   1.0/d win  27% PF  0.44 str 0.41 net   -103 worst    -4 DD  -131 |    64   1.0/d win  34% PF  0.76 str 0.72 net    -39 worst    -4 DD   -68
+SLOT 13:00 K2 sl4 60m                          |    60   1.0/d win  33% PF  0.88 str 0.84 net    -18 worst    -5 DD   -59 |    60   1.0/d win  22% PF  0.62 str 0.59 net    -69 worst    -5 DD  -101
+SLOT 13:15 K2 sl4 60m                          |    63   1.0/d win  19% PF  0.32 str 0.30 net   -141 worst    -4 DD  -153 |    61   1.0/d win  33% PF  1.07 str 1.02 net    +11 worst    -4 DD   -92
+SLOT 13:30 K2 sl4 60m                          |    61   1.0/d win  43% PF  1.33 str 1.27 net    +47 worst    -4 DD   -36 |    62   1.0/d win  39% PF  1.74 str 1.66 net   +107 worst    -4 DD   -36
+SLOT 13:45 K2 sl4 60m                          |    62   1.0/d win  40% PF  1.24 str 1.17 net    +34 worst    -4 DD   -40 |    61   1.0/d win  21% PF  0.80 str 0.77 net    -39 worst    -6 DD   -76
+SLOT 14:00 K2 sl4 60m                          |    65   1.0/d win  26% PF  0.91 str 0.87 net    -16 worst    -4 DD   -63 |    64   1.0/d win  30% PF  1.05 str 1.00 net     +9 worst    -6 DD   -42
+SLOT 14:15 K2 sl4 60m                          |    61   1.0/d win  34% PF  1.02 str 0.97 net     +3 worst    -4 DD   -65 |    65   1.0/d win  18% PF  0.74 str 0.71 net    -55 worst    -5 DD   -96
+SLOT 14:30 K2 sl4 60m                          |    64   1.0/d win  27% PF  0.75 str 0.71 net    -48 worst    -5 DD   -94 |    63   1.0/d win  21% PF  0.72 str 0.69 net    -57 worst    -6 DD  -117
+SLOT 14:45 K2 sl4 60m                          |    65   1.0/d win  20% PF  1.16 str 1.12 net    +34 worst    -5 DD   -95 |    65   1.0/d win  20% PF  0.53 str 0.50 net   -102 worst    -7 DD  -129
+SLOT 15:00 K2 sl4 60m                          |    65   1.0/d win  11% PF  0.39 str 0.37 net   -154 worst   -12 DD  -154 |    65   1.0/d win  15% PF  0.65 str 0.63 net    -77 worst    -5 DD   -77
+SLOT 15:15 K2 sl4 60m                          |    65   1.0/d win  15% PF  0.45 str 0.43 net   -132 worst   -15 DD  -136 |    65   1.0/d win  20% PF  0.91 str 0.88 net    -18 worst    -5 DD  -109
+SLOT 15:30 K2 sl4 60m                          |    65   1.0/d win  23% PF  1.33 str 1.29 net    +88 worst   -37 DD   -78 |    65   1.0/d win  23% PF  1.41 str 1.36 net    +83 worst    -5 DD   -54
+SLOT 15:45 K2 sl4 60m                          |    65   1.0/d win  11% PF  0.47 str 0.46 net   -124 worst    -4 DD  -156 |    65   1.0/d win  17% PF  0.68 str 0.65 net    -71 worst    -4 DD  -138
+SLOT 16:00 K2 sl4 60m                          |    65   1.0/d win  25% PF  1.38 str 1.32 net    +75 worst    -5 DD   -46 |    65   1.0/d win  15% PF  0.89 str 0.86 net    -24 worst    -5 DD   -77
+SLOT 16:15 K2 sl4 60m                          |    65   1.0/d win  20% PF  0.75 str 0.72 net    -53 worst    -5 DD  -111 |    65   1.0/d win  25% PF  1.50 str 1.44 net   +101 worst    -5 DD   -57
+SLOT 16:30 K2 sl4 60m                          |    65   1.0/d win  28% PF  1.49 str 1.43 net    +94 worst    -4 DD   -45 |    65   1.0/d win  18% PF  0.87 str 0.84 net    -28 worst    -5 DD   -67
+SLOT 16:45 K2 sl4 60m                          |    65   1.0/d win  14% PF  0.38 str 0.37 net   -142 worst    -6 DD  -171 |    65   1.0/d win  25% PF  1.37 str 1.32 net    +75 worst    -5 DD   -78
+SLOT 17:00 K2 sl4 60m                          |    65   1.0/d win  26% PF  1.11 str 1.06 net    +21 worst    -6 DD   -41 |    65   1.0/d win  18% PF  0.99 str 0.95 net     -2 worst    -4 DD   -93
+SLOT 17:15 K2 sl4 60m                          |    63   1.0/d win  14% PF  0.41 str 0.40 net   -126 worst    -4 DD  -149 |    65   1.0/d win  18% PF  0.87 str 0.84 net    -28 worst    -5 DD   -68
+SLOT 17:30 K2 sl4 60m                          |    65   1.0/d win  26% PF  0.99 str 0.95 net     -1 worst    -4 DD   -71 |    65   1.0/d win  12% PF  0.55 str 0.53 net   -105 worst    -5 DD  -159
+last 3 months 2026-08-17 .. 2026-11-16 | previous 2026-05-18 .. 2026-08-17; 141 days at 08:30 NY, of which 71 with a USD medium/high release at 08:30, 49 high
+NY 08:30 K3 sl3 15m (server 15:30 rule)        |    64   1.0/d win  38% PF  1.92 str 1.85 net   +154 worst   -37 DD   -47 |    63   1.0/d win  35% PF  2.06 str 1.95 net   +130 worst    -4 DD   -37
+NY 08:30 K3 sl3 15m NY clock                   |    64   1.0/d win  33% PF  1.71 str 1.64 net   +125 worst   -37 DD   -50 |    63   1.0/d win  35% PF  2.06 str 1.95 net   +130 worst    -4 DD   -37
+   release days only                           |    30   1.0/d win  27% PF  2.20 str 2.11 net    +98 worst   -22 DD   -34 |    33   1.0/d win  39% PF  3.40 str 3.25 net   +157 worst    -4 DD   -18
+   no-release days                             |    34   1.0/d win  38% PF  1.28 str 1.23 net    +26 worst   -37 DD   -38 |    30   1.0/d win  30% PF  0.52 str 0.48 net    -27 worst    -4 DD   -32
+   HIGH-impact days only                       |    22   1.0/d win  36% PF  2.99 str 2.89 net   +120 worst   -22 DD   -29 |    21   1.0/d win  43% PF  4.77 str 4.57 net   +154 worst    -4 DD   -16
+   no high-impact                              |    42   1.0/d win  31% PF  1.04 str 0.99 net     +5 worst   -37 DD   -53 |    42   1.0/d win  31% PF  0.71 str 0.66 net    -24 worst    -4 DD   -37
+NY 08:30 K2 sl4 30m (server 15:30 rule)        |    65   1.0/d win  25% PF  1.35 str 1.31 net    +89 worst   -37 DD   -87 |    65   1.0/d win  32% PF  1.61 str 1.55 net   +110 worst    -5 DD   -36
+NY 08:30 K2 sl4 30m NY clock                   |    65   1.0/d win  25% PF  1.31 str 1.27 net    +79 worst   -37 DD   -96 |    65   1.0/d win  32% PF  1.61 str 1.55 net   +110 worst    -5 DD   -36
+   release days only                           |    30   1.0/d win  33% PF  1.90 str 1.85 net   +103 worst   -22 DD   -55 |    34   1.0/d win  32% PF  2.46 str 2.36 net   +135 worst    -5 DD   -26
+   no-release days                             |    35   1.0/d win  17% PF  0.83 str 0.81 net    -23 worst   -37 DD   -96 |    31   1.0/d win  32% PF  0.71 str 0.67 net    -25 worst    -4 DD   -32
+   HIGH-impact days only                       |    22   1.0/d win  36% PF  2.37 str 2.32 net   +123 worst   -22 DD   -39 |    22   1.0/d win  36% PF  3.60 str 3.47 net   +148 worst    -5 DD   -17
+   no high-impact                              |    43   1.0/d win  19% PF  0.74 str 0.71 net    -44 worst   -37 DD  -112 |    43   1.0/d win  30% PF  0.68 str 0.65 net    -38 worst    -4 DD   -50
+NY 08:30 K0.5 sl3 30m (server 15:30 rule)      |    65   1.0/d win  26% PF  1.88 str 1.82 net   +178 worst   -21 DD   -63 |    65   1.0/d win  20% PF  1.13 str 1.09 net    +26 worst   -27 DD   -78
+NY 08:30 K0.5 sl3 30m NY clock                 |    65   1.0/d win  25% PF  1.82 str 1.75 net   +168 worst   -21 DD   -69 |    65   1.0/d win  20% PF  1.13 str 1.09 net    +26 worst   -27 DD   -78
+   release days only                           |    30   1.0/d win  30% PF  2.42 str 2.35 net   +146 worst   -18 DD   -48 |    34   1.0/d win  24% PF  1.60 str 1.55 net    +73 worst   -27 DD   -44
+   no-release days                             |    35   1.0/d win  20% PF  1.21 str 1.16 net    +22 worst   -21 DD   -53 |    31   1.0/d win  16% PF  0.42 str 0.40 net    -46 worst    -3 DD   -47
+   HIGH-impact days only                       |    22   1.0/d win  36% PF  3.03 str 2.95 net   +165 worst   -18 DD   -38 |    22   1.0/d win  27% PF  1.87 str 1.82 net    +80 worst   -27 DD   -33
+   no high-impact                              |    43   1.0/d win  19% PF  1.02 str 0.98 net     +3 worst   -21 DD   -69 |    43   1.0/d win  16% PF  0.51 str 0.48 net    -54 worst    -3 DD   -59
+NY 08:30 K1 sl4 30m (server 15:30 rule)        |    65   1.0/d win  31% PF  1.59 str 1.53 net   +132 worst   -21 DD   -86 |    65   1.0/d win  26% PF  1.09 str 1.05 net    +19 worst   -27 DD   -61
+NY 08:30 K1 sl4 30m NY clock                   |    65   1.0/d win  28% PF  1.44 str 1.40 net   +104 worst   -21 DD  -115 |    65   1.0/d win  26% PF  1.09 str 1.05 net    +19 worst   -27 DD   -61
+   release days only                           |    30   1.0/d win  33% PF  2.00 str 1.95 net   +116 worst   -19 DD   -58 |    34   1.0/d win  26% PF  1.51 str 1.46 net    +65 worst   -27 DD   -37
+   no-release days                             |    35   1.0/d win  23% PF  0.90 str 0.86 net    -12 worst   -21 DD   -98 |    31   1.0/d win  26% PF  0.51 str 0.49 net    -46 worst    -4 DD   -46
+   HIGH-impact days only                       |    22   1.0/d win  36% PF  2.47 str 2.41 net   +134 worst   -19 DD   -43 |    22   1.0/d win  27% PF  1.81 str 1.77 net    +75 worst   -27 DD   -31
+   no high-impact                              |    43   1.0/d win  23% PF  0.79 str 0.76 net    -30 worst   -21 DD  -112 |    43   1.0/d win  26% PF  0.57 str 0.54 net    -56 worst    -4 DD   -56
+NY 08:30 K3 sl2 30m (server 15:30 rule)        |    64   1.0/d win  14% PF  2.16 str 2.04 net   +155 worst   -22 DD   -48 |    63   1.0/d win  17% PF  1.94 str 1.81 net   +106 worst    -4 DD   -38
+NY 08:30 K3 sl2 30m NY clock                   |    64   1.0/d win  11% PF  1.85 str 1.75 net   +118 worst   -22 DD   -48 |    63   1.0/d win  17% PF  1.94 str 1.81 net   +106 worst    -4 DD   -38
+   release days only                           |    30   1.0/d win  17% PF  2.53 str 2.41 net   +111 worst   -22 DD   -39 |    33   1.0/d win  24% PF  3.29 str 3.09 net   +132 worst    -4 DD   -28
+   no-release days                             |    34   1.0/d win   6% PF  1.12 str 1.05 net     +8 worst    -2 DD   -59 |    30   1.0/d win  10% PF  0.53 str 0.50 net    -26 worst    -2 DD   -32
+   HIGH-impact days only                       |    22   1.0/d win  23% PF  3.28 str 3.14 net   +127 worst   -22 DD   -37 |    21   1.0/d win  29% PF  4.41 str 4.17 net   +127 worst    -4 DD   -22
+   no high-impact                              |    42   1.0/d win   5% PF  0.89 str 0.84 net     -9 worst    -2 DD   -73 |    42   1.0/d win  12% PF  0.73 str 0.68 net    -21 worst    -2 DD   -32
+NY 08:00 K3 sl3 15m (NY clock control)         |    63   1.0/d win  30% PF  0.63 str 0.58 net    -45 worst    -4 DD   -45 |    64   1.0/d win  34% PF  0.89 str 0.82 net    -14 worst    -5 DD   -42
+NY 08:15 K3 sl3 15m (NY clock control)         |    64   1.0/d win  33% PF  0.89 str 0.83 net    -15 worst    -4 DD   -55 |    64   1.0/d win  42% PF  1.25 str 1.16 net    +25 worst    -3 DD   -31
+NY 08:24 K3 sl3 15m (NY clock control)         |    65   1.0/d win  31% PF  1.37 str 1.30 net    +53 worst    -9 DD   -67 |    63   1.0/d win  40% PF  2.17 str 2.05 net   +138 worst    -4 DD   -46
+NY 08:45 K3 sl3 15m (NY clock control)         |    63   1.0/d win  38% PF  1.16 str 1.09 net    +19 worst    -4 DD   -43 |    61   1.0/d win  38% PF  1.71 str 1.60 net    +74 worst    -3 DD   -23
+NY 09:00 K3 sl3 15m (NY clock control)         |    64   1.0/d win  28% PF  0.86 str 0.81 net    -18 worst    -3 DD   -65 |    65   1.0/d win  29% PF  0.86 str 0.81 net    -19 worst    -4 DD   -50
+NY 09:30 K3 sl3 15m (NY clock control)         |    65   1.0/d win  28% PF  1.10 str 1.04 net    +14 worst    -3 DD   -41 |    65   1.0/d win  23% PF  0.56 str 0.52 net    -68 worst    -4 DD   -70
+NY 10:00 K3 sl3 15m (NY clock control)         |    65   1.0/d win  31% PF  1.03 str 0.97 net     +4 worst    -3 DD   -32 |    65   1.0/d win  26% PF  0.86 str 0.82 net    -20 worst    -5 DD   -73
+K3 sl3 15m by month: 2026-05:+18(20) 2026-06:-12(21) 2026-07:+120(22) 2026-08:+72(21) 2026-09:+64(21) 2026-10:+23(22) 2026-11:-16(11)
+days 138, +47 / -91, total +268, top 5 days +266 (09-04 +67, 07-02 +62, 10-14 +56, 08-19 +45, 08-07 +35), without top 5 +2; worst 5 06-10 -4, 06-05 -4, 08-13 -4, 09-11 -22, 11-10 -37
+buys 1.83 (68, +159) / sells 1.85 (70, +109)
