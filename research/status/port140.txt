@@ -1,0 +1,56 @@
+pool (6 months 18 May - 16 Nov): trades, net last 3 m / previous 3 m, PF, 6-month max DD alone
+  ATB         117 trades    +365 /   +241  PF 1.75 / 1.43  DD  -234  POOL
+  BAS          67 trades    +532 /   +133  PF 2.85 / 1.44  DD  -183  POOL
+  BTC-FOL     123 trades     +61 /    -15  PF 1.74 / 0.83  DD   -24  -
+  BTC-SMC      44 trades     +15 /    +47  PF 1.39 / 3.57  DD   -27  POOL
+  BTC-STO     597 trades    +131 /   +135  PF 1.34 / 1.42  DD   -50  POOL
+  CMX         130 trades     -42 /    +34  PF 0.58 / 1.42  DD   -62  -
+  CRS         131 trades     -37 /    +12  PF 0.88 / 1.03  DD  -146  -
+  FLIP-A      752 trades    +948 /   +608  PF 1.82 / 1.55  DD  -152  POOL
+  FLIP-A1     487 trades    +961 /   +640  PF 2.34 / 1.89  DD  -152  POOL
+  FLIP-As     451 trades    +914 /   +698  PF 2.40 / 2.06  DD  -147  POOL
+  FLIP-B      476 trades    +968 /   +569  PF 1.91 / 1.53  DD  -155  POOL
+  FLIP-B1     329 trades    +935 /   +618  PF 2.34 / 1.91  DD  -162  POOL
+  FLIP-Bs     293 trades    +889 /   +676  PF 2.41 / 2.09  DD  -155  POOL
+  FLIP-C      463 trades    +600 /   +170  PF 1.67 / 1.19  DD  -143  POOL
+  FLIP-C1     344 trades    +570 /   +286  PF 1.84 / 1.48  DD  -158  POOL
+  FLIP-Cs     308 trades    +524 /   +344  PF 1.85 / 1.64  DD  -150  POOL
+  FLIP-D      709 trades    +678 /   +221  PF 1.80 / 1.17  DD  -231  POOL
+  FLIP-D1     530 trades    +344 /   +178  PF 1.53 / 1.19  DD  -221  POOL
+  FLIP-Ds     493 trades    +405 /   +237  PF 1.69 / 1.27  DD  -215  POOL
+  GAU         130 trades    +171 /    +69  PF 9.51 / 1.98  DD   -26  POOL
+  KUMO         68 trades    +255 /    +67  PF 3.42 / 1.25  DD  -124  POOL
+  NEWS        129 trades     +73 /   +201  PF 1.52 / 2.56  DD   -58  POOL
+  ORB         177 trades    +213 /   +627  PF 1.18 / 1.64  DD  -196  POOL
+  RCS-fx      110 trades     -15 /    +14  PF 0.79 / 1.63  DD   -32  -
+  RCS-gold     18 trades    +156 /    +17  PF 4.85 / 1.23  DD   -42  POOL
+  SMC-gold     39 trades    +145 /    +62  PF 2.70 / 1.45  DD   -61  POOL
+
+GREEDY on TRADES, 6-month max DD must stay above $-60:
+  + BTC-STO   ->   595 trades ( 4.6 a day), net   +257, maxDD   -50, worst day   -13
+  + GAU       ->   725 trades ( 5.6 a day), net   +497, maxDD   -25, worst day   -10
+  + NEWS      ->   854 trades ( 6.6 a day), net   +771, maxDD   -47, worst day   -17
+  + BTC-SMC   ->   898 trades ( 6.9 a day), net   +833, maxDD   -44, worst day   -17
+  + SMC-gold  ->   937 trades ( 7.2 a day), net  +1040, maxDD   -49, worst day   -25
+  SET ['BTC-STO', 'GAU', 'NEWS', 'BTC-SMC', 'SMC-gold']
+  last 3 m 456 trades net +538 DD -49 | prev 3 m 481 trades net +502 DD -49 | $100 started on each of 126 weekdays: stopped out 0
+
+GREEDY on TRADES, 6-month max DD must stay above $-80:
+  + BTC-STO   ->   595 trades ( 4.6 a day), net   +257, maxDD   -50, worst day   -13
+  + GAU       ->   725 trades ( 5.6 a day), net   +497, maxDD   -25, worst day   -10
+  + NEWS      ->   854 trades ( 6.6 a day), net   +771, maxDD   -47, worst day   -17
+  + BTC-SMC   ->   898 trades ( 6.9 a day), net   +833, maxDD   -44, worst day   -17
+  + SMC-gold  ->   937 trades ( 7.2 a day), net  +1040, maxDD   -49, worst day   -25
+  + RCS-gold  ->   955 trades ( 7.3 a day), net  +1213, maxDD   -65, worst day   -25
+  SET ['BTC-STO', 'GAU', 'NEWS', 'BTC-SMC', 'SMC-gold', 'RCS-gold']
+  last 3 m 465 trades net +694 DD -65 | prev 3 m 490 trades net +519 DD -49 | $100 started on each of 126 weekdays: stopped out 0
+
+GREEDY on TRADES, 6-month max DD must stay above $-95:
+  + BTC-STO   ->   595 trades ( 4.6 a day), net   +257, maxDD   -50, worst day   -13
+  + GAU       ->   725 trades ( 5.6 a day), net   +497, maxDD   -25, worst day   -10
+  + NEWS      ->   854 trades ( 6.6 a day), net   +771, maxDD   -47, worst day   -17
+  + KUMO      ->   922 trades ( 7.1 a day), net  +1093, maxDD   -84, worst day   -41
+  + BTC-SMC   ->   966 trades ( 7.4 a day), net  +1155, maxDD   -84, worst day   -40
+  + RCS-gold  ->   984 trades ( 7.6 a day), net  +1328, maxDD   -84, worst day   -40
+  SET ['BTC-STO', 'GAU', 'NEWS', 'KUMO', 'BTC-SMC', 'RCS-gold']
+  last 3 m 476 trades net +783 DD -71 | prev 3 m 508 trades net +545 DD -84 | $100 started on each of 126 weekdays: stopped out 0
