@@ -56,6 +56,11 @@ def build(sym):
         m[f"h4_{nb}"] = x
         m[f"h4u_{nb}"] = up_.set_axis(up_.index + pd.Timedelta(hours=4)).reindex(m.index, method="ffill").fillna(0).values
         m[f"h4d_{nb}"] = dn_.set_axis(dn_.index + pd.Timedelta(hours=4)).reindex(m.index, method="ffill").fillna(0).values
+    # round 143e: H1 BB 20,2 of the last CLOSED H1 candle, on the M5 grid (TP at the H1 top / low BB)
+    h1 = d.c.resample("1h").last().dropna(); b1m = h1.rolling(20).mean(); b1s = h1.rolling(20).std(ddof=0)
+    for nm, ser in (("h1u", b1m + 2 * b1s), ("h1d", b1m - 2 * b1s)):
+        z = ser.copy(); z.index = z.index + pd.Timedelta(hours=1)
+        d[nm] = z.reindex(d.index, method="ffill").values
     return d, m, usd
 
 def signals(m, cb1mode, W, need_cb1=True):
@@ -75,11 +80,21 @@ def signals(m, cb1mode, W, need_cb1=True):
         body = abs(C[i] - O[i]); big = body >= 1.0 * A[i]
         if not np.isnan(sh) and C[i] > sh and C[i - 1] <= sh:
             eng = C[i] > O[i] and C[i - 1] < O[i - 1] and C[i] >= O[i - 1] and O[i] <= C[i - 1]
-            if cb1mode == "any" or not (big or eng): last_up = i
+            ok = cb1mode.startswith("any") or not (big or eng)
+            if ok and "_nolb" in cb1mode:                               # round 143d: the level must not be the last bear candle's high
+                tol = float(cb1mode.split("_nolb")[1] or 0.1) * A[i]
+                lb = next((q for q in range(i - 1, max(i - 40, 0), -1) if C[q] < O[q]), None)
+                if lb is not None and abs(H[lb] - sh) <= tol: ok = False
+            if ok: last_up = i
             sh = np.nan
         if not np.isnan(sl_) and C[i] < sl_ and C[i - 1] >= sl_:
             eng = C[i] < O[i] and C[i - 1] > O[i - 1] and C[i] <= O[i - 1] and O[i] >= C[i - 1]
-            if cb1mode == "any" or not (big or eng): last_dn = i
+            ok = cb1mode.startswith("any") or not (big or eng)
+            if ok and "_nolb" in cb1mode:                               # sell: the level must not be the last bull candle's low
+                tol = float(cb1mode.split("_nolb")[1] or 0.1) * A[i]
+                lb = next((q for q in range(i - 1, max(i - 40, 0), -1) if C[q] > O[q]), None)
+                if lb is not None and abs(L[lb] - sl_) <= tol: ok = False
+            if ok: last_dn = i
             sl_ = np.nan
         if O[i] < lo4b[i] and C[i] > hi4[i] and (not need_cb1 or 0 < i - last_up <= W): out.append((i, 1, last_up))
         if O[i] > hi4s[i] and C[i] < lo4[i] and (not need_cb1 or 0 < i - last_dn <= W): out.append((i, -1, last_dn))
@@ -130,7 +145,9 @@ def simulate(d, m, usd, sig, h4mode, entry, V, slmode, tp, rng=None, extra=0.0):
         else: R = 1.5 * a
         if R <= sp: continue
         st = e - d_ * R
-        if tp == "bb": tgt = m.up.values[i] if d_ == 1 else m.dn.values[i]
+        H1U, H1D = d.h1u.values, d.h1d.values
+        if tp in ("h1bb", "h1bbd"): tgt = H1U[j] if d_ == 1 else H1D[j]
+        elif tp == "bb": tgt = m.up.values[i] if d_ == 1 else m.dn.values[i]
         elif tp == "none": tgt = None
         else: tgt = e + d_ * float(tp) * R
         if tgt is not None and (tgt - e) * d_ <= 0: tgt = None
@@ -142,6 +159,9 @@ def simulate(d, m, usd, sig, h4mode, entry, V, slmode, tp, rng=None, extra=0.0):
             bh = H5[z] if d_ == 1 else L5[z] + S5[z]
             if (d_ == 1 and bl <= st) or (d_ == -1 and bl >= st):
                 x = st if z > j else st; break
+            if tp == "h1bbd" and z > j:                                   # the H1 band moves with each closed H1 candle
+                nt = H1U[z] if d_ == 1 else H1D[z]
+                if not np.isnan(nt) and (nt - e) * d_ > 0: tgt = nt
             if tgt is not None and ((d_ == 1 and bh >= tgt) or (d_ == -1 and bh <= tgt)): x = tgt; break
         if x is None: x = C5[-1]
         res.append((pd.Timestamp(t5[j]), ((x - e) * d_ - extra * sp) * usd, d_)); busy = t5[z]
