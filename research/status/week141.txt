@@ -1,0 +1,20 @@
+
+cap60 (5 modules): 29 weeks, stopped out 0, weeks in profit 22, withdrawn total +1161, losing weeks 7 (refill 87), avg trades/week 35, lowest equity in any week $51
+   week net: 04May:+17 11May:+9 18May:+14 25May:-3 01Jun:+81 08Jun:+3 15Jun:+24 22Jun:+169 29Jun:+114 06Jul:-8 13Jul:+99 20Jul:+1 27Jul:-1 03Aug:+43 10Aug:-24 17Aug:+52 24Aug:+87 31Aug:+131 07Sep:-9 14Sep:+23 21Sep:+61 28Sep:+39 05Oct:-5 12Oct:+88 19Oct:+45 26Oct:+51 02Nov:-37 09Nov:+6 16Nov:+6
+   lowest equity each week: 98 93 88 81 95 78 94 92 97 75 96 90 82 93 51 89 98 92 74 74 100 92 83 98 100 96 56 94 100
+
+cap80 (6 modules, offered): 29 weeks, stopped out 0, weeks in profit 22, withdrawn total +1337, losing weeks 7 (refill 90), avg trades/week 36, lowest equity in any week $51
+   week net: 04May:+17 11May:+9 18May:+14 25May:-17 01Jun:+84 08Jun:+3 15Jun:+11 22Jun:+169 29Jun:+114 06Jul:+22 13Jul:+103 20Jul:-14 27Jul:-1 03Aug:+43 10Aug:-1 17Aug:+75 24Aug:+87 31Aug:+223 07Sep:-9 14Sep:+8 21Sep:+61 28Sep:+77 05Oct:+7 12Oct:+88 19Oct:+75 26Oct:+42 02Nov:-37 09Nov:-12 16Nov:+6
+   lowest equity each week: 98 93 88 67 95 78 80 92 97 66 96 86 82 93 51 93 98 92 74 74 100 92 86 98 100 88 56 78 100
+
+cap95 (with KUMO): 29 weeks, stopped out 0, weeks in profit 25, withdrawn total +1405, losing weeks 4 (refill 71), avg trades/week 37, lowest equity in any week $27
+   week net: 04May:+28 11May:-30 18May:+1 25May:+12 01Jun:+36 08Jun:+55 15Jun:+18 22Jun:+116 29Jun:+101 06Jul:-1 13Jul:+102 20Jul:+18 27Jul:+5 03Aug:+67 10Aug:+8 17Aug:+139 24Aug:+23 31Aug:+244 07Sep:-28 14Sep:+47 21Sep:+55 28Sep:+64 05Oct:+60 12Oct:+74 19Oct:+62 26Oct:+33 02Nov:-12 09Nov:+28 16Nov:+6
+   lowest equity each week: 98 27 89 56 92 96 89 97 97 75 96 72 58 89 73 73 68 97 54 86 100 84 94 87 100 71 82 96 100
+
+live FLIP 4 lanes, for comparison: 29 weeks, stopped out 17, weeks in profit 22, withdrawn total +5289, losing weeks 7 (refill 1118), avg trades/week 90, lowest equity in any week $-288
+   week net: 04May:+12 11May:-382 18May:-215 25May:+189 01Jun:+677 08Jun:+271 15Jun:+49 22Jun:+80 29Jun:-14 06Jul:-106 13Jul:+235 20Jul:+78 27Jul:+2 03Aug:+101 10Aug:+42 17Aug:+834 24Aug:+441 31Aug:+335 07Sep:+298 14Sep:+65 21Sep:+75 28Sep:+504 05Oct:-52 12Oct:+12 19Oct:+189 26Oct:-275 02Nov:+339 09Nov:+462 16Nov:-72
+   lowest equity each week: 67 -288 -232 65 60 -65 -48 83 24 -121 7 -65 -90 -116 -23 -11 -70 23 40 -29 -1 92 -68 45 -82 -185 -18 84 25
+
+FLIP lane A alone: 29 weeks, stopped out 2, weeks in profit 20, withdrawn total +1657, losing weeks 9 (refill 278), avg trades/week 29, lowest equity in any week $-41
+   week net: 04May:+34 11May:-138 18May:-26 25May:+56 01Jun:+224 08Jun:+107 15Jun:-2 22Jun:+46 29Jun:-16 06Jul:-24 13Jul:+104 20Jul:+14 27Jul:+17 03Aug:+42 10Aug:-1 17Aug:+268 24Aug:+124 31Aug:+61 07Sep:+78 14Sep:+2 21Sep:+35 28Sep:+166 05Oct:+5 12Oct:-10 19Oct:+47 26Oct:-40 02Nov:+88 09Nov:+139 16Nov:-23
+   lowest equity each week: 90 -41 -1 91 81 41 53 93 73 34 67 49 51 46 38 94 69 64 77 50 85 99 45 63 38 35 44 96 76
