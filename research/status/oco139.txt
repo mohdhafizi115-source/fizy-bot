@@ -1,0 +1,90 @@
+last 3 months 2026-08-17 .. 2026-11-16 | previous 2026-05-18 .. 2026-08-17
+groups tested: 31 | cells: 124 | cells PF>=1.15 both windows with >=8 trades each: 16
+groups with >=3 of 4 cells passing:
+   CAD 08:30 NY 55 1 3 15 23 0.676174 -26.68 28 2.380337 77.92
+CAD 08:30 NY 55 2 3 15 23 1.773160  51.16 27 1.899691 49.51
+CAD 08:30 NY 55 3 3 15 21 2.325586  65.02 25 2.232962 57.53
+CAD 08:30 NY 55 2 4 30 23 1.662798  51.97 27 2.317602 86.83
+   EUR 02:00 NY 42 1 3 15 20 2.168391 28.24 19 1.684947 23.48
+EUR 02:00 NY 42 2 3 15 19 2.685106 31.68 18 1.979813 27.18
+EUR 02:00 NY 42 3 3 15 18 1.511647 12.52 14 1.763292 16.51
+EUR 02:00 NY 42 2 4 30 19 2.226215 41.63 18 2.518121 56.55
+   GBP 02:00 NY 22 1 3 15 9 1.890169 11.59 12 1.549716 11.61
+GBP 02:00 NY 22 2 3 15 9 1.360419  5.50 12 1.884932 16.15
+GBP 02:00 NY 22 3 3 15 8 2.062914  9.63 11 1.978207 15.71
+GBP 02:00 NY 22 2 4 30 9 1.143521  2.78 12 1.518852 12.66
+   USD 08:30 NY 71 1 3 15 30 0.814908 -21.38 34 3.588946 197.20
+USD 08:30 NY 71 2 3 15 30 1.413981  40.98 34 3.543601 179.68
+USD 08:30 NY 71 3 3 15 28 1.384842  32.70 33 3.714200 180.63
+USD 08:30 NY 71 2 4 30 30 1.382470  45.25 34 2.744312 161.00
+top 25 by min PF:
+         key  events  K  sl  hold  n3       pf3  net3  np      pfp   netp       mn
+EUR 03:30 NY      13  2   4    30   3 99.000000 10.60   7 3.000874  22.89 3.000874
+EUR 03:00 NY      28  3   3    15   9  2.247338 15.23   9 2.405010  13.46 2.247338
+CAD 08:30 NY      55  3   3    15  21  2.325586 65.02  25 2.232962  57.53 2.232962
+EUR 02:00 NY      42  2   4    30  19  2.226215 41.63  18 2.518121  56.55 2.226215
+EUR 02:00 NY      42  2   3    15  19  2.685106 31.68  18 1.979813  27.18 1.979813
+GBP 02:00 NY      22  3   3    15   8  2.062914  9.63  11 1.978207  15.71 1.978207
+EUR 03:30 NY      13  1   3    15   3  1.935108  5.62   8 2.295146  13.34 1.935108
+JPY 19:30 NY      18  2   4    30   5  1.859206  4.76   7 3.764277  22.75 1.859206
+EUR 03:30 NY      13  2   3    15   3  2.801061  6.79   7 1.818777   7.50 1.818777
+CAD 08:30 NY      55  2   3    15  23  1.773160 51.16  27 1.899691  49.51 1.773160
+EUR 02:00 NY      42  1   3    15  20  2.168391 28.24  19 1.684947  23.48 1.684947
+CAD 08:30 NY      55  2   4    30  23  1.662798 51.97  27 2.317602  86.83 1.662798
+GBP 02:00 NY      22  1   3    15   9  1.890169 11.59  12 1.549716  11.61 1.549716
+EUR 02:00 NY      42  3   3    15  18  1.511647 12.52  14 1.763292  16.51 1.511647
+GBP 04:30 NY      27  2   4    30  10  1.654046  8.81  12 1.418925   8.81 1.418925
+USD 08:30 NY      71  2   3    15  30  1.413981 40.98  34 3.543601 179.68 1.413981
+USD 08:30 NY      71  3   3    15  28  1.384842 32.70  33 3.714200 180.63 1.384842
+USD 08:30 NY      71  2   4    30  30  1.382470 45.25  34 2.744312 161.00 1.382470
+GBP 02:00 NY      22  2   3    15   9  1.360419  5.50  12 1.884932  16.15 1.360419
+EUR 04:00 NY      33  2   3    15   9  1.252446  3.87  18 1.160096   4.67 1.160096
+GBP 02:00 NY      22  2   4    30   9  1.143521  2.78  12 1.518852  12.66 1.143521
+EUR 03:15 NY      21  2   4    30   8  2.139459 13.89  10 1.135360   2.76 1.135360
+NZD 18:45 NY      20  1   3    15   5  1.127923  0.93  11 1.473899   5.81 1.127923
+BRL 08:00 NY      26  1   3    15  10  1.108970  1.64  13 1.256752   7.13 1.108970
+EUR 04:00 NY      33  2   4    30   9  2.158843 24.44  18 1.086785   3.52 1.086785
+last 3 months 2026-08-17 .. 2026-11-16 | previous 2026-05-18 .. 2026-08-17
+08:30 NY  USD/CAD release K2 sl3 15m           |    37   1.0/d win  30% PF  1.38 str 1.33 net    +43 worst   -22 DD   -58 |    42   1.0/d win  36% PF  2.97 str 2.83 net   +169 worst    -4 DD   -32
+08:30 NY  USD/CAD NO-release same minute       |    27   1.0/d win  30% PF  1.14 str 1.10 net    +13 worst   -37 DD   -47 |    22   1.0/d win  36% PF  0.58 str 0.54 net    -18 worst    -3 DD   -23
+08:30 NY  USD/CAD release K3 sl3 15m           |    34   1.0/d win  24% PF  1.35 str 1.29 net    +34 worst   -22 DD   -58 |    40   1.0/d win  40% PF  3.30 str 3.14 net   +177 worst    -4 DD   -24
+08:30 NY  USD/CAD release K2 sl4 30m           |    37   1.0/d win  30% PF  1.23 str 1.19 net    +32 worst   -22 DD   -75 |    42   1.0/d win  33% PF  2.39 str 2.30 net   +157 worst    -5 DD   -31
+02:00 NY  EUR/GBP release K2 sl3 15m           |    24   1.0/d win  54% PF  2.05 str 1.89 net    +29 worst    -3 DD    -8 |    26   1.0/d win  46% PF  1.75 str 1.64 net    +32 worst    -3 DD    -9
+02:00 NY  EUR/GBP NO-release same minute       |    37   1.0/d win  41% PF  1.30 str 1.21 net    +17 worst    -3 DD   -25 |    37   1.0/d win  38% PF  1.14 str 1.06 net     +9 worst    -3 DD   -23
+02:00 NY  EUR/GBP release K3 sl3 15m           |    22   1.0/d win  55% PF  1.37 str 1.27 net    +11 worst    -3 DD   -12 |    21   1.0/d win  52% PF  1.89 str 1.77 net    +28 worst    -3 DD   -13
+02:00 NY  EUR/GBP release K2 sl4 30m           |    24   1.0/d win  46% PF  1.59 str 1.51 net    +28 worst    -4 DD   -17 |    26   1.0/d win  42% PF  1.94 str 1.85 net    +54 worst    -4 DD   -12
+03:00 NY  EUR release K2 sl3 15m               |    11   1.0/d win  36% PF  1.37 str 1.29 net     +8 worst    -3 DD   -14 |    13   1.0/d win  38% PF  0.97 str 0.91 net     -1 worst    -3 DD    -9
+03:00 NY  EUR NO-release same minute           |    50   1.0/d win  28% PF  0.51 str 0.47 net    -52 worst    -4 DD   -54 |    50   1.0/d win  34% PF  0.75 str 0.69 net    -24 worst    -4 DD   -56
+03:00 NY  EUR release K3 sl3 15m               |     9   1.0/d win  56% PF  2.25 str 2.10 net    +15 worst    -3 DD   -12 |     9   1.0/d win  56% PF  2.41 str 2.22 net    +13 worst    -3 DD    -6
+03:00 NY  EUR release K2 sl4 30m               |    11   1.0/d win  36% PF  0.84 str 0.80 net     -5 worst    -4 DD   -18 |    13   1.0/d win  46% PF  1.20 str 1.14 net     +6 worst    -4 DD    -8
+04:00 NY  EUR release K2 sl3 15m               |     9   1.0/d win  44% PF  1.25 str 1.17 net     +4 worst    -3 DD    -9 |    18   1.0/d win  39% PF  1.16 str 1.08 net     +5 worst    -3 DD   -23
+04:00 NY  EUR NO-release same minute           |    51   1.0/d win  41% PF  1.26 str 1.16 net    +18 worst    -3 DD   -23 |    43   1.0/d win  40% PF  1.03 str 0.96 net     +2 worst    -4 DD   -22
+04:00 NY  EUR release K3 sl3 15m               |     9   1.0/d win  22% PF  0.97 str 0.90 net     -1 worst    -3 DD   -10 |    17   1.0/d win  35% PF  1.42 str 1.32 net    +11 worst    -3 DD   -20
+04:00 NY  EUR release K2 sl4 30m               |     9   1.0/d win  33% PF  2.16 str 2.06 net    +24 worst    -4 DD   -13 |    18   1.0/d win  39% PF  1.09 str 1.03 net     +4 worst    -4 DD   -35
+04:30 NY  GBP release K2 sl3 15m               |    10   1.0/d win  30% PF  0.33 str 0.30 net    -14 worst    -3 DD   -19 |    12   1.0/d win  33% PF  0.79 str 0.74 net     -5 worst    -5 DD   -15
+04:30 NY  GBP NO-release same minute           |    48   1.0/d win  40% PF  0.87 str 0.80 net    -10 worst    -3 DD   -27 |    45   1.0/d win  24% PF  0.62 str 0.58 net    -35 worst    -4 DD   -57
+04:30 NY  GBP release K3 sl3 15m               |     6   1.0/d win  33% PF  0.62 str 0.58 net     -5 worst    -3 DD   -12 |     8   1.0/d win  50% PF  1.20 str 1.11 net     +2 worst    -3 DD    -6
+04:30 NY  GBP release K2 sl4 30m               |    10   1.0/d win  60% PF  1.65 str 1.54 net     +9 worst    -4 DD    -4 |    12   1.0/d win  58% PF  1.42 str 1.33 net     +9 worst    -5 DD   -12
+10:00 NY  USD release K2 sl3 15m               |    29   1.0/d win  28% PF  0.91 str 0.86 net     -6 worst    -6 DD   -29 |    30   1.0/d win  20% PF  0.50 str 0.47 net    -39 worst    -4 DD   -54
+10:00 NY  USD NO-release same minute           |    36   1.0/d win  33% PF  1.09 str 1.02 net     +6 worst    -3 DD   -29 |    35   1.0/d win  26% PF  0.67 str 0.63 net    -27 worst    -4 DD   -41
+10:00 NY  USD release K3 sl3 15m               |    28   1.0/d win  29% PF  0.99 str 0.93 net     -1 worst    -6 DD   -27 |    30   1.0/d win  20% PF  0.62 str 0.59 net    -29 worst    -3 DD   -41
+10:00 NY  USD release K2 sl4 30m               |    29   1.0/d win  28% PF  1.37 str 1.32 net    +31 worst    -6 DD   -27 |    30   1.0/d win  17% PF  0.45 str 0.43 net    -56 worst    -4 DD   -72
+14:00 NY  USD release K2 sl3 15m               |     6   1.0/d win  33% PF  0.36 str 0.33 net     -8 worst    -3 DD    -9 |     8   1.0/d win  50% PF 10.05 str 9.59 net   +110 worst    -3 DD    -9
+14:00 NY  USD NO-release same minute           |    43   1.0/d win  35% PF  0.91 str 0.83 net     -5 worst    -4 DD   -33 |    47   1.0/d win  40% PF  0.82 str 0.75 net    -13 worst    -6 DD   -28
+14:00 NY  USD release K3 sl3 15m               |     6   1.0/d win  17% PF  0.21 str 0.19 net    -11 worst    -4 DD   -11 |     6   1.0/d win  83% PF 41.73 str 39.80 net   +123 worst    -3 DD    -3
+14:00 NY  USD release K2 sl4 30m               |     6   1.0/d win   0% PF  0.00 str 0.00 net    -22 worst    -5 DD   -22 |     8   1.0/d win  38% PF  5.10 str 4.92 net    +85 worst    -4 DD   -13
+19:30 NY  AUD/JPY release K2 sl3 15m           |     7   1.0/d win  71% PF  1.99 str 1.81 net     +6 worst    -3 DD    -5 |     7   1.0/d win  43% PF  1.07 str 0.99 net     +1 worst    -3 DD    -4
+19:30 NY  AUD/JPY NO-release same minute       |    38   1.0/d win  47% PF  1.65 str 1.50 net    +28 worst    -4 DD   -20 |    46   1.0/d win  43% PF  1.17 str 1.08 net    +12 worst    -3 DD   -31
+19:30 NY  AUD/JPY release K3 sl3 15m           |     4   1.0/d win  50% PF  6.22 str 5.06 net     +7 worst    -1 DD    -1 |     4   1.0/d win  75% PF  2.62 str 2.39 net     +5 worst    -3 DD    -3
+19:30 NY  AUD/JPY release K2 sl4 30m           |     7   1.0/d win  57% PF  1.70 str 1.58 net     +7 worst    -4 DD    -6 |     7   1.0/d win  71% PF  3.76 str 3.57 net    +23 worst    -4 DD    -4
+21:30 NY  CNY/AUD release K2 sl3 15m           |    15   1.0/d win  40% PF  1.69 str 1.57 net    +15 worst    -3 DD   -17 |    16   1.0/d win  25% PF  0.77 str 0.73 net     -8 worst    -3 DD   -34
+21:30 NY  CNY/AUD NO-release same minute       |    49   1.0/d win  35% PF  0.89 str 0.83 net    -10 worst    -3 DD   -42 |    49   1.0/d win  35% PF  1.15 str 1.08 net    +14 worst    -3 DD   -49
+21:30 NY  CNY/AUD release K3 sl3 15m           |    13   1.0/d win  31% PF  1.35 str 1.26 net     +8 worst    -3 DD   -17 |    15   1.0/d win  33% PF  0.90 str 0.85 net     -3 worst    -4 DD   -25
+21:30 NY  CNY/AUD release K2 sl4 30m           |    15   1.0/d win  47% PF  3.16 str 3.02 net    +62 worst    -4 DD    -9 |    16   1.0/d win  31% PF  0.82 str 0.78 net     -8 worst    -4 DD   -37
+== portfolio: one position at a time across slots, K2 sl3 15m
+08:30 + 02:00                                  |    61   1.4/d win  39% PF  1.52 str 1.45 net    +73 worst   -22 DD   -58 |    68   1.3/d win  40% PF  2.56 str 2.43 net   +201 worst    -7 DD   -16
+   same, K3 sl3 15m                            |    56   1.3/d win  36% PF  1.36 str 1.29 net    +45 worst   -22 DD   -57 |    61   1.2/d win  44% PF  2.89 str 2.75 net   +205 worst    -6 DD   -21
+   K2: 140 trades on 103 days (3.6 a week), top 5 days +251 of +287; months 2026-05:+27 2026-06:+5 2026-07:+156 2026-08:+38 2026-09:+96 2026-10:-5 2026-11:-29
+08:30 + 02:00 + 03:00 + 04:00 + 04:30          |    91   1.9/d win  38% PF  1.35 str 1.28 net    +70 worst   -22 DD   -62 |   111   1.9/d win  39% PF  1.97 str 1.86 net   +200 worst   -11 DD   -34
+   same, K3 sl3 15m                            |    80   1.8/d win  36% PF  1.33 str 1.26 net    +55 worst   -22 DD   -67 |    95   1.8/d win  44% PF  2.48 str 2.34 net   +232 worst    -9 DD   -29
+   K2: 222 trades on 115 days (4.0 a week), top 5 days +251 of +285; months 2026-05:+60 2026-06:-3 2026-07:+144 2026-08:+34 2026-09:+93 2026-10:-23 2026-11:-20
