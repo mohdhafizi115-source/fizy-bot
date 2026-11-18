@@ -32,7 +32,7 @@ input long   InpMrtMagic    = 260340;
 input double InpMrtEntry    = 3.0;      // first stop order this many $ beyond the ask / bid
 input double InpMrtStep     = 3.0;      // add a position every $ against the last entry
 input double InpMrtTarget   = 3.0;      // basket TP: whole basket +$ (swap included)
-input int    InpMrtMax      = 6;        // positions per basket
+input int    InpMrtMax      = 10;       // positions per basket (v2.53: 10 on the owner's order; round 146c max 10 blew 19 / 63 $1000 starts)
 input int    InpMrtFrom     = 90;       // first entry minute, server (01:30)
 input int    InpMrtTo       = 1380;     // no new basket from this minute (23:00)
 input bool   InpMrtClose2330 = false;   // false = hold overnight (the tested cell)
