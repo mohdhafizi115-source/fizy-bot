@@ -26,8 +26,9 @@ A3 = END - pd.Timedelta(days=91); A6 = A3 - pd.Timedelta(days=91)
 def pf(r, lo, hi):
     p = np.array([x[1] for x in r if lo <= x[0] < hi]); g = [x for x in r if lo <= x[0] < hi]
     if len(p) == 0: return "  0"
-    gold = sum(x[1] for x in g if x[2] == "XAUUSD")
-    return f"{len(p):3d} PF {min(p[p>0].sum()/max(-p[p<0].sum(),1e-9),99):5.2f} net {p.sum():+5.0f} (gold {gold:+4.0f})"
+    gp = np.array([x[1] for x in g if x[2] == "XAUUSD"])
+    gpf = min(gp[gp > 0].sum() / max(-gp[gp < 0].sum(), 1e-9), 99) if len(gp) else 0
+    return f"{len(p):3d} PF {min(p[p>0].sum()/max(-p[p<0].sum(),1e-9),99):5.2f} net {p.sum():+5.0f} (gold {len(gp):2d} PF {gpf:5.2f} {gp.sum():+4.0f})"
 print(f"{len(syms)} symbols, last 3 months {A3:%d %b}-{END:%d %b} / previous; 0.01 lot each, $ pooled")
 for c in cfgs:
     print(f"CB1 {c[0]:10s} W{c[1]:2d} H4 {c[2]:6s} {c[3]:4s} TP {c[4]:5s} | {pf(res[c], A3, END + pd.Timedelta(days=1))} | {pf(res[c], A6, A3)} | random dir {pf(rnd[c], A3, END + pd.Timedelta(days=1))} / {pf(rnd[c], A6, A3)}")

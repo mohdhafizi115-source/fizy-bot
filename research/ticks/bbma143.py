@@ -16,6 +16,7 @@ import scalp_all as SA
 meta = SA.load_meta(os.path.join(DATA, "meta.txt"))
 H4MODES = os.environ.get("H4MODES", "on1,on3,on6,off").split(",")
 RNDM = os.environ.get("RNDM", "on6,off").split(","); CTRL = os.environ.get("CTRL", "on6,off").split(",")
+TFM = int(os.environ.get("TFM", "15")); HTFH = int(os.environ.get("HTFH", "4"))   # round 143f: setup TF (min) / filter TF (h)
 SYMS = sys.argv[2].split(",") if len(sys.argv) > 2 else ["XAUUSD"]
 
 def lwma(x, n):
@@ -25,7 +26,7 @@ def lwma(x, n):
 def build(sym):
     mt = meta[sym]; usd = mt["tick_value"] / mt["tick_size"] * 0.01
     d = SA.load(os.path.join(DATA, sym + ".csv"), mt["point"])
-    m = d.resample("15min").agg({"o": "first", "h": "max", "l": "min", "c": "last", "s": "median"}).dropna()
+    m = d.resample(f"{TFM}min").agg({"o": "first", "h": "max", "l": "min", "c": "last", "s": "median"}).dropna()
     c = m.c
     mid = c.rolling(20).mean(); sd = c.rolling(20).std(ddof=0)
     m["mid"] = mid; m["up"] = mid + 2 * sd; m["dn"] = mid - 2 * sd
@@ -33,7 +34,7 @@ def build(sym):
     m["h5"] = lwma(m.h, 5); m["h10"] = lwma(m.h, 10); m["l5"] = lwma(m.l, 5); m["l10"] = lwma(m.l, 10)
     tr = np.maximum(m.h - m.l, np.maximum((m.h - c.shift()).abs(), (m.l - c.shift()).abs()))
     m["atr"] = tr.ewm(alpha=1 / 14, adjust=False).mean()
-    h4 = d.resample("4h").agg({"o": "first", "h": "max", "l": "min", "c": "last"}).dropna()
+    h4 = d.resample(f"{HTFH}h").agg({"o": "first", "h": "max", "l": "min", "c": "last"}).dropna()
     hb = (h4.c > np.maximum(lwma(h4.h, 5), lwma(h4.h, 10))).astype(int) - (h4.c < np.minimum(lwma(h4.l, 5), lwma(h4.l, 10))).astype(int)
     # round 143b: H4 momentum = an H4 close beyond its BB 20,2 in the last nb closed H4 candles, no opposite one since,
     # optionally with the H4 trend (EMA 50 above / below EMA 90)
@@ -47,15 +48,15 @@ def build(sym):
             u = ((ru == 1) & (last == 1)); dn_ = ((rd == 1) & (last == -1))
             if tt is not None: u = u & (tt > 0); dn_ = dn_ & (tt < 0)
             for nm, ser in ((f"h4u_{tf}{nb}", u), (f"h4d_{tf}{nb}", dn_)):
-                z = ser.astype(float); z.index = z.index + pd.Timedelta(hours=4)
+                z = ser.astype(float); z.index = z.index + pd.Timedelta(hours=HTFH)
                 m[nm] = z.reindex(m.index, method="ffill").fillna(0).values
     for nb in (1, 3, 6):                                               # a buy (sell) close in the last nb closed H4 candles
         up_ = (hb == 1).astype(float).rolling(nb).max(); dn_ = (hb == -1).astype(float).rolling(nb).max()
-        x = (up_ - dn_); x.index = x.index + pd.Timedelta(hours=4)     # known once the H4 candle has closed
+        x = (up_ - dn_); x.index = x.index + pd.Timedelta(hours=HTFH)     # known once the H4 candle has closed
         x = x.reindex(m.index, method="ffill").fillna(0).values
         m[f"h4_{nb}"] = x
-        m[f"h4u_{nb}"] = up_.set_axis(up_.index + pd.Timedelta(hours=4)).reindex(m.index, method="ffill").fillna(0).values
-        m[f"h4d_{nb}"] = dn_.set_axis(dn_.index + pd.Timedelta(hours=4)).reindex(m.index, method="ffill").fillna(0).values
+        m[f"h4u_{nb}"] = up_.set_axis(up_.index + pd.Timedelta(hours=HTFH)).reindex(m.index, method="ffill").fillna(0).values
+        m[f"h4d_{nb}"] = dn_.set_axis(dn_.index + pd.Timedelta(hours=HTFH)).reindex(m.index, method="ffill").fillna(0).values
     # round 143e: H1 BB 20,2 of the last CLOSED H1 candle, on the M5 grid (TP at the H1 top / low BB)
     h1 = d.c.resample("1h").last().dropna(); b1m = h1.rolling(20).mean(); b1s = h1.rolling(20).std(ddof=0)
     for nm, ser in (("h1u", b1m + 2 * b1s), ("h1d", b1m - 2 * b1s)):
@@ -111,17 +112,17 @@ def simulate(d, m, usd, sig, h4mode, entry, V, slmode, tp, rng=None, extra=0.0):
             ok = m[f"h4u_{key}"].values[i] if s_ == 1 else m[f"h4d_{key}"].values[i]
             if not ok: continue
         if i + 1 >= len(m): continue
-        t_open = mi[i] + np.timedelta64(15, "m")                         # the CSAK has closed
+        t_open = mi[i] + np.timedelta64(TFM, "m")                         # the CSAK has closed
         if t_open < busy: continue
         a = m.atr.values[i]
         lo0 = max(cb - 12, 0) if cb > 0 else max(i - 12, 0)
         if slmode == "swing":
             stop = (m.l.values[lo0:i + 1].min() - 0.1 * a) if s_ == 1 else (m.h.values[lo0:i + 1].max() + 0.1 * a)
         # walk M5 bars after the CSAK
-        j = np.searchsorted(t5, t_open); end_wait = t_open + np.timedelta64(15 * V, "m")
+        j = np.searchsorted(t5, t_open); end_wait = t_open + np.timedelta64(TFM * V, "m")
         fill = None
         while j < len(t5) and t5[j] < end_wait:
-            k15 = idx15.get(t5[j] - (t5[j] - mi[0]) % np.timedelta64(15, "m"))
+            k15 = idx15.get(t5[j] - (t5[j] - mi[0]) % np.timedelta64(TFM, "m"))
             kz = (k15 - 1) if k15 is not None else i                     # last CLOSED M15 bar
             kz = max(kz, i)
             if entry == "mkt": lvl = None
