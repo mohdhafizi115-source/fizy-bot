@@ -29,7 +29,7 @@
 //| window). Built on the owner's explicit order.                     |
 //| Events go to MQL5\Files\cb1_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpCb1On      = true;
+input bool   InpCb1On      = false;
 input double InpCb1Lot     = 0.01;
 input long   InpCb1Magic   = 260339;
 input string InpCb1Symbols = "XAUUSD,BTCUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,"

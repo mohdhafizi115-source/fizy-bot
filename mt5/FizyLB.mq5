@@ -4,6 +4,8 @@
 //| SINCE 17 NOV 2026 (v2.49, rounds 140-141) ONLY: gold auction,    |
 //| RCS (new entries on gold only), gold SMC, BTC SMC + STO, NEWS;   |
 //| v2.50 (18 Nov) adds CB1 (BBMA CB1 + CSAK, M15); v2.51 gold only. |
+//| v2.52 (18 Nov): ONLY the MART basket (FizyMRT, owner's test on a |
+//| $1000 demo, $30 daily target); every other module off.           |
 //| ON 5 NOV 2026 THE OWNER KEPT ONLY SIX MODULES: Gotobi, month-end |
 //| fix, gold LBMA auction, Kumo, Tenkan/Kijun and the M1 spike      |
 //| fade. The five breakout modules are switched off: the London     |
@@ -22,7 +24,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.51"
+#property version "2.52"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -72,6 +74,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyBAS.mqh"                 // gold H1 23:00 base zone with the D1 colour, validated by D1 closes (v2.32, round 115e)
 #include "FizyFLP.mqh"                 // gold M1 stop-and-reverse, $5 stop frozen after +$1, $25 own daily target (v2.30, round 113d)
 #include "FizyCRS.mqh"                 // gold M15 Connors RSI < 10 / > 90 on the EMA 200 side, 120 min (v2.28, round 110)
+#include "FizyMRT.mqh"                 // gold martingale basket, no SL, against the D1 colour (v2.52, round 146b, owner's order)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
 //--- helpers -------------------------------------------------------
@@ -338,6 +341,9 @@ void SweepOff()
    if(!InpOrbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpOrbMagic; }
    if(!InpFlpOn) { int m = ArraySize(off); ArrayResize(off, m + 4); for(int l = 0; l < 4; l++) off[m + l] = FL_MAGIC[l]; }
    if(!InpBasOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBasMagic; }
+   if(!InpGauOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGauMagic; }
+   if(!InpBstOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBstMagic; }
+   if(!InpMrtOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMrtMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }
    if(!InpMefOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMefMagic; }
@@ -433,6 +439,7 @@ void OnTimer()
    OrbOnTimer();
    FlpOnTimer();
    BasOnTimer();
+   MrtOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
    DayPaused();                                                             // daily $ target check (reports once when hit)

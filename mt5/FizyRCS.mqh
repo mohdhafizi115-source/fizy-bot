@@ -30,7 +30,7 @@
 //| Plateaus: Extreme lookback 4-16, swing 4-24, hold 2-12 h.         |
 //| Events go to MQL5\Files\rcs_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpRcsOn      = true;
+input bool   InpRcsOn      = false;
 input double InpRcsLot     = 0.01;
 input long   InpRcsMagic   = 260324;
 input string InpRcsSymbols = "XAUUSD,EURUSD,GBPUSD,AUDUSD,NZDUSD,USDJPY,USDCHF,USDCAD,EURGBP,EURJPY,EURCHF,EURAUD,EURCAD,EURNZD,"

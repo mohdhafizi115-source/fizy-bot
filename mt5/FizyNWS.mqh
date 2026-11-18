@@ -18,7 +18,7 @@
 //| carry most of the money.                                          |
 //| Events go to MQL5\Files\nws_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpNwsOn       = true;
+input bool   InpNwsOn       = false;
 input string InpNwsSymbol   = "XAUUSD";
 input double InpNwsLot      = 0.01;
 input long   InpNwsMagic    = 260338;

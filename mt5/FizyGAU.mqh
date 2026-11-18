@@ -19,7 +19,7 @@
 //| Events go to MQL5\Files\gau_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input string InpGauSymbol    = "XAUUSD";
-input bool   InpGauOn        = true;
+input bool   InpGauOn        = false;
 input double InpGauLot       = 0.01;
 input long   InpGauMagic     = 260312;
 input double InpGauSlAtr     = 2.0;

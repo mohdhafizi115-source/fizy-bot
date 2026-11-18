@@ -33,7 +33,7 @@ input double InpBflK       = 2.5;     // body >= this x ATR(14, M5)
 input double InpBflGate    = 8.0;     // ATR(14, M5) >= this x the bar's spread
 input double InpBflSlAtr   = 0.3;     // SL this many ATR beyond the big bar's far end
 input int    InpBflHoldMin = 60;      // close at market after this many minutes
-input bool   InpBsmOn      = true;
+input bool   InpBsmOn      = false;
 input double InpBsmLot     = 0.01;
 input long   InpBsmMagic   = 260327;
 input int    InpBsmSwing   = 3;       // fractal swing: bars on each side (M20)
@@ -42,7 +42,7 @@ input double InpBsmOte     = 0.705;   // entry at this retracement of the impuls
 input double InpBsmTpR     = 3.0;
 input double InpBsmBufAtr  = 0.1;
 input int    InpBsmHoldH   = 16;      // 48 M20 bars
-input bool   InpBstOn      = true;    // v2.34: M5 Stochastic pullback with the H4 trend (round 120b)
+input bool   InpBstOn      = false;    // v2.34: M5 Stochastic pullback with the H4 trend (round 120b)
 input double InpBstLot     = 0.01;
 input long   InpBstMagic   = 260334;
 input double InpBstLevel   = 20;      // %K / %D cross out of this level (100 - it for sells)

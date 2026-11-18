@@ -31,7 +31,7 @@
 //| pairs the same rule loses (PF 0.81 pooled), so gold only.         |
 //| Events go to MQL5\Files\smc_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpSmcOn     = true;
+input bool   InpSmcOn     = false;
 input double InpSmcLot    = 0.01;
 input long   InpSmcMagic  = 260325;
 input int    InpSmcSwing  = 5;       // fractal swing: bars on each side
