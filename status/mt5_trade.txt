@@ -1,24 +1,27 @@
-shift ended (UTC): 2026-11-18 10:07
+shift ended (UTC): 2026-11-18 22:04
 open
-2026.11.18 12:07:32
+2026.11.19 00:04:21
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 10300 ms elapsed, cpu='X64 Regular'
-events: London 1 lines, NR7 0, Gotobi 0, gold auction 1
-  LS	0	04:32:08.089	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.18 06:32, 0 open position(s), 0 pending order(s), lot 0.01
-  KQ	0	04:32:08.090	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  II	0	04:32:21.248	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (new entries on XAUUSD only, forex only closes open trades): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
-  OH	0	04:32:21.614	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
-  JK	0	04:32:23.308	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL off (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); STO on (H4 EMA 20/50 trend, M5 Stoch 5,3,3 cross out of 20/80 + EMA 20 pullback, 07-19 server every day, SL 1.5 ATR, out after 4 h); lot 0.01 | 0 open position(s)
-  ED	0	04:32:23.308	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ONLINE | XAUUSD.m: on release days (USD / CAD at 08:30 New York, EUR / GBP at 02:00 New York, moderate or high importance) an OCO pair a few seconds before the release, BUY STOP ask + $x / SELL STOP bid - $x SL $x from the fill, no TP, out after 15 min, unfilled orders deleted after 6 min, lot 0.01 | 0 open position(s)
-  JD	0	04:32:23.323	FizyLB (XAUUSD.m,M15)	CB1 EVENT CB1 ONLINE | BBMA CB1 + CSAK on M15, 30 symbols (new entries on XAUUSD only, the rest only close open trades): a soft break of the nearest swing (not at the last opposite candle's level, 0.3 ATR), then a CSAK within 8 candles; market entry, SL beyond the swing - 0.1 ATR, TP 2R, out after 24 h, lot 0.01 | 0 open position(s)
-  JF	0	05:30:04.272	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 88/90 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.79 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_140.png
-  QE	0	07:53:32.335	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SL HIT BTCUSD.m | SELL from <num>.21 closed at <num>.79 (stop loss 1.5 ATR), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_250.png
-  NM	0	08:05:03.617	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 74/77 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.07 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_531.png
-  QS	0	08:11:47.911	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC SMC BUY BTCUSD.m | M20 BOS up closed 10:00, price back to the OTE 0.705 at <num>.46 inside the London killzone | BUY 0.01 lot at <num>.79, SL <num>.36 (risk $x), TP <num>.07 (3R), out after 16 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_828.png
+  Result: 0 errors, 0 warnings, 10740 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
+  ES	0	16:28:58.056	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.18 18:28, 0 open position(s), 0 pending order(s), lot 0.01
+  OO	0	16:28:58.057	FizyLB (XAUUSD.m,M15)	MART EVENT MART ONLINE | XAUUSD.m: against yesterday's D1 colour, a stop $x away from 01:30 server opens a basket; every $x against the last entry adds the next lot (0.01/0.02/0.03/0.04/0.05/0.06/0.07/0.08/0.09/0.10, max 10), the TP of all positions moves to the whole basket +$x; NO stop loss, held overnight; new baskets stop once the day's closed profit reaches $x | open basket: 0 position(s), 0.00 lot, floating $x
+  FF	0	17:01:06.061	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3747.34, lot 0.01; next add at 3744.34, no SL
+  LD	0	17:05:34.302	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/10: BUY 0.02 at 3743.80, basket 0.03 lot, floating $x; basket TP 3745.98 (+$x); next add at 3740.80
+  PP	0	17:07:17.156	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 2 position(s), 0.03 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_875.png
+  II	0	17:07:17.402	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3749.31 ($x away), lot 0.01, no SL
+  GQ	0	17:25:09.438	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3749.31, lot 0.01; next add at 3746.31, no SL
+  KL	0	17:30:27.659	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/10: BUY 0.02 at 3746.18, basket 0.03 lot, floating $x; basket TP 3748.22 (+$x); next add at 3743.18
+  OI	0	17:31:15.524	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 2 position(s), 0.03 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_234.png
+  MP	0	17:31:15.746	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3751.41 ($x away), lot 0.01, no SL
   w: telegram ok: daily status
-  w: telegram ok: BTC STO SELL BTCUSD.m
-  w: telegram ok: BTC STO SL HIT BTCUSD.m
-  w: telegram ok: BTC STO SELL BTCUSD.m
-  w: telegram ok: BTC SMC BUY BTCUSD.m
-  w: shift end: done=False, state=2026.11.18 12:07:32|0|0
+  w: telegram ok: MART BUY XAUUSD.m
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
+  w: telegram ok: MART ORDER PLACED XAUUSD.m
+  w: telegram ok: MART BUY XAUUSD.m
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
+  w: telegram ok: MART ORDER PLACED XAUUSD.m
+  w: shift end: done=False, state=2026.11.19 00:04:21|0|0
