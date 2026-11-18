@@ -1,18 +1,24 @@
-shift ended (UTC): 2026-11-17 23:14
+shift ended (UTC): 2026-11-18 10:07
 open
-2026.11.18 01:14:16
+2026.11.18 12:07:32
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 8020 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 10300 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 1
-  FS	0	17:38:51.433	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.17 19:38, 0 open position(s), 0 pending order(s), lot 0.01
-  IQ	0	17:38:51.434	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
-  EI	0	17:39:03.552	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (new entries on XAUUSD only, forex only closes open trades): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 1 open position(s)
-  GH	0	17:39:04.342	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
-  GK	0	17:39:08.109	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL off (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); STO on (H4 EMA 20/50 trend, M5 Stoch 5,3,3 cross out of 20/80 + EMA 20 pullback, 07-19 server every day, SL 1.5 ATR, out after 4 h); lot 0.01 | 0 open position(s)
-  DD	0	17:39:08.109	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ONLINE | XAUUSD.m: on release days (USD / CAD at 08:30 New York, EUR / GBP at 02:00 New York, moderate or high importance) an OCO pair a few seconds before the release, BUY STOP ask + $x / SELL STOP bid - $x SL $x from the fill, no TP, out after 15 min, unfilled orders deleted after 6 min, lot 0.01 | 0 open position(s)
-  ME	0	17:39:08.915	FizyLB (XAUUSD.m,M15)	CB1 EVENT CB1 ONLINE | BBMA CB1 + CSAK on M15, 30 symbols: a soft break of the nearest swing (not at the last opposite candle's level, 0.3 ATR), then a CSAK within 8 candles; market entry, SL beyond the swing - 0.1 ATR, TP 2R, out after 24 h, lot 0.01 | 0 open position(s)
-  IP	0	19:02:49.088	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS SL HIT XAUUSD.m | BUY from 3870.74 closed at 3853.00 (stop loss beyond the swing), profit $x | IMG:snap_RCX_XAUUSD_m_<num>_<num>_46.png
+  LS	0	04:32:08.089	FizyLB (XAUUSD.m,M15)	EVENT STARTED | server time 2026.11.18 06:32, 0 open position(s), 0 pending order(s), lot 0.01
+  KQ	0	04:32:08.090	FizyLB (XAUUSD.m,M15)	AUCTION EVENT AUCTION ONLINE | XAUUSD.m: SELL at 10:15 London before the LBMA gold auction, every trading day (12:15 server time now), SL 2.0 ATR(M5); from 10:30 an M1 trailing stop at the lowest M1 low + 1.0 ATR(M1), hard exit 10:45 (12:45 server), lot 0.01 | 0 open position(s)
+  II	0	04:32:21.248	FizyLB (XAUUSD.m,M15)	RCS EVENT RCS ONLINE | M15 reversal CSAK on 29 symbols (new entries on XAUUSD only, forex only closes open trades): a CSAK after an M15 Extreme the other way in the last 8 candles, with the last H4 close in the opposite half of its band (<= -0.5), spread <= 0.20 ATR; SL 2.0 ATR(M15) from the entry, no TP, out after 8 h, lot 0.01 | 0 open position(s)
+  OH	0	04:32:21.614	FizyLB (XAUUSD.m,M15)	SMC EVENT SMC ONLINE | XAUUSD.m M15 smart money: BOS (swing 5) then a limit at the order block, filled only in the killzone 09:00-12:00 / 14:00-17:00 server; SL beyond the protected low / high, TP 3R, out after 12 h, lot 0.01 | 0 open position(s)
+  JK	0	04:32:23.308	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC ONLINE | BTCUSD.m 24/7: FOL off (M5 candle >= 2.5 ATR with ATR >= 8x spread, follow it, SL 0.3 ATR beyond, out after 60 min, any hour, any day); SMC on (M20 BOS, limit at OTE 0.705, killzone 09-12 / 14-17 server on weekdays, TP 3R, out after 16 h); STO on (H4 EMA 20/50 trend, M5 Stoch 5,3,3 cross out of 20/80 + EMA 20 pullback, 07-19 server every day, SL 1.5 ATR, out after 4 h); lot 0.01 | 0 open position(s)
+  ED	0	04:32:23.308	FizyLB (XAUUSD.m,M15)	NEWS EVENT NEWS ONLINE | XAUUSD.m: on release days (USD / CAD at 08:30 New York, EUR / GBP at 02:00 New York, moderate or high importance) an OCO pair a few seconds before the release, BUY STOP ask + $x / SELL STOP bid - $x SL $x from the fill, no TP, out after 15 min, unfilled orders deleted after 6 min, lot 0.01 | 0 open position(s)
+  JD	0	04:32:23.323	FizyLB (XAUUSD.m,M15)	CB1 EVENT CB1 ONLINE | BBMA CB1 + CSAK on M15, 30 symbols (new entries on XAUUSD only, the rest only close open trades): a soft break of the nearest swing (not at the last opposite candle's level, 0.3 ATR), then a CSAK within 8 candles; market entry, SL beyond the swing - 0.1 ATR, TP 2R, out after 24 h, lot 0.01 | 0 open position(s)
+  JF	0	05:30:04.272	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 88/90 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.79 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_140.png
+  QE	0	07:53:32.335	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SL HIT BTCUSD.m | SELL from <num>.21 closed at <num>.79 (stop loss 1.5 ATR), profit $x | IMG:snap_BSX_BTCUSD_m_<num>_<num>_250.png
+  NM	0	08:05:03.617	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC STO SELL BTCUSD.m | H4 trend down, M5 Stoch 74/77 crossed down out of 80, pullback to EMA 20 | SELL 0.01 lot at <num>.21, SL <num>.07 (risk $x), no TP, out after 4 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_531.png
+  QS	0	08:11:47.911	FizyLB (XAUUSD.m,M15)	BTC EVENT BTC SMC BUY BTCUSD.m | M20 BOS up closed 10:00, price back to the OTE 0.705 at <num>.46 inside the London killzone | BUY 0.01 lot at <num>.79, SL <num>.36 (risk $x), TP <num>.07 (3R), out after 16 h | IMG:snap_BSE_BTCUSD_m_<num>_<num>_828.png
   w: telegram ok: daily status
-  w: telegram ok: RCS SL HIT XAUUSD.m
-  w: shift end: done=False, state=2026.11.18 01:14:16|0|0
+  w: telegram ok: BTC STO SELL BTCUSD.m
+  w: telegram ok: BTC STO SL HIT BTCUSD.m
+  w: telegram ok: BTC STO SELL BTCUSD.m
+  w: telegram ok: BTC SMC BUY BTCUSD.m
+  w: shift end: done=False, state=2026.11.18 12:07:32|0|0
