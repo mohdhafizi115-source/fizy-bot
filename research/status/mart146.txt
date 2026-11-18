@@ -1,0 +1,105 @@
+FLIP v2.47 entries, NO SL, martingale basket, TP = whole basket +$T | last 3 months 17 Aug-16 Nov | previous 18 May-17 Aug
+cols: baskets, win% (baskets closed in profit), net $ incl. blown accounts, $100 accounts blown, worst day, max lots (x0.01), first blow-up
+2330 x2   step $2 TP+$1 max 6 |  564 win  98% net    -413 blown   5 wday   -214 maxlot   63 1st 19 Aug |  764 win  99% net     -26 blown   3 wday   -321 maxlot   63 1st 22 May
+2330 x2   step $2 TP+$1 max10 |  564 win  98% net    -413 blown   5 wday   -214 maxlot 1023 1st 19 Aug |  764 win  99% net     -26 blown   3 wday   -321 maxlot 1023 1st 22 May
+2330 x2   step $2 TP+$3 max 6 |  546 win  98% net    +846 blown   3 wday   -208 maxlot   63 1st 19 Aug |  708 win  99% net   +1565 blown   2 wday   -238 maxlot   63 1st 22 May
+2330 x2   step $2 TP+$3 max10 |  546 win  98% net    +846 blown   3 wday   -208 maxlot 1023 1st 19 Aug |  699 win  99% net    +747 blown   3 wday   -767 maxlot 1023 1st 22 May
+2330 x2   step $3 TP+$1 max 6 |  581 win  99% net     +95 blown   2 wday   -151 maxlot   63 1st 19 Aug |  792 win 100% net    +639 blown   0 wday    -54 maxlot   63 1st      -
+2330 x2   step $3 TP+$1 max10 |  581 win  99% net     +95 blown   2 wday   -151 maxlot 1023 1st 19 Aug |  792 win 100% net    +639 blown   0 wday    -54 maxlot 1023 1st      -
+2330 x2   step $3 TP+$3 max 6 |  570 win  99% net    +855 blown   3 wday   -198 maxlot   63 1st 19 Aug |  781 win 100% net   +2180 blown   0 wday    -35 maxlot   63 1st      -
+2330 x2   step $3 TP+$3 max10 |  554 win  98% net    -104 blown   5 wday   -787 maxlot 1023 1st 19 Aug |  781 win 100% net   +2180 blown   0 wday    -35 maxlot 1023 1st      -
+2330 x2   step $5 TP+$1 max 6 |  641 win 100% net    +131 blown   3 wday   -223 maxlot   63 1st 19 Aug |  795 win 100% net    +668 blown   1 wday   -124 maxlot   63 1st 22 May
+2330 x2   step $5 TP+$1 max10 |  641 win 100% net    +131 blown   3 wday   -223 maxlot 1023 1st 19 Aug |  795 win 100% net    +668 blown   1 wday   -124 maxlot 1023 1st 22 May
+2330 x2   step $5 TP+$3 max 6 |  609 win  99% net    +824 blown   4 wday   -442 maxlot   63 1st 18 Aug |  742 win 100% net   +1877 blown   2 wday   -151 maxlot   63 1st 21 May
+2330 x2   step $5 TP+$3 max10 |  609 win  99% net    +824 blown   4 wday   -442 maxlot 1023 1st 18 Aug |  721 win  99% net    -395 blown   5 wday  -1802 maxlot 1023 1st 21 May
+2330 x2   step $8 TP+$1 max 6 |  633 win  99% net    -437 blown   5 wday   -361 maxlot   63 1st 28 Aug |  796 win 100% net    +471 blown   1 wday   -313 maxlot   63 1st 16 Jun
+2330 x2   step $8 TP+$1 max10 |  633 win  99% net    -437 blown   5 wday   -361 maxlot 1023 1st 28 Aug |  796 win 100% net    +471 blown   1 wday   -313 maxlot 1023 1st 16 Jun
+2330 x2   step $8 TP+$3 max 6 |  569 win  99% net    -587 blown   8 wday   -760 maxlot   63 1st 20 Aug |  741 win 100% net    +329 blown   1 wday  -1787 maxlot   63 1st 30 Jul
+2330 x2   step $8 TP+$3 max10 |  569 win  99% net    -587 blown   8 wday   -760 maxlot 1023 1st 20 Aug |  761 win 100% net   +2203 blown   0 wday    -35 maxlot 1023 1st      -
+2330 x1.5 step $2 TP+$1 max 6 |  567 win  98% net     -76 blown   3 wday   -149 maxlot   31 1st 19 Aug |  776 win  99% net    +473 blown   1 wday    -91 maxlot   31 1st 22 May
+2330 x1.5 step $2 TP+$1 max10 |  567 win  98% net     -76 blown   3 wday   -149 maxlot  179 1st 19 Aug |  767 win  99% net    +133 blown   2 wday   -321 maxlot  179 1st 22 May
+2330 x1.5 step $2 TP+$3 max 6 |  545 win  98% net    +843 blown   3 wday   -208 maxlot   31 1st 19 Aug |  722 win  99% net   +1872 blown   1 wday   -128 maxlot   31 1st 22 May
+2330 x1.5 step $2 TP+$3 max10 |  545 win  98% net    +843 blown   3 wday   -208 maxlot  179 1st 19 Aug |  723 win  99% net   +1875 blown   1 wday   -128 maxlot  179 1st 22 May
+2330 x1.5 step $3 TP+$1 max 6 |  583 win  99% net     +97 blown   2 wday   -151 maxlot   31 1st 19 Aug |  796 win  99% net    +550 blown   1 wday    -92 maxlot   31 1st 22 May
+2330 x1.5 step $3 TP+$1 max10 |  583 win  99% net     +97 blown   2 wday   -151 maxlot  179 1st 19 Aug |  796 win  99% net    +550 blown   1 wday    -92 maxlot  179 1st 22 May
+2330 x1.5 step $3 TP+$3 max 6 |  584 win  99% net   +1144 blown   2 wday   -195 maxlot   31 1st 19 Aug |  780 win 100% net   +2177 blown   0 wday    -35 maxlot   31 1st      -
+2330 x1.5 step $3 TP+$3 max10 |  586 win  99% net   +1150 blown   2 wday   -195 maxlot  179 1st 19 Aug |  780 win 100% net   +2177 blown   0 wday    -35 maxlot  179 1st      -
+2330 x1.5 step $5 TP+$1 max 6 |  638 win 100% net    +128 blown   3 wday   -223 maxlot   31 1st 19 Aug |  788 win 100% net    +788 blown   0 wday     +1 maxlot   31 1st      -
+2330 x1.5 step $5 TP+$1 max10 |  638 win 100% net    +128 blown   3 wday   -223 maxlot  179 1st 19 Aug |  788 win 100% net    +788 blown   0 wday     +1 maxlot  179 1st      -
+2330 x1.5 step $5 TP+$3 max 6 |  594 win  99% net     +39 blown   6 wday   -433 maxlot   31 1st 18 Aug |  748 win 100% net   +2001 blown   1 wday   -151 maxlot   31 1st 21 May
+2330 x1.5 step $5 TP+$3 max10 |  594 win  99% net     +39 blown   6 wday   -433 maxlot  179 1st 18 Aug |  752 win 100% net   +2013 blown   1 wday   -151 maxlot  179 1st 21 May
+2330 x1.5 step $8 TP+$1 max 6 |  629 win  99% net    -337 blown   4 wday   -434 maxlot   31 1st 07 Oct |  790 win 100% net    +465 blown   1 wday   -313 maxlot   31 1st 16 Jun
+2330 x1.5 step $8 TP+$1 max10 |  629 win  99% net    -337 blown   4 wday   -434 maxlot  179 1st 07 Oct |  790 win 100% net    +465 blown   1 wday   -313 maxlot  179 1st 16 Jun
+2330 x1.5 step $8 TP+$3 max 6 |  616 win 100% net    +429 blown   1 wday  -1051 maxlot   31 1st 07 Oct |  754 win 100% net   +2171 blown   0 wday    -46 maxlot   31 1st      -
+2330 x1.5 step $8 TP+$3 max10 |  615 win  99% net     -87 blown   3 wday  -1057 maxlot  179 1st 07 Oct |  755 win 100% net   +2174 blown   0 wday    -46 maxlot  179 1st      -
+2330 lin  step $2 TP+$1 max 6 |  568 win  99% net     +32 blown   2 wday   -149 maxlot   21 1st 19 Aug |  776 win  99% net    +473 blown   1 wday    -91 maxlot   21 1st 22 May
+2330 lin  step $2 TP+$1 max10 |  568 win  99% net     +32 blown   2 wday   -149 maxlot   55 1st 19 Aug |  776 win  99% net    +473 blown   1 wday    -91 maxlot   55 1st 22 May
+2330 lin  step $2 TP+$3 max 6 |  540 win  98% net    +828 blown   3 wday   -208 maxlot   21 1st 19 Aug |  722 win  99% net   +1872 blown   1 wday   -128 maxlot   21 1st 22 May
+2330 lin  step $2 TP+$3 max10 |  540 win  98% net    +828 blown   3 wday   -208 maxlot   55 1st 19 Aug |  722 win  99% net   +1872 blown   1 wday   -128 maxlot   55 1st 22 May
+2330 lin  step $3 TP+$1 max 6 |  583 win  99% net     +97 blown   2 wday   -151 maxlot   21 1st 19 Aug |  797 win 100% net    +644 blown   0 wday    -54 maxlot   21 1st      -
+2330 lin  step $3 TP+$1 max10 |  583 win  99% net     +97 blown   2 wday   -151 maxlot   55 1st 19 Aug |  797 win 100% net    +644 blown   0 wday    -54 maxlot   55 1st      -
+2330 lin  step $3 TP+$3 max 6 |  588 win  99% net   +1138 blown   2 wday   -195 maxlot   21 1st 19 Aug |  779 win  99% net   +1798 blown   0 wday   -310 maxlot   21 1st      -
+2330 lin  step $3 TP+$3 max10 |  589 win  99% net   +1141 blown   2 wday   -195 maxlot   55 1st 19 Aug |  779 win  99% net   +1633 blown   0 wday   -474 maxlot   55 1st      -
+2330 lin  step $5 TP+$1 max 6 |  639 win 100% net    +129 blown   3 wday   -223 maxlot   21 1st 19 Aug |  785 win 100% net    +359 blown   2 wday   -206 maxlot   21 1st 29 May
+2330 lin  step $5 TP+$1 max10 |  639 win 100% net    +129 blown   3 wday   -223 maxlot   55 1st 19 Aug |  785 win 100% net    +359 blown   2 wday   -206 maxlot   55 1st 29 May
+2330 lin  step $5 TP+$3 max 6 |  603 win  99% net     +69 blown   6 wday   -430 maxlot   21 1st 18 Aug |  742 win 100% net   +1640 blown   2 wday   -274 maxlot   21 1st 21 May
+2330 lin  step $5 TP+$3 max10 |  603 win  99% net    +169 blown   5 wday   -751 maxlot   55 1st 18 Aug |  744 win 100% net   +1646 blown   2 wday   -274 maxlot   55 1st 21 May
+2330 lin  step $8 TP+$1 max 6 |  636 win 100% net    -237 blown   3 wday   -434 maxlot   21 1st 07 Oct |  796 win 100% net    +793 blown   0 wday     +1 maxlot   21 1st      -
+2330 lin  step $8 TP+$1 max10 |  636 win 100% net    -237 blown   3 wday   -434 maxlot   55 1st 07 Oct |  796 win 100% net    +793 blown   0 wday     +1 maxlot   55 1st      -
+2330 lin  step $8 TP+$3 max 6 |  614 win  99% net    +382 blown   2 wday   -907 maxlot   21 1st 24 Aug |  751 win 100% net   +2153 blown   0 wday    -55 maxlot   21 1st      -
+2330 lin  step $8 TP+$3 max10 |  615 win  99% net    +433 blown   2 wday   -910 maxlot   55 1st 24 Aug |  752 win 100% net   +2156 blown   0 wday    -55 maxlot   55 1st      -
+hold x2   step $2 TP+$1 max 6 |  560 win 100% net    +278 blown   2 wday   -149 maxlot   63 1st 19 Aug |  697 win 100% net     -19 blown   3 wday   -390 maxlot   63 1st 22 May
+hold x2   step $2 TP+$1 max10 |  560 win 100% net    +278 blown   2 wday   -149 maxlot 1023 1st 19 Aug |  697 win 100% net     -19 blown   3 wday   -390 maxlot 1023 1st 22 May
+hold x2   step $2 TP+$3 max 6 |  561 win 100% net   +1291 blown   2 wday   -208 maxlot   63 1st 19 Aug |  656 win 100% net   +1526 blown   2 wday   -238 maxlot   63 1st 22 May
+hold x2   step $2 TP+$3 max10 |  561 win 100% net   +1291 blown   2 wday   -208 maxlot 1023 1st 19 Aug |  647 win 100% net    +741 blown   3 wday   -733 maxlot 1023 1st 22 May
+hold x2   step $3 TP+$1 max 6 |  559 win 100% net    +275 blown   2 wday   -151 maxlot   63 1st 19 Aug |  746 win 100% net    +746 blown   0 wday     +1 maxlot   63 1st      -
+hold x2   step $3 TP+$1 max10 |  559 win 100% net    +275 blown   2 wday   -151 maxlot 1023 1st 19 Aug |  746 win 100% net    +746 blown   0 wday     +1 maxlot 1023 1st      -
+hold x2   step $3 TP+$3 max 6 |  584 win 100% net   +1592 blown   1 wday   -148 maxlot   63 1st 19 Aug |  722 win 100% net   +2166 blown   0 wday     +3 maxlot   63 1st      -
+hold x2   step $3 TP+$3 max10 |  568 win  99% net    +103 blown   3 wday  -1317 maxlot 1023 1st 19 Aug |  722 win 100% net   +2166 blown   0 wday     +3 maxlot 1023 1st      -
+hold x2   step $5 TP+$1 max 6 |  641 win 100% net    +131 blown   3 wday   -223 maxlot   63 1st 19 Aug |  795 win 100% net    +668 blown   1 wday   -124 maxlot   63 1st 22 May
+hold x2   step $5 TP+$1 max10 |  641 win 100% net    +131 blown   3 wday   -223 maxlot 1023 1st 19 Aug |  795 win 100% net    +668 blown   1 wday   -124 maxlot 1023 1st 22 May
+hold x2   step $5 TP+$3 max 6 |  609 win  99% net    +824 blown   4 wday   -442 maxlot   63 1st 18 Aug |  711 win 100% net   +1852 blown   2 wday   -151 maxlot   63 1st 21 May
+hold x2   step $5 TP+$3 max10 |  609 win  99% net    +824 blown   4 wday   -442 maxlot 1023 1st 18 Aug |  690 win  99% net    -392 blown   5 wday  -1774 maxlot 1023 1st 21 May
+hold x2   step $8 TP+$1 max 6 |  633 win  99% net    -437 blown   5 wday   -361 maxlot   63 1st 28 Aug |  796 win 100% net    +474 blown   1 wday   -313 maxlot   63 1st 16 Jun
+hold x2   step $8 TP+$1 max10 |  633 win  99% net    -437 blown   5 wday   -361 maxlot 1023 1st 28 Aug |  796 win 100% net    +474 blown   1 wday   -313 maxlot 1023 1st 16 Jun
+hold x2   step $8 TP+$3 max 6 |  569 win  99% net    -587 blown   8 wday   -760 maxlot   63 1st 20 Aug |  758 win 100% net   +2274 blown   0 wday     +3 maxlot   63 1st      -
+hold x2   step $8 TP+$3 max10 |  569 win  99% net    -587 blown   8 wday   -760 maxlot 1023 1st 20 Aug |  761 win 100% net   +2283 blown   0 wday     +3 maxlot 1023 1st      -
+hold x1.5 step $2 TP+$1 max 6 |  558 win 100% net    +276 blown   2 wday   -149 maxlot   31 1st 19 Aug |  709 win 100% net    +581 blown   1 wday   -127 maxlot   31 1st 22 May
+hold x1.5 step $2 TP+$1 max10 |  558 win 100% net    +276 blown   2 wday   -149 maxlot  179 1st 19 Aug |  700 win 100% net    +172 blown   2 wday   -390 maxlot  179 1st 22 May
+hold x1.5 step $2 TP+$3 max 6 |  560 win 100% net   +1288 blown   2 wday   -208 maxlot   31 1st 19 Aug |  670 win 100% net   +1833 blown   1 wday   -174 maxlot   31 1st 22 May
+hold x1.5 step $2 TP+$3 max10 |  560 win 100% net   +1288 blown   2 wday   -208 maxlot  179 1st 19 Aug |  671 win 100% net   +1836 blown   1 wday   -174 maxlot  179 1st 22 May
+hold x1.5 step $3 TP+$1 max 6 |  561 win 100% net    +277 blown   2 wday   -151 maxlot   31 1st 19 Aug |  753 win 100% net    +753 blown   0 wday     +1 maxlot   31 1st      -
+hold x1.5 step $3 TP+$1 max10 |  561 win 100% net    +277 blown   2 wday   -151 maxlot  179 1st 19 Aug |  753 win 100% net    +753 blown   0 wday     +1 maxlot  179 1st      -
+hold x1.5 step $3 TP+$3 max 6 |  589 win 100% net   +1607 blown   1 wday   -148 maxlot   31 1st 19 Aug |  721 win 100% net   +2163 blown   0 wday     +3 maxlot   31 1st      -
+hold x1.5 step $3 TP+$3 max10 |  591 win 100% net   +1613 blown   1 wday   -148 maxlot  179 1st 19 Aug |  721 win 100% net   +2163 blown   0 wday     +3 maxlot  179 1st      -
+hold x1.5 step $5 TP+$1 max 6 |  638 win 100% net    +128 blown   3 wday   -223 maxlot   31 1st 19 Aug |  788 win 100% net    +788 blown   0 wday     +1 maxlot   31 1st      -
+hold x1.5 step $5 TP+$1 max10 |  638 win 100% net    +128 blown   3 wday   -223 maxlot  179 1st 19 Aug |  788 win 100% net    +788 blown   0 wday     +1 maxlot  179 1st      -
+hold x1.5 step $5 TP+$3 max 6 |  619 win  99% net     +47 blown   6 wday   -433 maxlot   31 1st 18 Aug |  714 win 100% net   +1970 blown   1 wday   -151 maxlot   31 1st 21 May
+hold x1.5 step $5 TP+$3 max10 |  619 win  99% net     +47 blown   6 wday   -433 maxlot  179 1st 18 Aug |  718 win 100% net   +1982 blown   1 wday   -151 maxlot  179 1st 21 May
+hold x1.5 step $8 TP+$1 max 6 |  629 win  99% net    -337 blown   4 wday   -434 maxlot   31 1st 07 Oct |  790 win 100% net    +468 blown   1 wday   -313 maxlot   31 1st 16 Jun
+hold x1.5 step $8 TP+$1 max10 |  629 win  99% net    -337 blown   4 wday   -434 maxlot  179 1st 07 Oct |  790 win 100% net    +468 blown   1 wday   -313 maxlot  179 1st 16 Jun
+hold x1.5 step $8 TP+$3 max 6 |  667 win 100% net    +862 blown   1 wday  -1136 maxlot   31 1st 07 Oct |  754 win 100% net   +2262 blown   0 wday     +3 maxlot   31 1st      -
+hold x1.5 step $8 TP+$3 max10 |  637 win 100% net     -85 blown   3 wday  -1142 maxlot  179 1st 07 Oct |  755 win 100% net   +2265 blown   0 wday     +3 maxlot  179 1st      -
+hold lin  step $2 TP+$1 max 6 |  558 win 100% net    +276 blown   2 wday   -149 maxlot   21 1st 19 Aug |  709 win 100% net    +581 blown   1 wday   -127 maxlot   21 1st 22 May
+hold lin  step $2 TP+$1 max10 |  558 win 100% net    +276 blown   2 wday   -149 maxlot   55 1st 19 Aug |  709 win 100% net    +581 blown   1 wday   -127 maxlot   55 1st 22 May
+hold lin  step $2 TP+$3 max 6 |  557 win 100% net   +1279 blown   2 wday   -208 maxlot   21 1st 19 Aug |  670 win 100% net   +2010 blown   0 wday     +3 maxlot   21 1st      -
+hold lin  step $2 TP+$3 max10 |  557 win 100% net   +1279 blown   2 wday   -208 maxlot   55 1st 19 Aug |  673 win 100% net   +2019 blown   0 wday     +3 maxlot   55 1st      -
+hold lin  step $3 TP+$1 max 6 |  561 win 100% net    +277 blown   2 wday   -151 maxlot   21 1st 19 Aug |  751 win 100% net    +751 blown   0 wday     +1 maxlot   21 1st      -
+hold lin  step $3 TP+$1 max10 |  561 win 100% net    +277 blown   2 wday   -151 maxlot   55 1st 19 Aug |  751 win 100% net    +751 blown   0 wday     +1 maxlot   55 1st      -
+hold lin  step $3 TP+$3 max 6 |  587 win 100% net   +1601 blown   1 wday   -148 maxlot   21 1st 19 Aug |  715 win 100% net    +548 blown   1 wday  -1594 maxlot   21 1st 23 Jul
+hold lin  step $3 TP+$3 max10 |  588 win 100% net   +1604 blown   1 wday   -148 maxlot   55 1st 19 Aug |  715 win 100% net    +572 blown   1 wday  -1570 maxlot   55 1st 23 Jul
+hold lin  step $5 TP+$1 max 6 |  639 win 100% net    +129 blown   3 wday   -223 maxlot   21 1st 19 Aug |  785 win 100% net    +359 blown   2 wday   -206 maxlot   21 1st 29 May
+hold lin  step $5 TP+$1 max10 |  639 win 100% net    +129 blown   3 wday   -223 maxlot   55 1st 19 Aug |  785 win 100% net    +359 blown   2 wday   -206 maxlot   55 1st 29 May
+hold lin  step $5 TP+$3 max 6 |  628 win  99% net    +176 blown   5 wday   -672 maxlot   21 1st 18 Aug |  708 win 100% net   +1606 blown   2 wday   -274 maxlot   21 1st 21 May
+hold lin  step $5 TP+$3 max10 |  628 win  99% net    +276 blown   4 wday   -993 maxlot   55 1st 18 Aug |  710 win 100% net   +1612 blown   2 wday   -274 maxlot   55 1st 21 May
+hold lin  step $8 TP+$1 max 6 |  636 win 100% net    -237 blown   3 wday   -434 maxlot   21 1st 07 Oct |  796 win 100% net    +796 blown   0 wday     +1 maxlot   21 1st      -
+hold lin  step $8 TP+$1 max10 |  636 win 100% net    -237 blown   3 wday   -434 maxlot   55 1st 07 Oct |  796 win 100% net    +796 blown   0 wday     +1 maxlot   55 1st      -
+hold lin  step $8 TP+$3 max 6 |  665 win 100% net    +865 blown   1 wday  -1127 maxlot   21 1st 07 Oct |  750 win 100% net   +2250 blown   0 wday     +3 maxlot   21 1st      -
+hold lin  step $8 TP+$3 max10 |  667 win 100% net    +868 blown   1 wday  -1130 maxlot   55 1st 07 Oct |  751 win 100% net   +2253 blown   0 wday     +3 maxlot   55 1st      -
+
+survival of a $100 account (no refill), started on every 2nd weekday 18 May - 6 Nov, run to 16 Nov
+hold x1.5 step $3 TP+$3 max6 | 17 of 63 starts blown (27%), median 1 days to blow-up, within 7 days 15, within 30 days 17
+hold lin  step $3 TP+$3 max6 | 44 of 63 starts blown (70%), median 14 days to blow-up, within 7 days 16, within 30 days 31
+2330 x1.5 step $3 TP+$3 max6 | 22 of 63 starts blown (35%), median 2 days to blow-up, within 7 days 16, within 30 days 22
+hold lin  step $2 TP+$3 max6 | 18 of 63 starts blown (29%), median 1 days to blow-up, within 7 days 16, within 30 days 18
+hold x1.5 step $5 TP+$1 max6 | 25 of 63 starts blown (40%), median 7 days to blow-up, within 7 days 14, within 30 days 23
