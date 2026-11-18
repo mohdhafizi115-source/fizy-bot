@@ -3,7 +3,7 @@
 //| InpLbOn is true, trades the London breakout itself (demo only).  |
 //| SINCE 17 NOV 2026 (v2.49, rounds 140-141) ONLY: gold auction,    |
 //| RCS (new entries on gold only), gold SMC, BTC SMC + STO, NEWS;   |
-//| v2.50 (18 Nov) adds CB1 (BBMA CB1 + CSAK, M15, 30 symbols).       |
+//| v2.50 (18 Nov) adds CB1 (BBMA CB1 + CSAK, M15); v2.51 gold only. |
 //| ON 5 NOV 2026 THE OWNER KEPT ONLY SIX MODULES: Gotobi, month-end |
 //| fix, gold LBMA auction, Kumo, Tenkan/Kijun and the M1 spike      |
 //| fade. The five breakout modules are switched off: the London     |
@@ -22,7 +22,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.50"
+#property version "2.51"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request

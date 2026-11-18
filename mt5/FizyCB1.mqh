@@ -40,6 +40,7 @@ input int    InpCb1Swing   = 12;      // SL beyond the extreme of this many cand
 input double InpCb1SlBuf   = 0.1;     // ... plus this many ATR(14, M15)
 input double InpCb1TpR     = 2.0;     // TP in R
 input int    InpCb1HoldH   = 24;      // close at market after this many hours
+input bool   InpCb1GoldOnly = true;   // v2.51 (18 Nov, owner "hadkan pada gold sahaja"): NEW entries on XAUUSD only; open positions on other symbols keep their SL / TP / 24 h exit
 
 string   cb_sym[];
 datetime cb_bar[];
@@ -98,10 +99,10 @@ void Cb1Init()
       ulong t = PositionGetTicket(i);
       if(t > 0 && PositionGetInteger(POSITION_MAGIC) == InpCb1Magic) { Cb1Remember(t); open++; }
    }
-   Cb1Event(StringFormat("CB1 ONLINE | BBMA CB1 + CSAK on M15, %d symbols: a soft break of the nearest swing (not at the last "
+   Cb1Event(StringFormat("CB1 ONLINE | BBMA CB1 + CSAK on M15, %d symbols (%s): a soft break of the nearest swing (not at the last "
                          "opposite candle's level, %.1f ATR), then a CSAK within %d candles; market entry, SL beyond the swing "
                          "- %.1f ATR, TP %.0fR, out after %d h, lot %.2f%s | %d open position(s)",
-                         ArraySize(cb_sym), InpCb1LbTol, InpCb1Window, InpCb1SlBuf, InpCb1TpR, InpCb1HoldH, InpCb1Lot,
+                         ArraySize(cb_sym), InpCb1GoldOnly ? "new entries on XAUUSD only, the rest only close open trades" : "all", InpCb1LbTol, InpCb1Window, InpCb1SlBuf, InpCb1TpR, InpCb1HoldH, InpCb1Lot,
                          missing == "" ? "" : " | not at this broker: " + missing, open));
 }
 
@@ -169,6 +170,7 @@ void Cb1Symbol(int si, datetime now)
    if(r[j].time + 900 != b0) { cb_bar[si] = b0; return; }                       // a gap: not the bar that just closed
    cb_bar[si] = b0;
    if(inPos) return;
+   if(InpCb1GoldOnly && StringFind(sym, "XAU") != 0) return;                    // v2.51: other symbols only manage open positions
 
    // M15 indicators: BB 20 mid, EMA 50, Wilder ATR 14
    double c[], mid[], e50[], atr[];

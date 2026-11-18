@@ -48,7 +48,7 @@ MODS = [  # kind prefix, emoji, title
     ("ATRBO", "📐", "ATR OPEN-BAND BREAKOUT · XAUUSD · day trade"),
     ("COMEX", "🔔", "COMEX OPEN SCALP · XAUUSD · 5 min"),
     ("NEWS", "📰", "NEWS STRADDLE · XAUUSD · 15 min"),
-    ("CB1", "🧱", "BBMA CB1 + CSAK · M15 · 30 pairs · TP 2R"),
+    ("CB1", "🧱", "BBMA CB1 + CSAK · M15 · XAUUSD · TP 2R"),
     ("CRSI", "🌀", "M15 CONNORS RSI · XAUUSD · 2 h"),
     ("GORB", "⏰", "GOLD ORB 01-04 · XAUUSD · day trade"),
     ("FLIP", "🔁", "GOLD FLIP · XAUUSD · stop and reverse"),
