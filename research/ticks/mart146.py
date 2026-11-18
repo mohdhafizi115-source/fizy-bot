@@ -41,7 +41,7 @@ def sim(S, Tgt, sched, Lmax, overnight, lo, hi):
             # adverse extreme: adds, then equity check
             while len(pos) < Lmax:
                 le = pos[-1][1]; lvl = le - S if d == 1 else le + S
-                hit = (L[i] + sp <= lvl) if d == 1 else (H[i] <= lvl)
+                hit = (L[i] + sp <= lvl) if d == 1 else (H[i] + sp >= lvl)   # fixed 18 Nov: sell adds when the ask rises to the level
                 if not hit: break
                 pos.append((lots_of(sched, len(pos)), lvl))
             nl = sum(l for l, e in pos); maxlot = max(maxlot, nl)
