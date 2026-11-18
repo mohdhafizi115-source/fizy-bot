@@ -9,8 +9,8 @@
 //| flat, ONE stop order $3 away on the allowed side (BUY STOP at    |
 //| the ask + $3 / SELL STOP at the bid - $3) opens a basket; it     |
 //| stays until filled or 23:00 server. Every further $3 against the |
-//| LAST entry adds the next lot of the x1.5 schedule 1, 2, 3, 5, 8, |
-//| 12 x 0.01 (max 6 positions, 0.31 lot in all). After every add    |
+//| LAST entry adds the next lot, linear 1, 2, 3, 4, 5, 6 x 0.01   |
+//| (max 6 positions, 0.21 lot in all). After every add    |
 //| the TP of all positions moves to the price where the WHOLE       |
 //| basket nets +$3 (swap included); the EA also closes the basket   |
 //| itself once it is +$3. NO SL, held overnight. After a TP a new   |
@@ -18,11 +18,11 @@
 //| EA daily target (InpDayTarget, $30 for this test); a basket that |
 //| is open keeps adding and keeps its TP.                            |
 //| Round 146b on the owner's real ticks, $1000 account, $30 target: |
-//| last 3 months 346 baskets, all closed in profit, +$1,038, 0 blow- |
-//| ups, worst day +$3; previous 3 months +$1,359; 0 of 63 $1000     |
+//| last 3 months 345 baskets, all closed in profit, +$1,035, 0 blow- |
+//| ups, worst day +$3; previous 3 months +$1,368; 0 of 63 $1000     |
 //| starts blown. The SAME rule on $100 blew up on the 2nd day of    |
 //| the window (round 146): after the 6th position there is no stop, |
-//| 0.31 lot = $31 per $1, so a ~$30 run beyond the last level takes |
+//| 0.21 lot = $21 per $1, so a ~$45 run beyond the last level takes |
 //| the $1000 account. A backtest of 6.5 months, not a guarantee.    |
 //| Events go to MQL5\Files\mrt_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
@@ -37,7 +37,7 @@ input int    InpMrtFrom     = 90;       // first entry minute, server (01:30)
 input int    InpMrtTo       = 1380;     // no new basket from this minute (23:00)
 input bool   InpMrtClose2330 = false;   // false = hold overnight (the tested cell)
 
-int      MR_LOTS[12] = {1, 2, 3, 5, 8, 12, 18, 27, 41, 62, 93, 140};   // x 0.01, the x1.5 schedule
+int      MR_LOTS[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};       // x 0.01, linear +0.01 (round 146b: same profit as x1.5, 0.21 lot max instead of 0.31)
 string   mr_sym = "";
 bool     mr_ready = false;
 ulong    mr_known[];             // tickets of the basket currently open
