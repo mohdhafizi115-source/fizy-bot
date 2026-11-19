@@ -1,34 +1,34 @@
-shift ended (UTC): 2026-11-19 16:45
+shift ended (UTC): 2026-11-19 22:36
 open
-2026.11.19 18:44:58
+2026.11.20 00:36:00
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 11005 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 5947 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  JO	0	11:30:46.048	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3730.89, lot 0.01; next add at 3727.89, no SL
-  EJ	0	11:40:29.293	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/10: BUY 0.02 at 3727.88, basket 0.03 lot, floating $x; basket TP 3729.88 (+$x); next add at 3724.88
-  QP	0	11:43:27.281	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 3/10: BUY 0.03 at 3724.90, basket 0.06 lot, floating $x; basket TP 3727.39 (+$x); next add at 3721.90
-  QG	0	11:50:25.150	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 3 position(s), 0.06 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_437.png
-  MI	0	11:50:25.376	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3730.78 ($x away), lot 0.01, no SL
-  LR	0	14:12:39.877	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3711.87 ($x away), lot 0.01, no SL
-  QK	0	14:30:04.673	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3711.87, lot 0.01; next add at 3708.87, no SL
-  LK	0	14:30:35.775	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 1 position(s), 0.01 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_953.png
-  LR	0	14:30:35.998	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3718.39 ($x away), lot 0.01, no SL
-  GG	0	15:16:35.257	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3703.59 ($x away), lot 0.01, no SL
-  GH	0	15:49:57.284	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3688.39 ($x away), lot 0.01, no SL
-  MP	0	16:36:40.087	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3688.39, lot 0.01; next add at 3685.39, no SL
-  w: telegram ok: daily status
+  CI	0	20:43:11.722	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/10: BUY 0.02 at 3664.77, basket 0.03 lot, floating $x; basket TP 3666.86 (+$x); next add at 3661.77
+  MM	0	20:50:04.586	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 2 position(s), 0.03 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_718.png
+  GH	0	20:50:06.161	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | yesterday's D1 was red, so buys only: BUY STOP 3669.88 ($x away) + BUY LIMIT 3665.88 ($x away), lot 0.01, the first fill deletes the other, no SL
+  OQ	0	20:50:42.894	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy limit filled at 3665.88, lot 0.01, the other order deleted; next add at 3662.88, no SL
+  JF	0	20:55:19.367	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/10: BUY 0.02 at 3662.59, basket 0.03 lot, floating $x; basket TP 3664.69 (+$x); next add at 3659.59
+  KM	0	20:58:32.367	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 3/10: BUY 0.03 at 3659.51, basket 0.06 lot, floating $x; basket TP 3662.10 (+$x); next add at 3656.51
+  MD	0	21:18:08.386	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 4/10: BUY 0.04 at 3656.45, basket 0.10 lot, floating $x; basket TP 3659.84 (+$x); next add at 3653.45
+  OL	0	21:19:51.379	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 5/10: BUY 0.05 at 3653.20, basket 0.15 lot, floating $x; basket TP 3657.63 (+$x); next add at 3650.20
+  NH	0	21:23:44.401	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 6/10: BUY 0.06 at 3650.08, basket 0.21 lot, floating $x; basket TP 3655.47 (+$x); next add at 3647.08
+  EL	0	21:24:19.180	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: market buy 0.07 XAUUSD.m [not enough money]
+  EP	0	21:24:19.180	FizyLB (XAUUSD.m,M15)	MART EVENT ERROR | MART add XAUUSD.m level 7 failed: <num> not enough money
+  CF	0	21:24:23.254	FizyLB (XAUUSD.m,M15)	MART EVENT MART STOP OUT XAUUSD.m | the broker closed 3 of 6 position(s) on a margin stop-out, basket 0.21 lot, loss $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_343.png
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
+  w: telegram ok: MART ORDER PLACED XAUUSD.m
+  w: telegram ok: MART BUY XAUUSD.m
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
   w: telegram ok: MART ORDER PLACED XAUUSD.m
   w: telegram ok: MART BUY XAUUSD.m
   w: telegram ok: MART ADD XAUUSD.m
   w: telegram ok: MART ADD XAUUSD.m
-  w: telegram ok: MART BASKET CLOSED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART BUY XAUUSD.m
-  w: telegram ok: MART BASKET CLOSED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART BUY XAUUSD.m
-  w: shift end: done=False, state=2026.11.19 18:44:58|0|0
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: MART ADD XAUUSD.m
+  w: telegram ok: ERROR
+  w: telegram ok: MART STOP OUT XAUUSD.m
+  w: shift end: done=False, state=2026.11.20 00:36:00|0|0
