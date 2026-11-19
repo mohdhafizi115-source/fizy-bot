@@ -24,12 +24,20 @@
 //| the window (round 146): after the 6th position there is no stop, |
 //| 0.21 lot = $21 per $1, so a ~$45 run beyond the last level takes |
 //| the $1000 account. A backtest of 6.5 months, not a guarantee.    |
+//| v2.55 (20 Nov, owner: "stop kau kekalkan. tambah limit ... bila  |
+//| salah satu trigger, delete yang tak kena"): when flat the EA     |
+//| places the stop AND a LIMIT $1 the other way (BUY LIMIT ask - $1 |
+//| / SELL LIMIT bid + $1) on the same allowed side; the first fill  |
+//| opens the basket and the other order is deleted (OCO). Round 146d|
+//| tested stop $3 alone (38 / 63 $1000 starts blown at max 10) and  |
+//| limit $1 alone (23 / 63); the OCO pair itself is not tested.     |
 //| Events go to MQL5\Files\mrt_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
 input bool   InpMrtOn       = true;
 input string InpMrtSymbol   = "XAUUSD";
 input long   InpMrtMagic    = 260340;
 input double InpMrtEntry    = 3.0;      // first stop order this many $ beyond the ask / bid
+input double InpMrtLimit    = 1.0;      // v2.55: also a limit this many $ the other way, OCO with the stop (0 = off)
 input double InpMrtStep     = 3.0;      // add a position every $ against the last entry
 input double InpMrtTarget   = 3.0;      // basket TP: whole basket +$ (swap included)
 input int    InpMrtMax      = 10;       // positions per basket (v2.53: 10 on the owner's order; round 146c max 10 blew 19 / 63 $1000 starts)
@@ -112,7 +120,7 @@ int MrtDeleteOrders(string why)
       if(trade.OrderDelete(t)) k++;
       trade.SetExpertMagicNumber(InpMagic);
    }
-   if(k > 0 && why != "") MrtEvent(StringFormat("MART ORDER DELETED %s | %d stop order(s) deleted (%s)", mr_sym, k, why));
+   if(k > 0 && why != "") MrtEvent(StringFormat("MART ORDER DELETED %s | %d pending order(s) deleted (%s)", mr_sym, k, why));
    return k;
 }
 
@@ -138,11 +146,11 @@ void MrtInit()
    mr_dir = dir; mr_start = n > 0 ? TimeCurrent() : 0;
    string lots = "";
    for(int k = 0; k < InpMrtMax; k++) lots += (k > 0 ? "/" : "") + DoubleToString(MrtLot(k), 2);
-   MrtEvent(StringFormat("MART ONLINE | %s: against yesterday's D1 colour, a stop $%.2f away from %02d:%02d server opens a basket; "
+   MrtEvent(StringFormat("MART ONLINE | %s: against yesterday's D1 colour, a stop $%.2f away%s from %02d:%02d server opens a basket; "
                          "every $%.2f against the last entry adds the next lot (%s, max %d), the TP of all positions moves to the "
                          "whole basket +$%.2f; NO stop loss, %s; new baskets stop once the day's closed profit reaches $%.0f | "
                          "open basket: %d position(s), %.2f lot, floating $%.2f",
-                         mr_sym, InpMrtEntry, InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, InpMrtMax, InpMrtTarget,
+                         mr_sym, InpMrtEntry, InpMrtLimit > 0 ? StringFormat(" + a limit $%.2f the other way (OCO)", InpMrtLimit) : "", InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, InpMrtMax, InpMrtTarget,
                          InpMrtClose2330 ? "closed at 23:30 server" : "held overnight", InpDayTarget, n, vol, pnl));
 }
 
@@ -212,8 +220,10 @@ void MrtOnTimer()
       {
          mr_start = now;
          MrtDeleteOrders("");
-         MrtEvent(StringFormat("MART %s %s | basket opened: the %s stop filled at %s, lot %.2f; next add at %s, no SL",
-                               dir == 1 ? "BUY" : "SELL", mr_sym, dir == 1 ? "buy" : "sell", PriceStr(mr_sym, last), vol,
+         string how = "stop";
+         if(PositionSelectByTicket(bk[0]) && StringFind(PositionGetString(POSITION_COMMENT), "MART L1L") == 0) how = "limit";
+         MrtEvent(StringFormat("MART %s %s | basket opened: the %s %s filled at %s, lot %.2f, the other order deleted; next add at %s, no SL",
+                               dir == 1 ? "BUY" : "SELL", mr_sym, dir == 1 ? "buy" : "sell", how, PriceStr(mr_sym, last), vol,
                                PriceStr(mr_sym, dir == 1 ? last - InpMrtStep : last + InpMrtStep)));
       }
       if(!live) return;
@@ -265,28 +275,45 @@ void MrtOnTimer()
    int side = MrtSide();
    bool window = s.day_of_week >= 1 && s.day_of_week <= 5 && minute >= InpMrtFrom && minute < InpMrtTo;
    datetime d0 = now - now % 86400;
-   int have = 0;
+   int have = 0, hstop = 0, hlim = 0;
    for(int i = OrdersTotal() - 1; i >= 0; i--)
    {
       ulong t = OrderGetTicket(i);
       if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpMrtMagic) continue;
       long ot = OrderGetInteger(ORDER_TYPE);
-      bool stale = (datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0 || (side == 1 && ot != ORDER_TYPE_BUY_STOP) || (side == -1 && ot != ORDER_TYPE_SELL_STOP) || side == 0;
+      bool isstop = ot == ORDER_TYPE_BUY_STOP || ot == ORDER_TYPE_SELL_STOP;
+      bool okside = side == 1 ? (ot == ORDER_TYPE_BUY_STOP || (ot == ORDER_TYPE_BUY_LIMIT && InpMrtLimit > 0))
+                              : (ot == ORDER_TYPE_SELL_STOP || (ot == ORDER_TYPE_SELL_LIMIT && InpMrtLimit > 0));
+      bool stale = (datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0 || !okside || side == 0;
       if(stale || !window) { trade.SetExpertMagicNumber(InpMrtMagic); trade.OrderDelete(t); trade.SetExpertMagicNumber(InpMagic); continue; }
-      have++;
+      have++; if(isstop) hstop++; else hlim++;
    }
    if(have > 0 && DayPaused()) { MrtDeleteOrders("daily target reached"); return; }
-   if(have > 0 || !window || side == 0 || !live || DayPaused()) return;
+   bool needlim = InpMrtLimit > 0 && hlim == 0;
+   if((hstop > 0 && !needlim) || !window || side == 0 || !live || DayPaused()) return;
    double lot = MrtLot(0);
-   double px = NormalizeDouble(side == 1 ? tk.ask + InpMrtEntry : tk.bid - InpMrtEntry, dg);
    datetime exp = d0 + InpMrtTo * 60 + 300;                                  // the EA deletes it at 23:00; broker expiry backup
+   string txt = "";
    trade.SetExpertMagicNumber(InpMrtMagic); trade.SetTypeFillingBySymbol(mr_sym);
-   bool ok = side == 1 ? trade.BuyStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")
-                       : trade.SellStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1");
+   if(hstop == 0)
+   {
+      double px = NormalizeDouble(side == 1 ? tk.ask + InpMrtEntry : tk.bid - InpMrtEntry, dg);
+      bool ok = side == 1 ? trade.BuyStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")
+                          : trade.SellStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1");
+      if(!ok) MrtEvent(StringFormat("ERROR | MART stop order %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+      else txt += StringFormat("%s %s ($%.2f away)", side == 1 ? "BUY STOP" : "SELL STOP", PriceStr(mr_sym, px), InpMrtEntry);
+   }
+   if(needlim)
+   {
+      double px = NormalizeDouble(side == 1 ? tk.ask - InpMrtLimit : tk.bid + InpMrtLimit, dg);
+      bool ok = side == 1 ? trade.BuyLimit(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1L")
+                          : trade.SellLimit(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1L");
+      if(!ok) MrtEvent(StringFormat("ERROR | MART limit order %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+      else txt += (txt != "" ? " + " : "") + StringFormat("%s %s ($%.2f away)", side == 1 ? "BUY LIMIT" : "SELL LIMIT", PriceStr(mr_sym, px), InpMrtLimit);
+   }
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
-   if(!ok) { MrtEvent(StringFormat("ERROR | MART stop order %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription())); return; }
-   MrtEvent(StringFormat("MART ORDER PLACED %s | yesterday's D1 was %s, so %s only: %s %s ($%.2f away), lot %.2f, no SL",
-                         mr_sym, side == 1 ? "red" : "green", side == 1 ? "buys" : "sells", side == 1 ? "BUY STOP" : "SELL STOP",
-                         PriceStr(mr_sym, px), InpMrtEntry, lot));
+   if(txt == "") return;
+   MrtEvent(StringFormat("MART ORDER PLACED %s | yesterday's D1 was %s, so %s only: %s, lot %.2f, the first fill deletes the other, no SL",
+                         mr_sym, side == 1 ? "red" : "green", side == 1 ? "buys" : "sells", txt, lot));
 }
 //+------------------------------------------------------------------+
