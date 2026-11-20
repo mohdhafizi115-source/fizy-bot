@@ -40,9 +40,9 @@ input double InpMrtEntry    = 3.0;      // first stop order this many $ beyond t
 input double InpMrtLimit    = 1.0;      // v2.55: also a limit this many $ the other way, OCO with the stop (0 = off)
 input double InpMrtStep     = 3.0;      // add a position every $ against the last entry
 input double InpMrtTarget   = 3.0;      // basket TP: whole basket +$ (swap included)
-input int    InpMrtMax      = 10;       // positions per basket (v2.53: 10 on the owner's order; round 146c max 10 blew 19 / 63 $1000 starts)
-input int    InpMrtFrom     = 90;       // first entry minute, server (01:30)
-input int    InpMrtTo       = 1380;     // no new basket from this minute (23:00)
+input int    InpMrtMax      = 0;        // positions per basket, 0 = UNLIMITED (v2.56 on the owner's order; v2.53-v2.55: 10)
+input int    InpMrtFrom     = 0;        // first entry minute, server (v2.56: 00:00, 24 h on the owner's order; was 01:30)
+input int    InpMrtTo       = 1440;     // no new basket from this minute (v2.56: 24:00 = all day; was 23:00)
 input bool   InpMrtClose2330 = false;   // false = hold overnight (the tested cell)
 
 int      MR_LOTS[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};       // x 0.01, linear +0.01 (round 146b: same profit as x1.5, 0.21 lot max instead of 0.31)
@@ -63,14 +63,20 @@ void MrtEvent(string msg)
    Print("MART EVENT ", msg);
 }
 
+bool   MrtCanAdd(int n) { return InpMrtMax <= 0 || n < InpMrtMax; }
+string MrtMaxTxt() { return InpMrtMax <= 0 ? "unlimited" : IntegerToString(InpMrtMax); }
+
 bool MrtInList(ulong t) { for(int i = 0; i < ArraySize(mr_known); i++) if(mr_known[i] == t) return true; return false; }
 void MrtAdd(ulong t) { if(MrtInList(t)) return; int m = ArraySize(mr_known); ArrayResize(mr_known, m + 1); mr_known[m] = t; }
 
 double MrtLot(int k)
 {
    double mn = SymbolInfoDouble(mr_sym, SYMBOL_VOLUME_MIN), sv = SymbolInfoDouble(mr_sym, SYMBOL_VOLUME_STEP);
-   double want = MR_LOTS[MathMin(k, 11)] * 0.01;
-   return NormalizeDouble(MathMax(mn, MathFloor(want / sv + 1e-9) * sv), 2);
+   double mx = SymbolInfoDouble(mr_sym, SYMBOL_VOLUME_MAX);
+   double want = (k + 1) * 0.01;                                            // linear 0.01, 0.02, 0.03 ... (no cap since v2.56)
+   double v = MathMax(mn, MathFloor(want / sv + 1e-9) * sv);
+   if(mx > 0) v = MathMin(v, mx);
+   return NormalizeDouble(v, 2);
 }
 
 // the open basket: tickets, direction, last entry price, totals
@@ -145,12 +151,14 @@ void MrtInit()
    for(int i = 0; i < n; i++) MrtAdd(tk[i]);
    mr_dir = dir; mr_start = n > 0 ? TimeCurrent() : 0;
    string lots = "";
-   for(int k = 0; k < InpMrtMax; k++) lots += (k > 0 ? "/" : "") + DoubleToString(MrtLot(k), 2);
+   int show = InpMrtMax <= 0 ? 5 : InpMrtMax;
+   for(int k = 0; k < show; k++) lots += (k > 0 ? "/" : "") + DoubleToString(MrtLot(k), 2);
+   if(InpMrtMax <= 0) lots += "/... +0.01 each";
    MrtEvent(StringFormat("MART ONLINE | %s: against yesterday's D1 colour, a stop $%.2f away%s from %02d:%02d server opens a basket; "
-                         "every $%.2f against the last entry adds the next lot (%s, max %d), the TP of all positions moves to the "
+                         "every $%.2f against the last entry adds the next lot (%s, max %s), the TP of all positions moves to the "
                          "whole basket +$%.2f; NO stop loss, %s; new baskets stop once the day's closed profit reaches $%.0f | "
                          "open basket: %d position(s), %.2f lot, floating $%.2f",
-                         mr_sym, InpMrtEntry, InpMrtLimit > 0 ? StringFormat(" + a limit $%.2f the other way (OCO)", InpMrtLimit) : "", InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, InpMrtMax, InpMrtTarget,
+                         mr_sym, InpMrtEntry, InpMrtLimit > 0 ? StringFormat(" + a limit $%.2f the other way (OCO)", InpMrtLimit) : "", InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, MrtMaxTxt(), InpMrtTarget,
                          InpMrtClose2330 ? "closed at 23:30 server" : "held overnight", InpDayTarget, n, vol, pnl));
 }
 
@@ -233,7 +241,7 @@ void MrtOnTimer()
       if(InpMrtClose2330 && minute >= 1410 && s.day_of_week >= 1 && s.day_of_week <= 5) { MrtCloseAll(bk, "23:30"); return; }
       // add the next level
       double px = dir == 1 ? tk.ask : tk.bid;
-      if(n < InpMrtMax && now - mr_lastadd >= 2 && (dir == 1 ? px <= last - InpMrtStep : px >= last + InpMrtStep))
+      if(MrtCanAdd(n) && now - mr_lastadd >= 2 && (dir == 1 ? px <= last - InpMrtStep : px >= last + InpMrtStep))
       {
          double lot = MrtLot(n);
          trade.SetExpertMagicNumber(InpMrtMagic); trade.SetTypeFillingBySymbol(mr_sym);
@@ -245,10 +253,10 @@ void MrtOnTimer()
          n = MrtBasket(bk, dir, last, vol, pnl);
          for(int i = 0; i < n; i++) MrtAdd(bk[i]);
          double tpx = MrtTpPrice(bk, dir);
-         MrtEvent(StringFormat("MART ADD %s | level %d/%d: %s %.2f at %s, basket %.2f lot, floating $%.2f; basket TP %s (+$%.2f)%s",
-                               mr_sym, n, InpMrtMax, dir == 1 ? "BUY" : "SELL", lot, PriceStr(mr_sym, last), vol, pnl,
+         MrtEvent(StringFormat("MART ADD %s | level %d/%s: %s %.2f at %s, basket %.2f lot, floating $%.2f; basket TP %s (+$%.2f)%s",
+                               mr_sym, n, MrtMaxTxt(), dir == 1 ? "BUY" : "SELL", lot, PriceStr(mr_sym, last), vol, pnl,
                                PriceStr(mr_sym, tpx), InpMrtTarget,
-                               n < InpMrtMax ? "; next add at " + PriceStr(mr_sym, dir == 1 ? last - InpMrtStep : last + InpMrtStep)
+                               MrtCanAdd(n) ? "; next add at " + PriceStr(mr_sym, dir == 1 ? last - InpMrtStep : last + InpMrtStep)
                                              : "; LAST LEVEL, no more adds and no stop loss"));
       }
       // every position's TP = the basket +$target price
