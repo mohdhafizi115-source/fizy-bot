@@ -1,0 +1,63 @@
+
+== GOLD ATB: base last 59 trades PF 1.71 $+353 | prev 58 PF 1.46 $+254
+
+== GOLD BAS: base last 39 trades PF 2.85 $+532 | prev 29 PF 1.37 $+118
+
+== GOLD CMX: base last 66 trades PF 0.57 $-44 | prev 65 PF 1.51 $+40
+
+== GOLD CRS: base last 61 trades PF 0.88 $-37 | prev 70 PF 1.03 $+12
+  HELPS delta5 strong agree >1                 keep 11/61 PF 3.07 $+77 drop PF 0.56 $-114 rnd%0.98 | keep 13/70 PF 2.67 $+109 drop PF 0.74 $-97 rnd%0.98
+  HELPS activity15 high >1.5                   keep 27/61 PF 1.91 $+94 drop PF 0.32 $-131 rnd%0.99 | keep 37/70 PF 1.58 $+122 drop PF 0.51 $-110 rnd%0.96
+  HELPS activity30 high >1.5                   keep 22/61 PF 1.39 $+41 drop PF 0.59 $-78 rnd%0.92 | keep 30/70 PF 1.83 $+134 drop PF 0.56 $-122 rnd%0.99
+  HELPS activity60 high >1.5                   keep 20/61 PF 1.59 $+53 drop PF 0.57 $-90 rnd%0.93 | keep 20/70 PF 1.89 $+96 drop PF 0.75 $-83 rnd%0.96
+
+== GOLD FLIP-A: base last 385 trades PF 1.81 $+942 | prev 389 PF 1.46 $+541
+
+== GOLD FLIP-B: base last 238 trades PF 1.90 $+963 | prev 251 PF 1.45 $+504
+
+== GOLD FLIP-C: base last 230 trades PF 1.67 $+600 | prev 241 PF 1.15 $+136
+
+== GOLD FLIP-D: base last 301 trades PF 1.74 $+649 | prev 421 PF 1.16 $+207
+
+== GOLD GAU: base last 66 trades PF 9.61 $+173 | prev 65 PF 2.01 $+70
+
+== GOLD KUMO: base last 31 trades PF 3.26 $+249 | prev 37 PF 1.27 $+73
+
+== GOLD NEWS: base last 62 trades PF 1.48 $+69 | prev 67 PF 2.63 $+205
+
+== GOLD ORB: base last 93 trades PF 1.15 $+189 | prev 84 PF 1.68 $+652
+
+== GOLD RCS-gold: base last 9 trades PF 4.85 $+156 | prev 9 PF 1.23 $+17
+
+== GOLD SMC-gold: base last 18 trades PF 2.70 $+145 | prev 21 PF 1.45 $+62
+
+== BTC BTC-FOL: base last 62 trades PF 1.73 $+60 | prev 61 PF 0.84 $-14
+
+== BTC BTC-SMC: base last 25 trades PF 1.39 $+15 | prev 20 PF 3.24 $+46
+
+== BTC BTC-STO: base last 290 trades PF 1.34 $+130 | prev 314 PF 1.38 $+126
+
+cells 570 HELPS 4
+mod
+ATB         0
+BAS         0
+BTC-FOL     0
+BTC-SMC     0
+BTC-STO     0
+CMX         0
+CRS         4
+FLIP-A      0
+FLIP-B      0
+FLIP-C      0
+FLIP-D      0
+GAU         0
+KUMO        0
+NEWS        0
+ORB         0
+SMC-gold    0
+placebo 1: cells 590 HELPS 1
+placebo 2: cells 587 HELPS 1
+placebo 3: cells 586 HELPS 1
+placebo 4: cells 591 HELPS 2
+placebo 5: cells 592 HELPS 0
+placebo 6: cells 591 HELPS 1

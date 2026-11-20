@@ -1,0 +1,101 @@
+# mart148.py block: the 'one side only' rows here are a BUG (side ignored, = a |z| gate on both sides); see the mart148d block for the fixed one-side rows (30-min order expiry)
+LIVE v2.57 two-sided stops $3            | last 8618 baskets blown 1 float -4682 | prev 10187 blown 0 float -2933 | $1000 starts blown 26/63
+no new basket if |delta60 z|>1.0         | last 5168 baskets blown 3 float -3534 | prev 6432 blown 0 float -2668 | $1000 starts blown 25/63
+no new basket if |delta60 z|>1.5         | last 6247 baskets blown 1 float -4680 | prev 7679 blown 1 float -4521 | $1000 starts blown 32/63
+no new basket if |delta60 z|>2.0         | last 7090 baskets blown 0 float -4231 | prev 8497 blown 0 float -2668 | $1000 starts blown 17/63
+no new basket if |delta60 z|>3.0         | last 7929 baskets blown 1 float -4682 | prev 9325 blown 0 float -2668 | $1000 starts blown 20/63
+no new basket if |delta240 z|>1.0        | last 4867 baskets blown 0 float -9761 | prev 5948 blown 0 float -2668 | $1000 starts blown 32/63
+no new basket if |delta240 z|>1.5        | last 6260 baskets blown 1 float -4231 | prev 7617 blown 0 float -2668 | $1000 starts blown 19/63
+no new basket if |delta240 z|>2.0        | last 7188 baskets blown 0 float -4680 | prev 8542 blown 0 float -2668 | $1000 starts blown 22/63
+no new basket if |delta240 z|>3.0        | last 8118 baskets blown 1 float -4682 | prev 9423 blown 0 float -2933 | $1000 starts blown 27/63
+one side only: follow delta15 |z|>=0.5   | last 7313 baskets blown 3 float -11170 | prev 8060 blown 1 float -12819 | $1000 starts blown 35/63
+one side only: fade delta15 |z|>=0.5     | last 7313 baskets blown 3 float -11170 | prev 8060 blown 1 float -12819 | $1000 starts blown 35/63
+one side only: follow delta15 |z|>=1.5   | last 3535 baskets blown 0 float -3534 | prev 3742 blown 1 float -2933 | $1000 starts blown 18/63
+one side only: fade delta15 |z|>=1.5     | last 3535 baskets blown 0 float -3534 | prev 3742 blown 1 float -2933 | $1000 starts blown 18/63
+one side only: follow delta60 |z|>=0.5   | last 6916 baskets blown 4 float -11170 | prev 7743 blown 2 float -3069 | $1000 starts blown 27/63
+one side only: fade delta60 |z|>=0.5     | last 6916 baskets blown 4 float -11170 | prev 7743 blown 2 float -3069 | $1000 starts blown 27/63
+one side only: follow delta60 |z|>=1.5   | last 3410 baskets blown 0 float -2520 | prev 3514 blown 0 float -2113 | $1000 starts blown 17/63
+one side only: fade delta60 |z|>=1.5     | last 3410 baskets blown 0 float -2520 | prev 3514 blown 0 float -2113 | $1000 starts blown 17/63
+one side only: follow delta240 |z|>=0.5  | last 6538 baskets blown 3 float -11170 | prev 7690 blown 0 float -2113 | $1000 starts blown 20/63
+one side only: fade delta240 |z|>=0.5    | last 6538 baskets blown 3 float -11170 | prev 7690 blown 0 float -2113 | $1000 starts blown 20/63
+one side only: follow delta240 |z|>=1.5  | last 2969 baskets blown 1 float -2619 | prev 3063 blown 1 float -2933 | $1000 starts blown 34/63
+one side only: fade delta240 |z|>=1.5    | last 2969 baskets blown 1 float -2619 | prev 3063 blown 1 float -2933 | $1000 starts blown 34/63
+one side only: follow cvd day |z|>=0.5   | last 6437 baskets blown 1 float -4682 | prev 7766 blown 0 float -2113 | $1000 starts blown 27/63
+one side only: fade cvd day |z|>=0.5     | last 6437 baskets blown 1 float -4682 | prev 7766 blown 0 float -2113 | $1000 starts blown 27/63
+one side only: follow cvd day |z|>=1.5   | last 3052 baskets blown 1 float -4682 | prev 3217 blown 0 float -769 | $1000 starts blown 25/63
+one side only: fade cvd day |z|>=1.5     | last 3052 baskets blown 1 float -4682 | prev 3217 blown 0 float -769 | $1000 starts blown 25/63
+no add while delta60 z against > 1.0     | last 6284 baskets blown 24 float -6174 | prev 7589 blown 12 float -5546 | $1000 starts blown 62/63
+no add while delta60 z against > 2.0     | last 7468 baskets blown 5 float -6596 | prev 9003 blown 1 float -4701 | $1000 starts blown 43/63
+no add while delta240 z against > 1.0    | last 6028 baskets blown 26 float -30982 | prev 7168 blown 25 float -5414 | $1000 starts blown 62/63
+no add while delta240 z against > 2.0    | last 7632 baskets blown 6 float -15194 | prev 8919 blown 7 float -10535 | $1000 starts blown 62/63
+# mart148c: random 60-min block gates
+RANDOM gate p 0.1 seed 1                 | last 7766 baskets blown 1 float -4682 | prev 9391 blown 0 float -2933 | $1000 starts blown 22/63
+RANDOM gate p 0.1 seed 2                 | last 7841 baskets blown 1 float -4682 | prev 9526 blown 0 float -2933 | $1000 starts blown 20/63
+RANDOM gate p 0.1 seed 3                 | last 7756 baskets blown 1 float -4682 | prev 9051 blown 0 float -2933 | $1000 starts blown 26/63
+RANDOM gate p 0.2 seed 1                 | last 6870 baskets blown 1 float -4682 | prev 8568 blown 0 float -2933 | $1000 starts blown 24/63
+RANDOM gate p 0.2 seed 2                 | last 6921 baskets blown 1 float -4682 | prev 8443 blown 0 float -2668 | $1000 starts blown 19/63
+RANDOM gate p 0.2 seed 3                 | last 7171 baskets blown 0 float -4680 | prev 8065 blown 0 float -2933 | $1000 starts blown 23/63
+RANDOM gate p 0.4 seed 1                 | last 5467 baskets blown 0 float -4231 | prev 6388 blown 0 float -2668 | $1000 starts blown 20/63
+RANDOM gate p 0.4 seed 2                 | last 5232 baskets blown 3 float -4231 | prev 6499 blown 0 float -2668 | $1000 starts blown 25/63
+RANDOM gate p 0.4 seed 3                 | last 5456 baskets blown 2 float -4231 | prev 6158 blown 1 float -2933 | $1000 starts blown 20/63
+# mart148d: one side by flow, 30-min expiry
+one side only: follow delta15 |z|>=0.5   | last 2537 baskets blown 2 float -3534 | prev 2745 blown 1 float -5837 | $1000 starts blown 35/63
+one side only: fade delta15 |z|>=0.5     | last 2511 baskets blown 1 float -7509 | prev 2604 blown 0 float -769 | $1000 starts blown 40/63
+one side only: follow delta15 |z|>=1.5   | last 1422 baskets blown 1 float -3534 | prev 1464 blown 0 float -2113 | $1000 starts blown 28/63
+one side only: fade delta15 |z|>=1.5     | last 1293 baskets blown 0 float -1040 | prev 1266 blown 1 float -4580 | $1000 starts blown 25/63
+one side only: follow delta60 |z|>=0.5   | last 2437 baskets blown 4 float -11170 | prev 2664 blown 0 float -2596 | $1000 starts blown 55/63
+one side only: fade delta60 |z|>=0.5     | last 2314 baskets blown 2 float -2495 | prev 2500 blown 3 float -2088 | $1000 starts blown 45/63
+one side only: follow delta60 |z|>=1.5   | last 1260 baskets blown 0 float -1747 | prev 1292 blown 0 float -2113 | $1000 starts blown 19/63
+one side only: fade delta60 |z|>=1.5     | last 1151 baskets blown 0 float -2520 | prev 1100 blown 0 float -1734 | $1000 starts blown 20/63
+one side only: follow delta240 |z|>=0.5  | last 2286 baskets blown 0 float -1519 | prev 2646 blown 0 float -2113 | $1000 starts blown 11/63
+one side only: fade delta240 |z|>=0.5    | last 2233 baskets blown 3 float -6227 | prev 2435 blown 0 float -1104 | $1000 starts blown 52/63
+one side only: follow delta240 |z|>=1.5  | last 1099 baskets blown 0 float -1715 | prev 1094 blown 0 float -2113 | $1000 starts blown 26/63
+one side only: fade delta240 |z|>=1.5    | last 1043 baskets blown 4 float -1513 | prev 1000 blown 0 float -1102 | $1000 starts blown 44/63
+one side only: follow cvd day |z|>=0.5   | last 2246 baskets blown 0 float -4680 | prev 2582 blown 1 float -4589 | $1000 starts blown 42/63
+one side only: fade cvd day |z|>=0.5     | last 2170 baskets blown 4 float -3534 | prev 2435 blown 0 float -2414 | $1000 starts blown 38/63
+one side only: follow cvd day |z|>=1.5   | last 1125 baskets blown 0 float -882 | prev 1101 blown 0 float -769 | $1000 starts blown 0/63
+one side only: fade cvd day |z|>=1.5     | last 1012 baskets blown 2 float -1384 | prev 1061 blown 0 float -2088 | $1000 starts blown 37/63
+# mart148e: random side, no gate
+RANDOM side seed 1                       | last 2761 baskets blown 0 float -1228 | prev 3078 blown 0 float -4462 | $1000 starts blown 19/63
+RANDOM side seed 2                       | last 2886 baskets blown 0 float -1856 | prev 3145 blown 0 float -2113 | $1000 starts blown 13/63
+RANDOM side seed 3                       | last 2770 baskets blown 0 float -1715 | prev 3073 blown 0 float -2414 | $1000 starts blown 8/63
+RANDOM side seed 4                       | last 2768 baskets blown 2 float -4756 | prev 3082 blown 0 float -2088 | $1000 starts blown 35/63
+RANDOM side seed 5                       | last 2860 baskets blown 1 float -4120 | prev 3009 blown 1 float -5561 | $1000 starts blown 40/63
+# mart148f: CVD-follow neighbours + random side with the same CVD gate
+one side: follow cvd day |z|>=1.0        | last 1599 baskets blown 0 float -1772 | prev 1719 blown 2 float -4095 | $1000 starts blown 30/63
+one side: follow cvd day |z|>=1.25       | last 1344 baskets blown 0 float -1569 | prev 1381 blown 1 float -4066 | $1000 starts blown 29/63
+one side: follow cvd day |z|>=1.75       | last 910 baskets blown 0 float -532 | prev 912 blown 0 float -769 | $1000 starts blown 0/63
+one side: follow cvd day |z|>=2.0        | last 768 baskets blown 0 float -532 | prev 738 blown 0 float -194 | $1000 starts blown 0/63
+one side: follow cvd day |z|>=2.5        | last 512 baskets blown 0 float -642 | prev 450 blown 0 float -194 | $1000 starts blown 0/63
+one side: follow delta240 |z|>=1.0       | last 1639 baskets blown 1 float -1772 | prev 1786 blown 0 float -2113 | $1000 starts blown 15/63
+one side: follow delta240 |z|>=2.0       | last 752 baskets blown 0 float -1588 | prev 684 blown 0 float -2113 | $1000 starts blown 29/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 1 | last 1112 baskets blown 1 float -1486 | prev 1039 blown 0 float -945 | $1000 starts blown 6/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 2 | last 1050 baskets blown 0 float -1640 | prev 988 blown 0 float -769 | $1000 starts blown 7/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 3 | last 1038 baskets blown 0 float -635 | prev 1087 blown 0 float -763 | $1000 starts blown 0/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 4 | last 1066 baskets blown 1 float -1688 | prev 1074 blown 0 float -2088 | $1000 starts blown 37/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 5 | last 1075 baskets blown 0 float -886 | prev 1032 blown 0 float -482 | $1000 starts blown 0/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 6 | last 1104 baskets blown 1 float -1754 | prev 1076 blown 0 float -2088 | $1000 starts blown 37/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 7 | last 1093 baskets blown 2 float -2437 | prev 1081 blown 0 float -261 | $1000 starts blown 21/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 8 | last 1167 baskets blown 0 float -882 | prev 1106 blown 0 float -1094 | $1000 starts blown 2/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 9 | last 1064 baskets blown 2 float -1295 | prev 1049 blown 0 float -764 | $1000 starts blown 39/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 10 | last 1073 baskets blown 0 float -1138 | prev 992 blown 0 float -764 | $1000 starts blown 1/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 11 | last 1093 baskets blown 2 float -2437 | prev 1110 blown 0 float -397 | $1000 starts blown 22/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 12 | last 1108 baskets blown 0 float -1138 | prev 1036 blown 0 float -769 | $1000 starts blown 2/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 13 | last 1119 baskets blown 0 float -886 | prev 1056 blown 0 float -1094 | $1000 starts blown 2/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 14 | last 1053 baskets blown 1 float -1754 | prev 995 blown 0 float -599 | $1000 starts blown 37/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 15 | last 1079 baskets blown 1 float -1254 | prev 1116 blown 0 float -446 | $1000 starts blown 5/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 16 | last 1108 baskets blown 1 float -1688 | prev 1085 blown 0 float -301 | $1000 starts blown 39/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 17 | last 1111 baskets blown 1 float -1829 | prev 1086 blown 0 float -769 | $1000 starts blown 38/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 18 | last 1078 baskets blown 0 float -1640 | prev 1056 blown 0 float -764 | $1000 starts blown 7/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 19 | last 1154 baskets blown 1 float -1789 | prev 1061 blown 0 float -644 | $1000 starts blown 37/63
+RANDOM side, same cvd|z|>=1.5 gate, seed 20 | last 1077 baskets blown 1 float -1251 | prev 1098 blown 0 float -599 | $1000 starts blown 7/63
+# mart148g: broker price-since-day-open control
+BROKER price-since-day-open follow |z|>=1.0 | last 1393 baskets blown 0 float -983 | prev 1560 blown 0 float -2414 | $1000 starts blown 18/63
+BROKER price-since-day-open fade |z|>=1.0 | last 1130 baskets blown 1 float -1712 | prev 1273 blown 0 float -1051 | $1000 starts blown 15/63
+BROKER price-since-day-open follow |z|>=1.5 | last 772 baskets blown 0 float -983 | prev 698 blown 2 float -2414 | $1000 starts blown 32/63
+BROKER price-since-day-open fade |z|>=1.5 | last 625 baskets blown 0 float -1138 | prev 567 blown 0 float -1051 | $1000 starts blown 1/63
+BROKER price-since-day-open follow |z|>=2.0 | last 380 baskets blown 0 float -983 | prev 299 blown 0 float -140 | $1000 starts blown 0/63
+BROKER price-since-day-open fade |z|>=2.0 | last 301 baskets blown 0 float -437 | prev 229 blown 0 float -1051 | $1000 starts blown 0/63
+BROKER price-since-day-open follow |z|>=2.5 | last 180 baskets blown 0 float -983 | prev 158 blown 0 float -140 | $1000 starts blown 0/63
+BROKER price-since-day-open fade |z|>=2.5 | last 109 baskets blown 1 float -1137 | prev 101 blown 0 float -1051 | $1000 starts blown 48/63
+CVD day fade |z|>=2.0                    | last 696 baskets blown 1 float -1443 | prev 667 blown 0 float -220 | $1000 starts blown 37/63
