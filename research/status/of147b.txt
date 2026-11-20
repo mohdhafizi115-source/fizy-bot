@@ -1,0 +1,209 @@
+/tmp/claude-0/-home-claude/a70dd1f2-1b74-5de3-a201-59cd75c0f86b/scratchpad/of/of147b.py:20: RuntimeWarning: divide by zero encountered in divide
+  dz = d / sd
+/tmp/claude-0/-home-claude/a70dd1f2-1b74-5de3-a201-59cd75c0f86b/scratchpad/of/of147b.py:20: RuntimeWarning: invalid value encountered in divide
+  dz = d / sd
+bars 61984 binance minutes matched 57355
+A big>=250k net>=250k              follow H 1 | last 7956 PF 0.76 $   -668 DD  -726 wd  -32 rnd 0.74-0.78 | prev 7901 PF 0.66 $   -833 DD  -833 wd  -44 rnd 0.64-0.69
+A big>=250k net>=250k              fade   H 1 | last 7956 PF 0.75 $   -697 DD  -698 wd  -37 rnd 0.75-0.78 | prev 7901 PF 0.69 $   -739 DD  -740 wd  -28 rnd 0.65-0.70
+A big>=250k net>=250k              follow H 3 | last 4835 PF 0.84 $   -445 DD  -474 wd  -50 rnd 0.80-0.87 | prev 4817 PF 0.81 $   -436 DD  -445 wd  -54 rnd 0.72-0.82
+A big>=250k net>=250k              fade   H 3 | last 4835 PF 0.86 $   -385 DD  -424 wd  -39 rnd 0.79-0.88 | prev 4817 PF 0.78 $   -523 DD  -525 wd  -33 rnd 0.76-0.84
+A big>=250k net>=250k              follow H 6 | last 3046 PF 0.96 $    -86 DD  -206 wd  -28 rnd 0.86-0.98 | prev 3044 PF 0.84 $   -324 DD  -326 wd  -35 rnd 0.74-0.90
+A big>=250k net>=250k              fade   H 6 | last 3046 PF 0.83 $   -437 DD  -464 wd  -43 rnd 0.85-0.93 | prev 3044 PF 0.86 $   -282 DD  -315 wd  -27 rnd 0.77-0.88
+A big>=250k net>=250k              follow H12 | last 1745 PF 0.85 $   -290 DD  -378 wd  -55 rnd 0.77-1.01 | prev 1748 PF 0.85 $   -241 DD  -300 wd  -33 rnd 0.91-0.95
+A big>=250k net>=250k              fade   H12 | last 1745 PF 0.99 $    -10 DD  -123 wd  -45 rnd 0.86-1.02 | prev 1748 PF 0.93 $   -107 DD  -123 wd  -27 rnd 0.86-0.99
+A big>=250k net>=500k              follow H 1 | last 7712 PF 0.76 $   -676 DD  -699 wd  -30 rnd 0.72-0.81 | prev 7566 PF 0.67 $   -785 DD  -788 wd  -34 rnd 0.63-0.69
+A big>=250k net>=500k              fade   H 1 | last 7712 PF 0.77 $   -648 DD  -650 wd  -35 rnd 0.75-0.79 | prev 7566 PF 0.69 $   -723 DD  -723 wd  -29 rnd 0.67-0.70
+A big>=250k net>=500k              follow H 3 | last 4740 PF 0.83 $   -469 DD  -526 wd  -36 rnd 0.78-0.88 | prev 4684 PF 0.77 $   -526 DD  -530 wd  -58 rnd 0.75-0.82
+A big>=250k net>=500k              fade   H 3 | last 4740 PF 0.87 $   -345 DD  -405 wd  -37 rnd 0.80-0.92 | prev 4684 PF 0.82 $   -406 DD  -407 wd  -33 rnd 0.77-0.83
+A big>=250k net>=500k              follow H 6 | last 3011 PF 0.90 $   -242 DD  -293 wd  -38 rnd 0.80-0.94 | prev 2997 PF 0.89 $   -221 DD  -240 wd  -32 rnd 0.77-0.89
+A big>=250k net>=500k              fade   H 6 | last 3011 PF 0.89 $   -275 DD  -323 wd  -54 rnd 0.78-0.93 | prev 2997 PF 0.82 $   -375 DD  -383 wd  -25 rnd 0.85-0.97
+A big>=250k net>=500k              follow H12 | last 1745 PF 0.87 $   -257 DD  -335 wd  -55 rnd 0.78-0.93 | prev 1745 PF 0.91 $   -135 DD  -189 wd  -33 rnd 0.79-0.90
+A big>=250k net>=500k              fade   H12 | last 1745 PF 0.98 $    -43 DD  -149 wd  -35 rnd 0.94-1.07 | prev 1745 PF 0.87 $   -212 DD  -226 wd  -31 rnd 0.81-0.95
+A big>=1000k net>=1000k            follow H 1 | last 6668 PF 0.75 $   -633 DD  -656 wd  -27 rnd 0.76-0.80 | prev 6143 PF 0.64 $   -749 DD  -750 wd  -36 rnd 0.65-0.73
+A big>=1000k net>=1000k            fade   H 1 | last 6668 PF 0.79 $   -511 DD  -514 wd  -40 rnd 0.73-0.79 | prev 6143 PF 0.75 $   -483 DD  -491 wd  -21 rnd 0.61-0.75
+A big>=1000k net>=1000k            follow H 3 | last 4285 PF 0.86 $   -357 DD  -406 wd  -34 rnd 0.83-0.94 | prev 4075 PF 0.69 $   -674 DD  -676 wd  -37 rnd 0.77-0.87
+A big>=1000k net>=1000k            fade   H 3 | last 4285 PF 0.85 $   -379 DD  -393 wd  -33 rnd 0.81-0.84 | prev 4075 PF 0.93 $   -142 DD  -157 wd  -27 rnd 0.72-0.86
+A big>=1000k net>=1000k            follow H 6 | last 2829 PF 0.90 $   -232 DD  -276 wd  -46 rnd 0.83-0.94 | prev 2705 PF 0.76 $   -480 DD  -483 wd  -39 rnd 0.82-0.89
+A big>=1000k net>=1000k            fade   H 6 | last 2829 PF 0.89 $   -253 DD  -313 wd  -47 rnd 0.79-0.98 | prev 2705 PF 0.97 $    -60 DD   -98 wd  -41 rnd 0.72-0.93
+A big>=1000k net>=1000k            follow H12 | last 1701 PF 0.91 $   -180 DD  -229 wd  -52 rnd 0.86-0.98 | prev 1652 PF 0.91 $   -139 DD  -163 wd  -44 rnd 0.82-0.90
+A big>=1000k net>=1000k            fade   H12 | last 1701 PF 0.94 $   -112 DD  -178 wd  -39 rnd 0.84-0.97 | prev 1652 PF 0.88 $   -191 DD  -209 wd  -34 rnd 0.80-0.99
+A big>=1000k net>=2000k            follow H 1 | last 5350 PF 0.78 $   -476 DD  -481 wd  -29 rnd 0.75-0.81 | prev 4542 PF 0.69 $   -510 DD  -511 wd  -26 rnd 0.70-0.77
+A big>=1000k net>=2000k            fade   H 1 | last 5350 PF 0.79 $   -442 DD  -460 wd  -28 rnd 0.76-0.84 | prev 4542 PF 0.74 $   -406 DD  -408 wd  -23 rnd 0.67-0.72
+A big>=1000k net>=2000k            follow H 3 | last 3647 PF 0.88 $   -277 DD  -324 wd  -26 rnd 0.86-0.94 | prev 3204 PF 0.74 $   -463 DD  -467 wd  -43 rnd 0.78-0.88
+A big>=1000k net>=2000k            fade   H 3 | last 3647 PF 0.85 $   -349 DD  -378 wd  -44 rnd 0.85-0.93 | prev 3204 PF 0.89 $   -180 DD  -193 wd  -33 rnd 0.74-0.89
+A big>=1000k net>=2000k            follow H 6 | last 2538 PF 0.91 $   -200 DD  -281 wd  -34 rnd 0.82-0.99 | prev 2275 PF 0.85 $   -253 DD  -270 wd  -27 rnd 0.78-0.96
+A big>=1000k net>=2000k            fade   H 6 | last 2538 PF 0.89 $   -235 DD  -261 wd  -42 rnd 0.82-0.99 | prev 2275 PF 0.88 $   -203 DD  -207 wd  -49 rnd 0.87-0.92
+A big>=1000k net>=2000k            follow H12 | last 1562 PF 1.00 $     +8 DD  -177 wd  -41 rnd 0.86-0.91 | prev 1466 PF 0.81 $   -284 DD  -288 wd  -58 rnd 0.81-0.93
+A big>=1000k net>=2000k            fade   H12 | last 1562 PF 0.85 $   -276 DD  -301 wd  -51 rnd 0.82-1.00 | prev 1466 PF 0.99 $     -9 DD  -116 wd  -20 rnd 0.84-1.01
+A big>=2000k net>=2000k            follow H 1 | last 4778 PF 0.72 $   -579 DD  -598 wd  -40 rnd 0.78-0.80 | prev 3642 PF 0.68 $   -437 DD  -440 wd  -40 rnd 0.68-0.78
+A big>=2000k net>=2000k            fade   H 1 | last 4778 PF 0.87 $   -241 DD  -267 wd  -35 rnd 0.75-0.81 | prev 3642 PF 0.77 $   -303 DD  -312 wd  -18 rnd 0.69-0.77
+A big>=2000k net>=2000k            follow H 3 | last 3332 PF 0.81 $   -435 DD  -484 wd  -40 rnd 0.83-0.92 | prev 2724 PF 0.73 $   -427 DD  -434 wd  -32 rnd 0.81-0.88
+A big>=2000k net>=2000k            fade   H 3 | last 3332 PF 0.93 $   -137 DD  -160 wd  -33 rnd 0.79-0.90 | prev 2724 PF 0.91 $   -124 DD  -150 wd  -30 rnd 0.82-0.86
+A big>=2000k net>=2000k            follow H 6 | last 2343 PF 0.85 $   -297 DD  -378 wd  -38 rnd 0.89-1.01 | prev 1989 PF 0.77 $   -356 DD  -374 wd  -25 rnd 0.82-0.94
+A big>=2000k net>=2000k            fade   H 6 | last 2343 PF 0.95 $   -105 DD  -192 wd  -40 rnd 0.84-1.03 | prev 1989 PF 0.97 $    -45 DD  -141 wd  -32 rnd 0.82-0.92
+A big>=2000k net>=2000k            follow H12 | last 1488 PF 0.88 $   -214 DD  -297 wd  -61 rnd 0.87-0.99 | prev 1325 PF 0.79 $   -290 DD  -300 wd  -64 rnd 0.82-0.90
+A big>=2000k net>=2000k            fade   H12 | last 1488 PF 0.98 $    -41 DD  -228 wd  -44 rnd 0.82-1.01 | prev 1325 PF 1.02 $    +24 DD   -84 wd  -25 rnd 0.76-0.81
+A big>=2000k net>=4000k            follow H 1 | last 3138 PF 0.75 $   -383 DD  -412 wd  -42 rnd 0.78-0.85 | prev 2153 PF 0.74 $   -229 DD  -230 wd  -14 rnd 0.70-0.82
+A big>=2000k net>=4000k            fade   H 1 | last 3138 PF 0.89 $   -156 DD  -197 wd  -35 rnd 0.76-0.91 | prev 2153 PF 0.75 $   -212 DD  -222 wd  -18 rnd 0.70-0.82
+A big>=2000k net>=4000k            follow H 3 | last 2373 PF 0.85 $   -265 DD  -302 wd  -22 rnd 0.74-0.94 | prev 1712 PF 0.77 $   -248 DD  -254 wd  -18 rnd 0.75-0.98
+A big>=2000k net>=4000k            fade   H 3 | last 2373 PF 0.91 $   -142 DD  -166 wd  -28 rnd 0.85-0.91 | prev 1712 PF 0.90 $   -102 DD  -136 wd  -35 rnd 0.73-0.85
+A big>=2000k net>=4000k            follow H 6 | last 1781 PF 0.84 $   -276 DD  -296 wd  -34 rnd 0.84-0.95 | prev 1363 PF 0.87 $   -145 DD  -151 wd  -21 rnd 0.81-0.90
+A big>=2000k net>=4000k            fade   H 6 | last 1781 PF 0.98 $    -29 DD  -159 wd  -33 rnd 0.82-1.01 | prev 1363 PF 0.88 $   -132 DD  -166 wd  -28 rnd 0.85-0.92
+A big>=2000k net>=4000k            follow H12 | last 1223 PF 0.92 $   -120 DD  -160 wd  -31 rnd 0.84-0.97 | prev  995 PF 0.84 $   -176 DD  -213 wd  -71 rnd 0.84-0.92
+A big>=2000k net>=4000k            fade   H12 | last 1223 PF 0.94 $    -90 DD  -214 wd  -48 rnd 0.85-1.00 | prev  995 PF 0.97 $    -25 DD  -146 wd  -23 rnd 0.78-0.93
+A big>=5000k net>=5000k            follow H 1 | last 1686 PF 0.77 $   -202 DD  -262 wd  -22 rnd 0.79-0.94 | prev 1159 PF 0.66 $   -177 DD  -177 wd  -16 rnd 0.66-0.81
+A big>=5000k net>=5000k            fade   H 1 | last 1686 PF 0.89 $    -87 DD  -103 wd  -23 rnd 0.72-0.93 | prev 1159 PF 0.86 $    -61 DD   -79 wd  -10 rnd 0.68-0.79
+A big>=5000k net>=5000k            follow H 3 | last 1371 PF 0.99 $     -6 DD   -87 wd  -21 rnd 0.80-0.98 | prev  986 PF 0.79 $   -140 DD  -172 wd  -19 rnd 0.73-0.95
+A big>=5000k net>=5000k            fade   H 3 | last 1371 PF 0.79 $   -229 DD  -236 wd  -31 rnd 0.84-1.06 | prev  986 PF 0.90 $    -62 DD   -81 wd  -10 rnd 0.84-0.93
+A big>=5000k net>=5000k            follow H 6 | last 1113 PF 0.93 $    -79 DD  -121 wd  -32 rnd 0.85-0.96 | prev  832 PF 0.81 $   -139 DD  -155 wd  -24 rnd 0.73-0.91
+A big>=5000k net>=5000k            fade   H 6 | last 1113 PF 0.90 $   -112 DD  -161 wd  -33 rnd 0.82-1.10 | prev  832 PF 0.96 $    -31 DD   -67 wd  -19 rnd 0.85-0.96
+A big>=5000k net>=5000k            follow H12 | last  846 PF 0.93 $    -78 DD   -93 wd  -41 rnd 0.92-1.10 | prev  659 PF 0.99 $     -7 DD   -73 wd  -22 rnd 0.76-0.99
+A big>=5000k net>=5000k            fade   H12 | last  846 PF 0.94 $    -67 DD  -144 wd  -30 rnd 0.81-0.97 | prev  659 PF 0.83 $   -127 DD  -164 wd  -29 rnd 0.80-1.06
+A big>=5000k net>=10000k           follow H 1 | last  709 PF 0.76 $   -101 DD  -138 wd  -14 rnd 0.78-1.10 | prev  465 PF 0.59 $    -91 DD  -101 wd  -16 rnd 0.59-0.98
+A big>=5000k net>=10000k           fade   H 1 | last  709 PF 0.94 $    -20 DD   -43 wd  -10 rnd 0.74-0.96 | prev  465 PF 0.97 $     -5 DD   -50 wd   -7 rnd 0.60-1.05
+A big>=5000k net>=10000k           follow H 3 | last  621 PF 0.86 $    -71 DD  -110 wd  -15 rnd 0.70-0.97 | prev  428 PF 0.80 $    -63 DD   -86 wd  -27 rnd 0.77-1.03
+A big>=5000k net>=10000k           fade   H 3 | last  621 PF 0.93 $    -36 DD   -51 wd  -20 rnd 0.86-0.96 | prev  428 PF 0.91 $    -25 DD   -56 wd  -10 rnd 0.76-0.91
+A big>=5000k net>=10000k           follow H 6 | last  560 PF 0.90 $    -63 DD  -140 wd  -17 rnd 0.78-1.12 | prev  384 PF 0.90 $    -35 DD   -65 wd  -16 rnd 0.68-1.04
+A big>=5000k net>=10000k           fade   H 6 | last  560 PF 0.95 $    -33 DD  -115 wd  -19 rnd 0.76-1.01 | prev  384 PF 0.88 $    -44 DD   -67 wd  -15 rnd 0.67-0.91
+A big>=5000k net>=10000k           follow H12 | last  457 PF 0.96 $    -27 DD   -98 wd  -17 rnd 0.77-1.02 | prev  326 PF 1.00 $     +1 DD   -73 wd  -28 rnd 0.84-1.33
+A big>=5000k net>=10000k           fade   H12 | last  457 PF 0.93 $    -51 DD  -101 wd  -35 rnd 0.71-1.03 | prev  326 PF 0.83 $    -67 DD   -70 wd  -18 rnd 0.68-1.06
+B delta z>=3                       follow H 1 | last  513 PF 0.61 $   -154 DD  -184 wd  -15 rnd 0.73-1.18 | prev  465 PF 0.60 $   -102 DD  -102 wd  -15 rnd 0.73-1.04
+B delta z>=3                       fade   H 1 | last  513 PF 1.24 $    +66 DD   -27 wd  -13 rnd 0.72-0.99 | prev  465 PF 1.05 $     +9 DD   -22 wd   -9 rnd 0.59-0.92
+B delta z>=3                       follow H 3 | last  463 PF 0.80 $    -94 DD  -124 wd  -21 rnd 0.68-1.01 | prev  421 PF 0.65 $   -119 DD  -122 wd  -13 rnd 0.70-1.14
+B delta z>=3                       fade   H 3 | last  463 PF 1.04 $    +15 DD   -43 wd  -16 rnd 0.60-0.84 | prev  421 PF 1.14 $    +35 DD   -35 wd  -11 rnd 0.68-1.08
+B delta z>=3                       follow H 6 | last  409 PF 1.01 $     +2 DD   -97 wd  -15 rnd 0.75-0.94 | prev  373 PF 0.66 $   -135 DD  -140 wd  -15 rnd 0.85-1.03
+B delta z>=3                       fade   H 6 | last  409 PF 0.85 $    -73 DD   -98 wd  -27 rnd 0.79-1.14 | prev  373 PF 1.20 $    +60 DD   -36 wd  -10 rnd 0.72-0.94
+B delta z>=3                       follow H12 | last  353 PF 1.04 $    +21 DD   -79 wd  -19 rnd 0.79-1.36 | prev  337 PF 0.68 $   -149 DD  -154 wd  -25 rnd 0.81-0.97
+B delta z>=3                       fade   H12 | last  353 PF 0.86 $    -81 DD  -116 wd  -33 rnd 0.86-1.16 | prev  337 PF 1.23 $    +82 DD   -44 wd  -17 rnd 0.77-1.13
+B delta z>=4                       follow H 1 | last  305 PF 0.78 $    -54 DD   -88 wd   -7 rnd 0.75-0.91 | prev  293 PF 0.71 $    -46 DD   -52 wd  -10 rnd 0.75-1.09
+B delta z>=4                       fade   H 1 | last  305 PF 1.01 $     +1 DD   -37 wd  -13 rnd 0.70-1.02 | prev  293 PF 0.91 $    -12 DD   -21 wd   -8 rnd 0.59-0.98
+B delta z>=4                       follow H 3 | last  282 PF 0.97 $     -8 DD   -50 wd  -17 rnd 0.74-0.90 | prev  274 PF 0.69 $    -69 DD   -83 wd  -13 rnd 0.79-1.08
+B delta z>=4                       fade   H 3 | last  282 PF 0.86 $    -40 DD   -56 wd  -27 rnd 0.77-1.17 | prev  274 PF 1.08 $    +14 DD   -32 wd   -7 rnd 0.69-1.21
+B delta z>=4                       follow H 6 | last  256 PF 1.21 $    +61 DD   -38 wd  -15 rnd 0.71-1.46 | prev  249 PF 0.72 $    -75 DD   -89 wd  -18 rnd 0.72-1.08
+B delta z>=4                       fade   H 6 | last  256 PF 0.72 $   -105 DD  -111 wd  -27 rnd 0.62-1.71 | prev  249 PF 1.11 $    +25 DD   -32 wd  -12 rnd 0.60-1.28
+B delta z>=4                       follow H12 | last  227 PF 1.22 $    +73 DD   -43 wd  -14 rnd 0.72-1.18 | prev  232 PF 0.80 $    -63 DD   -90 wd  -16 rnd 0.66-1.27
+B delta z>=4                       fade   H12 | last  227 PF 0.73 $   -112 DD  -153 wd  -32 rnd 0.84-1.18 | prev  232 PF 1.06 $    +17 DD   -39 wd  -13 rnd 0.81-1.18
+B delta z>=5                       follow H 1 | last  196 PF 0.94 $    -10 DD   -42 wd   -6 rnd 0.76-1.31 | prev  181 PF 0.57 $    -48 DD   -57 wd  -15 rnd 0.53-1.20
+B delta z>=5                       fade   H 1 | last  196 PF 0.86 $    -23 DD   -31 wd  -14 rnd 0.71-1.38 | prev  181 PF 1.15 $    +12 DD   -20 wd   -8 rnd 0.72-1.27
+B delta z>=5                       follow H 3 | last  185 PF 0.92 $    -15 DD   -47 wd  -11 rnd 0.71-1.27 | prev  172 PF 0.62 $    -59 DD   -70 wd  -15 rnd 0.72-1.20
+B delta z>=5                       fade   H 3 | last  185 PF 0.92 $    -17 DD   -47 wd  -24 rnd 0.67-1.30 | prev  172 PF 1.23 $    +25 DD   -26 wd   -7 rnd 0.74-1.15
+B delta z>=5                       follow H 6 | last  175 PF 1.16 $    +35 DD   -36 wd  -18 rnd 0.78-1.39 | prev  160 PF 0.70 $    -57 DD   -73 wd  -18 rnd 0.64-1.75
+B delta z>=5                       fade   H 6 | last  175 PF 0.76 $    -65 DD   -77 wd  -17 rnd 0.68-1.52 | prev  160 PF 1.17 $    +25 DD   -39 wd  -10 rnd 0.72-1.37
+B delta z>=5                       follow H12 | last  159 PF 1.34 $    +80 DD   -31 wd  -18 rnd 0.76-1.60 | prev  150 PF 0.70 $    -74 DD   -97 wd  -17 rnd 0.64-1.18
+B delta z>=5                       fade   H12 | last  159 PF 0.67 $   -107 DD  -136 wd  -28 rnd 0.70-0.84 | prev  150 PF 1.24 $    +44 DD   -45 wd  -14 rnd 0.66-1.56
+C absorb z>=2.5 body<=0.2atr       follow H 1 | last   39 PF 0.78 $     -4 DD   -12 wd   -3 rnd 0.57-1.66 | prev   37 PF 0.86 $     -2 DD    -3 wd   -2 rnd 0.32-1.26
+C absorb z>=2.5 body<=0.2atr       fade   H 1 | last   39 PF 0.86 $     -3 DD   -12 wd   -7 rnd 0.45-1.28 | prev   37 PF 0.59 $     -6 DD    -7 wd   -2 rnd 0.20-1.15
+C absorb z>=2.5 body<=0.2atr       follow H 3 | last   39 PF 0.60 $    -17 DD   -25 wd   -4 rnd 0.97-1.14 | prev   37 PF 1.21 $     +4 DD    -6 wd   -3 rnd 0.63-1.37
+C absorb z>=2.5 body<=0.2atr       fade   H 3 | last   39 PF 1.37 $    +11 DD   -16 wd  -10 rnd 0.46-1.60 | prev   37 PF 0.57 $    -12 DD   -14 wd   -4 rnd 0.62-1.25
+C absorb z>=2.5 body<=0.2atr       follow H 6 | last   39 PF 0.54 $    -24 DD   -32 wd   -9 rnd 0.27-1.15 | prev   36 PF 1.38 $    +10 DD    -9 wd   -5 rnd 0.54-2.91
+C absorb z>=2.5 body<=0.2atr       fade   H 6 | last   39 PF 1.55 $    +17 DD   -13 wd   -4 rnd 0.91-1.64 | prev   36 PF 0.57 $    -17 DD   -21 wd   -5 rnd 0.52-1.39
+C absorb z>=2.5 body<=0.2atr       follow H12 | last   39 PF 0.69 $    -17 DD   -26 wd  -11 rnd 0.73-1.45 | prev   36 PF 1.23 $     +8 DD   -11 wd   -9 rnd 0.68-1.57
+C absorb z>=2.5 body<=0.2atr       fade   H12 | last   39 PF 1.25 $    +10 DD   -18 wd   -4 rnd 0.50-1.25 | prev   36 PF 0.67 $    -15 DD   -27 wd   -7 rnd 0.70-1.22
+C absorb z>=2.5 body<=0.4atr       follow H 1 | last   71 PF 0.69 $    -11 DD   -18 wd   -4 rnd 0.63-2.69 | prev   79 PF 0.80 $     -6 DD    -8 wd   -3 rnd 0.63-0.86
+C absorb z>=2.5 body<=0.4atr       fade   H 1 | last   71 PF 0.97 $     -1 DD   -12 wd   -7 rnd 0.40-0.94 | prev   79 PF 0.68 $    -10 DD   -13 wd   -4 rnd 0.66-0.96
+C absorb z>=2.5 body<=0.4atr       follow H 3 | last   70 PF 0.64 $    -24 DD   -28 wd   -6 rnd 0.71-1.59 | prev   79 PF 0.83 $     -9 DD   -15 wd   -4 rnd 0.61-0.99
+C absorb z>=2.5 body<=0.4atr       fade   H 3 | last   70 PF 1.26 $    +12 DD   -14 wd  -10 rnd 0.33-1.21 | prev   79 PF 0.85 $     -7 DD   -15 wd   -5 rnd 0.54-1.35
+C absorb z>=2.5 body<=0.4atr       follow H 6 | last   68 PF 1.10 $     +6 DD   -17 wd   -6 rnd 0.33-1.07 | prev   74 PF 0.86 $     -9 DD   -18 wd   -8 rnd 0.57-2.00
+C absorb z>=2.5 body<=0.4atr       fade   H 6 | last   68 PF 0.76 $    -18 DD   -28 wd  -10 rnd 0.40-0.98 | prev   74 PF 0.91 $     -6 DD   -19 wd  -12 rnd 0.67-1.07
+C absorb z>=2.5 body<=0.4atr       follow H12 | last   68 PF 0.97 $     -2 DD   -27 wd   -5 rnd 0.56-1.55 | prev   71 PF 0.74 $    -23 DD   -34 wd   -7 rnd 0.44-1.28
+C absorb z>=2.5 body<=0.4atr       fade   H12 | last   68 PF 0.89 $     -9 DD   -24 wd  -14 rnd 0.55-1.79 | prev   71 PF 1.12 $     +9 DD   -26 wd   -9 rnd 0.75-1.98
+C absorb z>=3 body<=0.2atr         follow H 1 | last   24 PF 0.49 $     -6 DD    -9 wd   -3 rnd 0.17-1.26 | prev   21 PF 0.89 $     -1 DD    -1 wd   -1 rnd 0.27-2.00
+C absorb z>=3 body<=0.2atr         fade   H 1 | last   24 PF 1.21 $     +2 DD    -6 wd   -1 rnd 0.18-1.06 | prev   21 PF 0.51 $     -4 DD    -5 wd   -2 rnd 0.08-2.47
+C absorb z>=3 body<=0.2atr         follow H 3 | last   24 PF 0.45 $    -15 DD   -17 wd   -4 rnd 0.68-1.18 | prev   21 PF 1.15 $     +2 DD    -6 wd   -3 rnd 0.24-1.38
+C absorb z>=3 body<=0.2atr         fade   H 3 | last   24 PF 1.77 $    +11 DD    -7 wd   -3 rnd 0.82-2.21 | prev   21 PF 0.59 $     -6 DD    -7 wd   -4 rnd 0.48-0.85
+C absorb z>=3 body<=0.2atr         follow H 6 | last   24 PF 0.52 $    -15 DD   -23 wd   -9 rnd 0.26-3.65 | prev   20 PF 1.24 $     +4 DD    -5 wd   -5 rnd 0.63-3.34
+C absorb z>=3 body<=0.2atr         fade   H 6 | last   24 PF 1.58 $    +10 DD   -10 wd   -4 rnd 0.69-3.11 | prev   20 PF 0.63 $     -8 DD   -15 wd   -5 rnd 0.80-3.01
+C absorb z>=3 body<=0.2atr         follow H12 | last   24 PF 0.68 $    -11 DD   -22 wd  -11 rnd 0.57-0.87 | prev   20 PF 1.30 $     +5 DD    -6 wd   -4 rnd 0.26-1.85
+C absorb z>=3 body<=0.2atr         fade   H12 | last   24 PF 1.28 $     +7 DD   -15 wd   -4 rnd 0.52-2.61 | prev   20 PF 0.62 $     -9 DD   -17 wd   -4 rnd 0.34-1.97
+C absorb z>=3 body<=0.4atr         follow H 1 | last   44 PF 0.41 $    -17 DD   -19 wd   -4 rnd 0.50-0.75 | prev   45 PF 0.78 $     -3 DD    -7 wd   -3 rnd 0.34-1.47
+C absorb z>=3 body<=0.4atr         fade   H 1 | last   44 PF 1.61 $     +9 DD    -5 wd   -2 rnd 0.45-1.45 | prev   45 PF 0.65 $     -6 DD    -8 wd   -3 rnd 0.24-0.77
+C absorb z>=3 body<=0.4atr         follow H 3 | last   43 PF 0.37 $    -30 DD   -33 wd   -7 rnd 0.52-1.51 | prev   45 PF 0.63 $    -12 DD   -12 wd   -4 rnd 0.73-1.53
+C absorb z>=3 body<=0.4atr         fade   H 3 | last   43 PF 2.16 $    +23 DD    -6 wd   -3 rnd 0.52-1.00 | prev   45 PF 1.13 $     +3 DD    -6 wd   -4 rnd 0.62-1.38
+C absorb z>=3 body<=0.4atr         follow H 6 | last   42 PF 0.86 $     -5 DD   -17 wd   -7 rnd 0.43-1.19 | prev   44 PF 0.75 $    -10 DD   -18 wd   -6 rnd 1.12-1.82
+C absorb z>=3 body<=0.4atr         fade   H 6 | last   42 PF 0.95 $     -2 DD   -15 wd   -9 rnd 0.53-1.52 | prev   44 PF 1.03 $     +1 DD   -17 wd   -6 rnd 0.58-1.66
+C absorb z>=3 body<=0.4atr         follow H12 | last   42 PF 0.67 $    -20 DD   -28 wd  -11 rnd 0.43-1.78 | prev   43 PF 0.50 $    -25 DD   -30 wd   -9 rnd 0.51-1.54
+C absorb z>=3 body<=0.4atr         fade   H12 | last   42 PF 1.29 $    +12 DD   -11 wd   -9 rnd 0.51-2.00 | prev   43 PF 1.57 $    +16 DD   -13 wd   -5 rnd 0.52-1.65
+C absorb z>=4 body<=0.2atr         follow H 1 | last   11 PF 0.43 $     -3 DD    -4 wd   -3 rnd 0.20-0.91 | prev    9 PF 1.34 $     +1 DD    -1 wd   -1 rnd 0.16-2.16
+C absorb z>=4 body<=0.2atr         fade   H 1 | last   11 PF 1.33 $     +1 DD    -3 wd   -1 rnd 0.41-1.68 | prev    9 PF 0.22 $     -2 DD    -3 wd   -2 rnd 0.27-13.89
+C absorb z>=4 body<=0.2atr         follow H 3 | last   11 PF 0.31 $    -10 DD    -9 wd   -4 rnd 0.10-1.45 | prev    9 PF 1.43 $     +1 DD    -2 wd   -1 rnd 0.50-2.42
+C absorb z>=4 body<=0.2atr         fade   H 3 | last   11 PF 2.60 $     +8 DD    -3 wd   -2 rnd 0.55-1.74 | prev    9 PF 0.36 $     -3 DD    -3 wd   -2 rnd 0.26-2.09
+C absorb z>=4 body<=0.2atr         follow H 6 | last   11 PF 0.31 $    -12 DD   -15 wd   -9 rnd 0.39-1.71 | prev    8 PF 0.86 $     -1 DD    -5 wd   -4 rnd 0.09-8.59
+C absorb z>=4 body<=0.2atr         fade   H 6 | last   11 PF 2.62 $    +10 DD    -5 wd   -4 rnd 0.36-3.95 | prev    8 PF 0.82 $     -1 DD    -4 wd   -3 rnd 0.00-2.12
+C absorb z>=4 body<=0.2atr         follow H12 | last   11 PF 0.20 $    -13 DD   -13 wd   -5 rnd 0.41-2.37 | prev    8 PF 1.31 $     +1 DD    -3 wd   -3 rnd 0.15-1.67
+C absorb z>=4 body<=0.2atr         fade   H12 | last   11 PF 4.08 $    +11 DD    -2 wd   -2 rnd 0.04-6.10 | prev    8 PF 0.53 $     -3 DD    -3 wd   -2 rnd 0.13-2.12
+C absorb z>=4 body<=0.4atr         follow H 1 | last   21 PF 0.25 $    -14 DD   -15 wd   -4 rnd 0.25-1.37 | prev   24 PF 0.94 $     -1 DD    -5 wd   -2 rnd 0.36-1.22
+C absorb z>=4 body<=0.4atr         fade   H 1 | last   21 PF 2.74 $    +11 DD    -2 wd   -1 rnd 0.51-1.42 | prev   24 PF 0.59 $     -4 DD    -7 wd   -3 rnd 0.82-2.07
+C absorb z>=4 body<=0.4atr         follow H 3 | last   21 PF 0.31 $    -17 DD   -19 wd   -5 rnd 0.62-1.12 | prev   24 PF 0.64 $     -7 DD    -5 wd   -4 rnd 0.40-2.90
+C absorb z>=4 body<=0.4atr         fade   H 3 | last   21 PF 2.56 $    +13 DD    -3 wd   -2 rnd 0.83-2.66 | prev   24 PF 1.13 $     +2 DD    -6 wd   -2 rnd 0.78-1.84
+C absorb z>=4 body<=0.4atr         follow H 6 | last   20 PF 0.61 $     -6 DD   -12 wd   -5 rnd 0.22-0.90 | prev   23 PF 0.77 $     -4 DD    -7 wd   -6 rnd 0.13-0.73
+C absorb z>=4 body<=0.4atr         fade   H 6 | last   20 PF 1.25 $     +3 DD    -5 wd   -4 rnd 0.59-1.15 | prev   23 PF 0.98 $     -0 DD    -7 wd   -3 rnd 0.46-1.28
+C absorb z>=4 body<=0.4atr         follow H12 | last   20 PF 0.39 $    -16 DD   -21 wd   -5 rnd 0.63-1.71 | prev   22 PF 0.37 $    -15 DD   -15 wd   -9 rnd 0.27-2.50
+C absorb z>=4 body<=0.4atr         fade   H12 | last   20 PF 2.09 $    +13 DD    -2 wd   -4 rnd 0.55-2.01 | prev   22 PF 2.03 $    +11 DD    -4 wd   -4 rnd 0.92-4.32
+C2 divergent bar z>=2 (sign=delta) follow H 1 | last   39 PF 1.33 $     +6 DD    -7 wd   -2 rnd 0.34-0.95 | prev   38 PF 0.33 $    -13 DD   -16 wd   -2 rnd 0.45-1.36
+C2 divergent bar z>=2 (sign=delta) fade   H 1 | last   39 PF 0.56 $    -13 DD   -17 wd   -6 rnd 0.46-1.00 | prev   38 PF 1.60 $     +6 DD    -5 wd   -2 rnd 0.51-1.60
+C2 divergent bar z>=2 (sign=delta) follow H 3 | last   39 PF 0.76 $     -8 DD   -13 wd   -5 rnd 0.84-3.05 | prev   38 PF 0.69 $     -8 DD   -11 wd   -5 rnd 0.54-1.38
+C2 divergent bar z>=2 (sign=delta) fade   H 3 | last   39 PF 1.03 $     +1 DD   -10 wd   -7 rnd 0.38-1.80 | prev   38 PF 1.00 $     -0 DD    -6 wd   -4 rnd 0.36-2.43
+C2 divergent bar z>=2 (sign=delta) follow H 6 | last   37 PF 0.41 $    -28 DD   -33 wd   -7 rnd 0.62-2.25 | prev   37 PF 0.65 $    -11 DD   -18 wd   -7 rnd 0.53-2.31
+C2 divergent bar z>=2 (sign=delta) fade   H 6 | last   37 PF 1.99 $    +22 DD    -8 wd   -4 rnd 0.76-1.59 | prev   37 PF 1.14 $     +3 DD    -6 wd   -3 rnd 0.75-1.60
+C2 divergent bar z>=2 (sign=delta) follow H12 | last   37 PF 1.00 $     -0 DD   -14 wd  -10 rnd 0.48-2.12 | prev   37 PF 0.51 $    -22 DD   -37 wd   -9 rnd 0.49-1.07
+C2 divergent bar z>=2 (sign=delta) fade   H12 | last   37 PF 0.86 $     -6 DD   -20 wd  -10 rnd 0.58-1.44 | prev   37 PF 1.55 $    +15 DD   -14 wd   -4 rnd 0.56-2.46
+C2 divergent bar z>=3 (sign=delta) follow H 1 | last   17 PF 0.51 $     -5 DD    -6 wd   -2 rnd 0.22-1.73 | prev   19 PF 0.36 $     -6 DD    -7 wd   -2 rnd 0.25-1.29
+C2 divergent bar z>=3 (sign=delta) fade   H 1 | last   17 PF 1.33 $     +2 DD    -2 wd   -2 rnd 0.42-0.87 | prev   19 PF 1.49 $     +2 DD    -2 wd   -2 rnd 0.60-2.26
+C2 divergent bar z>=3 (sign=delta) follow H 3 | last   17 PF 0.55 $     -6 DD    -6 wd   -5 rnd 0.37-4.26 | prev   19 PF 0.56 $     -6 DD    -6 wd   -4 rnd 0.34-1.45
+C2 divergent bar z>=3 (sign=delta) fade   H 3 | last   17 PF 1.36 $     +3 DD    -6 wd   -2 rnd 0.19-5.35 | prev   19 PF 1.21 $     +2 DD    -5 wd   -4 rnd 0.46-3.88
+C2 divergent bar z>=3 (sign=delta) follow H 6 | last   17 PF 0.64 $     -8 DD   -15 wd   -7 rnd 0.22-3.16 | prev   19 PF 0.67 $     -4 DD    -8 wd   -4 rnd 0.29-1.19
+C2 divergent bar z>=3 (sign=delta) fade   H 6 | last   17 PF 1.33 $     +5 DD   -10 wd   -4 rnd 0.68-3.86 | prev   19 PF 1.05 $     +0 DD    -5 wd   -2 rnd 0.61-2.15
+C2 divergent bar z>=3 (sign=delta) follow H12 | last   17 PF 1.59 $     +9 DD    -4 wd   -3 rnd 0.68-1.25 | prev   19 PF 0.27 $    -18 DD   -18 wd   -9 rnd 0.48-2.27
+C2 divergent bar z>=3 (sign=delta) fade   H12 | last   17 PF 0.54 $    -12 DD   -20 wd   -7 rnd 0.31-2.42 | prev   19 PF 2.81 $    +14 DD    -6 wd   -4 rnd 0.71-4.90
+/tmp/claude-0/-home-claude/a70dd1f2-1b74-5de3-a201-59cd75c0f86b/scratchpad/of/of147b.py:97: RuntimeWarning: divide by zero encountered in divide
+  dv = (np.abs(cd / cds) >= z) & (np.sign(pm) == -np.sign(cd)) & (np.abs(pm / pms) >= 1)
+/tmp/claude-0/-home-claude/a70dd1f2-1b74-5de3-a201-59cd75c0f86b/scratchpad/of/of147b.py:97: RuntimeWarning: invalid value encountered in divide
+  dv = (np.abs(cd / cds) >= z) & (np.sign(pm) == -np.sign(cd)) & (np.abs(pm / pms) >= 1)
+D cvd3 z>=1.5 vs price (sign=cvd)  follow H 1 | last   21 PF 0.75 $     -2 DD    -7 wd   -3 rnd 0.12-0.87 | prev   28 PF 0.36 $    -10 DD   -11 wd   -2 rnd 0.22-1.78
+D cvd3 z>=1.5 vs price (sign=cvd)  fade   H 1 | last   21 PF 0.87 $     -1 DD    -3 wd   -2 rnd 0.40-0.95 | prev   28 PF 1.51 $     +4 DD    -2 wd   -1 rnd 0.37-1.16
+D cvd3 z>=1.5 vs price (sign=cvd)  follow H 3 | last   21 PF 0.57 $     -7 DD   -11 wd   -7 rnd 0.23-1.44 | prev   26 PF 0.85 $     -3 DD    -7 wd   -3 rnd 0.56-1.35
+D cvd3 z>=1.5 vs price (sign=cvd)  fade   H 3 | last   21 PF 1.31 $     +3 DD    -7 wd   -4 rnd 0.14-2.71 | prev   26 PF 0.86 $     -3 DD    -8 wd   -4 rnd 0.62-1.28
+D cvd3 z>=1.5 vs price (sign=cvd)  follow H 6 | last   21 PF 0.99 $     -0 DD   -13 wd   -6 rnd 0.64-3.92 | prev   25 PF 1.21 $     +4 DD    -7 wd   -4 rnd 0.54-1.73
+D cvd3 z>=1.5 vs price (sign=cvd)  fade   H 6 | last   21 PF 0.85 $     -3 DD   -11 wd   -6 rnd 0.26-1.90 | prev   25 PF 0.66 $    -10 DD   -11 wd   -4 rnd 0.68-1.54
+D cvd3 z>=1.5 vs price (sign=cvd)  follow H12 | last   20 PF 1.84 $    +12 DD    -6 wd   -4 rnd 0.33-1.78 | prev   25 PF 0.54 $    -14 DD   -16 wd   -6 rnd 0.60-1.50
+D cvd3 z>=1.5 vs price (sign=cvd)  fade   H12 | last   20 PF 0.44 $    -15 DD   -16 wd   -7 rnd 0.63-1.90 | prev   25 PF 1.48 $     +9 DD    -5 wd   -3 rnd 0.54-1.66
+D cvd3 z>=2.5 vs price (sign=cvd)  follow H 1 | last    9 PF 0.76 $     -1 DD    -3 wd   -2 rnd 0.51-1.18 | prev    4 PF 0.89 $     -0 DD    -1 wd   -1 rnd 0.22-22.99
+D cvd3 z>=2.5 vs price (sign=cvd)  fade   H 1 | last    9 PF 0.90 $     -0 DD    -2 wd   -2 rnd 0.12-9.75 | prev    4 PF 0.49 $     -1 DD    -0 wd   -1 rnd 0.00-2.64
+D cvd3 z>=2.5 vs price (sign=cvd)  follow H 3 | last    9 PF 0.24 $     -9 DD   -10 wd   -7 rnd 0.36-2.26 | prev    4 PF 10.45 $     +2 DD    -0 wd   -0 rnd 0.00-10.45
+D cvd3 z>=2.5 vs price (sign=cvd)  fade   H 3 | last    9 PF 3.10 $     +8 DD    -3 wd   -1 rnd 0.10-1.77 | prev    4 PF 0.00 $     -3 DD    -2 wd   -2 rnd 0.98-442.69
+D cvd3 z>=2.5 vs price (sign=cvd)  follow H 6 | last    9 PF 0.78 $     -2 DD    -5 wd   -4 rnd 0.19-2.99 | prev    4 PF 99.00 $     +8 DD    +0 wd   +1 rnd 0.35-7.28
+D cvd3 z>=2.5 vs price (sign=cvd)  fade   H 6 | last    9 PF 1.09 $     +1 DD    -5 wd   -3 rnd 0.29-3.14 | prev    4 PF 0.00 $     -9 DD    -7 wd   -4 rnd 0.26-3.03
+D cvd3 z>=2.5 vs price (sign=cvd)  follow H12 | last    9 PF 3.95 $    +13 DD    -4 wd   -4 rnd 0.28-3.02 | prev    4 PF 1.21 $     +1 DD    -1 wd   -1 rnd 0.18-99.00
+D cvd3 z>=2.5 vs price (sign=cvd)  fade   H12 | last    9 PF 0.21 $    -14 DD   -17 wd   -5 rnd 0.42-3.95 | prev    4 PF 0.60 $     -1 DD    -3 wd   -2 rnd 0.18-2.77
+D cvd6 z>=1.5 vs price (sign=cvd)  follow H 1 | last   15 PF 0.69 $     -3 DD    -9 wd   -6 rnd 0.47-2.40 | prev   20 PF 0.38 $     -8 DD    -8 wd   -2 rnd 0.37-1.15
+D cvd6 z>=1.5 vs price (sign=cvd)  fade   H 1 | last   15 PF 1.09 $     +1 DD    -7 wd   -5 rnd 0.25-1.60 | prev   20 PF 1.62 $     +4 DD    -4 wd   -3 rnd 0.49-1.58
+D cvd6 z>=1.5 vs price (sign=cvd)  follow H 3 | last   12 PF 0.23 $     -8 DD    -9 wd   -5 rnd 0.06-6.08 | prev   17 PF 0.89 $     -1 DD    -6 wd   -2 rnd 0.30-1.51
+D cvd6 z>=1.5 vs price (sign=cvd)  fade   H 3 | last   12 PF 2.84 $     +6 DD    -1 wd   -1 rnd 0.20-1.36 | prev   17 PF 0.81 $     -2 DD    -4 wd   -3 rnd 0.62-3.01
+D cvd6 z>=1.5 vs price (sign=cvd)  follow H 6 | last   12 PF 0.41 $    -11 DD   -11 wd   -8 rnd 0.06-4.40 | prev   16 PF 0.86 $     -2 DD    -9 wd   -4 rnd 0.72-1.69
+D cvd6 z>=1.5 vs price (sign=cvd)  fade   H 6 | last   12 PF 2.07 $     +9 DD    -5 wd   -4 rnd 0.44-2.84 | prev   16 PF 0.94 $     -1 DD    -4 wd   -4 rnd 0.41-1.97
+D cvd6 z>=1.5 vs price (sign=cvd)  follow H12 | last   12 PF 4.58 $    +13 DD    -1 wd   -1 rnd 0.57-2.07 | prev   16 PF 0.47 $    -14 DD   -20 wd   -6 rnd 1.01-3.46
+D cvd6 z>=1.5 vs price (sign=cvd)  fade   H12 | last   12 PF 0.17 $    -15 DD   -15 wd   -6 rnd 0.23-1.38 | prev   16 PF 1.82 $    +11 DD    -5 wd   -5 rnd 0.35-1.36
+D cvd6 z>=2.5 vs price (sign=cvd)  follow H 1 | last    6 PF 0.00 $     -6 DD    -6 wd   -2 rnd 0.99-4.64 | prev    5 PF 0.80 $     -1 DD    -1 wd   -1 rnd 0.24-2.75
+D cvd6 z>=2.5 vs price (sign=cvd)  fade   H 1 | last    6 PF 40.27 $     +5 DD    +0 wd   -0 rnd 0.31-1.78 | prev    5 PF 0.81 $     -1 DD    -3 wd   -1 rnd 0.00-2.16
+D cvd6 z>=2.5 vs price (sign=cvd)  follow H 3 | last    5 PF 0.15 $     -6 DD    -7 wd   -5 rnd 0.06-5.35 | prev    5 PF 1.04 $     +0 DD    -2 wd   -1 rnd 0.30-2.06
+D cvd6 z>=2.5 vs price (sign=cvd)  fade   H 3 | last    5 PF 5.35 $     +5 DD    +0 wd   -1 rnd 0.23-1.41 | prev    5 PF 0.65 $     -1 DD    -2 wd   -2 rnd 0.30-3.91
+D cvd6 z>=2.5 vs price (sign=cvd)  follow H 6 | last    5 PF 0.37 $     -7 DD    -8 wd   -8 rnd 0.00-4.78 | prev    5 PF 0.15 $     -7 DD    -6 wd   -5 rnd 0.26-99.00
+D cvd6 z>=2.5 vs price (sign=cvd)  fade   H 6 | last    5 PF 2.29 $     +6 DD    -3 wd   -2 rnd 0.56-13.56 | prev    5 PF 5.18 $     +6 DD    -1 wd   -1 rnd 0.31-1.34
+D cvd6 z>=2.5 vs price (sign=cvd)  follow H12 | last    5 PF 2.68 $     +4 DD    -1 wd   -1 rnd 0.14-2.31 | prev    5 PF 0.31 $     -7 DD    -5 wd   -5 rnd 0.62-2.88
+D cvd6 z>=2.5 vs price (sign=cvd)  fade   H12 | last    5 PF 0.29 $     -5 DD    -5 wd   -3 rnd 0.88-2.31 | prev    5 PF 2.64 $     +6 DD    -3 wd   -3 rnd 0.31-1.33
+D cvd12 z>=1.5 vs price (sign=cvd) follow H 1 | last   12 PF 1.16 $     +1 DD    -4 wd   -1 rnd 0.18-0.45 | prev   28 PF 0.67 $     -4 DD    -6 wd   -3 rnd 0.43-2.28
+D cvd12 z>=1.5 vs price (sign=cvd) fade   H 1 | last   12 PF 0.50 $     -3 DD    -3 wd   -3 rnd 0.26-4.14 | prev   28 PF 0.88 $     -1 DD    -5 wd   -1 rnd 0.46-2.06
+D cvd12 z>=1.5 vs price (sign=cvd) follow H 3 | last   10 PF 1.01 $     +0 DD   -10 wd   -4 rnd 0.18-4.56 | prev   24 PF 1.00 $     -0 DD    -6 wd   -4 rnd 0.65-1.21
+D cvd12 z>=1.5 vs price (sign=cvd) fade   H 3 | last   10 PF 0.83 $     -2 DD    -8 wd   -8 rnd 0.42-3.24 | prev   24 PF 0.75 $     -5 DD    -8 wd   -3 rnd 0.40-1.15
+D cvd12 z>=1.5 vs price (sign=cvd) follow H 6 | last   10 PF 0.51 $    -15 DD   -30 wd  -17 rnd 0.06-4.18 | prev   20 PF 0.67 $     -7 DD   -10 wd   -7 rnd 0.70-3.16
+D cvd12 z>=1.5 vs price (sign=cvd) fade   H 6 | last   10 PF 1.79 $    +13 DD   -13 wd  -10 rnd 0.72-3.52 | prev   20 PF 1.18 $     +3 DD    -8 wd   -3 rnd 0.12-3.17
+D cvd12 z>=1.5 vs price (sign=cvd) follow H12 | last    9 PF 0.27 $    -25 DD   -33 wd  -16 rnd 0.52-1.60 | prev   18 PF 0.29 $    -20 DD   -21 wd   -7 rnd 0.31-1.73
+D cvd12 z>=1.5 vs price (sign=cvd) fade   H12 | last    9 PF 3.36 $    +23 DD    -7 wd   -3 rnd 0.12-9.45 | prev   18 PF 2.73 $    +17 DD    -4 wd   -4 rnd 0.33-1.48
+D cvd12 z>=2.5 vs price (sign=cvd) follow H 1 | last    2 PF 99.00 $     +8 DD    +0 wd   +3 rnd 0.00-99.00 | prev    8 PF 0.46 $     -3 DD    -4 wd   -2 rnd 0.44-2.06
+D cvd12 z>=2.5 vs price (sign=cvd) fade   H 1 | last    2 PF 0.00 $     -8 DD    -5 wd   -5 rnd 0.00-99.00 | prev    8 PF 1.19 $     +1 DD    -2 wd   -1 rnd 0.37-1.45
+D cvd12 z>=2.5 vs price (sign=cvd) follow H 3 | last    2 PF 99.00 $    +16 DD    +0 wd   +5 rnd 0.46-99.00 | prev    5 PF 3.58 $     +2 DD    -1 wd   -0 rnd 0.22-99.00
+D cvd12 z>=2.5 vs price (sign=cvd) fade   H 3 | last    2 PF 0.00 $    -16 DD   -11 wd  -11 rnd 0.00-99.00 | prev    5 PF 0.12 $     -3 DD    -3 wd   -2 rnd 0.94-99.00
+D cvd12 z>=2.5 vs price (sign=cvd) follow H 6 | last    2 PF 99.00 $    +10 DD    +0 wd   +1 rnd 0.10-99.00 | prev    4 PF 0.05 $     -7 DD    -7 wd   -5 rnd 0.00-99.00
+D cvd12 z>=2.5 vs price (sign=cvd) fade   H 6 | last    2 PF 0.00 $    -10 DD    -9 wd   -9 rnd 0.00-99.00 | prev    4 PF 11.01 $     +6 DD    +0 wd   -1 rnd 0.38-11.01
+D cvd12 z>=2.5 vs price (sign=cvd) follow H12 | last    2 PF 99.00 $    +11 DD    +0 wd   +3 rnd 0.36-2.55 | prev    3 PF 0.00 $     -8 DD    -7 wd   -4 rnd 0.00-99.00
+D cvd12 z>=2.5 vs price (sign=cvd) fade   H12 | last    2 PF 0.00 $    -11 DD    -3 wd   -8 rnd 0.00-99.00 | prev    3 PF 99.00 $     +7 DD    +0 wd   +1 rnd 0.00-6.19
