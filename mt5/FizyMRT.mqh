@@ -37,6 +37,7 @@ input bool   InpMrtOn       = true;
 input string InpMrtSymbol   = "XAUUSD";
 input long   InpMrtMagic    = 260340;
 input double InpMrtEntry    = 3.0;      // first stop order this many $ beyond the ask / bid
+input bool   InpMrtBoth     = true;     // v2.57: no D1 side, BUY STOP ask + entry AND SELL STOP bid - entry, the first fill deletes the other (round 146g)
 input double InpMrtLimit    = 1.0;      // v2.55: also a limit this many $ the other way, OCO with the stop (0 = off)
 input double InpMrtStep     = 3.0;      // add a position every $ against the last entry
 input double InpMrtTarget   = 3.0;      // basket TP: whole basket +$ (swap included)
@@ -154,11 +155,12 @@ void MrtInit()
    int show = InpMrtMax <= 0 ? 5 : InpMrtMax;
    for(int k = 0; k < show; k++) lots += (k > 0 ? "/" : "") + DoubleToString(MrtLot(k), 2);
    if(InpMrtMax <= 0) lots += "/... +0.01 each";
-   MrtEvent(StringFormat("MART ONLINE | %s: against yesterday's D1 colour, a stop $%.2f away%s from %02d:%02d server opens a basket; "
+   MrtEvent(StringFormat("MART ONLINE | %s: %s, a stop $%.2f away%s from %02d:%02d server opens a basket; "
                          "every $%.2f against the last entry adds the next lot (%s, max %s), the TP of all positions moves to the "
                          "whole basket +$%.2f; NO stop loss, %s; new baskets stop once the day's closed profit reaches $%.0f | "
                          "open basket: %d position(s), %.2f lot, floating $%.2f",
-                         mr_sym, InpMrtEntry, InpMrtLimit > 0 ? StringFormat(" + a limit $%.2f the other way (OCO)", InpMrtLimit) : "", InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, MrtMaxTxt(), InpMrtTarget,
+                         mr_sym, InpMrtBoth ? "both sides (BUY STOP above + SELL STOP below, no D1 filter)" : "against yesterday's D1 colour",
+                         InpMrtEntry, InpMrtBoth ? " each way" : InpMrtLimit > 0 ? StringFormat(" + a limit $%.2f the other way (OCO)", InpMrtLimit) : "", InpMrtFrom / 60, InpMrtFrom % 60, InpMrtStep, lots, MrtMaxTxt(), InpMrtTarget,
                          InpMrtClose2330 ? "closed at 23:30 server" : "held overnight", InpDayTarget, n, vol, pnl));
 }
 
@@ -200,6 +202,46 @@ bool MrtCloseAll(ulong &tk[], string why)
       }
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    return ok;
+}
+
+// v2.57 (round 146g): flat -> BUY STOP at the ask + InpMrtEntry and SELL STOP at the bid - InpMrtEntry; the first fill opens
+// the basket (MrtOnTimer deletes the other order when the basket appears) and decides its direction
+void MrtBothSides(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, int dg)
+{
+   bool window = s.day_of_week >= 1 && s.day_of_week <= 5 && minute >= InpMrtFrom && minute < InpMrtTo;
+   datetime d0 = now - now % 86400;
+   int hb = 0, hs = 0;
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpMrtMagic) continue;
+      long ot = OrderGetInteger(ORDER_TYPE);
+      bool stale = (datetime)OrderGetInteger(ORDER_TIME_SETUP) < d0 || (ot != ORDER_TYPE_BUY_STOP && ot != ORDER_TYPE_SELL_STOP);
+      if(stale || !window) { trade.SetExpertMagicNumber(InpMrtMagic); trade.OrderDelete(t); trade.SetExpertMagicNumber(InpMagic); continue; }
+      if(ot == ORDER_TYPE_BUY_STOP) hb++; else hs++;
+   }
+   if((hb > 0 || hs > 0) && DayPaused()) { MrtDeleteOrders("daily target reached"); return; }
+   if((hb > 0 && hs > 0) || !window || !live || DayPaused()) return;
+   double lot = MrtLot(0);
+   datetime exp = d0 + InpMrtTo * 60 + 300;
+   string txt = "";
+   trade.SetExpertMagicNumber(InpMrtMagic); trade.SetTypeFillingBySymbol(mr_sym);
+   if(hb == 0)
+   {
+      double px = NormalizeDouble(tk.ask + InpMrtEntry, dg);
+      if(trade.BuyStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")) txt += "BUY STOP " + PriceStr(mr_sym, px);
+      else MrtEvent(StringFormat("ERROR | MART buy stop %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   }
+   if(hs == 0)
+   {
+      double px = NormalizeDouble(tk.bid - InpMrtEntry, dg);
+      if(trade.SellStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")) txt += (txt != "" ? " + " : "") + "SELL STOP " + PriceStr(mr_sym, px);
+      else MrtEvent(StringFormat("ERROR | MART sell stop %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
+   }
+   trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
+   if(txt == "") return;
+   MrtEvent(StringFormat("MART ORDER PLACED %s | both sides, no D1 filter: %s ($%.2f away), lot %.2f, the first fill deletes the other, no SL",
+                         mr_sym, txt, InpMrtEntry, lot));
 }
 
 void MrtOnTimer()
@@ -279,6 +321,8 @@ void MrtOnTimer()
       return;
    }
 
+   // v2.57: two-sided OCO, no D1 filter
+   if(InpMrtBoth) { MrtBothSides(s, minute, now, live, tk, dg); return; }
    // flat: one stop order on the allowed side, 01:30-23:00 server on weekdays
    int side = MrtSide();
    bool window = s.day_of_week >= 1 && s.day_of_week <= 5 && minute >= InpMrtFrom && minute < InpMrtTo;
