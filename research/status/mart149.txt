@@ -35,3 +35,6 @@ RANDOM side, same broker-CVD|z|>=1.5 gate, seed 10 | last 2076 baskets blown 1 f
 70% SELL random side per DAY, CVD gate 1.5, seed 5 | last 1094 baskets blown 1 float -1283 | prev 1098 blown 0 float -2088 | $1000 starts blown 22/63
 70% SELL random side per DAY, CVD gate 1.5, seed 6 | last 1055 baskets blown 2 float -1274 | prev 1091 blown 0 float -599 | $1000 starts blown 37/63
 70% SELL random side per DAY, CVD gate 1.5, seed 7 | last 1088 baskets blown 1 float -1283 | prev 1075 blown 0 float -769 | $1000 starts blown 7/63
+70% SELL random side per DAY, CVD gate 1.5, seed 8 | last 1031 baskets blown 1 float -1251 | prev 1138 blown 0 float -249 | $1000 starts blown 7/63
+70% SELL random side per DAY, CVD gate 1.5, seed 9 | last 1077 baskets blown 1 float -1688 | prev 1106 blown 0 float -2088 | $1000 starts blown 37/63
+70% SELL random side per DAY, CVD gate 1.5, seed 10 | last 1088 baskets blown 1 float -1688 | prev 1117 blown 0 float -769 | $1000 starts blown 37/63
