@@ -1,0 +1,27 @@
+M1 last 1 fade         | sell share 49% | baskets last 2404 prev 2992 | starts blown 8/63
+M1 last 3 fade         | sell share 49% | baskets last 2440 prev 2823 | starts blown 11/63
+M5 last 6 fade         | sell share 48% | baskets last 2128 prev 2349 | starts blown 11/63
+M30 last 3 fade        | sell share 47% | baskets last 1556 prev 1581 | starts blown 12/63
+H1 last 3 fade         | sell share 47% | baskets last 1284 prev 1350 | starts blown 15/63
+D1 last 6 fade         | sell share 36% | baskets last 452 prev 298 | starts blown 4/63
+RANDOM M1 seed 0       | sell share 50% | baskets last 4429 prev 5082 | starts blown 37/63
+RANDOM M1 seed 1       | sell share 50% | baskets last 4499 prev 5178 | starts blown 25/63
+RANDOM M1 seed 2       | sell share 50% | baskets last 4414 prev 5074 | starts blown 63/63
+RANDOM M1 seed 3       | sell share 50% | baskets last 4412 prev 5099 | starts blown 57/63
+RANDOM M1 seed 4       | sell share 50% | baskets last 4337 prev 5143 | starts blown 60/63
+RANDOM M5 seed 0       | sell share 50% | baskets last 3882 prev 4352 | starts blown 43/63
+RANDOM M5 seed 1       | sell share 50% | baskets last 3872 prev 4274 | starts blown 27/63
+RANDOM M5 seed 2       | sell share 50% | baskets last 3751 prev 4410 | starts blown 44/63
+RANDOM M5 seed 3       | sell share 50% | baskets last 3931 prev 4358 | starts blown 43/63
+RANDOM M5 seed 4       | sell share 50% | baskets last 3832 prev 4302 | starts blown 21/63
+RANDOM M30 seed 0      | sell share 51% | baskets last 2520 prev 2716 | starts blown 51/63
+RANDOM M30 seed 1      | sell share 50% | baskets last 2543 prev 2669 | starts blown 39/63
+RANDOM M30 seed 2      | sell share 50% | baskets last 2484 prev 2705 | starts blown 36/63
+RANDOM M30 seed 3      | sell share 51% | baskets last 2417 prev 2688 | starts blown 53/63
+RANDOM M30 seed 4      | sell share 50% | baskets last 2642 prev 2786 | starts blown 53/63
+RANDOM D1 seed 0       | sell share 43% | baskets last 724 prev 423 | starts blown 58/63
+RANDOM D1 seed 1       | sell share 47% | baskets last 418 prev 555 | starts blown 3/63
+RANDOM D1 seed 2       | sell share 49% | baskets last 537 prev 544 | starts blown 46/63
+RANDOM D1 seed 3       | sell share 47% | baskets last 594 prev 629 | starts blown 55/63
+RANDOM D1 seed 4       | sell share 52% | baskets last 674 prev 605 | starts blown 3/63
+always SELL            | sell share 100% | baskets last 166 prev 157 | starts blown 5/63
