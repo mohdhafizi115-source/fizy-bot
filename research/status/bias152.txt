@@ -1,0 +1,23 @@
+days 142 (2026-05-01 .. 2026-11-16); hold to 23:30 server, 0.01 lot, spread $0.26
+
+rule                                       | last 3 months: days  hit   PF     net   worst  beats-random | prev 3 months: days  hit   PF     net   worst  beats-random
+AGAINST yesterday colour (live D1 filter)  |   66 58%  2.23   +1231   -140   99% |   65 62%  1.36    +490   -180   83%
+WITH yesterday colour                      |   66 42%  0.44   -1266   -184   1% |   65 38%  0.72    -524   -169   17%
+AGAINST yesterday, body <= $60             |   46 61%  2.18    +899   -140   98% |   46 65%  1.81    +651   -167   95%  <== holds
+AGAINST yesterday, body > $60              |   20 50%  2.43    +332    -51   89% |   19 53%  0.71    -161   -180   33%
+AGAINST 2 same-colour days                 |   23 65%  2.13    +334   -108   93% |   27 74%  3.10    +637    -75   99%  <== holds
+AGAINST last week colour                   |   66 50%  0.97     -46   -184   48% |   65 57%  0.95     -79   -180   42%
+WITH D1 EMA20 slope                        |   66 48%  1.05     +72   -152   57% |   65 46%  1.33    +447   -169   82%
+AGAINST D1 EMA20 slope                     |   66 52%  0.94    -106   -184   44% |   65 54%  0.74    -480   -180   17%
+WITH overnight gap                         |   66 53%  1.11    +168   -152   66% |   65 55%  1.43    +562   -169   88%
+AGAINST overnight gap                      |   66 47%  0.88    -202   -184   34% |   65 45%  0.69    -596   -180   15%
+open above yesterday mid -> buy            |   66 45%  0.62    -758   -184   8% |   65 45%  0.85    -260   -169   34%
+open above yesterday mid -> sell           |   66 55%  1.58    +724   -151   91% |   65 55%  1.15    +226   -180   72%
+WITH 01:30-04:00 move (from 04:00)         |   66 53%  1.37    +462   -127   85% |   65 48%  1.18    +252   -104   71%
+AGAINST 01:30-04:00 move (from 04:00)      |   66 47%  0.71    -496   -182   16% |   65 49%  0.83    -286   -165   31%
+WITH Asia 01:30-09:00 (from 09:00)         |   66 52%  1.14    +170   -185   67% |   65 62%  1.45    +461   -111   88%
+AGAINST Asia 01:30-09:00 (from 09:00)      |   66 48%  0.85    -204   -118   34% |   65 37%  0.67    -495   -129   11%
+WITH London 09:00-15:30 (from 15:30)       |   66 55%  1.18    +157   -146   71% |   65 52%  0.72    -311   -145   20%
+AGAINST London 09:00-15:30 (from 15:30)    |   66 45%  0.82    -192   -152   31% |   65 48%  1.35    +277    -78   83%
+always BUY                                 |   66 42%  0.67    -638   -152   11% |   65 52%  0.86    -241   -180   34%
+always SELL                                |   66 58%  1.46    +604   -184   90% |   65 48%  1.14    +207   -169   66%
