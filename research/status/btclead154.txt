@@ -1,0 +1,37 @@
+(1) COMEX GC hourly, BTC 09:00-15:30 server -> gold 15:30-23:30, follow, gross, by quarter
+  all 519 days hit 49% PF 1.07 net +490
+  2024Q4  27 days hit 37% PF 0.66    -83
+  2025Q1  64 days hit 44% PF 0.87    -49
+  2025Q2  65 days hit 45% PF 0.59   -357
+  2025Q3  66 days hit 48% PF 0.78   -159
+  2025Q4  65 days hit 54% PF 1.26   +250
+  2026Q1  64 days hit 41% PF 0.68   -687
+  2026Q2  65 days hit 58% PF 2.51   +911
+  2026Q3  66 days hit 53% PF 1.68   +460
+  2026Q4  37 days hit 59% PF 1.62   +205
+  random-day control PF median 1.01, 95th 1.24
+  when BTC agrees / disagrees with gold's own 09:00-15:30 move:
+    agree     268 days hit 51% PF 1.26 +867
+    disagree  251 days hit 47% PF 0.89 -377
+
+(2) neighbouring windows on COMEX GC (2 years), follow, gross PF:
+  BTC 08:00-15:30 -> gold 15:30-23:30: 519 days PF 1.08, halves 0.83 / 1.26
+  BTC 10:00-15:30 -> gold 15:30-23:30: 519 days PF 0.96, halves 0.81 / 1.06
+  BTC 12:00-15:30 -> gold 15:30-23:30: 519 days PF 0.85, halves 0.79 / 0.89
+  BTC 09:00-14:00 -> gold 14:00-23:30: 519 days PF 1.03, halves 0.86 / 1.14
+  BTC 09:00-17:00 -> gold 17:00-23:30: 520 days PF 0.86, halves 0.74 / 0.92
+  BTC 09:00-15:30 -> gold 15:30-20:00: 519 days PF 1.20, halves 0.91 / 1.44
+  BTC 09:00-15:30 -> gold 16:00-23:30: 519 days PF 1.04, halves 0.77 / 1.22
+  BTC 01:30-09:00 -> gold 09:00-23:30: 520 days PF 1.16, halves 0.92 / 1.32
+  BTC 01:30-15:30 -> gold 15:30-23:30: 520 days PF 0.98, halves 1.09 / 0.92
+  BTC 15:30-20:00 -> gold 20:00-23:30: 520 days PF 0.90, halves 1.23 / 0.79
+
+(3) broker gold (spread in), BTC 09:00-15:30 -> 15:30-23:30, by month
+  2026-05  21 days hit 57% PF 3.29   +302
+  2026-06  22 days hit 64% PF 4.51   +521
+  2026-07  23 days hit 61% PF 1.63   +120
+  2026-08  21 days hit 57% PF 2.26   +312
+  2026-09  22 days hit 55% PF 0.93    -22
+  2026-10  22 days hit 50% PF 1.35    +74
+  2026-11  11 days hit 55% PF 1.15    +19
+  all 142 days PF 1.96 +1326, worst day -81

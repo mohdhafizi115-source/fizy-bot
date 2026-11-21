@@ -1,0 +1,50 @@
+broker gold days 142; last 3 months 66 / previous 65 days; 0.01 lot, spread $0.26
+
+A) tool signal -> broker gold, FOLLOW = gold the tool's way, FADE = the other way  |  last 3 months  |  previous 3 months
+GVZ     yday  FOLLOW |  66 hit 62% PF 2.25  +1239 rnd 99% |  65 hit 58% PF 1.35   +479 rnd 84%
+GVZ     yday  FADE   |  66 hit 38% PF 0.43  -1273 rnd 1% |  65 hit 42% PF 0.72   -512 rnd 17%
+IRX     yday  FOLLOW |  62 hit 52% PF 1.08   +114 rnd 60% |  61 hit 49% PF 1.06    +89 rnd 58%
+IRX     yday  FADE   |  62 hit 48% PF 0.91   -147 rnd 40% |  61 hit 51% PF 0.92   -121 rnd 41%
+FVX     yday  FOLLOW |  65 hit 52% PF 1.20   +288 rnd 71% |  65 hit 46% PF 0.65   -666 rnd 9%
+FVX     yday  FADE   |  65 hit 48% PF 0.82   -322 rnd 28% |  65 hit 54% PF 1.49   +632 rnd 89%
+CNH     yday  FOLLOW |  66 hit 55% PF 0.68   -620 rnd 12% |  64 hit 41% PF 0.64   -706 rnd 11%
+CNH     yday  FADE   |  66 hit 45% PF 1.44   +585 rnd 87% |  64 hit 59% PF 1.54   +673 rnd 93%
+CNH     asia  FOLLOW |  66 hit 45% PF 0.93    -97 rnd 40% |  65 hit 60% PF 1.24   +268 rnd 75%
+CNH     asia  FADE   |  66 hit 55% PF 1.05    +62 rnd 59% |  65 hit 38% PF 0.79   -301 rnd 23%
+CNH     lon   FOLLOW |  66 hit 55% PF 1.11   +102 rnd 63% |  65 hit 52% PF 1.51   +384 rnd 88%
+CNH     lon   FADE   |  66 hit 45% PF 0.87   -136 rnd 33% |  65 hit 48% PF 0.64   -418 rnd 14%
+N225    yday  FOLLOW |  66 hit 42% PF 0.48  -1131 rnd 2% |  65 hit 42% PF 0.73   -492 rnd 19%
+N225    yday  FADE   |  66 hit 58% PF 2.03  +1097 rnd 99% |  65 hit 58% PF 1.34   +458 rnd 83%
+N225    asia  FOLLOW |  61 hit 48% PF 0.74   -367 rnd 20% |  63 hit 48% PF 0.92   -103 rnd 40%
+N225    asia  FADE   |  61 hit 52% PF 1.32   +336 rnd 79% |  63 hit 52% PF 1.06    +70 rnd 57%
+HSI     yday  FOLLOW |  66 hit 48% PF 1.79   +916 rnd 96% |  65 hit 54% PF 1.16   +237 rnd 67%
+HSI     yday  FADE   |  66 hit 52% PF 0.55   -950 rnd 4% |  65 hit 46% PF 0.84   -271 rnd 30%
+HSI     asia  FOLLOW |  64 hit 47% PF 0.66   -522 rnd 11% |  62 hit 47% PF 1.07    +87 rnd 57%
+HSI     asia  FADE   |  64 hit 53% PF 1.48   +489 rnd 89% |  62 hit 52% PF 0.91   -120 rnd 38%
+HSI     lon   FOLLOW |  48 hit 50% PF 1.27   +177 rnd 75% |  61 hit 49% PF 1.30   +241 rnd 79%
+HSI     lon   FADE   |  48 hit 50% PF 0.76   -202 rnd 26% |  61 hit 51% PF 0.74   -273 rnd 23%
+BTC     yday  FOLLOW |  66 hit 47% PF 0.82   -328 rnd 27% |  65 hit 49% PF 1.54   +675 rnd 92%
+BTC     yday  FADE   |  66 hit 53% PF 1.20   +293 rnd 71% |  65 hit 51% PF 0.64   -709 rnd 9%
+BTC     asia  FOLLOW |  66 hit 47% PF 0.80   -278 rnd 23% |  65 hit 62% PF 1.93   +800 rnd 98%
+BTC     asia  FADE   |  66 hit 53% PF 1.21   +244 rnd 72% |  65 hit 37% PF 0.50   -833 rnd 2%
+BTC     lon   FOLLOW |  66 hit 61% PF 2.45   +819 rnd 100% |  65 hit 60% PF 1.60   +430 rnd 92%  <== holds
+BTC     lon   FADE   |  66 hit 39% PF 0.39   -854 rnd 1% |  65 hit 40% PF 0.60   -464 rnd 11%
+AUDUSD  yday  FOLLOW |  66 hit 48% PF 1.00     -8 rnd 52% |  65 hit 38% PF 0.84   -270 rnd 31%
+AUDUSD  yday  FADE   |  66 hit 52% PF 0.98    -26 rnd 49% |  65 hit 62% PF 1.16   +236 rnd 70%
+AUDUSD  asia  FOLLOW |  64 hit 47% PF 0.94    -76 rnd 39% |  65 hit 54% PF 1.28   +309 rnd 78%
+AUDUSD  asia  FADE   |  64 hit 53% PF 1.03    +42 rnd 55% |  65 hit 45% PF 0.76   -343 rnd 17%
+AUDUSD  lon   FOLLOW |  65 hit 52% PF 1.47   +367 rnd 88% |  65 hit 57% PF 1.32   +256 rnd 79%
+AUDUSD  lon   FADE   |  65 hit 48% PF 0.66   -400 rnd 12% |  65 hit 43% PF 0.73   -290 rnd 19%
+
+cells 34, hold in both windows 1
+
+B) COMEX gold (GC=F) next day close-to-close, by year: FOLLOW the tool's previous day (gold-way sign), PF per year 2022 / 2023 / 2024 / 2025 / 2026
+GVZ     days 1253 PF all 0.96 | 1.02 / 1.06 / 0.89 / 0.92 / 0.98
+IRX     days 1253 PF all 1.05 | 1.38 / 1.16 / 1.15 / 0.80 / 1.08
+FVX     days 1253 PF all 0.88 | 0.99 / 0.90 / 0.98 / 0.84 / 0.86
+CNH     days  703 PF all 1.08 | 0.00 / 0.00 / 0.91 / 0.88 / 1.29
+N225    days 1176 PF all 0.91 | 1.22 / 1.39 / 1.07 / 0.87 / 0.74
+HSI     days 1195 PF all 1.12 | 1.13 / 1.46 / 1.30 / 0.94 / 1.11
+BTC     days 1257 PF all 1.03 | 1.09 / 0.90 / 0.82 / 0.82 / 1.29
+AUDUSD  days 1255 PF all 0.90 | 1.03 / 0.80 / 1.16 / 0.91 / 0.81
+(ref) AGAINST gold's own previous day  PF 0.98 / 0.96 / 1.02 / 1.09 / 1.30

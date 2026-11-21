@@ -1,0 +1,16 @@
+Walk-forward, all tools together -> COMEX gold next day (gross, close-to-close)
+test year | days  hit   PF   | shuffled-label model PF (20 draws) median / 95th | always long PF
+     2023 |  249 60%  1.58 | 1.00 / 1.26 | 1.17
+     2024 |  252 54%  1.40 | 1.05 / 1.37 | 1.31
+     2025 |  250 56%  1.17 | 1.06 / 1.36 | 1.48
+     2026 |  220 56%  1.56 | 0.87 / 1.07 | 0.86
+
+full-sample weights (largest 8, for reading only):
+  g1      -0.865
+  GLD     +0.727
+  g5      +0.178
+  TIP     +0.152
+  EURUSD  +0.149
+  tom     +0.131
+  DXY     +0.126
+  wd0     +0.117

@@ -1,0 +1,2 @@
+next settlement-to-settlement (Yahoo daily, what the model used): 586 days, corr +0.188, follow PF 1.56, hit 56%
+next 16:00 ET -> 16:00 ET (tradable after GLD closes): 586 days, corr -0.004, follow PF 1.04, hit 50%

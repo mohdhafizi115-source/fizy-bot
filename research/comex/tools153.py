@@ -5,10 +5,13 @@
 #    500 random-side draws.  B) the daily rule on COMEX gold (GC=F) close-to-close over 5 years, year by year.
 import numpy as np, pandas as pd, sys
 SC = sys.argv[1] if len(sys.argv) > 1 else '/tmp/claude-0/-home-claude/a70dd1f2-1b74-5de3-a201-59cd75c0f86b/scratchpad/'
-TOOLS = ['DXY', 'US10Y', 'TIP', 'GLD', 'GDX', 'SILVER', 'VIX', 'SPX', 'ES', 'EURUSD', 'USDJPY', 'COPPER', 'OIL']
+import os
+TOOLS = os.environ.get('TOOLS', 'DXY,US10Y,TIP,GLD,GDX,SILVER,VIX,SPX,ES,EURUSD,USDJPY,COPPER,OIL').split(',')
 rng = np.random.default_rng(2)
 def daily(k):
     d = pd.read_csv(f'data/tools/{k}_1d.csv'); d.index = pd.to_datetime(d.iloc[:, 0]).dt.tz_localize(None).dt.normalize()
+    if len(d) < 100:   # e.g. CNH: build daily closes from the hourly series (UTC day)
+        h = hourly(k); return h.groupby(h.index.normalize()).last()
     return d.Close.astype(float).dropna()
 def hourly(k):
     d = pd.read_csv(f'data/tools/{k}_1h.csv'); d.index = pd.to_datetime(d.iloc[:, 0], utc=True).dt.tz_localize(None)
@@ -45,7 +48,7 @@ for k in TOOLS:
             out.append(np.sign(s.iloc[-1] - s.iloc[0]) if len(s) >= 2 else 0)
         return pd.Series(out, index=G.index)
     sig['asia'] = (hmove(90, 540), 'e900'); sig['lon'] = (hmove(540, 930), 'e1530')
-    inverse = k in ('DXY', 'US10Y', 'VIX', 'USDJPY')   # tools that usually move against gold: FOLLOW means gold the other way
+    inverse = k in ('DXY', 'US10Y', 'VIX', 'USDJPY', 'IRX', 'FVX', 'CNH')   # tools that usually move against gold: FOLLOW means gold the other way
     for nm, (s, e) in sig.items():
         if (s != 0).sum() < 40: continue
         mv = G.x - G[e]
@@ -58,7 +61,7 @@ print('B) COMEX gold (GC=F) next day close-to-close, by year: FOLLOW the tool\'s
 gc = daily('GOLD'); gr = gc.diff().shift(-1)   # tomorrow's GC move, indexed by today
 for k in TOOLS:
     dc = daily(k); s = np.sign(dc.diff()).reindex(gc.index)
-    if k in ('DXY', 'US10Y', 'VIX', 'USDJPY'): s = -s
+    if k in ('DXY', 'US10Y', 'VIX', 'USDJPY', 'IRX', 'FVX', 'CNH'): s = -s
     p = (s * gr).dropna(); yrs = []
     for y in (2022, 2023, 2024, 2025, 2026):
         q = p[p.index.year == y]; g, l = q[q > 0].sum(), -q[q < 0].sum(); yrs.append(g / l if l else 0)
