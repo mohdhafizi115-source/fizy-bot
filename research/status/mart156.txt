@@ -1,0 +1,14 @@
+$1000 starts every 2nd weekday: 63
+
+LIVE two-sided stops $3 | last blown 1 worst float -4682 | prev blown 0 float -2933 | starts blown 26/63
+against yesterday                  stop $3 | day hit last 66% prev 58% | last blown 1 float -1567 | prev blown 0 float -2673 | starts blown 37/63
+against yesterday                  market  | day hit last 66% prev 58% | last blown 2 float -13315 | prev blown 8 float -17741 | starts blown 57/63
+against yesterday, body<=60 only   stop $3 | day hit last 64% prev 64% | last blown 0 float -593 | prev blown 0 float -2673 | starts blown 26/63
+against yesterday, body<=60 only   market  | day hit last 64% prev 64% | last blown 1 float -12593 | prev blown 9 float -10244 | starts blown 51/63
+always SELL                        stop $3 | day hit last 54% prev 46% | last blown 2 float -2834 | prev blown 0 float -2673 | starts blown 47/63
+always SELL                        market  | day hit last 54% prev 46% | last blown 0 float -10694 | prev blown 4 float -22321 | starts blown 41/63
+always BUY                         stop $3 | day hit last 46% prev 54% | last blown 1 float -1443 | prev blown 0 float -2392 | starts blown 40/63
+always BUY                         market  | day hit last 46% prev 54% | last blown 7 float -11336 | prev blown 3 float -5013 | starts blown 59/63
+RANDOM side per day (20 seeds), stop $3: starts blown median 52, range 24-57: [24, 36, 40, 45, 47, 48, 48, 50, 50, 51, 52, 53, 57, 57, 57, 57, 57, 57, 57, 57]
+
+[exited with code 0]
