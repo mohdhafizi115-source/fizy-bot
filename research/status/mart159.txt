@@ -1,0 +1,50 @@
+A) broker gold, share of UP by weekday (day 01:30 -> 23:30 server) and by H1 hour; last 3 months / previous 3
+  last: Mon 31% (13)  Tue 38% (13)  Wed 46% (13)  Thu 46% (13)  Fri 46% (13)  | all 42%
+  prev: Mon 54% (13)  Tue 38% (13)  Wed 54% (13)  Thu 62% (13)  Fri 54% (13)  | all 52%
+  hour: up% last / prev (n)
+   00h 25% / nan% (4)
+   01h 40% / 43% (65)
+   02h 51% / 54% (65)
+   03h 55% / 52% (65)
+   04h 46% / 34% (65)
+   05h 52% / 35% (65)
+   06h 45% / 54% (65)
+   07h 42% / 40% (65) <- same side >=58% both
+   08h 48% / 51% (65)
+   09h 45% / 65% (65)
+   10h 48% / 45% (65)
+   11h 40% / 48% (65)
+   12h 43% / 54% (65)
+   13h 55% / 60% (65)
+   14h 51% / 55% (65)
+   15h 45% / 43% (65)
+   16h 49% / 40% (65)
+   17h 52% / 54% (65)
+   18h 52% / 55% (65)
+   19h 31% / 43% (65)
+   20h 51% / 33% (65)
+   21h 49% / 44% (65)
+   22h 50% / 44% (64)
+   23h 41% / 42% (59) <- same side >=58% both
+
+B) MART live (two-sided $3 stops, unlimited, TP +$3, no SL, 24 h, $1000): $1000 starts blown of 63
+  LIVE (no pause)                                                | paused  0.0% | baskets 8618 / 10187 | starts blown 26/63
+  trend day: pause once |price - 01:30 open| > 0.5 ATR(D1)       | paused 19.2% | baskets 6147 / 7629 | starts blown 26/63
+  trend day: pause once |price - 01:30 open| > 0.75 ATR(D1)      | paused  8.9% | baskets 7291 / 8948 | starts blown 31/63
+  trend day: pause once |price - 01:30 open| > 1.0 ATR(D1)       | paused  4.3% | baskets 7956 / 9611 | starts blown 22/63
+  vol burst: pause while 60-min range > 1.5x the 24 h mean       | paused  9.8% | baskets 6015 / 7494 | starts blown 31/63
+  vol burst: pause while 60-min range > 2.0x the 24 h mean       | paused  2.3% | baskets 7546 / 9250 | starts blown 29/63
+  vol burst: pause while 60-min range > 3.0x the 24 h mean       | paused  0.3% | baskets 8367 / 10029 | starts blown 26/63
+  news: pause USD high-impact -30 / +60 min                      | paused  6.2% | baskets 7393 / 8617 | starts blown 26/63
+  RANDOM 1-hour pauses 10% seed 0                                | paused 10.2% | baskets 7791 / 9343 | starts blown 19/63
+  RANDOM 1-hour pauses 10% seed 1                                | paused 10.3% | baskets 7769 / 9282 | starts blown 20/63
+  RANDOM 1-hour pauses 10% seed 2                                | paused  9.3% | baskets 7749 / 9470 | starts blown 26/63
+  RANDOM 1-hour pauses 10% seed 3                                | paused 11.9% | baskets 7711 / 9101 | starts blown 25/63
+  RANDOM 1-hour pauses 25% seed 0                                | paused 25.4% | baskets 6546 / 7808 | starts blown 27/63
+  RANDOM 1-hour pauses 25% seed 1                                | paused 25.8% | baskets 6334 / 7547 | starts blown 19/63
+  RANDOM 1-hour pauses 25% seed 2                                | paused 26.0% | baskets 6334 / 7508 | starts blown 25/63
+  RANDOM 1-hour pauses 25% seed 3                                | paused 26.3% | baskets 6573 / 7530 | starts blown 22/63
+  RANDOM 1-hour pauses 40% seed 0                                | paused 41.0% | baskets 5274 / 6322 | starts blown 25/63
+  RANDOM 1-hour pauses 40% seed 1                                | paused 40.7% | baskets 5042 / 6168 | starts blown 17/63
+  RANDOM 1-hour pauses 40% seed 2                                | paused 39.8% | baskets 5193 / 6197 | starts blown 23/63
+  RANDOM 1-hour pauses 40% seed 3                                | paused 41.4% | baskets 5263 / 6000 | starts blown 26/63
