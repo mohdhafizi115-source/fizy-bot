@@ -1,0 +1,32 @@
+name: Fetch public market data
+
+# Runs a research/<x>/fetch.py script on Linux (open network) and commits what it saves under data/.
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "fetch script to run"
+        required: false
+        default: "research/comex/fetch.py"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas requests yfinance
+      - run: python ${{ github.event.inputs.script || 'research/comex/fetch.py' }}
+      - name: Commit data
+        run: |
+          git config user.name "fizy-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git commit -m "Fetched public data" || echo "nothing new"
+          git pull --rebase -q && git push
