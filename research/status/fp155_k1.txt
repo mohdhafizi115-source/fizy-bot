@@ -1,0 +1,17 @@
+samples every 5 min, label = +$1 before -$1 within 60 min; features 35
+last 3 months 16107 samples, up-first 49.8% | previous 3 months 15828, up-first 49.0%
+
+train previous -> test last: always the training majority side 50.2%
+  MODEL     all 50.4% | top50% 51.2% (n 8708) | top20% 51.7% (n 3227) | top10% 52.1% (n 1617) | top5% 53.6% (n 806) | top1% 52.5% (n 162)
+  SHUFFLED0 all 50.2% | top50% 50.7% (n 8054) | top20% 50.2% (n 3222) | top10% 49.8% (n 1611) | top5% 51.6% (n 806) | top1% 49.4% (n 162)
+  SHUFFLED1 all 50.2% | top50% 50.4% (n 8064) | top20% 50.1% (n 3229) | top10% 49.9% (n 1613) | top5% 51.1% (n 807) | top1% 50.6% (n 162)
+  SHUFFLED2 all 50.5% | top50% 50.9% (n 8121) | top20% 51.5% (n 3222) | top10% 50.8% (n 1611) | top5% 51.2% (n 806) | top1% 55.2% (n 163)
+  best single features (outer deciles, side learnt on train): bact60 51.2%, atrr 51.1%, bcvd 51.1%, atr 50.9%, wd 50.9%, big1000_60 50.9%
+
+train last -> test previous: always the training majority side 51.0%
+  MODEL     all 50.5% | top50% 50.6% (n 7914) | top20% 51.7% (n 3166) | top10% 51.9% (n 1583) | top5% 53.5% (n 792) | top1% 56.6% (n 159)
+  SHUFFLED0 all 49.6% | top50% 49.5% (n 7914) | top20% 50.1% (n 3166) | top10% 50.9% (n 1583) | top5% 47.7% (n 792) | top1% 44.0% (n 159)
+  SHUFFLED1 all 50.2% | top50% 50.5% (n 8109) | top20% 49.5% (n 3166) | top10% 48.9% (n 1584) | top5% 48.3% (n 804) | top1% 49.7% (n 163)
+  SHUFFLED2 all 50.1% | top50% 50.0% (n 7914) | top20% 50.1% (n 3166) | top10% 50.0% (n 1583) | top5% 49.7% (n 792) | top1% 49.1% (n 159)
+  best single features (outer deciles, side learnt on train): r5 52.7%, r1 52.5%, bact15 52.5%, r15 52.1%, posday 51.9%, btc15 51.9%
+
