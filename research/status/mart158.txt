@@ -1,0 +1,13 @@
+$1000 starts every 2nd weekday: 63
+
+LIVE two-sided stops $3 | baskets 8618 / 10187 | blown 1 / 0 | starts blown 26/63
+last  1 H1 follow stop $3 | next H1 same way 50.6% / 50.0% | baskets 2394 / 2563 | blown 0 / 0 | worst float -1856 / -2673 | starts blown 31/63
+last  1 H1 fade   stop $3 | next H1 same way 49.4% / 49.8% | baskets 1658 / 1773 | blown 2 / 0 | worst float -3372 / -2113 | starts blown 51/63
+last  2 H1 follow stop $3 | next H1 same way 48.5% / 48.2% | baskets 2110 / 2247 | blown 0 / 1 | worst float -2528 / -2673 | starts blown 37/63
+last  3 H1 follow stop $3 | next H1 same way 49.1% / 49.5% | baskets 1986 / 2115 | blown 0 / 1 | worst float -2791 / -2392 | starts blown 34/63
+last  6 H1 follow stop $3 | next H1 same way 48.7% / 47.9% | baskets 1643 / 1713 | blown 0 / 0 | worst float -1747 / -2392 | starts blown 25/63
+last  6 H1 fade   stop $3 | next H1 same way 51.2% / 51.9% | baskets 1159 / 1135 | blown 4 / 0 | worst float -11222 / -581 | starts blown 61/63
+last 12 H1 follow stop $3 | next H1 same way 49.7% / 49.0% | baskets 1419 / 1434 | blown 0 / 0 | worst float -1072 / -2392 | starts blown 23/63
+last 24 H1 follow stop $3 | next H1 same way 49.6% / 48.8% | baskets 1185 / 1164 | blown 2 / 3 | worst float -2834 / -2930 | starts blown 51/63
+last  1 H1 follow MARKET  | blown 2 / 5 | starts blown 51/63
+RANDOM side per H1 bar (10 seeds), stop $3: starts blown median 36, range 21-49: [21, 26, 30, 31, 33, 39, 41, 47, 47, 49]
