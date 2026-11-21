@@ -1,0 +1,27 @@
+A) COMEX GC weekly: next week the same way as the last N weeks (follow); fade = 1 - that
+  N 1 2000-2009: follow hit 50.6% on 482 weeks | up weeks 58.3%
+  N 1 2010-2019: follow hit 52.8% on 521 weeks | up weeks 52.4%
+  N 1 2020-2024: follow hit 49.6% on 260 weeks | up weeks 54.2%
+  N 1 2025-2026: follow hit 55.6% on 99 weeks | up weeks 59.6%
+  N 2 2000-2009: follow hit 47.3% on 484 weeks | up weeks 58.5%
+  N 2 2010-2019: follow hit 49.9% on 519 weeks | up weeks 52.4%
+  N 2 2020-2024: follow hit 42.5% on 261 weeks | up weeks 54.0%
+  N 2 2025-2026: follow hit 45.5% on 99 weeks | up weeks 59.6%
+  N 4 2000-2009: follow hit 52.4% on 483 weeks | up weeks 58.4%
+  N 4 2010-2019: follow hit 48.5% on 522 weeks | up weeks 52.5%
+  N 4 2020-2024: follow hit 44.8% on 261 weeks | up weeks 54.0%
+  N 4 2025-2026: follow hit 57.6% on 99 weeks | up weeks 59.6%
+
+B) MART with a weekly side (broker weeks: 30), live two-sided pair = 26 / 63
+  last 1 W follow        | starts blown 36/63
+  last 1 W fade          | starts blown 28/63
+  last 2 W follow        | starts blown 45/63
+  last 2 W fade          | starts blown 25/63
+  last 4 W follow        | starts blown 33/63
+  last 4 W fade          | starts blown 13/63
+  RANDOM week seed 0     | starts blown 34/63
+  RANDOM week seed 1     | starts blown 5/63
+  RANDOM week seed 2     | starts blown 22/63
+  RANDOM week seed 3     | starts blown 30/63
+  RANDOM week seed 4     | starts blown 24/63
+  RANDOM week seed 5     | starts blown 26/63
