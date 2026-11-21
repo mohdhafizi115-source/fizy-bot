@@ -1,21 +1,21 @@
-shift ended (UTC): 2026-11-21 08:18
+shift ended (UTC): 2026-11-21 13:56
 open
 
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 11218 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 10374 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  NN	0	08:17:30.355	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  CJ	0	08:17:30.580	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  PF	0	08:17:31.369	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  OR	0	08:17:31.594	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  MO	0	08:17:32.365	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  NK	0	08:17:32.589	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  GG	0	08:17:33.362	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  OS	0	08:17:33.587	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  LH	0	08:17:34.360	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  CD	0	08:17:34.584	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  NP	0	08:17:35.358	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  RL	0	08:17:35.582	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
-  w: telegram ok: daily status
+  IQ	0	13:55:09.823	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  FM	0	13:55:10.643	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  HI	0	13:55:10.820	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  LE	0	13:55:11.640	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  KR	0	13:55:11.817	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  JN	0	13:55:12.654	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  IJ	0	13:55:12.830	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  EF	0	13:55:13.649	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  KS	0	13:55:13.826	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  EO	0	13:55:14.646	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  FK	0	13:55:14.822	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  QG	0	13:55:15.643	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  w: status message already sent today
   w: shift end: done=False, state=none
