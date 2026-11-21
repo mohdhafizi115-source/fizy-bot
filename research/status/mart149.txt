@@ -1,0 +1,37 @@
+# mart149: broker tick-rule CVD
+corr broker CVD z vs Binance CVD z -0.16887181960987535 sign agree 0.4413103669981645
+BROKER tick CVD follow |z|>=1.0          | last 2338 baskets blown 4 float -2629 | prev 2725 blown 0 float -2414 | $1000 starts blown 44/63
+BROKER tick CVD follow |z|>=1.5          | last 2070 baskets blown 1 float -2082 | prev 2423 blown 0 float -5369 | $1000 starts blown 37/63
+BROKER tick CVD follow |z|>=1.75         | last 1947 baskets blown 1 float -2234 | prev 2290 blown 0 float -2414 | $1000 starts blown 31/63
+BROKER tick CVD follow |z|>=2.0          | last 1818 baskets blown 1 float -1895 | prev 2166 blown 0 float -2414 | $1000 starts blown 32/63
+BROKER tick CVD follow |z|>=2.5          | last 1595 baskets blown 1 float -1816 | prev 1883 blown 0 float -2414 | $1000 starts blown 37/63
+BROKER tick CVD fade |z|>=1.5            | last 2104 baskets blown 3 float -3534 | prev 2259 blown 1 float -4078 | $1000 starts blown 30/63
+BROKER tick CVD fade |z|>=2.0            | last 1829 baskets blown 3 float -3534 | prev 1990 blown 0 float -1051 | $1000 starts blown 22/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 1 | last 2087 baskets blown 1 float -1819 | prev 2316 blown 1 float -4462 | $1000 starts blown 32/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 2 | last 2093 baskets blown 0 float -1856 | prev 2279 blown 0 float -2113 | $1000 starts blown 16/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 3 | last 2057 baskets blown 0 float -1056 | prev 2337 blown 0 float -712 | $1000 starts blown 0/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 4 | last 2085 baskets blown 1 float -1594 | prev 2262 blown 0 float -2088 | $1000 starts blown 15/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 5 | last 2094 baskets blown 0 float -1228 | prev 2230 blown 2 float -5837 | $1000 starts blown 23/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 6 | last 2078 baskets blown 1 float -1895 | prev 2268 blown 0 float -2113 | $1000 starts blown 30/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 7 | last 2063 baskets blown 2 float -2437 | prev 2355 blown 0 float -2113 | $1000 starts blown 20/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 8 | last 2149 baskets blown 3 float -3534 | prev 2308 blown 2 float -5837 | $1000 starts blown 47/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 9 | last 2061 baskets blown 3 float -4368 | prev 2308 blown 0 float -5369 | $1000 starts blown 49/63
+RANDOM side, same broker-CVD|z|>=1.5 gate, seed 10 | last 2076 baskets blown 1 float -3534 | prev 2277 blown 0 float -2668 | $1000 starts blown 31/63
+# mart149b: 70% SELL random side with the Binance CVD gate
+70% SELL random side per minute, CVD gate 1.5, seed 1 | last 1096 baskets blown 1 float -1256 | prev 1045 blown 0 float -2088 | $1000 starts blown 17/63
+70% SELL random side per minute, CVD gate 1.5, seed 2 | last 1065 baskets blown 0 float -1640 | prev 1011 blown 0 float -537 | $1000 starts blown 7/63
+70% SELL random side per minute, CVD gate 1.5, seed 3 | last 1071 baskets blown 0 float -886 | prev 1074 blown 0 float -482 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 4 | last 1082 baskets blown 1 float -1254 | prev 1114 blown 0 float -644 | $1000 starts blown 3/63
+70% SELL random side per minute, CVD gate 1.5, seed 5 | last 1083 baskets blown 0 float -886 | prev 1040 blown 0 float -446 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 6 | last 1126 baskets blown 0 float -704 | prev 1080 blown 0 float -941 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 7 | last 1099 baskets blown 0 float -882 | prev 1089 blown 0 float -769 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 8 | last 1137 baskets blown 0 float -882 | prev 1117 blown 0 float -284 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 9 | last 1077 baskets blown 0 float -882 | prev 1086 blown 0 float -951 | $1000 starts blown 0/63
+70% SELL random side per minute, CVD gate 1.5, seed 10 | last 1030 baskets blown 0 float -714 | prev 1041 blown 0 float -631 | $1000 starts blown 0/63
+70% SELL random side per DAY, CVD gate 1.5, seed 1 | last 1038 baskets blown 2 float -1274 | prev 1099 blown 0 float -249 | $1000 starts blown 37/63
+70% SELL random side per DAY, CVD gate 1.5, seed 2 | last 1042 baskets blown 0 float -245 | prev 1092 blown 0 float -249 | $1000 starts blown 0/63
+70% SELL random side per DAY, CVD gate 1.5, seed 3 | last 1034 baskets blown 1 float -1688 | prev 1064 blown 0 float -644 | $1000 starts blown 37/63
+70% SELL random side per DAY, CVD gate 1.5, seed 4 | last 1011 baskets blown 2 float -1274 | prev 1105 blown 0 float -194 | $1000 starts blown 37/63
+70% SELL random side per DAY, CVD gate 1.5, seed 5 | last 1094 baskets blown 1 float -1283 | prev 1098 blown 0 float -2088 | $1000 starts blown 22/63
+70% SELL random side per DAY, CVD gate 1.5, seed 6 | last 1055 baskets blown 2 float -1274 | prev 1091 blown 0 float -599 | $1000 starts blown 37/63
+70% SELL random side per DAY, CVD gate 1.5, seed 7 | last 1088 baskets blown 1 float -1283 | prev 1075 blown 0 float -769 | $1000 starts blown 7/63
