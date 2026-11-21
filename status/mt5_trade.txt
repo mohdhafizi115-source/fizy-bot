@@ -1,34 +1,34 @@
-shift ended (UTC): 2026-11-20 21:03
+shift ended (UTC): 2026-11-21 02:40
 done
-2026.11.20 23:03:03
+2026.11.20 23:59:59
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 12181 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 10287 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  EE	0	20:53:18.697	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | SELL basket of 3 position(s), 0.06 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_765.png
-  GQ	0	20:53:19.037	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: BUY STOP 3527.43 + SELL STOP 3521.17 ($x away), lot 0.01, the first fill deletes the other, no SL
-  MS	0	20:54:29.203	FizyLB (XAUUSD.m,M15)	MART EVENT MART SELL XAUUSD.m | basket opened: the sell stop filled at 3521.17, lot 0.01, the other order deleted; next add at 3524.17, no SL
-  NJ	0	20:55:09.125	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | SELL basket of 1 position(s), 0.01 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_203.png
-  HN	0	20:55:09.464	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: BUY STOP 3520.46 + SELL STOP 3514.20 ($x away), lot 0.01, the first fill deletes the other, no SL
-  QJ	0	20:58:12.646	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3520.46, lot 0.01, the other order deleted; next add at 3517.46, no SL
-  EO	0	20:59:45.609	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 1 position(s), 0.01 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_671.png
-  IF	0	20:59:45.948	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: BUY STOP 3527.19 + SELL STOP 3520.93 ($x away), lot 0.01, the first fill deletes the other, no SL
-  QR	0	21:01:00.139	FizyLB (XAUUSD.m,M15)	MART EVENT MART BUY XAUUSD.m | basket opened: the buy stop filled at 3527.19, lot 0.01, the other order deleted; next add at 3524.19, no SL
-  RD	0	21:01:31.129	FizyLB (XAUUSD.m,M15)	MART EVENT MART ADD XAUUSD.m | level 2/unlimited: BUY 0.02 at 3523.84, basket 0.03 lot, floating $x; basket TP 3525.96 (+$x); next add at 3520.84
-  MN	0	21:02:12.078	FizyLB (XAUUSD.m,M15)	MART EVENT MART BASKET CLOSED XAUUSD.m | BUY basket of 2 position(s), 0.03 lot, closed, profit $x | IMG:snap_MRT_XAUUSD_m_<num>_<num>_140.png
-  MG	0	21:02:12.417	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: BUY STOP 3528.74 + SELL STOP 3522.48 ($x away), lot 0.01, the first fill deletes the other, no SL
+  PL	0	02:39:44.120	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  LH	0	02:39:44.893	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  DD	0	02:39:45.116	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  RP	0	02:39:45.904	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  KM	0	02:39:46.127	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  DI	0	02:39:46.901	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  EE	0	02:39:47.124	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  JQ	0	02:39:47.896	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  NN	0	02:39:48.119	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  IJ	0	02:39:48.890	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  KF	0	02:39:49.113	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
+  IR	0	02:39:49.899	FizyLB (XAUUSD.m,M15)	CTrade::OrderSend: cancel #<num> [market closed]
   w: telegram ok: MART ADD XAUUSD.m
   w: telegram ok: MART ADD XAUUSD.m
-  w: telegram ok: MART BASKET CLOSED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART SELL XAUUSD.m
-  w: telegram ok: MART BASKET CLOSED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART BUY XAUUSD.m
   w: telegram ok: MART BASKET CLOSED XAUUSD.m
   w: telegram ok: MART ORDER PLACED XAUUSD.m
   w: telegram ok: MART BUY XAUUSD.m
   w: telegram ok: MART ADD XAUUSD.m
   w: telegram ok: MART BASKET CLOSED XAUUSD.m
   w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: shift end: done=True, state=2026.11.20 23:03:03|0|0
+  w: telegram ok: MART BUY XAUUSD.m
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
+  w: telegram ok: MART ORDER PLACED XAUUSD.m
+  w: telegram ok: MART BUY XAUUSD.m
+  w: telegram ok: MART BASKET CLOSED XAUUSD.m
+  w: telegram ok: MART ORDER PLACED XAUUSD.m
+  w: shift end: done=True, state=2026.11.20 23:59:59|0|0
