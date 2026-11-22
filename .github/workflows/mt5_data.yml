@@ -129,6 +129,7 @@ jobs:
           { echo "export run: ${{ github.event.inputs.data_run || github.run_id }}"; cat m5data/meta.txt; } > status/m5_export.txt
           S="${{ github.event.inputs.script }}"; S="${S:-research/scalp_all.py}"
           python "$S" m5data > "research/status/$(basename "$S" .py).txt" 2>&1 || true
+          cat "research/status/$(basename "$S" .py).txt"
 
       - name: Commit the results
         run: |
