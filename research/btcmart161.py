@@ -152,4 +152,5 @@ def main():
             f"prev {b[0]} baskets {b[1]:+.0f}, worst floating {b[4]:.0f}, max layers {b[5]}")
 
 
-main()
+if __name__ == "__main__":
+    main()
