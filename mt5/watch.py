@@ -21,11 +21,11 @@ if 25 <= _m <= 65:
     a.minutes -= (_m - 20)
     print(f"shift shortened by {_m - 20} min to keep the change away from the Tokyo fix", flush=True)
 files = os.path.join(a.dir, "MQL5", "Files")
-ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt", "btc_events.txt", "atb_events.txt", "cmx_events.txt", "crs_events.txt", "orb_events.txt", "flp_events.txt", "bas_events.txt", "nws_events.txt", "cb1_events.txt", "mrt_events.txt")]
+ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt", "gtb_events.txt", "gau_events.txt", "wvb_events.txt", "sr_events.txt", "dtj_events.txt", "kumo_events.txt", "tk_events.txt", "spk_events.txt", "leg_events.txt", "ha_events.txt", "klt_events.txt", "rcs_events.txt", "smc_events.txt", "btc_events.txt", "atb_events.txt", "cmx_events.txt", "crs_events.txt", "orb_events.txt", "flp_events.txt", "bas_events.txt", "nws_events.txt", "cb1_events.txt", "mrt_events.txt", "mrb_events.txt")]
 # Only the modules that are switched on announce themselves, so only those may be listed here: the daily status waits
 # for every kind in this tuple and otherwise falls back to a 120 s timeout, which truncates it. Since 5 Nov the owner
 # keeps six modules, so NR7, VOLBO, PDHL, NYCONT (switched off) and SR (alerts off since 2 Nov) are out of the list.
-STATUS_KINDS = ("| STARTED |", "| MART ONLINE |")   # v2.52 (18 Nov): only the MART basket test runs
+STATUS_KINDS = ("| STARTED |", "| MART ONLINE |", "| BMART ONLINE |")   # v2.52 MART gold; v2.58 (22 Nov) + MART BTC weekends
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
@@ -54,6 +54,7 @@ MODS = [  # kind prefix, emoji, title
     ("FLIP", "🔁", "GOLD FLIP · XAUUSD · stop and reverse"),
     ("BASE", "📌", "H1 BASE ZONE · XAUUSD · day trade"),
     ("MART", "🎲", "MARTINGALE BASKET · XAUUSD · no SL"),
+    ("BMART", "🎲", "MARTINGALE BASKET · BTCUSD · weekends · no SL"),
     ("LEG", "🌊", "M1 LEG FADE · XAUUSD · no SL"),
     ("HA ", "🕯️", "M1 HEIKIN ASHI · XAUUSD · TP 1:1"),
     ("DAILY TARGET", "🎯", "DAILY TARGET · all modules"),
