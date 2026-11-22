@@ -24,7 +24,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Restore the clean MT5 terminal from the cache
+        id: jmc
+        uses: actions/cache/restore@v4
+        with:
+          path: C:\Program Files\JustMarkets MetaTrader 5
+          key: jm-mt5-v1
+
       - name: Install MetaTrader 5 (silent) and start it once
+        if: steps.jmc.outputs.cache-hit != 'true'
         shell: pwsh
         env:
           HAS_LOGIN: ${{ secrets.MT5_LOGIN != '' }}
@@ -53,6 +61,7 @@ jobs:
           "session: $([Environment]::UserInteractive) user $env:USERNAME" | Out-File $d -Append -Encoding utf8
 
       - name: Broker server list (JustMarkets installer -> servers.dat)
+        if: steps.jmc.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
           $d = "status\mt5_diag.txt"
