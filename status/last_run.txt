@@ -1,4 +1,4 @@
-run (UTC): started 2026-11-22 10:28:38  finished 10:28:39  broker time: 2026-11-22 12:28
+run (UTC): started 2026-11-22 10:29:01  finished 10:29:02  broker time: 2026-11-22 12:29
 XAUUSD   deriv       6000  market closed (last candle 2026-11-20 22:45)
 XAUUSD London breakout: sl hit (-234 pips)
 XAUUSD RSI2 pullback: watching
