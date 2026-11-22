@@ -1,0 +1,45 @@
+name: Seed the MT5 terminal cache
+# One-off: unpack the encrypted terminal package (branch mt5pkg), start it once so MQL5\Include
+# exists, and save the clean folder (no login, no accounts) to the cache key the shifts restore.
+on:
+  workflow_dispatch:
+    inputs:
+      key:
+        description: package password
+        required: true
+jobs:
+  seed:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Hide the password in the log
+        shell: pwsh
+        run: |
+          $k = (Get-Content $env:GITHUB_EVENT_PATH | ConvertFrom-Json).inputs.key
+          Write-Host "::add-mask::$k"
+      - uses: actions/checkout@v4
+        with:
+          ref: mt5pkg
+          path: pkg
+      - name: Unpack and start the terminal once
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Continue"
+          $k = (Get-Content $env:GITHUB_EVENT_PATH | ConvertFrom-Json).inputs.key
+          $dir = "C:\Program Files\JustMarkets MetaTrader 5"
+          New-Item -ItemType Directory -Force -Path $dir | Out-Null
+          7z x pkg\jm-mt5.7z "-p$k" "-o$dir" -y | Out-Null
+          Remove-Item pkg -Recurse -Force
+          Get-ChildItem $dir | ForEach-Object { "$($_.Name) $($_.Length)" }
+          $f = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable" -PassThru
+          for ($i = 0; $i -lt 36 -and -not (Test-Path "$dir\MQL5\Include\Trade\Trade.mqh"); $i++) { Start-Sleep -Seconds 5 }
+          Start-Sleep -Seconds 15
+          Get-Process terminal64 -ErrorAction SilentlyContinue | Stop-Process -Force
+          Write-Host "Include ready: $(Test-Path "$dir\MQL5\Include\Trade\Trade.mqh"), dirs: $((Get-ChildItem $dir -Directory).Name -join ', ')"
+          Remove-Item "$dir\Config\accounts.dat", "$dir\Config\common.ini" -Force -ErrorAction SilentlyContinue
+          Remove-Item "$dir\logs\*", "$dir\MQL5\Logs\*" -Force -Recurse -ErrorAction SilentlyContinue
+          if (-not (Test-Path "$dir\MQL5\Include\Trade\Trade.mqh") -or -not (Test-Path "$dir\metaeditor64.exe")) { exit 1 }
+      - uses: actions/cache/save@v4
+        with:
+          path: C:\Program Files\JustMarkets MetaTrader 5
+          key: jm-mt5-v1
