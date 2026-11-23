@@ -1,2 +1,5 @@
 __pycache__/
 state/
+research/ticks/*.npz
+research/ticks/*.so
+research/ticks/*.log
