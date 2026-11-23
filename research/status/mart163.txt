@@ -1,0 +1,10 @@
+ticks to 2026-11-16 16:42:35.147000; last 3 months from 2026-08-17; $1000, step $3, OCO +-$3, unlimited layers, no SL, 24 h weekdays, swap in
+LIVE: basket TP +$3                      | starts blown 59/63 |    39 bsk win 100% net   -1000 worstFl  -1104 maxLot 0.78 BLOWN 18 Aug | prev    44 bsk win 100% net   -1000 worstFl  -1096 maxLot 0.78 BLOWN 19 May
+TRAIL arm +$3 trail $1 lock +$1 no flip  | starts blown 61/63 |    28 bsk win  93% net   -1000 worstFl  -1069 maxLot 0.78 BLOWN 18 Aug | prev   564 bsk win  95% net   -1000 worstFl  -3761 maxLot 1.90 BLOWN 26 May
+TRAIL arm +$3 trail $1 lock +$1 flip $0.5 | starts blown 58/63 |   208 bsk win  94% net   -1000 worstFl  -1679 maxLot 1.05 BLOWN 19 Aug | prev    57 bsk win  93% net   -1000 worstFl  -1132 maxLot 0.78 BLOWN 19 May
+TRAIL arm +$5 trail $2 lock +$3 no flip  | starts blown 59/63 |    19 bsk win 100% net   -1000 worstFl  -1030 maxLot 0.78 BLOWN 18 Aug | prev   493 bsk win  96% net   -1000 worstFl  -3843 maxLot 1.90 BLOWN 28 May
+TRAIL arm +$5 trail $2 lock +$3 flip $0.5 | starts blown 57/63 |   136 bsk win  99% net   -1000 worstFl  -1743 maxLot 1.05 BLOWN 19 Aug | prev   120 bsk win  99% net   -1000 worstFl  -1635 maxLot 1.05 BLOWN 19 May
+TRAIL arm +$10 trail $3 lock +$5 no flip | starts blown 59/63 |     0 bsk win   0% net   -1000 worstFl   -958 maxLot 0.78 BLOWN 17 Aug | prev    20 bsk win  95% net   -1000 worstFl  -1162 maxLot 0.91 BLOWN 19 May
+TRAIL arm +$10 trail $3 lock +$5 flip $1 | starts blown 60/63 |     0 bsk win   0% net   -1000 worstFl   -958 maxLot 0.78 BLOWN 17 Aug | prev    52 bsk win  98% net   -1000 worstFl  -1333 maxLot 0.91 BLOWN 19 May
+TRAIL arm +$3 trail $0.5 lock +$1 flip $0.2 | starts blown 56/63 |   218 bsk win  97% net   -1000 worstFl  -1810 maxLot 1.05 BLOWN 19 Aug | prev   166 bsk win  94% net   -1000 worstFl  -1785 maxLot 1.05 BLOWN 19 May
+TRAIL arm +$5 trail $1 lock +$3 flip $0.5 | starts blown 63/63 |   128 bsk win  99% net   -1000 worstFl  -1786 maxLot 1.05 BLOWN 19 Aug | prev   124 bsk win  98% net   -1000 worstFl  -1733 maxLot 1.05 BLOWN 19 May
