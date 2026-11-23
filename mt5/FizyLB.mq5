@@ -25,7 +25,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.62"
+#property version "2.63"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -409,6 +409,15 @@ string SpreadInfo()
                         SymbolInfoDouble(s, SYMBOL_TRADE_CONTRACT_SIZE), SymbolInfoDouble(s, SYMBOL_VOLUME_MIN));
    }
    return r;
+}
+
+// v2.63 (23 Nov, owner: "aku nak instant masa live tanpa tunggu candle close"): the MART basket (adds, trail line,
+// flip stop) also runs on every tick of the chart symbol, not only on the 1-second timer
+void OnTick()
+{
+   if(!InpMrtOn || !TerminalInfoInteger(TERMINAL_CONNECTED) || !g_started) return;
+   if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO) return;
+   MrtOnTimer();
 }
 
 void OnTimer()
