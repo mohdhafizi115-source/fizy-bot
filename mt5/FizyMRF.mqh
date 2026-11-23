@@ -160,7 +160,8 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
    double lockpx = MrtTpPrice(bk, d, InpMrtLock);
    if(!trailing)
    {
-      if(mp > 0 && pnl >= InpMrtArmK * A * mp)
+      double bepx = MrtTpPrice(bk, d, 0);                                        // v2.65: arm in price beyond the breakeven, not in fixed money
+      if(mp > 0 && bepx > 0 && (d == 1 ? tk.bid >= bepx + InpMrtArmK * A : tk.ask <= bepx - InpMrtArmK * A))
       {
          double line = d == 1 ? MathMax(tk.bid - InpMrtTrailK * A, lockpx) : MathMin(tk.ask + InpMrtTrailK * A, lockpx);
          line = NormalizeDouble(line, dg);
@@ -186,8 +187,8 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
          mrf_lastadd = now;
          if(!ok) MrtEvent(StringFormat("ERROR | MART add %s level %d failed: %d %s", mr_sym, n + 1, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
          else MrtEvent(StringFormat("MART ADD %s | %s level %d: %.2f at %s (%.2f = %.1f ATR below/above the last entry), basket %.2f lot, floating %.2f; "
-                                    "next add %.2f further, trail arms at +%.2f",
-                                    mr_sym, d == 1 ? "BUY" : "SELL", n + 1, lot, PriceStr(mr_sym, px), S, InpMrtFlexK, vol + lot, pnl, S, InpMrtArmK * A * mp));
+                                    "next add %.2f further, trail arms %.2f beyond the basket breakeven",
+                                    mr_sym, d == 1 ? "BUY" : "SELL", n + 1, lot, PriceStr(mr_sym, px), S, InpMrtFlexK, vol + lot, pnl, S, InpMrtArmK * A));
       }
       return false;
    }
@@ -264,7 +265,7 @@ void MrfTimer(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, 
          string how = "OCO stop";
          ulong t0 = side == 1 ? bb[0] : bs[0];
          if(PositionSelectByTicket(t0) && StringFind(PositionGetString(POSITION_COMMENT), "MART L1F") == 0) how = "flip stop (video trail)";
-         MrtEvent(StringFormat("MART %s %s | basket opened: the %s filled at %s, lot %.2f; no SL until the basket is + %.1f ATR",
+         MrtEvent(StringFormat("MART %s %s | basket opened: the %s filled at %s, lot %.2f; no SL until price is %.1f ATR beyond the basket breakeven",
                                side == 1 ? "BUY" : "SELL", mr_sym, how, PriceStr(mr_sym, side == 1 ? lb : ls), side == 1 ? vb : vs, InpMrtArmK));
       }
    }
