@@ -74,7 +74,7 @@ void CloseLeftovers()
 //| NEW entries in every module until the next server day. Open       |
 //| positions keep their own exits (SL / TP / EMA / time).            |
 //+------------------------------------------------------------------+
-input double InpDayTarget = 0.0;         // $; 0 = no daily target (v2.54: off for the owner's MART test; was $30)
+input double InpDayTarget = 100.0;       // $; 0 = no daily target (v2.59, 23 Nov: $100 a day; v2.54 off; was $30)
 
 datetime dt_day = 0;          // server day the flags below belong to
 bool     dt_hit = false;
