@@ -23,7 +23,7 @@
 //| the account margin with the gold MART basket.                     |
 //| Events go to MQL5\Files\mrb_events.txt (forwarded to Telegram).   |
 //+------------------------------------------------------------------+
-input bool   InpMrbOn       = true;
+input bool   InpMrbOn       = false;   // v2.61 (23 Nov): off, gold only on the cent account
 input string InpMrbSymbol   = "BTCUSD";
 input long   InpMrbMagic    = 260341;
 input double InpMrbEntry    = 400.0;    // each first stop this many $ of price beyond the ask / bid

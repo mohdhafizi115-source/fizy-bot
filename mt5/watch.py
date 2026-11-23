@@ -25,7 +25,7 @@ ev_paths = [os.path.join(files, n) for n in ("flb_events.txt", "nr7_events.txt",
 # Only the modules that are switched on announce themselves, so only those may be listed here: the daily status waits
 # for every kind in this tuple and otherwise falls back to a 120 s timeout, which truncates it. Since 5 Nov the owner
 # keeps six modules, so NR7, VOLBO, PDHL, NYCONT (switched off) and SR (alerts off since 2 Nov) are out of the list.
-STATUS_KINDS = ("| STARTED |", "| MART ONLINE |", "| BMART ONLINE |")   # v2.52 MART gold; v2.58 (22 Nov) + MART BTC weekends
+STATUS_KINDS = ("| STARTED |", "| MART ONLINE |")   # v2.52 MART gold; v2.61 (23 Nov) BTC MART off again
 st_path = os.path.join(files, "flb_state.txt")
 TITLES = {"ORDERS PLACED": "ORDERS PLACED", "NO TRADE TODAY": "NO TRADE TODAY", "POSITION OPEN": "STOP FILLED",
           "ORDER DELETED": "ORDER DELETED", "SL MOVED TO ENTRY": "SL MOVED TO ENTRY", "TP HIT": "TP HIT", "SL HIT": "SL HIT",
