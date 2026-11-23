@@ -8,3 +8,4 @@ M5 step=OCO=1 ATR, trail arm 1 / 0.5 ATR, flip 0.20 | starts blown 57/63 |   133
 M5 step=OCO=1.5 ATR, TP +$3                    | starts blown 61/63 |   121 bsk win 100% net   -1000 worstFl  -1370 maxLot 0.55 BLOWN 21 Aug | prev   227 bsk win 100% net   -1000 worstFl  -1994 maxLot 0.45 BLOWN 28 May
 M5 step=OCO=1.5 ATR, TP +1.5 ATR $             | starts blown 61/63 |    39 bsk win 100% net   -1000 worstFl  -1224 maxLot 0.45 BLOWN 19 Aug | prev    40 bsk win 100% net   -1000 worstFl  -1308 maxLot 0.45 BLOWN 21 May
 M5 step=OCO=1.5 ATR, trail arm 1.5 / 0.75 ATR, flip 0.30 | starts blown 63/63 |    43 bsk win  95% net   -1000 worstFl  -1190 maxLot 0.46 BLOWN 19 Aug | prev   392 bsk win  94% net   -1000 worstFl  -4176 maxLot 0.78 BLOWN 08 Jun
+M5 step=OCO=2 ATR, TP +$3                      | starts blown 59/63 |   340 bsk win 100% net   -1000 worstFl  -2143 maxLot 0.55 BLOWN 10 Sep | prev   331 bsk win 100% net   -1000 worstFl  -2061 maxLot 0.36 BLOWN 11 Jun
