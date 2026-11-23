@@ -35,6 +35,12 @@ def row(lab, **kw):
         out.append(f"{r.baskets:5d} bsk win {100*r.wins/max(r.baskets,1):3.0f}% net {r.net:+7.0f} worstFl {r.worstfl:+6.0f} maxLot {r.maxlots/100:4.2f}{bt}")
     print(f"{lab:46s} | starts blown {blown:2d}/{len(starts)} | {out[0]} | prev {out[1]}", flush=True)
 print(f"$1000, unlimited layers k x 0.01, no SL, 24 h weekdays, swap in; distances x ATR(14) of closed bars")
+DONE = int(sys.argv[1]) if len(sys.argv) > 1 else 0   # rows already printed (resume)
+_n = [0]
+_row = row
+def row(lab, **kw):
+    _n[0] += 1
+    if _n[0] > DONE: _row(lab, **kw)
 row("LIVE fixed $3 / TP +$3", mode=0)
 for tf in ("M5", "H1"):
     ks = (1, 1.5, 2, 3, 4) if tf == "M5" else (0.3, 0.5, 0.75, 1)
