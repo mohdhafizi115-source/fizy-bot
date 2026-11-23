@@ -7,7 +7,7 @@
 // broker name for a plain symbol: try the plain name and common suffixes
 string SymResolve(string base)
 {
-   string cands[] = { "", ".m", "m", ".", "#", ".pro", ".std", ".ecn", ".r" };
+   string cands[] = { "", ".m", ".c", "m", ".", "#", ".pro", ".std", ".ecn", ".r" };   // .c = JustMarkets cent (v2.60)
    for(int i = 0; i < ArraySize(cands); i++)
    {
       string n = base + cands[i];

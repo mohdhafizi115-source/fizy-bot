@@ -129,7 +129,9 @@ jobs:
           Write-Host "MQL5 include folder ready: $(Test-Path "$dir\MQL5\Include\Trade\Trade.mqh")"
           New-Item -ItemType Directory -Force -Path "$dir\Config", "$dir\MQL5\Experts" | Out-Null
           Copy-Item mt5\servers.dat "$dir\Config\servers.dat" -Force
-          (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
+          $sym = "$(Get-Content mt5_symbol.txt -ErrorAction SilentlyContinue | Select-Object -First 1)".Trim(); if (-not $sym) { $sym = "XAUUSD.m" }
+          Write-Host "chart / main symbol: $sym"
+          (Get-Content mt5\FizyLB.mq5) -replace '^input double InpLot\s*=.*;', "input double InpLot        = $env:LOT;" -replace '^input string InpSymbol\s*=.*;', "input string InpSymbol     = `"$sym`";" | Set-Content "$dir\MQL5\Experts\FizyLB.mq5" -Encoding utf8
           Copy-Item mt5\FizyCommon.mqh "$dir\MQL5\Experts\FizyCommon.mqh" -Force
           (Get-Content mt5\FizyMEF.mqh) -replace '^input double InpMefLot\s*=.*;', "input double InpMefLot      = $env:MLOT;" | Set-Content "$dir\MQL5\Experts\FizyMEF.mqh" -Encoding utf8
           (Get-Content mt5\FizyWVB.mqh) -replace '^input double InpWvbLot\s*=.*;', "input double InpWvbLot      = $env:WLOT;" | Set-Content "$dir\MQL5\Experts\FizyWVB.mqh" -Encoding utf8
@@ -193,7 +195,8 @@ jobs:
         run: |
           $ErrorActionPreference = "Continue"
           $dir = "C:\Program Files\JustMarkets MetaTrader 5"
-          $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=FizyLB`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
+          $sym = "$(Get-Content mt5_symbol.txt -ErrorAction SilentlyContinue | Select-Object -First 1)".Trim(); if (-not $sym) { $sym = "XAUUSD.m" }
+          $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=FizyLB`r`nSymbol=$sym`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
           Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`""
           Start-Sleep -Seconds 30

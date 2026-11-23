@@ -25,7 +25,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.59"
+#property version "2.60"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -390,6 +390,27 @@ void SweepOff()
 }
 //+------------------------------------------------------------------+
 
+// v2.60: account currency and the live spread of the gold / BTC symbols, for the start message
+string SpreadInfo()
+{
+   string r = StringFormat(" | account %s %s", AccountInfoString(ACCOUNT_CURRENCY),
+                           AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_DEMO ? "demo" : "REAL");
+   string bases[] = { "XAUUSD", "BTCUSD" };
+   for(int i = 0; i < ArraySize(bases); i++)
+   {
+      string s = SymResolve(bases[i]);
+      if(s == "") { r += " | " + bases[i] + " not found"; continue; }
+      SymbolSelect(s, true);
+      double bid = SymbolInfoDouble(s, SYMBOL_BID), ask = SymbolInfoDouble(s, SYMBOL_ASK);
+      double tv = SymbolInfoDouble(s, SYMBOL_TRADE_TICK_VALUE), ts = SymbolInfoDouble(s, SYMBOL_TRADE_TICK_SIZE);
+      double perlot = (ts > 0) ? (ask - bid) / ts * tv * 0.01 : 0;       // cost of the spread for 0.01 lot, account currency
+      r += StringFormat(" | %s spread %.2f (%d pts) = %.2f %s per 0.01 lot, contract %.0f, min lot %.2f",
+                        s, ask - bid, (int)SymbolInfoInteger(s, SYMBOL_SPREAD), perlot, AccountInfoString(ACCOUNT_CURRENCY),
+                        SymbolInfoDouble(s, SYMBOL_TRADE_CONTRACT_SIZE), SymbolInfoDouble(s, SYMBOL_VOLUME_MIN));
+   }
+   return r;
+}
+
 void OnTimer()
 {
    if(!TerminalInfoInteger(TERMINAL_CONNECTED)) return;
@@ -417,7 +438,7 @@ void OnTimer()
          fn = Snap(InpSymbol, PERIOD_M15, "TEST", lv, lc, lb, 0, 0, 0, 0, false);
       }
       Event(StringFormat("STARTED | server time %s, %d open position(s), %d pending order(s), lot %.2f",
-                         TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)) + Img(fn));
+                         TimeToString(now, TIME_DATE | TIME_MINUTES), CountPositions(), CountOrders(), VolumeOk(InpLot)) + SpreadInfo() + Img(fn));
    }
    GtbOnTimer();                                                            // first: the timed entries
    MefOnTimer();
