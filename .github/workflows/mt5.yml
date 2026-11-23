@@ -115,7 +115,8 @@ jobs:
           $ErrorActionPreference = "Continue"
           "folders in the terminal dir: $((Get-ChildItem $dir -Directory | ForEach-Object { $_.Name }) -join ', ')" | Out-File $out -Encoding utf8
           New-Item -ItemType Directory -Force -Path "$dir\MQL5\Experts" | Out-Null
-          Copy-Item mt5\CheckEA.mq5 "$dir\MQL5\Experts\CheckEA.mq5" -Force
+          $sym = "$(Get-Content mt5_symbol.txt -ErrorAction SilentlyContinue | Select-Object -First 1)".Trim(); if (-not $sym) { $sym = "XAUUSD.m" }
+          (Get-Content mt5\CheckEA.mq5) -replace '^input string InpSymbol\s*=.*;', "input string InpSymbol = `"$sym`";" | Set-Content "$dir\MQL5\Experts\CheckEA.mq5" -Encoding utf8
           $c = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\CheckEA.mq5`" /log:`"$dir\compile.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c.HasExited; $i++) { Start-Sleep -Seconds 3 }
           "compile finished: $($c.HasExited), ex5 exists: $(Test-Path "$dir\MQL5\Experts\CheckEA.ex5")" | Out-File $out -Append -Encoding utf8
@@ -182,7 +183,8 @@ jobs:
             $names = ([regex]::Matches($u + " " + $a8, 'JustMarkets-[A-Za-z0-9]+') | ForEach-Object { $_.Value } | Sort-Object -Unique) -join ', '
             "servers.dat ($($b.Length) bytes) names: $names" | Out-File $out -Append -Encoding utf8
           } else { "servers.dat missing" | Out-File $out -Append -Encoding utf8 }
-          $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=CheckEA`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
+          $sym = "$(Get-Content mt5_symbol.txt -ErrorAction SilentlyContinue | Select-Object -First 1)".Trim(); if (-not $sym) { $sym = "XAUUSD.m" }
+          $ini = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=1`r`nAllowDllImport=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=CheckEA`r`nSymbol=$sym`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini, [Text.Encoding]::Unicode)
           $t = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
           for ($i = 0; $i -lt 70 -and -not $t.HasExited; $i++) { Start-Sleep -Seconds 5 }
@@ -203,7 +205,7 @@ jobs:
           $c3 = Start-Process -FilePath "$dir\metaeditor64.exe" -ArgumentList "/portable /compile:`"$dir\MQL5\Experts\SnapTest.mq5`" /log:`"$dir\compile3.log`"" -PassThru
           for ($i = 0; $i -lt 40 -and -not $c3.HasExited; $i++) { Start-Sleep -Seconds 3 }
           Get-Process metaeditor64 -ErrorAction SilentlyContinue | Stop-Process -Force
-          $ini2 = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=SnapTest`r`nSymbol=XAUUSD.m`r`nPeriod=M15`r`n"
+          $ini2 = "[Common]`r`nLogin=$env:MT5_LOGIN`r`nPassword=$env:MT5_PASSWORD`r`nServer=$env:MT5_SERVER`r`nKeepPrivate=1`r`nNewsEnable=0`r`n[Experts]`r`nAllowLiveTrading=0`r`nEnabled=1`r`n[StartUp]`r`nExpert=SnapTest`r`nSymbol=$sym`r`nPeriod=M15`r`n"
           [IO.File]::WriteAllText("$dir\start.ini", $ini2, [Text.Encoding]::Unicode)
           $t3 = Start-Process -FilePath "$dir\terminal64.exe" -ArgumentList "/portable /config:`"$dir\start.ini`"" -PassThru
           for ($i = 0; $i -lt 36 -and -not $t3.HasExited; $i++) { Start-Sleep -Seconds 5 }
@@ -221,6 +223,6 @@ jobs:
           python mt5/mask_logs.py || true
           git config user.name "fizy-bot"
           git config user.email "fizy-bot@users.noreply.github.com"
-          git add status/mt5_check.txt status/mt5_logs.txt status/mt5_diag.txt status/snap_TEST_*.png || true
+          for f in status/mt5_check.txt status/mt5_logs.txt status/mt5_diag.txt status/snap_TEST_*.png; do [ -e "$f" ] && git add "$f"; done || true
           git commit -m "MT5 check result" || true
           for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q && break; sleep 5; done || true
