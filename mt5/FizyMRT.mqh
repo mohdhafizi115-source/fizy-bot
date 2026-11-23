@@ -45,7 +45,17 @@ input int    InpMrtMax      = 0;        // positions per basket, 0 = UNLIMITED (
 input int    InpMrtFrom     = 0;        // first entry minute, server (v2.56: 00:00, 24 h on the owner's order; was 01:30)
 input int    InpMrtTo       = 1440;     // no new basket from this minute (v2.56: 24:00 = all day; was 23:00)
 input bool   InpMrtClose2330 = false;   // false = hold overnight (the tested cell)
+// v2.62 (23 Nov, owner: "aku nak macam dalam video tu + mart dan flexible ... target harian 500 cent ... deploy sekarang"):
+// FLEX mode = round 163 / 164 cell "M5 step = OCO = 1 ATR, trail arm 1 ATR / 0.5 ATR, flip 0.2 ATR" (57 / 63 $1000 starts
+// blown on real ticks; deployed on the owner's order). All distances = k x Wilder ATR(14) of closed M5 bars, live.
+input bool   InpMrtFlex     = true;     // true = the v2.62 rule below; false = the v2.57 fixed rule above
+input double InpMrtFlexK    = 1.0;      // OCO distance and layer step, x ATR(M5)
+input double InpMrtArmK     = 1.0;      // the basket trail arms once the basket is + this x ATR (money of 0.01 lot per ATR)
+input double InpMrtTrailK   = 0.5;      // basket stop line trails this x ATR behind the price
+input double InpMrtFlipK    = 0.2;      // opposite stop sits this x ATR inside the line (0 = no flip)
+input double InpMrtLock     = 1.0;      // the line never sits below the price where the whole basket nets + this (account money)
 
+double MrfAtr();
 int      MR_LOTS[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};       // x 0.01, linear +0.01 (round 146b: same profit as x1.5, 0.21 lot max instead of 0.31)
 string   mr_sym = "";
 bool     mr_ready = false;
@@ -100,7 +110,7 @@ int MrtBasket(ulong &tk[], int &dir, double &last, double &vol, double &pnl)
 }
 
 // the price where the whole basket nets +InpMrtTarget, swap included
-double MrtTpPrice(ulong &tk[], int dir)
+double MrtTpPrice(ulong &tk[], int dir, double target = -1)
 {
    double ts = SymbolInfoDouble(mr_sym, SYMBOL_TRADE_TICK_SIZE), tv = SymbolInfoDouble(mr_sym, SYMBOL_TRADE_TICK_VALUE);
    if(ts <= 0 || tv <= 0) return 0;
@@ -112,7 +122,7 @@ double MrtTpPrice(ulong &tk[], int dir)
       sv += v; sve += v * PositionGetDouble(POSITION_PRICE_OPEN); sw += PositionGetDouble(POSITION_SWAP);
    }
    if(sv <= 0) return 0;
-   double need = InpMrtTarget - sw;
+   double need = (target < 0 ? InpMrtTarget : target) - sw;
    return dir == 1 ? (need + sve) / sv : (sve - need) / sv;
 }
 
@@ -155,6 +165,16 @@ void MrtInit()
    int show = InpMrtMax <= 0 ? 5 : InpMrtMax;
    for(int k = 0; k < show; k++) lots += (k > 0 ? "/" : "") + DoubleToString(MrtLot(k), 2);
    if(InpMrtMax <= 0) lots += "/... +0.01 each";
+   if(InpMrtFlex)
+   {
+      MrtEvent(StringFormat("MART ONLINE | %s FLEX (v2.62, video trail + martingale): ATR(14, M5) now $%.2f. Flat: BUY STOP / SELL STOP "
+                            "%.1f ATR away, the first fill opens the basket; every %.1f ATR against the last entry adds the next lot (0.01, 0.02, 0.03 ... "
+                            "unlimited); once the basket is +%.1f ATR the stop line of every position trails %.1f ATR behind the price and never below "
+                            "the whole basket +%.2f, with an opposite stop %.1f ATR inside it that starts the next basket; NO stop loss before that; "
+                            "new baskets stop once the day's closed profit reaches %.0f | open: %d position(s), %.2f lot, floating %.2f",
+                            mr_sym, MrfAtr(), InpMrtFlexK, InpMrtFlexK, InpMrtArmK, InpMrtTrailK, InpMrtLock, InpMrtFlipK, InpDayTarget, n, vol, pnl));
+      return;
+   }
    MrtEvent(StringFormat("MART ONLINE | %s: %s, a stop $%.2f away%s from %02d:%02d server opens a basket; "
                          "every $%.2f against the last entry adds the next lot (%s, max %s), the TP of all positions moves to the "
                          "whole basket +$%.2f; NO stop loss, %s; new baskets stop once the day's closed profit reaches $%.0f | "
@@ -206,8 +226,9 @@ bool MrtCloseAll(ulong &tk[], string why)
 
 // v2.57 (round 146g): flat -> BUY STOP at the ask + InpMrtEntry and SELL STOP at the bid - InpMrtEntry; the first fill opens
 // the basket (MrtOnTimer deletes the other order when the basket appears) and decides its direction
-void MrtBothSides(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, int dg)
+void MrtBothSides(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, int dg, double dist = -1)
 {
+   if(dist <= 0) dist = InpMrtEntry;
    bool window = s.day_of_week >= 1 && s.day_of_week <= 5 && minute >= InpMrtFrom && minute < InpMrtTo;
    datetime d0 = now - now % 86400;
    int hb = 0, hs = 0;
@@ -228,21 +249,23 @@ void MrtBothSides(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &
    trade.SetExpertMagicNumber(InpMrtMagic); trade.SetTypeFillingBySymbol(mr_sym);
    if(hb == 0)
    {
-      double px = NormalizeDouble(tk.ask + InpMrtEntry, dg);
+      double px = NormalizeDouble(tk.ask + dist, dg);
       if(trade.BuyStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")) txt += "BUY STOP " + PriceStr(mr_sym, px);
       else MrtEvent(StringFormat("ERROR | MART buy stop %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    }
    if(hs == 0)
    {
-      double px = NormalizeDouble(tk.bid - InpMrtEntry, dg);
+      double px = NormalizeDouble(tk.bid - dist, dg);
       if(trade.SellStop(lot, px, mr_sym, 0, 0, ORDER_TIME_SPECIFIED, exp, "MART L1")) txt += (txt != "" ? " + " : "") + "SELL STOP " + PriceStr(mr_sym, px);
       else MrtEvent(StringFormat("ERROR | MART sell stop %s failed: %d %s", mr_sym, trade.ResultRetcode(), trade.ResultRetcodeDescription()));
    }
    trade.SetExpertMagicNumber(InpMagic); trade.SetTypeFillingBySymbol(InpSymbol);
    if(txt == "") return;
    MrtEvent(StringFormat("MART ORDER PLACED %s | both sides, no D1 filter: %s ($%.2f away), lot %.2f, the first fill deletes the other, no SL",
-                         mr_sym, txt, InpMrtEntry, lot));
+                         mr_sym, txt, dist, lot));
 }
+
+#include "FizyMRF.mqh"
 
 void MrtOnTimer()
 {
@@ -256,6 +279,7 @@ void MrtOnTimer()
    double pt = SymbolInfoDouble(mr_sym, SYMBOL_POINT);
    MqlDateTime s; TimeToStruct(now, s);
    int minute = s.hour * 60 + s.min;
+   if(InpMrtFlex) { MrfTimer(s, minute, now, live, tk, dg, pt); return; }
 
    ulong bk[]; int dir; double last, vol, pnl;
    int n = MrtBasket(bk, dir, last, vol, pnl);
