@@ -24,6 +24,9 @@
 ulong    mrf_kb[];
 ulong    mrf_ks[];
 datetime mrf_lastadd = 0;
+double   mrf_line[2] = {0, 0};      // v2.64: the EA's own basket line per side (0 buy, 1 sell); 0 = not trailing
+int      mrf_tn[2]   = {0, 0};      // positions in the basket when its line was armed
+datetime mrf_tryclose[2] = {0, 0};
 
 double MrfAtr()
 {
@@ -75,7 +78,7 @@ int MrfSide(int d, ulong &tk[], double &last, double &vol, double &pnl, double &
       vol += PositionGetDouble(POSITION_VOLUME);
       pnl += PositionGetDouble(POSITION_PROFIT) + PositionGetDouble(POSITION_SWAP);
       double psl = PositionGetDouble(POSITION_SL);
-      if(psl > 0) sl = sl == 0 ? psl : (d == 1 ? MathMin(sl, psl) : MathMax(sl, psl));
+      if(psl > 0) sl = sl == 0 ? psl : (d == 1 ? MathMax(sl, psl) : MathMin(sl, psl));   // v2.64: the most advanced SL = the line
       datetime pt = (datetime)PositionGetInteger(POSITION_TIME);
       if(pt > lt || (pt == lt && t > lticket)) { lt = pt; lticket = t; last = PositionGetDouble(POSITION_PRICE_OPEN); }
    }
@@ -135,11 +138,25 @@ void MrfDelete(bool flip)
 }
 
 // one basket: adds before the trail, then the trailing line; returns true while trailing
+// v2.64: put every position of the basket on the line (results checked; a failure is retried on the next tick)
+void MrfSync(int d, ulong &bk[], int n, double line, MqlTick &tk, double pt, double lim)
+{
+   if(!(d == 1 ? line < tk.bid - lim : line > tk.ask + lim)) return;        // too close for the broker: the EA's own line covers it
+   trade.SetExpertMagicNumber(InpMrtMagic);
+   for(int i = 0; i < n; i++)
+      if(PositionSelectByTicket(bk[i]) && MathAbs(PositionGetDouble(POSITION_SL) - line) > pt / 2)
+         trade.PositionModify(bk[i], line, 0);
+   trade.SetExpertMagicNumber(InpMagic);
+}
+
+// one basket: adds before the trail, then the trailing line; returns true while trailing
 bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, double sl, double A, MqlTick &tk, int dg, double pt, datetime now)
 {
+   int ix = d == 1 ? 0 : 1;
    double mp = MrfMoneyPerUsd();
    double lim = SymbolInfoInteger(mr_sym, SYMBOL_TRADE_STOPS_LEVEL) * pt + 2 * pt;
-   bool trailing = sl > 0;
+   if(mrf_line[ix] <= 0 && sl > 0) { mrf_line[ix] = sl; mrf_tn[ix] = n; }    // after a restart: the line is the most advanced SL
+   bool trailing = mrf_line[ix] > 0;
    double lockpx = MrtTpPrice(bk, d, InpMrtLock);
    if(!trailing)
    {
@@ -147,13 +164,12 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
       {
          double line = d == 1 ? MathMax(tk.bid - InpMrtTrailK * A, lockpx) : MathMin(tk.ask + InpMrtTrailK * A, lockpx);
          line = NormalizeDouble(line, dg);
-         bool ok = d == 1 ? line < tk.bid - lim : line > tk.ask + lim;
+         bool ok = d == 1 ? line < tk.bid : line > tk.ask;
          if(!ok) { MrtCloseAll(bk, "trail line already reached"); return false; }
-         trade.SetExpertMagicNumber(InpMrtMagic);
-         for(int i = 0; i < n; i++) trade.PositionModify(bk[i], line, 0);
-         trade.SetExpertMagicNumber(InpMagic);
+         mrf_line[ix] = line; mrf_tn[ix] = n;
+         MrfSync(d, bk, n, line, tk, pt, lim);
          MrtEvent(StringFormat("MART TRAIL %s | %s basket of %d position(s), %.2f lot, floating %.2f: profit locked, stop line of every "
-                               "position at %s (trails %.2f behind, basket +%.2f at worst)%s",
+                               "position at %s (trails %.2f behind, basket +%.2f at worst; the EA closes ALL of them when it is touched)%s",
                                mr_sym, d == 1 ? "BUY" : "SELL", n, vol, pnl, PriceStr(mr_sym, line), InpMrtTrailK * A, InpMrtLock,
                                InpMrtFlipK > 0 ? StringFormat("; a %s STOP %.2f inside it starts the next basket", d == 1 ? "SELL" : "BUY", InpMrtFlipK * A) : ""));
          return true;
@@ -175,26 +191,24 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
       }
       return false;
    }
+   // v2.64: the line touched, or the broker already closed part of the basket on it -> the EA closes ALL the rest at once
+   double line = mrf_line[ix];
+   bool hit = d == 1 ? tk.bid <= line : tk.ask >= line;
+   if(hit || n < mrf_tn[ix])
+   {
+      if(now - mrf_tryclose[ix] >= 3)
+      {
+         mrf_tryclose[ix] = now;
+         MrtCloseAll(bk, hit ? "basket line reached" : "rest of the basket after the line");
+      }
+      return true;
+   }
    // trailing: move the line in the profit direction only
    double want = d == 1 ? MathMax(tk.bid - InpMrtTrailK * A, lockpx) : MathMin(tk.ask + InpMrtTrailK * A, lockpx);
    want = NormalizeDouble(want, dg);
-   bool better = d == 1 ? want >= sl + 0.10 : want <= sl - 0.10;
-   bool valid = d == 1 ? want < tk.bid - lim : want > tk.ask + lim;
-   if(better && valid)
-   {
-      trade.SetExpertMagicNumber(InpMrtMagic);
-      for(int i = 0; i < n; i++) trade.PositionModify(bk[i], want, 0);
-      trade.SetExpertMagicNumber(InpMagic);
-   }
-   else if(!better)
-   {
-      // keep every position on the same line (a fill between modifies)
-      trade.SetExpertMagicNumber(InpMrtMagic);
-      for(int i = 0; i < n; i++)
-         if(PositionSelectByTicket(bk[i]) && MathAbs(PositionGetDouble(POSITION_SL) - sl) > pt / 2 && (d == 1 ? sl < tk.bid - lim : sl > tk.ask + lim))
-            trade.PositionModify(bk[i], sl, 0);
-      trade.SetExpertMagicNumber(InpMagic);
-   }
+   bool better = d == 1 ? want >= line + 0.10 : want <= line - 0.10;
+   if(better) { line = want; mrf_line[ix] = line; }
+   MrfSync(d, bk, n, line, tk, pt, lim);
    return true;
 }
 
@@ -235,6 +249,8 @@ void MrfTimer(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, 
    // closed baskets
    if(nb == 0 && ArraySize(mrf_kb) > 0) { MrfReport(1); ArrayResize(mrf_kb, 0); }
    if(ns == 0 && ArraySize(mrf_ks) > 0) { MrfReport(-1); ArrayResize(mrf_ks, 0); }
+   if(nb == 0) { mrf_line[0] = 0; mrf_tn[0] = 0; }
+   if(ns == 0) { mrf_line[1] = 0; mrf_tn[1] = 0; }
    // new baskets
    for(int side = 1; side >= -1; side -= 2)
    {
@@ -262,8 +278,7 @@ void MrfTimer(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, 
    if(open == 1 && (trb || trs))
    {
       int d = trb ? 1 : -1;
-      double ln = 0; ulong tmp[]; double a1, a2, a3;
-      MrfSide(d, tmp, a1, a2, a3, ln);                                         // read the line just set
+      double ln = mrf_line[d == 1 ? 0 : 1];                                   // the EA's own line
       if(ln > 0) MrfFlip(d, ln, A, tk, dg, pt, now);
       return;
    }
