@@ -1,34 +1,34 @@
-shift ended (UTC): 2026-11-23 04:02
+shift ended (UTC): 2026-11-23 13:39
 open
-2026.11.23 06:02:42
+2026.11.23 15:38:53
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 7913 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 8222 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  HO	0	01:22:02.356	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3610.40 ($x away), lot 0.01, the first fill deletes the other, no SL
-  OG	0	01:22:20.372	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3606.46 ($x away), lot 0.01, the first fill deletes the other, no SL
-  NP	0	01:36:23.368	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3603.43 ($x away), lot 0.01, the first fill deletes the other, no SL
-  LH	0	01:38:32.360	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3599.63 ($x away), lot 0.01, the first fill deletes the other, no SL
-  JP	0	01:57:40.570	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3597.26 ($x away), lot 0.01, the first fill deletes the other, no SL
-  JI	0	02:05:14.364	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3593.91 ($x away), lot 0.01, the first fill deletes the other, no SL
-  FQ	0	02:06:41.357	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3590.71 ($x away), lot 0.01, the first fill deletes the other, no SL
-  II	0	02:06:59.369	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3587.70 ($x away), lot 0.01, the first fill deletes the other, no SL
-  ER	0	02:09:54.365	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3584.04 ($x away), lot 0.01, the first fill deletes the other, no SL
-  RJ	0	02:10:18.355	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3581.32 ($x away), lot 0.01, the first fill deletes the other, no SL
-  RS	0	02:30:01.352	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3578.00 ($x away), lot 0.01, the first fill deletes the other, no SL
-  IK	0	02:30:40.364	FizyLB (XAUUSD.m,M15)	MART EVENT MART ORDER PLACED XAUUSD.m | both sides, no D1 filter: SELL STOP 3575.02 ($x away), lot 0.01, the first fill deletes the other, no SL
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: telegram ok: MART ORDER PLACED XAUUSD.m
-  w: shift end: done=False, state=2026.11.23 06:02:42|0|0
+  CF	0	13:12:18.455	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 6.80 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_312.png
+  DP	0	13:12:37.871	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, floating 4.71: profit locked, stop line of every position at 3622.66 (trails 2.18 behind, basket +1.00 at worst); a BUY STOP 0.87 inside it starts the next basket
+  PD	0	13:13:36.469	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3619.79, lot 0.01; no SL until the basket is + 1.0 ATR
+  EN	0	13:13:53.514	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, closed on its trailing line, profit 6.99 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_375.png
+  HE	0	13:20:31.716	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 5.10: profit locked, stop line of every position at 3622.58 (trails 2.31 behind, basket +1.00 at worst); a SELL STOP 0.92 inside it starts the next basket
+  OE	0	13:20:38.521	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3623.50, lot 0.01; no SL until the basket is + 1.0 ATR
+  PO	0	13:22:56.568	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 3.91 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_421.png
+  ND	0	13:25:04.237	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 2: 0.02 at 3628.55 (4.68 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -5.44; next add 4.68 further, trail arms at +4.68
+  GE	0	13:30:31.985	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, floating 5.68: profit locked, stop line of every position at 3626.58 (trails 2.36 behind, basket +1.00 at worst); a BUY STOP 0.95 inside it starts the next basket
+  II	0	13:30:46.563	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3625.63, lot 0.01; no SL until the basket is + 1.0 ATR
+  QL	0	13:33:44.787	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 2: 0.02 at 3620.89 (4.73 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -5.12; next add 4.73 further, trail arms at +4.73
+  QJ	0	13:36:04.627	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, closed on its trailing line, profit 16.45 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_484.png
+  w: telegram ok: MART SELL XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: MART BUY XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: MART SELL XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: MART BUY XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: shift end: done=False, state=2026.11.23 15:38:53|0|0
