@@ -1,0 +1,7 @@
+ATR M5: median $4.66, p10 $3.12, p90 $7.61
+ATR H1: median $17.01, p10 $13.44, p90 $22.06
+$1000, unlimited layers k x 0.01, no SL, 24 h weekdays, swap in; distances x ATR(14) of closed bars
+LIVE fixed $3 / TP +$3                         | starts blown 59/63 |    39 bsk win 100% net   -1000 worstFl  -1104 maxLot 0.78 BLOWN 18 Aug | prev    44 bsk win 100% net   -1000 worstFl  -1096 maxLot 0.78 BLOWN 19 May
+M5 step=OCO=1 ATR, TP +$3                      | starts blown 61/63 |    99 bsk win 100% net   -1000 worstFl  -1285 maxLot 0.66 BLOWN 19 Aug | prev   251 bsk win 100% net   -1000 worstFl  -1833 maxLot 0.91 BLOWN 26 May
+M5 step=OCO=1 ATR, TP +1 ATR $                 | starts blown 62/63 |    82 bsk win 100% net   -1000 worstFl  -1359 maxLot 0.66 BLOWN 19 Aug | prev    40 bsk win 100% net   -1000 worstFl  -1193 maxLot 0.55 BLOWN 19 May
+M5 step=OCO=1 ATR, trail arm 1 / 0.5 ATR, flip 0.20 | starts blown 57/63 |   133 bsk win  97% net   -1000 worstFl  -1584 maxLot 0.66 BLOWN 19 Aug | prev    60 bsk win  95% net   -1000 worstFl  -1339 maxLot 0.55 BLOWN 19 May
