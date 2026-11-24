@@ -1,33 +1,34 @@
-shift ended (UTC): 2026-11-24 13:05
-open
-2026.11.24 15:05:49
+shift ended (UTC): 2026-11-24 19:48
+done
+2026.11.24 21:48:33
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 9009 ms elapsed, cpu='X64 Regular'
-events: London 2 lines, NR7 0, Gotobi 0, gold auction 0
-  GR	0	07:30:24.511	FizyLB (XAUUSD.c,M15)	EVENT DAILY TARGET REACHED | today's closed profit $x >= $x: no new trades until 06:00 MYT tomorrow (00:00 server); open positions keep their own exits
-  KN	0	08:28:58.115	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 8: 0.08 at 3610.05 (5.66 = 1.0 ATR below/above the last entry), basket 0.36 lot, floating -541.36; next add 5.66 further, trail arms 5.66 beyond the basket breakeven
-  LF	0	10:59:52.033	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 8 position(s), 0.36 lot, floating 163.32: profit locked, stop line of every position at 3627.06 (trails 2.26 behind, basket +3.00 at worst; the EA closes ALL of them when it is touched); a SELL STOP 0.90 inside it starts the next basket
-  ML	0	11:02:48.009	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: market sell 0.07 position #<num> XAUUSD.c [position closed]
-  LL	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  DL	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  LK	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  DK	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  LJ	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  DJ	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  LI	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  HJ	0	11:02:51.570	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 8 position(s), 0.36 lot, closed on its trailing line, profit 97.40 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_421.png
-  w: telegram ok: DAILY TARGET REACHED
-  w: telegram ok: MART BUY XAUUSD.c
-  w: status message already sent today
-  w: telegram ok: MART ADD XAUUSD.c
+  Result: 0 errors, 0 warnings, 12339 ms elapsed, cpu='X64 Regular'
+events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
+  KI	0	14:57:27.474	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: market buy 0.01 position #<num> XAUUSD.c [position closed]
+  GF	0	14:57:27.475	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  QH	0	14:57:30.555	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 6.68 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_93.png
+  FQ	0	15:01:06.944	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 2: 0.02 at 3617.20 (6.50 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -6.99; next add 6.50 further, trail arms 6.50 beyond the basket breakeven
+  CS	0	15:02:29.079	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 3: 0.03 at 3610.69 (6.50 = 1.0 ATR below/above the last entry), basket 0.06 lot, floating -27.57; next add 6.50 further, trail arms 6.50 beyond the basket breakeven
+  FP	0	15:10:56.691	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 4: 0.04 at 3603.24 (7.35 = 1.0 ATR below/above the last entry), basket 0.10 lot, floating -73.38; next add 7.35 further, trail arms 7.35 beyond the basket breakeven
+  CR	0	15:16:06.706	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 5: 0.05 at 3595.93 (7.28 = 1.0 ATR below/above the last entry), basket 0.15 lot, floating -148.42; next add 7.28 further, trail arms 7.28 beyond the basket breakeven
+  OM	0	15:17:00.571	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 6: 0.06 at 3588.64 (7.28 = 1.0 ATR below/above the last entry), basket 0.21 lot, floating -260.72; next add 7.28 further, trail arms 7.28 beyond the basket breakeven
+  ML	0	15:51:30.277	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 7: 0.07 at 3580.34 (8.36 = 1.0 ATR below/above the last entry), basket 0.28 lot, floating -436.31; next add 8.36 further, trail arms 8.36 beyond the basket breakeven
+  GO	0	15:56:03.281	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 8: 0.08 at 3571.07 (8.56 = 1.0 ATR below/above the last entry), basket 0.36 lot, floating -700.21; next add 8.56 further, trail arms 8.56 beyond the basket breakeven
+  KN	0	16:19:00.880	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 9: 0.09 at 3562.86 (8.17 = 1.0 ATR below/above the last entry), basket 0.45 lot, floating -998.93; next add 8.17 further, trail arms 8.17 beyond the basket breakeven
+  HI	0	18:43:32.679	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 10: 0.10 at 3557.93 (4.81 = 1.0 ATR below/above the last entry), basket 0.55 lot, floating -1222.40; next add 4.81 further, trail arms 4.81 beyond the basket breakeven
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: ERROR
-  w: telegram ok: ERROR
-  w: telegram ok: ERROR
-  w: telegram ok: ERROR
-  w: telegram ok: ERROR
-  w: telegram ok: ERROR
+  w: telegram ok: MART BUY XAUUSD.c
   w: telegram ok: ERROR
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: shift end: done=False, state=2026.11.24 15:05:49|0|0
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART ADD XAUUSD.c
+  w: shift end: done=True, state=2026.11.24 21:48:33|0|0
