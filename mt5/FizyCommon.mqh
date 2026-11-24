@@ -74,7 +74,7 @@ void CloseLeftovers()
 //| NEW entries in every module until the next server day. Open       |
 //| positions keep their own exits (SL / TP / EMA / time).            |
 //+------------------------------------------------------------------+
-input double InpDayTarget = 500.0;       // account money; 0 = no daily target (v2.62, 23 Nov: 500 cents = $5 on the cent account; v2.59 100; v2.54 off; was $30)
+input double InpDayTarget = 0.0;         // account money; 0 = no daily target (v2.66, 24 Nov: off on the owner's order; v2.62, 23 Nov: 500 cents = $5 on the cent account; v2.59 100; v2.54 off; was $30)
 
 datetime dt_day = 0;          // server day the flags below belong to
 bool     dt_hit = false;
