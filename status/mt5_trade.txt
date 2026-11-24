@@ -1,34 +1,33 @@
-shift ended (UTC): 2026-11-24 07:29
+shift ended (UTC): 2026-11-24 13:05
 open
-2026.11.24 09:29:04
+2026.11.24 15:05:49
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 11571 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 9009 ms elapsed, cpu='X64 Regular'
 events: London 2 lines, NR7 0, Gotobi 0, gold auction 0
-  RM	0	02:06:05.244	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  JL	0	02:06:05.244	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  QL	0	02:06:05.245	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  IK	0	02:06:05.245	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  QK	0	02:06:05.245	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  CG	0	02:06:08.509	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 5 position(s), 0.15 lot, closed on its trailing line, profit 220.85 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_625.png
-  LO	0	02:06:21.519	FizyLB (XAUUSD.c,M15)	EVENT DAILY TARGET REACHED | today's closed profit $x >= $x: no new trades until 06:00 MYT tomorrow (00:00 server); open positions keep their own exits
-  RH	0	02:50:23.836	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 3: 0.03 at 3641.45 (7.57 = 1.0 ATR below/above the last entry), basket 0.06 lot, floating -33.88; next add 7.57 further, trail arms 7.57 beyond the basket breakeven
-  JI	0	03:08:58.584	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 4: 0.04 at 3634.18 (7.13 = 1.0 ATR below/above the last entry), basket 0.10 lot, floating -79.09; next add 7.13 further, trail arms 7.13 beyond the basket breakeven
-  OE	0	04:25:05.751	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 5: 0.05 at 3628.93 (5.10 = 1.0 ATR below/above the last entry), basket 0.15 lot, floating -133.87; next add 5.10 further, trail arms 5.10 beyond the basket breakeven
-  ND	0	06:05:12.844	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 6: 0.06 at 3622.95 (5.94 = 1.0 ATR below/above the last entry), basket 0.21 lot, floating -230.57; next add 5.94 further, trail arms 5.94 beyond the basket breakeven
-  CG	0	06:36:53.244	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 7: 0.07 at 3615.91 (6.36 = 1.0 ATR below/above the last entry), basket 0.28 lot, floating -377.42; next add 6.36 further, trail arms 6.36 beyond the basket breakeven
+  GR	0	07:30:24.511	FizyLB (XAUUSD.c,M15)	EVENT DAILY TARGET REACHED | today's closed profit $x >= $x: no new trades until 06:00 MYT tomorrow (00:00 server); open positions keep their own exits
+  KN	0	08:28:58.115	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 8: 0.08 at 3610.05 (5.66 = 1.0 ATR below/above the last entry), basket 0.36 lot, floating -541.36; next add 5.66 further, trail arms 5.66 beyond the basket breakeven
+  LF	0	10:59:52.033	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 8 position(s), 0.36 lot, floating 163.32: profit locked, stop line of every position at 3627.06 (trails 2.26 behind, basket +3.00 at worst; the EA closes ALL of them when it is touched); a SELL STOP 0.90 inside it starts the next basket
+  ML	0	11:02:48.009	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: market sell 0.07 position #<num> XAUUSD.c [position closed]
+  LL	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  DL	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  LK	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  DK	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  LJ	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  DJ	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  LI	0	11:02:48.010	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  HJ	0	11:02:51.570	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 8 position(s), 0.36 lot, closed on its trailing line, profit 97.40 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_421.png
+  w: telegram ok: DAILY TARGET REACHED
   w: telegram ok: MART BUY XAUUSD.c
+  w: status message already sent today
   w: telegram ok: MART ADD XAUUSD.c
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: ERROR
+  w: telegram ok: ERROR
   w: telegram ok: ERROR
   w: telegram ok: ERROR
   w: telegram ok: ERROR
   w: telegram ok: ERROR
   w: telegram ok: ERROR
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: DAILY TARGET REACHED
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: shift end: done=False, state=2026.11.24 09:29:04|0|0
+  w: shift end: done=False, state=2026.11.24 15:05:49|0|0
