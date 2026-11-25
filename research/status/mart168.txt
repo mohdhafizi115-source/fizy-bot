@@ -1,0 +1,9 @@
+M5: median $4.66, p10 $3.12, p90 $7.61
+$1000, unlimited layers k x 0.01, no SL, 24 h weekdays, swap in. TRAIL = live v2.67 exit (arm at basket +$3, line max(price - 0.5 unit-step, basket +$3), flip stop 0.2 step inside)
+share of time allowed: adx<20 33%, adx<25 53%, chop>50 47%, chop>61.8 10%, bbw<med 47%, atrH1<1.2x 83%, atrH1<1.5x 98%, ema200<2atr 31%, ema200<4atr 58%, adx<25&chop>50 30%, b:M5bull 49%, s:M5bear 51%, b:M15bull 49%, s:M15bear 51%, b:rsi5>30 95%, s:rsi5<70 95%, b:rsi15>30 93%, s:rsi15<70 95%, b:rsi5up 49%, s:rsi5dn 51%, rnd60a 59%, rnd60b 60%, rndAddA 50%, rndAddB 50%
+LIVE v2.68 (no gate)                         | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+--- A: NEW baskets only while the regime gate is open (an open basket keeps adding)
+new only if adx<20                           | starts blown 62/63 |   173 bsk win 100% net   -1000 worstFl  -1588 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if adx<25                           | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if chop>50                          | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if chop>61.8                        | starts blown 60/63 |   156 bsk win 100% net   -1000 worstFl  -1532 maxLot 0.66 BLOWN 19 Aug | prev   459 bsk win 100% net   -1000 worstFl  -2802 maxLot 1.20 BLOWN 26 May
