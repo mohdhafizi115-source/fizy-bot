@@ -1,0 +1,244 @@
+M1 bars 193162, 01 May 2026 .. 16 Nov 2026; last 3 m from 17 Aug, previous from 18 May
+TF   n kind    EMA200 SL  TP | LAST 3 MONTHS: trades win PF stress net DD worstDay rand | PREVIOUS 3: trades PF net rand
+M5  3 break  -   atr   1R |  791  47% PF 0.85 st 0.84 net    -436 DD   -469 wd   -76 rand 0.94/0.88 |  802 PF 0.81 net    -624 rand 0.82/0.92
+M5  3 break  -   atr   2R |  666  31% PF 0.88 st 0.87 net    -358 DD   -407 wd   -68 rand 0.86/0.92 |  652 PF 0.86 net    -487 rand 0.96/0.90
+M5  3 break  -   atr   3R |  598  26% PF 0.91 st 0.90 net    -256 DD   -329 wd   -71 rand 0.98/1.12 |  585 PF 0.84 net    -532 rand 0.92/0.99
+M5  3 break  -   swing 1R |  587  48% PF 1.00 st 0.97 net      -6 DD   -274 wd   -79 rand 0.96/0.88 |  613 PF 0.79 net    -750 rand 0.97/0.88
+M5  3 break  -   swing 2R |  499  37% PF 1.05 st 1.04 net    +133 DD   -236 wd   -76 rand 1.12/1.06 |  505 PF 0.68 net   -1114 rand 0.83/1.09
+M5  3 break  -   swing 3R |  462  34% PF 1.05 st 1.04 net    +143 DD   -246 wd   -70 rand 1.07/0.93 |  489 PF 0.70 net   -1034 rand 0.98/0.84
+M5  3 break  EMA atr   1R |  434  53% PF 1.06 st 1.05 net     +81 DD   -169 wd   -47 rand 0.97/0.87 |  449 PF 0.76 net    -445 rand 0.81/0.95
+M5  3 break  EMA atr   2R |  399  32% PF 0.97 st 0.96 net     -60 DD   -327 wd   -61 rand 0.88/0.89 |  418 PF 0.85 net    -312 rand 1.15/0.93
+M5  3 break  EMA atr   3R |  389  27% PF 1.02 st 1.01 net     +38 DD   -271 wd   -61 rand 1.00/1.10 |  398 PF 0.94 net    -117 rand 0.96/1.07
+M5  3 break  EMA swing 1R |  380  51% PF 1.12 st 1.11 net    +208 DD   -136 wd   -55 rand 1.11/1.12 |  388 PF 0.85 net    -298 rand 0.83/0.76
+M5  3 break  EMA swing 2R |  348  36% PF 1.07 st 1.06 net    +132 DD   -225 wd   -72 rand 0.90/1.02 |  358 PF 0.99 net     -20 rand 1.05/1.05
+M5  3 break  EMA swing 3R |  336  32% PF 1.02 st 1.01 net     +36 DD   -217 wd   -72 rand 1.08/1.14 |  350 PF 0.99 net     -26 rand 1.07/1.03
+M5  3 bounce -   atr   1R |  629  45% PF 0.80 st 0.80 net    -465 DD   -500 wd   -61 rand 0.91/0.72 |  643 PF 0.95 net    -126 rand 0.83/0.91
+M5  3 bounce -   atr   2R |  535  30% PF 0.83 st 0.80 net    -433 DD   -453 wd   -60 rand 1.07/0.84 |  536 PF 0.96 net    -118 rand 0.98/0.95
+M5  3 bounce -   atr   3R |  483  25% PF 0.82 st 0.82 net    -436 DD   -496 wd   -60 rand 0.83/0.89 |  488 PF 1.05 net    +120 rand 1.01/0.97
+M5  3 bounce -   swing 1R |  616  47% PF 0.95 st 0.94 net    -100 DD   -205 wd   -60 rand 0.94/1.04 |  628 PF 0.91 net    -207 rand 0.91/0.92
+M5  3 bounce -   swing 2R |  531  32% PF 0.96 st 0.95 net     -83 DD   -200 wd   -44 rand 0.83/0.94 |  546 PF 1.01 net     +19 rand 1.03/0.82
+M5  3 bounce -   swing 3R |  490  29% PF 1.06 st 1.05 net    +127 DD   -186 wd   -51 rand 0.91/1.00 |  500 PF 0.92 net    -193 rand 0.89/1.07
+M5  3 bounce EMA atr   1R |  425  48% PF 0.90 st 0.88 net    -156 DD   -204 wd   -44 rand 0.91/0.98 |  433 PF 0.89 net    -189 rand 1.03/0.90
+M5  3 bounce EMA atr   2R |  382  32% PF 0.90 st 0.88 net    -166 DD   -269 wd   -47 rand 0.83/1.07 |  383 PF 0.91 net    -174 rand 1.04/0.82
+M5  3 bounce EMA atr   3R |  354  26% PF 0.87 st 0.86 net    -219 DD   -298 wd   -53 rand 1.06/0.83 |  358 PF 1.02 net     +39 rand 1.10/0.88
+M5  3 bounce EMA swing 1R |  411  48% PF 0.98 st 0.98 net     -24 DD   -146 wd   -64 rand 0.70/1.06 |  417 PF 0.90 net    -163 rand 0.78/0.86
+M5  3 bounce EMA swing 2R |  372  31% PF 0.94 st 0.93 net    -107 DD   -235 wd   -64 rand 0.95/0.85 |  376 PF 1.01 net     +20 rand 0.75/1.07
+M5  3 bounce EMA swing 3R |  353  28% PF 0.99 st 0.99 net     -10 DD   -241 wd   -64 rand 1.03/0.96 |  360 PF 0.89 net    -206 rand 1.10/0.95
+M5  3 retest -   atr   1R |  434  40% PF 0.70 st 0.67 net    -506 DD   -564 wd   -61 rand 0.85/0.87 |  422 PF 1.02 net     +27 rand 0.88/0.97
+M5  3 retest -   atr   2R |  393  30% PF 0.81 st 0.80 net    -333 DD   -571 wd   -61 rand 0.95/0.86 |  382 PF 0.97 net     -51 rand 1.10/0.92
+M5  3 retest -   atr   3R |  371  25% PF 0.85 st 0.85 net    -262 DD   -577 wd   -61 rand 1.33/0.96 |  364 PF 1.15 net    +266 rand 1.15/1.00
+M5  3 retest -   swing 1R |  383  46% PF 0.91 st 0.89 net    -150 DD   -283 wd   -80 rand 0.99/1.19 |  387 PF 0.96 net     -67 rand 1.08/1.07
+M5  3 retest -   swing 2R |  347  36% PF 0.91 st 0.89 net    -154 DD   -269 wd   -77 rand 1.14/1.13 |  355 PF 1.12 net    +218 rand 1.02/1.10
+M5  3 retest -   swing 3R |  333  32% PF 0.96 st 0.93 net     -69 DD   -338 wd   -74 rand 1.18/0.94 |  331 PF 0.94 net    -104 rand 0.93/1.08
+M5  3 retest EMA atr   1R |  221  45% PF 0.80 st 0.80 net    -164 DD   -270 wd   -37 rand 0.78/0.95 |  197 PF 1.06 net     +38 rand 1.08/0.91
+M5  3 retest EMA atr   2R |  209  31% PF 0.84 st 0.81 net    -146 DD   -291 wd   -35 rand 1.14/1.09 |  190 PF 0.90 net     -86 rand 0.90/1.10
+M5  3 retest EMA atr   3R |  202  27% PF 0.97 st 0.95 net     -34 DD   -219 wd   -35 rand 0.96/1.27 |  187 PF 1.05 net     +46 rand 1.01/0.78
+M5  3 retest EMA swing 1R |  206  47% PF 0.89 st 0.87 net    -103 DD   -235 wd   -34 rand 0.89/0.92 |  190 PF 1.00 net      +2 rand 0.96/1.12
+M5  3 retest EMA swing 2R |  198  36% PF 0.86 st 0.86 net    -153 DD   -163 wd   -38 rand 0.90/1.03 |  185 PF 1.09 net     +86 rand 0.91/1.45
+M5  3 retest EMA swing 3R |  194  32% PF 0.93 st 0.92 net     -77 DD   -105 wd   -48 rand 0.62/0.74 |  183 PF 0.98 net     -21 rand 0.75/1.17
+M5  5 break  -   atr   1R |  572  50% PF 1.00 st 0.97 net      -1 DD   -160 wd   -54 rand 1.02/1.07 |  583 PF 0.88 net    -274 rand 0.84/0.89
+M5  5 break  -   atr   2R |  505  36% PF 1.11 st 1.08 net    +230 DD   -144 wd   -64 rand 1.04/0.90 |  500 PF 0.96 net     -89 rand 0.85/0.96
+M5  5 break  -   atr   3R |  461  29% PF 1.06 st 1.04 net    +133 DD   -259 wd   -58 rand 0.92/0.93 |  461 PF 0.92 net    -192 rand 0.96/1.00
+M5  5 break  -   swing 1R |  467  50% PF 1.07 st 1.05 net    +158 DD   -325 wd   -71 rand 0.84/0.97 |  473 PF 0.87 net    -359 rand 0.84/0.89
+M5  5 break  -   swing 2R |  401  39% PF 1.12 st 1.08 net    +255 DD   -326 wd  -106 rand 1.05/1.11 |  421 PF 0.86 net    -393 rand 1.00/0.81
+M5  5 break  -   swing 3R |  383  33% PF 1.01 st 0.98 net     +13 DD   -359 wd  -106 rand 1.02/0.99 |  397 PF 0.82 net    -493 rand 0.89/0.72
+M5  5 break  EMA atr   1R |  294  55% PF 1.23 st 1.21 net    +200 DD    -43 wd   -30 rand 0.93/0.78 |  294 PF 0.94 net     -61 rand 0.94/0.92 PASS
+M5  5 break  EMA atr   2R |  283  37% PF 1.17 st 1.17 net    +193 DD    -68 wd   -44 rand 0.94/0.95 |  282 PF 1.03 net     +40 rand 1.03/0.88 PASS
+M5  5 break  EMA atr   3R |  277  30% PF 1.15 st 1.14 net    +176 DD    -84 wd   -44 rand 1.16/0.76 |  274 PF 1.06 net     +84 rand 1.21/0.81
+M5  5 break  EMA swing 1R |  263  52% PF 1.20 st 1.20 net    +227 DD    -88 wd   -43 rand 1.23/1.02 |  258 PF 1.09 net    +113 rand 0.96/1.18 PASS (random as good)
+M5  5 break  EMA swing 2R |  251  39% PF 1.15 st 1.11 net    +197 DD   -151 wd   -47 rand 1.04/1.16 |  247 PF 1.05 net     +74 rand 1.17/0.91
+M5  5 break  EMA swing 3R |  244  34% PF 1.06 st 1.03 net     +79 DD   -231 wd   -48 rand 0.91/0.99 |  241 PF 1.05 net     +77 rand 1.20/1.32
+M5  5 bounce -   atr   1R |  435  45% PF 0.81 st 0.79 net    -311 DD   -328 wd   -52 rand 0.86/0.77 |  455 PF 0.87 net    -222 rand 0.92/0.81
+M5  5 bounce -   atr   2R |  383  30% PF 0.82 st 0.80 net    -333 DD   -393 wd   -52 rand 1.00/0.93 |  402 PF 0.99 net     -14 rand 0.84/0.95
+M5  5 bounce -   atr   3R |  351  26% PF 0.85 st 0.84 net    -257 DD   -293 wd   -52 rand 0.81/1.06 |  378 PF 1.00 net      -7 rand 1.07/0.99
+M5  5 bounce -   swing 1R |  461  48% PF 0.89 st 0.89 net    -160 DD   -219 wd   -60 rand 0.87/0.82 |  468 PF 1.03 net     +45 rand 0.88/0.88
+M5  5 bounce -   swing 2R |  404  34% PF 1.02 st 1.01 net     +27 DD   -175 wd   -64 rand 0.80/1.07 |  412 PF 1.04 net     +70 rand 1.02/1.11
+M5  5 bounce -   swing 3R |  377  28% PF 0.99 st 0.98 net     -22 DD   -217 wd   -72 rand 0.87/1.06 |  387 PF 0.94 net    -106 rand 1.03/1.03
+M5  5 bounce EMA atr   1R |  292  47% PF 0.90 st 0.90 net    -102 DD   -185 wd   -30 rand 0.88/0.91 |  289 PF 0.78 net    -269 rand 1.10/0.92
+M5  5 bounce EMA atr   2R |  264  32% PF 0.93 st 0.92 net     -90 DD   -235 wd   -30 rand 0.98/0.90 |  268 PF 0.86 net    -192 rand 0.84/0.93
+M5  5 bounce EMA atr   3R |  244  26% PF 0.96 st 0.95 net     -54 DD   -227 wd   -41 rand 1.01/0.91 |  256 PF 0.91 net    -123 rand 0.76/0.95
+M5  5 bounce EMA swing 1R |  295  48% PF 0.93 st 0.93 net     -69 DD   -208 wd   -67 rand 0.82/1.01 |  291 PF 0.94 net     -63 rand 1.08/0.99
+M5  5 bounce EMA swing 2R |  272  35% PF 1.05 st 1.04 net     +52 DD   -164 wd   -63 rand 1.00/1.08 |  265 PF 0.94 net     -65 rand 0.71/0.90
+M5  5 bounce EMA swing 3R |  253  28% PF 0.94 st 0.94 net     -63 DD   -248 wd   -61 rand 1.06/1.18 |  252 PF 0.78 net    -268 rand 0.76/0.95
+M5  5 retest -   atr   1R |  296  51% PF 1.12 st 1.09 net    +117 DD    -98 wd   -37 rand 0.89/0.80 |  308 PF 1.11 net    +113 rand 1.09/0.79
+M5  5 retest -   atr   2R |  276  37% PF 1.12 st 1.11 net    +137 DD   -195 wd   -46 rand 0.86/0.92 |  284 PF 1.09 net    +110 rand 0.81/0.85
+M5  5 retest -   atr   3R |  262  32% PF 1.19 st 1.18 net    +222 DD   -165 wd   -46 rand 1.13/0.86 |  274 PF 1.02 net     +22 rand 1.21/0.96 PASS
+M5  5 retest -   swing 1R |  285  51% PF 1.05 st 1.05 net     +68 DD   -165 wd   -60 rand 0.95/1.00 |  284 PF 0.98 net     -28 rand 0.96/0.91
+M5  5 retest -   swing 2R |  258  37% PF 0.98 st 0.97 net     -28 DD   -225 wd   -64 rand 0.88/0.86 |  267 PF 1.04 net     +53 rand 0.98/0.87
+M5  5 retest -   swing 3R |  249  34% PF 0.99 st 0.98 net     -16 DD   -257 wd   -64 rand 1.20/0.97 |  254 PF 0.96 net     -60 rand 0.98/1.10
+M5  5 retest EMA atr   1R |  139  55% PF 1.29 st 1.26 net    +116 DD    -57 wd   -18 rand 0.85/0.93 |  151 PF 1.26 net    +120 rand 0.72/0.93 PASS+REPEAT
+M5  5 retest EMA atr   2R |  135  41% PF 1.34 st 1.34 net    +174 DD    -69 wd   -29 rand 0.89/1.19 |  147 PF 1.11 net     +66 rand 0.58/0.84 PASS
+M5  5 retest EMA atr   3R |  133  35% PF 1.41 st 1.41 net    +229 DD    -72 wd   -29 rand 1.17/0.89 |  146 PF 0.94 net     -40 rand 0.97/0.64 PASS
+M5  5 retest EMA swing 1R |  136  50% PF 1.06 st 1.06 net     +39 DD    -93 wd   -44 rand 1.22/1.03 |  149 PF 1.00 net      +0 rand 0.75/0.80
+M5  5 retest EMA swing 2R |  131  40% PF 1.02 st 1.01 net     +12 DD   -147 wd   -44 rand 0.95/0.83 |  148 PF 1.05 net     +37 rand 0.89/1.01
+M5  5 retest EMA swing 3R |  130  36% PF 1.06 st 1.06 net     +49 DD   -133 wd   -44 rand 1.24/0.98 |  147 PF 0.99 net      -6 rand 1.33/0.97
+M15 3 break  -   atr   1R |  277  47% PF 0.97 st 0.97 net     -52 DD   -298 wd   -74 rand 0.95/0.94 |  264 PF 1.08 net    +127 rand 1.02/1.00
+M15 3 break  -   atr   2R |  227  37% PF 1.19 st 1.15 net    +313 DD   -247 wd   -67 rand 0.99/1.59 |  206 PF 1.19 net    +314 rand 0.92/0.87 PASS+REPEAT (random as good)
+M15 3 break  -   atr   3R |  200  30% PF 1.20 st 1.15 net    +330 DD   -218 wd  -102 rand 1.08/1.09 |  184 PF 0.96 net     -68 rand 1.33/1.02 PASS
+M15 3 break  -   swing 1R |  217  49% PF 0.94 st 0.94 net    -110 DD   -377 wd   -88 rand 1.03/1.02 |  200 PF 1.23 net    +360 rand 0.89/1.10
+M15 3 break  -   swing 2R |  179  34% PF 0.92 st 0.92 net    -129 DD   -536 wd   -94 rand 1.14/0.96 |  169 PF 1.24 net    +388 rand 1.49/0.75
+M15 3 break  -   swing 3R |  165  27% PF 0.82 st 0.82 net    -307 DD   -577 wd   -94 rand 0.85/0.67 |  162 PF 0.98 net     -34 rand 1.27/1.08
+M15 3 break  EMA atr   1R |  143  47% PF 0.95 st 0.95 net     -39 DD   -216 wd   -43 rand 0.81/1.19 |  151 PF 1.07 net     +60 rand 0.86/0.99
+M15 3 break  EMA atr   2R |  137  30% PF 0.94 st 0.91 net     -63 DD   -268 wd   -75 rand 0.97/1.22 |  139 PF 1.17 net    +183 rand 0.71/0.69
+M15 3 break  EMA atr   3R |  128  23% PF 0.88 st 0.84 net    -122 DD   -305 wd   -75 rand 1.01/1.02 |  135 PF 1.16 net    +186 rand 0.88/1.10
+M15 3 break  EMA swing 1R |  125  47% PF 0.82 st 0.82 net    -180 DD   -304 wd   -76 rand 1.32/0.67 |  132 PF 0.98 net     -21 rand 1.23/1.06
+M15 3 break  EMA swing 2R |  118  32% PF 0.90 st 0.90 net    -114 DD   -305 wd   -61 rand 0.81/0.95 |  121 PF 1.03 net     +43 rand 1.17/0.99
+M15 3 break  EMA swing 3R |  113  20% PF 0.56 st 0.55 net    -536 DD   -656 wd  -105 rand 0.68/0.74 |  117 PF 1.01 net     +17 rand 1.05/1.09
+M15 3 bounce -   atr   1R |  223  48% PF 0.98 st 0.98 net     -22 DD   -258 wd   -45 rand 0.96/1.19 |  205 PF 1.02 net     +27 rand 0.94/0.90
+M15 3 bounce -   atr   2R |  192  35% PF 1.13 st 1.13 net    +182 DD   -260 wd   -61 rand 0.96/1.26 |  175 PF 0.96 net     -70 rand 1.02/1.22
+M15 3 bounce -   atr   3R |  168  28% PF 1.16 st 1.16 net    +224 DD   -246 wd   -61 rand 1.04/0.82 |  159 PF 0.94 net     -86 rand 0.85/0.99 PASS
+M15 3 bounce -   swing 1R |  223  52% PF 1.21 st 1.17 net    +246 DD   -153 wd   -51 rand 1.10/1.01 |  203 PF 1.04 net     +49 rand 1.10/0.99 PASS
+M15 3 bounce -   swing 2R |  181  36% PF 1.30 st 1.30 net    +365 DD   -165 wd   -63 rand 1.22/1.02 |  180 PF 1.07 net     +97 rand 1.34/0.92 PASS
+M15 3 bounce -   swing 3R |  168  35% PF 1.41 st 1.41 net    +474 DD   -154 wd   -63 rand 1.14/0.97 |  165 PF 0.96 net     -55 rand 1.21/0.79 PASS
+M15 3 bounce EMA atr   1R |  150  51% PF 1.09 st 1.09 net     +77 DD   -198 wd   -42 rand 1.17/0.89 |  140 PF 0.97 net     -24 rand 0.78/0.87
+M15 3 bounce EMA atr   2R |  136  36% PF 1.21 st 1.23 net    +215 DD   -274 wd   -44 rand 1.06/1.04 |  127 PF 1.03 net     +35 rand 1.43/1.23 PASS
+M15 3 bounce EMA atr   3R |  124  28% PF 1.19 st 1.19 net    +198 DD   -240 wd   -44 rand 1.36/1.31 |  117 PF 1.16 net    +171 rand 0.90/1.10 PASS+REPEAT (random as good)
+M15 3 bounce EMA swing 1R |  143  54% PF 1.37 st 1.33 net    +283 DD   -134 wd   -45 rand 1.13/1.15 |  130 PF 1.08 net     +70 rand 1.21/1.40 PASS
+M15 3 bounce EMA swing 2R |  124  38% PF 1.56 st 1.56 net    +458 DD   -133 wd   -64 rand 1.51/1.51 |  123 PF 1.24 net    +243 rand 1.07/1.43 PASS+REPEAT
+M15 3 bounce EMA swing 3R |  115  34% PF 1.60 st 1.59 net    +473 DD   -149 wd   -64 rand 1.15/1.54 |  111 PF 1.15 net    +139 rand 1.10/1.42 PASS
+M15 3 retest -   atr   1R |  154  47% PF 0.94 st 0.94 net     -55 DD   -160 wd   -40 rand 0.67/0.87 |  132 PF 1.12 net     +92 rand 1.19/0.81
+M15 3 retest -   atr   2R |  136  30% PF 0.86 st 0.86 net    -153 DD   -248 wd   -64 rand 1.29/0.92 |  119 PF 1.07 net     +69 rand 1.08/1.20
+M15 3 retest -   atr   3R |  128  22% PF 0.83 st 0.83 net    -188 DD   -314 wd   -64 rand 1.10/0.81 |  114 PF 1.14 net    +133 rand 1.35/1.07
+M15 3 retest -   swing 1R |  137  40% PF 0.86 st 0.86 net    -148 DD   -278 wd  -104 rand 0.73/0.91 |  117 PF 0.92 net     -75 rand 0.93/1.28
+M15 3 retest -   swing 2R |  123  25% PF 0.77 st 0.73 net    -266 DD   -362 wd  -104 rand 0.94/0.81 |  110 PF 0.95 net     -50 rand 1.09/1.04
+M15 3 retest -   swing 3R |  121  21% PF 0.75 st 0.75 net    -305 DD   -423 wd  -104 rand 0.50/1.18 |  104 PF 0.94 net     -68 rand 0.72/0.95
+M15 3 retest EMA atr   1R |   78  45% PF 0.82 st 0.82 net     -85 DD   -148 wd   -31 rand 1.06/0.90 |   68 PF 1.06 net     +25 rand 0.76/0.92
+M15 3 retest EMA atr   2R |   76  22% PF 0.60 st 0.60 net    -254 DD   -270 wd   -35 rand 1.14/1.00 |   65 PF 1.14 net     +68 rand 1.12/0.94
+M15 3 retest EMA atr   3R |   75  16% PF 0.59 st 0.59 net    -280 DD   -306 wd   -35 rand 0.87/0.89 |   64 PF 0.99 net      -8 rand 1.15/0.70
+M15 3 retest EMA swing 1R |   72  40% PF 0.77 st 0.76 net    -140 DD   -198 wd   -43 rand 0.93/1.31 |   63 PF 0.99 net      -8 rand 0.94/0.70
+M15 3 retest EMA swing 2R |   70  26% PF 0.82 st 0.82 net    -125 DD   -178 wd   -43 rand 1.38/0.99 |   59 PF 0.99 net      -8 rand 0.84/0.72
+M15 3 retest EMA swing 3R |   69  22% PF 0.77 st 0.76 net    -168 DD   -269 wd   -43 rand 1.27/0.82 |   58 PF 0.96 net     -28 rand 0.78/0.92
+M15 5 break  -   atr   1R |  195  46% PF 0.88 st 0.87 net    -143 DD   -208 wd   -37 rand 0.94/0.80 |  183 PF 1.11 net    +120 rand 0.91/0.88
+M15 5 break  -   atr   2R |  178  27% PF 0.72 st 0.69 net    -426 DD   -475 wd   -58 rand 0.64/0.95 |  164 PF 1.23 net    +291 rand 0.85/0.93
+M15 5 break  -   atr   3R |  169  20% PF 0.65 st 0.61 net    -556 DD   -636 wd   -58 rand 1.02/0.83 |  147 PF 0.96 net     -52 rand 1.01/1.03
+M15 5 break  -   swing 1R |  142  42% PF 0.82 st 0.82 net    -254 DD   -379 wd   -70 rand 0.82/0.89 |  141 PF 1.34 net    +389 rand 1.63/0.90
+M15 5 break  -   swing 2R |  127  31% PF 0.80 st 0.80 net    -275 DD   -514 wd   -70 rand 0.72/0.93 |  120 PF 1.33 net    +380 rand 1.17/1.21
+M15 5 break  -   swing 3R |  123  26% PF 0.63 st 0.63 net    -563 DD   -664 wd   -70 rand 1.04/0.71 |  114 PF 1.16 net    +184 rand 1.37/1.03
+M15 5 break  EMA atr   1R |  106  43% PF 0.79 st 0.79 net    -141 DD   -209 wd   -42 rand 0.85/1.33 |   93 PF 1.28 net    +135 rand 0.89/1.15
+M15 5 break  EMA atr   2R |  102  25% PF 0.68 st 0.65 net    -273 DD   -312 wd   -42 rand 0.89/1.07 |   91 PF 1.25 net    +169 rand 1.10/1.04
+M15 5 break  EMA atr   3R |  100  20% PF 0.71 st 0.66 net    -260 DD   -332 wd   -42 rand 0.88/1.11 |   88 PF 1.22 net    +161 rand 1.04/1.17
+M15 5 break  EMA swing 1R |   87  34% PF 0.59 st 0.59 net    -420 DD   -466 wd   -49 rand 0.79/0.97 |   84 PF 0.97 net     -23 rand 0.78/0.87
+M15 5 break  EMA swing 2R |   83  25% PF 0.50 st 0.50 net    -534 DD   -630 wd   -49 rand 0.60/0.62 |   77 PF 0.96 net     -33 rand 1.21/1.53
+M15 5 break  EMA swing 3R |   81  21% PF 0.48 st 0.48 net    -563 DD   -684 wd   -49 rand 0.70/0.66 |   76 PF 1.05 net     +41 rand 1.29/1.49
+M15 5 bounce -   atr   1R |  166  51% PF 1.07 st 1.06 net     +66 DD   -163 wd   -42 rand 0.85/1.03 |  142 PF 0.93 net     -67 rand 0.90/0.75
+M15 5 bounce -   atr   2R |  141  35% PF 1.14 st 1.15 net    +147 DD   -231 wd   -60 rand 0.91/1.22 |  129 PF 0.96 net     -44 rand 0.98/1.08
+M15 5 bounce -   atr   3R |  133  31% PF 1.32 st 1.31 net    +328 DD   -204 wd   -60 rand 1.03/0.97 |  117 PF 1.05 net     +54 rand 1.31/0.86 PASS
+M15 5 bounce -   swing 1R |  165  54% PF 1.35 st 1.33 net    +251 DD   -139 wd   -46 rand 1.01/1.06 |  145 PF 0.94 net     -54 rand 1.04/0.98 PASS
+M15 5 bounce -   swing 2R |  142  36% PF 1.28 st 1.26 net    +228 DD   -209 wd   -57 rand 0.98/0.81 |  132 PF 0.94 net     -59 rand 0.89/0.96 PASS
+M15 5 bounce -   swing 3R |  137  32% PF 1.45 st 1.45 net    +387 DD   -138 wd   -57 rand 1.25/0.74 |  118 PF 0.94 net     -58 rand 1.00/0.82 PASS
+M15 5 bounce EMA atr   1R |  104  46% PF 0.93 st 0.91 net     -43 DD   -151 wd   -32 rand 0.94/0.97 |   93 PF 0.72 net    -197 rand 0.73/1.38
+M15 5 bounce EMA atr   2R |   95  34% PF 1.11 st 1.11 net     +75 DD   -172 wd   -32 rand 1.10/1.57 |   89 PF 0.95 net     -38 rand 0.73/0.75
+M15 5 bounce EMA atr   3R |   93  29% PF 1.36 st 1.35 net    +261 DD   -134 wd   -32 rand 1.52/1.18 |   83 PF 1.06 net     +49 rand 0.89/1.11 PASS (random as good)
+M15 5 bounce EMA swing 1R |  102  52% PF 1.32 st 1.32 net    +155 DD   -107 wd   -40 rand 1.19/0.99 |   93 PF 0.66 net    -227 rand 0.96/0.67 PASS
+M15 5 bounce EMA swing 2R |   93  38% PF 1.44 st 1.44 net    +242 DD   -142 wd   -40 rand 1.13/1.44 |   88 PF 0.85 net    -112 rand 0.91/1.09 PASS (random as good)
+M15 5 bounce EMA swing 3R |   91  31% PF 1.41 st 1.41 net    +251 DD   -119 wd   -40 rand 1.62/1.12 |   82 PF 0.82 net    -132 rand 0.54/0.97 PASS (random as good)
+M15 5 retest -   atr   1R |  111  47% PF 0.84 st 0.84 net    -113 DD   -195 wd   -34 rand 0.89/0.92 |   93 PF 1.04 net     +22 rand 1.02/1.22
+M15 5 retest -   atr   2R |  104  30% PF 0.77 st 0.77 net    -199 DD   -266 wd   -71 rand 1.18/1.01 |   84 PF 0.70 net    -227 rand 0.97/0.71
+M15 5 retest -   atr   3R |  103  20% PF 0.69 st 0.69 net    -301 DD   -405 wd   -71 rand 0.92/1.03 |   82 PF 0.78 net    -165 rand 1.12/0.58
+M15 5 retest -   swing 1R |   96  35% PF 0.67 st 0.67 net    -311 DD   -360 wd   -69 rand 1.10/0.98 |   78 PF 1.19 net    +104 rand 0.97/0.90
+M15 5 retest -   swing 2R |   92  24% PF 0.63 st 0.59 net    -380 DD   -475 wd   -74 rand 0.74/0.80 |   75 PF 1.27 net    +161 rand 1.02/1.18
+M15 5 retest -   swing 3R |   89  22% PF 0.56 st 0.55 net    -451 DD   -544 wd   -74 rand 0.51/0.52 |   75 PF 1.25 net    +160 rand 1.07/1.10
+M15 5 retest EMA atr   1R |   52  46% PF 0.74 st 0.74 net     -91 DD   -153 wd   -34 rand 0.99/0.72 |   38 PF 1.07 net     +15 rand 1.38/0.46
+M15 5 retest EMA atr   2R |   51  22% PF 0.46 st 0.46 net    -256 DD   -282 wd   -34 rand 0.92/0.94 |   38 PF 0.80 net     -64 rand 0.42/0.80
+M15 5 retest EMA atr   3R |   51  16% PF 0.43 st 0.43 net    -286 DD   -312 wd   -34 rand 1.05/0.94 |   37 PF 1.09 net     +28 rand 0.51/1.05
+M15 5 retest EMA swing 1R |   49  31% PF 0.44 st 0.44 net    -318 DD   -330 wd   -35 rand 0.78/0.81 |   34 PF 0.62 net    -129 rand 0.59/0.48
+M15 5 retest EMA swing 2R |   49  18% PF 0.35 st 0.35 net    -428 DD   -435 wd   -55 rand 0.69/0.61 |   34 PF 0.68 net    -116 rand 0.69/0.67
+M15 5 retest EMA swing 3R |   48  19% PF 0.30 st 0.30 net    -440 DD   -459 wd   -55 rand 0.39/0.66 |   34 PF 0.83 net     -61 rand 0.72/2.06
+H1  3 break  -   atr   1R |   77  61% PF 1.57 st 1.57 net    +425 DD   -252 wd   -52 rand 0.90/0.75 |   69 PF 1.63 net    +455 rand 0.87/1.25 PASS+REPEAT
+H1  3 break  -   atr   2R |   55  42% PF 1.46 st 1.46 net    +368 DD   -281 wd   -52 rand 0.65/0.71 |   59 PF 1.53 net    +481 rand 0.72/1.23 PASS+REPEAT
+H1  3 break  -   atr   3R |   47  38% PF 1.49 st 1.49 net    +361 DD   -277 wd   -52 rand 0.94/0.52 |   50 PF 1.68 net    +553 rand 1.11/0.98 PASS+REPEAT
+H1  3 break  -   swing 1R |   57  51% PF 0.92 st 0.92 net     -80 DD   -516 wd  -109 rand 0.70/0.88 |   60 PF 1.71 net    +613 rand 1.41/1.22
+H1  3 break  -   swing 2R |   42  43% PF 1.23 st 1.23 net    +213 DD   -448 wd  -109 rand 0.70/1.07 |   44 PF 1.77 net    +601 rand 0.86/1.49 PASS+REPEAT
+H1  3 break  -   swing 3R |   38  39% PF 1.12 st 1.12 net    +108 DD   -461 wd  -109 rand 1.51/0.65 |   40 PF 1.62 net    +474 rand 1.71/2.16
+H1  3 break  EMA atr   1R |   43  58% PF 1.42 st 1.42 net    +183 DD   -179 wd   -35 rand 0.84/0.80 |   34 PF 1.60 net    +212 rand 0.69/0.84 PASS+REPEAT
+H1  3 break  EMA atr   2R |   38  39% PF 1.35 st 1.35 net    +188 DD   -290 wd   -35 rand 1.37/1.14 |   33 PF 1.68 net    +332 rand 0.63/0.83 PASS+REPEAT (random as good)
+H1  3 break  EMA atr   3R |   38  34% PF 1.42 st 1.42 net    +248 DD   -287 wd   -35 rand 0.79/1.35 |   30 PF 1.77 net    +379 rand 0.98/1.05 PASS+REPEAT
+H1  3 break  EMA swing 1R |   39  49% PF 1.12 st 1.12 net     +74 DD   -289 wd  -108 rand 0.93/1.07 |   33 PF 1.38 net    +215 rand 0.59/1.05
+H1  3 break  EMA swing 2R |   38  42% PF 1.42 st 1.42 net    +280 DD   -312 wd  -108 rand 0.91/1.40 |   29 PF 1.94 net    +472 rand 1.71/1.49 PASS+REPEAT
+H1  3 break  EMA swing 3R |   37  35% PF 1.33 st 1.33 net    +230 DD   -314 wd  -108 rand 0.77/1.12 |   27 PF 2.70 net    +791 rand 1.76/1.51 PASS+REPEAT
+H1  3 bounce -   atr   1R |   56  41% PF 0.70 st 0.70 net    -244 DD   -344 wd   -61 rand 1.02/1.04 |   50 PF 1.23 net    +143 rand 0.94/0.74
+H1  3 bounce -   atr   2R |   50  26% PF 0.70 st 0.70 net    -279 DD   -452 wd   -61 rand 0.67/0.93 |   46 PF 1.20 net    +159 rand 1.62/1.89
+H1  3 bounce -   atr   3R |   44  23% PF 0.79 st 0.79 net    -173 DD   -462 wd   -61 rand 0.54/0.65 |   44 PF 1.36 net    +294 rand 1.87/1.98
+H1  3 bounce -   swing 1R |   57  49% PF 0.88 st 0.88 net     -94 DD   -282 wd   -73 rand 1.11/1.64 |   51 PF 0.91 net     -65 rand 1.06/0.63
+H1  3 bounce -   swing 2R |   46  30% PF 0.92 st 0.92 net     -61 DD   -380 wd   -73 rand 1.08/1.98 |   47 PF 0.96 net     -30 rand 0.60/0.86
+H1  3 bounce -   swing 3R |   41  24% PF 0.96 st 0.96 net     -28 DD   -353 wd   -73 rand 1.25/1.25 |   45 PF 1.01 net      +5 rand 1.11/0.94
+H1  3 bounce EMA atr   1R |   35  43% PF 0.76 st 0.76 net    -119 DD   -167 wd   -58 rand 0.98/0.48 |   37 PF 1.09 net     +43 rand 0.90/1.30
+H1  3 bounce EMA atr   2R |   30  27% PF 0.76 st 0.76 net    -127 DD   -254 wd   -58 rand 0.83/0.42 |   36 PF 1.18 net    +113 rand 1.52/1.65
+H1  3 bounce EMA atr   3R |   27  22% PF 0.94 st 0.94 net     -30 DD   -257 wd   -35 rand 0.84/0.81 |   34 PF 1.26 net    +173 rand 1.67/0.93
+H1  3 bounce EMA swing 1R |   35  49% PF 0.93 st 0.93 net     -32 DD   -169 wd   -49 rand 1.35/1.66 |   36 PF 0.82 net    -111 rand 0.66/1.28
+H1  3 bounce EMA swing 2R |   29  31% PF 1.03 st 1.03 net     +16 DD   -267 wd   -49 rand 1.44/1.41 |   35 PF 0.68 net    -243 rand 1.21/1.47
+H1  3 bounce EMA swing 3R |   27  26% PF 1.27 st 1.27 net    +125 DD   -213 wd   -49 rand 2.18/1.24 |   34 PF 0.83 net    -134 rand 1.33/1.05
+H1  3 retest -   atr   1R |   39  54% PF 1.24 st 1.24 net    +101 DD    -87 wd   -37 rand 1.32/1.55 |   37 PF 1.60 net    +228 rand 1.40/0.58 PASS+REPEAT (random as good)
+H1  3 retest -   atr   2R |   32  38% PF 1.32 st 1.32 net    +153 DD   -169 wd   -37 rand 0.91/1.35 |   36 PF 2.04 net    +500 rand 1.28/0.77 PASS+REPEAT (random as good)
+H1  3 retest -   atr   3R |   30  40% PF 1.74 st 1.74 net    +320 DD   -169 wd   -37 rand 1.19/1.39 |   33 PF 2.02 net    +528 rand 0.93/0.59 PASS+REPEAT
+H1  3 retest -   swing 1R |   35  54% PF 1.12 st 1.12 net     +70 DD   -214 wd   -54 rand 1.29/0.97 |   34 PF 3.19 net    +620 rand 1.47/1.31
+H1  3 retest -   swing 2R |   31  52% PF 1.52 st 1.52 net    +281 DD   -150 wd   -54 rand 1.04/0.45 |   32 PF 2.93 net    +772 rand 1.48/1.29 PASS+REPEAT
+H1  3 retest -   swing 3R |   30  43% PF 1.36 st 1.36 net    +211 DD   -150 wd   -54 rand 0.91/0.65 |   28 PF 2.38 net    +578 rand 1.55/1.00 PASS+REPEAT
+H1  3 retest EMA atr   1R |   22  50% PF 1.02 st 1.02 net      +5 DD   -132 wd   -27 rand 0.73/1.15 |   20 PF 1.19 net     +44 rand 0.58/1.39
+H1  3 retest EMA atr   2R |   20  30% PF 0.95 st 0.95 net     -16 DD   -214 wd   -30 rand 1.10/0.67 |   20 PF 1.97 net    +254 rand 0.93/1.14
+H1  3 retest EMA atr   3R |   20  30% PF 1.26 st 1.26 net     +84 DD   -214 wd   -30 rand 1.82/1.92 |   20 PF 1.73 net    +238 rand 1.92/0.95
+H1  3 retest EMA swing 1R |   22  45% PF 0.91 st 0.91 net     -32 DD   -188 wd   -42 rand 0.82/0.48 |   19 PF 1.92 net    +211 rand 1.00/2.61
+H1  3 retest EMA swing 2R |   22  45% PF 1.61 st 1.61 net    +214 DD   -140 wd   -42 rand 1.27/0.64 |   18 PF 2.00 net    +261 rand 1.85/4.41
+H1  3 retest EMA swing 3R |   21  43% PF 1.91 st 1.91 net    +317 DD   -135 wd   -42 rand 1.30/3.61 |   18 PF 2.38 net    +359 rand 2.00/4.66
+H1  5 break  -   atr   1R |   52  50% PF 0.97 st 0.97 net     -18 DD   -244 wd   -51 rand 0.88/1.09 |   57 PF 1.69 net    +404 rand 1.28/1.18
+H1  5 break  -   atr   2R |   44  25% PF 0.71 st 0.71 net    -229 DD   -376 wd   -63 rand 0.73/0.57 |   49 PF 1.85 net    +593 rand 2.19/1.17
+H1  5 break  -   atr   3R |   42  21% PF 0.78 st 0.78 net    -175 DD   -377 wd   -63 rand 1.26/1.19 |   43 PF 1.58 net    +429 rand 1.15/1.01
+H1  5 break  -   swing 1R |   41  51% PF 1.06 st 0.91 net     +45 DD   -264 wd  -108 rand 1.17/0.73 |   50 PF 1.59 net    +464 rand 1.26/1.27
+H1  5 break  -   swing 2R |   31  32% PF 0.60 st 0.60 net    -342 DD   -421 wd  -108 rand 0.80/0.74 |   40 PF 1.65 net    +480 rand 2.03/1.13
+H1  5 break  -   swing 3R |   31  32% PF 0.63 st 0.63 net    -315 DD   -454 wd  -108 rand 0.84/0.71 |   35 PF 1.37 net    +237 rand 1.32/0.91
+H1  5 break  EMA atr   1R |   20  50% PF 1.04 st 1.04 net      +9 DD   -133 wd   -35 rand 1.01/0.75 |   26 PF 1.33 net     +95 rand 0.83/1.27
+H1  5 break  EMA atr   2R |   20  35% PF 1.28 st 1.28 net     +81 DD   -195 wd   -39 rand 2.16/1.59 |   25 PF 1.31 net    +120 rand 0.45/1.48
+H1  5 break  EMA atr   3R |   20  25% PF 1.08 st 1.08 net     +27 DD   -238 wd   -39 rand 2.66/0.67 |   23 PF 1.17 net     +69 rand 0.67/1.13
+H1  5 break  EMA swing 1R |   17  47% PF 1.16 st 1.16 net     +53 DD   -155 wd  -108 rand 0.71/1.41 |   25 PF 1.23 net    +104 rand 0.75/2.02
+H1  5 break  EMA swing 2R |   17  24% PF 0.69 st 0.69 net    -139 DD   -322 wd  -108 rand 0.70/0.22 |   22 PF 1.56 net    +214 rand 0.91/1.45
+H1  5 break  EMA swing 3R |   16  25% PF 0.84 st 0.84 net     -67 DD   -322 wd  -108 rand 1.24/0.57 |   22 PF 2.01 net    +382 rand 0.93/2.24
+H1  5 bounce -   atr   1R |   44  48% PF 0.89 st 0.89 net     -65 DD   -187 wd   -51 rand 0.80/1.10 |   42 PF 1.06 net     +33 rand 0.96/0.88
+H1  5 bounce -   atr   2R |   37  24% PF 0.65 st 0.65 net    -242 DD   -380 wd   -49 rand 1.31/0.86 |   37 PF 1.17 net    +106 rand 1.22/1.14
+H1  5 bounce -   atr   3R |   36  19% PF 0.65 st 0.65 net    -246 DD   -475 wd   -49 rand 1.09/1.02 |   36 PF 1.28 net    +190 rand 0.96/1.06
+H1  5 bounce -   swing 1R |   46  43% PF 0.74 st 0.74 net    -158 DD   -302 wd   -50 rand 1.42/1.04 |   50 PF 1.38 net    +184 rand 0.88/1.49
+H1  5 bounce -   swing 2R |   39  28% PF 0.75 st 0.75 net    -168 DD   -420 wd   -50 rand 2.22/1.71 |   41 PF 1.45 net    +245 rand 1.27/1.19
+H1  5 bounce -   swing 3R |   36  28% PF 0.86 st 0.86 net     -92 DD   -358 wd   -50 rand 1.75/3.52 |   36 PF 1.52 net    +268 rand 0.81/1.17
+H1  5 bounce EMA atr   1R |   28  46% PF 0.81 st 0.81 net     -75 DD   -145 wd   -35 rand 0.93/1.15 |   31 PF 0.91 net     -42 rand 1.26/0.80
+H1  5 bounce EMA atr   2R |   24  25% PF 0.65 st 0.65 net    -160 DD   -267 wd   -35 rand 1.26/1.16 |   31 PF 1.15 net     +81 rand 1.44/1.38
+H1  5 bounce EMA atr   3R |   24  21% PF 0.66 st 0.65 net    -164 DD   -331 wd   -35 rand 0.63/1.12 |   31 PF 1.19 net    +118 rand 0.88/0.49
+H1  5 bounce EMA swing 1R |   29  34% PF 0.48 st 0.48 net    -246 DD   -343 wd   -50 rand 1.20/2.31 |   34 PF 1.44 net    +157 rand 1.48/1.67
+H1  5 bounce EMA swing 2R |   25  24% PF 0.52 st 0.52 net    -240 DD   -396 wd   -50 rand 1.23/1.60 |   30 PF 1.20 net     +92 rand 1.66/0.74
+H1  5 bounce EMA swing 3R |   23  22% PF 0.55 st 0.55 net    -227 DD   -351 wd   -50 rand 1.20/1.37 |   28 PF 1.33 net    +139 rand 1.39/1.73
+H1  5 retest -   atr   1R |   29  52% PF 0.99 st 0.99 net      -4 DD    -66 wd   -33 rand 0.70/0.39 |   31 PF 1.64 net    +207 rand 0.44/1.64
+H1  5 retest -   atr   2R |   26  35% PF 0.96 st 0.96 net     -17 DD   -125 wd   -33 rand 0.84/1.25 |   29 PF 2.34 net    +497 rand 0.99/1.83
+H1  5 retest -   atr   3R |   24  33% PF 1.03 st 1.03 net     +12 DD   -197 wd   -46 rand 1.19/1.03 |   28 PF 2.41 net    +573 rand 1.83/1.61
+H1  5 retest -   swing 1R |   25  48% PF 1.03 st 1.03 net     +12 DD   -107 wd   -56 rand 1.76/1.17 |   30 PF 2.50 net    +486 rand 1.11/2.23
+H1  5 retest -   swing 2R |   22  41% PF 0.99 st 0.99 net      -4 DD   -167 wd   -56 rand 0.92/1.25 |   29 PF 2.20 net    +558 rand 0.88/2.84
+H1  5 retest -   swing 3R |   23  39% PF 1.03 st 1.03 net     +16 DD   -176 wd   -56 rand 1.38/1.28 |   24 PF 2.30 net    +496 rand 1.53/1.33
+H1  5 retest EMA atr   1R |   15  60% PF 1.37 st 1.37 net     +55 DD    -45 wd   -31 rand 2.05/0.80 |   16 PF 0.73 net     -63 rand 1.29/0.57
+H1  5 retest EMA atr   2R |   14  43% PF 1.49 st 1.49 net     +91 DD    -53 wd   -31 rand 0.46/1.21 |   16 PF 1.12 net     +32 rand 1.37/0.90
+H1  5 retest EMA atr   3R |   14  36% PF 1.52 st 1.52 net    +108 DD   -102 wd   -31 rand 0.69/1.44 |   16 PF 0.94 net     -19 rand 2.05/1.47
+H1  5 retest EMA swing 1R |   13  54% PF 1.04 st 1.04 net      +8 DD    -56 wd   -56 rand 1.25/2.02 |   16 PF 1.33 net     +82 rand 2.45/0.60
+H1  5 retest EMA swing 2R |   12  58% PF 2.20 st 2.19 net    +187 DD    -56 wd   -56 rand 1.71/2.13 |   16 PF 0.99 net      -4 rand 2.79/0.86
+H1  5 retest EMA swing 3R |   12  50% PF 1.96 st 1.96 net    +183 DD    -82 wd   -56 rand 1.46/1.07 |   16 PF 1.20 net     +65 rand 2.64/1.64
+
+SUMMARY
+cells 216, median PF last 3 m 0.96 (random twins 1.07), previous 1.05 (random 1.10)
+  break : median PF 1.00 / 1.13, cells PF>=1.15 in both windows 10
+  bounce: median PF 0.94 / 0.98, cells PF>=1.15 in both windows 2
+  retest: median PF 0.95 / 1.07, cells PF>=1.15 in both windows 6
+  M5 : median PF 0.98 / 0.96
+  M15: median PF 0.86 / 1.03
+  H1 : median PF 1.02 / 1.49
+pass last 3 m: 40, also PF>=1.15 the 3 months before: 15, of which beat both random twins in both windows: 9
+ tf  n   kind  filt    sl  tp  n3      pf3     pf3s       net3         dd3         wd3       r3  n6      pf6       net6       r6  pass_
+ H1  3 retest False   atr   3  30 1.740038 1.738535 320.118425 -169.176293  -36.527937 1.389584  33 2.020985 527.617598 0.930233   True
+ H1  3  break False   atr   1  77 1.568185 1.568185 425.312928 -252.242975  -51.646030 0.895521  69 1.632184 454.581356 1.251751   True
+M15  3 bounce  True swing   2 124 1.561176 1.559227 458.172945 -132.722104  -63.670755 1.513024 123 1.238548 243.193810 1.427749   True
+ H1  3 retest False swing   2  31 1.524530 1.523317 281.035367 -149.990741  -54.255255 1.041912  32 2.932705 771.514367 1.484138   True
+ H1  3  break False   atr   3  47 1.488887 1.487832 361.259858 -276.784841  -51.646030 0.935291  50 1.681812 553.499638 1.114002   True
+ H1  3  break False   atr   2  55 1.459645 1.459483 367.544569 -280.894881  -51.646030 0.707831  59 1.525589 481.201395 1.232119   True
+ H1  3  break  True   atr   1  43 1.421041 1.421041 182.889601 -178.729275  -34.916546 0.841372  34 1.599896 211.886328 0.842649   True
+ H1  3  break  True   atr   3  38 1.420999 1.420337 247.820034 -286.647124  -34.916546 1.352872  30 1.768925 378.686735 1.051443   True
+ H1  3  break  True   atr   2  38 1.350400 1.350158 188.008286 -289.762904  -34.916546 1.368371  33 1.678484 331.705705 0.833708   True
+ H1  3 retest False   atr   2  32 1.324459 1.324459 152.732692 -169.176293  -36.527937 1.353295  36 2.043376 499.939480 1.275363   True
+ M5  5 retest  True   atr   1 139 1.286046 1.264145 115.840178  -56.596957  -17.618130 0.931119 151 1.261954 119.708378 0.933692   True
+ H1  3 retest False   atr   1  39 1.239315 1.239315 100.777969  -86.611755  -36.527937 1.548107  37 1.596735 227.833255 1.403327   True
+ H1  3  break False swing   2  42 1.231785 1.231044 212.711003 -448.209841 -109.254504 1.071672  44 1.772676 600.800311 1.489586   True
+M15  3 bounce  True   atr   3 124 1.192797 1.191607 197.640513 -240.464488  -43.964046 1.357750 117 1.158363 170.521357 1.102245   True
+M15  3  break False   atr   2 227 1.185443 1.152499 312.512098 -246.785691  -67.231546 1.586148 206 1.191274 313.568846 0.918485   True
