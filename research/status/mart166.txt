@@ -10,3 +10,52 @@ LIVE-ish 1 ATR(M5), TP +$3                   | starts blown 61/63 |    99 bsk wi
 1 fixed $3, TRAIL                            | starts blown 58/63 |   220 bsk win  99% net   -1000 worstFl  -1645 maxLot 0.91 BLOWN 19 Aug | prev   188 bsk win  98% net   -1000 worstFl  -1671 maxLot 1.05 BLOWN 19 May
 1 fixed $5, TP +$3                           | starts blown 57/63 |  1084 bsk win 100% net   -1000 worstFl  -4761 maxLot 1.53 BLOWN 10 Sep | prev     2 bsk win 100% net   -1000 worstFl   -996 maxLot 0.55 BLOWN 18 May
 1 fixed $5, TRAIL                            | starts blown 56/63 |   155 bsk win 100% net   -1000 worstFl  -1572 maxLot 0.78 BLOWN 19 Aug | prev   106 bsk win  98% net   -1000 worstFl  -1326 maxLot 0.66 BLOWN 19 May
+1 fixed $8, TP +$3                           | starts blown 52/63 |   856 bsk win 100% net   -1000 worstFl  -3621 maxLot 0.91 BLOWN 24 Sep | prev   440 bsk win 100% net   -1000 worstFl  -2418 maxLot 0.78 BLOWN 09 Jun
+1 fixed $8, TRAIL                            | starts blown 63/63 |    93 bsk win 100% net   -1000 worstFl  -1259 maxLot 0.45 BLOWN 19 Aug | prev   508 bsk win 100% net   -1000 worstFl  -3247 maxLot 0.91 BLOWN 28 May
+1 fixed $12, TP +$3                          | starts blown 60/63 |   766 bsk win 100% net   -1000 worstFl  -3389 maxLot 0.66 BLOWN 04 Nov | prev   956 bsk win 100% net   +3166 worstFl  -2729 maxLot 0.66
+1 fixed $12, TRAIL                           | starts blown 63/63 |    53 bsk win 100% net   -1000 worstFl  -1121 maxLot 0.36 BLOWN 19 Aug | prev   623 bsk win 100% net   -1000 worstFl  -3176 maxLot 0.66 BLOWN 05 Jun
+1 fixed $19, TP +$3                          | starts blown 34/63 |   113 bsk win 100% net   -1000 worstFl  -1342 maxLot 0.28 BLOWN 03 Sep | prev   479 bsk win 100% net   +1503 worstFl   -958 maxLot 0.21
+1 fixed $19, TRAIL                           | starts blown 62/63 |    37 bsk win  97% net   -1000 worstFl  -1090 maxLot 0.28 BLOWN 19 Aug | prev   245 bsk win 100% net   -1000 worstFl  -2219 maxLot 0.36 BLOWN 29 May
+--- 2 STDEV of 20 M5 closes
+2 1 x SD(M5,20), TP +$3                      | starts blown 63/63 |    97 bsk win 100% net   -1000 worstFl  -1311 maxLot 0.66 BLOWN 19 Aug | prev   105 bsk win 100% net   -1000 worstFl  -1344 maxLot 0.55 BLOWN 20 May
+2 1 x SD(M5,20), TRAIL                       | starts blown 63/63 |   159 bsk win  99% net   -1000 worstFl  -1578 maxLot 0.56 BLOWN 19 Aug | prev   526 bsk win  98% net   -1000 worstFl  -2819 maxLot 1.20 BLOWN 26 May
+2 2 x SD(M5,20), TP +$3                      | starts blown 53/63 |   256 bsk win 100% net   -1000 worstFl  -1952 maxLot 0.55 BLOWN 11 Sep | prev   249 bsk win 100% net   -1000 worstFl  -1811 maxLot 0.28 BLOWN 09 Jun
+2 2 x SD(M5,20), TRAIL                       | starts blown 63/63 |    99 bsk win 100% net   -1000 worstFl  -1352 maxLot 0.22 BLOWN 19 Aug | prev   140 bsk win  99% net   -1000 worstFl  -1294 maxLot 0.55 BLOWN 21 May
+2 3 x SD(M5,20), TP +$3                      | starts blown 48/63 |    55 bsk win 100% net   -1000 worstFl  -1184 maxLot 0.28 BLOWN 28 Aug | prev   379 bsk win 100% net   +1299 worstFl  -1120 maxLot 0.28
+2 3 x SD(M5,20), TRAIL                       | starts blown 63/63 |    55 bsk win 100% net   -1000 worstFl  -1437 maxLot 0.21 BLOWN 19 Aug | prev   322 bsk win  99% net   -1000 worstFl  -2177 maxLot 0.36 BLOWN 29 May
+2 4 x SD(M5,20), TP +$3                      | starts blown 60/63 |    55 bsk win 100% net   -1000 worstFl  -1129 maxLot 0.21 BLOWN 03 Sep | prev   186 bsk win 100% net    +630 worstFl   -572 maxLot 0.15
+2 4 x SD(M5,20), TRAIL                       | starts blown 63/63 |    35 bsk win 100% net   -1000 worstFl  -1232 maxLot 0.18 BLOWN 19 Aug | prev   232 bsk win 100% net   -1000 worstFl  -1710 maxLot 0.28 BLOWN 29 May
+--- 3 ADR: see research/status/mart165.txt (ADR14 x 0.05 / 0.1 / 0.2 TP +$3: 55 / 57 / 38 of 63)
+--- 4 % OF PRICE
+4 0.075% of price, TP +$3                    | starts blown 63/63 |     0 bsk win   0% net   -1000 worstFl   -979 maxLot 0.66 BLOWN 17 Aug | prev     4 bsk win 100% net   -1000 worstFl   -989 maxLot 0.66 BLOWN 18 May
+4 0.075% of price, TRAIL                     | starts blown 60/63 |     0 bsk win   0% net   -1000 worstFl   -979 maxLot 0.66 BLOWN 17 Aug | prev   970 bsk win  98% net   -1000 worstFl  -5760 maxLot 2.31 BLOWN 28 May
+4 0.1% of price, TP +$3                      | starts blown 59/63 |    97 bsk win 100% net   -1000 worstFl  -1307 maxLot 0.66 BLOWN 19 Aug | prev   340 bsk win 100% net   -1000 worstFl  -2157 maxLot 0.91 BLOWN 26 May
+4 0.1% of price, TRAIL                       | starts blown 60/63 |   173 bsk win  99% net   -1000 worstFl  -1574 maxLot 0.78 BLOWN 19 Aug | prev   120 bsk win 100% net   -1000 worstFl  -1356 maxLot 0.78 BLOWN 19 May
+4 0.2% of price, TP +$3                      | starts blown 62/63 |    22 bsk win 100% net   -1000 worstFl  -1088 maxLot 0.45 BLOWN 18 Aug | prev   160 bsk win 100% net   -1000 worstFl  -1483 maxLot 0.55 BLOWN 28 May
+4 0.2% of price, TRAIL                       | starts blown 63/63 |   105 bsk win  99% net   -1000 worstFl  -1340 maxLot 0.45 BLOWN 19 Aug | prev   874 bsk win  99% net   -1000 worstFl  -4442 maxLot 1.05 BLOWN 10 Jun
+4 0.3% of price, TP +$3                      | starts blown 13/63 |   830 bsk win 100% net   +2614 worstFl  -1488 maxLot 0.36 | prev   944 bsk win 100% net   +3120 worstFl  -1602 maxLot 0.45
+4 0.3% of price, TRAIL                       | starts blown 62/63 |    55 bsk win 100% net   -1000 worstFl  -1159 maxLot 0.36 BLOWN 19 Aug | prev   328 bsk win  99% net   -1000 worstFl  -2128 maxLot 0.45 BLOWN 28 May
+4 0.5% of price, TP +$3                      | starts blown 63/63 |    67 bsk win 100% net   -1000 worstFl  -1176 maxLot 0.21 BLOWN 03 Sep | prev    82 bsk win 100% net   -1000 worstFl  -1241 maxLot 0.28 BLOWN 10 Jun
+4 0.5% of price, TRAIL                       | starts blown 63/63 |    31 bsk win 100% net   -1000 worstFl  -1164 maxLot 0.21 BLOWN 19 Aug | prev   261 bsk win 100% net   -1000 worstFl  -1825 maxLot 0.28 BLOWN 29 May
+--- 5 STRUCTURE: add only at a NEW confirmed M5 fractal-2 swing at least S beyond the last entry; OCO 1 ATR(M5)
+5 swing >= 0 ATR(M5) beyond, TP +$3          | starts blown 63/63 |    56 bsk win 100% net   -1000 worstFl  -1186 maxLot 0.66 BLOWN 18 Aug | prev   415 bsk win 100% net   -1000 worstFl  -2559 maxLot 0.55 BLOWN 29 May
+5 swing >= 0 ATR(M5) beyond, TRAIL           | starts blown 63/63 |    80 bsk win  99% net   -1000 worstFl  -1250 maxLot 0.78 BLOWN 19 Aug | prev   703 bsk win  98% net   -1000 worstFl  -4242 maxLot 1.71 BLOWN 29 May
+5 swing >= 0.5 ATR(M5) beyond, TP +$3        | starts blown 63/63 |   361 bsk win 100% net   -1000 worstFl  -2217 maxLot 0.66 BLOWN 27 Aug | prev   388 bsk win 100% net   -1000 worstFl  -2237 maxLot 1.20 BLOWN 29 May
+5 swing >= 0.5 ATR(M5) beyond, TRAIL         | starts blown 63/63 |   181 bsk win  98% net   -1000 worstFl  -1469 maxLot 0.67 BLOWN 21 Aug | prev   668 bsk win  98% net   -1000 worstFl  -3103 maxLot 1.36 BLOWN 29 May
+5 swing >= 1 ATR(M5) beyond, TP +$3          | starts blown 63/63 |    63 bsk win 100% net   -1000 worstFl  -1198 maxLot 0.45 BLOWN 19 Aug | prev   360 bsk win 100% net   -1000 worstFl  -2216 maxLot 0.91 BLOWN 29 May
+5 swing >= 1 ATR(M5) beyond, TRAIL           | starts blown 63/63 |    83 bsk win  99% net   -1000 worstFl  -1200 maxLot 0.56 BLOWN 19 Aug | prev   513 bsk win  99% net   -1000 worstFl  -3026 maxLot 1.36 BLOWN 29 May
+5 swing >= 2 ATR(M5) beyond, TP +$3          | starts blown 58/63 |    76 bsk win 100% net   -1000 worstFl  -1227 maxLot 0.36 BLOWN 19 Aug | prev   290 bsk win 100% net   -1000 worstFl  -1902 maxLot 0.55 BLOWN 29 May
+5 swing >= 2 ATR(M5) beyond, TRAIL           | starts blown 63/63 |   469 bsk win  99% net   -1000 worstFl  -2459 maxLot 0.56 BLOWN 03 Sep | prev   349 bsk win  99% net   -1000 worstFl  -2224 maxLot 0.66 BLOWN 29 May
+--- 6 DISTANCE + MIN TIME between adds
+6 1 ATR(M5) + 5 min, TP +$3                  | starts blown 61/63 |    19 bsk win 100% net   -1000 worstFl  -1040 maxLot 0.66 BLOWN 18 Aug | prev   437 bsk win 100% net   -1000 worstFl  -2390 maxLot 0.91 BLOWN 01 Jun
+6 1 ATR(M5) + 5 min, TRAIL                   | starts blown 63/63 |   157 bsk win  99% net   -1000 worstFl  -1481 maxLot 0.45 BLOWN 19 Aug | prev   599 bsk win  99% net   -1000 worstFl  -3215 maxLot 0.79 BLOWN 28 May
+6 1 ATR(M5) + 15 min, TP +$3                 | starts blown 59/63 |    42 bsk win 100% net   -1000 worstFl  -1120 maxLot 0.55 BLOWN 18 Aug | prev   867 bsk win 100% net   -1000 worstFl  -3726 maxLot 1.05 BLOWN 15 Jun
+6 1 ATR(M5) + 15 min, TRAIL                  | starts blown 63/63 |   103 bsk win 100% net   -1000 worstFl  -1325 maxLot 0.37 BLOWN 19 Aug | prev   473 bsk win  99% net   -1000 worstFl  -2788 maxLot 0.91 BLOWN 29 May
+6 1 ATR(M5) + 30 min, TP +$3                 | starts blown 63/63 |    66 bsk win 100% net   -1000 worstFl  -1223 maxLot 0.45 BLOWN 19 Aug | prev   597 bsk win 100% net   -1000 worstFl  -3142 maxLot 0.55 BLOWN 11 Jun
+6 1 ATR(M5) + 30 min, TRAIL                  | starts blown 63/63 |    91 bsk win 100% net   -1000 worstFl  -1283 maxLot 0.45 BLOWN 19 Aug | prev   419 bsk win  99% net   -1000 worstFl  -2312 maxLot 0.78 BLOWN 29 May
+6 1 ATR(M5) + 60 min, TP +$3                 | starts blown 59/63 |    60 bsk win 100% net   -1000 worstFl  -1102 maxLot 0.36 BLOWN 20 Aug | prev   457 bsk win 100% net   -1000 worstFl  -2418 maxLot 0.45 BLOWN 11 Jun
+6 1 ATR(M5) + 60 min, TRAIL                  | starts blown 53/63 |    63 bsk win 100% net   -1000 worstFl  -1102 maxLot 0.36 BLOWN 20 Aug | prev   279 bsk win  99% net   -1000 worstFl  -1991 maxLot 0.66 BLOWN 29 May
+6 fixed $3 + 15 min, TP +$3                  | starts blown 63/63 |   171 bsk win 100% net   -1000 worstFl  -1498 maxLot 0.55 BLOWN 21 Aug | prev   901 bsk win 100% net   -1000 worstFl  -3888 maxLot 1.36 BLOWN 10 Jun
+6 fixed $3 + 60 min, TP +$3                  | starts blown 58/63 |    57 bsk win 100% net   -1000 worstFl  -1110 maxLot 0.36 BLOWN 20 Aug | prev   308 bsk win 100% net   -1000 worstFl  -1958 maxLot 0.78 BLOWN 29 May
+
+[exited with code 0]
