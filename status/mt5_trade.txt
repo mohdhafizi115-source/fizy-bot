@@ -1,24 +1,33 @@
-shift ended (UTC): 2026-11-25 01:25
+shift ended (UTC): 2026-11-25 07:02
 open
-2026.11.25 03:25:10
+2026.11.25 09:01:53
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 6843 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 6365 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  QO	0	00:18:09.253	FizyLB (XAUUSD.c,M15)	MART EVENT MART STOP OUT XAUUSD.c | the broker closed 12 of 12 position(s) on a margin stop-out, BUY basket 0.78 lot, loss -2039.93 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_812.png
-  ME	0	00:18:09.648	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3550.20 + SELL STOP 3539.67 ($x away), lot 0.01, the first fill deletes the other, no SL
-  IN	0	00:26:14.703	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3534.14 ($x away), lot 0.01, the first fill deletes the other, no SL
-  PK	0	00:33:38.475	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3556.24 ($x away), lot 0.01, the first fill deletes the other, no SL
-  GR	0	00:52:00.886	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3562.39 ($x away), lot 0.01, the first fill deletes the other, no SL
-  KG	0	01:16:47.712	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3526.82 ($x away), lot 0.01, the first fill deletes the other, no SL
-  w: telegram ok: MART BUY XAUUSD.c
-  w: status message already sent today
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART STOP OUT XAUUSD.c
+  PI	0	02:20:16.590	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3570.11 ($x away), lot 0.01, the first fill deletes the other, no SL
+  FP	0	02:27:35.021	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3578.15 ($x away), lot 0.01, the first fill deletes the other, no SL
+  DE	0	02:52:53.628	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3544.37 ($x away), lot 0.01, the first fill deletes the other, no SL
+  FS	0	02:52:58.899	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3559.34 ($x away), lot 0.01, the first fill deletes the other, no SL
+  PF	0	02:53:01.301	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3543.36 ($x away), lot 0.01, the first fill deletes the other, no SL
+  FR	0	03:09:52.641	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3566.34 ($x away), lot 0.01, the first fill deletes the other, no SL
+  RG	0	04:09:04.631	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3537.97 ($x away), lot 0.01, the first fill deletes the other, no SL
+  HP	0	05:30:42.514	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3533.31 ($x away), lot 0.01, the first fill deletes the other, no SL
+  OH	0	05:41:36.112	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3528.26 ($x away), lot 0.01, the first fill deletes the other, no SL
+  PP	0	05:48:03.206	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3523.10 ($x away), lot 0.01, the first fill deletes the other, no SL
+  KI	0	05:55:52.307	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3517.69 ($x away), lot 0.01, the first fill deletes the other, no SL
+  IQ	0	06:00:57.827	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3512.05 ($x away), lot 0.01, the first fill deletes the other, no SL
+  w: telegram ok: daily status
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
-  w: shift end: done=False, state=2026.11.25 03:25:10|0|0
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: shift end: done=False, state=2026.11.25 09:01:53|0|0
