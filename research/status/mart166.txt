@@ -1,0 +1,12 @@
+M5: median $4.66, p10 $3.12, p90 $7.61
+ADR14: median $94.91, p10 $69.53, p90 $111.14
+SD: median $4.79, p10 $2.43, p90 $10.55
+PCT: median $41.76, p10 $40.08, p90 $45.38
+$1000, unlimited layers k x 0.01, no SL, 24 h weekdays, swap in. TRAIL = live v2.67 exit (arm at basket +$3, line max(price - 0.5 unit-step, basket +$3), flip stop 0.2 step inside)
+LIVE v2.68 FLEX: 1 ATR(M5), TRAIL            | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+LIVE-ish 1 ATR(M5), TP +$3                   | starts blown 61/63 |    99 bsk win 100% net   -1000 worstFl  -1285 maxLot 0.66 BLOWN 19 Aug | prev   251 bsk win 100% net   -1000 worstFl  -1833 maxLot 0.91 BLOWN 26 May
+--- 1 FIXED $
+1 fixed $3, TP +$3                           | starts blown 59/63 |    39 bsk win 100% net   -1000 worstFl  -1104 maxLot 0.78 BLOWN 18 Aug | prev    44 bsk win 100% net   -1000 worstFl  -1096 maxLot 0.78 BLOWN 19 May
+1 fixed $3, TRAIL                            | starts blown 58/63 |   220 bsk win  99% net   -1000 worstFl  -1645 maxLot 0.91 BLOWN 19 Aug | prev   188 bsk win  98% net   -1000 worstFl  -1671 maxLot 1.05 BLOWN 19 May
+1 fixed $5, TP +$3                           | starts blown 57/63 |  1084 bsk win 100% net   -1000 worstFl  -4761 maxLot 1.53 BLOWN 10 Sep | prev     2 bsk win 100% net   -1000 worstFl   -996 maxLot 0.55 BLOWN 18 May
+1 fixed $5, TRAIL                            | starts blown 56/63 |   155 bsk win 100% net   -1000 worstFl  -1572 maxLot 0.78 BLOWN 19 Aug | prev   106 bsk win  98% net   -1000 worstFl  -1326 maxLot 0.66 BLOWN 19 May
