@@ -40,7 +40,39 @@ double MrfAtr()
       double tr = MathMax(r[i].high - r[i].low, MathMax(MathAbs(r[i].high - r[i - 1].close), MathAbs(r[i].low - r[i - 1].close)));
       atr = i == 1 ? tr : atr + (tr - atr) / 14.0;
    }
+   // v2.68: live ATR - the forming M5 bar counts as soon as its range so far would raise the ATR
+   MqlRates c[];
+   if(CopyRates(mr_sym, PERIOD_M5, 0, 1, c) == 1)
+   {
+      double trn = MathMax(c[0].high - c[0].low, MathMax(MathAbs(c[0].high - r[n - 1].close), MathAbs(c[0].low - r[n - 1].close)));
+      if(trn > atr) atr += (trn - atr) / 14.0;
+   }
    return atr;
+}
+
+// v2.68: the waiting OCO pair keeps its centre (placement mid) and moves its distance with the live ATR
+void MrfOcoAdjust(double A, MqlTick &tk, int dg, double pt)
+{
+   ulong tb = 0, ts = 0; double pb = 0, ps = 0;
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+   {
+      ulong t = OrderGetTicket(i);
+      if(t == 0 || OrderGetInteger(ORDER_MAGIC) != InpMrtMagic) continue;
+      if(OrderGetString(ORDER_SYMBOL) != mr_sym || StringFind(OrderGetString(ORDER_COMMENT), "MART L1F") == 0) continue;
+      long ot = OrderGetInteger(ORDER_TYPE);
+      if(ot == ORDER_TYPE_BUY_STOP)  { tb = t; pb = OrderGetDouble(ORDER_PRICE_OPEN); }
+      if(ot == ORDER_TYPE_SELL_STOP) { ts = t; ps = OrderGetDouble(ORDER_PRICE_OPEN); }
+   }
+   if(tb == 0 || ts == 0) return;
+   double mid = (pb + ps) / 2, half = (tk.ask - tk.bid) / 2, dist = InpMrtFlexK * A;
+   double lim = (SymbolInfoInteger(mr_sym, SYMBOL_TRADE_STOPS_LEVEL) + 1) * pt;
+   double nb = NormalizeDouble(mid + half + dist, dg), ns = NormalizeDouble(mid - half - dist, dg);
+   trade.SetExpertMagicNumber(InpMrtMagic);
+   if(MathAbs(nb - pb) >= 0.10 && nb >= tk.ask + lim && OrderSelect(tb))
+      trade.OrderModify(tb, nb, 0, 0, ORDER_TIME_SPECIFIED, (datetime)OrderGetInteger(ORDER_TIME_EXPIRATION));
+   if(MathAbs(ns - ps) >= 0.10 && ns <= tk.bid - lim && OrderSelect(ts))
+      trade.OrderModify(ts, ns, 0, 0, ORDER_TIME_SPECIFIED, (datetime)OrderGetInteger(ORDER_TIME_EXPIRATION));
+   trade.SetExpertMagicNumber(InpMagic);
 }
 
 // account money per $1 of price for 0.01 lot
@@ -287,6 +319,7 @@ void MrfTimer(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, 
    if(open > 0) { MrfDelete(true); return; }
    // flat: no flip orders, an OCO pair FlexK * ATR away
    MrfDelete(true);
+   MrfOcoAdjust(A, tk, dg, pt);
    MrtBothSides(s, minute, now, live, tk, dg, InpMrtFlexK * A);
 }
 //+------------------------------------------------------------------+
