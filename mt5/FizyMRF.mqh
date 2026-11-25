@@ -160,8 +160,9 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
    double lockpx = MrtTpPrice(bk, d, InpMrtLock);
    if(!trailing)
    {
-      double bepx = MrtTpPrice(bk, d, 0);                                        // v2.65: arm in price beyond the breakeven, not in fixed money
-      if(mp > 0 && bepx > 0 && (d == 1 ? tk.bid >= bepx + InpMrtArmK * A : tk.ask <= bepx - InpMrtArmK * A))
+      // v2.67: arm as soon as the whole basket nets more than +InpMrtLock (3, the old basket TP); the line then
+      // locks at least +InpMrtLock and trails InpMrtTrailK x ATR behind the price
+      if(lockpx > 0 && (d == 1 ? tk.bid > lockpx : tk.ask < lockpx))
       {
          double line = d == 1 ? MathMax(tk.bid - InpMrtTrailK * A, lockpx) : MathMin(tk.ask + InpMrtTrailK * A, lockpx);
          line = NormalizeDouble(line, dg);

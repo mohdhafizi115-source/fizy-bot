@@ -50,7 +50,7 @@ input bool   InpMrtClose2330 = false;   // false = hold overnight (the tested ce
 // blown on real ticks; deployed on the owner's order). All distances = k x Wilder ATR(14) of closed M5 bars, live.
 input bool   InpMrtFlex     = true;     // true = the v2.62 rule below; false = the v2.57 fixed rule above
 input double InpMrtFlexK    = 1.0;      // OCO distance and layer step, x ATR(M5)
-input double InpMrtArmK     = 1.0;      // v2.65: the basket trail arms once price is this x ATR beyond the basket breakeven (scales with the lot)
+input double InpMrtArmK     = 1.0;      // unused since v2.67 (the trail arms at basket +InpMrtLock); v2.65: x ATR beyond the basket breakeven
 input double InpMrtTrailK   = 0.5;      // basket stop line trails this x ATR behind the price
 input double InpMrtFlipK    = 0.2;      // opposite stop sits this x ATR inside the line (0 = no flip)
 input double InpMrtLock     = 3.0;      // the line never sits below the price where the whole basket nets + this (account money; v2.65: 3, as the old basket TP)
