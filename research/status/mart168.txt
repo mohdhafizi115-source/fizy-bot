@@ -7,3 +7,26 @@ new only if adx<20                           | starts blown 62/63 |   173 bsk wi
 new only if adx<25                           | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
 new only if chop>50                          | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
 new only if chop>61.8                        | starts blown 60/63 |   156 bsk win 100% net   -1000 worstFl  -1532 maxLot 0.66 BLOWN 19 Aug | prev   459 bsk win 100% net   -1000 worstFl  -2802 maxLot 1.20 BLOWN 26 May
+new only if bbw<med                          | starts blown 61/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   521 bsk win  99% net   -1000 worstFl  -3008 maxLot 1.20 BLOWN 26 May
+new only if atrH1<1.2x                       | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   536 bsk win  99% net   -1000 worstFl  -3038 maxLot 1.20 BLOWN 26 May
+new only if atrH1<1.5x                       | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if ema200<2atr                      | starts blown 61/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if ema200<4atr                      | starts blown 61/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if adx<25&chop>50                   | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+new only if rnd60a                           | starts blown 62/63 |   167 bsk win 100% net   -1000 worstFl  -1588 maxLot 0.66 BLOWN 19 Aug | prev   697 bsk win  99% net   -1000 worstFl  -4040 maxLot 1.21 BLOWN 28 May
+new only if rnd60b                           | starts blown 62/63 |   171 bsk win 100% net   -1000 worstFl  -1597 maxLot 0.66 BLOWN 19 Aug | prev   698 bsk win  99% net   -1000 worstFl  -4056 maxLot 1.21 BLOWN 28 May
+--- B: ADD a layer only when momentum agrees (buy basket / sell basket)
+add only if b:M5bull / s:M5bear              | starts blown 63/63 |   101 bsk win  99% net   -1000 worstFl  -1297 maxLot 0.28 BLOWN 19 Aug | prev   471 bsk win  99% net   -1000 worstFl  -3018 maxLot 0.91 BLOWN 29 May
+add only if b:M15bull / s:M15bear            | starts blown 63/63 |  1590 bsk win  99% net   -1000 worstFl  -6680 maxLot 1.06 BLOWN 07 Oct | prev   361 bsk win  99% net   -1000 worstFl  -2640 maxLot 0.79 BLOWN 29 May
+add only if b:rsi5>30 / s:rsi5<70            | starts blown 63/63 |   145 bsk win  99% net   -1000 worstFl  -1500 maxLot 0.67 BLOWN 19 Aug | prev   491 bsk win 100% net   -1000 worstFl  -2667 maxLot 1.20 BLOWN 26 May
+add only if b:rsi15>30 / s:rsi15<70          | starts blown 57/63 |   153 bsk win 100% net   -1000 worstFl  -1555 maxLot 0.55 BLOWN 19 Aug | prev   505 bsk win  99% net   -1000 worstFl  -2749 maxLot 1.20 BLOWN 26 May
+add only if b:rsi5up / s:rsi5dn              | starts blown 63/63 |   101 bsk win  99% net   -1000 worstFl  -1289 maxLot 0.28 BLOWN 19 Aug | prev   461 bsk win  99% net   -1000 worstFl  -2919 maxLot 0.91 BLOWN 29 May
+add only if rndAddA / rndAddB                | starts blown 63/63 |   143 bsk win  99% net   -1000 worstFl  -1443 maxLot 0.55 BLOWN 19 Aug | prev   483 bsk win  99% net   -1000 worstFl  -3126 maxLot 0.92 BLOWN 28 May
+--- C: slower lot schedule (no cap): flat 1,1,1.. / 1,1,2,2,3,3.. / 1,1,1,2,3,4..
+lots flat 0.01                               | starts blown 61/63 |    77 bsk win 100% net   -1000 worstFl  -1227 maxLot 0.18 BLOWN 19 Aug | prev   686 bsk win 100% net   -1000 worstFl  -2796 maxLot 0.27 BLOWN 10 Jun
+lots flat 0.01, TP +$3                       | starts blown 63/63 |    79 bsk win 100% net   -1000 worstFl  -1245 maxLot 0.19 BLOWN 19 Aug | prev   500 bsk win 100% net   -1000 worstFl  -2624 maxLot 0.26 BLOWN 10 Jun
+lots 1,1,2,2,3,3                             | starts blown 63/63 |   155 bsk win 100% net   -1000 worstFl  -1481 maxLot 0.49 BLOWN 19 Aug | prev   527 bsk win  99% net   -1000 worstFl  -3705 maxLot 0.82 BLOWN 28 May
+lots 1,1,2,2,3,3, TP +$3                     | starts blown 63/63 |   268 bsk win 100% net   -1000 worstFl  -1815 maxLot 0.81 BLOWN 25 Aug | prev    99 bsk win 100% net   -1000 worstFl  -1316 maxLot 0.42 BLOWN 20 May
+lots 1,1,1,2,3,4                             | starts blown 62/63 |   125 bsk win 100% net   -1000 worstFl  -1375 maxLot 0.68 BLOWN 19 Aug | prev  4460 bsk win  99% net  +16248 worstFl  -2724 maxLot 1.08
+lots 1,1,1,2,3,4, TP +$3                     | starts blown 58/63 |    87 bsk win 100% net   -1000 worstFl  -1251 maxLot 0.68 BLOWN 19 Aug | prev   255 bsk win 100% net   -1000 worstFl  -1893 maxLot 0.93 BLOWN 26 May
+done
