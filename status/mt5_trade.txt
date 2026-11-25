@@ -1,34 +1,34 @@
-shift ended (UTC): 2026-11-25 13:36
-open
-2026.11.25 15:35:55
+shift ended (UTC): 2026-11-25 19:12
+done
+2026.11.25 21:12:51
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 11869 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 11872 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  JE	0	13:30:32.040	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: buy stop 0.01 XAUUSD.c at 3495.60 [invalid price]
-  JE	0	13:30:32.041	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART flip order XAUUSD.c failed: <num> invalid price
-  QP	0	13:30:32.852	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3495.60, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  NJ	0	13:30:46.755	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 9.69 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_62.png
-  GH	0	13:31:31.170	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.19: profit locked, stop line of every position at 3498.60 (trails 4.30 behind, basket +3.00 at worst; the EA closes ALL of them when it is touched); a SELL STOP 1.72 inside it starts the next basket
-  EQ	0	13:31:31.491	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: market sell 0.01 position #<num> XAUUSD.c [position closed]
-  DR	0	13:31:31.492	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
-  LQ	0	13:31:34.676	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 3.00 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_984.png
-  QJ	0	13:31:35.120	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3507.67 + SELL STOP 3490.05 ($x away), lot 0.01, the first fill deletes the other, no SL
-  QL	0	13:32:21.365	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the OCO stop filled at 3507.67, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  NK	0	13:33:02.664	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 2: 0.02 at 3499.06 (8.60 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -9.04; next add 8.60 further, trail arms 8.60 beyond the basket breakeven
-  KI	0	13:35:43.669	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | BUY level 3: 0.03 at 3490.36 (8.60 = 1.0 ATR below/above the last entry), basket 0.06 lot, floating -35.85; next add 8.60 further, trail arms 8.60 beyond the basket breakeven
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: MART ORDER PLACED XAUUSD.c
-  w: telegram ok: MART SELL XAUUSD.c
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: ERROR
+  MJ	0	18:02:27.807	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the OCO stop filled at 3527.80, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  DD	0	18:05:43.447	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: modify position #<num> XAUUSD.c (sl: 3530.80, tp: 0.00) [invalid stops]
+  KQ	0	18:05:43.448	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.05: profit locked, stop line of every position at 3530.80 (trails 5.84 behind, basket +3.00 at worst; the EA closes ALL of them when it is touched); a SELL STOP 2.34 inside it starts the next basket
+  GJ	0	18:05:46.864	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.85 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_312.png
+  HN	0	18:05:47.222	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3542.78 + SELL STOP 3518.97 ($x away), lot 0.01, the first fill deletes the other, no SL
+  QG	0	18:45:42.078	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the OCO stop filled at 3542.87, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  HM	0	18:46:05.168	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.08: profit locked, stop line of every position at 3545.87 (trails 5.90 behind, basket +3.00 at worst; the EA closes ALL of them when it is touched); a SELL STOP 2.36 inside it starts the next basket
+  QF	0	18:46:11.169	FizyLB (XAUUSD.c,M15)	CTrade::OrderSend: market sell 0.01 position #<num> XAUUSD.c [position closed]
+  HG	0	18:46:11.170	FizyLB (XAUUSD.c,M15)	MART EVENT ERROR | MART close XAUUSD.c (basket line reached) failed: <num> position closed
+  NF	0	18:46:14.272	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 3.00 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_718.png
+  CR	0	18:46:14.622	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3558.01 + SELL STOP 3534.05 ($x away), lot 0.01, the first fill deletes the other, no SL
+  HS	0	19:10:11.923	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the OCO stop filled at 3557.33, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
   w: telegram ok: MART BUY XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: ERROR
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART BUY XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: shift end: done=False, state=2026.11.25 15:35:55|0|0
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART BUY XAUUSD.c
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: ERROR
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART ORDER PLACED XAUUSD.c
+  w: telegram ok: MART BUY XAUUSD.c
+  w: shift end: done=True, state=2026.11.25 21:12:51|0|0
