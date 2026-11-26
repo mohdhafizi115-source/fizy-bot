@@ -1,0 +1,113 @@
+symbols in meta: 29 ['AUDCAD', 'AUDCHF', 'AUDJPY', 'AUDNZD', 'AUDUSD', 'CADCHF', 'CADJPY', 'CHFJPY', 'EURAUD', 'EURCAD', 'EURCHF', 'EURGBP', 'EURJPY', 'EURNZD', 'EURUSD', 'GBPAUD', 'GBPCAD', 'GBPCHF', 'GBPJPY', 'GBPNZD', 'GBPUSD', 'NZDCAD', 'NZDCHF', 'NZDJPY', 'NZDUSD', 'USDCAD', 'USDCHF', 'USDJPY', 'XAUUSD']
+money scale (XAUUSD normalised to $1 per $1 at 0.01 lot): 1.0000
+AUDCAD done, med spread 0.00022 unit $ 702.543
+AUDCHF done, med spread 9e-05 unit $ 1199.17
+AUDJPY done, med spread 0.018 unit $ 6.2793
+AUDNZD done, med spread 0.0002 unit $ 547.6
+AUDUSD done, med spread 9e-05 unit $ 1000.0
+CADCHF done, med spread 8e-05 unit $ 1199.084
+CADJPY done, med spread 0.038 unit $ 6.2794
+CHFJPY done, med spread 0.024 unit $ 6.2792
+EURAUD done, med spread 0.00033 unit $ 663.28
+EURCAD done, med spread 0.00029 unit $ 702.553
+EURCHF done, med spread 0.00024 unit $ 1199.055
+EURGBP done, med spread 0.00014 unit $ 1310.0
+EURJPY done, med spread 0.024 unit $ 6.2793
+EURNZD done, med spread 0.00054 unit $ 547.54
+EURUSD done, med spread 9e-05 unit $ 1000.0
+GBPAUD done, med spread 0.00025 unit $ 663.3
+GBPCAD done, med spread 0.00048 unit $ 702.538
+GBPCHF done, med spread 0.00024 unit $ 1199.199
+GBPJPY done, med spread 0.022 unit $ 6.2792
+GBPNZD done, med spread 0.00058 unit $ 547.56
+GBPUSD done, med spread 0.0001 unit $ 1000.0
+NZDCAD done, med spread 0.00015 unit $ 702.573
+NZDCHF done, med spread 0.00015 unit $ 1199.098
+NZDJPY done, med spread 0.043 unit $ 6.2794
+NZDUSD done, med spread 0.00017 unit $ 1000.0
+USDCAD done, med spread 0.00015 unit $ 702.528
+USDCHF done, med spread 0.00013 unit $ 1198.969
+USDJPY done, med spread 0.015 unit $ 6.2792
+XAUUSD done, med spread 0.26 unit $ 1.0
+
+POOLED, all symbols except XAUUSD / BTCUSD (forex only) and with them, last 3 months | previous 3 months | random twin last / prev net
+n  7 SL atr   TP 2R FOREX | 1922 trades win  31% net $   -256 DD $  -259 worst day $  -21 | 1824 trades win  29% net $   -245 DD $  -256 worst day $  -27 | rand $  -251 / $  -320
+n  7 SL atr   TP 2R ALL   | 1990 trades win  31% net $   -267 DD $  -298 worst day $  -69 | 1905 trades win  30% net $   -132 DD $  -156 worst day $  -37 | rand $  -249 / $  -274
+n  7 SL atr   TP 2R GOLD  |   68 trades win  44% net $    -10 DD $  -109 worst day $  -54 |   81 trades win  43% net $   +114 DD $   -60 worst day $  -36 | rand $    +2 / $   +46
+n  7 SL atr   TP 3R FOREX | 1917 trades win  29% net $   -225 DD $  -233 worst day $  -21 | 1816 trades win  28% net $   -243 DD $  -262 worst day $  -28 | rand $  -348 / $  -344
+n  7 SL atr   TP 3R ALL   | 1985 trades win  29% net $   -182 DD $  -247 worst day $  -69 | 1896 trades win  28% net $   -137 DD $  -162 worst day $  -40 | rand $  -180 / $  -352
+n  7 SL atr   TP 3R GOLD  |   68 trades win  43% net $    +43 DD $   -98 worst day $  -54 |   80 trades win  41% net $   +107 DD $   -76 worst day $  -36 | rand $  +167 / $    -9
+n  7 SL swing TP 2R FOREX | 1897 trades win  39% net $   -245 DD $  -263 worst day $  -40 | 1806 trades win  40% net $   -181 DD $  -236 worst day $  -33 | rand $  -282 / $  -247
+n  7 SL swing TP 2R ALL   | 1964 trades win  40% net $   -179 DD $  -279 worst day $  -70 | 1886 trades win  41% net $   -147 DD $  -284 worst day $  -47 | rand $  -115 / $  -140
+n  7 SL swing TP 2R GOLD  |   67 trades win  51% net $    +66 DD $   -78 worst day $  -39 |   80 trades win  50% net $    +34 DD $  -132 worst day $  -41 | rand $  +167 / $  +107
+n  7 SL swing TP 3R FOREX | 1896 trades win  39% net $   -225 DD $  -246 worst day $  -43 | 1805 trades win  40% net $   -182 DD $  -233 worst day $  -33 | rand $  -269 / $  -241
+n  7 SL swing TP 3R ALL   | 1963 trades win  40% net $   -149 DD $  -241 worst day $  -72 | 1885 trades win  41% net $   -151 DD $  -298 worst day $  -43 | rand $  -119 / $  -122
+n  7 SL swing TP 3R GOLD  |   67 trades win  51% net $    +76 DD $   -78 worst day $  -39 |   80 trades win  49% net $    +31 DD $  -141 worst day $  -41 | rand $  +150 / $  +118
+n  8 SL atr   TP 2R FOREX | 1663 trades win  30% net $   -233 DD $  -248 worst day $  -20 | 1633 trades win  29% net $   -236 DD $  -256 worst day $  -23 | rand $  -250 / $  -272
+n  8 SL atr   TP 2R ALL   | 1719 trades win  31% net $   -240 DD $  -273 worst day $  -49 | 1701 trades win  30% net $   -185 DD $  -251 worst day $  -44 | rand $  -323 / $  -208
+n  8 SL atr   TP 2R GOLD  |   56 trades win  41% net $     -7 DD $   -65 worst day $  -38 |   68 trades win  40% net $    +51 DD $  -103 worst day $  -39 | rand $   -72 / $   +64
+n  8 SL atr   TP 3R FOREX | 1658 trades win  28% net $   -208 DD $  -238 worst day $  -21 | 1630 trades win  28% net $   -234 DD $  -264 worst day $  -23 | rand $  -207 / $  -276
+n  8 SL atr   TP 3R ALL   | 1714 trades win  29% net $   -148 DD $  -219 worst day $  -49 | 1698 trades win  28% net $   -187 DD $  -220 worst day $  -44 | rand $   -61 / $  -376
+n  8 SL atr   TP 3R GOLD  |   56 trades win  41% net $    +60 DD $   -61 worst day $  -38 |   68 trades win  38% net $    +47 DD $  -104 worst day $  -39 | rand $  +146 / $   -99
+n  8 SL swing TP 2R FOREX | 1644 trades win  39% net $   -216 DD $  -264 worst day $  -38 | 1623 trades win  41% net $   -176 DD $  -248 worst day $  -34 | rand $  -246 / $  -227
+n  8 SL swing TP 2R ALL   | 1699 trades win  39% net $   -160 DD $  -293 worst day $  -68 | 1691 trades win  41% net $   -306 DD $  -433 worst day $  -56 | rand $  -239 / $  -231
+n  8 SL swing TP 2R GOLD  |   55 trades win  44% net $    +56 DD $  -148 worst day $  -30 |   68 trades win  46% net $   -130 DD $  -258 worst day $  -43 | rand $    +7 / $    -4
+n  8 SL swing TP 3R FOREX | 1643 trades win  39% net $   -203 DD $  -256 worst day $  -38 | 1621 trades win  41% net $   -173 DD $  -241 worst day $  -34 | rand $  -239 / $  -222
+n  8 SL swing TP 3R ALL   | 1698 trades win  39% net $   -154 DD $  -284 worst day $  -68 | 1689 trades win  41% net $   -338 DD $  -466 worst day $  -56 | rand $  -248 / $  -169
+n  8 SL swing TP 3R GOLD  |   55 trades win  44% net $    +49 DD $  -148 worst day $  -30 |   68 trades win  44% net $   -165 DD $  -296 worst day $  -43 | rand $    -9 / $   +54
+n 10 SL atr   TP 2R FOREX | 1266 trades win  30% net $   -173 DD $  -181 worst day $  -18 | 1292 trades win  29% net $   -200 DD $  -213 worst day $  -19 | rand $  -124 / $  -201
+n 10 SL atr   TP 2R ALL   | 1313 trades win  31% net $    -58 DD $  -128 worst day $  -34 | 1344 trades win  30% net $    -74 DD $  -223 worst day $  -37 | rand $  -143 / $   -27
+n 10 SL atr   TP 2R GOLD  |   47 trades win  49% net $   +115 DD $   -53 worst day $  -26 |   52 trades win  44% net $   +126 DD $  -125 worst day $  -26 | rand $   -19 / $  +174
+n 10 SL atr   TP 3R FOREX | 1260 trades win  28% net $   -158 DD $  -178 worst day $  -19 | 1289 trades win  28% net $   -191 DD $  -217 worst day $  -19 | rand $   -99 / $  -235
+n 10 SL atr   TP 3R ALL   | 1307 trades win  29% net $    +13 DD $  -118 worst day $  -34 | 1341 trades win  29% net $    -37 DD $  -218 worst day $  -42 | rand $  -128 / $   -82
+n 10 SL atr   TP 3R GOLD  |   47 trades win  49% net $   +172 DD $   -44 worst day $  -26 |   52 trades win  44% net $   +154 DD $  -113 worst day $  -26 | rand $   -29 / $  +153
+n 10 SL swing TP 2R FOREX | 1250 trades win  39% net $   -165 DD $  -200 worst day $  -35 | 1282 trades win  41% net $   -133 DD $  -199 worst day $  -35 | rand $   -91 / $  -133
+n 10 SL swing TP 2R ALL   | 1297 trades win  40% net $     -4 DD $  -185 worst day $  -43 | 1334 trades win  42% net $    -22 DD $  -287 worst day $  -48 | rand $  -219 / $   -15
+n 10 SL swing TP 2R GOLD  |   47 trades win  51% net $   +161 DD $   -95 worst day $  -27 |   52 trades win  56% net $   +111 DD $  -182 worst day $  -36 | rand $  -128 / $  +118
+n 10 SL swing TP 3R FOREX | 1250 trades win  39% net $   -155 DD $  -195 worst day $  -35 | 1281 trades win  41% net $   -136 DD $  -195 worst day $  -35 | rand $   -96 / $  -133
+n 10 SL swing TP 3R ALL   | 1297 trades win  39% net $    -13 DD $  -181 worst day $  -44 | 1333 trades win  42% net $    -23 DD $  -288 worst day $  -48 | rand $  -256 / $   +26
+n 10 SL swing TP 3R GOLD  |   47 trades win  51% net $   +141 DD $   -95 worst day $  -27 |   52 trades win  56% net $   +113 DD $  -182 worst day $  -36 | rand $  -160 / $  +158
+n 12 SL atr   TP 2R FOREX | 1016 trades win  31% net $   -127 DD $  -131 worst day $  -16 | 1089 trades win  31% net $   -135 DD $  -165 worst day $  -17 | rand $  -116 / $  -185
+n 12 SL atr   TP 2R ALL   | 1050 trades win  31% net $    -79 DD $  -111 worst day $  -26 | 1134 trades win  32% net $    +19 DD $  -193 worst day $  -43 | rand $  -264 / $   -84
+n 12 SL atr   TP 2R GOLD  |   34 trades win  50% net $    +48 DD $   -64 worst day $  -26 |   45 trades win  47% net $   +153 DD $   -84 worst day $  -29 | rand $  -148 / $  +101
+n 12 SL atr   TP 3R FOREX | 1012 trades win  28% net $   -118 DD $  -135 worst day $  -17 | 1087 trades win  30% net $   -119 DD $  -164 worst day $  -19 | rand $  -118 / $  -185
+n 12 SL atr   TP 3R ALL   | 1046 trades win  29% net $    -29 DD $  -115 worst day $  -24 | 1132 trades win  30% net $    +24 DD $  -151 worst day $  -48 | rand $  -274 / $   -75
+n 12 SL atr   TP 3R GOLD  |   34 trades win  50% net $    +89 DD $   -64 worst day $  -26 |   45 trades win  44% net $   +143 DD $   -69 worst day $  -29 | rand $  -156 / $  +110
+n 12 SL swing TP 2R FOREX | 1004 trades win  41% net $    -70 DD $  -111 worst day $  -32 | 1084 trades win  44% net $    -51 DD $  -133 worst day $  -31 | rand $   -60 / $  -102
+n 12 SL swing TP 2R ALL   | 1038 trades win  42% net $    +28 DD $  -122 worst day $  -44 | 1129 trades win  45% net $   +120 DD $  -186 worst day $  -39 | rand $   -90 / $   +45
+n 12 SL swing TP 2R GOLD  |   34 trades win  56% net $    +98 DD $   -74 worst day $  -32 |   45 trades win  58% net $   +170 DD $  -116 worst day $  -36 | rand $   -30 / $  +147
+n 12 SL swing TP 3R FOREX | 1004 trades win  41% net $    -59 DD $  -106 worst day $  -32 | 1084 trades win  44% net $    -49 DD $  -124 worst day $  -31 | rand $   -60 / $   -94
+n 12 SL swing TP 3R ALL   | 1037 trades win  42% net $    +33 DD $  -125 worst day $  -44 | 1129 trades win  45% net $   +123 DD $  -178 worst day $  -39 | rand $  -120 / $   +81
+n 12 SL swing TP 3R GOLD  |   33 trades win  58% net $    +91 DD $   -74 worst day $  -32 |   45 trades win  58% net $   +172 DD $  -116 worst day $  -36 | rand $   -61 / $  +176
+
+PER SYMBOL, n 10 SL atr TP 3R: last 3 months net / previous net (trades)
+  AUDCAD   $   -17 ( 46) / $    -8 ( 45)
+  AUDCHF   $    -2 ( 38) / $    -4 ( 46)
+  AUDJPY   $    -9 ( 40) / $    -2 ( 52)
+  AUDNZD   $    -6 ( 40) / $    +1 ( 42)
+  AUDUSD   $   -13 ( 34) / $    -8 ( 61)
+  CADCHF   $   -10 ( 48) / $    -7 ( 44)
+  CADJPY   $    +1 ( 51) / $    -9 ( 41)
+  CHFJPY   $    +1 ( 45) / $    -2 ( 51)
+  EURAUD   $    -9 ( 51) / $   -13 ( 55)
+  EURCAD   $    -8 ( 50) / $   -11 ( 48)
+  EURCHF   $    -6 ( 50) / $    -5 ( 42)
+  EURGBP   $   -10 ( 38) / $    -8 ( 46)
+  EURJPY   $   +14 ( 50) / $    -3 ( 47)
+  EURNZD   $   -23 ( 52) / $   -13 ( 43)
+  EURUSD   $    -4 ( 41) / $    -4 ( 41)
+  GBPAUD   $    +4 ( 42) / $    -1 ( 48)
+  GBPCAD   $    +4 ( 45) / $   -13 ( 45)
+  GBPCHF   $   -21 ( 38) / $    -9 ( 51)
+  GBPJPY   $    +2 ( 57) / $    +2 ( 47)
+  GBPNZD   $    -3 ( 34) / $    -2 ( 40)
+  GBPUSD   $   -16 ( 55) / $   -19 ( 53)
+  NZDCAD   $    -9 ( 47) / $    -7 ( 33)
+  NZDCHF   $    -9 ( 46) / $    -2 ( 38)
+  NZDJPY   $   -16 ( 45) / $   -10 ( 45)
+  NZDUSD   $   -10 ( 38) / $    -6 ( 51)
+  USDCAD   $    -0 ( 44) / $   -12 ( 44)
+  USDCHF   $    -4 ( 42) / $    -7 ( 48)
+  USDJPY   $   +20 ( 53) / $    -7 ( 42)
+  XAUUSD   $  +172 ( 47) / $  +154 ( 52)
+symbols positive in both windows: 2 of 29
