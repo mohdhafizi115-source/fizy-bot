@@ -1,4 +1,4 @@
-# Round 170: TRENDLINE + S/R on gold M1, real ticks (owner: "teknik trendline gabung dengan snr. kalau trendline sell
+# Round 170 (M1) / 170b (env TF=300 CAP=12 for M5, TF=900 CAP=16 for M15): TRENDLINE + S/R on gold M1, real ticks (owner: "teknik trendline gabung dengan snr. kalau trendline sell
 # di break oleh bull, jgn terus buy tapi check kena break juga resistant. test di m1").
 # M1 bars from the ticks (tl169 engine). Online fractal swings n 3 / 5 / 10 (known n bars later).
 # Falling trendline = 2 latest swing highs (lower high). A close above it = TL break. Then WAIT: buy only when a later
@@ -13,8 +13,9 @@
 import numpy as np, pandas as pd
 exec(open("tl169.py").read().split("E = M_t[-1] + 1")[0])
 E = M_t[-1] + 1
-B = bars(60); B["sp"] = M_ao[B["s"]] - M_bo[B["s"]]
-CAP = 60
+import os
+TFS = int(os.environ.get("TF", "60")); B = bars(TFS); B["sp"] = M_ao[B["s"]] - M_bo[B["s"]]
+CAP = int(os.environ.get("CAP", "60"))   # in bars of the timeframe
 
 def unbroken(v, idx, j, up):
     seg = v[idx + 1:j + 1]
@@ -103,7 +104,7 @@ def run2(sig, slm, tpR, rnd=None, stress=1.0):
 print("mode   n  W   R    gate SL   TP | LAST 3 M: trades win PF stress net DD worstDay rand | PREV 3 M: trades PF net rand", flush=True)
 rows = []
 cfgs = [("tl", 0, "-")] + [("tlsr", W, r) for W in (30, 120) for r in ("near", "last")] + [("snr", 0, "-")]
-for n in (3, 5, 10):
+for n in tuple(int(x) for x in os.environ.get("NS", "3,5,10").split(",")):
     for mode, W, rm in cfgs:
         for gate in (False, True):
             sig = sig170(n, mode, W, rm, gate)

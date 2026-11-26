@@ -1,0 +1,240 @@
+M1 bars 193162, 01 May 2026 .. 16 Nov 2026; last 3 m from 17 Aug, previous from 18 May
+mode   n  W   R    gate SL   TP | LAST 3 M: trades win PF stress net DD worstDay rand | PREV 3 M: trades PF net rand
+tl     3   0 -    -    atr   1R |   285  48% PF 0.98 st 0.98 net     -34 DD   -252 wd   -74 rand 0.93/1.03 |   276 PF 1.05 net     +89 rand 1.05/1.14
+tl     3   0 -    -    atr   2R |   265  38% PF 1.04 st 1.01 net     +67 DD   -274 wd   -78 rand 0.81/1.07 |   255 PF 1.03 net     +43 rand 0.82/0.82
+tl     3   0 -    -    atr   3R |   261  37% PF 1.01 st 0.97 net     +12 DD   -347 wd  -102 rand 0.99/1.14 |   250 PF 0.99 net     -24 rand 1.19/0.86
+tl     3   0 -    -    swing 1R |   263  51% PF 0.94 st 0.94 net    -103 DD   -435 wd   -88 rand 0.92/0.89 |   247 PF 1.12 net    +188 rand 1.16/1.15
+tl     3   0 -    -    swing 2R |   245  41% PF 0.89 st 0.88 net    -206 DD   -511 wd   -99 rand 1.22/1.08 |   237 PF 1.08 net    +134 rand 1.20/1.35
+tl     3   0 -    -    swing 3R |   242  40% PF 0.88 st 0.87 net    -215 DD   -525 wd   -99 rand 1.12/0.90 |   235 PF 1.16 net    +250 rand 1.15/1.20
+tl     3   0 -    G8   atr   1R |   285  48% PF 0.98 st 0.98 net     -34 DD   -252 wd   -74 rand 0.93/1.03 |   276 PF 1.05 net     +89 rand 1.05/1.14
+tl     3   0 -    G8   atr   2R |   265  38% PF 1.04 st 1.01 net     +67 DD   -274 wd   -78 rand 0.81/1.07 |   255 PF 1.03 net     +43 rand 0.82/0.82
+tl     3   0 -    G8   atr   3R |   261  37% PF 1.01 st 0.97 net     +12 DD   -347 wd  -102 rand 0.99/1.14 |   250 PF 0.99 net     -24 rand 1.19/0.86
+tl     3   0 -    G8   swing 1R |   263  51% PF 0.94 st 0.94 net    -103 DD   -435 wd   -88 rand 0.92/0.89 |   247 PF 1.12 net    +188 rand 1.16/1.15
+tl     3   0 -    G8   swing 2R |   245  41% PF 0.89 st 0.88 net    -206 DD   -511 wd   -99 rand 1.22/1.08 |   237 PF 1.08 net    +134 rand 1.20/1.35
+tl     3   0 -    G8   swing 3R |   242  40% PF 0.88 st 0.87 net    -215 DD   -525 wd   -99 rand 1.12/0.90 |   235 PF 1.16 net    +250 rand 1.15/1.20
+tlsr   3  30 near -    atr   1R |   167  44% PF 0.85 st 0.84 net    -146 DD   -319 wd   -43 rand 0.98/1.12 |   145 PF 0.83 net    -159 rand 0.97/0.98
+tlsr   3  30 near -    atr   2R |   162  32% PF 0.82 st 0.80 net    -207 DD   -296 wd   -48 rand 1.04/0.83 |   141 PF 0.94 net     -55 rand 1.00/0.99
+tlsr   3  30 near -    atr   3R |   161  29% PF 0.69 st 0.68 net    -359 DD   -386 wd   -48 rand 1.01/1.28 |   140 PF 1.12 net    +118 rand 1.11/0.99
+tlsr   3  30 near -    swing 1R |   155  45% PF 0.89 st 0.88 net    -150 DD   -431 wd   -93 rand 1.15/1.22 |   135 PF 0.83 net    -195 rand 0.95/0.94
+tlsr   3  30 near -    swing 2R |   154  42% PF 0.79 st 0.78 net    -295 DD   -515 wd   -93 rand 1.03/0.89 |   134 PF 1.05 net     +60 rand 1.15/0.77
+tlsr   3  30 near -    swing 3R |   154  41% PF 0.72 st 0.71 net    -387 DD   -542 wd   -93 rand 0.86/0.86 |   133 PF 1.07 net     +85 rand 1.16/0.95
+tlsr   3  30 near G8   atr   1R |   167  44% PF 0.85 st 0.84 net    -146 DD   -319 wd   -43 rand 0.98/1.12 |   145 PF 0.83 net    -159 rand 0.97/0.98
+tlsr   3  30 near G8   atr   2R |   162  32% PF 0.82 st 0.80 net    -207 DD   -296 wd   -48 rand 1.04/0.83 |   141 PF 0.94 net     -55 rand 1.00/0.99
+tlsr   3  30 near G8   atr   3R |   161  29% PF 0.69 st 0.68 net    -359 DD   -386 wd   -48 rand 1.01/1.28 |   140 PF 1.12 net    +118 rand 1.11/0.99
+tlsr   3  30 near G8   swing 1R |   155  45% PF 0.89 st 0.88 net    -150 DD   -431 wd   -93 rand 1.15/1.22 |   135 PF 0.83 net    -195 rand 0.95/0.94
+tlsr   3  30 near G8   swing 2R |   154  42% PF 0.79 st 0.78 net    -295 DD   -515 wd   -93 rand 1.03/0.89 |   134 PF 1.05 net     +60 rand 1.15/0.77
+tlsr   3  30 near G8   swing 3R |   154  41% PF 0.72 st 0.71 net    -387 DD   -542 wd   -93 rand 0.86/0.86 |   133 PF 1.07 net     +85 rand 1.16/0.95
+tlsr   3  30 last -    atr   1R |   198  47% PF 0.99 st 0.98 net      -9 DD   -251 wd   -61 rand 1.08/0.99 |   184 PF 1.18 net    +183 rand 0.80/0.93
+tlsr   3  30 last -    atr   2R |   195  35% PF 0.88 st 0.86 net    -153 DD   -291 wd   -61 rand 0.94/1.03 |   177 PF 1.15 net    +173 rand 0.94/0.79
+tlsr   3  30 last -    atr   3R |   195  33% PF 0.81 st 0.79 net    -257 DD   -308 wd   -61 rand 0.80/0.85 |   177 PF 1.29 net    +341 rand 0.91/0.81
+tlsr   3  30 last -    swing 1R |   178  48% PF 0.90 st 0.89 net    -146 DD   -466 wd   -77 rand 0.96/0.95 |   169 PF 1.38 net    +414 rand 1.48/1.28
+tlsr   3  30 last -    swing 2R |   177  44% PF 0.77 st 0.75 net    -342 DD   -498 wd   -77 rand 0.77/1.15 |   168 PF 1.51 net    +600 rand 1.43/1.28
+tlsr   3  30 last -    swing 3R |   177  43% PF 0.71 st 0.70 net    -440 DD   -592 wd   -95 rand 0.84/0.93 |   167 PF 1.60 net    +726 rand 1.39/1.44
+tlsr   3  30 last G8   atr   1R |   198  47% PF 0.99 st 0.98 net      -9 DD   -251 wd   -61 rand 1.08/0.99 |   184 PF 1.18 net    +183 rand 0.80/0.93
+tlsr   3  30 last G8   atr   2R |   195  35% PF 0.88 st 0.86 net    -153 DD   -291 wd   -61 rand 0.94/1.03 |   177 PF 1.15 net    +173 rand 0.94/0.79
+tlsr   3  30 last G8   atr   3R |   195  33% PF 0.81 st 0.79 net    -257 DD   -308 wd   -61 rand 0.80/0.85 |   177 PF 1.29 net    +341 rand 0.91/0.81
+tlsr   3  30 last G8   swing 1R |   178  48% PF 0.90 st 0.89 net    -146 DD   -466 wd   -77 rand 0.96/0.95 |   169 PF 1.38 net    +414 rand 1.48/1.28
+tlsr   3  30 last G8   swing 2R |   177  44% PF 0.77 st 0.75 net    -342 DD   -498 wd   -77 rand 0.77/1.15 |   168 PF 1.51 net    +600 rand 1.43/1.28
+tlsr   3  30 last G8   swing 3R |   177  43% PF 0.71 st 0.70 net    -440 DD   -592 wd   -95 rand 0.84/0.93 |   167 PF 1.60 net    +726 rand 1.39/1.44
+tlsr   3 120 near -    atr   1R |   181  45% PF 0.88 st 0.86 net    -128 DD   -333 wd   -43 rand 1.02/1.01 |   161 PF 0.81 net    -201 rand 1.03/1.21
+tlsr   3 120 near -    atr   2R |   172  31% PF 0.80 st 0.77 net    -251 DD   -316 wd   -48 rand 0.90/0.92 |   155 PF 0.91 net    -101 rand 0.82/0.78
+tlsr   3 120 near -    atr   3R |   171  29% PF 0.68 st 0.67 net    -402 DD   -421 wd   -48 rand 0.96/0.72 |   153 PF 1.12 net    +128 rand 0.90/0.87
+tlsr   3 120 near -    swing 1R |   165  46% PF 0.90 st 0.89 net    -141 DD   -465 wd   -93 rand 1.01/1.05 |   151 PF 0.90 net    -132 rand 0.99/0.88
+tlsr   3 120 near -    swing 2R |   163  43% PF 0.84 st 0.83 net    -236 DD   -553 wd   -93 rand 0.70/0.80 |   148 PF 1.10 net    +132 rand 1.32/1.04
+tlsr   3 120 near -    swing 3R |   162  42% PF 0.79 st 0.77 net    -320 DD   -580 wd   -93 rand 0.75/0.85 |   146 PF 1.11 net    +137 rand 1.43/1.14
+tlsr   3 120 near G8   atr   1R |   181  45% PF 0.88 st 0.86 net    -128 DD   -333 wd   -43 rand 1.02/1.01 |   161 PF 0.81 net    -201 rand 1.03/1.21
+tlsr   3 120 near G8   atr   2R |   172  31% PF 0.80 st 0.77 net    -251 DD   -316 wd   -48 rand 0.90/0.92 |   155 PF 0.91 net    -101 rand 0.82/0.78
+tlsr   3 120 near G8   atr   3R |   171  29% PF 0.68 st 0.67 net    -402 DD   -421 wd   -48 rand 0.96/0.72 |   153 PF 1.12 net    +128 rand 0.90/0.87
+tlsr   3 120 near G8   swing 1R |   165  46% PF 0.90 st 0.89 net    -141 DD   -465 wd   -93 rand 1.01/1.05 |   151 PF 0.90 net    -132 rand 0.99/0.88
+tlsr   3 120 near G8   swing 2R |   163  43% PF 0.84 st 0.83 net    -236 DD   -553 wd   -93 rand 0.70/0.80 |   148 PF 1.10 net    +132 rand 1.32/1.04
+tlsr   3 120 near G8   swing 3R |   162  42% PF 0.79 st 0.77 net    -320 DD   -580 wd   -93 rand 0.75/0.85 |   146 PF 1.11 net    +137 rand 1.43/1.14
+tlsr   3 120 last -    atr   1R |   210  49% PF 1.03 st 1.01 net     +30 DD   -244 wd   -61 rand 0.89/0.91 |   195 PF 1.13 net    +138 rand 0.87/0.82
+tlsr   3 120 last -    atr   2R |   204  35% PF 0.89 st 0.87 net    -152 DD   -288 wd   -61 rand 0.90/1.01 |   185 PF 1.09 net    +117 rand 1.12/0.82
+tlsr   3 120 last -    atr   3R |   202  33% PF 0.81 st 0.80 net    -268 DD   -319 wd   -61 rand 0.64/0.68 |   185 PF 1.25 net    +315 rand 0.87/0.73
+tlsr   3 120 last -    swing 1R |   187  48% PF 0.89 st 0.88 net    -177 DD   -477 wd   -77 rand 0.96/0.97 |   179 PF 1.40 net    +466 rand 1.27/1.49
+tlsr   3 120 last -    swing 2R |   184  45% PF 0.82 st 0.80 net    -289 DD   -526 wd   -77 rand 0.75/0.97 |   175 PF 1.43 net    +547 rand 1.42/1.34
+tlsr   3 120 last -    swing 3R |   183  44% PF 0.74 st 0.73 net    -422 DD   -574 wd   -95 rand 0.72/0.72 |   173 PF 1.51 net    +652 rand 1.44/1.39
+tlsr   3 120 last G8   atr   1R |   210  49% PF 1.03 st 1.01 net     +30 DD   -244 wd   -61 rand 0.89/0.91 |   195 PF 1.13 net    +138 rand 0.87/0.82
+tlsr   3 120 last G8   atr   2R |   204  35% PF 0.89 st 0.87 net    -152 DD   -288 wd   -61 rand 0.90/1.01 |   185 PF 1.09 net    +117 rand 1.12/0.82
+tlsr   3 120 last G8   atr   3R |   202  33% PF 0.81 st 0.80 net    -268 DD   -319 wd   -61 rand 0.64/0.68 |   185 PF 1.25 net    +315 rand 0.87/0.73
+tlsr   3 120 last G8   swing 1R |   187  48% PF 0.89 st 0.88 net    -177 DD   -477 wd   -77 rand 0.96/0.97 |   179 PF 1.40 net    +466 rand 1.27/1.49
+tlsr   3 120 last G8   swing 2R |   184  45% PF 0.82 st 0.80 net    -289 DD   -526 wd   -77 rand 0.75/0.97 |   175 PF 1.43 net    +547 rand 1.42/1.34
+tlsr   3 120 last G8   swing 3R |   183  44% PF 0.74 st 0.73 net    -422 DD   -574 wd   -95 rand 0.72/0.72 |   173 PF 1.51 net    +652 rand 1.44/1.39
+snr    3   0 -    -    atr   1R |   307  51% PF 0.99 st 0.98 net     -17 DD   -265 wd   -63 rand 0.90/1.11 |   302 PF 0.93 net    -127 rand 1.06/0.92
+snr    3   0 -    -    atr   2R |   275  41% PF 1.06 st 1.04 net    +115 DD   -356 wd   -68 rand 0.90/1.23 |   275 PF 1.01 net     +26 rand 0.77/1.26
+snr    3   0 -    -    atr   3R |   262  39% PF 1.03 st 1.01 net     +56 DD   -413 wd   -68 rand 0.88/1.03 |   264 PF 1.08 net    +157 rand 1.12/1.11
+snr    3   0 -    -    swing 1R |   253  49% PF 0.93 st 0.92 net    -149 DD   -722 wd  -111 rand 0.89/1.12 |   262 PF 1.05 net    +114 rand 1.11/1.18
+snr    3   0 -    -    swing 2R |   238  46% PF 0.98 st 0.97 net     -54 DD   -654 wd  -111 rand 0.89/0.97 |   243 PF 1.09 net    +166 rand 0.84/1.02
+snr    3   0 -    -    swing 3R |   231  46% PF 0.97 st 0.96 net     -70 DD   -622 wd  -111 rand 0.77/0.85 |   238 PF 1.16 net    +305 rand 0.95/1.19
+snr    3   0 -    G8   atr   1R |   307  51% PF 0.99 st 0.98 net     -17 DD   -265 wd   -63 rand 0.90/1.11 |   302 PF 0.93 net    -127 rand 1.06/0.92
+snr    3   0 -    G8   atr   2R |   275  41% PF 1.06 st 1.04 net    +115 DD   -356 wd   -68 rand 0.90/1.23 |   275 PF 1.01 net     +26 rand 0.77/1.26
+snr    3   0 -    G8   atr   3R |   262  39% PF 1.03 st 1.01 net     +56 DD   -413 wd   -68 rand 0.88/1.03 |   264 PF 1.08 net    +157 rand 1.12/1.11
+snr    3   0 -    G8   swing 1R |   253  49% PF 0.93 st 0.92 net    -149 DD   -722 wd  -111 rand 0.89/1.12 |   262 PF 1.05 net    +114 rand 1.11/1.18
+snr    3   0 -    G8   swing 2R |   238  46% PF 0.98 st 0.97 net     -54 DD   -654 wd  -111 rand 0.89/0.97 |   243 PF 1.09 net    +166 rand 0.84/1.02
+snr    3   0 -    G8   swing 3R |   231  46% PF 0.97 st 0.96 net     -70 DD   -622 wd  -111 rand 0.77/0.85 |   238 PF 1.16 net    +305 rand 0.95/1.19
+tl     5   0 -    -    atr   1R |   199  47% PF 0.88 st 0.87 net    -143 DD   -203 wd   -37 rand 0.77/1.05 |   186 PF 1.15 net    +157 rand 1.02/0.72
+tl     5   0 -    -    atr   2R |   195  36% PF 0.84 st 0.80 net    -228 DD   -306 wd   -37 rand 1.25/0.68 |   181 PF 1.26 net    +300 rand 1.27/0.96
+tl     5   0 -    -    atr   3R |   195  33% PF 0.81 st 0.77 net    -272 DD   -336 wd   -37 rand 0.94/1.01 |   180 PF 1.27 net    +318 rand 0.99/0.97
+tl     5   0 -    -    swing 1R |   183  46% PF 0.87 st 0.86 net    -180 DD   -297 wd   -75 rand 1.05/1.11 |   173 PF 1.26 net    +265 rand 1.11/0.93
+tl     5   0 -    -    swing 2R |   177  38% PF 0.79 st 0.79 net    -289 DD   -337 wd   -75 rand 0.74/0.83 |   169 PF 1.36 net    +393 rand 1.31/0.87
+tl     5   0 -    -    swing 3R |   176  36% PF 0.69 st 0.68 net    -442 DD   -518 wd   -75 rand 0.85/0.70 |   169 PF 1.39 net    +432 rand 1.35/0.87
+tl     5   0 -    G8   atr   1R |   199  47% PF 0.88 st 0.87 net    -143 DD   -203 wd   -37 rand 0.77/1.05 |   186 PF 1.15 net    +157 rand 1.02/0.72
+tl     5   0 -    G8   atr   2R |   195  36% PF 0.84 st 0.80 net    -228 DD   -306 wd   -37 rand 1.25/0.68 |   181 PF 1.26 net    +300 rand 1.27/0.96
+tl     5   0 -    G8   atr   3R |   195  33% PF 0.81 st 0.77 net    -272 DD   -336 wd   -37 rand 0.94/1.01 |   180 PF 1.27 net    +318 rand 0.99/0.97
+tl     5   0 -    G8   swing 1R |   183  46% PF 0.87 st 0.86 net    -180 DD   -297 wd   -75 rand 1.05/1.11 |   173 PF 1.26 net    +265 rand 1.11/0.93
+tl     5   0 -    G8   swing 2R |   177  38% PF 0.79 st 0.79 net    -289 DD   -337 wd   -75 rand 0.74/0.83 |   169 PF 1.36 net    +393 rand 1.31/0.87
+tl     5   0 -    G8   swing 3R |   176  36% PF 0.69 st 0.68 net    -442 DD   -518 wd   -75 rand 0.85/0.70 |   169 PF 1.39 net    +432 rand 1.35/0.87
+tlsr   5  30 near -    atr   1R |    98  44% PF 0.76 st 0.72 net    -149 DD   -199 wd   -27 rand 1.07/1.03 |    92 PF 0.87 net     -73 rand 0.75/1.12
+tlsr   5  30 near -    atr   2R |    96  31% PF 0.66 st 0.65 net    -241 DD   -289 wd   -36 rand 1.40/1.11 |    91 PF 0.95 net     -33 rand 1.28/1.05
+tlsr   5  30 near -    atr   3R |    96  29% PF 0.63 st 0.63 net    -272 DD   -279 wd   -36 rand 1.14/1.28 |    89 PF 1.11 net     +65 rand 1.34/0.98
+tlsr   5  30 near -    swing 1R |    96  36% PF 0.46 st 0.46 net    -609 DD   -618 wd  -112 rand 0.71/0.49 |    90 PF 1.06 net     +40 rand 1.01/0.88
+tlsr   5  30 near -    swing 2R |    95  34% PF 0.46 st 0.45 net    -627 DD   -627 wd  -112 rand 0.68/0.72 |    88 PF 0.96 net     -27 rand 1.19/0.83
+tlsr   5  30 near -    swing 3R |    95  34% PF 0.43 st 0.43 net    -657 DD   -657 wd  -112 rand 0.73/0.71 |    88 PF 1.00 net      -4 rand 1.24/0.80
+tlsr   5  30 near G8   atr   1R |    98  44% PF 0.76 st 0.72 net    -149 DD   -199 wd   -27 rand 1.07/1.03 |    92 PF 0.87 net     -73 rand 0.75/1.12
+tlsr   5  30 near G8   atr   2R |    96  31% PF 0.66 st 0.65 net    -241 DD   -289 wd   -36 rand 1.40/1.11 |    91 PF 0.95 net     -33 rand 1.28/1.05
+tlsr   5  30 near G8   atr   3R |    96  29% PF 0.63 st 0.63 net    -272 DD   -279 wd   -36 rand 1.14/1.28 |    89 PF 1.11 net     +65 rand 1.34/0.98
+tlsr   5  30 near G8   swing 1R |    96  36% PF 0.46 st 0.46 net    -609 DD   -618 wd  -112 rand 0.71/0.49 |    90 PF 1.06 net     +40 rand 1.01/0.88
+tlsr   5  30 near G8   swing 2R |    95  34% PF 0.46 st 0.45 net    -627 DD   -627 wd  -112 rand 0.68/0.72 |    88 PF 0.96 net     -27 rand 1.19/0.83
+tlsr   5  30 near G8   swing 3R |    95  34% PF 0.43 st 0.43 net    -657 DD   -657 wd  -112 rand 0.73/0.71 |    88 PF 1.00 net      -4 rand 1.24/0.80
+tlsr   5  30 last -    atr   1R |   120  48% PF 0.89 st 0.84 net     -83 DD   -225 wd   -42 rand 0.99/0.76 |   114 PF 1.07 net     +45 rand 0.92/0.86
+tlsr   5  30 last -    atr   2R |   117  35% PF 0.76 st 0.75 net    -205 DD   -273 wd   -42 rand 0.73/1.07 |   112 PF 1.25 net    +178 rand 0.81/1.00
+tlsr   5  30 last -    atr   3R |   117  33% PF 0.78 st 0.77 net    -192 DD   -218 wd   -42 rand 1.15/1.07 |   112 PF 1.32 net    +235 rand 1.30/1.11
+tlsr   5  30 last -    swing 1R |   117  41% PF 0.62 st 0.62 net    -440 DD   -461 wd   -68 rand 0.65/0.92 |   111 PF 1.51 net    +374 rand 1.83/1.99
+tlsr   5  30 last -    swing 2R |   116  39% PF 0.67 st 0.65 net    -390 DD   -405 wd   -68 rand 0.73/0.89 |   110 PF 1.30 net    +243 rand 1.55/1.68
+tlsr   5  30 last -    swing 3R |   116  38% PF 0.59 st 0.58 net    -497 DD   -512 wd   -95 rand 0.63/0.80 |   110 PF 1.35 net    +286 rand 1.62/1.84
+tlsr   5  30 last G8   atr   1R |   120  48% PF 0.89 st 0.84 net     -83 DD   -225 wd   -42 rand 0.99/0.76 |   114 PF 1.07 net     +45 rand 0.92/0.86
+tlsr   5  30 last G8   atr   2R |   117  35% PF 0.76 st 0.75 net    -205 DD   -273 wd   -42 rand 0.73/1.07 |   112 PF 1.25 net    +178 rand 0.81/1.00
+tlsr   5  30 last G8   atr   3R |   117  33% PF 0.78 st 0.77 net    -192 DD   -218 wd   -42 rand 1.15/1.07 |   112 PF 1.32 net    +235 rand 1.30/1.11
+tlsr   5  30 last G8   swing 1R |   117  41% PF 0.62 st 0.62 net    -440 DD   -461 wd   -68 rand 0.65/0.92 |   111 PF 1.51 net    +374 rand 1.83/1.99
+tlsr   5  30 last G8   swing 2R |   116  39% PF 0.67 st 0.65 net    -390 DD   -405 wd   -68 rand 0.73/0.89 |   110 PF 1.30 net    +243 rand 1.55/1.68
+tlsr   5  30 last G8   swing 3R |   116  38% PF 0.59 st 0.58 net    -497 DD   -512 wd   -95 rand 0.63/0.80 |   110 PF 1.35 net    +286 rand 1.62/1.84
+tlsr   5 120 near -    atr   1R |   103  44% PF 0.75 st 0.71 net    -168 DD   -213 wd   -42 rand 0.95/0.83 |   104 PF 0.89 net     -69 rand 1.02/0.95
+tlsr   5 120 near -    atr   2R |   101  31% PF 0.65 st 0.64 net    -269 DD   -304 wd   -42 rand 0.97/0.99 |   102 PF 1.01 net      +8 rand 1.20/1.13
+tlsr   5 120 near -    atr   3R |   100  28% PF 0.59 st 0.58 net    -327 DD   -327 wd   -42 rand 1.06/0.89 |   100 PF 1.11 net     +78 rand 1.46/1.30
+tlsr   5 120 near -    swing 1R |   101  38% PF 0.51 st 0.51 net    -574 DD   -586 wd  -112 rand 0.70/0.62 |   100 PF 1.10 net     +77 rand 1.11/1.22
+tlsr   5 120 near -    swing 2R |    97  35% PF 0.49 st 0.49 net    -584 DD   -595 wd  -112 rand 0.64/0.76 |    97 PF 1.05 net     +42 rand 1.20/1.12
+tlsr   5 120 near -    swing 3R |    97  35% PF 0.47 st 0.46 net    -614 DD   -625 wd  -112 rand 0.67/0.88 |    96 PF 1.09 net     +71 rand 0.87/1.24
+tlsr   5 120 near G8   atr   1R |   103  44% PF 0.75 st 0.71 net    -168 DD   -213 wd   -42 rand 0.95/0.83 |   104 PF 0.89 net     -69 rand 1.02/0.95
+tlsr   5 120 near G8   atr   2R |   101  31% PF 0.65 st 0.64 net    -269 DD   -304 wd   -42 rand 0.97/0.99 |   102 PF 1.01 net      +8 rand 1.20/1.13
+tlsr   5 120 near G8   atr   3R |   100  28% PF 0.59 st 0.58 net    -327 DD   -327 wd   -42 rand 1.06/0.89 |   100 PF 1.11 net     +78 rand 1.46/1.30
+tlsr   5 120 near G8   swing 1R |   101  38% PF 0.51 st 0.51 net    -574 DD   -586 wd  -112 rand 0.70/0.62 |   100 PF 1.10 net     +77 rand 1.11/1.22
+tlsr   5 120 near G8   swing 2R |    97  35% PF 0.49 st 0.49 net    -584 DD   -595 wd  -112 rand 0.64/0.76 |    97 PF 1.05 net     +42 rand 1.20/1.12
+tlsr   5 120 near G8   swing 3R |    97  35% PF 0.47 st 0.46 net    -614 DD   -625 wd  -112 rand 0.67/0.88 |    96 PF 1.09 net     +71 rand 0.87/1.24
+tlsr   5 120 last -    atr   1R |   124  48% PF 0.88 st 0.84 net     -87 DD   -225 wd   -42 rand 0.69/1.13 |   123 PF 1.07 net     +53 rand 1.18/0.94
+tlsr   5 120 last -    atr   2R |   121  35% PF 0.75 st 0.74 net    -218 DD   -273 wd   -42 rand 0.86/1.12 |   120 PF 1.25 net    +198 rand 0.98/0.82
+tlsr   5 120 last -    atr   3R |   120  32% PF 0.75 st 0.74 net    -231 DD   -241 wd   -42 rand 0.73/0.88 |   120 PF 1.27 net    +224 rand 0.96/0.70
+tlsr   5 120 last -    swing 1R |   121  41% PF 0.64 st 0.63 net    -438 DD   -455 wd   -68 rand 0.95/0.80 |   119 PF 1.42 net    +344 rand 1.62/1.15
+tlsr   5 120 last -    swing 2R |   118  39% PF 0.67 st 0.65 net    -396 DD   -412 wd   -68 rand 0.88/0.82 |   117 PF 1.20 net    +182 rand 1.13/1.13
+tlsr   5 120 last -    swing 3R |   117  38% PF 0.60 st 0.59 net    -485 DD   -501 wd   -95 rand 0.92/0.74 |   115 PF 1.30 net    +264 rand 0.98/1.21
+tlsr   5 120 last G8   atr   1R |   124  48% PF 0.88 st 0.84 net     -87 DD   -225 wd   -42 rand 0.69/1.13 |   123 PF 1.07 net     +53 rand 1.18/0.94
+tlsr   5 120 last G8   atr   2R |   121  35% PF 0.75 st 0.74 net    -218 DD   -273 wd   -42 rand 0.86/1.12 |   120 PF 1.25 net    +198 rand 0.98/0.82
+tlsr   5 120 last G8   atr   3R |   120  32% PF 0.75 st 0.74 net    -231 DD   -241 wd   -42 rand 0.73/0.88 |   120 PF 1.27 net    +224 rand 0.96/0.70
+tlsr   5 120 last G8   swing 1R |   121  41% PF 0.64 st 0.63 net    -438 DD   -455 wd   -68 rand 0.95/0.80 |   119 PF 1.42 net    +344 rand 1.62/1.15
+tlsr   5 120 last G8   swing 2R |   118  39% PF 0.67 st 0.65 net    -396 DD   -412 wd   -68 rand 0.88/0.82 |   117 PF 1.20 net    +182 rand 1.13/1.13
+tlsr   5 120 last G8   swing 3R |   117  38% PF 0.60 st 0.59 net    -485 DD   -501 wd   -95 rand 0.92/0.74 |   115 PF 1.30 net    +264 rand 0.98/1.21
+snr    5   0 -    -    atr   1R |   214  54% PF 1.13 st 1.12 net    +156 DD   -132 wd   -40 rand 0.92/0.89 |   221 PF 0.79 net    -324 rand 0.93/1.11
+snr    5   0 -    -    atr   2R |   191  45% PF 1.15 st 1.14 net    +194 DD   -208 wd   -58 rand 0.96/0.83 |   206 PF 1.00 net      -6 rand 1.20/1.07 PASS
+snr    5   0 -    -    atr   3R |   182  44% PF 1.21 st 1.20 net    +250 DD   -191 wd   -58 rand 1.06/1.00 |   198 PF 0.99 net     -14 rand 1.22/1.34 PASS
+snr    5   0 -    -    swing 1R |   178  56% PF 1.07 st 1.06 net    +106 DD   -415 wd   -88 rand 1.15/1.10 |   193 PF 1.09 net    +143 rand 1.00/1.17
+snr    5   0 -    -    swing 2R |   167  54% PF 1.14 st 1.13 net    +211 DD   -450 wd   -88 rand 0.84/0.95 |   179 PF 1.09 net    +139 rand 1.02/1.01
+snr    5   0 -    -    swing 3R |   163  53% PF 1.09 st 1.08 net    +132 DD   -447 wd   -88 rand 0.68/0.85 |   178 PF 1.10 net    +144 rand 1.33/1.48
+snr    5   0 -    G8   atr   1R |   214  54% PF 1.13 st 1.12 net    +156 DD   -132 wd   -40 rand 0.92/0.89 |   221 PF 0.79 net    -324 rand 0.93/1.11
+snr    5   0 -    G8   atr   2R |   191  45% PF 1.15 st 1.14 net    +194 DD   -208 wd   -58 rand 0.96/0.83 |   206 PF 1.00 net      -6 rand 1.20/1.07 PASS
+snr    5   0 -    G8   atr   3R |   182  44% PF 1.21 st 1.20 net    +250 DD   -191 wd   -58 rand 1.06/1.00 |   198 PF 0.99 net     -14 rand 1.22/1.34 PASS
+snr    5   0 -    G8   swing 1R |   178  56% PF 1.07 st 1.06 net    +106 DD   -415 wd   -88 rand 1.15/1.10 |   193 PF 1.09 net    +143 rand 1.00/1.17
+snr    5   0 -    G8   swing 2R |   167  54% PF 1.14 st 1.13 net    +211 DD   -450 wd   -88 rand 0.84/0.95 |   179 PF 1.09 net    +139 rand 1.02/1.01
+snr    5   0 -    G8   swing 3R |   163  53% PF 1.09 st 1.08 net    +132 DD   -447 wd   -88 rand 0.68/0.85 |   178 PF 1.10 net    +144 rand 1.33/1.48
+tl    10   0 -    -    atr   1R |   115  62% PF 1.57 st 1.57 net    +290 DD    -83 wd   -48 rand 1.36/0.82 |   111 PF 0.92 net     -58 rand 0.81/0.99 PASS
+tl    10   0 -    -    atr   2R |   112  50% PF 1.64 st 1.63 net    +388 DD    -85 wd   -48 rand 1.08/0.65 |   111 PF 0.91 net     -78 rand 1.02/1.01 PASS
+tl    10   0 -    -    atr   3R |   111  49% PF 1.64 st 1.63 net    +393 DD   -119 wd   -48 rand 1.10/1.01 |   111 PF 0.97 net     -26 rand 1.10/1.28 PASS
+tl    10   0 -    -    swing 1R |   111  59% PF 1.69 st 1.67 net    +440 DD   -126 wd   -51 rand 1.87/1.64 |   102 PF 0.90 net     -80 rand 0.75/1.13 PASS (random as good)
+tl    10   0 -    -    swing 2R |   108  52% PF 1.48 st 1.43 net    +341 DD   -181 wd   -51 rand 1.38/1.14 |   102 PF 0.92 net     -65 rand 0.84/1.03 PASS
+tl    10   0 -    -    swing 3R |   108  51% PF 1.46 st 1.44 net    +330 DD   -194 wd   -51 rand 1.36/1.19 |   102 PF 0.99 net      -6 rand 0.93/1.22 PASS
+tl    10   0 -    G8   atr   1R |   115  62% PF 1.57 st 1.57 net    +290 DD    -83 wd   -48 rand 1.36/0.82 |   111 PF 0.92 net     -58 rand 0.81/0.99 PASS
+tl    10   0 -    G8   atr   2R |   112  50% PF 1.64 st 1.63 net    +388 DD    -85 wd   -48 rand 1.08/0.65 |   111 PF 0.91 net     -78 rand 1.02/1.01 PASS
+tl    10   0 -    G8   atr   3R |   111  49% PF 1.64 st 1.63 net    +393 DD   -119 wd   -48 rand 1.10/1.01 |   111 PF 0.97 net     -26 rand 1.10/1.28 PASS
+tl    10   0 -    G8   swing 1R |   111  59% PF 1.69 st 1.67 net    +440 DD   -126 wd   -51 rand 1.87/1.64 |   102 PF 0.90 net     -80 rand 0.75/1.13 PASS (random as good)
+tl    10   0 -    G8   swing 2R |   108  52% PF 1.48 st 1.43 net    +341 DD   -181 wd   -51 rand 1.38/1.14 |   102 PF 0.92 net     -65 rand 0.84/1.03 PASS
+tl    10   0 -    G8   swing 3R |   108  51% PF 1.46 st 1.44 net    +330 DD   -194 wd   -51 rand 1.36/1.19 |   102 PF 0.99 net      -6 rand 0.93/1.22 PASS
+tlsr  10  30 near -    atr   1R |    49  63% PF 1.66 st 1.46 net    +141 DD    -54 wd   -17 rand 1.68/1.01 |    38 PF 0.97 net      -7 rand 1.04/0.70 PASS (random as good)
+tlsr  10  30 near -    atr   2R |    49  53% PF 1.66 st 1.62 net    +170 DD    -54 wd   -17 rand 1.93/0.96 |    38 PF 1.38 net     +91 rand 1.12/0.94 PASS+REPEAT (random as good)
+tlsr  10  30 near -    atr   3R |    49  53% PF 1.74 st 1.73 net    +191 DD    -54 wd   -17 rand 1.95/1.04 |    38 PF 1.51 net    +121 rand 1.20/0.80 PASS+REPEAT (random as good)
+tlsr  10  30 near -    swing 1R |    49  57% PF 1.26 st 1.23 net     +92 DD   -120 wd   -32 rand 1.72/0.98 |    38 PF 1.24 net     +68 rand 0.92/1.05 PASS+REPEAT (random as good)
+tlsr  10  30 near -    swing 2R |    49  57% PF 1.39 st 1.36 net    +142 DD   -101 wd   -32 rand 1.86/1.21 |    38 PF 1.22 net     +64 rand 0.94/1.17 PASS+REPEAT (random as good)
+tlsr  10  30 near -    swing 3R |    49  57% PF 1.36 st 1.32 net    +129 DD   -103 wd   -32 rand 1.69/1.05 |    38 PF 1.22 net     +64 rand 0.93/1.14 PASS+REPEAT (random as good)
+tlsr  10  30 near G8   atr   1R |    49  63% PF 1.66 st 1.46 net    +141 DD    -54 wd   -17 rand 1.68/1.01 |    38 PF 0.97 net      -7 rand 1.04/0.70 PASS (random as good)
+tlsr  10  30 near G8   atr   2R |    49  53% PF 1.66 st 1.62 net    +170 DD    -54 wd   -17 rand 1.93/0.96 |    38 PF 1.38 net     +91 rand 1.12/0.94 PASS+REPEAT (random as good)
+tlsr  10  30 near G8   atr   3R |    49  53% PF 1.74 st 1.73 net    +191 DD    -54 wd   -17 rand 1.95/1.04 |    38 PF 1.51 net    +121 rand 1.20/0.80 PASS+REPEAT (random as good)
+tlsr  10  30 near G8   swing 1R |    49  57% PF 1.26 st 1.23 net     +92 DD   -120 wd   -32 rand 1.72/0.98 |    38 PF 1.24 net     +68 rand 0.92/1.05 PASS+REPEAT (random as good)
+tlsr  10  30 near G8   swing 2R |    49  57% PF 1.39 st 1.36 net    +142 DD   -101 wd   -32 rand 1.86/1.21 |    38 PF 1.22 net     +64 rand 0.94/1.17 PASS+REPEAT (random as good)
+tlsr  10  30 near G8   swing 3R |    49  57% PF 1.36 st 1.32 net    +129 DD   -103 wd   -32 rand 1.69/1.05 |    38 PF 1.22 net     +64 rand 0.93/1.14 PASS+REPEAT (random as good)
+tlsr  10  30 last -    atr   1R |    64  61% PF 1.51 st 1.37 net    +151 DD    -68 wd   -32 rand 0.89/0.95 |    52 PF 0.62 net    -143 rand 0.61/0.67 PASS
+tlsr  10  30 last -    atr   2R |    64  52% PF 1.58 st 1.56 net    +207 DD    -68 wd   -32 rand 0.99/0.98 |    52 PF 0.81 net     -73 rand 0.82/0.67 PASS
+tlsr  10  30 last -    atr   3R |    64  52% PF 1.69 st 1.68 net    +244 DD    -68 wd   -32 rand 1.46/1.17 |    52 PF 0.97 net     -13 rand 1.04/0.76 PASS
+tlsr  10  30 last -    swing 1R |    64  59% PF 1.26 st 1.23 net    +132 DD   -125 wd   -39 rand 1.15/1.25 |    52 PF 0.94 net     -28 rand 0.75/0.62 PASS
+tlsr  10  30 last -    swing 2R |    64  59% PF 1.45 st 1.42 net    +230 DD   -124 wd   -39 rand 1.29/1.19 |    52 PF 1.01 net      +3 rand 0.89/0.66 PASS
+tlsr  10  30 last -    swing 3R |    64  59% PF 1.40 st 1.37 net    +206 DD   -124 wd   -39 rand 1.24/1.24 |    52 PF 1.00 net      +1 rand 0.89/0.75 PASS
+tlsr  10  30 last G8   atr   1R |    64  61% PF 1.51 st 1.37 net    +151 DD    -68 wd   -32 rand 0.89/0.95 |    52 PF 0.62 net    -143 rand 0.61/0.67 PASS
+tlsr  10  30 last G8   atr   2R |    64  52% PF 1.58 st 1.56 net    +207 DD    -68 wd   -32 rand 0.99/0.98 |    52 PF 0.81 net     -73 rand 0.82/0.67 PASS
+tlsr  10  30 last G8   atr   3R |    64  52% PF 1.69 st 1.68 net    +244 DD    -68 wd   -32 rand 1.46/1.17 |    52 PF 0.97 net     -13 rand 1.04/0.76 PASS
+tlsr  10  30 last G8   swing 1R |    64  59% PF 1.26 st 1.23 net    +132 DD   -125 wd   -39 rand 1.15/1.25 |    52 PF 0.94 net     -28 rand 0.75/0.62 PASS
+tlsr  10  30 last G8   swing 2R |    64  59% PF 1.45 st 1.42 net    +230 DD   -124 wd   -39 rand 1.29/1.19 |    52 PF 1.01 net      +3 rand 0.89/0.66 PASS
+tlsr  10  30 last G8   swing 3R |    64  59% PF 1.40 st 1.37 net    +206 DD   -124 wd   -39 rand 1.24/1.24 |    52 PF 1.00 net      +1 rand 0.89/0.75 PASS
+tlsr  10 120 near -    atr   1R |    55  64% PF 1.62 st 1.45 net    +152 DD    -43 wd   -26 rand 0.64/0.88 |    48 PF 0.89 net     -33 rand 0.52/0.82 PASS
+tlsr  10 120 near -    atr   2R |    55  51% PF 1.51 st 1.47 net    +157 DD    -65 wd   -26 rand 0.74/0.86 |    48 PF 1.27 net     +87 rand 0.66/0.79 PASS+REPEAT
+tlsr  10 120 near -    atr   3R |    55  51% PF 1.64 st 1.63 net    +198 DD    -65 wd   -26 rand 0.87/0.88 |    48 PF 1.36 net    +119 rand 0.73/0.82 PASS+REPEAT
+tlsr  10 120 near -    swing 1R |    55  56% PF 1.23 st 1.20 net     +98 DD   -121 wd   -36 rand 0.85/0.83 |    48 PF 1.11 net     +44 rand 0.69/0.71 PASS
+tlsr  10 120 near -    swing 2R |    55  56% PF 1.44 st 1.41 net    +187 DD    -99 wd   -36 rand 1.03/0.87 |    48 PF 1.11 net     +46 rand 0.62/0.97 PASS
+tlsr  10 120 near -    swing 3R |    55  56% PF 1.40 st 1.36 net    +169 DD    -99 wd   -36 rand 1.02/0.87 |    48 PF 1.11 net     +46 rand 0.61/1.11 PASS
+tlsr  10 120 near G8   atr   1R |    55  64% PF 1.62 st 1.45 net    +152 DD    -43 wd   -26 rand 0.64/0.88 |    48 PF 0.89 net     -33 rand 0.52/0.82 PASS
+tlsr  10 120 near G8   atr   2R |    55  51% PF 1.51 st 1.47 net    +157 DD    -65 wd   -26 rand 0.74/0.86 |    48 PF 1.27 net     +87 rand 0.66/0.79 PASS+REPEAT
+tlsr  10 120 near G8   atr   3R |    55  51% PF 1.64 st 1.63 net    +198 DD    -65 wd   -26 rand 0.87/0.88 |    48 PF 1.36 net    +119 rand 0.73/0.82 PASS+REPEAT
+tlsr  10 120 near G8   swing 1R |    55  56% PF 1.23 st 1.20 net     +98 DD   -121 wd   -36 rand 0.85/0.83 |    48 PF 1.11 net     +44 rand 0.69/0.71 PASS
+tlsr  10 120 near G8   swing 2R |    55  56% PF 1.44 st 1.41 net    +187 DD    -99 wd   -36 rand 1.03/0.87 |    48 PF 1.11 net     +46 rand 0.62/0.97 PASS
+tlsr  10 120 near G8   swing 3R |    55  56% PF 1.40 st 1.36 net    +169 DD    -99 wd   -36 rand 1.02/0.87 |    48 PF 1.11 net     +46 rand 0.61/1.11 PASS
+tlsr  10 120 last -    atr   1R |    67  63% PF 1.61 st 1.47 net    +182 DD    -58 wd   -32 rand 0.68/1.42 |    58 PF 0.61 net    -171 rand 0.77/0.71 PASS
+tlsr  10 120 last -    atr   2R |    66  52% PF 1.58 st 1.55 net    +213 DD    -79 wd   -32 rand 0.63/1.48 |    58 PF 0.84 net     -70 rand 0.66/0.92 PASS
+tlsr  10 120 last -    atr   3R |    66  52% PF 1.71 st 1.70 net    +258 DD    -79 wd   -32 rand 0.71/1.58 |    58 PF 0.97 net     -14 rand 0.73/0.98 PASS
+tlsr  10 120 last -    swing 1R |    66  59% PF 1.21 st 1.19 net    +115 DD   -113 wd   -39 rand 0.85/1.09 |    57 PF 1.05 net     +24 rand 0.87/1.35 PASS
+tlsr  10 120 last -    swing 2R |    66  59% PF 1.41 st 1.39 net    +225 DD   -124 wd   -39 rand 1.03/1.19 |    57 PF 1.12 net     +55 rand 0.90/1.52 PASS
+tlsr  10 120 last -    swing 3R |    66  59% PF 1.38 st 1.36 net    +208 DD   -124 wd   -39 rand 0.87/1.04 |    57 PF 1.11 net     +52 rand 1.03/1.58 PASS
+tlsr  10 120 last G8   atr   1R |    67  63% PF 1.61 st 1.47 net    +182 DD    -58 wd   -32 rand 0.68/1.42 |    58 PF 0.61 net    -171 rand 0.77/0.71 PASS
+tlsr  10 120 last G8   atr   2R |    66  52% PF 1.58 st 1.55 net    +213 DD    -79 wd   -32 rand 0.63/1.48 |    58 PF 0.84 net     -70 rand 0.66/0.92 PASS
+tlsr  10 120 last G8   atr   3R |    66  52% PF 1.71 st 1.70 net    +258 DD    -79 wd   -32 rand 0.71/1.58 |    58 PF 0.97 net     -14 rand 0.73/0.98 PASS
+tlsr  10 120 last G8   swing 1R |    66  59% PF 1.21 st 1.19 net    +115 DD   -113 wd   -39 rand 0.85/1.09 |    57 PF 1.05 net     +24 rand 0.87/1.35 PASS
+tlsr  10 120 last G8   swing 2R |    66  59% PF 1.41 st 1.39 net    +225 DD   -124 wd   -39 rand 1.03/1.19 |    57 PF 1.12 net     +55 rand 0.90/1.52 PASS
+tlsr  10 120 last G8   swing 3R |    66  59% PF 1.38 st 1.36 net    +208 DD   -124 wd   -39 rand 0.87/1.04 |    57 PF 1.11 net     +52 rand 1.03/1.58 PASS
+snr   10   0 -    -    atr   1R |   146  50% PF 0.96 st 0.96 net     -37 DD   -213 wd   -43 rand 0.81/1.12 |   127 PF 0.74 net    -242 rand 0.77/0.91
+snr   10   0 -    -    atr   2R |   135  40% PF 1.03 st 1.02 net     +27 DD   -279 wd   -43 rand 1.04/0.93 |   117 PF 1.08 net     +72 rand 1.24/1.10
+snr   10   0 -    -    atr   3R |   128  40% PF 1.06 st 1.05 net     +57 DD   -200 wd   -43 rand 1.27/1.18 |   111 PF 1.07 net     +57 rand 0.89/0.86
+snr   10   0 -    -    swing 1R |   128  52% PF 0.92 st 0.91 net    -104 DD   -477 wd   -98 rand 0.95/0.90 |   113 PF 1.12 net    +120 rand 1.22/0.90
+snr   10   0 -    -    swing 2R |   120  51% PF 1.03 st 1.02 net     +34 DD   -400 wd   -98 rand 1.13/1.22 |   104 PF 1.09 net     +80 rand 0.99/0.97
+snr   10   0 -    -    swing 3R |   119  50% PF 0.99 st 0.98 net     -17 DD   -416 wd   -98 rand 0.80/1.15 |   104 PF 1.09 net     +80 rand 0.97/0.98
+snr   10   0 -    G8   atr   1R |   146  50% PF 0.96 st 0.96 net     -37 DD   -213 wd   -43 rand 0.81/1.12 |   127 PF 0.74 net    -242 rand 0.77/0.91
+snr   10   0 -    G8   atr   2R |   135  40% PF 1.03 st 1.02 net     +27 DD   -279 wd   -43 rand 1.04/0.93 |   117 PF 1.08 net     +72 rand 1.24/1.10
+snr   10   0 -    G8   atr   3R |   128  40% PF 1.06 st 1.05 net     +57 DD   -200 wd   -43 rand 1.27/1.18 |   111 PF 1.07 net     +57 rand 0.89/0.86
+snr   10   0 -    G8   swing 1R |   128  52% PF 0.92 st 0.91 net    -104 DD   -477 wd   -98 rand 0.95/0.90 |   113 PF 1.12 net    +120 rand 1.22/0.90
+snr   10   0 -    G8   swing 2R |   120  51% PF 1.03 st 1.02 net     +34 DD   -400 wd   -98 rand 1.13/1.22 |   104 PF 1.09 net     +80 rand 0.99/0.97
+snr   10   0 -    G8   swing 3R |   119  50% PF 0.99 st 0.98 net     -17 DD   -416 wd   -98 rand 0.80/1.15 |   104 PF 1.09 net     +80 rand 0.97/0.98
+
+SUMMARY (median PF last 3 m / previous, median of the better random twin)
+  snr   -   : cells  36, trades/3m median    180, PF 1.03 / 1.08, random 1.05 / 1.14, pass both windows 0
+  tl    -   : cells  36, trades/3m median    189, PF 0.96 / 1.07, random 1.11 / 1.15, pass both windows 0
+  tlsr  last: cells  72, trades/3m median    118, PF 0.89 / 1.19, random 1.00 / 1.08, pass both windows 0
+  tlsr  near: cells  72, trades/3m median     97, PF 0.81 / 1.08, random 1.02 / 1.12, pass both windows 14
+pass last 3 m 64 of 216, also >= 1.15 before 14, of which beat both random twins in both windows 4
+mode  n   W    R  gate    sl  tp  n3      pf3       net3         dd3       r3  n6      pf6       net6       r6   ok
+tlsr 10  30 near False   atr   3  49 1.744425 190.532376  -53.712703 1.948024  38 1.510834 121.059010 1.197412 True
+tlsr 10  30 near  True   atr   3  49 1.744425 190.532376  -53.712703 1.948024  38 1.510834 121.059010 1.197412 True
+tlsr 10  30 near  True   atr   2  49 1.663970 169.940238  -53.712703 1.927298  38 1.382056  90.540915 1.115914 True
+tlsr 10  30 near False   atr   2  49 1.663970 169.940238  -53.712703 1.927298  38 1.382056  90.540915 1.115914 True
+tlsr 10 120 near False   atr   3  55 1.639238 198.364458  -64.966737 0.879316  48 1.362314 118.642543 0.818204 True
+tlsr 10 120 near  True   atr   3  55 1.639238 198.364458  -64.966737 0.879316  48 1.362314 118.642543 0.818204 True
+tlsr 10 120 near  True   atr   2  55 1.506064 157.038767  -64.966737 0.864933  48 1.266463  87.255385 0.787772 True
+tlsr 10 120 near False   atr   2  55 1.506064 157.038767  -64.966737 0.864933  48 1.266463  87.255385 0.787772 True
+tlsr 10  30 near False swing   2  49 1.394989 141.917692 -101.361497 1.856839  38 1.223411  63.936603 1.170340 True
+tlsr 10  30 near  True swing   2  49 1.394989 141.917692 -101.361497 1.856839  38 1.223411  63.936603 1.170340 True
+tlsr 10  30 near  True swing   3  49 1.358936 128.964324 -103.290165 1.685362  38 1.223411  63.936603 1.135576 True
+tlsr 10  30 near False swing   3  49 1.358936 128.964324 -103.290165 1.685362  38 1.223411  63.936603 1.135576 True
+tlsr 10  30 near False swing   1  49 1.256764  92.254054 -119.565831 1.723240  38 1.237265  67.901165 1.049272 True
+tlsr 10  30 near  True swing   1  49 1.256764  92.254054 -119.565831 1.723240  38 1.237265  67.901165 1.049272 True
