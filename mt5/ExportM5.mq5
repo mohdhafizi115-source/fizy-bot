@@ -18,7 +18,7 @@ void OnDeinit(const int r) { EventKillTimer(); }
 
 string Res(string b)
 {
-   string c[] = {"", ".m", "m", ".a", "_m"}; bool cu;
+   string c[] = {"", ".m", ".c", "m", ".a", "_m"}; bool cu;
    for(int i = 0; i < ArraySize(c); i++) if(SymbolExist(b + c[i], cu)) return b + c[i];
    return "";
 }
