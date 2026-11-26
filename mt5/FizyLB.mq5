@@ -25,7 +25,7 @@
 //| the workflow forwards them to Telegram.                           |
 //+------------------------------------------------------------------+
 #property strict
-#property version "2.68"
+#property version "2.69"
 #include <Trade/Trade.mqh>
 
 input bool   InpLbOn       = false;   // the London breakout itself: OFF since 5 Nov at the owner's request
@@ -76,6 +76,7 @@ ulong  g_known[];                     // position tickets seen open (to report T
 #include "FizyFLP.mqh"                 // gold M1 stop-and-reverse, $5 stop frozen after +$1, $25 own daily target (v2.30, round 113d)
 #include "FizyCRS.mqh"                 // gold M15 Connors RSI < 10 / > 90 on the EMA 200 side, 120 min (v2.28, round 110)
 #include "FizyMRT.mqh"                 // gold martingale basket, no SL, against the D1 colour (v2.52, round 146b, owner's order)
+#include "FizyTLS.mqh"                 // gold M15 trendline + S/R break, martingale basket, no SL (v2.69, round 170b, owner's order)
 #include "FizyMRB.mqh"                 // BTCUSD martingale basket, step $400, TP $3, new baskets Sat / Sun only (v2.58, round 161)
 #include "FizyLEG.mqh"                 // gold M1 leg fade, the owner's rule: fade a 60-candle leg, up to 5 entries, no SL
 
@@ -346,6 +347,7 @@ void SweepOff()
    if(!InpGauOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGauMagic; }
    if(!InpBstOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpBstMagic; }
    if(!InpMrtOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMrtMagic; }
+   if(!InpTlsOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpTlsMagic; }
    if(!InpMrbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpMrbMagic; }
    if(!InpKumoOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpKumoMagic; }
    if(!InpGtbOn) { int m = ArraySize(off); ArrayResize(off, m + 1); off[m] = InpGtbMagic; }
@@ -415,9 +417,10 @@ string SpreadInfo()
 // flip stop) also runs on every tick of the chart symbol, not only on the 1-second timer
 void OnTick()
 {
-   if(!InpMrtOn || !TerminalInfoInteger(TERMINAL_CONNECTED) || !g_started) return;
+   if(!TerminalInfoInteger(TERMINAL_CONNECTED) || !g_started) return;
    if(InpDemoOnly && AccountInfoInteger(ACCOUNT_TRADE_MODE) != ACCOUNT_TRADE_MODE_DEMO) return;
-   MrtOnTimer();
+   if(InpMrtOn) MrtOnTimer();
+   if(InpTlsOn) TlsOnTimer();
 }
 
 void OnTimer()
@@ -473,6 +476,7 @@ void OnTimer()
    FlpOnTimer();
    BasOnTimer();
    MrtOnTimer();
+   TlsOnTimer();
    MrbOnTimer();
    CloseLeftovers();
    SweepOff();                                                              // close what the switched-off modules left
