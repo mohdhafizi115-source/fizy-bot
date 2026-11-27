@@ -54,6 +54,7 @@ input double InpMrtArmK     = 1.0;      // unused since v2.67 (the trail arms at
 input double InpMrtTrailK   = 0.5;      // basket stop line trails this x ATR behind the price
 input double InpMrtFlipK    = 0.2;      // opposite stop sits this x ATR inside the line (0 = no flip)
 input double InpMrtLock     = 3.0;      // the line never sits below the price where the whole basket nets + this (account money; v2.65: 3, as the old basket TP)
+input bool   InpMrtStopLine = true;     // v2.70 (owner): NO SL on the positions; the opposite STOP sits ON the trailing line and its fill closes the basket
 
 double MrfAtr();
 int      MR_LOTS[12] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};       // x 0.01, linear +0.01 (round 146b: same profit as x1.5, 0.21 lot max instead of 0.31)
@@ -170,7 +171,7 @@ void MrtInit()
       MrtEvent(StringFormat("MART ONLINE | %s FLEX (v2.62, video trail + martingale): ATR(14, M5) now $%.2f. Flat: BUY STOP / SELL STOP "
                             "%.1f ATR away, the first fill opens the basket; every %.1f ATR against the last entry adds the next lot (0.01, 0.02, 0.03 ... "
                             "unlimited); once the basket is +%.1f ATR the stop line of every position trails %.1f ATR behind the price and never below "
-                            "the whole basket +%.2f, with an opposite stop %.1f ATR inside it that starts the next basket; NO stop loss before that; "
+                            "the whole basket +%.2f, with an opposite stop %.1f ATR inside it that starts the next basket (v2.70: NO SL on the positions, the stop sits ON the line and its fill closes the basket); NO stop loss before that; "
                             "new baskets stop once the day's closed profit reaches %.0f | open: %d position(s), %.2f lot, floating %.2f",
                             mr_sym, MrfAtr(), InpMrtFlexK, InpMrtFlexK, InpMrtArmK, InpMrtTrailK, InpMrtLock, InpMrtFlipK, InpDayTarget, n, vol, pnl));
       return;

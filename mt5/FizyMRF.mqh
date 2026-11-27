@@ -20,6 +20,12 @@
 //| moved with it; its fill opens the next basket the other way      |
 //| while the old one exits on its line (the video's trick).         |
 //| New baskets (OCO and flip orders) obey DayPaused().              |
+//| v2.70 (27 Nov, owner: "order stop di ganti dengan sl ... trailing|
+//| di stop ... bila price trigger stop, position lawan auto close"):|
+//| InpMrtStopLine = true -> the positions carry NO SL at all; the   |
+//| opposite STOP itself sits ON the trailing line and trails with   |
+//| it; when price reaches it (the stop fills) the EA closes every   |
+//| position of the old basket at once. Line rule unchanged.         |
 //+------------------------------------------------------------------+
 ulong    mrf_kb[];
 ulong    mrf_ks[];
@@ -173,6 +179,15 @@ void MrfDelete(bool flip)
 // v2.64: put every position of the basket on the line (results checked; a failure is retried on the next tick)
 void MrfSync(int d, ulong &bk[], int n, double line, MqlTick &tk, double pt, double lim)
 {
+   if(InpMrtStopLine)                                                       // v2.70: no SL on the chart, remove any left
+   {
+      trade.SetExpertMagicNumber(InpMrtMagic);
+      for(int i = 0; i < n; i++)
+         if(PositionSelectByTicket(bk[i]) && PositionGetDouble(POSITION_SL) > 0)
+            trade.PositionModify(bk[i], 0, PositionGetDouble(POSITION_TP));
+      trade.SetExpertMagicNumber(InpMagic);
+      return;
+   }
    if(!(d == 1 ? line < tk.bid - lim : line > tk.ask + lim)) return;        // too close for the broker: the EA's own line covers it
    trade.SetExpertMagicNumber(InpMrtMagic);
    for(int i = 0; i < n; i++)
@@ -202,7 +217,11 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
          if(!ok) { MrtCloseAll(bk, "trail line already reached"); return false; }
          mrf_line[ix] = line; mrf_tn[ix] = n;
          MrfSync(d, bk, n, line, tk, pt, lim);
-         MrtEvent(StringFormat("MART TRAIL %s | %s basket of %d position(s), %.2f lot, floating %.2f: profit locked, stop line of every "
+         MrtEvent(StringFormat(InpMrtStopLine ?
+                      StringFormat("MART TRAIL %s | %s basket of %d position(s), %.2f lot, floating %.2f: profit locked, NO SL; a %s STOP at %s "
+                                   "trails %.2f behind the price (basket +%.2f at worst); when it fills the EA closes the whole %s basket and the stop starts the next basket",
+                                   mr_sym, d == 1 ? "BUY" : "SELL", n, vol, pnl, d == 1 ? "SELL" : "BUY", PriceStr(mr_sym, line), InpMrtTrailK * A, InpMrtLock, d == 1 ? "BUY" : "SELL") :
+                      StringFormat("MART TRAIL %s | %s basket of %d position(s), %.2f lot, floating %.2f: profit locked, stop line of every "
                                "position at %s (trails %.2f behind, basket +%.2f at worst; the EA closes ALL of them when it is touched)%s",
                                mr_sym, d == 1 ? "BUY" : "SELL", n, vol, pnl, PriceStr(mr_sym, line), InpMrtTrailK * A, InpMrtLock,
                                InpMrtFlipK > 0 ? StringFormat("; a %s STOP %.2f inside it starts the next basket", d == 1 ? "SELL" : "BUY", InpMrtFlipK * A) : ""));
@@ -249,8 +268,8 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
 // the opposite stop that rides inside the line of the one trailing basket
 void MrfFlip(int d, double line, double A, MqlTick &tk, int dg, double pt, datetime now)
 {
-   if(InpMrtFlipK <= 0 || DayPaused()) { MrfDelete(true); return; }
-   double G = InpMrtFlipK * A;
+   if((!InpMrtStopLine && InpMrtFlipK <= 0) || DayPaused()) { MrfDelete(true); return; }
+   double G = InpMrtStopLine ? 0 : InpMrtFlipK * A;                           // v2.70: the stop sits ON the line
    double lim = SymbolInfoInteger(mr_sym, SYMBOL_TRADE_STOPS_LEVEL) * pt + 2 * pt;
    double px = NormalizeDouble(d == 1 ? line + G : line - G, dg);
    bool valid = d == 1 ? px < tk.bid - lim : px > tk.ask + lim;               // sell stop below the bid / buy stop above the ask
@@ -305,6 +324,18 @@ void MrfTimer(MqlDateTime &s, int minute, datetime now, bool live, MqlTick &tk, 
    if(!live) return;
    double A = MrfAtr();
    if(A <= 0) return;
+   // v2.70: no SL to read back after a restart -> a one-basket line is the opposite stop's price
+   if(InpMrtStopLine && ((nb > 0) != (ns > 0)))
+   {
+      int ix = nb > 0 ? 0 : 1;
+      if(mrf_line[ix] <= 0)
+      {
+         ulong ot[]; int ty[]; double opx[];
+         int k = MrfOrders(true, ot, ty, opx);
+         for(int i = 0; i < k; i++)
+            if(ty[i] == (nb > 0 ? ORDER_TYPE_SELL_STOP : ORDER_TYPE_BUY_STOP)) { mrf_line[ix] = opx[i]; mrf_tn[ix] = nb > 0 ? nb : ns; }
+      }
+   }
    bool trb = false, trs = false;
    if(nb > 0) trb = MrfManage(1, bb, nb, lb, vb, pb, slb, A, tk, dg, pt, now);
    if(ns > 0) trs = MrfManage(-1, bs, ns, ls, vs, ps, sls, A, tk, dg, pt, now);
