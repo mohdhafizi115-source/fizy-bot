@@ -4,13 +4,37 @@ compile finished: True, ex5 exists: True
    : information: generating code 95%
    : information: generating code 100%
    : information: code generated
-  Result: 0 errors, 0 warnings, 582 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 545 ms elapsed, cpu='X64 Regular'
 FizyBBMA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 643 ms elapsed, cpu='X64 Regular'
-FizyLB compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 11869 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 579 ms elapsed, cpu='X64 Regular'
+FizyLB compile: ex5 exists False
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(220,19) : error 199: wrong parameters count
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(227,164) : error 149: ';' - unexpected token
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(227,164) : error 149: ';' - unexpected token
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(232,87) : error 149: ')' - unexpected token
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(243,99) : error 256: undeclared identifier 'px'
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(243,104) : error 256: undeclared identifier 'S'
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(243,136) : error 256: undeclared identifier 'S'
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(269,6) : error 325: function declarations are allowed on global, namespace or class scope only
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRF.mqh(297,6) : error 325: function declarations are allowed on global, namespace or class scope only
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyMRT.mqh(271,6) : error 325: function declarations are allowed on global, namespace or class scope only
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(31,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(31,14) : warning 62: declaration of 'InpTlsOn' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(32,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(32,14) : warning 62: declaration of 'InpTlsSymbol' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(33,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(33,14) : warning 62: declaration of 'InpTlsMagic' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(34,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(34,14) : warning 62: declaration of 'InpTlsSwing' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(35,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(35,14) : warning 62: declaration of 'InpTlsWait' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(36,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(36,14) : warning 62: declaration of 'InpTlsStepK' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(37,1) : error 239: 'input' can only be used at global scope
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(37,14) : warning 62: declaration of 'InpTlsTpR' hides global variable
+  C:\Program Files\JustMarkets MetaTrader 5\MQL5\Experts\FizyTLS.mqh(38,1) : error 239: 'input' can only be used at global scope
 FizyHA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 874 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 937 ms elapsed, cpu='X64 Regular'
 servers.dat from the user's MT5 copied in (127344 bytes)
 secret shape: login digits only True, password has ; or # False, password has leading/trailing space False, server has spaces False
 servers.dat (127344 bytes) names: 
@@ -19,43 +43,43 @@ EA ran: yes, connected 1 after 2 s
 server JustMarkets-Demo6, demo 1, company Just Global Markets Ltd.
 algo trading: terminal 1, account 1, expert 1, program 1
 balance > 0: 1, currency USC, leverage 1:3000, margin mode 2
-XAUUSD.c: tick 1 bid 3571.87 ask 3572.25, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 1
-server time 2026.11.26 15:34:13, GMT 2026.11.26 13:34:14 (server offset +2 h)
+XAUUSD.c: tick 1 bid 3676.92 ask 3677.31, digits 2, stops level 0, freeze 0, vol min 0.01 step 0.01, filling 1, contract 1
+server time 2026.11.27 13:37:52, GMT 2026.11.27 11:37:52 (server offset +2 h)
 terminal journal (network / account lines, last 30 other lines):
-  N PK	0	13:34:08.228	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, x64, 13 / 15 Gb memory, 28 / 149 Gb disk, UAC, admin, GMT+0
-  N RD	0	13:34:10.653	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  N JM	0	13:34:10.653	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.26 15:19:17
-  N EQ	0	13:34:11.139	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 2 orders, 69 symbols, 0 spreads
-  N RN	0	13:34:11.139	Network	'<num>': trading has been enabled, demo account - hedging mode
-  N RR	0	13:34:11.139	Network	'<num>': balance management has been disabled - demo account
-  N NK	0	13:34:12.265	Network	'<num>': scanning network for access points
-  N MF	2	13:34:14.220	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
-  N MJ	0	13:34:15.303	Network	'<num>': disconnected from JustMarkets-Demo6
-  EQ	0	13:34:08.203	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
-  IH	0	13:34:08.228	Terminal	MetaTrader 5 x64 build 6275 started for MetaQuotes Ltd.
-  PK	0	13:34:08.228	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, x64, 13 / 15 Gb memory, 28 / 149 Gb disk, UAC, admin, GMT+0
-  JG	0	13:34:08.228	Terminal	C:\Program Files\JustMarkets MetaTrader 5
-  LP	0	13:34:08.228	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
-  IQ	0	13:34:08.231	MCP	started on <ip>:<num>
-  IS	0	13:34:08.232	Compiler	full recompilation has been started
-  QE	0	13:34:09.685	Experts	expert CheckEA (XAUUSD.c,M15) loaded successfully
-  RD	0	13:34:10.653	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
-  JM	0	13:34:10.653	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.26 15:19:17
-  EQ	0	13:34:11.139	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 2 orders, 69 symbols, 0 spreads
-  RN	0	13:34:11.139	Network	'<num>': trading has been enabled, demo account - hedging mode
-  RR	0	13:34:11.139	Network	'<num>': balance management has been disabled - demo account
-  GK	0	13:34:11.477	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 0.83 ms via 'VPS Singapore 09' instead of <num>.00 ms
-  NK	0	13:34:12.265	Network	'<num>': scanning network for access points
-  FN	3	13:34:14.063	Experts	CheckEA (XAUUSD.c,M15) calls TerminalClose(0) function
-  EO	0	13:34:14.078	Experts	expert CheckEA (XAUUSD.c,M15) removed
-  MF	2	13:34:14.220	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
-  CL	0	13:34:14.862	Terminal	exit with code 0
-  MJ	0	13:34:15.303	Network	'<num>': disconnected from JustMarkets-Demo6
-  NS	0	13:34:16.342	Terminal	stopped with 0
-  GJ	0	13:34:16.489	Terminal	shutdown with 0
+  N QK	0	11:37:46.541	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, x64, 13 / 15 Gb memory, 28 / 149 Gb disk, UAC, admin, GMT+0
+  N ND	0	11:37:48.899	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  N NM	0	11:37:48.899	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.27 13:35:37
+  N LQ	0	11:37:49.378	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 2 orders, 69 symbols, 0 spreads
+  N GN	0	11:37:49.378	Network	'<num>': trading has been enabled, demo account - hedging mode
+  N GR	0	11:37:49.378	Network	'<num>': balance management has been disabled - demo account
+  N LK	0	11:37:50.554	Network	'<num>': scanning network for access points
+  N QF	2	11:37:52.564	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
+  N MJ	0	11:37:53.627	Network	'<num>': disconnected from JustMarkets-Demo6
+  KQ	0	11:37:46.514	Startup	successfully initialized from start config "C:\Program Files\JustMarkets MetaTrader 5\start.ini"
+  HH	0	11:37:46.541	Terminal	MetaTrader 5 x64 build 6275 started for MetaQuotes Ltd.
+  QK	0	11:37:46.541	Terminal	Windows Server 2025 build <num>, 4 x AMD EPYC 7763 64-Core, x64, 13 / 15 Gb memory, 28 / 149 Gb disk, UAC, admin, GMT+0
+  GG	0	11:37:46.541	Terminal	C:\Program Files\JustMarkets MetaTrader 5
+  MP	0	11:37:46.541	Terminal	launched with C:\Program Files\JustMarkets MetaTrader 5\start.ini
+  KQ	0	11:37:46.544	MCP	started on <ip>:<num>
+  MS	0	11:37:46.545	Compiler	full recompilation has been started
+  CE	0	11:37:48.010	Experts	expert CheckEA (XAUUSD.c,M15) loaded successfully
+  ND	0	11:37:48.899	Network	'<num>': authorized on JustMarkets-Demo6 through SG4
+  NM	0	11:37:48.899	Network	'<num>': previous successful authorization performed from <ip> on 2026.11.27 13:35:37
+  LQ	0	11:37:49.378	Network	'<num>': terminal synchronized with Just Global Markets Ltd.: 0 positions, 2 orders, 69 symbols, 0 spreads
+  GN	0	11:37:49.378	Network	'<num>': trading has been enabled, demo account - hedging mode
+  GR	0	11:37:49.378	Network	'<num>': balance management has been disabled - demo account
+  JK	0	11:37:49.825	Trades	use MetaTrader VPS Hosting Service to speed up the execution: 0.87 ms via 'VPS Singapore 09' instead of <num>.00 ms
+  LK	0	11:37:50.554	Network	'<num>': scanning network for access points
+  NN	3	11:37:52.394	Experts	CheckEA (XAUUSD.c,M15) calls TerminalClose(0) function
+  EO	0	11:37:52.408	Experts	expert CheckEA (XAUUSD.c,M15) removed
+  QF	2	11:37:52.564	WebView2	WebView2 controller creation failed: 0x<num> - Operation aborted
+  EL	0	11:37:53.158	Terminal	exit with code 0
+  MJ	0	11:37:53.627	Network	'<num>': disconnected from JustMarkets-Demo6
+  OS	0	11:37:54.261	Terminal	stopped with 0
+  GJ	0	11:37:54.376	Terminal	shutdown with 0
 snap test: compiled True, files: , , , , , SR: 0 M15 bars, 0 zones, ATR 0, price 0, resistance none in the last 5 days, support none in the last 5 days
 EA log tail:
-  GQ	3	13:34:14.063	CheckEA (XAUUSD.c,M15)	TerminalClose(0) function called
-  CG	0	13:34:27.208	SnapTest (XAUUSD.c,M15)	snap: ChartOpen failed 4302
-  QL	0	13:34:27.208	SnapTest (XAUUSD.c,M15)	snap: ChartOpen failed 4302
-  PG	3	13:34:47.260	SnapTest (XAUUSD.c,M15)	TerminalClose(0) function called
+  OQ	3	11:37:52.394	CheckEA (XAUUSD.c,M15)	TerminalClose(0) function called
+  CG	0	11:38:05.433	SnapTest (XAUUSD.c,M15)	snap: ChartOpen failed 4302
+  QL	0	11:38:05.433	SnapTest (XAUUSD.c,M15)	snap: ChartOpen failed 4302
+  QG	3	11:38:25.519	SnapTest (XAUUSD.c,M15)	TerminalClose(0) function called
