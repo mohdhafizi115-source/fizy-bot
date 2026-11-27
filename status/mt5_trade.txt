@@ -1,22 +1,22 @@
-shift ended (UTC): 2026-11-27 05:57
+shift ended (UTC): 2026-11-27 11:34
 open
-2026.11.27 07:57:36
+2026.11.27 13:34:22
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 12339 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 9084 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  LO	0	05:30:08.904	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3665.93 ($x away), lot 0.01, the first fill deletes the other, no SL
-  LG	0	05:30:21.654	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3669.05 ($x away), lot 0.01, the first fill deletes the other, no SL
-  CN	0	05:30:31.244	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3672.08 ($x away), lot 0.01, the first fill deletes the other, no SL
-  RK	0	05:30:55.224	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3653.01 ($x away), lot 0.01, the first fill deletes the other, no SL
-  ID	0	05:31:31.046	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3650.26 ($x away), lot 0.01, the first fill deletes the other, no SL
-  LL	0	05:33:44.438	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3647.67 ($x away), lot 0.01, the first fill deletes the other, no SL
-  PE	0	05:37:07.945	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3644.31 ($x away), lot 0.01, the first fill deletes the other, no SL
-  KM	0	05:37:22.244	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3641.17 ($x away), lot 0.01, the first fill deletes the other, no SL
-  GE	0	05:38:16.441	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3637.70 ($x away), lot 0.01, the first fill deletes the other, no SL
-  FS	0	05:41:24.004	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3659.40 ($x away), lot 0.01, the first fill deletes the other, no SL
-  MF	0	05:50:01.650	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3636.97 ($x away), lot 0.01, the first fill deletes the other, no SL
-  QO	0	05:55:24.244	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3633.95 ($x away), lot 0.01, the first fill deletes the other, no SL
+  RS	0	08:45:22.585	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3683.18 ($x away), lot 0.01, the first fill deletes the other, no SL
+  KK	0	08:49:19.577	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3685.81 ($x away), lot 0.01, the first fill deletes the other, no SL
+  GR	0	09:02:37.577	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3687.95 ($x away), lot 0.01, the first fill deletes the other, no SL
+  CJ	0	09:07:35.882	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3690.88 ($x away), lot 0.01, the first fill deletes the other, no SL
+  GP	0	09:30:40.783	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3672.52 ($x away), lot 0.01, the first fill deletes the other, no SL
+  CH	0	09:55:20.570	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3671.26 ($x away), lot 0.01, the first fill deletes the other, no SL
+  HQ	0	09:56:45.073	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3668.74 ($x away), lot 0.01, the first fill deletes the other, no SL
+  GI	0	10:02:16.879	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3666.40 ($x away), lot 0.01, the first fill deletes the other, no SL
+  LL	0	10:39:14.975	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3681.47 ($x away), lot 0.01, the first fill deletes the other, no SL
+  FG	0	10:49:02.445	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3683.17 ($x away), lot 0.01, the first fill deletes the other, no SL
+  KR	0	11:20:34.981	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: SELL STOP 3670.24 ($x away), lot 0.01, the first fill deletes the other, no SL
+  OF	0	11:31:03.483	FizyLB (XAUUSD.c,M15)	MART EVENT MART ORDER PLACED XAUUSD.c | both sides, no D1 filter: BUY STOP 3682.43 ($x away), lot 0.01, the first fill deletes the other, no SL
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
@@ -31,4 +31,4 @@ events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
   w: telegram ok: MART ORDER PLACED XAUUSD.c
-  w: shift end: done=False, state=2026.11.27 07:57:36|0|0
+  w: shift end: done=False, state=2026.11.27 13:34:22|0|0
