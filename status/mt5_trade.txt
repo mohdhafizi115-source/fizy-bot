@@ -1,26 +1,28 @@
-shift ended (UTC): 2026-11-27 17:17
-open
-2026.11.27 19:17:44
+shift ended (UTC): 2026-11-27 22:54
+done
+2026.11.27 22:58:00
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 9863 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 9346 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  JS	0	16:22:48.454	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3623.16, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  RJ	0	16:36:12.142	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 2: 0.02 at 3629.49 (6.29 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -6.75; next add 6.29 further, trail arms 6.29 beyond the basket breakeven
-  KK	0	16:39:07.089	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, floating 3.09: profit locked, NO SL; a BUY STOP at 3626.38 trails 3.14 behind the price (basket +3.00 at worst); when it fills the EA closes the whole SELL basket and the stop starts the next basket
-  PI	0	16:39:10.647	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, closed on its trailing line, profit 3.01 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_593.png
-  JD	0	16:39:10.647	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3626.38, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  QM	0	16:41:43.264	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.23: profit locked, NO SL; a SELL STOP at 3629.38 trails 3.09 behind the price (basket +3.00 at worst); when it fills the EA closes the whole BUY basket and the stop starts the next basket
-  JI	0	16:41:48.437	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.99 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_375.png
-  DO	0	16:41:48.437	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3629.38, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  IF	0	16:55:00.639	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 2: 0.02 at 3635.47 (5.79 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -6.47; next add 5.79 further, trail arms 5.79 beyond the basket breakeven
-  LG	0	17:02:48.092	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, floating 3.20: profit locked, NO SL; a BUY STOP at 3632.57 trails 2.82 behind the price (basket +3.00 at worst); when it fills the EA closes the whole SELL basket and the stop starts the next basket
-  FM	0	17:04:37.815	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 2 position(s), 0.03 lot, closed on its trailing line, profit 2.42 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_718.png
-  KH	0	17:04:37.815	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3632.57, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  LM	0	18:31:58.388	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3639.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  HJ	0	18:43:49.517	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.06: profit locked, NO SL; a SELL STOP at 3642.85 trails 2.62 behind the price (basket +3.00 at worst); when it fills the EA closes the whole BUY basket and the stop starts the next basket
+  IP	0	18:43:56.769	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 3.00 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_406.png
+  RE	0	18:43:56.770	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3642.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  ML	0	19:01:48.015	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, floating 3.05: profit locked, NO SL; a BUY STOP at 3639.85 trails 2.27 behind the price (basket +3.00 at worst); when it fills the EA closes the whole SELL basket and the stop starts the next basket
+  NH	0	19:02:04.924	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.95 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_546.png
+  MF	0	19:02:04.925	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3639.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  RO	0	19:12:18.620	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.37: profit locked, NO SL; a SELL STOP at 3642.85 trails 2.08 behind the price (basket +3.00 at worst); when it fills the EA closes the whole BUY basket and the stop starts the next basket
+  EK	0	19:13:35.192	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.97 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_796.png
+  IP	0	19:13:35.192	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3642.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
+  MG	0	19:40:11.846	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 2: 0.02 at 3646.41 (3.54 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -3.99; next add 3.54 further, trail arms 3.54 beyond the basket breakeven
+  JK	0	19:42:59.338	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 3: 0.03 at 3650.35 (3.65 = 1.0 ATR below/above the last entry), basket 0.06 lot, floating -16.62; next add 3.65 further, trail arms 3.65 beyond the basket breakeven
+  w: telegram ok: MART TRAIL XAUUSD.c
+  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  w: telegram ok: MART BUY XAUUSD.c
   w: telegram ok: MART TRAIL XAUUSD.c
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART SELL XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
   w: telegram ok: MART TRAIL XAUUSD.c
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART BUY XAUUSD.c
@@ -28,7 +30,5 @@ events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
   w: telegram ok: MART BASKET CLOSED XAUUSD.c
   w: telegram ok: MART SELL XAUUSD.c
   w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: MART BUY XAUUSD.c
-  w: shift end: done=False, state=2026.11.27 19:17:44|0|0
+  w: telegram ok: MART ADD XAUUSD.c
+  w: shift end: done=True, state=2026.11.27 22:58:00|0|0
