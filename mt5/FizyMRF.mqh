@@ -217,7 +217,7 @@ bool MrfManage(int d, ulong &bk[], int n, double last, double vol, double pnl, d
          if(!ok) { MrtCloseAll(bk, "trail line already reached"); return false; }
          mrf_line[ix] = line; mrf_tn[ix] = n;
          MrfSync(d, bk, n, line, tk, pt, lim);
-         MrtEvent(StringFormat(InpMrtStopLine ?
+         MrtEvent(InpMrtStopLine ?
                       StringFormat("MART TRAIL %s | %s basket of %d position(s), %.2f lot, floating %.2f: profit locked, NO SL; a %s STOP at %s "
                                    "trails %.2f behind the price (basket +%.2f at worst); when it fills the EA closes the whole %s basket and the stop starts the next basket",
                                    mr_sym, d == 1 ? "BUY" : "SELL", n, vol, pnl, d == 1 ? "SELL" : "BUY", PriceStr(mr_sym, line), InpMrtTrailK * A, InpMrtLock, d == 1 ? "BUY" : "SELL") :
