@@ -1,34 +1,14 @@
-shift ended (UTC): 2026-11-27 22:54
+shift ended (UTC): 2026-11-28 04:31
 done
 2026.11.27 22:58:00
 BBMA indicator compile: ex5 exists True
 EA compile: ex5 exists True
-  Result: 0 errors, 0 warnings, 9346 ms elapsed, cpu='X64 Regular'
+  Result: 0 errors, 0 warnings, 7070 ms elapsed, cpu='X64 Regular'
 events: London 1 lines, NR7 0, Gotobi 0, gold auction 0
-  LM	0	18:31:58.388	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3639.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  HJ	0	18:43:49.517	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.06: profit locked, NO SL; a SELL STOP at 3642.85 trails 2.62 behind the price (basket +3.00 at worst); when it fills the EA closes the whole BUY basket and the stop starts the next basket
-  IP	0	18:43:56.769	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 3.00 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_406.png
-  RE	0	18:43:56.770	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3642.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  ML	0	19:01:48.015	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, floating 3.05: profit locked, NO SL; a BUY STOP at 3639.85 trails 2.27 behind the price (basket +3.00 at worst); when it fills the EA closes the whole SELL basket and the stop starts the next basket
-  NH	0	19:02:04.924	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | SELL basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.95 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_546.png
-  MF	0	19:02:04.925	FizyLB (XAUUSD.c,M15)	MART EVENT MART BUY XAUUSD.c | basket opened: the flip stop (video trail) filled at 3639.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  RO	0	19:12:18.620	FizyLB (XAUUSD.c,M15)	MART EVENT MART TRAIL XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, floating 3.37: profit locked, NO SL; a SELL STOP at 3642.85 trails 2.08 behind the price (basket +3.00 at worst); when it fills the EA closes the whole BUY basket and the stop starts the next basket
-  EK	0	19:13:35.192	FizyLB (XAUUSD.c,M15)	MART EVENT MART BASKET CLOSED XAUUSD.c | BUY basket of 1 position(s), 0.01 lot, closed on its trailing line, profit 2.97 | IMG:snap_MRT_XAUUSD_c_<num>_<num>_796.png
-  IP	0	19:13:35.192	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the flip stop (video trail) filled at 3642.85, lot 0.01; no SL until price is 1.0 ATR beyond the basket breakeven
-  MG	0	19:40:11.846	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 2: 0.02 at 3646.41 (3.54 = 1.0 ATR below/above the last entry), basket 0.03 lot, floating -3.99; next add 3.54 further, trail arms 3.54 beyond the basket breakeven
-  JK	0	19:42:59.338	FizyLB (XAUUSD.c,M15)	MART EVENT MART ADD XAUUSD.c | SELL level 3: 0.03 at 3650.35 (3.65 = 1.0 ATR below/above the last entry), basket 0.06 lot, floating -16.62; next add 3.65 further, trail arms 3.65 beyond the basket breakeven
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: MART BUY XAUUSD.c
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
+  KR	0	22:55:47.462	FizyLB (XAUUSD.c,M15)	EVENT STARTED | server time 2026.11.27 22:58, 0 open position(s), 0 pending order(s), lot 0.01 | account USC demo | XAUUSD.c spread 0.38 (38 pts) = 0.38 USC per 0.01 lot, contract 1, min lot 0.01 | BTCUSD not found
+  EP	0	22:55:47.478	FizyLB (XAUUSD.c,M15)	MART EVENT MART ONLINE | XAUUSD.c FLEX (v2.62, video trail + martingale): ATR(14, M5) now $x Flat: BUY STOP / SELL STOP 1.0 ATR away, the first fill opens the basket; every 1.0 ATR against the last entry adds the next lot (0.01, 0.02, 0.03 ... unlimited); once the basket is +1.0 ATR the stop line of every position trails 0.5 ATR behind the price and never below the whole basket +3.00, with an opposite stop 0.2 ATR inside it that starts the next basket (v2.70: NO SL on the positions, the stop sits ON the line and its fill closes the basket); NO stop loss before that; new baskets stop once the day's closed profit reaches 0 | open: 3 position(s), 0.06 lot, floating -25.38
+  KE	0	22:55:47.478	FizyLB (XAUUSD.c,M15)	MART EVENT MART SELL XAUUSD.c | basket opened: the OCO stop filled at 3650.45, lot 0.06; no SL until price is 1.0 ATR beyond the basket breakeven
+  CN	0	22:55:47.763	FizyLB (XAUUSD.c,M15)	TLS EVENT TLSR ONLINE | XAUUSD.c M15 trendline + S/R break (swing 10, wait 120 bars) opens a basket at 0.01; every 1.5 ATR(M15) against the last entry adds the next lot (0.01, 0.02, 0.03 ... unlimited), NO stop loss; TP of all positions = the whole basket +3x the first layer's risk | open: 0 position(s), 0.00 lot, floating 0.00
   w: telegram ok: MART SELL XAUUSD.c
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: MART BUY XAUUSD.c
-  w: telegram ok: MART TRAIL XAUUSD.c
-  w: telegram ok: MART BASKET CLOSED XAUUSD.c
-  w: telegram ok: MART SELL XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
-  w: telegram ok: MART ADD XAUUSD.c
+  w: status message already sent today
   w: shift end: done=True, state=2026.11.27 22:58:00|0|0
